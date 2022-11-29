@@ -1,0 +1,19 @@
+h1{
+    font-size: 180%;
+    font-weight: 800;
+    padding: 4rem;
+    padding-bottom: 0;
+}
+.home-bid{
+    padding: 4rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 3%;
+}
+@media screen and (max-width:924px){
+    .home-bid{
+        padding: 4rem 2rem;
+    }
+    
+}
