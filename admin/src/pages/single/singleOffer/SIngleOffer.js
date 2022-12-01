@@ -8,9 +8,9 @@ import axios from 'axios'
 
 
 const SingleOffer = () => {
-    /* const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const navigate = useNavigate();
     const location = useLocation();
     const id = location.pathname.split("/")[2];
@@ -22,7 +22,7 @@ const SingleOffer = () => {
     }
     const handleofferDelete = async (id) => {
         try{
-            await axios.delete(`/offers/${id}`);
+            await axiosInstance.delete(`/offers/${id}`);
             navigate('/offers')
         }catch(err){
             console.log(err);

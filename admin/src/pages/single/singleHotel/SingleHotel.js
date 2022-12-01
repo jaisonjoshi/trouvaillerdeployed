@@ -9,9 +9,9 @@ import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import { useEffect, useState } from 'react'
 const SingleHotel = () => {
-    /* const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const [hotel, setHotel] = useState([])
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,7 +26,7 @@ const SingleHotel = () => {
     }
     const handlehotelDelete = async (id) => {
         try{
-            await axios.delete(`/hotels/${id}`);
+            await axiosInstance.delete(`/hotels/${id}`);
             navigate('/hotels')
         }catch(err){
             console.log(err);

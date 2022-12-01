@@ -10,9 +10,9 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const NewPackage =() => {
-   /*  const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const navigate = useNavigate();
     const [files, setFile] = useState("")
     const [info, setinfo] = useState({});
@@ -67,7 +67,7 @@ const NewPackage =() => {
                   const data = new FormData();
                   data.append("file", file);
                   data.append("upload_preset", "upload");
-                  const uploadRes = await axios.post(
+                  const uploadRes = await axiosInstance.post(
                     "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
                     data
                   );
@@ -81,7 +81,7 @@ const NewPackage =() => {
                 ...info,shedule: shedule,
                 images: list,
               };
-              await axios.post("/packages", newPackage);
+              await axiosInstance.post("/packages", newPackage);
               console.log(newPackage)
                 navigate('/packages')
         } catch(err){

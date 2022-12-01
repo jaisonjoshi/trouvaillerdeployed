@@ -9,9 +9,9 @@ import useFecth from '../../../hooks/useFetch';
 
 
 const UpdateReview =() => {
-   /*  const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const navigate = useNavigate();
     const location = useLocation();
     const [info, setinfo] = useState({});
@@ -30,7 +30,7 @@ const UpdateReview =() => {
             const updatedReview = {
                 ...info
             };
-            await axios.patch(`/reviews/${id}`, updatedReview);
+            await axiosInstance.patch(`/reviews/${id}`, updatedReview);
             console.log("package has been updated")
 
             await navigate('/reviews')

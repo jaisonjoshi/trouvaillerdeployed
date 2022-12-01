@@ -20,17 +20,29 @@ const cors = require('cors');
 
 const app=express()
 
-app.use(cors());
+
 app.use(cookieParser())
 const httpServer = createServer(app);
 
 
 
 app.use(express.json())
-app.use((req,res,next)=>{
-    res.setHeader("Access-Control-Allow-Origin", '*');
-    next()
-})
+
+mongoose.connect(process.env.MONGO_URI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+    .then(()=>{
+        httpServer.listen(8080, ()=> {
+            console.log("server is up");
+     })
+           console.log("db is connected")})
+    .catch((error)=>{
+        console.log(error)
+        process.exit(1)
+    })
+
+app.use(cors());
 
 app.use('/api/hotels',hotelRoutes)
 app.use('/api/rooms',roomRoutes)
@@ -40,24 +52,4 @@ app.use('/api/reviews',reviewRoutes)
 //app.use('/api/offers', offerRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
-
-
-
-
-mongoose.connect(process.env.MONGO_URI,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-    .then(()=>{
-        httpServer.listen(8080, ()=> {
-            console.log("server is up");
-        })
-        
-        
-        
-        console.log("db is connected")})
-    .catch((error)=>{
-        console.log(error)
-        process.exit(1)
-    })
 

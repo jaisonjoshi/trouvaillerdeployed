@@ -13,9 +13,9 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 
 const SinglePackage = () => {
-    /* const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const navigate = useNavigate();
     const location = useLocation();
     const id = location.pathname.split("/")[2];
@@ -35,7 +35,7 @@ const SinglePackage = () => {
     }
     const handlePackageDelete = async (id) => {
         try{
-            await axios.delete(`/packages/${id}`);
+            await axiosInstance.delete(`/packages/${id}`);
             navigate('/packages')
         }catch(err){
             console.log(err);

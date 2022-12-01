@@ -11,9 +11,9 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
  
 
 const UpdateHotel =() => {
-   /*  const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const navigate = useNavigate();
     const [files, setFile] = useState("")
     const location = useLocation();
@@ -36,7 +36,7 @@ const UpdateHotel =() => {
                           const data = new FormData();
                           data.append("file", file);
                           data.append("upload_preset", "upload");
-                          const uploadRes = await axios.post(
+                          const uploadRes = await axiosInstance.post(
                             "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
                             data
                           );
@@ -56,7 +56,7 @@ const UpdateHotel =() => {
                 images: list,
               };
               console.log(updatedHotel)
-              await axios.patch(`/hotels/${id}`, updatedHotel);
+              await axiosInstance.patch(`/hotels/${id}`, updatedHotel);
                 navigate(`/hotels/${id}`)
         } catch(err){
             console.log(err)

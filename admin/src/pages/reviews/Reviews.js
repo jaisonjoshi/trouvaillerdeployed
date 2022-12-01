@@ -7,9 +7,9 @@ import { useEffect, useState } from 'react';
 import profile from '../../components/assets/profile.jpg'
 import axios from 'axios';
 const Reviews =() => {
-    /* const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const [reviews, setReviews] = useState([]);
     const {data, loading, err, reFetch} = useFetch("/reviews");
     useEffect(()=> {
@@ -22,7 +22,7 @@ const Reviews =() => {
     }
     const handleReviewDelete = async (id) => {
         try{
-            await axios.delete(`/reviews/${id}`);
+            await axiosInstance.delete(`/reviews/${id}`);
             reFetch("/reviews")
             
         }catch(err){

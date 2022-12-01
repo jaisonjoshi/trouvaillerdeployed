@@ -8,9 +8,9 @@ import axios from "axios"
 
 
 const NewOffer =() => {
- /*    const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const navigate = useNavigate();
 
     const [info, setinfo] = useState({});
@@ -24,7 +24,7 @@ const NewOffer =() => {
             const newOffer = {
                 ...info
             };
-            await axios.post('/offers', newOffer);
+            await axiosInstance.post('/offers', newOffer);
             console.log("new package has been created")
 
             await navigate('/offers')

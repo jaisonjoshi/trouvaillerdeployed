@@ -14,13 +14,15 @@ import axios from "axios";
 const Home = () => {
   const { user, loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+})
   //logout code fetching
   const handleClick = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGOUT" });
     try {
-      const res = await axios.get("/auth/logout");
+      const res = await axiosInstance.get("/auth/logout");
       localStorage.removeItem("user");
       if (res) {
         navigate("/");

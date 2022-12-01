@@ -11,9 +11,9 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 
 
 const UpdatePackage =() => {
-    /* const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const navigate = useNavigate();
     const [files, setFile] = useState("")
 
@@ -76,7 +76,7 @@ const UpdatePackage =() => {
                       const data = new FormData();
                       data.append("file", file);
                       data.append("upload_preset", "upload");
-                      const uploadRes = await axios.post(
+                      const uploadRes = await axiosInstance.post(
                         "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
                         data
                       );
@@ -93,7 +93,7 @@ const UpdatePackage =() => {
                 images: list,
               };
               console.log(updatedPackage)
-              await axios.patch(`/packages/${id}`, updatedPackage);
+              await axiosInstance.patch(`/packages/${id}`, updatedPackage);
                 navigate(`/packages/${id}`)
         } catch(err){
             console.log(err)

@@ -6,9 +6,9 @@ import { useState } from 'react';
 import axios from "axios"
 
 const Bidcard = ({bid}) => {
-    /* const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
 
     const vendorObj = JSON.parse(window.localStorage.getItem('user'))
     const accepted = bid.accepted
@@ -20,7 +20,7 @@ const Bidcard = ({bid}) => {
                 
             }
             console.log(updatedBid);
-            await axios.patch(`/bids/${bid._id}`, updatedBid)
+            await axiosInstance.patch(`/bids/${bid._id}`, updatedBid)
             console.log("bid updated")
         }catch(err) {
             console.log(err)

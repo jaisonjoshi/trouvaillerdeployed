@@ -8,7 +8,9 @@ import { Navbar } from 'flowbite-react/lib/cjs/components/Navbar';
 import { Button } from 'flowbite-react/lib/cjs/components/Button';
 
 const NavbarTest = () => {
-  
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+})
   //const { user } = useContext(AuthContext);
 
   const { user, loading, error, dispatch } = useContext(AuthContext);
@@ -19,7 +21,7 @@ const NavbarTest = () => {
       e.preventDefault();
       dispatch({ type: "LOGOUT" });
       try {
-        const res = await axios.get("/auth/logout");
+        const res = await axiosInstance.get("/auth/logout");
         localStorage.removeItem("user");
         if(res){
         

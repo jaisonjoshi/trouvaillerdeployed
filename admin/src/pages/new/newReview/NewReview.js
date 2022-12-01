@@ -8,9 +8,9 @@ import axios from "axios"
 
 
 const NewReview =() => {
-  /*   const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
     const navigate = useNavigate();
 
     const [info, setinfo] = useState({});
@@ -24,7 +24,7 @@ const NewReview =() => {
             const newReview = {
                 ...info
             };
-            await axios.post('/reviews', newReview);
+            await axiosInstance.post('/reviews', newReview);
             console.log("new review has been created")
 
             await navigate('/reviews')

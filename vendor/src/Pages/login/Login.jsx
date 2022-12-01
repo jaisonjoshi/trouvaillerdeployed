@@ -10,9 +10,9 @@ import {AuthContext} from "../../components/context/AuthContext"
 
 
 const Login = () => {
-  /* const axiosInstance = axios.create({
+  const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
-}) */
+})
   //start
 
   const [credentials, setCredentials] = useState({
@@ -32,7 +32,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", credentials);
+      const res = await axiosInstance.post("/auth/login", credentials);
       if(res.data.isAdmin){
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");

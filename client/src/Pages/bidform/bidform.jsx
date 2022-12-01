@@ -7,9 +7,9 @@ import axios from 'axios'
 
 const Bidform = () => {
     
-  /*   const axiosInstance = axios.create({
+    const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
-    }) */
+    })
 
     const [info, setinfo] = useState({});
     const handlebidChange = (e) => {
@@ -27,7 +27,7 @@ const Bidform = () => {
                 ...info, username : userobj.username,userid:userobj._id,useremail:userobj.email,userphone:userobj.phone
               };console.log(newBid)
              
-               await axios.post("/bids", newBid);
+               await axiosInstance.post("/bids", newBid);
                console.log(newBid)
            
         } catch(err){

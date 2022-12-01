@@ -1,6 +1,5 @@
 {
   "name": "admin",
-  "proxy" : "http://localhost:8080/api/",
   "version": "0.1.0",
   "homepage": ".",
   "dependencies": {
