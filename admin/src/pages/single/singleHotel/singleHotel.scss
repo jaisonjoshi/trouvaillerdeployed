@@ -83,9 +83,26 @@ s                    img{
         }
         
     }
+    
+    .singlehotel-room-det{
+
+        padding: 2rem 3rem;
+        .room-tag{
+            height: 15px;
+            width: 50px;
+    
+            background-color: #00ff9f;
+            font-size: 70%;
+        }
+
+            
+        
+    }
     .singlehotel-body-content{
+        margin-left: -50px;
         padding: 2rem 3rem;
         display: flex;
             font-size: 18px;
+           
     }
 }
