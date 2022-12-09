@@ -34,6 +34,7 @@ const BidTable = ({count}) => {
     const columns = [
 
         { field: 'user', headerName : 'User', flex:2},
+        { field: 'categories', headerName : 'Category', flex:2},
         { field : 'destination' , headerName : 'Destination', flex:2},
         { field : 'checkIn' , headerName : "CheckIn Date" ,flex:2},
         { field : 'checkOut' , headerName : "CheckOut Date" ,flex:2},
