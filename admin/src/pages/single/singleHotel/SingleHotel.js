@@ -81,10 +81,24 @@ const SingleHotel = () => {
                         </div>
 
                     </div>
-                    <div className="singlehotel-body-content">
-                        <p>{hotel.description}</p>
-                    </div>
-                </div>
+                   
+                       {/* <div className="singlehotel-room-det">
+                           
+                            <h>Room types</h><div className="room-tag">{hotel.rooms}</div>
+                            */} <h>Room types</h>
+                                <div>
+
+                               {hotel.rooms && hotel.rooms.map((room) => (<li>{room}</li>))}
+                                </div>
+
+                               <div className="singlehotel-body-content">
+                                
+                                 <div> <h>Hotel details</h><p>{hotel.description}</p></div>
+                       
+                              </div>
+                       </div>
+                           
+               
                )}
             </div>
 
