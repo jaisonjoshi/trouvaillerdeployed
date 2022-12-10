@@ -17,16 +17,16 @@ router.get('/',getPackages)
 //to get single workout
 router.get('/:id',getPackage)
 //post a new request
-router.post('/',verifyAdmin,createPackage)
+router.post('/',createPackage)
 //delete a new request
 // router.delete('/:id',(req,res)=>{
 //     res.json({mssg:'delete a workouts'})
 // })
 
-router.delete('/:id',verifyAdmin,deletePackage)
+router.delete('/:id',deletePackage)
 //update a workout
 // router.patch('/:id',(req,res)=>{
 //     res.json({mssg:'update a workouts'})
 // })
-router.patch('/:id',verifyAdmin,updatePackage)
+router.patch('/:id',updatePackage)
 module.exports=router
