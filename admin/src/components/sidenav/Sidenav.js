@@ -43,6 +43,11 @@ const Sidenav = ({isOpen}) => {
                         <LocalOfferIcon className='sidenav-icn'/><span>Offers</span>
                     </li>
                 </Link>
+                <Link to="/vendors">
+                    <li>
+                        <PeopleAltIcon className='sidenav-icn'/><span>Vendors</span>
+                    </li>
+                </Link>
             </ul>
         </div>
     )

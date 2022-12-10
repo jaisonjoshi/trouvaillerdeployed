@@ -19,12 +19,29 @@ const NewHotel =() => {
     })
     const navigate = useNavigate();
     const [files, setFile] = useState("")
-
+    const [rooms, setRooms] = useState([])
     const [info, setinfo] = useState({});
+    const [query, setQuery] = useState("")
+
+    const handleUpdateQuery = ({ target }) => {
+        // Update query onKeyPress of input box
+        setQuery(target.value)
+      }
 
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
     }
+    // const handleRoomChange = (e) => {
+        
+    // }
+    const handleNext = (e) => {
+        e.preventDefault()
+        //setSearches(searches => [...searches, query])
+        setRooms(rooms=>[...rooms, query])
+        console.log(rooms)
+       
+        
+   }
     const handleClick = async e => {
         e.preventDefault();
         try{
@@ -44,7 +61,7 @@ const NewHotel =() => {
               );
               
               const newHotel = {
-                ...info,
+                ...info,rooms:rooms,
                 images: list,
               };
               await axiosInstance.post("/hotels", newHotel);
@@ -87,6 +104,12 @@ const NewHotel =() => {
                                     <input type="text" id="location" onChange={handleChange}/>
                                 
                                 </div>
+                                <div className="form-item">
+                                    <label>Room types</label>
+                                    <input type="text" id="rooms" onChange={handleUpdateQuery}/>
+                                    <button onClick={handleNext}>Add next room type</button>
+                                
+                                </div>
                             
                                 <div className="form-item">
                                     <label>Price</label>
@@ -115,6 +138,26 @@ const NewHotel =() => {
                                 <p>{info.description}</p>
                                
                                  <h3>{info.location}</h3>
+
+                                  {  console.log({rooms})}
+                                 {/*<h3>{info.rooms}</h3>*/}
+
+                                 <div >
+                            <h2>Room Type</h2>
+                            <div>
+                                <>
+                                {rooms.map((obj, i)=> (
+                                    <div >
+                                        <h3>type  {i+1}</h3>
+                                        <h2>{obj}</h2>
+                                      
+                                    </div>
+                                ))}
+                                </>
+                            </div>
+                        </div>
+
+
                                     
                                 <div className="package-details-flex-2">
                                 <CurrencyRupeeIcon /><h2>{info.cheapestPrice} /-</h2>
