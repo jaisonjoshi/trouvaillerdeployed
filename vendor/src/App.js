@@ -12,6 +12,10 @@ import Login from "./Pages/login/Login.jsx";
 
 import { AuthContext } from "./components/context/AuthContext.jsx";
 import { useContext } from "react";
+import UpdateUser from "./Pages/user/updateUser/UpdateUser.js";
+import CreateHotel from "./Pages/user/createHotel/CreateHotel.js";
+import SingleHotel from "./Pages/user/singlepage/SingleHotel.js";
+import UpdateHotel from "./Pages/user/updateHotel/UpdateHotel.js";
 
 
 function App() {
@@ -27,8 +31,7 @@ function App() {
   return(
   <BrowserRouter>
     <Routes>
-     {/*  <Route path="/" element={<Home />} />
-      <Route path='user' element={<User />} /> */}
+    
       <Route path='/'>
 
         <Route path='login'>
@@ -39,7 +42,15 @@ function App() {
         
         <Home />
         </ProtectedRoute>} />
-        <Route path="/user" element={<User />} />
+        <Route path="vendor" >
+        <Route index element={<User />} />
+        <Route path="updateprofile" element={<UpdateUser />} />
+        <Route path="createhotel" element={<CreateHotel />} />
+        <Route path="hotel">
+        <Route path=":id" element={<SingleHotel />} />
+        <Route path=":id/update" element={<UpdateHotel />} />
+        </Route>
+          </Route>
       </Route>
     </Routes>
   </BrowserRouter>

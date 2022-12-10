@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import Logo from '../../Assets/Trouvailler Green@2x.png'
+import Logo from '../../Assets/logo.png'
 const Footer = () => {
   return (
     <div>

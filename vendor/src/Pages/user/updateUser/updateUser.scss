@@ -1,0 +1,30 @@
+input{
+    outline: none;
+    border-bottom: 1px solid #00ff9f;
+    margin-bottom: 1rem;
+}
+@media screen and (max-width:764px) {
+    .profile-box{
+        flex-direction: column;
+        .box-img{
+            margin: 1rem auto;
+        }
+        .profile-details-update{
+            width: 80%;
+            margin: 1rem auto;
+            input{
+                width: 90%;
+            }
+            .details-itm{
+                flex-wrap: nowrap;
+            }
+            button{
+                background-color: #00ff9f;
+                padding: .6rem 1rem;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+        }
+    }
+    
+}

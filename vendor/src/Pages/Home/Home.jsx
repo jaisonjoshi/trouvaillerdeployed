@@ -10,6 +10,7 @@ import { AuthContext } from "../../components/context/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Header from "../../components/header/Header";
 
 const Home = () => {
   const { user, loading, error, dispatch } = useContext(AuthContext);
@@ -36,29 +37,8 @@ const Home = () => {
   return (
     <div>
       {/* Header */}
-      <div className="header">
-        <img src={Headerimg} alt="" />
-        <div>
-          <Link to="/user">
-            <div className="profile-box">
-              <div className="profilename">
-                <span>Logined as</span>
-                <h3>Hotel</h3>
-              </div>
-              <img src={profile} />
-            </div>
-          </Link>
-          <div className="">
-            <button
-              class="login-btn bg-whiteglow text-blacky-dark text-sm border border-none duration-500 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow"
-              onClick={handleClick}
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      </div>
-      <h1>Recent bids in your region</h1>
+      <Header />
+  
 
       <HomeBid />
       {/* Footer */}
