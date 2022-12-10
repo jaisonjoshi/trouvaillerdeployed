@@ -10,9 +10,14 @@ const Bidcard = ({bid}) => {
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
-    const [statustxt, setStatustxt] = useState("Accept this bid now")
     const vendorObj = JSON.parse(window.localStorage.getItem('user'))
     const accepted = bid.accepted
+    const test = accepted.filter(obj=> {return obj.vendorid == vendorObj._id})
+    /* if(test.length != 0){
+        setStatustxt("successfuly accepted")
+    } */
+    const [statustxt, setStatustxt] = useState(test.length ==0 ?"Accept this bid now": "successfully accepted")
+
     const updatebid = async (e) => {
         e.preventDefault();
         try{
@@ -48,7 +53,7 @@ const Bidcard = ({bid}) => {
                </div>
            </div>
            <div className="bid-price">
-               <h2>Amount for which bid is made : <span className='bid-price-tag'>{bid.maxAmount} /-</span></h2>
+               <h2>Amount for which bid is made :<br></br> <span className='bid-price-tag'>{bid.maxAmount} /-</span></h2>
            </div>
            <div className="bid-footer">
                <h2>You can accept this bid by clicking the Accept now button below. Once you are accepted, our agent will connect with you when the user completes the booking.</h2><button onClick={updatebid}>{statustxt}</button>

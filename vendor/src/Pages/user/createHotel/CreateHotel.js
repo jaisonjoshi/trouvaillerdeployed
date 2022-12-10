@@ -22,6 +22,8 @@ const CreateHotel =() => {
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
     }
+    const vendorObj = JSON.parse(window.localStorage.getItem('user'))
+
     const handleClick = async e => {
         e.preventDefault();
         try{
@@ -43,9 +45,10 @@ const CreateHotel =() => {
               const newHotel = {
                 ...info,
                 images: list,
+                vendorid: vendorObj._id
               };
               await axiosInstance.post("/hotels", newHotel);
-                navigate('/hotels')
+              console.log(newHotel)
         } catch(err){
             console.log(err)
         }

@@ -90,9 +90,20 @@
 
 @media screen and (max-width: 876px) {
     .bid-card{
+        padding: 1rem;
         .bid-header{
             flex-direction: column;
             align-items: flex-start;
+            h2{
+                font-size: 120%;
+            }
+            .bid-tag{
+                margin: 10px 0;
+                img{
+                    height: 24px;
+                }
+            }
         }
+        
     }
 }

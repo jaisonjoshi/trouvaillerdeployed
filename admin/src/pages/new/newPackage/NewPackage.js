@@ -10,6 +10,10 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const NewPackage =() => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -95,8 +99,8 @@ const NewPackage =() => {
 
     return(
         <div className="new-package">
-            <Navbar />
-            <Sidenav />
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newpackage-body">
             <h1>Create a new Travel Package</h1>

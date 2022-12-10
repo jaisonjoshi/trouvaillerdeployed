@@ -145,8 +145,14 @@
 }
 @media screen and (max-width:612px) {
     .profile{
+        h1{
+            font-size: 130%;
+        }
+        padding: 1rem 0 0 0;
         .profile-box{
             flex-direction: column;
+            margin: 1rem auto;
+            padding-top: 0rem;
             .box-img{
                 margin: 1rem auto;
             }
@@ -159,4 +165,10 @@
         }
     }
     
+}
+
+hr{
+    width: 80%;
+    margin: 0 auto;
+    color: #929292;
 }

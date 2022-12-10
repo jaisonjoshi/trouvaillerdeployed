@@ -11,6 +11,10 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 
 
 const UpdatePackage =() => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -105,8 +109,8 @@ const UpdatePackage =() => {
 
     return(
         <div className="new-package">
-            <Navbar />
-            <Sidenav />
+           <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newpackage-body">
                     <h1>Update the Package : {data.title}({data._id})</h1>

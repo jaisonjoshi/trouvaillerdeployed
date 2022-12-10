@@ -1,8 +1,8 @@
 h1{
     font-size: 180%;
     font-weight: 800;
-    padding: 4rem;
     padding-bottom: 0;
+    text-align: center;
 }
 .home-bid{
     width: 90%;margin: 2rem auto;
@@ -12,9 +12,13 @@ h1{
     flex-wrap: wrap;
     gap: 3%;
 }
+.home-bid h1{
+    padding: 0;
+    font-size: 130%;
+}
 @media screen and (max-width:924px){
     .home-bid{
-        padding: 4rem 2rem;
+        padding: 0rem;
     }
     
 }

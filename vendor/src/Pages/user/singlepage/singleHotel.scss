@@ -72,7 +72,6 @@ s                    img{
                     outline: none;
                     border-radius: 10px;
                     background-color: #00ff9f;
-                    font-size: 105%;
                     &:hover{
                         background-color: black;
                         color: white;
@@ -132,7 +131,7 @@ s                    img{
 }
 @media screen and (max-width:764px) {
     .singlehotel-container{
-        padding:0 4rem 2rem;
+        padding:0 2rem 2rem;
         .singlehotel-body{
             padding: 2rem 0;
             flex-direction: column;
@@ -141,10 +140,16 @@ s                    img{
             }
             .singlehotel-body-right{
                 width: 100%;
+                .content{
+                    gap: 0px;
+                }
             }
         }
         .singlehotel-body-content{
             padding-right: 0rem;
+            p{
+                font-size: 80%;
+            }
         }
     }
     

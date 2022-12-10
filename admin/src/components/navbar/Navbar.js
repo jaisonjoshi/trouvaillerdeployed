@@ -7,7 +7,8 @@ import { useContext,useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import {useNavigate} from "react-router-dom"
 import React from 'react'
-const Navbar = () => {
+import MenuIcon from '@mui/icons-material/Menu';
+const Navbar = ({onclick}) => {
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -38,6 +39,7 @@ const Navbar = () => {
     return(
         <div className="navbar">
             <div className="navbar-brand">
+                <MenuIcon className='navbar-brand-icon' onClick={onclick}/>
                 <Link to="/">
                     <img src={Logo} alt="" className="nav-logo" /> 
 

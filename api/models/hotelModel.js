@@ -42,7 +42,10 @@ const hotelSchema=new Schema({
      features:{
         type:[String],
         required:true
-    } 
+    } ,
+    vendorid: {
+        type:String
+    }
 
 },{timestamps:true})
 //giving a name workout to schema  model

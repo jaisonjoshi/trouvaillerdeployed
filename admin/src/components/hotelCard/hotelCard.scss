@@ -34,3 +34,21 @@
        
     }
 }
+
+
+@media screen and (max-width:864px) {
+    .hotel-card{
+        width: 47% !important;
+        max-width: 48%;
+    }
+    
+}
+@media screen and (max-width:612px) {
+    .hotel-card{
+        width: 95% !important;
+        max-width: 95%;
+        margin: 1rem auto;
+        padding-bottom: 3rem;
+    }
+    
+}

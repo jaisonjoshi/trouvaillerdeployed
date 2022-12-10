@@ -10,6 +10,10 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 
 const NewHotel =() => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -55,8 +59,8 @@ const NewHotel =() => {
 
     return(
         <div className="new-hotel">
-            <Navbar />
-            <Sidenav />
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newhotel-body">
                     <h1>Create a Hotel</h1>

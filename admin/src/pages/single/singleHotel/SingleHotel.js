@@ -9,6 +9,10 @@ import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
 import { useEffect, useState } from 'react'
 const SingleHotel = () => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -36,9 +40,8 @@ const SingleHotel = () => {
     return(
 
         <div className="Single-hotel">
-            <Navbar />
-            <Sidenav />
-
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
             <div className="singlehotel-container">
                {loading ? ("loading ") : (
                     <div className="singlehotel">

@@ -8,6 +8,10 @@ import axios from "axios"
 
 
 const NewReview =() => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -38,8 +42,8 @@ const NewReview =() => {
 
     return(
         <div className="new-review">
-            <Navbar />
-            <Sidenav />
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newreview-body">
                     <h1>Create a new Review for your service</h1>

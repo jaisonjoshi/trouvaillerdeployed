@@ -1,14 +1,21 @@
+
+
 .newhotel-body{
-    margin-top: 50px;
-    padding: 5rem;
-    margin-left:200px;
+    background-color: #f7f7f7;
+
+    margin: 0 auto;
+    padding-top: 50px;
+    h1{
+        padding: 0;
+    }
+    padding: 5rem 1rem;
     background-color: #f7f7f7;
     .new-hotel-box{
         display: flex;
         .newhotelform-container{
             padding: 4rem 0 0 0;
             width: 60%;
-    
+            font-size: 100% !important;
             form{
                 .form-item-file{
                     display: flex;
@@ -38,7 +45,7 @@
                     }
                     input, textarea{
                         width: 50%;
-                        margin-right: 30%;
+                        margin-right: 10%;
                         margin-left: auto;
                         outline: none;
                         padding: .6rem 1.5rem;
@@ -120,6 +127,72 @@
 
 }
         
+        
     
+@media screen and (max-width:1380px) {
+    .newhotel-body{
+        width: 85%;
+        .new-hotel-box{
+            .newhotelform-container{
+                .form-item{
+                    input, textarea{
+                        width: 56%;
+                        margin-right: 15%;
+                    }
+                }
+            }
+        }
+    }
+}
     
+
+@media screen and (max-width:1024px) {
+    .newhotel-body{
+        margin-left: 0px;
+        .new-hotel-box{
+            flex-direction: column;
+            .newhotelform-container{
+                width: 100%;
+                font-size: 80%;
+                .form-item{
+                    input,textarea{
+                        margin-right: 0%;
+                        margin-bottom: 0;
+                        padding: .4rem 5rem;
+                    }
+                }
+            }
+            .form-test{
+                width: 90%;
+            }
+        }
+    }
     
+}
+
+@media screen and (max-width:764px) {
+    .newhotel-body{
+        margin-left: 0px;
+        .new-hotel-box{
+            flex-direction: column;
+            .newhotelform-container{
+                width: 100%;
+                font-size: 80%;
+                .form-item{
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                    input,textarea{
+                        margin-right: 0%;
+                        margin-bottom: 0;
+                        padding: .4rem 5rem;
+                        width: 90% !important;
+                    }
+                }
+            }
+            .form-test{
+                width: 90%;
+            }
+        }
+    }
+    
+}

@@ -7,6 +7,10 @@ import { useEffect, useState } from 'react';
 import OfferCard from '../../components/offerCard/OfferCard';
 
 const Offers =() => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const [offers, setOffers] = useState([]);
     const {data, loading, err} = useFetch("/offers");
     useEffect(()=> {
@@ -15,8 +19,8 @@ const Offers =() => {
   
     return(
         <div className="offers">
-            <Navbar />
-            <Sidenav />
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="offers-body">
                     <div className="offers-body-header">

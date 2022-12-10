@@ -11,6 +11,10 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { useEffect, useState } from 'react'
 import { Table } from '@mui/material'
 const SingleBid = () => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     
    const navigate = useNavigate();
    const [bid, setbid] = useState({})
@@ -25,8 +29,8 @@ const SingleBid = () => {
     return(
 
         <div className="Single-package">
-            <Navbar />
-            <Sidenav />
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="singleBid-container">
                <h1>Bid Request from {bid.user} ID: {bid._id}</h1>

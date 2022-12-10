@@ -1,46 +1,80 @@
 .home-body{
     margin-top: 50px;
     padding-top: 4rem;
-    margin-left:300px;
-    display: flex;
-    .left{
-        .home-left-header{
-            display: flex;
-            .home-left-img{
-                width: 39%;
-                padding: 2rem;
-                padding-left: 0;
-                display: flex;
-                align-items: flex-start;
-                border-radius: 10px;
-                img{
-                    width: 98%;
-                    border-radius: 10px;
-                }
-            }
-            .home-left-widgets{
-                width: 60%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                .widgets{
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-around;
-                    padding: 2rem 0;
-                }
-            }
-
-        }
-        
-        .home-bid{
-            height: 450px;
-            padding-right: 5rem;
-        }
-        
+    margin-left:200px;
+    .home-body-head{
+        width: 90%;
+        margin: 0 auto;
+        background-image: url('../../components//assets//vendorbg4.jpg');
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        img{
+            width: 250px;
+        }       
     }
-    .right{
-        flex: 1;
+    .home-body-widgets{
+        width: 90%;
+        margin: 2rem auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .home-bid{
+        width: 90%;
+        margin: 2rem auto;
+        height: 500px;
     }
 
+}
+
+@media screen and (max-width:1024px) {
+    .home-body{
+        margin-left: 0px;
+        .home-body-head{
+            height: 30vh;
+            img{
+                width: 25%;
+            }
+        }
+         .home-body-widgets{
+        
+        justify-content: center;
+        gap: 30px;
+    }
+    }
+    
+}
+@media screen and (max-width:764px) {
+    .home-body{
+        .home-body-head{
+            height: 30vh;
+            img{
+                width: 35%;
+            }
+        }
+         .home-body-widgets{
+        
+        justify-content: space-between;
+        gap: 30px;
+    }
+    }
+    
+}
+@media screen and (max-width:540px) {
+    .home-body{
+        .home-body-head{
+            height: 23vh;
+            
+        }
+         .home-body-widgets{
+        
+        gap: 15px;
+    }
+    }
+    
 }

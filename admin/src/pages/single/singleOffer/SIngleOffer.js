@@ -5,9 +5,13 @@ import Packageimg from "../../../components/assets/package.png"
 import { useLocation, useNavigate } from 'react-router-dom'
 import useFecth from '../../../hooks/useFetch'
 import axios from 'axios'
-
+import {useState} from 'react'
 
 const SingleOffer = () => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -32,8 +36,8 @@ const SingleOffer = () => {
     return(
 
         <div className="Single-offer">
-            <Navbar />
-            <Sidenav />
+           <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="singleoffer-container">
                {loading ? ("loading ") : (

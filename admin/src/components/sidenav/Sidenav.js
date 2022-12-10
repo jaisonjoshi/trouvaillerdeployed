@@ -7,9 +7,11 @@ import ReviewsIcon from '@mui/icons-material/Reviews';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 
-const Sidenav = () => {
+const Sidenav = ({isOpen}) => {
+
+    const sidenavOpenClass = isOpen ? "sidenav open" : "sidenav";
     return(
-        <div className='sidenav'>
+        <div className={sidenavOpenClass}>
             <ul>
                 <Link to="/users">
                 <li>

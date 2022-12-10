@@ -9,10 +9,15 @@ import Slider from "react-slick";
 import '../../../../node_modules/slick-carousel/slick/slick.css'; 
 import '../../../../node_modules/slick-carousel/slick/slick-theme.css'; 
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import {useState} from 'react'
 
 
 
 const SinglePackage = () => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -45,8 +50,8 @@ const SinglePackage = () => {
     return(
 
         <div className="Single-package">
-            <Navbar />
-            <Sidenav />
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="singlepackage-container">
                {loading ? ("loading ") : (

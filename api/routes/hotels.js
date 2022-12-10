@@ -15,16 +15,16 @@ router.get('/',getHotels)
 //to get single workout
 router.get('/:id',getHotel)
 //post a new request
-router.post('/',verifyAdmin,createHotel)
+router.post('/',createHotel)
 //delete a new request
 // router.delete('/:id',(req,res)=>{
 //     res.json({mssg:'delete a workouts'})
 // })
 
-router.delete('/:id',verifyAdmin,deleteHotel)
+router.delete('/:id',deleteHotel)
 //update a workout
 // router.patch('/:id',(req,res)=>{
 //     res.json({mssg:'update a workouts'})
 // })
-router.patch('/:id',verifyAdmin,updateHotel)
+router.patch('/:id',updateHotel)
 module.exports=router

@@ -7,6 +7,10 @@ import { useEffect, useState } from 'react';
 import profile from '../../components/assets/profile.jpg'
 import axios from 'axios';
 const Reviews =() => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -34,8 +38,8 @@ const Reviews =() => {
 
     return(
         <div className="reviews">
-            <Navbar />
-            <Sidenav />
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="reviews-body">
                     <div className="reviews-head">

@@ -39,7 +39,7 @@
                         width: 50%;
                         max-width: 50%;
                         min-width: 50%;
-                        margin-right: 30%;
+                        margin-right: 10%;
                         margin-left: auto;
                         outline: none;
                         padding: .6rem 1.5rem;
@@ -118,4 +118,12 @@
         }
     }
 
+}
+
+
+@media screen and (max-width:1024px) {
+    .newhotel-body{
+        margin-left: 0px;
+    }
+    
 }

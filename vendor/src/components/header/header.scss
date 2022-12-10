@@ -125,7 +125,15 @@
 @media screen and ( max-width:612px){
     .header{
         .header-content{
+            .header-logo{
+                padding-top: 4rem;
+
+                img{
+                    width: 40%;
+                }
+            }
             .header-nav{
+                padding: 1rem;
                 .nav-items{
                    .header-txt{
                        display: none;

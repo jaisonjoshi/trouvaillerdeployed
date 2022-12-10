@@ -65,7 +65,7 @@ const SingleHotel = () => {
                         </div>
                         <div className="singlehotel-body-right">  
                             <div className="content">
-                                <h1 className='p-0'>Hotel name</h1>
+                                <h1 className='p-0'>{hotel.title}</h1>
                                 <div className="flex-container">
                                     <RoomOutlinedIcon /><h3>Munnar</h3>
                                 </div>
@@ -93,7 +93,7 @@ const SingleHotel = () => {
 
                                <div className="singlehotel-body-content">
                                 
-                                 <div> <h>Hotel details</h><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, repellat dolor labore, voluptates earum, tenetur cum et porro est commodi aperiam minima mollitia perferendis vitae dolore quas ducimus magnam illo!</p></div>
+                                 <div> <h5>Hotel details</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, repellat dolor labore, voluptates earum, tenetur cum et porro est commodi aperiam minima mollitia perferendis vitae dolore quas ducimus magnam illo!</p></div>
                        
                               </div>
                        </div>

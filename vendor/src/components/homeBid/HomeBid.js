@@ -13,14 +13,15 @@ const HomeBid = () => {
         setBids(data);
     },[data])
     console.log(data)
-    return(
+    return(<>
+        <h1 className='mb-8 pl-[10%]'>Recent bids in your region</h1>
+
         <div className="home-bid">
-                  <h1 className='mb-8 pl-[10%]'>Recent bids in your region</h1>
 
             {bids && bids.map((bid, i)=> (
                 <Bidcard  key={i} bid={bid}/>
             ))}
-        </div>
+        </div></>
     )
 }
 

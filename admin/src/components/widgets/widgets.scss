@@ -1,7 +1,7 @@
 .widget{
     box-shadow: 1px 10px 17px -3px rgba(0,0,0,0.63);
     color: rgb(50, 50, 50);
-    width: 35%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     margin-bottom: 3rem;
@@ -50,4 +50,27 @@
         
 
     }
+}
+
+@media screen and (max-width:1024px) {
+    .widget{
+        width: 31% !important;
+    }
+    
+}
+@media screen and (max-width:764px) {
+    .widget{
+        width: 40% !important;
+        padding: 1rem;
+        font-size:80%;
+        margin-bottom: 1rem;
+    }
+    
+}
+@media screen and (max-width:540px) {
+    .widget{
+        width: 37% !important;
+        
+    }
+    
 }

@@ -18,7 +18,7 @@ const UpdateHotel =() => {
     const [files, setFile] = useState("")
     const location = useLocation();
     const [info, setinfo] = useState({});
-    const id = location.pathname.split("/")[2];
+    const id = location.pathname.split("/")[3];
 
 
     const {data} = useFecth(`/hotels/${id}`);
@@ -57,7 +57,6 @@ const UpdateHotel =() => {
               };
               console.log(updatedHotel)
               await axiosInstance.patch(`/hotels/${id}`, updatedHotel);
-                navigate(`/hotels/${id}`)
         } catch(err){
             console.log(err)
         }

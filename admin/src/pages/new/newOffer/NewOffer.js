@@ -8,6 +8,10 @@ import axios from "axios"
 
 
 const NewOffer =() => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -38,8 +42,8 @@ const NewOffer =() => {
 
     return(
         <div className="new-offer">
-            <Navbar />
-            <Sidenav />
+            <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newoffer-body">
                     <h1>Create a new offer</h1>
