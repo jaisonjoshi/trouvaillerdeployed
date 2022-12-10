@@ -24,6 +24,9 @@ import SingleBid from './pages/single/singleBid/SingleBid';
 import { useContext, useMemo } from 'react';
 import Login from './pages/login/Login';
 import { AuthContext } from './components/context/AuthContext';
+//import Vendors from './pages/vendors/Vendors';
+import Vendors from './pages/vendors/Vendors';
+import NewVendor from './pages/new/newVendor/NewVendor'
 //import Logout from './pages/logout/Logout';
 
 
@@ -72,6 +75,14 @@ function App() {
             <Route path='newhotel' element={<NewHotel />} />
           
           </Route>
+          
+
+          <Route path="vendors">
+            <Route index element={<Vendors />} />
+            <Route path='newvendor' element={<NewVendor />} />
+          </Route>
+
+        
           <Route path="packages">
             <Route index element={<Packages />} />
             <Route path=":id" element= {<SinglePackage />} />
@@ -94,10 +105,11 @@ function App() {
             <Route index element={<BidsContainer />} />
             <Route path=':id' element={<SingleBid />} />
           </Route>
+          
 
           {/*<Route path="logout">
             <Route index element={<Logout />} />
-
+            className="bids-container"
                   </Route>*/}
           
           
