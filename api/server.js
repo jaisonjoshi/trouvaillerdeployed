@@ -42,7 +42,7 @@ mongoose.connect(process.env.MONGO_URI,{
         process.exit(1)
     })
 
-app.use(cors());
+app.use(cors({credentials:true}));
 
 app.use('/api/hotels',hotelRoutes)
 app.use('/api/rooms',roomRoutes)

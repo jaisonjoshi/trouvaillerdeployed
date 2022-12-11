@@ -14,7 +14,6 @@ const HomeBid = () => {
     },[data])
     console.log(data)
     return(<>
-        <h1 className='mb-8 pl-[10%]'>Recent bids in your region</h1>
 
         <div className="home-bid">
 

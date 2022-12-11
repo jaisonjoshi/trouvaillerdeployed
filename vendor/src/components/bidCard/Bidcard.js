@@ -36,10 +36,8 @@ const Bidcard = ({bid}) => {
     return(
        <div className="bid-card">
            <div className="bid-header">
-                <h2>               You have a bid request in the region<span> {bid.destination}</span></h2>
-                <div className='bid-tag'>
-                    <img src={villa} /> <h4>Villa</h4>
-                </div>
+                <h3>               You have a bid request in the region<span> {bid.destination}</span></h3>
+                
            </div>
            <div className="bid-calendar">
                 <CalendarMonthIcon className="calendar-icon"/>
@@ -47,16 +45,16 @@ const Bidcard = ({bid}) => {
                 <span>CheckOut : {bid.checkOut}</span>
            </div>
            <div className="bid-facilities">
-               <h2>Required facilities:</h2>
+               <p>Required facilities:</p>
                <div className="facilities">
                    <span className="facilities-itm">{bid.accomodation} Guests</span><span className="facilities-itm">{bid.roomCount} Rooms</span><span className="facilities-itm">{bid.ac}</span><span className="facilities-itm">{bid.categories}</span>
                </div>
            </div>
            <div className="bid-price">
-               <h2>Amount for which bid is made :<br></br> <span className='bid-price-tag'>{bid.maxAmount} /-</span></h2>
+               <p>Amount for which bid is made :<br></br> <span className='bid-price-tag'>{bid.maxAmount} /-</span></p>
            </div>
            <div className="bid-footer">
-               <h2>You can accept this bid by clicking the Accept now button below. Once you are accepted, our agent will connect with you when the user completes the booking.</h2><button onClick={updatebid}>{statustxt}</button>
+               <p>You can accept this bid by clicking the Accept now button below. Once you are accepted, our agent will connect with you when the user completes the booking.</p><button onClick={updatebid}>{statustxt}</button>
            </div>
        </div>
     )

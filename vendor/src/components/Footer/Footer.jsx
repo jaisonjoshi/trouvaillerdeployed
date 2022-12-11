@@ -9,30 +9,30 @@ const Footer = () => {
       <footer className='bg-blacky-light p-4'>
         <div className='flex justify-center align-middle'>
           <div className='text-whiteglow grid grid-cols-3 my-10'>
-            <div className='text-lg p-4'><h3>Title of section</h3></div>
-            <div><h3 className='text-lg p-4'>Title of section</h3></div>
-            <div><h3 className='text-lg p-4'>Title of section</h3></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
+            <div className=' p-4'><h3>Title of section</h3></div>
+            <div><h3 className=' p-4'>Title of section</h3></div>
+            <div><h3 className=' p-4'>Title of section</h3></div>
+            <div><h5 className=' p-4'>Page title</h5></div>
+            <div><h5 className=' p-4'>Page title</h5></div>
 
             <div className='hidden md:block md:row-span-3 md:pl-4'>
-              <h3 className='text-lg'>Subscribe to Newsletter</h3>
-              <h5 className='text-sm pb-3'>Your email</h5>
+              <h3 >Subscribe to Newsletter</h3>
+              <h5 className=' pb-3'>Your email</h5>
               <div className='flex overflow-hidden h-11 rounded-lg w-full'>
                 <div><input type="text" className='h-full text-blacky-dark p-3 focus:outline-evergreen' /></div>
                 <button className='bg-evergreen h-auto'><FontAwesomeIcon className='px-4' icon={faPaperPlane} /></button>
               </div>
             </div>
 
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
+            <div><h5 className=' p-4'>Page title</h5></div>
+            <div><h5 className=' p-4'>Page title</h5></div>
+            <div><h5 className=' p-4'>Page title</h5></div>
+            <div><h5 className=' p-4'>Page title</h5></div>
           </div>
         </div>
         <div className='md:hidden text-whiteglow p-4'>
-          <h3 className='text-lg'>Subscribe to Newsletter</h3>
-          <h5 className='text-sm pb-3'>Your email</h5>
+          <h3 className=''>Subscribe to Newsletter</h3>
+          <h5 className=' pb-3'>Your email</h5>
           <div className='flex overflow-hidden h-11 rounded-lg w-full'>
             <div><input type="text" className='h-full grow text-blacky-dark p-3 focus:outline-evergreen' /></div>
             <button className='flex-none bg-evergreen rounded-r-lg h-auto'><FontAwesomeIcon className='px-4' icon={faPaperPlane} /></button>

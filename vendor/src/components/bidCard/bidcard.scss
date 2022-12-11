@@ -1,48 +1,32 @@
 .bid-card{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    width: 100%;
     padding: 3rem;
-    margin: 1rem auto;
     .bid-header{
         display: flex;
         justify-content: space-between;
         align-items: center;
         h2{
-            font-size: 150%;
             span{
-                font-weight: 800;
                 color: #00ff9f;
             }
         }
-        .bid-tag{
-            display: flex;
-            border-radius: 1000px;
-            background-color: #00ff9f;
-            align-items: center;
-            gap: 5px;
-            img{
-                height: 50px;
-                width: auto;
-                border-radius: 1000px 0 0 1000px;
-            }
-            h4{
-                margin-right: 20px;
-            }
-            
-        }
+        
     }
     .bid-calendar{
         margin: 2rem 0;
         display: flex;
         align-items: center;
         gap: 20px;
+        .calendar-icon{
+            font-size: 200%;
+        }
         span, .calendar-icon{
             padding-right: 10px;
             margin-left: 2px;
             border-right: 1px solid rgb(134, 134, 134);
         }
-        .calendar-icon{
-            font-size: 200%;
-        }
+       
         span{
             &:last-child{
                 border-right: none;
@@ -94,9 +78,7 @@
         .bid-header{
             flex-direction: column;
             align-items: flex-start;
-            h2{
-                font-size: 120%;
-            }
+            
             .bid-tag{
                 margin: 10px 0;
                 img{

@@ -1,38 +1,30 @@
-.new-hotel{
-    background-color: #f7f7f7;
 
-}
 
-.newhotel-body{
+.newhotel-body-1{
     width: 80%;
     margin: 0 auto;
-    padding-top: 50px;
+    padding: 3rem 1rem;
     h1{
         padding: 0;
     }
-    padding: 5rem 1rem;
-    background-color: #f7f7f7;
     .new-hotel-box{
         display: flex;
+        padding: 5rem 0;
         .newhotelform-container{
-            padding: 4rem 0 0 0;
             width: 60%;
+            padding: 0 2rem;
     
             form{
                 .form-item-file{
                     display: flex;
                     gap: 10px;
-                    font-size: 120%;
                     align-items: center;
                     padding: 1rem 0 2rem;
                     label{
                         display: flex;
                         align-items: center;
                         cursor: pointer;
-                        .upload-icn{
-                            font-size: 190%;
-                            
-                        }
+                        
                     }
                     input{
                         display: none;
@@ -41,17 +33,14 @@
                 .form-item{
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     padding: .5rem 0 1rem;
-                    label{
-                        font-size: 120%;
-                    }
+                   
                     input, textarea{
-                        width: 50%;
-                        margin-right: 30%;
-                        margin-left: auto;
+                        width: 70%;
+                       
                         outline: none;
                         padding: .6rem 1.5rem;
-                        font-size: 110%;
                         border-radius: 5px !important;
                         border: 2px solid rgba(195, 195, 195, 0.51);                        border-radius: 10px;  
                         background-color: rgb(255, 255, 255);  
@@ -62,14 +51,13 @@
                 }
                 .hotel-form-submit{
                     display: flex;
-                    justify-content: flex-end;
+                    justify-content: flex-start;
                     padding: 1rem 0;
     
                     button{
                         border: none;
                         outline: none;
                         padding: 0.5rem 1rem;
-                        font-size: 120%;
                         border-radius: 10px;
                         background-color: #00ff9f;
                         color: black;
@@ -105,7 +93,7 @@
                 flex-direction: column;
                 gap: 10px;
                
-                    h3{
+                    .loc-tag{
                         padding: .6rem 1.5rem;
                         background-color: #00ff9f;
                         border-radius: 50px;
@@ -133,14 +121,13 @@
     
     
 @media screen and (max-width:1380px) {
-    .newhotel-body{
-        width: 85%;
+    .newhotel-body-1{
+        width: 95%;
         .new-hotel-box{
             .newhotelform-container{
                 .form-item{
                     input, textarea{
                         width: 56%;
-                        margin-right: 15%;
                     }
                 }
             }
@@ -148,13 +135,12 @@
     }
 }
 @media screen and (max-width:1024px) {
-    .newhotel-body{
-        width: 85%;
+    .newhotel-body-1{
         .new-hotel-box{
             flex-direction: column;
+            padding: 2rem 0;
             .newhotelform-container{
                 width: 100%;
-                font-size: 80%;
                 .form-item{
                     input,textarea{
                         margin-right: 0%;
@@ -166,6 +152,23 @@
             .form-test{
                 width: 100%;
             }
+        }
+    }
+}
+@media screen and (max-width:604px) {
+    .newhotel-body-1{
+        .new-hotel-box{
+      
+            .newhotelform-container{
+                .form-item{
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                    input,textarea{
+                       width: 100% !important;
+                    }
+                }
+            }
+           
         }
     }
 }

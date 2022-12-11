@@ -61,8 +61,9 @@ const CreateHotel =() => {
         <div className="new-hotel">
             <Header />
 
-            <div className="newhotel-body">
+            <div className="newhotel-body-1">
                     <h1>Create a Hotel</h1>
+                    <p>Here you can create a new property and publish to the public. Ensure that all the details are correct before submitting the form.</p>
                    <div className="new-hotel-box">
                     <   div className="newhotelform-container">
                             <form >
@@ -99,6 +100,11 @@ const CreateHotel =() => {
                             </form>
                         </div>
                         <div className="form-test">
+                            
+
+
+                            <h3>Upload preview</h3>
+                            <p>Here you can see the preview of what you are going to publish. Please verify all the fields are correct before uploading.</p>
                             <div className="img-container">
                             {files && Object.values(files).map((pic)=>(
                                     <img src={
@@ -110,13 +116,13 @@ const CreateHotel =() => {
 
                             </div>
                             <div className="package-details">
-                                <h1>{info.title}</h1>
-                                <p>{info.description}</p>
+                                <h2>{info.title? info.title: "Hotel Name"}</h2>
+                                <p>{info.description? info.description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}</p>
                                
-                                 <h3>{info.location}</h3>
+                                 <p className='loc-tag'>{info.location? info.location:"Location"}</p>
                                     
                                 <div className="package-details-flex-2">
-                                <CurrencyRupeeIcon /><h2>{info.cheapestPrice} /-</h2>
+                                <CurrencyRupeeIcon /><h3>{info.cheapestPrice? info.cheapestPrice: "Price"} /-</h3>
                                 </div>
                             </div>
                            

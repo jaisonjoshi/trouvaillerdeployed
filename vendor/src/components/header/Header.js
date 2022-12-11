@@ -34,10 +34,10 @@ const Header = () => {
             </Slider>
             <div className="header-content">
                 <div className="header-nav">
-                    <Link to="/vendor"><div className="prof">
+                    <div className="prof">
                         <img src={profile} />
-                        <h2>Name</h2>
-                    </div></Link>
+                        <p className='mr-4'>Jaison</p>
+                    </div>
                     <div className="nav-items">
                     <Link to="/"><a href="www.trouvailler.com">Home</a></Link>
 
@@ -47,8 +47,8 @@ const Header = () => {
                 </div>
                 <div className='header-logo'>
                     <img src={logo} />
-                    <h2>
-Travel takes us out of our comfort zones and inspires us to see, taste and try new things</h2>
+                    <p>
+Travel takes us out of our comfort zones and inspires us to see, taste and try new things</p>
                 </div>
             </div>
         </div>

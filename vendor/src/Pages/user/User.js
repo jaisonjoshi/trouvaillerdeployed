@@ -5,7 +5,7 @@ import profile from '../../Assets/profile.jpg'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
-import hotel from '../../Assets/hotel.jpg'
+import CreateRoundedIcon from '@mui/icons-material/CreateRounded';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
@@ -25,57 +25,63 @@ const User = () => {
     return(
         <>
        <Header />
-      <div className="profile">
-      <h1 className='text-center'>Vendor Profile</h1>
-       <div className="profile-box">
-           <div className="box-img">
-           <img src={profile} />
+            <div className="profile">
+                <div className="left">
+                    <div className="profile-container">
+                        <div className="img">
+                            <img src={profile} />
+                            <div className="img-data">
+                            <h2>Jaison Joshi</h2>
+                            <p>Owns 2 properties</p>
+                            </div>
+                        </div>
+                       
+                        <div className="profile-body">
+                           
+                                <div className="pd-itm">
+                                    <WhatsAppIcon className='icn'/><p>9562523642</p>
+                                </div>
+                                <div className="pd-itm">
+                                    <EmailIcon className='icn'/><p>jaisonjoshi2001@gmail.com</p>
+                                </div>
+                                <div className="pd-itm">
+                                   <Link to="/vendor/updateprofile"> <CreateRoundedIcon className='icn'/><p>Edit Profile</p></Link>
+                                </div>
 
-           </div>
-           <div className="profile-details">
-               <h1>Name of vendor</h1>
-               
-               <div className="details-itm">
-                   <WhatsAppIcon />
-                   <span>123456789</span>
-               </div>
-               <div className="details-itm">
-                   <EmailIcon />
-                   <span>jaisonjoshi@gmail.com</span>
-               </div>
-                <div className="details-footer">
-                <Link to="/vendor/updateprofile"><button>Update Profile</button></Link>
-
+                            
+                        </div>
+                    </div>
+                    <div className="profile-container-1">
+                        <p className="mb-8">See all bids that you have in your region. Make fast accept the bids inorder to have the customer</p>
+                        <Link to="/">Go to Bids</Link>
+                    </div>
                 </div>
-           </div>
-       </div><hr></hr>
-       <div className="hotel-box">
-           <div className="hotel-box-head">
-               <span>Hotels</span><Link to="/vendor/createhotel"><button>Create a hotel</button></Link>
-           </div>
-            <div className="hotel-container">
-            {hotels && hotels.map((hotel)=> (
-                <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>
-                <div className="hotel-card-img">
-                    <img src={hotel} alt="" />
-                </div>
-                <div className="hotel-card-body">
-                    <h2 className='text-xl'>Hotel Nmae</h2>
-                    <p className='text-sm'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nihil laboriosam sapiente modi qui excepturi delectus facere eum. Facere ea, aspernatur ullam nulla placeat eaque dolore id repellendus magnam repudiandae.</p>
-    
-                </div>
-                <div className="hotel-card-footer">
-                <h3 className='duration'>Munnar</h3> 
-    
-                    <h2><CurrencyRupeeIcon /> 5000/-</h2>
+                <div className="right">
+                    <div className="property-con">
+                        
+                        <div className="pc-head">
+                        <h2>Your Properties</h2>
+                        <p>All your properties are listed here. You can update or delete them. To create a new property please the following button </p> 
+                        <Link to="/vendor/createhotel">New property</Link>
+                        </div>
+                        <div className="pc-body">
+                            {hotels && hotels.map((hotel)=> (
+                                <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>
+                                <div className="img">
+                                    <img src={hotel.images[0]} alt="" />
+                                </div>
+                                <div className="card-body">
+                                    <h3>{hotel.title}</h3>
+                                    <p>{hotel.description}</p>
+                                    <div className='tags'>                                    <span className='tag'>{hotel.location}</span><span className='tag'>{hotel.cheapestPrice}</span>
+                                </div>
+                                </div>
+                            </div>))}
+                           
+                        </div>
+                    </div>
                 </div>
             </div>
-            ))}
-       
-            </div>
-           
-       </div>
-      </div>
        <Footer />
        </>
     )

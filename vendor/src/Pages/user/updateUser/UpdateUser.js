@@ -7,36 +7,19 @@ import EmailIcon from '@mui/icons-material/Email';
 import hotel from '../../../Assets/hotel.jpg'
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import Footer from '../../../components/Footer/Footer';
+import Link from 'react-router-dom'
 const UpdateUser = () => {
 
 
     return(
         <>
        <Header />
-      <div className="profile">
-      <h1 className='text-center'>Vendor Profile</h1>
-       <div className="profile-box">
-           <div className="box-img">
-           <img src={profile} />
-
-           </div>
-           <div className="profile-details-update">
-                <input type="text" name="" id="" placeholder='Name'/>
-               
-               <div className="details-itm">
-                   <WhatsAppIcon />
-                   <input type="text" name="" id="" placeholder='1234567890'/>
-               </div>
-               <div className="details-itm">
-                   <EmailIcon />
-<input type="email" name="" id="" placeholder='jaisonjoshi2001@gmail.com'/>               </div>
-                <div className="details-footer">
-                <button>Update Profile</button>
-
-                </div>
-           </div>
+      <div className="update-profile">
+      <h2 className='text-center'>Update your Profile details</h2>
+      
+       <div className="p-box">
+           
        </div>
-       
       </div>
        <Footer />
        </>

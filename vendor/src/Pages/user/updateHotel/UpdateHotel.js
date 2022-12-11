@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'
-import './updateHotel.scss';
+import '../createHotel/createHotel.scss';
 import axios from "axios"
 import useFecth from '../../../hooks/useFetch';
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
@@ -80,8 +80,10 @@ const UpdateHotel =() => {
         <div className="new-hotel">
           <Header />
 
-            <div className="newhotel-body">
+            <div className="newhotel-body-1">
                     <h1>Update the Hotel : {data.title}({data._id})</h1>
+                    <p>Here you can create a new property and publish to the public. Ensure that all the details are correct before submitting the form.</p>
+
                    <div className="new-hotel-box">
                    <div className="newhotelform-container">
                         <form >
@@ -118,6 +120,9 @@ const UpdateHotel =() => {
                         </form>
                     </div>
                     <div className="form-test">
+                    <h3>Upload preview</h3>
+                            <p>Here you can see the preview of what you are going to publish. Please verify all the fields are correct before uploading.</p>
+                            
                             <div className="img-container">
                             {files && Object.values(files).map((pic, i)=>(
                                     <img key={i} src={
@@ -129,13 +134,13 @@ const UpdateHotel =() => {
 
                             </div>
                             <div className="package-details">
-                                <h1>{info.title}</h1>
-                                <p>{info.description}</p>
+                                <h2>{info.title?info.title:data.title}</h2>
+                                <p>{info.description? info.description: data.description}</p>
                                
-                                 <h3>{info.location}</h3>
+                                 <p>{info.location?info.location:data.location}</p>
                                     
                                 <div className="package-details-flex-2">
-                                <CurrencyRupeeIcon /><h2>{info.cheapestPrice} /-</h2>
+                                <CurrencyRupeeIcon /><h3>{info.cheapestPrice?info.cheapestPrice:data.cheapestPrice} /-</h3>
                                 </div>
                             </div>
                            

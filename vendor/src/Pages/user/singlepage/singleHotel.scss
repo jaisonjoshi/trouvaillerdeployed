@@ -1,8 +1,9 @@
 .singlehotel-container{
-    margin-top: 50px;
-    padding: 5rem;
-    background-color: white;
-   
+    padding: 2rem;
+   .singlehotel{
+       width: 70%;
+       margin: 0 auto;
+   }
     .singlehotel-body{
         padding: 4rem 0;
         display: flex;
@@ -32,7 +33,6 @@ s                    img{
                         height: 95%;
                         position: absolute;
                         color: white;
-                        font-weight: 800;
                         top: 0;
                         left: 0;
                         display: flex;
@@ -90,7 +90,6 @@ s                    img{
             width: 50px;
     
             background-color: #00ff9f;
-            font-size: 70%;
         }
 
             
@@ -98,14 +97,16 @@ s                    img{
     }
     .singlehotel-body-content{
         margin-left: -50px;
-        padding: 2rem 3rem;
+        padding: 1rem 3rem;
         display: flex;
-            font-size: 18px;
            
     }
 }
 @media screen and (max-width:1024px) {
     .singlehotel-container{
+        .singlehotel{
+            width: 100% !important;
+        }
         .singlehotel-body{
             .singlehotel-body-left{
                 width: 60%;
@@ -131,7 +132,6 @@ s                    img{
 }
 @media screen and (max-width:764px) {
     .singlehotel-container{
-        padding:0 2rem 2rem;
         .singlehotel-body{
             padding: 2rem 0;
             flex-direction: column;
@@ -147,9 +147,7 @@ s                    img{
         }
         .singlehotel-body-content{
             padding-right: 0rem;
-            p{
-                font-size: 80%;
-            }
+            
         }
     }
     

@@ -67,10 +67,10 @@ const SingleHotel = () => {
                             <div className="content">
                                 <h1 className='p-0'>{hotel.title}</h1>
                                 <div className="flex-container">
-                                    <RoomOutlinedIcon /><h3>Munnar</h3>
+                                    <RoomOutlinedIcon /><p>Munnar</p>
                                 </div>
                                 <div className="flex-container">
-                                <CurrencyRupeeOutlinedIcon /><h2>7000 /-</h2>
+                                <CurrencyRupeeOutlinedIcon /><h3>7000 /-</h3>
 
                                 </div>
                             </div>
