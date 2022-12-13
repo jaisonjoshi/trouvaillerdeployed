@@ -3,9 +3,10 @@ import { useState } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'
 import Navbar from '../../../components/navbar/Navbar';
 import Sidenav from '../../../components/sidenav/Sidenav';
-import './updateReview.scss';
+import '../../new/newReview/newReview.scss';
 import axios from "axios"
 import useFecth from '../../../hooks/useFetch';
+import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 
 
 const UpdateReview =() => {
@@ -18,6 +19,8 @@ const UpdateReview =() => {
     })
     const navigate = useNavigate();
     const location = useLocation();
+    const [file, setFile] = useState("")
+
     const [info, setinfo] = useState({});
     const id = location.pathname.split("/")[2];
 
@@ -28,16 +31,28 @@ const UpdateReview =() => {
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
     }
-    const updateReviewhandleClick = async e => {
+    const handleReviewClick = async e => {
         e.preventDefault();
+        const data = new FormData();
+            data.append("file", file);
+            data.append("upload_preset", "upload");
         try{
-            const updatedReview = {
-                ...info
-            };
-            await axiosInstance.patch(`/reviews/${id}`, updatedReview);
-            console.log("package has been updated")
+            
+            const uploadRes = await axiosInstance.post(
+                "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
+                data
+              );
 
-            await navigate('/reviews')
+              const  {url}  = uploadRes.data;
+                
+            const newReview = {
+                ...info,image:url,
+            };
+            console.log(newReview)
+            await axiosInstance.patch(`/reviews/${id}`, newReview);
+            console.log("new review has been created")
+
+             navigate('/reviews')
         }catch(err){
             console.log(err)
         }
@@ -47,36 +62,58 @@ const UpdateReview =() => {
     
 
     return(
-        <div className="new-package">
+        <div className="new-review">
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
 
-            <div className="newpackage-body">
-                    <h1>Update the Package ({id})</h1>
-                    <div className="newpackageform-container">
+            <div className="newreview-body">
+                    <h1>Update the review</h1>
+                    <div className="new-review-box">
+                    <div className="newreviewform-container">
                         <form >
+                        <div className="form-item-file">
+                            <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
+                                    <input type="file" name="" id="img-input" onChange={(e) => setFile(e.target.files[0])}/>
+                                
+                                </div>
                             <div className="form-item">
                                 <label > Review</label>
-                                <textarea type="text" name="" id="reviewnote" defaultValue={data.reviewnote} onChange={handleChange}/>
+                                <textarea type="text" name="" id="reviewnote" onChange={handleChange} defaultValue={data.reviewnote}/>
                             
                             </div>
-                            
                             <div className="form-item">
                                 <label>Author</label>
-                                <input type="text" id="author" defaultValue={data.author} onChange={handleChange}/>
+                                <input type="text" id="author" onChange={handleChange} defaultValue={data.author}/>
                             
                             </div>
                             <div className="form-item">
                                 <label>Place</label>
-                                <input type="text" id="place" defaultValue={data.place} onChange={handleChange}/>
+                                <input type="text" id="place" onChange={handleChange} defaultValue={data.place}/>
                             
                             </div>
                             
-                            <div className="package-form-submit">
-                                <button onClick={updateReviewhandleClick}>Update Package</button>
+                           
+                            <div className="review-form-submit">
+                                <button onClick={handleReviewClick}>Update Review</button>
 
                             </div>
                         </form>
+                    </div>
+                    <div className="form-test">
+                        <div className="review-head">
+                        <img src={
+                                        file
+                                        ? URL.createObjectURL(file)
+                                        :data.image
+                                    } alt="" />
+                        </div>
+                        <div className="review-note">
+                            <p>{info?info.reviewnote :data.reviewnote }</p>
+                        </div>
+                        <div className="review-author">
+                            <p><b>{info ? info.author: data.author},</b> {info? info.place: data.place}</p>
+                        </div>
+                    </div>
                     </div>
             </div>
 

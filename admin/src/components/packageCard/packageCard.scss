@@ -13,8 +13,13 @@
     .package-card-body{
         padding: 1rem 0 .5rem;
         
-        p{
-            color: rgba(0, 0,0, 0.8);
+        P{
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 3.6em; /* (Number of lines you want visible) * (line-height) */
+            line-height: 1.2em;
+            height: 3.6em;
+            min-width: 3.6em;
         }
     }
     .package-card-footer{
@@ -26,24 +31,24 @@
             display: flex;
             align-items: center;
         }
-        h3{
-            font-size: 110%;
-            margin: 1rem 0 0 0;
-            color: rgba(0, 0, 0, 0.706);
-            
+        h4{
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
         }
        
     }
 }
-
-
-@media screen and (max-width:864px) {
+@media screen and (max-width:1182px) {
     .package-card{
         width: 47% !important;
         max-width: 48%;
     }
     
 }
+
+
 @media screen and (max-width:612px) {
     .package-card{
         width: 95% !important;

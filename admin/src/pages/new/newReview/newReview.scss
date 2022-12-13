@@ -2,57 +2,101 @@
     margin-top: 50px;
     padding: 5rem;
     margin-left:200px;
-    .newreviewform-container{
-        padding: 4rem 0 0 0;
-        width: 60%;
-
-        form{
-            .form-item{
-                display: flex;
-                align-items: center;
-                padding: .5rem 0 1rem;
-                label{
-                    font-size: 120%;
-                }
-                input,textarea{
-                    width: 50%;
-                    margin-right: 30%;
-                    margin-left: auto;
-                    outline: none;
-                    padding: .6rem 1.5rem;
-                    font-size: 110%;
-                    border: none;
-                    border-radius: 10px;  
-                    background-color: rgb(229, 229, 229);  
-                    color: rgb(61, 61, 61);            }
-                    textarea{
-                        resize: vertical;
-                    }
-            }
-            .review-form-submit{
-                display: flex;
-                justify-content: flex-end;
-                padding: 1rem 0;
-
-                button{
-                    border: none;
-                    outline: none;
-                    padding: 0.5rem 1rem;
-                    font-size: 120%;
-                    border-radius: 10px;
-                    background-color: #00ff9f;
-                    color: black;
-                    margin-right: 30%;
-                    &:hover{
-                        background-color: black;
-                        color: white;
+    .new-review-box{
+        display: flex;
+        padding-top:4rem ;
+        .newreviewform-container{
+            width: 60%;
+            
+            form{
+                .form-item-file{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    padding: 1rem 0 2rem;
+                    label{
+                        display: flex;
+                        align-items: center;
                         cursor: pointer;
+                        .upload-icn{
+                            font-size: 190%;
+                            
+                        }
+                    }
+                    input{
+                        display: none;
+                    }
+                }
+                .form-item{
+                    display: flex;
+                    align-items: center;
+                    padding: .5rem 0 1rem;
+                    justify-content: space-between;
+                    padding-right: 2rem;
+                    input, textarea{
+                        width: 50%;
+                       
+                        outline: none;
+                        padding: .6rem 1.5rem;
+                        
+                        border: none;
+                        border-radius: 10px;  
+                        background-color: rgb(229, 229, 229);  
+                        color: rgb(61, 61, 61);            }
+                }
+               
+                .hotel-form-submit{
+                    display: flex;
+                    justify-content: flex-end;
+                    padding: 1rem 0;
+    
+                    button{
+                        border: none;
+                        outline: none;
+                        padding: 0.5rem 1rem;
+                        font-size: 120%;
+                        border-radius: 10px;
+                        background-color: #00ff9f;
+                        color: black;
+                        margin-right: 30%;
+                        &:hover{
+                            background-color: black;
+                            color: white;
+                            cursor: pointer;
+                        }
                     }
                 }
             }
+            
         }
-        
+        .form-test{
+            width: 50%;
+            background-color: white ;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            .review-head{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                img{
+                    width: 25%;
+                    border-radius: 50%;
+                }
+            }
+            .review-note{
+                padding: 2rem 1rem;
+                text-align: center;
+            }
+            .review-author{
+                text-align: center;
+            }
+            
+          
+            
+        }
     }
+    
 
 }
 
@@ -60,6 +104,39 @@
 @media screen and (max-width:1024px) {
     .newreview-body{
         margin-left: 0px;
+        .new-review-box{
+            flex-direction: column;
+            .newreviewform-container{
+                width: 100%;
+            }
+            .form-test{
+                width: auto;
+            }
+        }
+    }
+    
+}
+
+@media screen and (max-width:768px) {
+    .newreview-body{
+        padding: 5rem 2rem;
+        .new-review-box{
+            .newreviewform-container{
+                form{
+                    .form-item{
+                        flex-direction: column;
+                        align-items: flex-start;
+                        input, textarea{
+                            width: 100%;
+                        }
+                    }
+                   
+                }
+            }
+            .form-test{
+                width: auto;
+            }
+        }
     }
     
 }

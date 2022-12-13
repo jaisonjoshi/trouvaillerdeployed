@@ -33,12 +33,12 @@ const BidTable = ({count}) => {
 
     const columns = [
 
-        { field: 'user', headerName : 'User', flex:2},
-        { field: 'categories', headerName : 'Category', flex:2},
-        { field : 'destination' , headerName : 'Destination', flex:2},
-        { field : 'checkIn' , headerName : "CheckIn Date" ,flex:2},
-        { field : 'checkOut' , headerName : "CheckOut Date" ,flex:2},
-        { field : 'status', headerName : "Status", flex:2,
+        { field: 'username', headerName : 'User', width:100 },
+        { field: 'categories', headerName : 'Category', width:200},
+        { field : 'destination' , headerName : 'Destination', width:200},
+        { field : 'checkIn' , headerName : "CheckIn Date" ,width:200},
+        { field : 'checkOut' , headerName : "CheckOut Date" ,width:200},
+        { field : 'status', headerName : "Status", width:200,
             renderCell:(params) => {
                 return (
                     <div className='statusCell'>Accepted by : {params.row.accepted.length}</div>
@@ -55,7 +55,7 @@ const BidTable = ({count}) => {
                     sx={{
                         boxShadow: 5,
                         my:5,
-                        px:5,
+                        px:2,
                         py:2,
                         fontSize:18,
                         

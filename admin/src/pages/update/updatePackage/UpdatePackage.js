@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'
 import Navbar from '../../../components/navbar/Navbar';
 import Sidenav from '../../../components/sidenav/Sidenav';
-import './updatePackage.scss';
+import '../../new/newPackage/newPackage.scss';
 import axios from "axios"
 import useFecth from '../../../hooks/useFetch';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';

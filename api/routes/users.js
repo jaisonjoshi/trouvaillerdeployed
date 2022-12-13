@@ -4,7 +4,7 @@ const {
   updateUser,
   deleteUser,
   getUser,
-  getUsers,
+  getUsers,countUsers,countVendors
 } =require('../controllers/userController');
 const { verifyAdmin, verifyToken, verifyUser } =require('../utils/verifyToken');
  
@@ -16,9 +16,12 @@ router.patch("/:id", verifyUser, updateUser);
 router.delete("/:id", verifyUser, deleteUser);
 
 //GET
-router.get("/:id", verifyUser, getUser);
- 
+router.get("/find/:id", verifyUser, getUser);
+router.get("/countvendors", countVendors);
+router.get("/countusers", countUsers);
+
+
 //GET ALL
-router.get("/", verifyAdmin, getUsers);
+router.get("/", getUsers);
 
 module.exports=router

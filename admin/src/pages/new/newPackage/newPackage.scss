@@ -1,19 +1,19 @@
+
+
 .newpackage-body{
     margin-top: 50px;
     padding: 5rem;
     margin-left:200px;
-    background-color: #f7f7f7;
     .new-package-box{
         display: flex;
+        padding-top:4rem ;
         .newpackageform-container{
-            padding: 4rem 0 0 0;
-            width: 50%;
-    
+            width: 60%;
+            
             form{
                 .form-item-file{
                     display: flex;
                     gap: 10px;
-                    font-size: 120%;
                     align-items: center;
                     padding: 1rem 0 2rem;
                     label{
@@ -33,24 +33,23 @@
                     display: flex;
                     align-items: center;
                     padding: .5rem 0 1rem;
-                    label{
-                        font-size: 120%;
-                    }
+                    justify-content: space-between;
+                    padding-right: 2rem;
                     input, textarea{
                         width: 50%;
-                        margin-right: 30%;
-                        margin-left: auto;
+                       
                         outline: none;
                         padding: .6rem 1.5rem;
-                        font-size: 110%;
+                        
                         border: none;
                         border-radius: 10px;  
-                        background-color: rgb(255, 255, 255);  
-                        color: rgb(61, 61, 61);   
-                        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;         }
-                        textarea{
-                            resize: vertical;
-                        }
+                        background-color: rgb(229, 229, 229);  
+                        color: rgb(61, 61, 61);            }
+                }
+                .room-btn-box{
+                    display: flex;
+                    justify-content: flex-end;
+                    padding-right: 2rem;
                 }
                 .package-form-submit{
                     display: flex;
@@ -70,20 +69,6 @@
                             background-color: black;
                             color: white;
                             cursor: pointer;
-                        }
-                    }
-                }
-                .shedule-input-con{
-                    padding: 1rem 0;
-                    button{
-                        padding: .5rem .5rem;
-                        border-radius: 10px;
-                        outline: none;
-                        border: none;
-                        background-color: rgb(91, 91, 91);
-                        color: white;
-                        &:hover{
-                            background-color: black;
                         }
                     }
                 }
@@ -130,17 +115,7 @@
                     
                 }
             }
-            .package-shedule{
-                .shedule-con{
-                    padding: 1rem 0;
-                    .shedule-card{
-                        display: flex;
-                        padding: 1rem ;
-                        flex-direction: column;
-                        gap: 10px;
-                    }
-                }
-            }
+          
             
         }
     }
@@ -151,6 +126,41 @@
 @media screen and (max-width:1024px) {
     .newpackage-body{
         margin-left: 0px;
+        .new-package-box{
+            flex-direction: column;
+            .newpackageform-container{
+                width: 100%;
+            }
+            .form-test{
+                width: auto;
+            }
+        }
+    }
+    
+}
+
+@media screen and (max-width:768px) {
+    .newpackage-body{
+        padding: 5rem 2rem;
+        .new-package-box{
+            .newpackageform-container{
+                form{
+                    .form-item{
+                        flex-direction: column;
+                        align-items: flex-start;
+                        input, textarea{
+                            width: 100%;
+                        }
+                    }
+                    .room-btn-box{
+                        padding-right: 0;
+                    }
+                }
+            }
+            .form-test{
+                width: auto;
+            }
+        }
     }
     
 }

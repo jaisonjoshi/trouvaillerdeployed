@@ -6,20 +6,20 @@
 }
 .bid-card{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    padding:  3rem;
-    width: 90%;
+    width: 80%;
     margin-top: 2rem;
     background-color: #ffffff;
     
     .bid-card-con{
         display: flex;
+        flex-wrap: wrap;
         .bid-card-left{
             width: 50%;
         }
         .bid-card-right{
-            width: 50%;
+            width: 45%;
             table{
                 margin-top: 10px;
-                font-size: 130%;
                 td{
                     padding: 10px 10px 10px 0;
                 }
@@ -28,13 +28,12 @@
     }
     .bid-card-footer{
         width: 100%;
-        padding: 1rem;
         .hotel-bid-card{
             width: 50%;
             padding: 2rem;
             display: flex;
             justify-content: space-between;
-            margin: 2rem;
+            margin: 1rem;
             box-shadow: rgba(104, 107, 110, 0.2) 0px 8px 24px;
             h4{
                 color: rgba(0, 0, 0, 0.8) !important;
@@ -62,16 +61,13 @@ button{
 
         
         gap: 1rem;
-        font-size: 150%;
         align-items: center;
         font-weight: 800;
         
         .icon{
             font-size: 160%;
         }
-        h1{
-            font-size: 130% !important;
-        }
+       
         }
     }
     
@@ -96,6 +92,7 @@ button{
 .bid-footer{
     padding: 1rem 1rem 0;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     .footer-card{
         padding: .5rem 1rem;
@@ -106,11 +103,52 @@ button{
 .bid-footer-2{
     padding:3rem 1rem;
 }
-
+@media screen and (max-width:1182px) {
+    .bid-card{
+        .bid-card-con{
+            .bid-card-left{
+                width: 100%;
+            }
+            flex-direction: column;
+            .bid-card-right{
+                width: 100%;
+                table{
+                    margin-left: 1rem;
+                }
+            }
+        }
+        .bid-card-footer{
+            margin-top: 10px;
+           .hotel-bid-card{
+               width: 80%;
+           }
+        }
+    }
+    
+}
 
 @media screen and (max-width:1024px) {
     .singleBid-container{
         margin-left: 0px;
+        padding: 2rem;
+    }
+    
+}
+
+
+@media screen and (max-width:764px) {
+    .bid-card{
+        padding: 1rem;
+        width: 90%;
+       
+        .bid-card-footer{
+            margin-top: 10px;
+           .hotel-bid-card{
+               width: 80%;
+               flex-direction: column;
+               padding: 1rem;
+           }
+        }
     }
     
 }

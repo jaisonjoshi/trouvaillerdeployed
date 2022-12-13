@@ -6,7 +6,7 @@ const Package = require('../models/packageModel')
 const { createPackage,
     getPackage,
     getPackages,
-    deletePackage,updatePackage
+    deletePackage,updatePackage,countPackage
 }=require('../controllers/packageController')
 const {verifyAdmin}=require('../utils/verifyToken')
 
@@ -15,7 +15,9 @@ const {verifyAdmin}=require('../utils/verifyToken')
 //get request ,get all request
 router.get('/',getPackages)
 //to get single workout
-router.get('/:id',getPackage)
+router.get('/find/:id',getPackage)
+router.get('/count',countPackage)
+
 //post a new request
 router.post('/',createPackage)
 //delete a new request

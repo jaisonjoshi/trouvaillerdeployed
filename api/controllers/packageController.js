@@ -21,6 +21,14 @@ const getPackage = async(req,res)=>{
   res.status(200).json(package)
 }
 
+
+const countPackage = async (req,res) => {
+    
+    const packageCount = await Package.countDocuments({});
+    res.status(200).json(packageCount)
+
+}
+
 //create a single workout--changes with params
 const createPackage = async (req,res)=>{
     const {
@@ -91,5 +99,6 @@ module.exports={
     getPackage,
     getPackages,
     deletePackage,
-    updatePackage
+    updatePackage,
+    countPackage
 }

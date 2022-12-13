@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'
 import Navbar from '../../../components/navbar/Navbar';
 import Sidenav from '../../../components/sidenav/Sidenav';
-import './updateHotel.scss';
+import '../../new/newHotel/newHotel.scss';
 import axios from "axios"
 import useFecth from '../../../hooks/useFetch';
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
@@ -88,7 +88,7 @@ const UpdateHotel =() => {
 
             <div className="newhotel-body">
                     <h1>Update the Hotel : {data.title}({data._id})</h1>
-                   <div className="new-package-box">
+                   <div className="new-hotel-box">
                    <div className="newhotelform-container">
                         <form >
                         <div className="form-item-file">

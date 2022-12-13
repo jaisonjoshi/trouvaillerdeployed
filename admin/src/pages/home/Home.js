@@ -7,12 +7,16 @@ import './home.scss';
 import logo from '../../components/assets/logo.png'
 import headerimg from '../../components/assets/vendorbg4.jpg'
 import NotificationPanel from '../../components/notificationPanel/NotificationPanel';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import useFetch from '../../hooks/useFetch';
 const Home =() => {
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
+    const {data,loading,error} = useFetch('/hotels/count')
+
+    console.log(data)
     return(
         <div className="home">
             <Navbar onclick={handlesidenavOpen}/>

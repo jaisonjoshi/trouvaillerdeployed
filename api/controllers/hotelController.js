@@ -21,6 +21,14 @@ const getHotel=async(req,res)=>{
   res.status(200).json(hotel)
 }
 
+
+const countHotel = async (req,res) => {
+    
+        const hotelCount = await Hotel.countDocuments({});
+        res.status(200).json(hotelCount)
+    
+}
+
 //create a single workout--changes with params
 const createHotel=async (req,res)=>{
     const {title,
@@ -86,5 +94,6 @@ module.exports={
     getHotels,
     getHotel,
     deleteHotel,
-    updateHotel
+    updateHotel,
+    countHotel
 }

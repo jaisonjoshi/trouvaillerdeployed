@@ -15,9 +15,7 @@
             }
         }
     }
-    button{
-        font-size: 80% !important;
-    }
+  
     .review-container{
         padding: 3rem 0;
         display: flex;
@@ -76,7 +74,6 @@
     padding: .7rem 2rem;
     outline: none;
     background-color: #00ff9f;
-    font-size: 105%;
     &:hover{
         background-color: black;
         color: white;
@@ -105,9 +102,7 @@
             flex-direction: column;
             gap: 20px;
         }
-        h2{
-            font-size: 110%;
-        }
+        
         .review-card{
             width: 90% !important;
             margin: 1rem auto;

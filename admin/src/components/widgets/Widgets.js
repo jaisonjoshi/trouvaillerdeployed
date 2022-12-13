@@ -3,78 +3,78 @@ import TourIcon from '@mui/icons-material/Tour';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-
+import useFetch from '../../hooks/useFetch'
 
 import { Link } from 'react-router-dom';
 
 
 const Widgets = ({type}) => {
-    let data;
+    let dat;
 
     switch (type) {
         case "users" : 
-            data = {
+            dat = {
                 title : "USERS",
-                count: 96,
+                countlink: "/user/countusers",
                 icon: (
                     <PeopleAltIcon className='widget-header-icn' style={{  color: "red" }}/>
 
                 ),
-                link: "users"
+                link: "/users"
 
             };
             break;
             case "packages" :
-                data = {
+                dat = {
                     title : "PACKAGES",
-                    count: 96,
+                    countlink: "/packages/count",
                     icon: (
                         <TourIcon className='widget-header-icn' style={{  color: "blue" }}/>
     
                     ),
-                    link: "packages"
+                    link: "/packages"
     
                 };
                 break;
                 case "hotels" :
-                data = {
+                dat = {
                     title : "HOTELS",
-                    count: 96,
+                    countlink: "/hotels/count",
                     icon: (
                         <AddBusinessIcon className='widget-header-icn' style={{  color: "violet" }}/>
     
                     ),
-                    link: "hotels"
+                    link: "/hotels"
     
                 };
                 break;
                 case "offers" :
-                data = {
-                    title : "OFFERS",
-                    count: 96,
+                dat = {
+                    title : "Vendors",
+                    countlink: "/user/countvendors",
                     icon: (
                         <LocalOfferIcon className='widget-header-icn' style={{  color: "yellow" }}/>
     
                     ),
-                    link: "offers"
+                    link: "/vendors"
     
                 };
                 break;
                 default: break;
 
     }
-
+    const {data} = useFetch(dat.countlink);
 
     return(
         <div className="widget">
             <div className="widget-header">
-            <h4>{data.title}</h4>
+            <h4>{dat.title}</h4>
             </div>
             <div className="widget-body">
-            <h1>{data.count}</h1>{data.icon}
+            <h1>{data}</h1>{dat.icon}
             </div>
             <div className="widget-footer">
-            <Link >View</Link>
+            <Link to={dat.link} >View</Link>
             </div>
         </div>
     )

@@ -19,15 +19,15 @@ const PackageCard = ({pack}) => {
                 <img src={pack.images[0]} alt="" />
             </div>
             <div className="package-card-body">
-                <h2>{pack.title}</h2>
+                <h3>{pack.title}</h3>
                 
                 <p>{pack.description}</p>
 
             </div>
             <div className="package-card-footer">
-            <h3 className='duration'>{pack.duration}</h3> 
+            <h4 className='duration'>{pack.duration}</h4> 
 
-                <h2><CurrencyRupeeIcon /> {pack.cheapestPrice}</h2>
+                <h4><CurrencyRupeeIcon /> <span>{pack.cheapestPrice}</span></h4>
             </div>
         </div>
     )

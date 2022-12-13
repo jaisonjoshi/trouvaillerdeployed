@@ -8,7 +8,7 @@ const getReviews = async(req,res)=>{
     res.status(200).json(review)
 }
 
-{/*
+
 const getReview = async(req,res)=>{
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
@@ -21,23 +21,23 @@ const getReview = async(req,res)=>{
 
   res.status(200).json(review)
 }
-*/}
+
 
 //create a single one--changes with params
 const createReview = async (req,res)=>{
-    const { username,
+    const { author,
         place,
         image,
-        desc,
+        reviewnote,
         rating
         } = req.body
         //add to db
     try{
     
-    const review = await Review.create({ username,
+    const review = await Review.create({ author,
         place,
         image,
-        desc,
+        reviewnote,
         rating})
     res.status(200).json({review})}
     
@@ -47,7 +47,7 @@ const createReview = async (req,res)=>{
 }
 
 //delete 
-{/*
+
 const deleteReview = async (req,res)=>{
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
@@ -58,10 +58,10 @@ const deleteReview = async (req,res)=>{
         return res.status(400).json({error:'No such package found'})  
     }
     res.status(200).json(review)
-}*/}
+}
 
 //update
-{/*
+
 const updateReview = async (req,res)=>{
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
@@ -75,12 +75,12 @@ const updateReview = async (req,res)=>{
     }
     res.status(200).json(review)
 }
-*/}
+
 //exports
 module.exports={
     createReview,
     getReviews,
-    //getReview,
-   // deleteReview,
-   // updateReview
+    getReview,
+   deleteReview,
+   updateReview
 }

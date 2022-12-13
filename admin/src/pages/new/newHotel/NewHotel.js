@@ -107,17 +107,19 @@ const NewHotel =() => {
                                 <div className="form-item">
                                     <label>Room types</label>
                                     <input type="text" id="rooms" onChange={handleUpdateQuery}/>
-                                    <button onClick={handleNext}>Add next room type</button>
-                                
+
                                 </div>
-                            
+                                <div className="room-btn-box">
+                                <button onClick={handleNext} className="room-btn">Add next room type</button>
+
+                                </div>
                                 <div className="form-item">
                                     <label>Price</label>
                                     <input type="text" id="cheapestPrice" onChange={handleChange}/>
                                 
                                 </div>
                                 <div className="hotel-form-submit">
-                                    <button onClick={handleClick}>Create Hotel</button>
+                                    <button onClick={handleClick} >Create Hotel</button>
 
                                 </div>
                             </form>
@@ -143,7 +145,7 @@ const NewHotel =() => {
                                  {/*<h3>{info.rooms}</h3>*/}
 
                                  <div >
-                            <h2>Room Type</h2>
+                            <label>Room Type</label>
                             <div>
                                 <>
                                 {rooms.map((obj, i)=> (

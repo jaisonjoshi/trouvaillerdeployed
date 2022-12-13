@@ -20,11 +20,11 @@ const SingleHotel = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const id = location.pathname.split("/")[2];
-    const {data, loading, error } = useFecth(`/hotels/${id}`);
+    const {data, loading, error } = useFecth(`/hotels/find/${id}`);
     useEffect(()=>{
         setHotel(data)
     },[data])
-    
+    console.log(data)
     const handlehotelUpdate = (id) => {
         navigate(`/hotels/${id}/update`)
     }

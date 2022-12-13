@@ -1,4 +1,4 @@
-.newhotel-body{
+.newhotelv-body{
     margin-top: 50px;
     padding: 5rem;
     margin-left:200px;
@@ -13,7 +13,6 @@
                 .form-item-file{
                     display: flex;
                     gap: 10px;
-                    font-size: 120%;
                     align-items: center;
                     padding: 1rem 0 2rem;
                     label{
@@ -33,16 +32,13 @@
                     display: flex;
                     align-items: center;
                     padding: .5rem 0 1rem;
-                    label{
-                        font-size: 120%;
-                    }
+                   
                     input, textarea{
                         width: 50%;
                         margin-right: 30%;
                         margin-left: auto;
                         outline: none;
                         padding: .6rem 1.5rem;
-                        font-size: 110%;
                         border-radius: 5px !important;
                         border: 2px solid rgba(195, 195, 195, 0.51);                        border-radius: 10px;  
                         background-color: rgb(255, 255, 255);  
@@ -60,7 +56,6 @@
                         border: none;
                         outline: none;
                         padding: 0.5rem 1rem;
-                        font-size: 120%;
                         border-radius: 10px;
                         background-color: #00ff9f;
                         color: black;

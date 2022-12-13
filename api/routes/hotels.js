@@ -4,7 +4,7 @@ const Hotel=require('../models/hotelModel')
 const { createHotel,
     getHotels,
     getHotel,
-    deleteHotel,updateHotel
+    deleteHotel,updateHotel,countHotel
 }=require('../controllers/hotelController')
 const {verifyAdmin}=require('../utils/verifyToken')
 
@@ -13,7 +13,9 @@ const {verifyAdmin}=require('../utils/verifyToken')
 //get request ,get all request
 router.get('/',getHotels)
 //to get single workout
-router.get('/:id',getHotel)
+router.get('/find/:id',getHotel)
+
+router.get('/count', countHotel)
 //post a new request
 router.post('/',createHotel)
 //delete a new request

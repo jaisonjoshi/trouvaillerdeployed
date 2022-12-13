@@ -63,7 +63,7 @@ const [credentials, setCredentials] = useState({
             <Navbar />
             <Sidenav />
 
-            <div className="newhotel-body">
+            <div className="newhotelv-body">
                     <h1>Create a New Vendor</h1>
                    <div className="new-hotel-box">
                     <div className="newhotelform-container">

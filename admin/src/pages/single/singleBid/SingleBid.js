@@ -39,7 +39,7 @@ const SingleBid = () => {
                 <div className="bid-card-left">
                 <div className="bid-header">
                     <div className="bid-header-left">
-                        <div className="head"><LocationOnOutlinedIcon className='icon'/> <h2>{bid.destination}</h2></div>
+                        <div className="head"><LocationOnOutlinedIcon className='icon'/> <h3>{bid.destination}</h3></div>
                     </div>
                    
                 </div>
@@ -50,11 +50,11 @@ const SingleBid = () => {
                         </div>
                         <div className="checkin">
                             <p>Check In</p>
-                            <h3>{bid.checkIn}</h3>
+                            <h4>{bid.checkIn}</h4>
                         </div>
                         <div className="checkout">
                         <p>Check Out</p>
-                            <h3>{bid.checkOut}</h3>
+                            <h4>{bid.checkOut}</h4>
                         </div>
                     </div>
                 </div>
@@ -71,18 +71,18 @@ const SingleBid = () => {
                    
                 </div>
                 <div className="bid-footer-2">
-                   <h2>Maximum price quoted : {<CurrencyRupeeIcon className='icn'/>} {bid.maxAmount} /-</h2>
+                   <h3>Maximum price quoted : {<CurrencyRupeeIcon className='icn'/>} {bid.maxAmount} /-</h3>
                    
                 </div>
                 </div>
                 <div className="bid-card-right">
-                    <h2>User Details</h2>
+                    <h3>User Details</h3>
                     <div className="user-details">
                            
                                    <table >
                                    <tr>
                                        <td>
-                                           User Name
+                                           <p>User Name</p>
                                        </td>
                                        <td>
                                            : {bid.username} 
@@ -123,11 +123,11 @@ const SingleBid = () => {
                             <div className="hotel-bid-card" key={i}>
                                 <div className="hotel-card-left">
                                     <h3>{itm.vendorname}</h3><br></br>
-                                    <h4>{itm.vendorid}</h4>
+                                    <p>{itm.vendorid}</p>
                                 </div>
                                 <div className="hotel-card-right">
-                                    <h4>{itm.vendoremail}</h4><br></br>
-                                    <h4>{itm.vendorphone}</h4>
+                                    <p>{itm.vendoremail}</p><br></br>
+                                    <p>{itm.vendorphone}</p>
                                 </div>
                             </div>
                         ))

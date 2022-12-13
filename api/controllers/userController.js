@@ -32,16 +32,36 @@ const User=require('../models/userModel')
 	}
 	const getUsers = async (req,res,next)=>{
 	try {
-	const users = await User.find();
+	const users = await User.find(req.query);
 	res.status(200).json(users);
 	} catch (err) {
 	next(err);
 	}
 	}
 
+	const countVendors = async (req,res,next) => {
+		try{
+			const vendorCount = await User.countDocuments({isVendor: true})
+			res.status(200).json(vendorCount);
+
+		} catch (err) {
+			next(err);
+			}
+	}
+	const countUsers = async (req,res,next) => {
+		try{
+			const userCount = await User.countDocuments({isVendor: false, isAdmin:false})
+			res.status(200).json(userCount);
+
+		} catch (err) {
+			next(err);
+			}
+	}
+
 	module.exports={
 		updateUser,
 		deleteUser,
 		getUser,
-		getUsers
+		getUsers,
+		countUsers,countVendors
 	}

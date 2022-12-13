@@ -3,11 +3,15 @@ import Sidenav from '../../components/sidenav/Sidenav';
 import './vendorlist.scss'
 import { Link, Navigate } from 'react-router-dom';
 import DataTable from '../../components/dataTable/Dtatable';
-import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import {useState} from 'react'
 
 
 const Vendors =() => {
+    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const handlesidenavOpen = () => {
+        setSideNavOpen(!sidenavOpen);
+    }
 
 const navigate=useNavigate()
 
@@ -19,13 +23,15 @@ const navigate=useNavigate()
     
         return(
             <div className="vendorlist">
-                <Navbar />
-                <Sidenav />
+              <Navbar onclick={handlesidenavOpen}/>
+            <Sidenav isOpen={sidenavOpen}/>
+
     
                 <div className="vendorlist-body">
-                   <h1>List of Vendors 
-                           <Button onClick={createVendor}> Add Vendor</Button>
-                         </h1>
+                   <h2>List of Vendors </h2><br />
+                   <p>Here shows the list of all vendors registered in your platform. Click the following button to create a new vendor</p>
+                           <button onClick={createVendor}> Add Vendor</button>
+                         
                          
                    <DataTable />
                 </div>

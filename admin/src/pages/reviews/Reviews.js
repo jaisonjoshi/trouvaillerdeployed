@@ -19,7 +19,7 @@ const Reviews =() => {
     useEffect(()=> {
          setReviews(data);
     }, [data]);
-  
+   console.log(reviews)
     const navigate = useNavigate();
     const handleReviewUpdate = (id) => {
         navigate(`/reviews/${id}/update`);
@@ -52,7 +52,7 @@ const Reviews =() => {
                                 <div className="review-card" key={rev._id} >
                                     <div className="review-img">
                                         <div className="review-img-container">
-                                            <img src={profile} alt="" className='review-img-img'/>
+                                            <img src={rev.image} alt="" className='review-img-img'/>
                                         </div>
                                     </div>
                                     <div className="review-txt">

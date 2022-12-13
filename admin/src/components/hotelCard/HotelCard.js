@@ -17,14 +17,14 @@ const HotelCard = ({hotel}) => {
                 <img src={hotel.images[0]} alt="" />
             </div>
             <div className="hotel-card-body">
-                <h2>{hotel.title}</h2>
+                <h3>{hotel.title}</h3>
                 <p>{hotel.description}</p>
 
             </div>
             <div className="hotel-card-footer">
-            <h3 className='duration'>{hotel.location}</h3> 
+            <h4 className='duration'>{hotel.location}</h4> 
 
-                <h2><CurrencyRupeeIcon /> {hotel.cheapestPrice}</h2>
+                <h4><CurrencyRupeeIcon /> {hotel.cheapestPrice}</h4>
             </div>
         </div>
     )
