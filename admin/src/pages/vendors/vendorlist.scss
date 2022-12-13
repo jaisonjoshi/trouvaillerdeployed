@@ -6,11 +6,12 @@
     h1{
         margin-bottom: 3rem;
     }
+    button{
+        margin-top: 10px;
+    }
 
 }
-button{
-    margin-top: 10px;
-}
+
 
 @media screen and (max-width:1024px) {
     .vendorlist-body{

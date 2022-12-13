@@ -26,17 +26,21 @@ const NewReview =() => {
     }
     const handleReviewClick = async e => {
         e.preventDefault();
-        const data = new FormData();
-            data.append("file", file);
-            data.append("upload_preset", "upload");
+        
         try{
-            
-            const uploadRes = await axiosInstance.post(
+            let url = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+            if(file != ""){
+                const data = new FormData();
+                data.append("file", file);
+                data.append("upload_preset", "upload");
+                const uploadRes = await axiosInstance.post(
                 "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
                 data
               );
 
-              const  url  = uploadRes.data.url;
+              url  = uploadRes.data.url;
+            }
+            
                 
             const newReview = {
                 ...info,image:url,

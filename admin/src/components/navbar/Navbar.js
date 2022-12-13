@@ -1,6 +1,6 @@
 import './navbar.scss';
 import Logo from '../assets/Green.png'
-import profile from '../assets/i.png'
+import profile from '../assets/prof.jpg'
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { useContext,useState } from 'react';

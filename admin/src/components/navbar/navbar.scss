@@ -42,6 +42,21 @@ margin-bottom: 3px;   display: none;     }
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    .nav-profile{
+        .nav-profile-icon{
+            border-radius: 50%;
+            height: 35px;
+            width: 35px;
+        }
+       
+    }
+    button{
+        padding: .5rem 1rem !important;
+        border: none;
+        border-radius: 5px;
+        background-color: #00ff9f;
+        
+    }
 }
 
 @media screen and (max-width:1024px) {
@@ -51,6 +66,9 @@ margin-bottom: 3px;   display: none;     }
         }
         h3{
             display: none;
+        }
+        .nav-logo{
+            width: 70%;
         }
         
     }
