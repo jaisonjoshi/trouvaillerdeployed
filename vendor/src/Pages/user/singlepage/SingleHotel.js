@@ -17,7 +17,7 @@ const SingleHotel = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const id = location.pathname.split("/")[3];
-    const {data, loading, error } = useFecth(`/hotels/${id}`);
+    const {data, loading, error } = useFecth(`/hotels/find/${id}`);
     useEffect(()=>{
         setHotel(data)
     },[data])
