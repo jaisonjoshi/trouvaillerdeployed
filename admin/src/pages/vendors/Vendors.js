@@ -29,7 +29,7 @@ const navigate=useNavigate()
     
                 <div className="vendorlist-body">
                    <h2>List of Vendors </h2><br />
-                   <p>Here shows the list of all vendors registered in your platform. Click the following button to create a new vendor</p>
+                   <p>List of all vendors</p>
                            <button onClick={createVendor}> Add Vendor</button>
                          
                          
