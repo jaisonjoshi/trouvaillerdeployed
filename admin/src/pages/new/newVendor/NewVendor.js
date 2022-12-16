@@ -8,9 +8,9 @@ import {useContext,useState} from "react";
 import {AuthContext} from '../../../components/context/AuthContext';
 
 const NewVendor =() => {
-    // const axiosInstance = axios.create({
-    //     baseURL: process.env.REACT_APP_API_URL,
-    // })
+    const axiosInstance = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+    })
     const navigate = useNavigate();
     
     //register procedure
@@ -20,7 +20,8 @@ const [credentials, setCredentials] = useState({
     phone: undefined,
     password: undefined,
     city:undefined,
-    country:undefined
+    country:undefined,
+    isVendor:true
   });
 
   const { user, loading, error, dispatch } = useContext(AuthContext);
@@ -41,7 +42,7 @@ const [credentials, setCredentials] = useState({
         try {
 
            
-          const res = await axios.post("/auth/register", credentials);
+          const res = await axiosInstance.post("/auth/register", credentials);
           //if(res.data.isAdmin){//check this code to control user and admin access to login
           if(res.data){
           dispatch({ type: "REGISTER_SUCCESS", payload: res.data.details });
@@ -63,7 +64,7 @@ const [credentials, setCredentials] = useState({
             <Navbar />
             <Sidenav />
 
-            <div className="newhotelv-body">
+            <div className="newhotel-body">
                     <h1>Create a New Vendor</h1>
                    <div className="new-hotel-box">
                     <div className="newhotelform-container">
@@ -102,6 +103,7 @@ const [credentials, setCredentials] = useState({
                                     <input type="text" id="country" onChange={handleChange}/>
                                 
                                 </div>
+                                
                                 <div className="hotel-form-submit">
                                     <button onClick={handleClick}>Create Vendor</button>
                                     {error && <span>{error.message}</span>} 
