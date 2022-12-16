@@ -8,6 +8,11 @@ import PackageCard from '../../components/packageCard/PackageCard';
 import SearchIcon from '@mui/icons-material/Search'
 
 const Packages =() => {
+  const [anim, setAnim] = useState("")
+  useEffect(()=>{
+      window.addEventListener('load', setAnim("show"))
+
+  }, [])
   const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
@@ -52,7 +57,7 @@ const Packages =() => {
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
 
-            <div className="packages-body">
+            <div className={`packages-body ${anim}`}>
                     <div className="packages-body-header">
                     <h2>Travel Packages and catalogue</h2>
                     <p>Create a new package by clicking the below button</p>

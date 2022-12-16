@@ -40,7 +40,7 @@ const createPackage = async (req,res)=>{
         rating,
         cheapestPrice,
         features,
-        schedule,
+        shedule,
         offers
         } = req.body
         //add to db
@@ -55,7 +55,7 @@ const createPackage = async (req,res)=>{
         rating,
         cheapestPrice,
         features,
-        schedule,
+        shedule,
         offers
     
     })

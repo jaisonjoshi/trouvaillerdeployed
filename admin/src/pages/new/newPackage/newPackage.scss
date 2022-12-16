@@ -4,6 +4,12 @@
     margin-top: 50px;
     padding: 5rem;
     margin-left:200px;
+    .crop-box-con{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;        padding: 1rem;
+        position: absolute;
+        background-color: white !important;
+
+    }
     .new-package-box{
         display: flex;
         padding-top:4rem ;

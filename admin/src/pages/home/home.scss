@@ -2,7 +2,10 @@
     margin-top: 50px;
     padding-top: 4rem;
     margin-left:200px;
+    opacity: 0;
+        transition: all ease-in 1s;
     .home-body-head{
+        
         width: 90%;
         margin: 0 auto;
         background-image: url('../../components//assets//vendorbg4.jpg');
@@ -78,3 +81,4 @@
     }
     
 }
+

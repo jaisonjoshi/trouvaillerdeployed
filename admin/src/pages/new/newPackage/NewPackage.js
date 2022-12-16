@@ -8,8 +8,9 @@ import Packageimg from '../../../components/assets/package.png'
 import axios from "axios"
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import CropEasy from '../../../components/crop/CropEasy';
 
-const NewPackage =() => {
+const NewPackage =({setOpen}) => {
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
@@ -63,11 +64,30 @@ const NewPackage =() => {
        
         
    }
+
+   const [photoURL, setPhotoURL] = useState("");
+   const [openCrop, setOpenCrop] = useState(false);
+   const [imgFiles, setImgFiles] = useState([])
+   const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if(file){
+        setFile(file);
+        setPhotoURL(URL.createObjectURL(file)); 
+        setOpenCrop(true);
+        console.log(imgFiles)
+    }
+   }
+
+
+
+
     const handleClick = async e => {
+        setOpen(true)
+
         e.preventDefault();
         try{
             const list = await Promise.all(
-                Object.values(files).map(async (file) => {
+                Object.values(imgFiles).map(async (file) => {
                   const data = new FormData();
                   data.append("file", file);
                   data.append("upload_preset", "upload");
@@ -92,7 +112,8 @@ const NewPackage =() => {
             console.log(err)
         }
        
-        
+        setOpen(false)
+
     }
 
     
@@ -103,6 +124,8 @@ const NewPackage =() => {
             <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newpackage-body">
+            {openCrop &&
+            <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles}} /></div>}
             <h1>Create a new Travel Package</h1>
                    <div className="new-package-box">
                    
@@ -110,8 +133,8 @@ const NewPackage =() => {
                         <form >
                         <div className="form-item-file">
                         <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
-                                <input type="file" name="" id="img-input" multiple onChange={(e) => setFile(e.target.files)}/>
-                            
+                                <input type="file" name="" id="img-input" onChange={handleImageChange}/>
+                                <p>click again to upload next image</p>
                             </div>
                             <div className="form-item">
                                 <label > Title</label>
@@ -160,13 +183,13 @@ const NewPackage =() => {
                     </div>
                     <div className="form-test">
                         <div className="img-container">
-                           {files && Object.values(files).map((pic,i)=>(
-                                <img key={i} src={
-                                    pic
-                                      ? URL.createObjectURL(pic)
-                                      : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                                  } alt="" />
-                           ))}
+                        {imgFiles && Object.values(imgFiles).map((pic)=>(
+                                    <img src={
+                                        pic
+                                        ? URL.createObjectURL(pic)
+                                        : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                                    } alt="" />
+                            ))}
 
                         </div>
                         <div className="package-details">
@@ -183,7 +206,7 @@ const NewPackage =() => {
                             <h2>Shedule</h2>
                             <div className="shedule-con">
                                 {shedule.map((obj, i)=> (
-                                    <div className="shedule-card">
+                                    <div className="shedule-card" key={i}>
                                         <h3>Day {i+1}</h3>
                                         <h2>{obj.dayTitle}</h2>
                                         <p>{obj.dayDesc}</p>

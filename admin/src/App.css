@@ -1,0 +1,13 @@
+.preloader{
+    display: flex;
+    opacity: 1 !important;
+    width: 100vw;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+.preloader img{
+    width: 150px;
+}

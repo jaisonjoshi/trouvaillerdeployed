@@ -24,7 +24,7 @@ const SinglePackage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const id = location.pathname.split("/")[2];
-    const {data, loading, error } = useFecth(`/packages/${id}`);
+    const {data, loading, error } = useFecth(`/packages/find/${id}`);
     console.log(data)
     const settings = {
         dots: true,

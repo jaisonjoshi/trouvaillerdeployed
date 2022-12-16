@@ -8,6 +8,11 @@ import HotelCard from '../../components/hotelCard/HotelCard';
 import SearchIcon from '@mui/icons-material/Search'
 
 const Hotels =() => {
+  const [anim, setAnim] = useState("")
+  useEffect(()=>{
+      window.addEventListener('load', setAnim("show"))
+
+  }, [])
   const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
@@ -52,11 +57,12 @@ const Hotels =() => {
     console.log(destination);
 }
     return(
+      
         <div className="hotels">
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
 
-            <div className="hotels-body">
+            <div className={`hotels-body ${anim}`}>
                     <div className="hotels-body-header">
                     <h2>Hotels</h2>
                     

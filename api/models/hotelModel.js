@@ -39,7 +39,7 @@ const hotelSchema=new Schema({
         type:Number,
         required:true
     },
-     features:{
+     facilities:{
         type:[String],
         required:true
     } ,

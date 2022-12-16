@@ -3,12 +3,17 @@ import Logo from '../assets/Green.png'
 import profile from '../assets/prof.jpg'
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import { useContext,useState } from 'react';
+import { useContext,useState , useEffect} from 'react';
 import { AuthContext } from '../context/AuthContext';
 import {useNavigate} from "react-router-dom"
 import React from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 const Navbar = ({onclick}) => {
+    const [navanim, setNavAnim] = useState("navbar")
+    useEffect(()=>{
+        window.addEventListener('load', setNavAnim("navbar show"))
+
+    }, [])
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -37,7 +42,7 @@ const Navbar = ({onclick}) => {
     
 
     return(
-        <div className="navbar">
+        <div className={navanim}>
             <div className="navbar-brand">
                 <MenuIcon className='navbar-brand-icon' onClick={onclick}/>
                 <Link to="/">

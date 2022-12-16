@@ -9,25 +9,30 @@ import headerimg from '../../components/assets/vendorbg4.jpg'
 import NotificationPanel from '../../components/notificationPanel/NotificationPanel';
 import {useState, useEffect} from 'react'
 import useFetch from '../../hooks/useFetch';
+
+import Loader from '../../components/loading/Loading';
 const Home =() => {
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
     const {data,loading,error} = useFetch('/hotels/count')
+    const [anim, setAnim] = useState("")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
 
+    }, [])
     console.log(data)
     return(
         <div className="home">
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
-
-            <div className="home-body">
+            <div className={`home-body ${anim}`}>
                 <div className="home-body-head">
                     <img src={logo} />
                 </div>
                 <div className="home-body-widgets">
-                <Widgets type="users"/>
+                <Widgets type="users" />
                                 <Widgets type="packages"/>
                                 <Widgets type="hotels"/>
 

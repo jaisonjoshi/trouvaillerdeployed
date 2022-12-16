@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios";
 import { Navbar } from 'flowbite-react/lib/cjs/components/Navbar';
 import { Button } from 'flowbite-react/lib/cjs/components/Button';
-
+import './navbar.css';
 const NavbarTest = () => {
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
@@ -68,7 +68,7 @@ fluid={true}
 
 </Navbar.Brand>
 <Navbar.Toggle />
-<Navbar.Collapse>
+<Navbar.Collapse className="flex items-center">
 <div className="flex md:order-2 gap-7 ml-20 items-center">
 { user?<div><span>{user.username}</span>
         <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(

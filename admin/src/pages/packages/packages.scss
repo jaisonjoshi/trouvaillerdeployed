@@ -3,6 +3,8 @@
     padding: 5rem;
     margin-left:200px;
     background-color: white;
+    opacity: 0;
+        transition: all ease-in 1s;
     .packages-body-header{
         display: flex;
         justify-content: space-between;

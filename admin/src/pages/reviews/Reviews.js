@@ -7,6 +7,11 @@ import { useEffect, useState } from 'react';
 import profile from '../../components/assets/profile.jpg'
 import axios from 'axios';
 const Reviews =() => {
+    const [anim, setAnim] = useState("")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
+
+    }, [])
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
@@ -41,7 +46,7 @@ const Reviews =() => {
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
 
-            <div className="reviews-body">
+            <div className={`reviews-body ${anim}`}>
                     <div className="reviews-head">
                         <h2>Add, Update or delete your reviews</h2>
                         <Link to="/reviews/newreview" className='review-btn'>Create a review</Link>

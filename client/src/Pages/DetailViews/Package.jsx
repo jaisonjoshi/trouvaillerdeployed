@@ -22,7 +22,7 @@ const Package = () => {
 
     const location = useLocation();
         const id=location.pathname.split("/")[3];
-        const {data,loading,error} = useFetch(`/packages/${id}`);
+        const {data,loading,error} = useFetch(`/packages/find/${id}`);
         useEffect(()=>{
             setPackage(data)
         },[data])

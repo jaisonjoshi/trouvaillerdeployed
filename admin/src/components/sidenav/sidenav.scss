@@ -2,12 +2,13 @@
     width: 200px;
     height:100vh;
     position:fixed;
+    opacity: 0;
     z-index: 999;
     left: 0;
     background-color: white;
     top: 0;
     padding-top: 100px;
-    transition: all ease-in-out .2s;
+    transition: all ease-in-out .3s;
     
     ul{
         list-style: none;
@@ -54,4 +55,9 @@
 }
 .sidenav.open{
     width: 200px !important;
+}
+
+
+.show{
+    opacity: 1 !important;
 }

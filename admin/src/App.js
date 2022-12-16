@@ -1,5 +1,5 @@
 import './App.css';
-
+import {useState, useEffect} from 'react'
 
 import Home from './pages/home/Home';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
@@ -28,7 +28,10 @@ import { AuthContext } from './components/context/AuthContext';
 import Vendors from './pages/vendors/Vendors';
 import NewVendor from './pages/new/newVendor/NewVendor'
 //import Logout from './pages/logout/Logout';
-
+import PropagateLoader from "react-spinners/PropagateLoader";
+import logo from './components/assets/logo.png'
+import Loading from './components/spinningLoader/CircleLoading';
+import CircleLoading from './components/spinningLoader/CircleLoading';
 
 
 function App() {
@@ -38,7 +41,14 @@ function App() {
     },[]) */
 
     // cleaner fn using useeffect
-
+    const [loading, setLoading] = useState(true)
+    useEffect(()=> {
+      setLoading(true);
+      setTimeout(()=>{
+        setLoading(false);
+      }, 2000)
+    }, [])
+   
     const ProtectedRoute=({children})=>{
       const {user}=useContext(AuthContext)
 
@@ -47,9 +57,24 @@ function App() {
       }
       return children;
     }
-
+    const [open, setOpen] = useState(false)
   return (
     <div className="App">
+      <CircleLoading open={open}/>
+      {loading ?
+           <div className='preloader'>
+             <img src={logo} />
+             <PropagateLoader
+
+
+           color={'#32fca7'}
+           loading={loading}
+           
+           size={15}
+
+         /></div>
+      
+      :
       <BrowserRouter>
 
       <Routes>
@@ -72,7 +97,7 @@ function App() {
             <Route index element={<Hotels />} />
             <Route path=":id" element= {<SingleHotel />} />
             <Route path=':id/update' element={<UpdateHotel />} />
-            <Route path='newhotel' element={<NewHotel />} />
+            <Route path='newhotel' element={<NewHotel setOpen={setOpen}/>} />
           
           </Route>
           
@@ -87,7 +112,7 @@ function App() {
             <Route index element={<Packages />} />
             <Route path=":id" element= {<SinglePackage />} />
             <Route path=':id/update' element={<UpdatePackage />} />
-            <Route path='newpackage' element={<NewPacakge />} />
+            <Route path='newpackage' element={<NewPacakge setOpen={setOpen}/>} />
           </Route>
           <Route path="reviews">
             <Route index element={<Reviews />} />
@@ -121,7 +146,7 @@ function App() {
       
       
       </BrowserRouter>
-      
+      }
     </div>
   );
 }

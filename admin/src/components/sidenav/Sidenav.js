@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './sidenav.scss';
+import {useState, useEffect} from 'react'
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
@@ -8,10 +9,15 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 
 const Sidenav = ({isOpen}) => {
+    const [sideanim, setsideAnim] = useState("")
+    useEffect(()=>{
+        window.addEventListener('load', setsideAnim("show"))
+
+    }, [])
 
     const sidenavOpenClass = isOpen ? "sidenav open" : "sidenav";
     return(
-        <div className={sidenavOpenClass}>
+        <div className={`${sidenavOpenClass} ${sideanim}`}>
             <ul>
                 <Link to="/users">
                 <li>

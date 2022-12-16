@@ -1,7 +1,16 @@
+
+
 .newhotel-body{
     margin-top: 50px;
     padding: 5rem;
     margin-left:200px;
+    position: relative;
+    .crop-box-con{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;        padding: 1rem;
+        position: absolute;
+        background-color: white !important;
+
+    }
     .new-hotel-box{
         display: flex;
         padding-top:4rem ;
@@ -48,6 +57,13 @@
                     display: flex;
                     justify-content: flex-end;
                     padding-right: 2rem;
+                    button{
+                        background-color: #00ff9f;
+                        border-radius: 10px;
+                        border: none;
+                        outline: none;
+                        padding: 10px 20px;
+                    }
                 }
                 .hotel-form-submit{
                     display: flex;
@@ -62,7 +78,7 @@
                         border-radius: 10px;
                         background-color: #00ff9f;
                         color: black;
-                        margin-right: 30%;
+                        margin-right: 2rem;
                         &:hover{
                             background-color: black;
                             color: white;
@@ -102,6 +118,17 @@
                         padding: .6rem 1.5rem;
                         background-color: #00ff9f;
                         border-radius: 50px;
+                    }
+                }
+                .roomTypes{
+                    display: flex;
+                    padding: 5px;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                    p{
+                        background-color: #00ff9f;
+                        border-radius: 1000px;
+                        padding: 3px 20px;
                     }
                 }
                 .package-details-flex-2{
