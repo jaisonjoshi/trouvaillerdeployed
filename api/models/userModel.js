@@ -14,10 +14,10 @@ const UserSchema = new Schema(
       required: true,
       unique: true,
     },
-    name: {
-      type: String,
-      required: true,
-    },
+//     name: {
+//       type: String,
+//       required: true,
+//     },
     img: {
       type: String,
     },
@@ -25,6 +25,10 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     }, 
+     country:{
+      type:String,
+      required: true,
+    },
     phone: {
       type: String,
       required: true,
