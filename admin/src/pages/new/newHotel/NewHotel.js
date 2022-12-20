@@ -107,14 +107,14 @@ const NewHotel =({setOpen}) => {
         
     }
 
-
+    const size = 16/9;
     return(
         <div className="new-hotel">
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
             <div className="newhotel-body">
             {openCrop &&
-            <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles}} /></div>}
+            <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
             
                     <h1>Create a Hotel</h1>
                    <div className="new-hotel-box">

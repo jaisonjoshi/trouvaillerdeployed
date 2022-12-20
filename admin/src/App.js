@@ -117,7 +117,7 @@ function App() {
           <Route path="reviews">
             <Route index element={<Reviews />} />
               <Route path=':id/update' element={<UpdateReview />} />
-            <Route path='newreview' element={<NewReview />} />
+            <Route path='newreview' element={<NewReview  setOpen={setOpen} />} />
 
           </Route>
           <Route path="offers">

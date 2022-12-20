@@ -52,6 +52,14 @@
                         background-color: rgb(229, 229, 229);  
                         color: rgb(61, 61, 61);            }
                 }
+                .shedule-input-con{
+                    button{
+                        padding: 5px 10px;
+                        background-color: #00ff9f;
+                        border-radius: 10px;
+                        border: none;
+                    }
+                }
                 .room-btn-box{
                     display: flex;
                     justify-content: flex-end;
@@ -106,8 +114,8 @@
                     padding: 1rem 0;
                     justify-content: flex-start;
                     gap: 3rem;
-                    h3{
-                        padding: .6rem 1.5rem;
+                    h4{
+                        padding: 5px 20px;
                         background-color: #00ff9f;
                         border-radius: 50px;
                     }
@@ -119,6 +127,18 @@
                     align-items: center;
                     gap: 5px;
                     
+                }
+            }
+            .package-shedule{
+                h3{
+                    margin-bottom: 5px;
+                }
+                .shedule-con{
+                    .shedule-card{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                    }
                 }
             }
           

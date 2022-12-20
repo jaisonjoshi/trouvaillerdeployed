@@ -116,7 +116,7 @@ const NewPackage =({setOpen}) => {
 
     }
 
-    
+    const size = 16/9;
 
     return(
         <div className="new-package">
@@ -125,7 +125,7 @@ const NewPackage =({setOpen}) => {
 
             <div className="newpackage-body">
             {openCrop &&
-            <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles}} /></div>}
+            <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
             <h1>Create a new Travel Package</h1>
                    <div className="new-package-box">
                    
@@ -196,19 +196,19 @@ const NewPackage =({setOpen}) => {
                             <h1>{info.title}</h1>
                             <p>{info.description}</p>
                             <div className="package-details-flex">
-                            <h3>{info.duration}</h3><h3>{info.location}</h3>
+                            <h4>{info.duration}</h4><h4>{info.location}</h4>
                             </div>
                             <div className="package-details-flex-2">
-                            <CurrencyRupeeIcon /><h2>{info.cheapestPrice} /-</h2>
+                            <CurrencyRupeeIcon /><h3>{info.cheapestPrice} /-</h3>
                             </div>
                         </div>
                         <div className="package-shedule">
-                            <h2>Shedule</h2>
+                            <h3>Shedule</h3>
                             <div className="shedule-con">
                                 {shedule.map((obj, i)=> (
                                     <div className="shedule-card" key={i}>
-                                        <h3>Day {i+1}</h3>
-                                        <h2>{obj.dayTitle}</h2>
+                                        <h4>Day {i+1}</h4>
+                                        <h4>{obj.dayTitle}</h4>
                                         <p>{obj.dayDesc}</p>
                                     </div>
                                 ))}

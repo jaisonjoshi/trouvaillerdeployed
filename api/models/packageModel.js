@@ -49,7 +49,10 @@ const packageSchema=new Schema({
     images :{
         type:[String],
     },
-    shedule : [Shedule]
+    shedule : {
+        type:[Shedule],
+        required: true
+    }
     
     
    

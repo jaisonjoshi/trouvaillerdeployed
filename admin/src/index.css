@@ -23,7 +23,12 @@ h2{
 h3{
     font-size: 20px;
 }
-
+.loading-div{
+    display: flex;
+    width: 100%;
+    padding-top: 5rem;
+    justify-content: center;
+}
 @media screen and (max-width:812px) {
     body{
         font-size: 15px !important;

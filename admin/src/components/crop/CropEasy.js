@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './utils/cropImage';
 
-const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile, imgFiles, setImgFiles }) => {
+const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile, imgFiles, setImgFiles, size }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
@@ -57,7 +57,7 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile, imgFiles, setIm
           crop={crop}
           zoom={zoom}
           rotation={rotation}
-          aspect={16/9}
+          aspect={size}
           onZoomChange={setZoom}
           onRotationChange={setRotation}
           onCropChange={setCrop}

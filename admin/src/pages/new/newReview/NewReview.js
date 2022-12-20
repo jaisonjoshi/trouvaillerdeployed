@@ -6,9 +6,10 @@ import Sidenav from '../../../components/sidenav/Sidenav';
 import './newReview.scss';
 import axios from "axios"
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+import CropEasy from '../../../components/crop/CropEasy';
 
 
-const NewReview =() => {
+const NewReview =({setOpen}) => {
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
@@ -24,6 +25,23 @@ const NewReview =() => {
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
     }
+
+
+    const [photoURL, setPhotoURL] = useState("");
+    const [openCrop, setOpenCrop] = useState(false);
+    const [imgFiles, setImgFiles] = useState([])
+    const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if(file){
+        setFile(file);
+        setPhotoURL(URL.createObjectURL(file)); 
+        setOpenCrop(true);
+        console.log(imgFiles)
+    }
+   }
+
+
+   const size = 1;
     const handleReviewClick = async e => {
         e.preventDefault();
         
@@ -64,13 +82,16 @@ const NewReview =() => {
             <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newreview-body">
+            {openCrop &&
+            <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
+            
                     <h1>Create a new Review for your service</h1>
                     <div className="new-review-box">
                     <div className="newreviewform-container">
                         <form >
                         <div className="form-item-file">
                             <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
-                                    <input type="file" name="" id="img-input" onChange={(e) => setFile(e.target.files[0])}/>
+                                    <input type="file" name="" id="img-input" onChange={handleImageChange}/>
                                 
                                 </div>
                             <div className="form-item">

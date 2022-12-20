@@ -6,6 +6,7 @@ import useFetch from "../../hooks/useFetch"
 import { useEffect, useState } from 'react';
 import PackageCard from '../../components/packageCard/PackageCard';
 import SearchIcon from '@mui/icons-material/Search'
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const Packages =() => {
   const [anim, setAnim] = useState("")
@@ -84,7 +85,29 @@ const Packages =() => {
                     <div className="package-container">
                       
                       
-                        { data && data.map((pack) => (
+                        {loading ? 
+                        
+                        
+                        <div className='loading-div'>
+                        <PropagateLoader
+
+
+                            color={'#32fca7'}
+                            loading={loading}
+
+                            size={15}
+
+                            />
+                      </div>
+                        
+                        
+                        :
+                        
+                        
+                        
+                        
+                        
+                        data && data.map((pack) => (
                             
                             <PackageCard key={pack._id} pack={pack} />
                                 

@@ -6,6 +6,10 @@ import useFetch from "../../hooks/useFetch"
 import { useEffect, useState } from 'react';
 import profile from '../../components/assets/profile.jpg'
 import axios from 'axios';
+import PropagateLoader from "react-spinners/PropagateLoader";
+
+
+
 const Reviews =() => {
     const [anim, setAnim] = useState("")
     useEffect(()=>{
@@ -52,7 +56,17 @@ const Reviews =() => {
                         <Link to="/reviews/newreview" className='review-btn'>Create a review</Link>
                     </div>
                     <div className="review-container">
-                        {loading ? ("loading"):(
+                        {loading ?  <div className='loading-div'>
+                        <PropagateLoader
+
+
+                            color={'#32fca7'}
+                            loading={loading}
+
+                            size={15}
+
+                            />
+                      </div>:(
                             reviews && reviews.map((rev) => (
                                 <div className="review-card" key={rev._id} >
                                     <div className="review-img">

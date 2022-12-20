@@ -1,4 +1,4 @@
-nav li{
+.nav li{
     display: flex !important;
     align-items: center !important;
 }

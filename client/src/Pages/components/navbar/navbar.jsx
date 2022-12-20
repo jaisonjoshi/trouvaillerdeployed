@@ -35,28 +35,12 @@ const NavbarTest = () => {
     };
 
 
-    const [stickyClass, setStickyClass] = useState('bg- transparent sm:bg-transparent py-10 fixed');
-
-    useEffect(() => {
-      window.addEventListener('scroll', stickNavbar);
-  
-      return () => {
-        window.removeEventListener('scroll', stickNavbar);
-      };
-    }, []);
-
-    const stickNavbar = () => {
-      if (window !== undefined) {
-        let windowHeight = window.scrollY;
-        windowHeight > 200 ? setStickyClass('fixed top-0 left-0 right-0 py-4  bg-white shadow-md'): setStickyClass('bg-transparent py-10 fixed');
-  
-      }
-    };
+    
 
 
   return (
     <div>
-    <Navbar className={` w-full z-50 top-0 left-0   px-8 transition-all duration-500 ease-in-out ${stickyClass}`}
+    <Navbar className={` w-full z-50 top-0 left-0   px-8 transition-all duration-500 ease-in-out `}
 fluid={true}
 
 >

@@ -6,6 +6,7 @@ import useFetch from "../../hooks/useFetch"
 import { useEffect, useState } from 'react';
 import HotelCard from '../../components/hotelCard/HotelCard';
 import SearchIcon from '@mui/icons-material/Search'
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const Hotels =() => {
   const [anim, setAnim] = useState("")
@@ -89,7 +90,22 @@ const Hotels =() => {
                     <div className="hotel-container">
                       
                       
-                        { data && data.map((hotel) => (
+                      { loading ?  
+                      
+                      <div className='loading-div'>
+                        <PropagateLoader
+
+
+                            color={'#32fca7'}
+                            loading={loading}
+
+                            size={15}
+
+                            />
+                      </div>
+                      
+                      
+                      : data.map((hotel) => (
                             
                             <HotelCard key={hotel._id} hotel={hotel} />
                                 
