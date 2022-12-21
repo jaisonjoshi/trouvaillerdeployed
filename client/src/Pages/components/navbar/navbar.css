@@ -2,3 +2,38 @@ nav li{
     display: flex !important;
     align-items: center !important;
 }
+.bg-trans{
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+@media screen and (max-width: 768px)  {
+    nav ul{
+        width: 100%;
+        padding: 2rem 0;
+        background-color: #fffffff0;
+        color: black;
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    nav .nav-login-box{
+        margin-left: 2.5rem !important;
+    }
+    nav .nav-login{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    nav li{
+        padding-left: 2.5rem;
+        color: black !important;
+        padding: 1px 0;
+        width: 100%;
+    }
+    nav li a{
+        width: 100%;
+    }
+    nav li:hover{
+        background-color: #dad9d9;
+    
+        font-weight: 800;
+    }
+}

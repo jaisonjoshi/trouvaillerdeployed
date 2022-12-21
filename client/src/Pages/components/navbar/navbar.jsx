@@ -70,7 +70,7 @@ const NavbarTest = ({color}) => {
 fluid={true}
 
 >
-<Navbar.Brand href="https://flowbite.com/">
+<Navbar.Brand>
 <img src={require('../../Assets/TrouvaillerGreen .png')}
                 className="mr-3 h-6 sm:h-9 pl-10"
                 alt="Trouvailler Logo"
@@ -79,10 +79,10 @@ fluid={true}
 </Navbar.Brand>
 <Navbar.Toggle />
 <Navbar.Collapse className="flex items-center">
-<div className="flex md:order-2 gap-7 ml-20 items-center">
-{ user?<div><span>{user.username}</span>
+<div className="flex md:order-2 gap-7 ml-20 items-center  nav-login-box">
+{ user?<div className='nav-login'><span>{user.username}</span>
         <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
-        <div className="md:flex my-4">
+        <div className="md:flex my-4 ">
            <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow">
             <Link className="" to="/login" >Login</Link>
             </button>
@@ -96,11 +96,11 @@ fluid={true}
 </div>
 
 <Navbar.Link href="/" 
-                class={`p-3 sm:p-0 text-lg ${colord}  hover:text-evergreen duration-500`}>
+                class={`p-3 sm:p-0 text-lg md:${colord}  md:hover:text-evergreen duration-500`}>
                 Home
             </Navbar.Link>
             <Navbar.Link href="/bid-status"
-                class={`p-3 sm:p-0 text-lg ${colord}  hover:text-evergreen duration-500`}>
+                class={`p-3 sm:p-0 text-lg md:${colord}  md:hover:text-evergreen duration-500`}>
                 My bids
             </Navbar.Link>
         {/*     <Navbar.Link href="/"
@@ -108,7 +108,7 @@ fluid={true}
                 About
             </Navbar.Link> */}
             <Navbar.Link href="/"
-                class={`p-3 sm:p-0 text-lg ${colord}  hover:text-evergreen duration-500`} >
+                class={`p-3 sm:p-0 text-lg md:${colord}  md:hover:text-evergreen duration-500`} >
                 Contact
             </Navbar.Link>
 </Navbar.Collapse>

@@ -35,27 +35,28 @@ const Package = () => {
             <Navbar />
             {/* Header */}
             <div className='mt-32'>
-                <div className='sm:flex'>
-                    <Slider className='sm:w-1/2' {...settings}>
+                <div className='flex flex-col md:gap-8 lg:gap-0 lg:flex-row'>
+                    <Slider className='sm:w-[20%] md:w-[70%] mx-[10%] md:ml-[15%] md:mr-[15%] lg:mx-[0%] lg:w-1/2' {...settings}>
                         {pack.images && pack.images.map((img,i)=>(
                                 <img className='h-auto object-cover' src={img} key={i} alt="Car in road" />
 
                         ))}
                          </Slider>
-                    <div className='px-20 flex flex-col justify-center sm:w-1/2'>
-                        <h1 className='text-2xl font-bold pb-5'>{pack.title}</h1>
+                    <div className='px-[10%] md:pl-[15%] md:pr-[15%] lg:px-20 flex flex-col justify-center md:w-[100%] lg:w-1/2'>
+                        <h1 className='text-2xl font-bold pb-5 mt-8'>{pack.title}</h1>
                         <p>{pack.description}</p>
                         <h3 className='font-bold text-sm pt-4 text-xl'>{pack.duration}</h3>
                         <h1 className='font-semibold text-xl py-5'> {pack.cheapestPrice}/-<span className='text-sm line-through text-graydust-medium'>19,000/-</span></h1>
                         <button className='bg-evergreen text-blacky-dark flex justify-center gap-3 items-center font-bold p-4 w-full rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button>
                     </div>
                 </div>
+                  
 
                 <div className='sm:flex mb-10 sm:mx-16 lg:mx-20 mt-12'>
 
                     {/* Itinerary section*/}
 
-                    <div className='p-5 sm:w-3/4 shadow-lg shadow-graydust-normal m-3 rounded'>
+                    <div className='m-[10%] p-5  sm:w-[100%] shadow-lg shadow-graydust-normal m-3 rounded'>
                         <div className='text-xl my-5 font-bold border-b w-20 border-graydust-normal'><h1>Itinerary</h1></div>
                         {/* Repeating day details */}
                         {pack.shedule && pack.shedule.map((obj,i)=>(
@@ -73,9 +74,6 @@ const Package = () => {
 
                     {/* Related results */}
 
-                    <div className='sm:w-1/4 p-5 shadow-lg shadow-graydust-normal m-3 rounded '>
-                        <div className='text-xl my-5 font-bold border-b w-full '><h1>Related results</h1></div>
-                    </div>
                 </div>
             </div>
             <Footer></Footer>

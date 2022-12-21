@@ -35,13 +35,13 @@ const Hotel = () => {
             <Navbar></Navbar>
             {/* header */}
             <div className='sm:flex mt-32 justify-center' >
-                <Slider className='w-[30%]' {...settings}>
+                <Slider className='w-[85%] pb-8 mx-auto md:w-[50%]' {...settings}>
                 {hote.images && hote.images.map((img,i)=>(
                                 <img className='h-auto object-cover' src={img} key={i} alt="Car in road" />
 
                         ))}
                     </Slider>
-                <div className='px-20 sm:w-1/2 flex flex-col justify-center'>
+                <div className='px-10 md:px-20 sm:w-1/2 flex flex-col justify-center'>
                     <h1 className='text-2xl font-bold pb-5'>{hote.title}</h1>
                     <p className='text-md text-graydust-medium'><FontAwesomeIcon className='pr-1' icon={solid('location-dot')} />{hote.location}</p>
                     <h1 className='font-semibold text-xl py-5'> 17,500/-<span className='text-sm line-through text-graydust-medium'>{hote.cheapestPrice}/-</span></h1>
@@ -54,7 +54,7 @@ const Hotel = () => {
             </div>
 
             {/* options */}
-            <div className='mt-20 px-10' >
+            <div className='mt-20 px-10 ' >
                 <div className='flex flex-wrap sm:mx-32 '>
                     {hote.features && hote.features.map((facility, i) => {
                         <div className='text-graydust-medium mr-2 p-2 text-center border border-graydust-medium rounded' key={i}>
