@@ -24,7 +24,7 @@ const Hotel = () => {
 
     const location = useLocation();
         const id=location.pathname.split("/")[3];
-        const {data,loading,error} = useFetch(`/hotels/${id}`);
+        const {data,loading,error} = useFetch(`/hotels/find/${id}`);
         useEffect(()=>{
             setHotel(data)
         },[data])
@@ -34,8 +34,8 @@ const Hotel = () => {
         <div>
             <Navbar></Navbar>
             {/* header */}
-            <div className='sm:flex mt-32'>
-                <Slider className='sm:w-1/2' {...settings}>
+            <div className='sm:flex mt-32 justify-center' >
+                <Slider className='w-[30%]' {...settings}>
                 {hote.images && hote.images.map((img,i)=>(
                                 <img className='h-auto object-cover' src={img} key={i} alt="Car in road" />
 
@@ -56,18 +56,33 @@ const Hotel = () => {
             {/* options */}
             <div className='mt-20 px-10' >
                 <div className='flex flex-wrap sm:mx-32 '>
-                    {/* Repeating block */}
-                    <div className='text-graydust-medium mr-2 p-2 text-center border border-graydust-medium rounded'>
-                        <h2><span><FontAwesomeIcon className='' icon={solid('fan')} /></span> Air Conditioning</h2>
+                    {hote.features && hote.features.map((facility, i) => {
+                        <div className='text-graydust-medium mr-2 p-2 text-center border border-graydust-medium rounded' key={i}>
+                        <h2>{facility}</h2>
                     </div>
+                    })
 
-                    <div className='text-graydust-medium mr-2 p-2 text-center border border-graydust-medium rounded'>
-                        <h2><span><FontAwesomeIcon className='' icon={solid('cloud-sun')} /></span> 24-hour front desk</h2>
-                    </div>
 
-                    <div className='text-graydust-medium mr-2 p-2 text-center border border-graydust-medium rounded'>
-                        <h2><span><FontAwesomeIcon className='' icon={solid('bowl-food')} /></span> Food</h2>
+
+                    }
+                    
+
+                    
+                </div>
+                <div className='flex flex-wrap sm:mx-32 '>
+                    <h2>Available Rooms</h2>
+                    {hote.rooms && hote.rooms.map((room, i) => {
+                        <div className='text-graydust-medium mr-2 p-2 text-center border border-graydust-medium rounded' key={i}>
+                        <h2>{room}</h2>
                     </div>
+                    })
+
+
+
+                    }
+                    
+
+                    
                 </div>
 
                 {/* details */}

@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+nav{
+    background-color: transparent !important;
+}
 .offerSlider .slick-list {
     padding: 0 20% 0;
 }
@@ -60,10 +62,28 @@ input{outline: none;}
 }
 
 
-/* *  {
+ /* *  {
     background: #000 !important;
     color: #0f0 !important;
     outline: solid #f00 1px !important;
   } */
+  input{
+      outline: none !important;
+  }
 
-  
+.card-text{
+    word-wrap: break-word !important;
+    overflow: hidden !important;
+    max-height: 3.6em !important; /* (Number of lines you want visible) * (line-height) */
+    line-height: 1.2em !important;
+    height: 3.6em !important;
+    min-width: 3.6em !important;
+}
+
+
+.navbar-shadow{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px !important;
+}
+.bg-trans{
+    background-color: rgba(0, 0, 0, 0) !important;
+}

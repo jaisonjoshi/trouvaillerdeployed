@@ -9,14 +9,13 @@ const Footer = () => {
       <footer className='bg-blacky-light p-4'>
         <div className='flex justify-center align-middle'>
           <div className='text-whiteglow grid grid-cols-3 my-10'>
-            <div className='text-lg p-4'><h3>Title of section</h3></div>
-            <div><h3 className='text-lg p-4'>Title of section</h3></div>
-            <div><h3 className='text-lg p-4'>Title of section</h3></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
+            <div className='text-lg p-4'><h3>Sitemap</h3></div>
+            <div><h3 className='text-lg p-4'>Services</h3></div>
+            <div><h3 className='text-lg p-4'>Connect with us</h3></div>
+            <div><h5 className='text-sm p-4'>Home</h5></div>
+            <div><h5 className='text-sm p-4'>Bid for a hotel</h5></div>
 
             <div className='hidden md:block md:row-span-3 md:pl-4'>
-              <h3 className='text-lg'>Subscribe to Newsletter</h3>
               <h5 className='text-sm pb-3'>Your email</h5>
               <div className='flex overflow-hidden h-11 rounded-lg w-full'>
                 <div><input type="text" className='h-full text-blacky-dark p-3 border border-none focus:ring-0 focus:ring-offset-0 outline-none focus:outline-evergreen' /></div>
@@ -24,10 +23,10 @@ const Footer = () => {
               </div>
             </div>
 
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
-            <div><h5 className='text-sm p-4'>Page title</h5></div>
+            <div><h5 className='text-sm p-4'>My Bids</h5></div>
+            <div><h5 className='text-sm p-4'>Hotels</h5></div>
+            <div><h5 className='text-sm p-4'>Terms & Conditions</h5></div>
+            <div><h5 className='text-sm p-4'>Tour Packages</h5></div>
           </div>
         </div>
         <div className='md:hidden text-whiteglow p-4 '>

@@ -1,7 +1,7 @@
 import React from 'react'
 import DestCard from '../components/cards/trending_dest_card'
 import Offers from '../components/cards/special_offers_card'
-import Review from '../Reviews/Review'
+import Reviews from '../Reviews/Review'
 import ReviewMob from '../Reviews/ReviewsMob'
 import Footer from '../components/Footer/Footer'
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ import cImg3 from '../Assets/homeCarousel/pic3.jpg'
 import cImg4 from '../Assets/homeCarousel/pic4.jpg'
 import cImg5 from '../Assets/homeCarousel/pic5.jpg'
 import "slick-carousel/slick/slick.css";
-
+import bidingImg from '../Assets/biding.webp'
 import "slick-carousel/slick/slick-theme.css";
 
 
@@ -31,10 +31,11 @@ const Home = () => {
     autoplaySpeed: 4000,
     
   };
+  const color = "text-whiteglow"
   return (
     <div className="">
       <div className=" w-full h-screen">
-           <NavbarTest/>
+           <NavbarTest color={color}/>
              <Slider {...settings}>
                 <div className='pic1 w-screen h-screen'></div>
                 <div className='pic2 w-screen h-screen'></div>
@@ -56,7 +57,7 @@ const Home = () => {
           </p>
 
           <button className="flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500">
-            <Link className="" to="/list">Explore</Link>
+            <Link className="" to="/packages">Explore</Link>
             <img src={require('../Assets/Arrow.png')} alt="" className="h-3 w-3 mx-4 my-2" />
           </button>
           </div>
@@ -65,33 +66,26 @@ const Home = () => {
       </div>
 
       {/* Bid section */}
-
-      <div className='md:flex  bg-blacky-light sm:pl-8 xl:pl-20 w-full h-1/6'>
-        <div className='w-full md:1/2 lg:w-2/3'>
-          <div className="p-10 flex">
-            <div className="">
-              <img className='w-20 h-20' src={require('../Assets/clock.png')}></img>
-            </div>
-            <div className="w-48 h-16 mt-2 bg-whiteglow text-blacky-dark flex justify-center items-center text-xl font-bold border border-none rounded-full">
-              <span className="flex text-xl">Ends in&nbsp;<Timer /></span>
-            </div>
-          </div>
-
-          <h1 className='font-bold text-4xl text-evergreen px-10 md:px-20 py-2'>
-            Bid for today
+      <div className='flex flex-col-reverse pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52 bg-gradient-to-r from-[rgba(230,255,232,0.37)] to-[rgba(232,255,230,1)] md:pr-12 lg:pr-20 py-20'>
+        <div className='text-center items-center md:items-start md:text-left flex flex-col justify-center gap-[20px] w-[100%] md:w-[50%] 2xl:w-[60%]'>
+          <h1 style={{fontSize:"35px", fontWeight:"800"}}>
+    Bid For Today
           </h1>
-          <p className=" text-whiteglow px-10 md:px-20 py-3">Wish you could bid hotel prices for your budget and make your trip more pocket friendly? Here's an end to your worries because we let you place your bid for today's lowest hotel prices. </p>
-          <h2 className="text-3xl text-whiteglow font-bold px-10 md:px-20 py-2">Intersting isn't it?</h2>
-
-          <div className="px-10 md:px-20 py-5 pb-12">
-            <button className='font-bold text-lg border p-2 rounded-md w-full sm:w-48 bg-whiteglow hover:bg-evergreen border-transparent hover:border-transparent hover:transition-colors hover:duration-200' ><Link className="" to="/what-is-bid">Know More</Link></button>
-          </div>
+          <p style={{fontSize:"18px"}}>
+          Wish you could bid hotel prices for your budget and make your trip more pocket friendly? Here's an end to your worries because we let you place your bid for today's lowest hotel prices.
+          </p>
+          <h3 style={{fontSize:"25px"}}>
+          Intersting isn't it?
+          </h3>
+          <button className='flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500'>
+Know more
+          </button>
         </div>
-        <div className="md:1/2 lg:w-1/3 flex items-end justify-end">
-          <img className="w-[80%] sm:w-1/2 md:w-full sm:-mt-40 " src={require('../Assets/Image.png')}></img>
+        <div className='w-[100%] md:w-[50%] 2xl:w-[40%] flex justify-center items-center'>
+          <img src={bidingImg} className="w-[100%] sm:w-[50%] md:w-[100%] lg:w-[70%]" alt="" />
         </div>
       </div>
-
+      
       {/* special offers block */}
 
       <div className="mt-20 mb-12">
@@ -124,11 +118,10 @@ const Home = () => {
 
       {/* Reviews block */}
 
-      <div className='bg-graydust-light'>
+      <div className='bg-graydust-light pb-12'>
         <h1 className='font-bold text-4xl text-center pt-7 mb-8'>Reviews</h1>
-        <div className='hidden sm:block px-20'><Review /></div>
-        <div className='sm:hidden'><ReviewMob /></div>
-        <div className='text-center py-10 px-7'><button className='bg-blacky-dark text-whiteglow font-semibold p-2 px-10 rounded-md  sm:w-auto hover:bg-evergreen hover:text-blacky-dark hover:transition-colors hover:duration-200'>More reviews</button></div>
+        <div className='px-4 sm:px-20'><Reviews /></div>
+
       </div>
 
       {/* Footer block */}

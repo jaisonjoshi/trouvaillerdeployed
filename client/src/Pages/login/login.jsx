@@ -4,8 +4,8 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {AuthContext} from '../components/context/AuthContext'
-
-
+import loginwall from '../Assets/loginwall.webp'
+import google from '../Assets/google.png'
 
 
 const Login = () => {
@@ -47,38 +47,25 @@ const Login = () => {
 
     return (
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
-            <div className="">
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-screen w-full">
+            <div className="h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-40">
 
 
-                <div className="mx-14 mt-36 mb-5 grid grid-cols-1 sm:grid-cols-2">
-                    <div className="flex justify-center items-center m-3">
-                        <button className="w-48 flex justify-center items-center text-blacky-light p-3 shadow-lg shadow-gray-500 rounded-md text-xs">
-                            <img src={require('../Assets/Google.png')} alt="Google" className="h-3 w-3 mr-2" />
-                            Sign Up with Google
-                        </button>
-                    </div>
-                    <div className="flex justify-center items-center m-3">
-                        <button className="w-48 flex justify-center items-center text-blacky-light p-3 shadow-lg shadow-gray-500 rounded-md text-xs">
-                            <img src={require('../Assets/Facebook.png')} alt="Facebook" className="h-3 w-3 mr-2" />
-                            Sign Up with Facebook
-                        </button>
-                    </div>
-                </div>
-
-                <p className="text-center text-blacky-light text-sm m-2">- OR -</p>
-
-                <div className="flex flex-col">
+                
+            <div className='flex justify-center'><p style={{fontSize:"18px"}} className="text-[grey]">Welcome to Trouvailler.com</p></div>
+            <div className='mt-16'><div className="flex justify-center border border-2 rounded mx-14 gap-2 py-1 items-center "><img src={google} /><span>Login with Google</span></div></div>
+            <p className='text-center mt-8'>or</p>
+                <div className="flex flex-col mt-5">
                 <input
             type="text"
-            className="mx-14 p-3 outline-none border border-transparent border-b-blacky-medium hover:border-b-evergreen duration-500"
+            className="mx-14 p-3 outline-none border border-transparent focus:border-transparent focus:ring-0 border-b-blacky-medium focus:border-b-evergreen duration-500"
             placeholder="username"
             id="username"
             onChange={handleChange}
           />
           <input
             type="password"
-            className="mx-14 p-3 outline-none border border-transparent border-b-blacky-medium hover:border-b-evergreen duration-500"
+            className="mx-14 p-3 outline-none border border-transparent focus:border-transparent focus:ring-0 border-b-blacky-medium focus:border-b-evergreen duration-500"
             placeholder="password"
             id="password"
             onChange={handleChange}
@@ -91,15 +78,16 @@ const Login = () => {
             onClick={handleClick}
             className=" hover:bg-evergreen duration-500 bg-blacky-dark text-whiteglow w-full rounded-md p-2 my-5"
           >Login</button>
-                {error && <span>{error.message}</span>}        
+          <p>Forgot password</p>
+                {error && <span className='text-[red]'>{error.message} username or password. Please try again</span>}        
                 </div>
 
-                <p className="mx-14">New here?
-                    <Link className="" to="/signup">Signup</Link></p>
+                <p className="mx-14 text-center">Don't have an account? 
+                    <Link className="text-[#339633]" to="/signup">   Sign up here</Link></p>
             </div>
 
-            <div className="bg-evergreen flex justify-center items-center">
-                <img src={require('../Assets/Trouvailler.png')} alt="" className="" />
+            <div style={{backgroundImage:`url(${loginwall})`}} className="hidden lg:flex justify-center items-center h-[100vh] bg-center bg-no-repeat bg-cover">
+                
             </div>
         </div>
     )

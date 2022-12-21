@@ -7,7 +7,7 @@ import axios from "axios";
 import { Navbar } from 'flowbite-react/lib/cjs/components/Navbar';
 import { Button } from 'flowbite-react/lib/cjs/components/Button';
 import './navbar.css';
-const NavbarTest = () => {
+const NavbarTest = ({color}) => {
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
 })
@@ -33,14 +33,40 @@ const NavbarTest = () => {
         dispatch({ type: "LOGOUT", payload: {message:"logged out"} });
       }
     };
+    const [shownav, setShow] = useState("fixed opacity-100 bg-trans")
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [colord, setColor] = useState('text-whiteglow')
+    useEffect(()=> {
+      window.addEventListener('scroll', setNav)
+      
+      return() => {
+        window.removeEventListener('scroll',setNav)
+      }
+    })
 
-
-    
-
-
+    const setNav=() => {
+      if (window !== undefined) {
+        let windowHeight = window.scrollY;
+        windowHeight > 200 ? setShow('absolute opacity-0'): setShow('fixed opacity-100 bg-trans');
+      if(windowHeight> 200){
+        if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
+          setShow('absolute'); 
+        } else { // if scroll up show the navbar
+          setShow('fixed bg-[white] py-[1rem] navbar-shadow');  
+          setColor("text-blacky-dark")
+        }
+  
+        // remember current page location to use in the next move
+        setLastScrollY(window.scrollY);
+      }
+      if(windowHeight<200 && color == "text-whiteglow"){
+        setColor("text-whiteglow")
+      }
+        
+    }}
   return (
     <div>
-    <Navbar className={` w-full z-50 top-0 left-0   px-8 transition-all duration-500 ease-in-out `}
+    <Navbar className={` w-full z-50 top-0 left-0   text-whiteglow ${shownav} transition-all duration-300 ease-in-out py-12 px-8 transition-all duration-500 ease-in-out `}
 fluid={true}
 
 >
@@ -70,11 +96,11 @@ fluid={true}
 </div>
 
 <Navbar.Link href="/" 
-                class={`p-3 sm:p-0 text-lg text-blacky-dark hover:text-evergreen duration-500`}>
+                class={`p-3 sm:p-0 text-lg ${colord}  hover:text-evergreen duration-500`}>
                 Home
             </Navbar.Link>
             <Navbar.Link href="/bid-status"
-                class={`p-3 sm:p-0 text-lg text-blacky-dark hover:text-evergreen duration-500`}>
+                class={`p-3 sm:p-0 text-lg ${colord}  hover:text-evergreen duration-500`}>
                 My bids
             </Navbar.Link>
         {/*     <Navbar.Link href="/"
@@ -82,7 +108,7 @@ fluid={true}
                 About
             </Navbar.Link> */}
             <Navbar.Link href="/"
-                class={`p-3 sm:p-0 text-lg text-blacky-dark hover:text-evergreen duration-500`} >
+                class={`p-3 sm:p-0 text-lg ${colord}  hover:text-evergreen duration-500`} >
                 Contact
             </Navbar.Link>
 </Navbar.Collapse>
