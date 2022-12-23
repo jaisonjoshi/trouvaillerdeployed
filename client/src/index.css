@@ -1,7 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.preloader{
+    display: flex;
+    opacity: 1 !important;
+    width: 100vw;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+.preloader img{
+    width: 150px;
+}
+.crop-box-con{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;        padding: 1rem;
+    position: absolute;
+    background-color: white !important;
 
+}
+.loading-div{
+    display: flex;
+    width: 100%;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    justify-content: center;
+}
+body {
+    font-family: Roboto, Helvetica, Arial, sans-serif !important;
+  }
 nav{
     background-color: transparent !important;
 }
@@ -83,4 +111,13 @@ input{outline: none;}
 
 .navbar-shadow{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px !important;
+}
+
+
+.blacktext{
+    color: black !important;
+}
+
+.whitetext{
+    color: white !important;
 }

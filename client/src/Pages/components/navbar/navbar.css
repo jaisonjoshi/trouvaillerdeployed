@@ -5,6 +5,10 @@ nav li{
 .bg-trans{
     background-color: rgba(0, 0, 0, 0) !important;
 }
+nav{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
 @media screen and (max-width: 768px)  {
     nav ul{
         width: 100%;

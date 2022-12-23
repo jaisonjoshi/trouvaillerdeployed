@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import {useNavigate} from "react-router-dom"
 import axios from "axios";
+import avatar from '../../Assets/avatar.png'
 import { Navbar } from 'flowbite-react/lib/cjs/components/Navbar';
 import { Button } from 'flowbite-react/lib/cjs/components/Button';
 import './navbar.css';
@@ -15,7 +16,7 @@ const NavbarTest = ({color}) => {
 
   const { user, loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  console.log(user)
   //logout code fetching
   const handleClick = async (e) => {
       e.preventDefault();
@@ -35,7 +36,7 @@ const NavbarTest = ({color}) => {
     };
     const [shownav, setShow] = useState("fixed opacity-100 bg-trans")
     const [lastScrollY, setLastScrollY] = useState(0);
-    const [colord, setColor] = useState('text-whiteglow')
+    const [colord, setColor] = useState("blacktext")
     useEffect(()=> {
       window.addEventListener('scroll', setNav)
       
@@ -53,15 +54,18 @@ const NavbarTest = ({color}) => {
           setShow('absolute'); 
         } else { // if scroll up show the navbar
           setShow('fixed bg-[white] py-[1rem] navbar-shadow');  
-          setColor("text-blacky-dark")
         }
   
         // remember current page location to use in the next move
         setLastScrollY(window.scrollY);
       }
       if(windowHeight<200 && color == "text-whiteglow"){
-        setColor("text-whiteglow")
+        setColor("whitetext")
       }
+      else{
+        setColor("blacktext")
+      } 
+     
         
     }}
   return (
@@ -80,7 +84,7 @@ fluid={true}
 <Navbar.Toggle />
 <Navbar.Collapse className="flex items-center">
 <div className="flex md:order-2 gap-7 ml-20 items-center  nav-login-box">
-{ user?<div className='nav-login'><span>{user.username}</span>
+{ user?<div className='nav-login flex justify-center items-center'><Link to="/user"><span><img src={user.img} className="w-[40px] h-[40px] rounded-full"/></span></Link>
         <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
         <div className="md:flex my-4 ">
            <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow">
@@ -96,11 +100,11 @@ fluid={true}
 </div>
 
 <Navbar.Link href="/" 
-                class={`p-3 sm:p-0 text-lg md:${colord}  md:hover:text-evergreen duration-500`}>
+                class={`p-3 sm:p-0 text-lg  ${colord}  md:hover:text-evergreen duration-500`}>
                 Home
             </Navbar.Link>
             <Navbar.Link href="/bid-status"
-                class={`p-3 sm:p-0 text-lg md:${colord}  md:hover:text-evergreen duration-500`}>
+                class={`p-3 sm:p-0 text-lg ${colord}  md:hover:text-evergreen duration-500`}>
                 My bids
             </Navbar.Link>
         {/*     <Navbar.Link href="/"
@@ -108,7 +112,7 @@ fluid={true}
                 About
             </Navbar.Link> */}
             <Navbar.Link href="/"
-                class={`p-3 sm:p-0 text-lg md:${colord}  md:hover:text-evergreen duration-500`} >
+                class={`p-3 sm:p-0 text-lg ${colord}  md:hover:text-evergreen duration-500`} >
                 Contact
             </Navbar.Link>
 </Navbar.Collapse>

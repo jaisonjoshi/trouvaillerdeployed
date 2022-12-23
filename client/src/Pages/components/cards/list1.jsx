@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Dropdown } from 'flowbite-react/lib/cjs/components/Dropdown';
 import Footer from '../Footer/Footer';
 import NavbarTest from '../navbar/navbar';
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const List1_card = () => {
   const {data,loading,error}=useFetch("/packages")
@@ -155,12 +156,25 @@ const List1_card = () => {
 
                
             </div>
-      {loading?("Loading"):(
+      {loading?(
+          <div className='loading-div'>
+          <PropagateLoader
+
+
+              color={'#32fca7'}
+              loading={loading}
+
+              size={15}
+
+              />
+        </div>
+
+
+      ):(
         <div className='px-8 flex flex-wrap md:gap-[10%] lg:gap-[5%]'>
         {data.map((item)=>(
-              <Link className="md:w-[45%] lg:w-[30%]" to={`/list/package/${item._id}`}>
 
-          <div  key={item._id} >
+          <div  key={item._id} className="md:w-[45%] lg:w-[30%]">
         <img className='             object-cover w-full rounded-lg' src={item.images[0]} alt="" />
         <div className='py-5'>
             <h3 className='text-xl font-bold text-blacky-medium'>{item.title}</h3>
@@ -173,9 +187,10 @@ const List1_card = () => {
         </div>
         <div className="py-5 flex justify-between items-center">
             <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
-            <button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">Whats app</button>
+            <Link  to={`/list/package/${item._id}`}>
+ <button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">View</button></Link>
         </div>
-        </div></Link>
+        </div>
         ))}
 
         </div>

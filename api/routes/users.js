@@ -10,13 +10,13 @@ const { verifyAdmin, verifyToken, verifyUser } =require('../utils/verifyToken');
  
 const router=express.Router();
 //UPDATE
-router.patch("/:id", verifyUser, updateUser);
+router.patch("/:id", updateUser);
 
 //DELETE
 router.delete("/:id", verifyUser, deleteUser);
 
 //GET
-router.get("/find/:id", verifyUser, getUser);
+router.get("/find/:id", getUser);
 router.get("/countvendors", countVendors);
 router.get("/countusers", countUsers);
 

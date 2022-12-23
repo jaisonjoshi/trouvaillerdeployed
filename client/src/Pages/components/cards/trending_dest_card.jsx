@@ -2,7 +2,7 @@
 import React from "react";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
-
+import PropagateLoader from "react-spinners/PropagateLoader";
 const DestCard = () => {
   const { data, loading, error } = useFetch(
     "/packages?rating=3&rating=4&rating=5&limit=6"
@@ -11,11 +11,20 @@ const DestCard = () => {
   return (
     <>
         {loading ? (
-          "Loading"
+           <div className='loading-div'>
+           <PropagateLoader
+
+
+               color={'#32fca7'}
+               loading={loading}
+
+               size={15}
+
+               />
+         </div>
         ) : (
           <>
             {data.map((item) => (
-             <Link className="w-[100%] " to={`/list/package/${item._id}`}>
 
              <div  key={item._id} >
            <img className='h-60 sm:h-72 object-cover w-full rounded-lg' src={item.images[0]} alt="" />
@@ -30,9 +39,10 @@ const DestCard = () => {
            </div>
            <div className="py-5 flex justify-between items-center">
                <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
-               <button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">Whats app</button>
+               <Link  to={`/list/package/${item._id}`}>
+<button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">View</button> </Link>
            </div>
-           </div></Link>
+           </div>
             ))}
           </>
         )}

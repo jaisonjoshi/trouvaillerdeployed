@@ -77,9 +77,9 @@ const Home = () => {
           <h3 style={{fontSize:"25px"}}>
           Intersting isn't it?
           </h3>
-          <button className='flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500'>
+          <Link to="/what-is-bid"><button className='flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500'>
 Know more
-          </button>
+          </button></Link>
         </div>
         <div className='w-[100%] md:w-[50%] 2xl:w-[40%] flex justify-center items-center'>
           <img src={bidingImg} className="w-[100%] sm:w-[50%] md:w-[100%] lg:w-[70%]" alt="" />
@@ -112,7 +112,7 @@ Know more
           
         </div>
         <div className='p-7 text-center mb-12'>
-          <button className='font-medium border-graydust-dark border p-2 rounded-md w-full sm:w-auto px-10 hover:bg-evergreen hover:text-whiteglow hover:border-transparent hover:transition-colors hover:duration-200' >More destinations</button>
+          <Link to="/packages" ><button className='font-medium border-graydust-dark border p-2 rounded-md w-full sm:w-auto px-10 hover:bg-evergreen hover:text-whiteglow hover:border-transparent hover:transition-colors hover:duration-200' >More destinations</button></Link>
         </div>
       </div >
 

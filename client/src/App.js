@@ -8,6 +8,8 @@ import {
   Ridirect,
   Switch,
 }from "react-router-dom";
+import {useState, useEffect} from 'react'
+
 import Bidform from "./Pages/bidform/bidform.jsx";
 import Home from "./Pages/home/Home.jsx";
 import Login from "./Pages/login/login.jsx";
@@ -21,14 +23,53 @@ import Destination from "./Pages/trending/trending.jsx";
 import Offers from "./Pages/offers/offers.jsx";
 import List1_card from "./Pages/components/cards/list1.jsx";
 import List2_card from "./Pages/components/cards/list2.jsx";
+import Userprofile from "./Pages/userProfile/Userprofile.js";
+import Updateuser from "./Pages/userProfile/Updateprofile.js";
+import Updatepassword from "./Pages/userProfile/Updatepassword.js";
+import CircleLoading from '../src/Pages/components/spinningLoader/CircleLoading'
+import logo from './Pages/Assets/TrouvaillerGreen .png'
+import PropagateLoader from "react-spinners/PropagateLoader";
+
+
 
 function App() {
+
+  const [loading, setLoading] = useState(true)
+  useEffect(()=> {
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+    }, 2000)
+  }, [])
+  const [open, setOpen] = useState(false)
+
   return (
+    <div className="App">
+      <CircleLoading open={open}/>
+      {loading ?
+           <div className='preloader'>
+             <img src={logo} />
+             <PropagateLoader
+
+
+           color={'#32fca7'}
+           loading={loading}
+           
+           size={15}
+
+         /></div>
+      
+      :
+      
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/user" element={<Userprofile />} />
+        <Route path="/user/update" element={<Updateuser setOpen={setOpen}/>} />
+        <Route path="/user/update/password" element={<Updatepassword />} />
+
         <Route path="/bidform" element={<Bidform/>}/>
         <Route path="/packages" element={<List1_card/>}/>
         <Route path="/hotels" element={<List2_card/>}/>
@@ -44,6 +85,8 @@ function App() {
         <Route path="/list/hotel/:id" element={<Hotel/>}/>
       </Routes>
     </BrowserRouter>
+}
+    </div>
   );
 }
 
