@@ -407,15 +407,6 @@ const List2_card = () => {
         <div className="loading-div">
           <PropagateLoader color={"#32fca7"} loading={loading} size={15} />
         </div>
-<<<<<<< HEAD
-        <div className=" pb-5 flex justify-between items-center">
-            <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
-            <Link  to={`/list/hotel/${item._id}`}>
-<button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">View</button></Link>
-        </div>
-        </div>
-        ))}
-=======
       ) : (
         <div className="px-8 flex flex-wrap md:gap-[10%] lg:gap-[5%]">
           {data.map((item) => (
@@ -445,7 +436,6 @@ const List2_card = () => {
               </div>
             </div>
           ))}
->>>>>>> 4eb3e1047477c3e2fb282856778bfa988d6db24b
         </div>
       )}
 
