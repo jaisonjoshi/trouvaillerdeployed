@@ -4,8 +4,19 @@ const mongoose=require('mongoose')
 //get all workout
 //inside 'find' you can pass params if you need filtered result
 const getPackages = async(req,res)=>{
-    const package = await Package.find(req.query).sort({createdAt:-1})
-    res.status(200).json(package)
+   
+    const {min,max,...others}=req.query;
+
+    
+    const package=await Package.find({
+        ...others,
+        cheapestPrice:{$gt:min||1,$lt:max||999999}
+    }).limit(req.query.limit).sort({createdAt:-1})
+res.status(200).json(package)
+
+    //
+   // const package = await Package.find(req.query).sort({createdAt:-1})
+    //res.status(200).json(package)
 }
 //get a single workout
 const getPackage = async(req,res)=>{

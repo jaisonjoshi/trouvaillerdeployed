@@ -53,40 +53,35 @@ const List2_card = () => {
     console.log(destination);
   };
 
-  //add each element to array,upon submit,sort arr,setmin and max as first and last val with type conv
   const handlebudgetChange = (e) => {
     const { value, checked } = e.target;
     console.log(value + " state is" + checked);
 
     if (checked && value == "b1") {
-
-        setMax(10000)
      
-         setMin(0);
-        // if(max==999999)
-        // {setMax(10000)}
+        setMin(0);
+        if(max==999999)
+        {setMax(10000)}
      }
     
     else if (checked && value == "b2") {
+      //test code
+      if (min == 0 && max == 999999) {
         setMin(10000);
         setMax(20000);
-      //test code
-    //   if (min == 0 && max == 999999) {
-    //     setMin(10000);
-    //     setMax(20000);
-    //   } else {
-    //     if (max != 999999) {
-    //       if (max < 20000) {
-    //         setMax(20000);
-    //       }
-    //     }
+      } else {
+        if (max != 999999) {
+          if (max < 20000) {
+            setMax(20000);
+          }
+        }
 
-    //     if (min != 0) {
-    //       if (min > 10000) {
-    //         setMin(10000);
-    //       }
-    //     }
-    //   }
+        if (min != 0) {
+          if (min > 10000) {
+            setMin(10000);
+          }
+        }
+      }
 
       //test code
 
@@ -112,47 +107,47 @@ const List2_card = () => {
     } else if (checked && value == "b3") {
 
         //start
-        // if (min == 0 && max == 999999) {
-        //     setMin(20000);
-        //     setMax(40000);
-        //   } else {
-        //     if (max != 999999) {
-        //       if (max < 40000) {
-        //         setMax(40000);
-        //       }
-        //     }
+        if (min == 0 && max == 999999) {
+            setMin(20000);
+            setMax(40000);
+          } else {
+            if (max != 999999) {
+              if (max < 40000) {
+                setMax(40000);
+              }
+            }
     
-        //     if (min != 0) {
-        //       if (min > 20000) {
-        //         setMin(20000);
-        //       }
-        //     }
-        //   }
+            if (min != 0) {
+              if (min > 20000) {
+                setMin(20000);
+              }
+            }
+          }
         //end
         //
-      setMin(20000);
-       setMax(40000);
+    //   setMin(20000);
+    //   setMax(40000);
       //
     } else if (checked && value == "b4") {
-        // if (min == 0 && max == 999999) {
-        //     setMin(40000);
-        //     setMax(50000);
-        //   } else {
-        //     if (max != 999999) {
-        //       if (max < 50000) {
-        //         setMax(50000);
-        //       }
-        //     }
+        if (min == 0 && max == 999999) {
+            setMin(40000);
+            setMax(50000);
+          } else {
+            if (max != 999999) {
+              if (max < 50000) {
+                setMax(50000);
+              }
+            }
     
-        //     if (min != 0) {
-        //       if (min > 50000) {
-        //         setMin(50000);
-        //       }
-        //     }
-        //   }
+            if (min != 0) {
+              if (min > 50000) {
+                setMin(50000);
+              }
+            }
+          }
 
-       setMin(40000);
-      setMax(50000);
+    //   setMin(40000);
+    //   setMax(50000);
     } else {
       setMin(0);
       setMax(999999);
@@ -277,14 +272,14 @@ const List2_card = () => {
         >
           <Dropdown.Item>
             <input
-              type="radio"
+              type="checkbox"
               className="accent-evergreen"
-              id="default-radio-1"
+              id="budget1"
               name="budget"
               value="b1"
               onChange={handlebudgetChange}
             />{" "}
-            <label for="default-radio-1" className="pl-3 text-base text-blacky-bright">
+            <label for="budget1" className="pl-3 text-base text-blacky-bright">
               {" "}
               Less than 10,000
             </label>
@@ -292,14 +287,14 @@ const List2_card = () => {
           </Dropdown.Item>
           <Dropdown.Item>
             <input
-              type="radio"
+              type="checkbox"
               className="accent-evergreen"
-              id="default-radio-2"
-              name="budget"
+              id="family"
+              name=""
               value="b2"
               onChange={handlebudgetChange}
             />
-            <label for="default-radio-2" className="pl-3 text-base text-blacky-bright">
+            <label for="family" className="pl-3 text-base text-blacky-bright">
               {" "}
               10,000 - 20,000
             </label>
@@ -307,14 +302,14 @@ const List2_card = () => {
           </Dropdown.Item>
           <Dropdown.Item>
             <input
-              type="radio"
+              type="checkbox"
               className=" accent-evergreen"
-              id="default-radio-3"
-              name="budget"
+              id="friends"
+              name=""
               value="b3"
               onChange={handlebudgetChange}
             />
-            <label for="default-radio-3" className="pl-3 text-base text-blacky-bright">
+            <label for="friends" className="pl-3 text-base text-blacky-bright">
               {" "}
               20,000 - 40,000
             </label>
@@ -322,14 +317,14 @@ const List2_card = () => {
           </Dropdown.Item>
           <Dropdown.Item>
             <input
-              type="radio"
+              type="checkbox"
               className=" accent-evergreen"
-              id="default-radio-4"
-              name="budget"
+              id="holiday"
+              name=""
               value="b4"
               onChange={handlebudgetChange}
             />
-            <label for="default-radio-4" className="pl-3 text-base text-blacky-bright">
+            <label for="holiday" className="pl-3 text-base text-blacky-bright">
               {" "}
               40,000 - 50,000
             </label>
@@ -383,19 +378,19 @@ const List2_card = () => {
                     dismissOnClick={false}
                     class=" w flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs">
                     <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="adventure" name="" value="" />
+                        <input type="checkbox" className=" accent-evergreen" id="adventure" name="" value="" />
                         <label for="adventure" className="pl-3 text-base text-blacky-bright">Adventure</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="nature" name="" value="" />
+                        <input type="checkbox" className=" accent-evergreen" id="nature" name="" value="" />
                         <label for="nature" className="pl-3 text-base text-blacky-bright"> Nature</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="hill" name="" value="" />
+                        <input type="checkbox" className=" accent-evergreen" id="hill" name="" value="" />
                         <label for="hill" className="pl-3 text-base text-blacky-bright"> Hill Station</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="religious" name="" value="" />
+                        <input type="checkbox" className=" accent-evergreen" id="religious" name="" value="" />
                         <label for="religious" className="pl-3 text-base text-blacky-bright"> Religious</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
@@ -407,15 +402,6 @@ const List2_card = () => {
         <div className="loading-div">
           <PropagateLoader color={"#32fca7"} loading={loading} size={15} />
         </div>
-<<<<<<< HEAD
-        <div className=" pb-5 flex justify-between items-center">
-            <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
-            <Link  to={`/list/hotel/${item._id}`}>
-<button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">View</button></Link>
-        </div>
-        </div>
-        ))}
-=======
       ) : (
         <div className="px-8 flex flex-wrap md:gap-[10%] lg:gap-[5%]">
           {data.map((item) => (
@@ -445,7 +431,6 @@ const List2_card = () => {
               </div>
             </div>
           ))}
->>>>>>> 4eb3e1047477c3e2fb282856778bfa988d6db24b
         </div>
       )}
 
