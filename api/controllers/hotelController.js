@@ -4,7 +4,18 @@ const mongoose=require('mongoose')
 //get all workout
 //inside 'find' you can pass params ifi you need filtered result
 const getHotels=async(req,res)=>{
-    const hotel=await Hotel.find(req.query).limit(req.query.limit).sort({createdAt:-1})
+
+
+    const {min,max,...others}=req.query;
+///new material
+
+//
+
+    
+    const hotel=await Hotel.find({
+        ...others,
+        cheapestPrice:{$gt:min||1,$lt:max||999999}
+    }).limit(req.query.limit).sort({createdAt:-1})
 res.status(200).json(hotel)
 }
 //get a single workout

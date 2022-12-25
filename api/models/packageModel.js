@@ -52,6 +52,10 @@ const packageSchema=new Schema({
     shedule : {
         type:[Shedule],
         required: true
+    },
+    category : {
+        type:String,
+        required: true
     }
     
     
