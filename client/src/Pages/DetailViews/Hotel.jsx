@@ -29,6 +29,7 @@ const Hotel = () => {
             setHotel(data)
         },[data])
         console.log(hote)
+        const text = "i would like to book for the hotel "
 
     return (
         <div>
@@ -45,7 +46,7 @@ const Hotel = () => {
                     <h1 className='text-2xl font-bold pb-5'>{hote.title}</h1>
                     <p className='text-md text-graydust-medium'><FontAwesomeIcon className='pr-1' icon={solid('location-dot')} />{hote.location}</p>
                     <h1 className='font-semibold text-xl py-5'> 17,500/-<span className='text-sm line-through text-graydust-medium'>{hote.cheapestPrice}/-</span></h1>
-                    <button className='bg-evergreen text-blacky-dark flex justify-center gap-3 items-center font-bold p-4 w-full rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button>
+                    <a href={"https://wa.me/919562523642?text=" + text + hote.title}><button className='bg-evergreen text-blacky-dark flex justify-center gap-3 items-center font-bold p-4 w-full rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button></a>
                     {/* Space for map */}
                     {/* <div className='w-full border mt-5'>
                         <h1>Space for map</h1>

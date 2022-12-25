@@ -27,6 +27,7 @@ const Package = () => {
             setPackage(data)
         },[data])
         console.log(pack)
+    const text = "i would like to book for the package "
     return (
 
 
@@ -47,7 +48,8 @@ const Package = () => {
                         <p>{pack.description}</p>
                         <h3 className='font-bold text-sm pt-4 text-xl'>{pack.duration}</h3>
                         <h1 className='font-semibold text-xl py-5'> {pack.cheapestPrice}/-<span className='text-sm line-through text-graydust-medium'>19,000/-</span></h1>
-                        <button className='bg-evergreen text-blacky-dark flex justify-center gap-3 items-center font-bold p-4 w-full rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button>
+
+                        <a href={"https://wa.me/919562523642?text=" + text + pack.title }><button className='bg-evergreen text-blacky-dark flex justify-center gap-3 items-center font-bold p-4 w-full rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button></a>
                     </div>
                 </div>
                   

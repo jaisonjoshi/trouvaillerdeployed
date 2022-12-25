@@ -34,6 +34,7 @@ const Updateuser = ({setOpen}) => {
 
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
+        console.log(info)
     }
     const [file, setFile] = useState("")
 
@@ -112,9 +113,9 @@ const Updateuser = ({setOpen}) => {
                     <input type="file" id='profilephoto' className='hidden' onChange={handleImageChange}/>
                     <div className="w-[100%] md:w-[50%] flex flex-col gap-[10px] items-start">
                        <form action="" className='flex flex-col gap-[10px] items-start text-[grey]'>
-                            <input className='border-none rounded outline-none' type="text" defaultValue={data.username} onChange={handleChange} />
-                            <input type="text" className='border-none rounded outline-none' defaultValue={data.email} onChange={handleChange}/>
-                            <input type="text" className='border-none rounded outline-none' defaultValue={data.phone} onChange={handleChange}/>
+                            <input className='border-none rounded outline-none' type="text" defaultValue={data.username} id="username" onChange={handleChange} />
+                            <input type="text" className='border-none rounded outline-none' defaultValue={data.email} id="email" onChange={handleChange}/>
+                            <input type="text" className='border-none rounded outline-none' defaultValue={data.phone} id="phone" onChange={handleChange}/>
                             <button  className="flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500" onClick={handleReviewClick}>Update</button>
                        </form>
                     </div>

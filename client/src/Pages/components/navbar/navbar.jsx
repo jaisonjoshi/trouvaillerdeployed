@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import {useNavigate} from "react-router-dom"
 import axios from "axios";
 import avatar from '../../Assets/avatar.png'
+import useFetch from '../../../hooks/useFetch';
 import { Navbar } from 'flowbite-react/lib/cjs/components/Navbar';
 import { Button } from 'flowbite-react/lib/cjs/components/Button';
 import './navbar.css';
@@ -13,8 +14,13 @@ const NavbarTest = ({color}) => {
     baseURL: process.env.REACT_APP_API_URL,
 })
   //const { user } = useContext(AuthContext);
-
+  
   const { user, loading, error, dispatch } = useContext(AuthContext);
+  const [userdet, setUser] = useState({})
+    const {data} = useFetch(`/user/find/${user._id}`)
+    useEffect(()=> {
+        setUser(data)
+    }, [data])
   const navigate = useNavigate();
   console.log(user)
   //logout code fetching
@@ -83,8 +89,8 @@ fluid={true}
 </Navbar.Brand>
 <Navbar.Toggle />
 <Navbar.Collapse className="flex items-center">
-<div className="flex md:order-2 gap-7 ml-20 items-center  nav-login-box">
-{ user?<div className='nav-login flex justify-center items-center'><Link to="/user"><span><img src={user.img} className="w-[40px] h-[40px] rounded-full"/></span></Link>
+<div className="flex md:order-2 gap-7 ml-0 md:ml-20 items-center  nav-login-box">
+{ user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src={userdet.img} className="w-[40px] h-[40px] rounded-full"/><h2 className='md:hidden'>{userdet.username}</h2></span></Link>
         <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
         <div className="md:flex my-4 ">
            <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow">
@@ -100,7 +106,7 @@ fluid={true}
 </div>
 
 <Navbar.Link href="/" 
-                class={`p-3 sm:p-0 text-lg  ${colord}  md:hover:text-evergreen duration-500`}>
+                class={`p-3 md:p-2 text-lg  ${colord}  md:hover:text-evergreen duration-500`}>
                 Home
             </Navbar.Link>
             <Navbar.Link href="/bid-status"

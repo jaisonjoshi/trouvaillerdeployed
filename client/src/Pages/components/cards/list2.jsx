@@ -183,7 +183,7 @@ const List2_card = () => {
         <div className=" pb-5 flex justify-between items-center">
             <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
             <Link  to={`/list/hotel/${item._id}`}>
-<button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">Whats app</button></Link>
+<button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">View</button></Link>
         </div>
         </div>
         ))}

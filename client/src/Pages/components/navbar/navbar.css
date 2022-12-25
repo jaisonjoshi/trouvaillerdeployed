@@ -19,7 +19,7 @@ nav{
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
     nav .nav-login-box{
-        margin-left: 2.5rem !important;
+        margin-left: 0.75rem !important;
     }
     nav .nav-login{
         width: 100%;
@@ -40,4 +40,5 @@ nav{
     
         font-weight: 800;
     }
+    
 }
