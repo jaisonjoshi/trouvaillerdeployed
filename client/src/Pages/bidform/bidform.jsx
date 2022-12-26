@@ -48,7 +48,7 @@ const Bidform = () => {
             <div className=""><Navbar /></div>
             <div className="w-full mt-40 px-12 md:px-20 lg:px-40">
                 <h1 className="text-4xl  text-blacky-medium font-bold">Bid Today</h1>
-                <p className="text-lg my-5 text-justify text-blacky-light">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                <p className="text-lg my-5 text-sm md:text-[18px] text-blacky-light">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
             </div>
             <form action="" className="" method="post">
                 <div className="py-10 px-12 md:px-20 lg:px-40">

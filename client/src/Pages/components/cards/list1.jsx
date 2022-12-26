@@ -200,7 +200,7 @@ const handlebudgetChange = (e) => {
     
     
        <div className="mt-36 flex justify-center  ">
-                <div className=' w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] outline outline-offset-1 outline-1 outline-[#0cffaa]'>
+                <div className=' w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] border border-[#0cffaa]'>
                     <div className='w-[50%] text-whiteglow flex justify-center items-center px-8 py-2 bg-[#0cffaa] rounded-l-[1000px]'>
                         <span>Packages</span>
                     </div>
@@ -212,7 +212,7 @@ const handlebudgetChange = (e) => {
             <hr className="w-[80%] my-5 mx-auto" />
                 <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 pb-8">
                 <h1 style={{fontSize:"32px"}} className='text-center'>Trending Tour Packages for you</h1>
-                <p className='text-center text-blacky-light'>Find the best options out there if you are planning for a honeymoon or a trip with your family.The most exciting offers with a bunch of various options you can choose from.Grab the best deal and add it to your mesmerising travel journey! </p>
+                <p className='text-center text-blacky-light text-md md:text-lg'>Find the best options out there if you are planning for a honeymoon or a trip with your family.The most exciting offers with a bunch of various options you can choose from.Grab the best deal and add it to your mesmerising travel journey! </p>
             </div>
             <div className="flex justify-center py-6">
                     <div className="flex items-center w-[70%] md:w-[60%] lg:w-[30%] justify-between focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
@@ -335,21 +335,21 @@ const handlebudgetChange = (e) => {
         <div className='px-8 flex flex-wrap md:gap-[10%] lg:gap-[5%]'>
         {data.map((item)=>(
 
-          <div  key={item._id} className="md:w-[45%] lg:w-[30%]">
+          <div  key={item._id} className="pb-16 md:w-[45%] lg:w-[30%]">
         <img className='     w-full rounded-lg' src={item.images[0]} alt="" />
         <div className='py-5'>
             <h3 className='text-xl font-bold text-blacky-medium'>{item.title}</h3>
-            <p className='text-sm text-justify text-blacky-light card-text'>{item.description}</p>    
+            <p className='text-sm md:text-[17px]  text-blacky-light card-text'>{item.description}</p>    
         </div>
-        <div className=" flex">
-            <p className="text-lg text-blacky-light font-bold">{item.duration}</p>
-            <img src={require('../../Assets/People.png')} alt="" className="pl-5 h-6" />
-            <img src={require('../../Assets/People.png')} alt="" className="h-6" />
+        <div className=" flex items-center">
+            <p className="text-md md:text-lg text-blacky-light font-bold">{item.duration}</p>
+            <img src={require('../../Assets/People.png')} alt="" className="pl-5 h-4" />
+            <img src={require('../../Assets/People.png')} alt="" className="h-4" />
         </div>
-        <div className="py-5 flex justify-between items-center">
+        <div className="py-3 flex justify-between items-center">
             <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
             <Link  to={`/list/package/${item._id}`}>
- <button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">View</button></Link>
+ <button className="bg-evergreen text-blacky-light font-semibold text-sm px-8 py-1 rounded-md ">View</button></Link>
         </div>
         </div>
         ))}

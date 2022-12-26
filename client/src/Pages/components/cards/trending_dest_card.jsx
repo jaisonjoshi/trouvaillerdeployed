@@ -30,7 +30,7 @@ const DestCard = () => {
            <img className='w-full rounded-lg' src={item.images[0]} alt="" />
            <div className='py-5'>
                <h3 className='text-xl font-bold text-blacky-medium'>{item.title}</h3>
-               <p className='text-md textnormal card-text'>{item.description}</p>    
+               <p className='text-sm card-text md:text-[17px] textnormal  '>{item.description}</p>    
            </div>
            <div className=" flex">
                <p className="text-lg text-blacky-light font-bold">{item.duration}</p>

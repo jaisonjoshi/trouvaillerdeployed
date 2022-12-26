@@ -100,7 +100,7 @@ const Updateuser = ({setOpen}) => {
             {openCrop &&
             <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
             
-            <div className="mt-32 flex items-center justify-center px-8 py-8">
+            <div className="mt-20 md:mt-32 flex items-center justify-center px-8 py-8">
                 <div className="flex flex-col justify-center items-start  gap-[30px] user-con">
                     <div className="w-[50%] flex justify-start ">
                     <img className='w-[60%] md:w-[70%] max-w-[500px] rounded-full' src={

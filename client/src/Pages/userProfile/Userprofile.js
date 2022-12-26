@@ -57,16 +57,16 @@ const Userprofile = () => {
         
         :
         
-        <div className="mt-32 h-[60vh] flex items-center justify-center px-8">
+        <div className="mt-20 md:mt-32 h-[60vh] flex items-center justify-center px-8">
                 <div className="flex flex-col justify-center items-start md:flex-row md:justify-center md:items-center gap-[30px] md:gap-[10%] user-con">
                     <div className="w-[50%] flex justify-start md:justify-end">
                             <img src={userdet.img} className="w-[60%] md:w-[50%] max-w-[500px] rounded-full" alt="" />
                     </div>
                     <div className="w-[100%] md:w-[50%] flex flex-col gap-[10px] items-start">
                         <h2 className='text-2xl md:text-4xl'>{userdet.username}</h2>
-                        <h4 className='text-lg'>{userdet.email}</h4>
-                        <h4 className='text-lg'> {userdet.phone}</h4>
-                        <p className='flex w-[100%] gap-[20px] '><Link className='rounded py-[3px] px-[8px] bg-evergreen' to="/user/update">Update profile</Link><Link  className='rounded py-[3px] px-[8px] bg-evergreen' to="/user/update/password">Change password</Link></p>
+                        <h4 className='text-md'>{userdet.email}</h4>
+                        <h4 className='text-md'> {userdet.phone}</h4>
+                        <p className='flex w-[100%] gap-[20px] '><Link className='rounded py-[3px] px-[8px] bg-evergreen text-sm' to="/user/update">Update profile</Link><Link  className='rounded text-sm py-[3px] px-[8px] bg-evergreen' to="/user/update/password">Change password</Link></p>
                     </div>
                 </div>
             </div>

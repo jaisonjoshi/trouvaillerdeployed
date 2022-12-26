@@ -7,13 +7,13 @@ const BidStatusCard = ({bid}) => {
     
     return (
         <div>
-            <div className='shadow-md shadow-graydust-normal p-5 pb-8 my-5 rounded-lg'>
+            <div className='shadow-md shadow-gra2remydust-normal p-5 pb-8 my-5 rounded-lg'>
                 <div className='flex justify-between flex-wrap'>
-                    <h1 className='text-2xl font-bold text-blacky-light'><span className='text-3xl font-light pr-2'><FontAwesomeIcon icon={solid('location-dot')} /></span>{bid.destination}</h1>
+                    <h1 className='text-xl font-bold text-blacky-light mr-[50px] md:mr-[0] flex items-center pb-4 md:pb-0'><span className='text-3xl font-light pr-2'><FontAwesomeIcon icon={solid('location-dot')} /></span>{bid.destination}</h1>
                     <div className='bg-status-150 p-2 rounded-full border-graydust-normal'><h3><span className='text-status-100'><FontAwesomeIcon icon={solid('circle-check')} /></span> Accepted by {bid.accepted.length}</h3> </div>
                     {/* Code for other status indicators */}
                 </div>
-                <div className='flex py-2'>
+                <div className='flex items-center py-2'>
                     <FontAwesomeIcon className='text-xl text-blacky-light' icon={solid('calendar-week')} />
                     <div className='p-2'>
                         <p className='text-graydust-normal'>Check In</p>
@@ -25,15 +25,15 @@ const BidStatusCard = ({bid}) => {
                     </div>
                 </div>
                 <div className='flex flex-wrap'>
-                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light'><span><FontAwesomeIcon icon={solid('user-group')} /></span> {bid.accomodation} Guests</div>
-                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light'><span><FontAwesomeIcon icon={solid('person-shelter')} /></span> {bid.roomCount} Room</div>
-                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light'>{bid.ac}</div>
-                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg text-blacky-light'>Max Amount you bided : {bid.maxAmount}</div>
+                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-md'><span ><FontAwesomeIcon icon={solid('user-group')} /></span> {bid.accomodation} Guests</div>
+                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-md'><span  ><FontAwesomeIcon icon={solid('person-shelter')} /></span> {bid.roomCount} Room</div>
+                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-md'>{bid.ac}</div>
+                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg text-blacky-light '>Max Amount you bided : {bid.maxAmount}</div>
                 </div>
                 <hr className='mt-5 text-graydust-medium' />
                 <details>
                 <summary>
-                    <span className='pl-3 text-blacky-light'>
+                    <span className='pl-3 text-blacky-light text-sm md:text-md'>
                     Your Bid is accepted by {bid.accepted.length} hotels 
                     </span>
                 </summary>

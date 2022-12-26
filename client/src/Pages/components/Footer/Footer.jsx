@@ -13,9 +13,9 @@ const Footer = () => {
           <div className="w-[49%] md:w-[30%]">
               <h2 className='text-[white] text-lg pb-8'>Sitemap</h2>
               <ul className='flex flex-col gap-[10px]'>
-                <li className='text-[#e2e2e2] hover:text-[white]'><Link to="/"> Home</Link></li>
-                <li className='text-[#e2e2e2] hover:text-[white]'><Link to="/bid-status"> My Bids</Link></li>
-                <li className='text-[#e2e2e2] hover:text-[white]'><Link> Terms & conditions</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/"> Home</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/bid-status"> My Bids</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link> Terms & conditions</Link></li>
 
               </ul>
 
@@ -24,17 +24,17 @@ const Footer = () => {
 
           <h2 className='text-[white] text-lg pb-8'>Services</h2>
               <ul className=' flex flex-col gap-[10px]'>
-                <li className='text-[#e2e2e2] hover:text-[white]'><Link to="/what-is-bid"> Bid for a stay</Link></li>
-                <li className='text-[#e2e2e2] hover:text-[white]'><Link to="/hotels"> Hotels</Link></li>
-                <li className='text-[#e2e2e2] hover:text-[white]'><Link to="/packages"> Travel Packages</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/what-is-bid"> Bid for a stay</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/hotels"> Hotels</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/packages"> Travel Packages</Link></li>
 
               </ul>
 
           </div>
           <div className="w-[100%] md:w-[30%]">
-            <h2 className='text-[white] text-lg pb-8'>Connect us</h2>
+            <h2 className='text-[white] pt-16 md:pt-0 text-lg pb-4 md:pb-8'>Connect us</h2>
 
-              <p className='text-[#e2e2e2]'>Get in touch with us anytime through our official WhatsApp handle </p>
+              <p className='text-[#e2e2e2] text-sm md:text-md'>Get in touch with us anytime through our official WhatsApp handle </p>
               <a href="https://wa.me/918129177335"><button className='bg-evergreen text-[black] rounded px-8 py-3 mt-4'>WhatsApp <FontAwesomeIcon icon={faWhatsapp} className="ml-3 text-2xl" /></button></a>
 
           </div>
@@ -43,7 +43,7 @@ const Footer = () => {
 
        </div>
 
-        <div className='border-t-2 border-graydust-medium flex justify-between align-middle  p-6  mx-4 sm:mx-10'>
+        <div className='border-t-2 border-graydust-medium flex justify-between align-middle px-0 py-6 md:p-6  mx-4 sm:mx-10'>
           <a href="" className='w-4/12 sm:w-1/12'>
             <img src={Logo} alt="Trouvailler" className='sm:w-100 xl:w-3/4'/>
           </a>

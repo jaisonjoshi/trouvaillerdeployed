@@ -205,7 +205,7 @@ const List2_card = () => {
       <NavbarTest color={color} />
 
       <div className="mt-36 flex justify-center">
-        <div className=" w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] outline outline-offset-1 outline-1 outline-[#0cffaa]">
+        <div className=" w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] border border-[#0cffaa]">
           <Link
             to="/packages"
             className="w-[50%] flex justify-center items-center px-4 py-2 rounded-l-[1000px]"
@@ -226,7 +226,7 @@ const List2_card = () => {
         <h1 style={{ fontSize: "32px" }} className="text-center">
           Find the best stay for you
         </h1>
-        <p className="text-center text-blacky-light">
+        <p className="text-center text-blacky-light text-sm md:text-[18px]">
           The best hotel picks no matter where you are from or where you want to
           reach. Checkout the wide range to pick the one that best fit your need
           keeping your pockets at ease.Happy Stay!
@@ -415,7 +415,7 @@ const List2_card = () => {
       ) : (
         <div className="px-8 flex flex-wrap md:gap-[10%] lg:gap-[5%]">
           {data.map((item) => (
-            <div key={item._id} className="md:w-[45%] lg:w-[30%] pb-8">
+            <div key={item._id} className="pb-16 md:w-[45%] lg:w-[30%] pb-8">
               <img
                 className="  w-full rounded-lg"
                 src={item.images[0]}
@@ -425,7 +425,7 @@ const List2_card = () => {
                 <h3 className="text-xl font-bold text-blacky-medium">
                   {item.title}
                 </h3>
-                <p className="text-sm text-justify text-blacky-light card-text">
+                <p className="text-sm md:text-[17px] text-blacky-light card-text">
                   {item.description}
                 </p>
               </div>
@@ -434,8 +434,8 @@ const List2_card = () => {
                   ₹{item.cheapestPrice}
                 </p>
                 <Link to={`/list/hotel/${item._id}`}>
-                  <button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">
-                    Whats app
+                  <button className="bg-evergreen text-blacky-light font-semibold text-sm px-8 py-1 rounded-md ">
+                    View
                   </button>
                 </Link>
               </div>

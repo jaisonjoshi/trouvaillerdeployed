@@ -52,7 +52,7 @@ const Home = () => {
           <h1 className="text-5xl text-whiteglow font-bold ">
             THE BEST TOURS IN JUST 3 CLICKS
           </h1>
-          <p className="text-md text-whiteglow py-5">
+          <p className="text-md md:text-lg text-whiteglow py-5">
             Enter a country, a city or even just a landmark and we'll find the right tours for you
           </p>
 
@@ -71,7 +71,7 @@ const Home = () => {
           <h1 style={{fontSize:"35px", fontWeight:"800"}}>
     Bid For Today
           </h1>
-          <p className='textnormal' style={{fontSize:"18px"}}>
+          <p className='textnormal text-md md:text-lg'>
           Wish you could bid hotel prices for your budget and make your trip more pocket friendly? Here's an end to your worries because we let you place your bid for today's lowest hotel prices.
           </p>
           <h3 style={{fontSize:"25px"}}>
@@ -90,7 +90,7 @@ Know more
 
       <div className="mt-20 mb-12">
         <h1 className='text-center mx-28 font-bold text-blacky-dark text-2xl'>Special Offers</h1>
-                  <p className='text-center textnormal py-4 mx-12'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo. Deleniti aut blanditiis sit adipisci nisi dolorem animi, quibusdam tenetur obcaecati in quaerat reiciendis, quidem vitae velit voluptates.</p>
+                  <p className='text-center textnormal py-4 mx-12 text-md md:text-lg'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo. Deleniti aut blanditiis sit adipisci nisi dolorem animi, quibusdam tenetur obcaecati in quaerat reiciendis, quidem vitae velit voluptates.</p>
       </div>
 
       <div className=" mx-8 md:mx-16 offer-container">
@@ -104,7 +104,7 @@ Know more
         <div className='pt-28 pb-8 px-4'>
           <div className='text-center'>
             <h1 className='font-bold text-2xl'>Trending Destinations</h1>
-            <p className='text-lg pt-4 textnormal'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
+            <p className=' pt-4 textnormal text-md md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
           </div>
         </div>
         <div className='grid md:mx-16 sm:grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-10 m-11'>
