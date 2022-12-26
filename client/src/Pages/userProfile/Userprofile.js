@@ -17,7 +17,11 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 
 
 const Userprofile = () => {
+    const [anim, setAnim] = useState("hide")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
 
+    }, [])
 
     const userObj = JSON.parse(window.localStorage.getItem('user'))
 
@@ -31,7 +35,7 @@ const Userprofile = () => {
 
 
         
-        <div>
+        <div className={` animationset ${anim}`}>
             <Navbar  />
             {/* Header */}
             {loading?

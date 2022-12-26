@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
@@ -9,6 +9,11 @@ import NavbarTest from "../navbar/navbar";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const List2_card = () => {
+  const [anim, setAnim] = useState("hide")
+  useEffect(()=>{
+      window.addEventListener('load', setAnim("show"))
+
+  }, [])
   const [destination, setDestination] = useState("");
   // const [checked, setChecked] = useState(false);
   const [min, setMin] = useState(undefined);
@@ -196,7 +201,7 @@ const List2_card = () => {
   // }
   const color = "text-blacky-dark";
   return (
-    <div className="w-full">
+    <div className={`w-full animationset ${anim}`}>
       <NavbarTest color={color} />
 
       <div className="mt-36 flex justify-center">
@@ -221,7 +226,7 @@ const List2_card = () => {
         <h1 style={{ fontSize: "32px" }} className="text-center">
           Find the best stay for you
         </h1>
-        <p className="text-center">
+        <p className="text-center text-blacky-light">
           The best hotel picks no matter where you are from or where you want to
           reach. Checkout the wide range to pick the one that best fit your need
           keeping your pockets at ease.Happy Stay!
@@ -412,7 +417,7 @@ const List2_card = () => {
           {data.map((item) => (
             <div key={item._id} className="md:w-[45%] lg:w-[30%] pb-8">
               <img
-                className=" object-cover w-full rounded-lg"
+                className="  w-full rounded-lg"
                 src={item.images[0]}
                 alt=""
               />

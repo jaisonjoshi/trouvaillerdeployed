@@ -27,10 +27,10 @@ const DestCard = () => {
             {data.map((item) => (
 
              <div  key={item._id} >
-           <img className='h-60 sm:h-72 object-cover w-full rounded-lg' src={item.images[0]} alt="" />
+           <img className='w-full rounded-lg' src={item.images[0]} alt="" />
            <div className='py-5'>
                <h3 className='text-xl font-bold text-blacky-medium'>{item.title}</h3>
-               <p className='text-sm text-justify text-blacky-light card-text'>{item.description}</p>    
+               <p className='text-md textnormal card-text'>{item.description}</p>    
            </div>
            <div className=" flex">
                <p className="text-lg text-blacky-light font-bold">{item.duration}</p>

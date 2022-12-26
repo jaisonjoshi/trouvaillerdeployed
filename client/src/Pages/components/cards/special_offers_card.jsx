@@ -57,8 +57,8 @@ const Offers = () => {
                   {/*Texts*/}
 
                   <div className="">
-                    <h3 className="text-blacky-medium font-bold text-2xl my-4">{item.title}</h3>
-                    <p className="text-blacky-medium text-justify text-md card-text">{item.description}</p>
+                    <h3 className="text-blacky-medium font-bold text-xl my-4">{item.title}</h3>
+                    <p className="text-blacky-light text-justify text-md card-text">{item.description}</p>
                   </div>
 
                   {/*Buttons*/}

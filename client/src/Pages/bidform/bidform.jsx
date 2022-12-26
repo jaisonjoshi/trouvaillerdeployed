@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../components/navbar/navbar'
 import Footer from '../components/Footer/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,6 +6,11 @@ import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/
 import axios from 'axios'
 
 const Bidform = () => {
+    const [anim, setAnim] = useState("hide")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
+
+    }, [])
     
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
@@ -39,11 +44,11 @@ const Bidform = () => {
 
 
     return (
-        <div className="">
+        <div className={` animationset ${anim}`}>
             <div className=""><Navbar /></div>
             <div className="w-full mt-40 px-12 md:px-20 lg:px-40">
                 <h1 className="text-4xl  text-blacky-medium font-bold">Bid Today</h1>
-                <p className="text-lg my-5 text-justify text-blacky-dark">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                <p className="text-lg my-5 text-justify text-blacky-light">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
             </div>
             <form action="" className="" method="post">
                 <div className="py-10 px-12 md:px-20 lg:px-40">

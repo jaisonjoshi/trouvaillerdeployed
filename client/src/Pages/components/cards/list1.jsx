@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import useFetch from '../../../hooks/useFetch';
 import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
@@ -9,6 +9,13 @@ import NavbarTest from '../navbar/navbar';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const List1_card = () => {
+    const [anim, setAnim] = useState("hide")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
+
+    }, [])
+
+
     const [destination,setDestination]=useState("");
     const [min, setMin] = useState(undefined);
     const [max, setMax] = useState(undefined);
@@ -188,11 +195,11 @@ const handlebudgetChange = (e) => {
   
    
   return (
-    <div className='w-full'>
+    <div className={`w-full animationset ${anim}`}>
         <NavbarTest />
     
     
-       <div className='mt-36 flex justify-center'>
+       <div className="mt-36 flex justify-center  ">
                 <div className=' w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] outline outline-offset-1 outline-1 outline-[#0cffaa]'>
                     <div className='w-[50%] text-whiteglow flex justify-center items-center px-8 py-2 bg-[#0cffaa] rounded-l-[1000px]'>
                         <span>Packages</span>
@@ -205,7 +212,7 @@ const handlebudgetChange = (e) => {
             <hr className="w-[80%] my-5 mx-auto" />
                 <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 pb-8">
                 <h1 style={{fontSize:"32px"}} className='text-center'>Trending Tour Packages for you</h1>
-                <p className='text-center'>Find the best options out there if you are planning for a honeymoon or a trip with your family.The most exciting offers with a bunch of various options you can choose from.Grab the best deal and add it to your mesmerising travel journey! </p>
+                <p className='text-center text-blacky-light'>Find the best options out there if you are planning for a honeymoon or a trip with your family.The most exciting offers with a bunch of various options you can choose from.Grab the best deal and add it to your mesmerising travel journey! </p>
             </div>
             <div className="flex justify-center py-6">
                     <div className="flex items-center w-[70%] md:w-[60%] lg:w-[30%] justify-between focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
@@ -329,7 +336,7 @@ const handlebudgetChange = (e) => {
         {data.map((item)=>(
 
           <div  key={item._id} className="md:w-[45%] lg:w-[30%]">
-        <img className='             object-cover w-full rounded-lg' src={item.images[0]} alt="" />
+        <img className='     w-full rounded-lg' src={item.images[0]} alt="" />
         <div className='py-5'>
             <h3 className='text-xl font-bold text-blacky-medium'>{item.title}</h3>
             <p className='text-sm text-justify text-blacky-light card-text'>{item.description}</p>    

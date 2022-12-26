@@ -1,21 +1,26 @@
 
 
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import FAQ from '../components/FAQ/FAQ'
 import Footer from '../components/Footer/Footer'
 import { Link } from "react-router-dom";
 import NavbarTest from '../components/navbar/navbar';
 
 const IntroBid = () => {
+    const [anim, setAnim] = useState("hide")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
+
+    }, [])
     return (
-        <div>
+        <div className={`animationset ${anim}`}>
 
             <NavbarTest />
             {/* Header */}
             <div className="bg-green-slop bg-no-repeat w-full bg-cover text-left relative mt-32" >
                 <div className='sm:w-1/2 p-10'>
                     <h1 className='text-3xl font-bold'>What is Bid for today? </h1>
-                    <p className='pt-5 text-justify'>Every traveller’s dreams meets reality when you can reach your destination without letting your pockets go empty. Now place bids for hotel rates at your prices and decide to travel hazel free. To simply put it on, each day we let you  bid for  hotel rooms using our 'bid for today' feature and at the end of the day your bid status will be updated on our site, letting you know whether your bid is accepted or not. For every accepted  bid you'll get to occupy those hotel rooms at the rates you've bid for. </p>
+                    <p className='pt-5 text-blacky-light'>Every traveller’s dreams meets reality when you can reach your destination without letting your pockets go empty. Now place bids for hotel rates at your prices and decide to travel hazel free. To simply put it on, each day we let you  bid for  hotel rooms using our 'bid for today' feature and at the end of the day your bid status will be updated on our site, letting you know whether your bid is accepted or not. For every accepted  bid you'll get to occupy those hotel rooms at the rates you've bid for. </p>
                     <button className='bg-blacky-dark text-whiteglow text-lg font-bold p-5 rounded w-full mt-4 sm:w-1/2'><Link className="" to="/bidform">Bid Now</Link></button>
                 </div>
             </div>
@@ -45,16 +50,14 @@ const IntroBid = () => {
             {/* FAQ block */}
             <div className='px-10 sm:px-32 bg-graydust-extralight'>
                 <h1 className='pt-6 text-center font-bold text-2xl'>Frequently asked questions</h1>
-                <div className='pt-6'>
+                <div className='py-6'>
                     <FAQ />
                     <FAQ />
                     <FAQ />
                     <FAQ />
                     <FAQ />
                     <FAQ />
-                    <div className='py-5 flex justify-end'>
-                        <button className='font-medium hover:border-graydust-dark border hover:text-blacky-dark p-2 rounded-md w-full sm:w-auto px-10 hover:bg-transparent bg-evergreen text-whiteglow border-transparent hover:transition-colors hover:duration-200 ' >Ask a Question</button>
-                    </div>
+                  
                 </div>
             </div>
             <Footer/>

@@ -16,11 +16,7 @@ const NavbarTest = ({color}) => {
   //const { user } = useContext(AuthContext);
   
   const { user, loading, error, dispatch } = useContext(AuthContext);
-  const [userdet, setUser] = useState({})
-    const {data} = useFetch(`/user/find/${user._id}`)
-    useEffect(()=> {
-        setUser(data)
-    }, [data])
+  
   const navigate = useNavigate();
   console.log(user)
   //logout code fetching
@@ -76,22 +72,22 @@ const NavbarTest = ({color}) => {
     }}
   return (
     <div>
-    <Navbar className={` w-full z-50 top-0 left-0   text-whiteglow ${shownav} transition-all duration-300 ease-in-out py-12 px-8 transition-all duration-500 ease-in-out `}
+    <Navbar className={` w-full z-50 top-0 left-0 ${shownav} transition-all duration-300 ease-in-out py-12 px-8 transition-all duration-500 ease-in-out `}
 fluid={true}
 
 >
 <Navbar.Brand>
 <img src={require('../../Assets/TrouvaillerGreen .png')}
-                className="mr-3 h-6 sm:h-9 pl-10"
+                className="mr-3 h-6 sm:h-9 pl-4 md:pl-10"
                 alt="Trouvailler Logo"
             />
 
 </Navbar.Brand>
-<Navbar.Toggle />
+<Navbar.Toggle className="outline-none nav-toggle-icon"/>
 <Navbar.Collapse className="flex items-center">
 <div className="flex md:order-2 gap-7 ml-0 md:ml-20 items-center  nav-login-box">
-{ user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src={userdet.img} className="w-[40px] h-[40px] rounded-full"/><h2 className='md:hidden'>{userdet.username}</h2></span></Link>
-        <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
+{ user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src={user.img} className="w-[45px] h-[45px] rounded-full"/><h2 className='md:hidden'>{user.username}</h2></span></Link>
+        <button className="bg-evergreen text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
         <div className="md:flex my-4 ">
            <button className="bg-whiteglow text-blacky-dark text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-blacky-dark rounded-md hover:text-whiteglow">
             <Link className="" to="/login" >Login</Link>
@@ -106,11 +102,11 @@ fluid={true}
 </div>
 
 <Navbar.Link href="/" 
-                class={`p-3 md:p-2 text-lg  ${colord}  md:hover:text-evergreen duration-500`}>
+                class={`p-3 md:p-2 text-lg  md:${colord}  md:hover:text-evergreen duration-500`}>
                 Home
             </Navbar.Link>
             <Navbar.Link href="/bid-status"
-                class={`p-3 sm:p-0 text-lg ${colord}  md:hover:text-evergreen duration-500`}>
+                class={`p-3 md:p-2 text-lg md:${colord}  md:hover:text-evergreen duration-500`}>
                 My bids
             </Navbar.Link>
         {/*     <Navbar.Link href="/"
@@ -118,7 +114,7 @@ fluid={true}
                 About
             </Navbar.Link> */}
             <Navbar.Link href="/"
-                class={`p-3 sm:p-0 text-lg ${colord}  md:hover:text-evergreen duration-500`} >
+                class={`p-3 md:p-2 text-lg md:${colord}  md:hover:text-evergreen duration-500`} >
                 Contact
             </Navbar.Link>
 </Navbar.Collapse>

@@ -7,6 +7,12 @@ import Footer from '../components/Footer/Footer'
 
 import Navbar from '../components/navbar/navbar'
 const BidStatus = () => {
+    
+    const [anim, setAnim] = useState("hide")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
+
+    }, [])
     const userobj = JSON.parse(window.localStorage.getItem('user'))
     const userid = userobj._id;
     const [bid,setbid] = useState([])
@@ -16,9 +22,9 @@ const BidStatus = () => {
     },[data])
     console.log(data)
     return (
-        <div>
+        <div className={` animationset ${anim}`}>
             <Navbar />
-            <div className='mx-12 md:mx-16  lg:mx-28  xl:mx-40 pb-16 mt-40'>
+            <div className='mx-12 md:mx-16  lg:mx-28  xl:mx-40 pb-16 mt-20 md:mt-32'>
                 <h1 className='text-2xl font-bold text-blacky-bright py-7'>Bid Status</h1>
                 {bid && bid.map((obj,i)=>(
                     <BidStatusCard key={i} bid={obj}/>

@@ -43,6 +43,15 @@ nav{
         padding: 0 34% 0;
     }
   }
+  @media only screen and (max-width: 764px) {
+    .blacktext{
+        color: black !important;
+    }
+    
+    .whitetext{
+        color: white !important;
+    }
+  }
   @media only screen and (max-width: 640px) {
     .offerSlider .slick-list {
         padding: 0 20% 0;
@@ -54,20 +63,20 @@ input{outline: none;}
     border: 1px solid black;
 }
 .pic1{
-    background-image: url('./Pages/Assets/homeCarousel/pic1.jpg') !important;
+    background-image: url('./Pages/Assets/homeCarousel/pic1.webp') !important;
     background-size: cover;
     background-repeat:no-repeat ;
     background-position: center;
 }
 .pic2{
-    background-image: url('./Pages/Assets/homeCarousel/pic2.jpg') !important;
+    background-image: url('./Pages/Assets/homeCarousel/pic2.webp') !important;
     background-size: cover;
     background-repeat:no-repeat ;
     background-position: center;
 }
 
 .pic3{
-    background-image: url('./Pages/Assets/homeCarousel/pic3.jpg') !important;
+    background-image: url('./Pages/Assets/homeCarousel/pic3.webp') !important;
     background-size: cover;
     background-repeat:no-repeat ;
     background-position: center;
@@ -75,14 +84,14 @@ input{outline: none;}
 
 
 .pic4{
-    background-image: url('./Pages/Assets/homeCarousel/pic4.jpg') !important;
+    background-image: url('./Pages/Assets/homeCarousel/pic4.webp') !important;
     background-size: cover;
     background-repeat:no-repeat ;
     background-position: center;
 }
 
 .pic5{
-    background-image: url('./Pages/Assets/homeCarousel/pic5.jpg') !important;
+    background-image: url('./Pages/Assets/homeCarousel/pic5.webp') !important;
     background-size: cover;
     background-repeat:no-repeat ;
     background-position: center;
@@ -114,12 +123,15 @@ input{outline: none;}
 .navbar-shadow{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px !important;
 }
-
-
-.blacktext{
-    color: black !important;
+.animationset{
+    transition: all ease-in .3s;
 }
-
-.whitetext{
-    color: white !important;
+.hide{
+    opacity: 0;
+}
+.show{
+    opacity: 1 !important;
+}
+.textnormal{
+    color: #000000d4 !important;
 }

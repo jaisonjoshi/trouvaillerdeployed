@@ -9,7 +9,7 @@ import {
   Switch,
 }from "react-router-dom";
 import {useState, useEffect} from 'react'
-
+import ScrollToTop from "./scrollToTop/scrollToTop.js";
 import Bidform from "./Pages/bidform/bidform.jsx";
 import Home from "./Pages/home/Home.jsx";
 import Login from "./Pages/login/login.jsx";
@@ -62,6 +62,7 @@ function App() {
       :
       
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>

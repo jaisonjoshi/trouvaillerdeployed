@@ -10,6 +10,11 @@ import useFetch from '../../hooks/useFetch';
 import { useState } from 'react';
 import { useEffect } from 'react';
 const Package = () => {
+    const [anim, setAnim] = useState("hide")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
+
+    }, [])
     var settings = {
         dots: true,
         infinite: true,
@@ -32,20 +37,20 @@ const Package = () => {
 
 
         
-        <div>
+        <div className={` animationset ${anim}`}>
             <Navbar />
             {/* Header */}
-            <div className='mt-32'>
+            <div className='mt-20 md:mt-32'>
                 <div className='flex flex-col md:gap-8 lg:gap-0 lg:flex-row'>
                     <Slider className='sm:w-[20%] md:w-[70%] mx-[10%] md:ml-[15%] md:mr-[15%] lg:mx-[0%] lg:w-1/2' {...settings}>
                         {pack.images && pack.images.map((img,i)=>(
-                                <img className='h-auto object-cover' src={img} key={i} alt="Car in road" />
+                                <img className='h-auto ' src={img} key={i} alt="Car in road" />
 
                         ))}
                          </Slider>
                     <div className='px-[10%] md:pl-[15%] md:pr-[15%] lg:px-20 flex flex-col justify-center md:w-[100%] lg:w-1/2'>
                         <h1 className='text-2xl font-bold pb-5 mt-8'>{pack.title}</h1>
-                        <p>{pack.description}</p>
+                        <p className='text-blacky-light'>{pack.description}</p>
                         <h3 className='font-bold text-sm pt-4 text-xl'>{pack.duration}</h3>
                         <h1 className='font-semibold text-xl py-5'> {pack.cheapestPrice}/-<span className='text-sm line-through text-graydust-medium'>19,000/-</span></h1>
 
@@ -66,7 +71,7 @@ const Package = () => {
                             <div className='text-xl w-32 p-2 text-graydust-medium font-semibold '><h1>Day 1</h1></div>
                             <div className='border-l-2 p-4 text-justify border-graydust-normal'>
                                 <h1 className='text-xl font-semibold'>Lorem Ipsum i</h1>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                <p className='text-blacky-light'> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
                             </div>
                         </div>
                         ))}

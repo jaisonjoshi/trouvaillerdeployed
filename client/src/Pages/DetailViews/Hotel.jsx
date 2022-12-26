@@ -13,6 +13,11 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const Hotel = () => {
+    const [anim, setAnim] = useState("hide")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
+
+    }, [])
     var settings = {
         dots: true,
         infinite: true,
@@ -32,13 +37,13 @@ const Hotel = () => {
         const text = "i would like to book for the hotel "
 
     return (
-        <div>
+        <div className={`animationset ${anim}`}>
             <Navbar></Navbar>
             {/* header */}
-            <div className='sm:flex mt-32 justify-center' >
+            <div className='sm:flex mt-20 md:mt-32 justify-center' >
                 <Slider className='w-[85%] pb-8 mx-auto md:w-[50%]' {...settings}>
                 {hote.images && hote.images.map((img,i)=>(
-                                <img className='h-auto object-cover' src={img} key={i} alt="Car in road" />
+                                <img className='h-auto ' src={img} key={i} alt="Car in road" />
 
                         ))}
                     </Slider>
@@ -88,7 +93,7 @@ const Hotel = () => {
 
                 {/* details */}
                 <div className='py-10 sm:mx-32 pb-20'>
-                    <p>{hote.description}</p>
+                    <p className='text-blacky-light'>{hote.description}</p>
                     {/* <h1 className='text-xl font-semibold pt-10'>Facilities of Neque porro quisquam est</h1>
                     <div className='flex flex-wrap'>
                         <p className='text-graydust-medium mr-5'><span className='text-evergreen pr-2'><FontAwesomeIcon icon={solid('fan')} /></span>Air Conditioning</p>

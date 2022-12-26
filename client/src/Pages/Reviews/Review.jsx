@@ -33,7 +33,7 @@ const Reviews = () => {
                           />
                         </div>
                       </div>
-                      <p className="text-center pt-10 px-4 sm:px-20 lg:px-52">{item.reviewnote}</p>
+                      <p className="text-center pt-10 px-4 sm:px-20 lg:px-52 text-blacky-light">{item.reviewnote}</p>
                       <div className="pt-4 text-center">
                         <span className="font-medium">{item.author},{item.place}</span>
                         <span> {item.rating}</span>

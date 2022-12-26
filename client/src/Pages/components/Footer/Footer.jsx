@@ -9,7 +9,7 @@ const Footer = () => {
     <div>
       <footer className='bg-blacky-light p-4'>
         
-       <div className=" flex w-[80%] gap-[1%] flex-wrap xl:w-[60%] mx-auto justify-between py-12">
+       <div className=" flex w-[90%] gap-[1%] flex-wrap xl:w-[60%] mx-auto justify-between py-12">
           <div className="w-[49%] md:w-[30%]">
               <h2 className='text-[white] text-lg pb-8'>Sitemap</h2>
               <ul className='flex flex-col gap-[10px]'>
