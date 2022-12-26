@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 
 const {generateToken}=require('../utils/verifyToken')
 //import { createError } from "../utils/error.js";
+const LocalStorage = require('node-localstorage').LocalStorage,
+localStorage = new LocalStorage('./scratch');
 
 const register = async (req, res, next) => {
   try {
