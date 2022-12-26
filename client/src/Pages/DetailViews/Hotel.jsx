@@ -23,7 +23,9 @@ const Hotel = () => {
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed: 4000,
     };
     const [hote,setHotel] =useState([])
 
@@ -50,7 +52,7 @@ const Hotel = () => {
                 <div className='px-10 md:px-20 sm:w-1/2 flex flex-col justify-center'>
                     <h1 className='text-2xl font-bold pb-5'>{hote.title}</h1>
                     <p className='text-md text-graydust-medium'><FontAwesomeIcon className='pr-1' icon={solid('location-dot')} />{hote.location}</p>
-                    <h1 className='font-semibold text-xl py-5'> 17,500/-<span className='text-sm line-through text-graydust-medium'>{hote.cheapestPrice}/-</span></h1>
+                    <h1 className='font-semibold text-xl py-5'><span className='text-sm '>{hote.cheapestPrice}/-</span></h1>
                     <a href={"https://wa.me/919562523642?text=" + text + hote.title}><button className='bg-evergreen text-blacky-dark flex justify-center gap-3 items-center font-bold p-4 w-full rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button></a>
                     {/* Space for map */}
                     {/* <div className='w-full border mt-5'>
@@ -62,11 +64,11 @@ const Hotel = () => {
             {/* options */}
             <div className='mt-20 px-10 ' >
                 <div className='flex flex-wrap sm:mx-32 '>
-                    {hote.features && hote.features.map((facility, i) => {
+                    {hote.facilities && hote.facilities.map((facility, i) => (
                         <div className='text-graydust-medium mr-2 p-2 text-center border border-graydust-medium rounded' key={i}>
                         <h2>{facility}</h2>
                     </div>
-                    })
+                    ))
 
 
 
@@ -77,11 +79,11 @@ const Hotel = () => {
                 </div>
                 <div className='flex flex-wrap sm:mx-32 '>
                     <h2>Available Rooms</h2>
-                    {hote.rooms && hote.rooms.map((room, i) => {
+                    {hote.rooms && hote.rooms.map((room, i) => (
                         <div className='text-graydust-medium mr-2 p-2 text-center border border-graydust-medium rounded' key={i}>
                         <h2>{room}</h2>
                     </div>
-                    })
+                    ))
 
 
 
