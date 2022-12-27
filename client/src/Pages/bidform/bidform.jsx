@@ -4,9 +4,11 @@ import Footer from '../components/Footer/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 const Bidform = () => {
     const [anim, setAnim] = useState("hide")
+    const navigate = useNavigate();
     useEffect(()=>{
         window.addEventListener('load', setAnim("show"))
 
@@ -17,6 +19,8 @@ const Bidform = () => {
     })
 
     const [info, setinfo] = useState({});
+   //const error="";
+    //const err="Please fill out all the feilds!";
     const handlebidChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.name] : e.target.value}))
         console.log(info)
@@ -32,11 +36,19 @@ const Bidform = () => {
                 ...info, username : userobj.username,userid:userobj._id,useremail:userobj.email,userphone:userobj.phone
               };console.log(newBid)
              
-               await axiosInstance.post("/bids", newBid);
+              const res= await axiosInstance.post("/bids", newBid);
+              if(res.data){
+                navigate("/bid-status")
+              }
+              else{
+                res.status(404).json({ error: "Error" })
+              }
                console.log(newBid)
            
         } catch(err){
+            
             console.log(err)
+           
         }
         
     }
@@ -118,6 +130,7 @@ const Bidform = () => {
                     <div className="flex justify-between my-5 py-8 pt-12">
                         <input type="reset" value="Reset" className="mr-10 outline-none bordercolour bg-blacky-dark text-whiteglow hover:text-blacky-dark hover:cursor-pointer text-graydust-normal hover:bg-whiteglow h-16 w-44 text-center rounded-xl " />
                         <input type="submit" value="Submit" onClick={handleClick} className="outline-none border  h-16 w-44 text-center bg-evergreen text-blacky-dark rounded-xl" />
+                       
                     </div>
 
                 </div>

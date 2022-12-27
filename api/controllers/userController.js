@@ -1,18 +1,33 @@
 const User=require('../models/userModel')
-
+const bcrypt = require("bcryptjs");
 
 	
 	const updateUser = async (req,res,next)=>{
+
+		
+			if(req.body.password){
+				const salt = await bcrypt.genSaltSync(10);
+				req.body.password=await bcrypt.hashSync(req.body.password, salt)
+			}
 	try {
+		
+    
+
 	const updatedUser = await User.findByIdAndUpdate(
 	req.params.id,
-	{ $set: req.body },
+	{ $set:req.body,
+	},
 	{ new: true }
 	);
 	res.status(200).json(updatedUser);
-	} catch (err) {
-	next(err);
+	} 
+	catch (err) {
+	res.status(500).json(err);
 	}
+
+	
+	
+
 	}
 	 const deleteUser = async (req,res,next)=>{
 	try {

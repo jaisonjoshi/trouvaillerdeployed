@@ -77,11 +77,12 @@ fluid={true}
 
 >
 <Navbar.Brand>
+  <Link to="/">
 <img src={require('../../Assets/TrouvaillerGreen .png')}
                 className="mr-3 h-6 sm:h-9 pl-4 md:pl-10"
                 alt="Trouvailler Logo"
             />
-
+</Link>
 </Navbar.Brand>
 <Navbar.Toggle className="outline-none nav-toggle-icon"/>
 <Navbar.Collapse className="flex items-center">
@@ -105,10 +106,16 @@ fluid={true}
                 class={`p-3 md:p-2 text-lg  md:${colord}  md:hover:text-evergreen duration-500`}>
                 Home
             </Navbar.Link>
-            <Navbar.Link href="/bid-status"
+
+            { user?(<Navbar.Link href="/bid-status"
                 class={`p-3 md:p-2 text-lg md:${colord}  md:hover:text-evergreen duration-500`}>
                 My bids
-            </Navbar.Link>
+            </Navbar.Link>):
+            (<Navbar.Link href="/login"
+                class={`p-3 md:p-2 text-lg md:${colord}  md:hover:text-evergreen duration-500`}>
+                My bids
+            </Navbar.Link>)}
+
         {/*     <Navbar.Link href="/"
                 class={`p-3 sm:p-0 text-lg text-blacky-dark hover:text-evergreen duration-500`}>
                 About

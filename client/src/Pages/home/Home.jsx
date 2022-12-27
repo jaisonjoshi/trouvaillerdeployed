@@ -75,7 +75,7 @@ const Home = () => {
           Wish you could bid hotel prices for your budget and make your trip more pocket friendly? Here's an end to your worries because we let you place your bid for today's lowest hotel prices.
           </p>
           <h3 style={{fontSize:"25px"}}>
-          Intersting isn't it?
+          Interesting isn't it?
           </h3>
           <Link to="/what-is-bid"><button className='flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500'>
 Know more
@@ -96,7 +96,9 @@ Know more
       <div className=" mx-8 md:mx-16 offer-container">
         <Offers />
       </div>
-
+      <div className='p-7 text-center mb-12'>
+          <Link to="/offers" ><button className='font-medium border-graydust-dark border p-2 rounded-md w-full sm:w-auto px-10 hover:bg-evergreen hover:text-whiteglow hover:border-transparent hover:transition-colors hover:duration-200' >View All Offers</button></Link>
+        </div>
       <div>
 
         {/* Trending destinations block */}

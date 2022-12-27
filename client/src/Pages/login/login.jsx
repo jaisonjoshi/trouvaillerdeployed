@@ -31,7 +31,7 @@ const Login = () => {
         dispatch({ type: "LOGIN_START" });
         try {
           const res = await axiosInstance.post("/auth/login", credentials);
-          if(res.data.isAdmin){//check this code to control user and admin access to login
+          if(res.data){//check this code to control user and admin access to login
           dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
           navigate("/");
     

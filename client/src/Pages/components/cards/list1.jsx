@@ -209,8 +209,8 @@ const handlebudgetChange = (e) => {
             </div>
             
            
-            <hr className="w-[80%] my-5 mx-auto" />
-                <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 pb-8">
+         <hr className="w-[80%] my-5 mx-auto" />
+            <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 pb-8">
                 <h1 style={{fontSize:"32px"}} className='text-center'>Trending Tour Packages for you</h1>
                 <p className='text-center text-blacky-light text-md md:text-lg'>Find the best options out there if you are planning for a honeymoon or a trip with your family.The most exciting offers with a bunch of various options you can choose from.Grab the best deal and add it to your mesmerising travel journey! </p>
             </div>
@@ -336,7 +336,7 @@ const handlebudgetChange = (e) => {
         {data.map((item)=>(
 
           <div  key={item._id} className="pb-16 md:w-[45%] lg:w-[30%]">
-        <img className='     w-full rounded-lg' src={item.images[0]} alt="" />
+        <img className='w-full rounded-lg' src={item.images[0]} alt="" />
         <div className='py-5'>
             <h3 className='text-xl font-bold text-blacky-medium'>{item.title}</h3>
             <p className='text-sm md:text-[17px]  text-blacky-light card-text'>{item.description}</p>    
