@@ -56,9 +56,8 @@ const Home = () => {
             Enter a country, a city or even just a landmark and we'll find the right tours for you
           </p>
 
-          <Link className="" to="/packages"> <button className="flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500">
+          <Link className="" to="/packages"> <button className="flex justify-center items-center bg-evergreen text-whiteglow w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500">
             Explore
-            <img src={require('../Assets/Arrow.png')} alt="" className="h-3 w-3 mx-4 my-2" />
           </button></Link>
           </div>
 
@@ -77,7 +76,7 @@ const Home = () => {
           <h3 style={{fontSize:"25px"}}>
           Interesting isn't it?
           </h3>
-          <Link to="/what-is-bid"><button className='flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500'>
+          <Link to="/what-is-bid"><button className='flex justify-center items-center bg-evergreen text-whiteglow w-36 font-bold rounded-md p-2 my-5 hover:bg-evergreendark duration-500'>
 Know more
           </button></Link>
         </div>

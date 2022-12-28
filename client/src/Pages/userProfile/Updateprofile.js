@@ -69,7 +69,7 @@ const Updateuser = ({setOpen}) => {
 
               url  = uploadRes.data.url;
             }
-            
+            localStorage.setItem('user.img', url)
                 
             const newUser = {
                 ...info,img:url,

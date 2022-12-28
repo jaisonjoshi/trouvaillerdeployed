@@ -12,32 +12,47 @@ const Reviews = () => {
     arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings:{
+          slidesToShow:2,
+        }
+      },
+      {
+        breakpoint: 764 ,
+        settings:{
+          slidesToShow: 1,
+        }
+      }
+    ]
   };
   return (
-      <div>
+      <div className="reviews">
         {loading ? (
           "Loading"
         ) : (
           
           <Slider {...settings}>
                   {data.map((item) => (
-                    <div className="p-10" key={item._id}>
+                    <div className="p-10 h-full flex-col justify-between" key={item._id}>
                       <div className="flex justify-center">
-                        <div className=" rounded-full flex justify-center w-[60%] md:w-[30%] xl:w-[10%]">
+                        <div className=" rounded-full flex justify-center w-[60%] h-[60%] md:w-[30%] md:h-[30%] xl:w-[30%] xl:h[30%] skeleton">
                           <img
-                            className="w-full object-cover rounded-full w-[100%]"
+                            className="w-full object-cover rounded-full w-[100%] h-[100%]"
                             src={item.image}
-                            alt="Avatar"
                           />
                         </div>
                       </div>
-                      <p className="text-center pt-10 px-4 sm:px-20 lg:px-52 text-blacky-light text-md md:text-lg">{item.reviewnote}</p>
-                      <div className="pt-4 text-center">
+                     <div className="flex flex-col justify-between ">
+                     <p className="text-center px-8 pt-8 text-blacky-light text-md md:text-lg">{item.reviewnote}</p>
+                      <div className=" text-center pt-8">
                         <span className="font-medium">{item.author},{item.place}</span>
                         <span> {item.rating}</span>
                       </div>
+                     </div>
                     </div>
                   ))}
                   {/* <div className="">1</div>

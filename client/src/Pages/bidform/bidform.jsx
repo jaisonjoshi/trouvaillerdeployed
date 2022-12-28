@@ -108,8 +108,8 @@ const Bidform = () => {
                         <FontAwesomeIcon icon={solid('user')} className="h-8 w-8 my-auto mx-4" />
                             <input type="number" name="accomodation" onChange={handlebidChange} className="border border-none focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none" placeholder="3 Guests" />
                         </div>
-                        <div className="flex md:mx-10 md:my-0 my-7 bordercolour text-graydust-medium rounded-lg w-fit pr-2 py-2">
-                        <FontAwesomeIcon icon={solid('bed')} className="h-10 w-10 my-auto mx-4" />
+                        <div className="flex md:mx-10 md:my-0 my-7 bordercolour text-graydust-medium rounded-lg w-fit pr-2 ">
+                        <FontAwesomeIcon icon={solid('bed')} className="h-5 w-5 my-auto mx-4" />
                             <input type="number" name="roomCount" onChange={handlebidChange} className="border border-none focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none" placeholder="3 Room" />
                         </div>
                     </div>
@@ -127,9 +127,9 @@ const Bidform = () => {
                         </div>
                     </div>
 
-                    <div className="flex justify-between my-5 py-8 pt-12">
-                        <input type="reset" value="Reset" className="mr-10 outline-none bordercolour bg-blacky-dark text-whiteglow hover:text-blacky-dark hover:cursor-pointer text-graydust-normal hover:bg-whiteglow h-16 w-44 text-center rounded-xl " />
-                        <input type="submit" value="Submit" onClick={handleClick} className="outline-none border  h-16 w-44 text-center bg-evergreen text-blacky-dark rounded-xl" />
+                    <div className="flex justify-start my-5 py-8 pt-12">
+                        <input type="reset" value="Reset" className="mr-10 outline-none bordercolour px-6 py-2 bg-blacky-dark text-whiteglow hover:text-blacky-dark hover:cursor-pointer text-whiteglow hover:bg-whiteglow text-center rounded-xl " />
+                        <input type="submit" value="Submit" onClick={handleClick} className="outline-none border  px-6 py-2  text-center bg-evergreen text-whiteglow rounded-xl hover:cursor-pointer  hover:bg-evergreendark" />
                        
                     </div>
 

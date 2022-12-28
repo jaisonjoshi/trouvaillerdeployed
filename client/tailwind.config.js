@@ -9,7 +9,8 @@ module.exports = {
   theme: {
     colors: {
       transparent: 'transparent',
-      'evergreen': '#2AF599',
+      'evergreen': '#00b771',
+      'evergreendark' : '#03965e',
       'whiteglow': '#FFFFFF',
       'blacky': {
         'dark': '#000000',
@@ -48,3 +49,4 @@ module.exports = {
   require('flowbite/plugin')],
 
 }
+//#2AF599

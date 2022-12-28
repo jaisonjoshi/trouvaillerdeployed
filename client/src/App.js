@@ -28,7 +28,7 @@ import Updateuser from "./Pages/userProfile/Updateprofile.js";
 import Updatepassword from "./Pages/userProfile/Updatepassword.js";
 import CircleLoading from '../src/Pages/components/spinningLoader/CircleLoading'
 import logo from './Pages/Assets/TrouvaillerGreen .png'
-import PropagateLoader from "react-spinners/PropagateLoader";
+import BarLoader from "react-spinners/BarLoader";
 
 
 
@@ -49,13 +49,13 @@ function App() {
       {loading ?
            <div className='preloader'>
              <img src={logo} />
-             <PropagateLoader
+             <BarLoader
 
 
-           color={'#32fca7'}
+           color={'#00b771'}
            loading={loading}
            
-           size={15}
+           size={8}
 
          /></div>
       

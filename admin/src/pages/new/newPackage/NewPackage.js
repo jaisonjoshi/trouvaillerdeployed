@@ -103,7 +103,7 @@ const NewPackage =({setOpen}) => {
               
               const newPackage = {
                 ...info,shedule: shedule,
-                images: list,
+                images: list,offers:true,
               };
               await axiosInstance.post("/packages", newPackage);
               console.log(newPackage)
@@ -161,6 +161,11 @@ const NewPackage =({setOpen}) => {
                                 <input type="text" id="cheapestPrice" onChange={handleChange}/>
                             
                             </div>
+                            <div className="form-item">
+                                <label>Rating</label>
+                                <input type="number" min="0" max="6" id="rating" onChange={handleChange}/>
+                            
+                            </div>
                             <div className='shedule-input-con'>
                                 <h3>Shedule</h3>
                                 <div className="shedule-ip-box">
@@ -201,6 +206,7 @@ const NewPackage =({setOpen}) => {
                             <div className="package-details-flex-2">
                             <CurrencyRupeeIcon /><h3>{info.cheapestPrice} /-</h3>
                             </div>
+                            <p>Rating value {info.rating}</p>
                         </div>
                         <div className="package-shedule">
                             <h3>Shedule</h3>

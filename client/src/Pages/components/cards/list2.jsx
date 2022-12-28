@@ -6,7 +6,7 @@ import { Dropdown } from "flowbite-react/lib/cjs/components/Dropdown";
 
 import Footer from "../Footer/Footer";
 import NavbarTest from "../navbar/navbar";
-import PropagateLoader from "react-spinners/PropagateLoader";
+import BarLoader from "react-spinners/BarLoader";
 
 const List2_card = () => {
   const [anim, setAnim] = useState("hide")
@@ -205,7 +205,7 @@ const List2_card = () => {
       <NavbarTest color={color} />
 
       <div className="mt-36 flex justify-center">
-        <div className=" w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] border border-[#0cffaa]">
+        <div className=" w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] border border-[#00b771]">
           <Link
             to="/packages"
             className="w-[50%] flex justify-center items-center px-4 py-2 rounded-l-[1000px]"
@@ -213,7 +213,7 @@ const List2_card = () => {
             <span>Packages</span>
           </Link>
           <div
-            className="w-[50%] text-whiteglow flex justify-center items-center px-8 py-2 bg-[#0cffaa] rounded-r-[1000px]"
+            className="w-[50%] text-whiteglow flex justify-center items-center px-8 py-2 bg-[#00b771] rounded-r-[1000px]"
             to="/hotels"
           >
             Hotels
@@ -410,16 +410,15 @@ const List2_card = () => {
       </div>
       {loading ? (
         <div className="loading-div">
-          <PropagateLoader color={"#32fca7"} loading={loading} size={15} />
+          <BarLoader color={"#32fca7"} loading={loading} size={15} />
         </div>
       ) : (
-        <div className="px-8 flex flex-wrap md:gap-[10%] lg:gap-[5%]">
+        <div className="px-8 lg:px-28 flex flex-wrap md:gap-[10%] lg:gap-[5%]">
           {data.map((item) => (
             <div key={item._id} className="pb-16 md:w-[45%] lg:w-[30%] pb-8">
               <img
-                className="  w-full rounded-lg"
+                className="aspect-video rounded-lg skeleton  w-full rounded-lg"
                 src={item.images[0]}
-                alt=""
               />
               <div className="pt-5">
                 <h3 className="text-xl font-bold text-blacky-medium">
@@ -434,7 +433,7 @@ const List2_card = () => {
                   ₹{item.cheapestPrice}
                 </p>
                 <Link to={`/list/hotel/${item._id}`}>
-                  <button className="bg-evergreen text-blacky-light font-semibold text-sm px-8 py-1 rounded-md ">
+                  <button className="bg-evergreen text-whiteglow font-semibold text-sm px-8 py-2 rounded-md ">
                     View
                   </button>
                 </Link>

@@ -2,19 +2,20 @@ nav li{
     display: flex !important;
     align-items: center !important;
 }
+nav li a{
+    font-weight: 400 !important;
+}
 .bg-trans{
     background-color: rgba(0, 0, 0, 0) !important;
 }
-nav{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
+.bar-shadow{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 @media screen and (max-width: 768px)  {
     nav ul{
         width: 100%;
         padding: 2rem 0;
         background-color: #fffffff0;
-        color: rgba(0, 0, 0, 0.816);
         border-radius: 10px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
@@ -28,12 +29,12 @@ nav{
     }
     nav li{
         padding-left: 2.5rem;
-        color: rgba(0, 0, 0, 0.839) !important;
         padding: 1px 0;
         width: 100%;
     }
     nav li a{
         width: 100%;
+        color: rgb(0, 0, 0, 0.83) !important;
     }
     nav li:hover{
         background-color: #dad9d9;

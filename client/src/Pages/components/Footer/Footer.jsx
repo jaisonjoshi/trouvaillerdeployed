@@ -35,7 +35,7 @@ const Footer = () => {
             <h2 className='text-[white] pt-16 md:pt-0 text-lg pb-4 md:pb-8'>Connect us</h2>
 
               <p className='text-[#e2e2e2] text-sm md:text-md'>Get in touch with us anytime through our official WhatsApp handle </p>
-              <a href="https://wa.me/918129177335"><button className='bg-evergreen text-[black] rounded px-8 py-3 mt-4'>WhatsApp <FontAwesomeIcon icon={faWhatsapp} className="ml-3 text-2xl" /></button></a>
+              <a href="https://wa.me/918129177335"><button className='bg-evergreen text-whiteglow rounded px-8 py-3 mt-4'>WhatsApp <FontAwesomeIcon icon={faWhatsapp} className="ml-3 text-2xl" /></button></a>
 
           </div>
 
@@ -48,18 +48,16 @@ const Footer = () => {
             <img src={Logo} alt="Trouvailler" className='sm:w-100 xl:w-3/4'/>
           </a>
           <div className='flex justify-evenly'>
-            <a href="">
+            <a href="https://www.facebook.com/travelwithtrouvailler/">
               <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faFacebookF} /></div>
             </a>
-            <a href="">
+            <a href="https://www.youtube.com/@travelwithtrouvailler6162">
               <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faYoutube} /></div>
             </a>
-            <a href="">
+            <a href="https://www.instagram.com/trouvailler_guides/">
               <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faInstagram} /></div>
             </a>
-            <a href="">
-              <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faPaperPlane} /></div>
-            </a>
+           
           </div>
         </div>
       </footer>

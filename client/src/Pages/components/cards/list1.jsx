@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Dropdown } from 'flowbite-react/lib/cjs/components/Dropdown';
 import Footer from '../Footer/Footer';
 import NavbarTest from '../navbar/navbar';
-import PropagateLoader from "react-spinners/PropagateLoader";
+import BarLoader from "react-spinners/BarLoader";
 
 const List1_card = () => {
     const [anim, setAnim] = useState("hide")
@@ -200,8 +200,8 @@ const handlebudgetChange = (e) => {
     
     
        <div className="mt-36 flex justify-center  ">
-                <div className=' w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] border border-[#0cffaa]'>
-                    <div className='w-[50%] text-whiteglow flex justify-center items-center px-8 py-2 bg-[#0cffaa] rounded-l-[1000px]'>
+                <div className=' w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] border border-[#00b771]'>
+                    <div className='w-[50%] text-whiteglow flex justify-center items-center px-8 py-2 bg-[#00b771] rounded-l-[1000px]'>
                         <span>Packages</span>
                     </div>
                     <Link  className='w-[50%] flex justify-center items-center px-4 py-2 rounded-r-[1000px]' to="/hotels">Hotels</Link>
@@ -319,7 +319,7 @@ const handlebudgetChange = (e) => {
             </div>
       {loading?(
           <div className='loading-div'>
-          <PropagateLoader
+          <BarLoader
 
 
               color={'#32fca7'}
@@ -332,24 +332,25 @@ const handlebudgetChange = (e) => {
 
 
       ):(
-        <div className='px-8 flex flex-wrap md:gap-[10%] lg:gap-[5%]'>
+        <div className='px-8 lg:px-28 flex flex-wrap md:gap-[10%] lg:gap-[5%]'>
         {data.map((item)=>(
 
-          <div  key={item._id} className="pb-16 md:w-[45%] lg:w-[30%]">
-        <img className='w-full rounded-lg' src={item.images[0]} alt="" />
-        <div className='py-5'>
+          <div  key={item._id} className="pb-16 md:w-[45%] lg:w-[30%] bg-whiteglow card-shadow rounded mb-8 pb-4">
+        <img className='w-[100%] aspect-video rounded-lg skeleton' src={item.images[0]} alt="" />
+        <div className='py-2 mx-8'>
             <h3 className='text-xl font-bold text-blacky-medium'>{item.title}</h3>
             <p className='text-sm md:text-[17px]  text-blacky-light card-text'>{item.description}</p>    
         </div>
-        <div className=" flex items-center">
-            <p className="text-md md:text-lg text-blacky-light font-bold">{item.duration}</p>
-            <img src={require('../../Assets/People.png')} alt="" className="pl-5 h-4" />
-            <img src={require('../../Assets/People.png')} alt="" className="h-4" />
-        </div>
-        <div className="py-3 flex justify-between items-center">
+        
+        <div className="py-1 mx-8 flex justify-between items-center">
             <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
+            <p className="text-md md:text-lg text-blacky-light font-bold">{item.duration}</p>
+
+            </div>
+            <div className=" flex items-center mx-8 py-3">
             <Link  to={`/list/package/${item._id}`}>
- <button className="bg-evergreen text-blacky-light font-semibold text-sm px-8 py-1 rounded-md ">View</button></Link>
+<button className="bg-evergreen text-whiteglow font-semibold text-sm px-8 py-2 rounded-md ">View</button></Link>
+   
         </div>
         </div>
         ))}

@@ -50,7 +50,7 @@ const Package = () => {
                          </Slider>
                     <div className='px-[10%] md:pl-[15%] md:pr-[15%] lg:px-20 flex flex-col justify-center md:w-[100%] lg:w-1/2'>
                         <h1 className='text-2xl font-bold pb-5 mt-8'>{pack.title}</h1>
-                        <p className='text-blacky-light'>{pack.description}</p>
+                        <p className='text-blacky-light whitespace-pre-wrap	'>{pack.description}</p>
                         <h3 className='font-bold text-sm pt-4 text-xl'>{pack.duration}</h3>
                         <h1 className='font-semibold text-xl py-5'> {pack.cheapestPrice}/-<span className='text-sm line-through text-graydust-medium'>19,000/-</span></h1>
 
@@ -68,10 +68,10 @@ const Package = () => {
                         {/* Repeating day details */}
                         {pack.shedule && pack.shedule.map((obj,i)=>(
                             <div className='sm:flex my-2' key={i}>
-                            <div className='text-xl w-32 p-2 text-graydust-medium font-semibold '><h1>Day 1</h1></div>
-                            <div className='border-l-2 p-4 text-justify border-graydust-normal'>
-                                <h1 className='text-xl font-semibold'>Lorem Ipsum i</h1>
-                                <p className='text-blacky-light'> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                            <div className='text-xl w-32 p-2 text-graydust-medium font-semibold w-[10%]'><h1>Day {i+1}</h1></div>
+                            <div className='border-l-2 p-4 text-justify border-graydust-normal w-[90%]'>
+                                <h1 className='text-xl font-semibold'>{obj.dayTitle}</h1>
+                                <p className='text-blacky-light whitespace-pre-wrap	'> {obj.dayDesc}</p>
                             </div>
                         </div>
                         ))}

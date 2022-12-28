@@ -12,7 +12,7 @@
     align-items: center;
 }
 .preloader img{
-    width: 150px;
+    width: 100px;
 }
 .crop-box-con{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;        padding: 1rem;
@@ -31,6 +31,7 @@
 }
 body {
     font-family: Roboto, Helvetica, Arial, sans-serif !important;
+    background-color: rgb(254, 254, 254);
   }
 nav{
     background-color: transparent !important;
@@ -43,15 +44,7 @@ nav{
         padding: 0 34% 0;
     }
   }
-  @media only screen and (max-width: 764px) {
-    .blacktext{
-        color: black !important;
-    }
-    
-    .whitetext{
-        color: white !important;
-    }
-  }
+  
   @media only screen and (max-width: 640px) {
     .offerSlider .slick-list {
         padding: 0 20% 0;
@@ -134,4 +127,42 @@ input{outline: none;}
 }
 .textnormal{
     color: #000000d4 !important;
+}
+
+.skeleton{
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 70%);
+    }
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
+
+
+
+@media screen and (max-width: 768px)  {
+nav li a {
+    color: black !important;
+}
+
+}
+
+.reviews .slick-track{
+    display: flex !important;
+}
+
+.reviews .slick-slide
+{
+    height: inherit !important;
+}
+.reviews .slick-slide > div{
+    display: flex !important;
+    height: 100%;
+}
+.card-shadow{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important; 
 }

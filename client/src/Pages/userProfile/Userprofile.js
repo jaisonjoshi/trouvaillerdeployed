@@ -12,7 +12,7 @@ import avatar from '../Assets/avatar.png'
 import { Link } from 'react-router-dom';
 import './userprofile.css'
 import useFetch from '../../hooks/useFetch';
-import PropagateLoader from "react-spinners/PropagateLoader";
+import BarLoader from "react-spinners/BarLoader";
 
 
 
@@ -41,7 +41,7 @@ const Userprofile = () => {
             {loading?
             (
                 <div className='loading-div'>
-                <PropagateLoader
+                <BarLoader
      
      
                     color={'#32fca7'}
@@ -58,7 +58,7 @@ const Userprofile = () => {
         :
         
         <div className="mt-20 md:mt-32 h-[60vh] flex items-center justify-center px-8">
-                <div className="flex flex-col justify-center items-start md:flex-row md:justify-center md:items-center gap-[30px] md:gap-[10%] user-con">
+                <div className="flex flex-col justify-centerw w-[90%] lg:w-[50%] items-start md:flex-row md:justify-center md:items-center gap-[30px] md:gap-[10%] user-con">
                     <div className="w-[50%] flex justify-start md:justify-end">
                             <img src={userdet.img} className="w-[60%] md:w-[50%] max-w-[500px] rounded-full" alt="" />
                     </div>
@@ -66,7 +66,7 @@ const Userprofile = () => {
                         <h2 className='text-2xl md:text-4xl'>{userdet.username}</h2>
                         <h4 className='text-md'>{userdet.email}</h4>
                         <h4 className='text-md'> {userdet.phone}</h4>
-                        <p className='flex w-[100%] gap-[20px] '><Link className='rounded py-[3px] px-[8px] bg-evergreen text-sm' to="/user/update">Update profile</Link><Link  className='rounded text-sm py-[3px] px-[8px] bg-evergreen' to="/user/update/password">Change password</Link></p>
+                        <p className='flex w-[100%] gap-[20px] '><Link className='rounded py-[3px] px-[8px] bg-evergreen text-sm text-whiteglow' to="/user/update">Update profile</Link><Link  className='rounded text-sm py-[3px] px-[8px] bg-evergreen text-whiteglow' to="/user/update/password">Change password</Link></p>
                     </div>
                 </div>
             </div>
