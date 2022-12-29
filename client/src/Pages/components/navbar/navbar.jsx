@@ -49,10 +49,10 @@ const NavbarTest = ({color}) => {
     const [lastScrollY, setLastScrollY] = useState(0);
     const [colord, setColor] = useState(()=> {
       if(color == "text-whiteglow"){
-        return "text-[white]"
+        return "md:text-[white]"
       }
       else{
-        return "text-[black]"
+        return "md:text-[black]"
       }
     })
     useEffect(()=> {
@@ -83,10 +83,10 @@ const NavbarTest = ({color}) => {
         setShow("absolute opacity-100 bg-trans")
         setColor(()=>{
           if(color == "text-whiteglow"){
-            return "text-[white]"
+            return "md:text-[white]"
           }
           else{
-            return "text-[black]"
+            return "md:text-[black]"
           }
         })
       }

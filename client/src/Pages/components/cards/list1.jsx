@@ -336,22 +336,23 @@ const handlebudgetChange = (e) => {
         {data.map((item)=>(
 
           <div  key={item._id} className="pb-16 md:w-[45%] lg:w-[30%] bg-whiteglow card-shadow rounded mb-8 pb-4">
-        <img className='w-[100%] aspect-video rounded-lg skeleton' src={item.images[0]} alt="" />
+       <div className='relative'> 
+       <h3 className='text-xl md:text-2xl font-bold text-whiteglow absolute px-3 bottom-[3px] md:bottom-[15px] z-50'>{item.title}</h3>
+       <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
+       <p className="text-md md:text-lg font-bold bg-[#00c676b0] absolute rounded text-whiteglow m-[5px] px-[8px] py-[3px]">{item.duration}</p>
+
+       <img className='w-[100%] aspect-video rounded-lg skeleton' src={item.images[0]} alt="" /></div>
         <div className='py-2 mx-8'>
-            <h3 className='text-xl font-bold text-blacky-medium'>{item.title}</h3>
             <p className='text-sm md:text-[17px]  text-blacky-light card-text'>{item.description}</p>    
         </div>
         
         <div className="py-1 mx-8 flex justify-between items-center">
             <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
-            <p className="text-md md:text-lg text-blacky-light font-bold">{item.duration}</p>
-
-            </div>
-            <div className=" flex items-center mx-8 py-3">
             <Link  to={`/list/package/${item._id}`}>
 <button className="bg-evergreen text-whiteglow font-semibold text-sm px-8 py-2 rounded-md ">View</button></Link>
    
-        </div>
+            </div>
+          
         </div>
         ))}
 
