@@ -99,7 +99,7 @@ const Bidform = () => {
                         </div>
                         <div className="flex justify-center items-center px-3 rounded-lg my-7 md:my-5 bordercolour text-graydust-medium py-2 md:ml-10 p-1 w-72">
                             <h6 className="">Check out &nbsp;</h6>
-                            <input type="date" max="2022-12-12" id="checkOut" name="checkOut" onChange={handlebidChange} className="border focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium border-none outline-none" />
+                            <input type="date" id="checkOut" name="checkOut" onChange={handlebidChange} className="border focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium border-none outline-none" />
                         </div>
                     </div> 
 

@@ -29,9 +29,10 @@ const Offers = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 2,
+          dots:true,
         },
       },
     ],
@@ -46,7 +47,7 @@ const Offers = () => {
           <Slider {...settings}>
             {data.map((item) => (
               <div key={item._id}>
-                <div className=" rounded-md mr-8">
+                <div className=" rounded-md mx-4 md:mx-0 md:mr-8">
                   <div className="relative w-full">
                     <img src={require('../../Assets/SpecialOffer.png')} alt="" className=" rounded-md h-auto w-full " />
                     <div className="absolute bg-graydust-light opacity-90 bottom-2 w-[96%] left-[50%] translate-x-[-50%] flex rounded-lg p-2">
@@ -59,19 +60,19 @@ const Offers = () => {
                   {/*Texts*/}
 
                   <div className="">
-                    <h3 className="text-blacky-medium font-bold text-xl my-4">{item.title}</h3>
-                    <p className="text-blacky-light text-justify text-md card-text">{item.description}</p>
+                    <h3 className="text-blacky-medium font-bold text-md md:text-xl my-4">{item.title}</h3>
+                    <p className="text-blacky-light text-sm md:text-md card-text">{item.description}</p>
                   </div>
 
                   {/*Buttons*/}
                   <div className='flex justify-between  my-4'>
 
                     <Link to={`/list/package/${item._id}`}>
-                      <button className='px-6 py-3 border border-evergreen rounded bg-whiteglow text-evergreen font-medium text-sm hover:bg-blacky-dark hover:text-whiteglow duration-500 hover:border-transparent'>Read More</button>
+                      <button className='py-[3px] px-[5px] md:px-6 md:py-3 border border-evergreen rounded bg-whiteglow text-evergreen font-medium text-sm hover:bg-blacky-dark hover:text-whiteglow duration-500 hover:border-transparent'>Read More</button>
                     </Link>
                    
                     <a href={"https://wa.me/919562523642?text=" + text + item.title }>
-                    <button className='px-6 py-3 border border-evergreen rounded bg-evergreen text-whiteglow font-medium text-sm  hover:bg-blacky-dark hover:text-whiteglow duration-500 hover:border-transparent'>Book now</button>
+                    <button className='py-[3px] px-[5px] md:px-6 md:py-3 border border-evergreen rounded bg-evergreen text-whiteglow font-medium text-sm  hover:bg-blacky-dark hover:text-whiteglow duration-500 hover:border-transparent'>Book now</button>
                     </a>
 
                   </div>
