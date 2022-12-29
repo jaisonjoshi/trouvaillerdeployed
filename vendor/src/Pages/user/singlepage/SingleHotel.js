@@ -28,16 +28,18 @@ const SingleHotel = () => {
     const handlehotelDelete = async (id) => {
         try{
             await axiosInstance.delete(`/hotels/${id}`);
-            navigate('/hotels')
+            navigate('/vendor')
         }catch(err){
             console.log(err);
         }
 
     }
+  const [userobj, setUserobj] = useState({})
+
     return(
 
         <div className="Single-hotel">
-          <Header />
+      <Header setUserobj={setUserobj}/>
 
             <div className="singlehotel-container">
                {loading ? ("loading ") : (

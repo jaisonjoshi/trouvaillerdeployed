@@ -50,7 +50,7 @@ const createHotel=async (req,res)=>{
         images,
         description,
         rating,
-        cheapestPrice,
+        cheapestPrice,locations,features,
         facilities,vendorid}=req.body
     //add to db
     try{
@@ -63,7 +63,7 @@ const createHotel=async (req,res)=>{
         images,
         description,
         rating,
-        cheapestPrice,
+        cheapestPrice,locations,features,
         facilities,vendorid})
     res.status(200).json({hotel})}
     //res.json({mssg:'post a new workouts'})

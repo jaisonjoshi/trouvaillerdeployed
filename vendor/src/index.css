@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body {
+    font-family: Roboto, Helvetica, Arial, sans-serif !important;
+  }
 h1{
     padding: 0 !important;
 }

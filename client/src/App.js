@@ -75,7 +75,18 @@ function App() {
         <Route path="/packages" element={<List1_card/>}/>
         <Route path="/hotels" element={<List2_card/>}/>
 
-        <Route path="/what-is-bid" element={<IntroToBid/>}/>
+        {/* {hotels && hotels.map((hotel)=> (
+                                <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>
+                                <div className="img">
+                                    <img src={hotel.images[0]} alt="" />
+                                </div>
+                                <div className="card-body">
+                                    <h3>{hotel.title}</h3>
+                                    <p>{hotel.description}</p>
+                                    <div className='tags'>                                    <span className='tag'>{hotel.location}</span><span className='tag'>{hotel.cheapestPrice}</span>
+                                </div>
+                                </div>
+                            </div>))}  */}  <Route path="/what-is-bid" element={<IntroToBid/>}/>
         <Route path="/bid-status" element={<BidStatus/>}/>
         <Route path="/package" element={<Package/>}/>
         <Route path="/hotel" element={<Hotel/>}/>

@@ -25,6 +25,9 @@ const packageSchema=new Schema({
         type:String,
         required:true
     },
+    locations:{
+        type:[String]
+    },
     duration:{
         type:String,
         required:true
@@ -37,6 +40,10 @@ const packageSchema=new Schema({
         type:[String],
         required:false
     } ,
+    activities:{
+        type:[String],
+        required: false
+    },
     offers:{
         type:Boolean,
         required:false

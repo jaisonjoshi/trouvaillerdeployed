@@ -73,12 +73,13 @@ const UpdateHotel =() => {
         } */
         
     }
+  const [userobj, setUserobj] = useState({})
 
     
 
     return(
         <div className="new-hotel">
-          <Header />
+      <Header setUserobj={setUserobj}/>
 
             <div className="newhotel-body-1">
                     <h1>Update the Hotel : {data.title}({data._id})</h1>

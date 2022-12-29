@@ -64,6 +64,13 @@ const NewPackage =({setOpen}) => {
        
         
    }
+   const [query, setQuery] = useState("")
+   const [activity, setActivity] = useState("")
+   const [locationitem, setLocationitem] = useState("")
+   const [locations, setLocations] = useState([])
+
+   const [features, setFeatures] = useState([])
+   const [activities, setActivities] = useState([])
 
    const [photoURL, setPhotoURL] = useState("");
    const [openCrop, setOpenCrop] = useState(false);
@@ -78,12 +85,52 @@ const NewPackage =({setOpen}) => {
     }
    }
 
+   const handleUpdateQuery = ({ target }) => {
+    // Update query onKeyPress of input box
+    setQuery(target.value)
+  }
+  const handleUpdateActivities = ({ target }) => {
+    // Update query onKeyPress of input box
+    setActivity(target.value)
+  }
+  const handleUpdateLocations = ({ target }) => {
+    // Update query onKeyPress of input box
+    setLocationitem(target.value)
+  }
 
-
-
+   const handleNext = (e) => {
+    e.preventDefault()
+    //setSearches(searches => [...searches, query])
+    setFeatures(features=>[...features, query])
+    document.getElementById('features').value = " "
+    setQuery("")
+    console.log(features)
+   
+    
+}
+const handleactivityNext = (e) => {
+    e.preventDefault()
+    //setSearches(searches => [...searches, query])
+    setActivities(activities=>[...activities, activity])
+    document.getElementById('activities').value = " "
+    setActivity("")
+    console.log(activities)
+   
+    
+}
+const handlelocationNext = (e) => {
+    e.preventDefault()
+    //setSearches(searches => [...searches, query])
+    setLocations(locations=>[...locations, locationitem])
+    document.getElementById('locations').value = " "
+    setLocationitem("")
+    console.log(locations)
+   
+    
+}
     const handleClick = async e => {
         setOpen(true)
-
+       
         e.preventDefault();
         try{
             const list = await Promise.all(
@@ -103,7 +150,7 @@ const NewPackage =({setOpen}) => {
               
               const newPackage = {
                 ...info,shedule: shedule,
-                images: list,offers:true,
+                images: list,offers:true,features:features,activities:activities,locations:locations,
               };
               await axiosInstance.post("/packages", newPackage);
               console.log(newPackage)
@@ -162,6 +209,36 @@ const NewPackage =({setOpen}) => {
                             
                             </div>
                             <div className="form-item">
+                                    <label>Attractions and features</label>
+                                    <input type="text" id="features" onChange={handleUpdateQuery}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handleNext} className="room-btn">Add room type</button>
+
+                                </div>
+                                <div className="form-item">
+                                    <label>Activities</label>
+                                    <input type="text" id="activities" onChange={handleUpdateActivities}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handleactivityNext} className="room-btn">Add room type</button>
+
+                                </div>
+                                <div className="form-item">
+                                    <label>Location tags</label>
+                                    <input type="text" id="locations" onChange={handleUpdateLocations}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handlelocationNext} className="room-btn">Add room type</button>
+
+                                </div>
+                            <div className="form-item">
                                 <label>Rating</label>
                                 <input type="number" min="0" max="6" id="rating" onChange={handleChange}/>
                             
@@ -205,6 +282,24 @@ const NewPackage =({setOpen}) => {
                             </div>
                             <div className="package-details-flex-2">
                             <CurrencyRupeeIcon /><h3>{info.cheapestPrice} /-</h3>
+                            </div>
+                            <div className="package-details-flex">
+                                {features && features.map((obj)=>(
+                                    <span>n{obj}</span>
+                                ))}
+                            </div>
+                            <h3>Activities</h3>
+
+                            <div className="package-details-flex">
+                                {activities && activities.map((obj)=>(
+                                    <span>n{obj}</span>
+                                ))}
+                            </div>
+                            <h4>Location tags</h4>
+                            <div className="package-details-flex">
+                                {locations && locations.map((obj)=>(
+                                    <span>n{obj}</span>
+                                ))}
                             </div>
                             <p>Rating value {info.rating}</p>
                         </div>

@@ -11,9 +11,80 @@ import Footer from '../../../components/Footer/Footer';
 
 
 const CreateHotel =() => {
+    const [userobj, setUserobj] = useState({})
+
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
+
+    const [rooms, setRooms] = useState([])
+    const [query, setQuery] = useState("")
+    const [locationitem, setLocationitem] = useState("")
+
+    const [feature, setFeature] = useState("")
+    const [facility, setFacility] = useState("")
+
+    const [features, setFeatures] = useState([])
+    const [locations, setLocations] = useState([])
+    const [facilities, setFacilities] = useState([])
+    const handleUpdateQuery = ({ target }) => {
+        // Update query onKeyPress of input box
+        setQuery(target.value)
+      }
+      const handleUpdateFacility = ({ target }) => {
+        // Update query onKeyPress of input box
+        setFacility(target.value)
+      }
+      const handleUpdateFeatures = ({ target }) => {
+        // Update query onKeyPress of input box
+        setFeature(target.value)
+      }
+
+      const handleNext = (e) => {
+        e.preventDefault()
+        //setSearches(searches => [...searches, query])
+        setRooms(rooms=>[...rooms, query])
+        document.getElementById('rooms').value = " "
+        setQuery("")
+        console.log(rooms)
+       
+        
+   }
+   const handleFacility = (e) => {
+    e.preventDefault()
+    //setSearches(searches => [...searches, query])
+    setFacilities(facilities=>[...facilities, facility])
+    document.getElementById('facilities').value = " "
+    setFacility("")
+
+    console.log(rooms)
+   
+    
+}
+const handleUpdateLocations = ({ target }) => {
+    // Update query onKeyPress of input box
+    setLocationitem(target.value)
+  }
+  const handlelocationNext = (e) => {
+    e.preventDefault()
+    //setSearches(searches => [...searches, query])
+    setLocations(locations=>[...locations, locationitem])
+    document.getElementById('locations').value = " "
+    setLocationitem("")
+    console.log(locations)
+   
+    
+}
+   const handlefeatureNext = (e) => {
+    e.preventDefault()
+    //setSearches(searches => [...searches, query])
+    setFeatures(features=>[...features, feature])
+    document.getElementById('features').value = " "
+    setFeature("")
+    console.log(features)
+   
+    
+}
     const navigate = useNavigate();
     const [files, setFile] = useState("")
 
@@ -54,12 +125,12 @@ const CreateHotel =() => {
         }
         
     }
-
+    
     
 
     return(
         <div className="new-hotel">
-            <Header />
+      <Header setUserobj={setUserobj}/>
 
             <div className="newhotel-body-1">
                     <h1>Create a Hotel</h1>
@@ -86,6 +157,46 @@ const CreateHotel =() => {
                                     <label>Location</label>
                                     <input type="text" id="location" onChange={handleChange}/>
                                 
+                                </div>
+                                <div className="form-item">
+                                    <label>Room types</label>
+                                    <input type="text" id="rooms" onChange={handleUpdateQuery}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handleNext} className="room-btn">Add room type</button>
+
+                                </div>
+                                <div className="form-item">
+                                    <label>Facilities</label>
+                                    <input type="text" id="facilities" onChange={handleUpdateFacility}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handleFacility} className="room-btn">Add facility</button>
+
+                                </div>
+                                <div className="form-item">
+                                    <label>Features or other tags u want to showcase</label>
+                                    <input type="text" id="features" onChange={handleUpdateFeatures}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handlefeatureNext} className="room-btn">Add facility</button>
+
+                                </div>
+                                <div className="form-item">
+                                    <label>Location tags</label>
+                                    <input type="text" id="locations" onChange={handleUpdateLocations}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handlelocationNext} className="room-btn">Add room type</button>
+
                                 </div>
                             
                                 <div className="form-item">
@@ -120,7 +231,54 @@ const CreateHotel =() => {
                                 <p>{info.description? info.description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}</p>
                                
                                  <p className='loc-tag'>{info.location? info.location:"Location"}</p>
-                                    
+                               <div> <label>Room Type</label>
+                            <div className='roomTypes'>
+                                
+                                {rooms && rooms.map((obj, i)=> (
+                                    <div >
+                                        <p>{obj}</p>
+                                      
+                                    </div>
+                                ))}
+                                
+                            </div></div>
+                            <div >
+                            <label>Facilities</label>
+                            <div className='roomTypes'>
+                                
+                                {facilities.map((obj, i)=> (
+                                    <div >
+                                        <p>{obj}</p>
+                                      
+                                    </div>
+                                ))}
+                                
+                            </div>
+                        </div><div >
+                            <label>Location tags</label>
+                            <div className='roomTypes'>
+                                
+                                {locations.map((obj, i)=> (
+                                    <div >
+                                        <p>{obj}</p>
+                                      
+                                    </div>
+                                ))}
+                                
+                            </div>
+                        </div><div >
+                            <label>Features or other attractions</label>
+                            <div className='roomTypes'>
+                                
+                                {features.map((obj, i)=> (
+                                    <div >
+                                        <p>{obj}</p>
+                                      
+                                    </div>
+                                ))}
+                                
+                            </div>
+                        </div>
                                 <div className="package-details-flex-2">
                                 <CurrencyRupeeIcon /><h3>{info.cheapestPrice? info.cheapestPrice: "Price"} /-</h3>
                                 </div>

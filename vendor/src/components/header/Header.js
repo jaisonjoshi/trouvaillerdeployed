@@ -1,14 +1,18 @@
 import './header.scss'
+import {useContext, useEffect} from 'react'
+import { AuthContext } from '../context/AuthContext';
 import logo from '../../Assets/logo.png'
 import Slider from "react-slick";
 import profile from "../../Assets/profile.jpg";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import "slick-carousel/slick/slick.css";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import "slick-carousel/slick/slick-theme.css";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { Link } from 'react-router-dom';
-const Header = () => {
+import useFetch from '../../hooks/useFetch';
+const Header = ({setUserobj}) => {
     const settings = {
         infinite: true,
        
@@ -19,6 +23,20 @@ const Header = () => {
         autoplaySpeed: 4000,
         
       };
+
+      const { user, loading, error, dispatch } = useContext(AuthContext);
+      let url;
+        if(user){
+            url = `/user/find/${user._id}`
+        }
+        else{
+            url = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+        }
+        const {data} = useFetch(url)
+        useEffect(()=>{
+            setUserobj(data)
+
+        },[data])
     return(
         <div className="header">
              <Slider {...settings}>
@@ -35,14 +53,14 @@ const Header = () => {
             <div className="header-content">
                 <div className="header-nav">
                     <div className="prof">
-                        <img src={profile} />
-                        <p className='mr-4'>Jaison</p>
+                        <img src={data.img} />
+                        <p className='mr-4'>{data.username}</p>
                     </div>
                     <div className="nav-items">
                     <Link to="/"><a href="www.trouvailler.com">Home</a></Link>
 
                     <span className='header-txt'>Explore <a href="www.trouvailler.com">trouvailler.com</a></span>
-                   <LocalPhoneIcon className='nav-icon'/> <WhatsAppIcon className='nav-icon'/><InstagramIcon  className='nav-icon'/>
+                   <a href='https://www.facebook.com/travelwithtrouvailler/'><FacebookIcon className='nav-icon'/></a> <a href="https://wa.me/918129177335"><WhatsAppIcon className='nav-icon'/></a><a href="https://www.instagram.com/trouvailler_guides/"><InstagramIcon  className='nav-icon'/></a>
                     </div>
                 </div>
                 <div className='header-logo'>

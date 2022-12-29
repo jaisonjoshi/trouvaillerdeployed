@@ -30,6 +30,9 @@ const hotelSchema=new Schema({
         type:String,
         required:true
     },
+    locations:{
+        type:[String]
+    },
     rating:{
         type:Number,
         min:0,
@@ -43,6 +46,9 @@ const hotelSchema=new Schema({
         type:[String],
         required:true
     } ,
+    features:{
+        type:[String]
+    },
     vendorid: {
         type:String
     }

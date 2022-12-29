@@ -22,8 +22,27 @@ const NewHotel =({setOpen}) => {
     const [rooms, setRooms] = useState([])
     const [info, setinfo] = useState({});
     const [query, setQuery] = useState("")
+    const [feature, setFeature] = useState("")
+
     const [facility, setFacility] = useState("")
     const [facilities, setFacilities] = useState([])
+    const [features, setFeatures] = useState([])
+    const [locationitem, setLocationitem] = useState("")
+    const [locations, setLocations] = useState([])
+    const handleUpdateLocations = ({ target }) => {
+        // Update query onKeyPress of input box
+        setLocationitem(target.value)
+      }
+      const handlelocationNext = (e) => {
+        e.preventDefault()
+        //setSearches(searches => [...searches, query])
+        setLocations(locations=>[...locations, locationitem])
+        document.getElementById('locations').value = " "
+        setLocationitem("")
+        console.log(locations)
+       
+        
+    }
     const handleUpdateQuery = ({ target }) => {
         // Update query onKeyPress of input box
         setQuery(target.value)
@@ -31,6 +50,10 @@ const NewHotel =({setOpen}) => {
       const handleUpdateFacility = ({ target }) => {
         // Update query onKeyPress of input box
         setFacility(target.value)
+      }
+      const handleUpdateFeatures = ({ target }) => {
+        // Update query onKeyPress of input box
+        setFeature(target.value)
       }
 
     const handleChange = (e) => {
@@ -46,6 +69,17 @@ const NewHotel =({setOpen}) => {
         document.getElementById('rooms').value = " "
         setQuery("")
         console.log(rooms)
+       
+        
+   }
+    // }
+    const handlefeatureNext = (e) => {
+        e.preventDefault()
+        //setSearches(searches => [...searches, query])
+        setFeatures(features=>[...features, feature])
+        document.getElementById('features').value = " "
+        setFeature("")
+        console.log(features)
        
         
    }
@@ -95,7 +129,7 @@ const NewHotel =({setOpen}) => {
               );
               
               const newHotel = {
-                ...info,rooms:rooms,images:list,facilities:facilities,
+                ...info,rooms:rooms,images:list,facilities:facilities,features:features,locations:locations,
         
               };
               await axiosInstance.post("/hotels", newHotel);
@@ -118,7 +152,7 @@ const NewHotel =({setOpen}) => {
             
                     <h1>Create a Hotel</h1>
                    <div className="new-hotel-box">
-                    <   div className="newhotelform-container">
+                    <div className="newhotelform-container">
                             <form >
                             <div className="form-item-file">
                             <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
@@ -162,8 +196,33 @@ const NewHotel =({setOpen}) => {
 
                                 </div>
                                 <div className="form-item">
+                                    <label>Features or other tags u want to showcase</label>
+                                    <input type="text" id="features" onChange={handleUpdateFeatures}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handlefeatureNext} className="room-btn">Add facility</button>
+
+                                </div>
+                                <div className="form-item">
+                                    <label>Location tags</label>
+                                    <input type="text" id="locations" onChange={handleUpdateLocations}/>
+
+                                </div>
+                                
+                                <div className="room-btn-box">
+                                <button onClick={handlelocationNext} className="room-btn">Add room type</button>
+
+                                </div>
+                                <div className="form-item">
                                     <label>Price</label>
                                     <input type="text" id="cheapestPrice" onChange={handleChange}/>
+                                
+                                </div>
+                                <div className="form-item">
+                                    <label>Vendor Id</label>
+                                    <input type="text" id="vendorid" onChange={handleChange}/>
                                 
                                 </div>
                                 <div className="hotel-form-submit">
@@ -191,8 +250,10 @@ const NewHotel =({setOpen}) => {
 
                                   {  console.log({rooms})}
                                  {/*<h3>{info.rooms}</h3>*/}
+                                 <h3>Vendor Id {info.vendorid}</h3>
 
                                  <div >
+
                             <label>Room Type</label>
                             <div className='roomTypes'>
                                 
@@ -210,6 +271,33 @@ const NewHotel =({setOpen}) => {
                             <div className='roomTypes'>
                                 
                                 {facilities.map((obj, i)=> (
+                                    <div >
+                                        <p>{obj}</p>
+                                      
+                                    </div>
+                                ))}
+                                
+                            </div>
+                        </div>
+                        <div >
+                            <label>Location tags</label>
+                            <div className='roomTypes'>
+                                
+                                {locations.map((obj, i)=> (
+                                    <div >
+                                        <p>{obj}</p>
+                                      
+                                    </div>
+                                ))}
+                                
+                            </div>
+                        </div>
+
+                        <div >
+                            <label>Features or other attractions</label>
+                            <div className='roomTypes'>
+                                
+                                {features.map((obj, i)=> (
                                     <div >
                                         <p>{obj}</p>
                                       

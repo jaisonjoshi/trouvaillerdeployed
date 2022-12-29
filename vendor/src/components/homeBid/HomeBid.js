@@ -5,21 +5,25 @@ import { useEffect, useState } from 'react';
 
 
 
-const HomeBid = () => {
-
+const HomeBid = ({url}) => {
     const [bids, setBids] = useState([]);
-    const {data, loading,error}= useFetch('/bids')
+
+
+   
+
+    const {data, loading,error}= useFetch(url)
     useEffect(()=> {
         setBids(data);
     },[data])
-    console.log(data)
     return(<>
 
         <div className="home-bid">
-
-            {bids && bids.map((bid, i)=> (
+            {bids.length != 0 ? 
+            bids.map((bid, i)=> (
                 <Bidcard  key={i} bid={bid}/>
-            ))}
+            )) :
+            <h3>You have no any bid requests till now</h3>
+            }
         </div></>
     )
 }

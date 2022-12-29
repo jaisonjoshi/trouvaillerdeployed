@@ -94,7 +94,8 @@ const UpdateHotel =() => {
                         <div className="form-item-file">
                             <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
                                     <input type="file" name="" id="img-input" multiple onChange={(e) => setFile(e.target.files)}/>
-                                
+                                    <p>click again to upload next image</p>
+
                                 </div>
                             <div className="form-item">
                                 <label > Title</label>
