@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import Chip from '@mui/material/Chip';
 
 import './createHotel.scss';
 import axios from "axios"
@@ -68,6 +69,10 @@ const handleUpdateLocations = ({ target }) => {
     // Update query onKeyPress of input box
     setLocationitem(target.value)
   }
+  const handleLocationDelete = (e, value)=> {
+        e.preventDefault();
+        setLocations(locations.filter((itm)=> itm !== value))
+  }
   const handlelocationNext = (e) => {
     e.preventDefault()
     //setSearches(searches => [...searches, query])
@@ -90,7 +95,9 @@ const handleUpdateLocations = ({ target }) => {
 
 
 }
-
+    const handleDelete = () => {
+        console.info('You clicked the delete icon.');
+    };
     const [type, setType] = useState('');
 
     const handleTypeChange = (event) => {
@@ -307,11 +314,11 @@ const handleUpdateLocations = ({ target }) => {
                             <label>Location tags</label>
                             <div className='roomTypes'>
                                 
-                                {locations.map((obj, i)=> (
-                                    <div >
-                                        <span className='px-2 py-1 rounded-full bg-evergreen'>{obj}</span>
+                                {locations && locations.map((obj, i)=> (
+                                   
+                                        <Chip label={obj} onDelete={(e)=> {handleLocationDelete(e,obj)}}/>
                                       
-                                    </div>
+                                 
                                 ))}
                                 
                             </div>
@@ -320,10 +327,8 @@ const handleUpdateLocations = ({ target }) => {
                             <div className='roomTypes'>
                                 
                                 {features.map((obj, i)=> (
-                                    <div >
-                                        <span className='px-2 py-1 rounded-full bg-evergreen'>{obj}</span>
+                                        <Chip label={obj} onDelete={handleDelete}/>
                                       
-                                    </div>
                                 ))}
                                 
                             </div>

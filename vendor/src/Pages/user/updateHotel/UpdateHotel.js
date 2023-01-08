@@ -8,7 +8,8 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import Header from '../../../components/header/Header';
 import Footer from '../../../components/Footer/Footer';
- 
+import Chip from '@mui/material/Chip';
+
 
 const UpdateHotel =() => {
     const axiosInstance = axios.create({
