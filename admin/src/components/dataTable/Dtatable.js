@@ -20,7 +20,7 @@ const columns = [
 
 
 export default function DataTable() {
-  const {data, loading,error} = useFetch('/user?isAdmin=false&isVendor=false');
+  const {data, loading,error} = useFetch('/user?isAdmin=false&isVendor=true');
     console.log(data)
 
   const rows = data;

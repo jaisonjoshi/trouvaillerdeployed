@@ -29,20 +29,21 @@ const NewHotel =({setOpen}) => {
     const [features, setFeatures] = useState([])
     const [locationitem, setLocationitem] = useState("")
     const [locations, setLocations] = useState([])
+
     const handleUpdateLocations = ({ target }) => {
         // Update query onKeyPress of input box
-        setLocationitem(target.value)
+        setLocationitem(target.value.toLowerCase());
       }
+
       const handlelocationNext = (e) => {
         e.preventDefault()
         //setSearches(searches => [...searches, query])
         setLocations(locations=>[...locations, locationitem])
         document.getElementById('locations').value = " "
         setLocationitem("")
-        console.log(locations)
-       
-        
-    }
+        console.log(locations)  
+         }
+
     const handleUpdateQuery = ({ target }) => {
         // Update query onKeyPress of input box
         setQuery(target.value)
@@ -60,7 +61,11 @@ const NewHotel =({setOpen}) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
     }
     // const handleRoomChange = (e) => {
-        
+        const handleChangeLowerCase = (e) => {
+            console.log(e.target.value.toLowerCase())
+            setinfo((prev) => ({...prev, [e.target.id] : e.target.value.toLowerCase()}))
+            console.log("in lowercase"+info);
+        }  
     // }
     const handleNext = (e) => {
         e.preventDefault()
@@ -79,10 +84,9 @@ const NewHotel =({setOpen}) => {
         setFeatures(features=>[...features, feature])
         document.getElementById('features').value = " "
         setFeature("")
-        console.log(features)
-       
-        
+        console.log(features)   
    }
+
    const handleFacility = (e) => {
     e.preventDefault()
     //setSearches(searches => [...searches, query])
@@ -166,18 +170,28 @@ const NewHotel =({setOpen}) => {
                                 
                                 </div>
                                 <div className="form-item">
+                                <label > Hotel type</label>
+                                <input type="text" name="" id="type"  onChange={handleChangeLowerCase} placeholder={"eg.Villa,Resort"}/>
+                            
+                                </div>
+                                <div className="form-item">
                                     <label>Description</label>
                                     <textarea type="text" id="description" onChange={handleChange}/>
                                 
                                 </div>
                                 <div className="form-item">
+                                <label>Address</label>
+                                <textarea type="text" id="address"  onChange={handleChange}/>
+                            
+                            </div>
+                                <div className="form-item">
                                     <label>Location</label>
-                                    <input type="text" id="location" onChange={handleChange}/>
+                                    <input type="text" id="location" onChange={handleChangeLowerCase}/>
                                 
                                 </div>
                                 <div className="form-item">
                                     <label>Room types</label>
-                                    <input type="text" id="rooms" onChange={handleUpdateQuery}/>
+                                    <input type="text" id="rooms" onChange={handleUpdateQuery} placeholder={"eg.single bed,double bed"}/>
 
                                 </div>
                                 
@@ -202,17 +216,17 @@ const NewHotel =({setOpen}) => {
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handlefeatureNext} className="room-btn">Add facility</button>
+                                <button onClick={handlefeatureNext} className="room-btn">Add feature</button>
 
                                 </div>
                                 <div className="form-item">
                                     <label>Location tags</label>
-                                    <input type="text" id="locations" onChange={handleUpdateLocations}/>
+                                    <input type="text" id="locations" onChange={handleUpdateLocations} placeholder={"eg.Wayanad,Kerala,India"}/>
 
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handlelocationNext} className="room-btn">Add room type</button>
+                                <button onClick={handlelocationNext} className="room-btn">Add location tag</button>
 
                                 </div>
                                 <div className="form-item">
@@ -220,6 +234,11 @@ const NewHotel =({setOpen}) => {
                                     <input type="text" id="cheapestPrice" onChange={handleChange}/>
                                 
                                 </div>
+                                <div className="form-item">
+                                <label>Rating</label>
+                                <input type="number" min="0" max="6" id="rating"  onChange={handleChange} placeholder={"enter a rating from 0-5 or 6"}/>
+                            
+                            </div>
                                 <div className="form-item">
                                     <label>Vendor Id</label>
                                     <input type="text" id="vendorid" onChange={handleChange}/>
@@ -244,7 +263,16 @@ const NewHotel =({setOpen}) => {
                             </div>
                             <div className="package-details">
                                 <h1>{info.title}</h1>
+                                <div >
+                               <h3>Hotel Type</h3>
+                                <div className='roomTypes'>{info.type}</div>
+                            </div>
+
+                            <h3>Hotel Description</h3>
                                 <p>{info.description}</p>
+
+                                <h3>Hotel Address</h3>
+                                <p>{info.address}</p>
                                
                                  <h3>{info.location}</h3>
 
@@ -312,6 +340,10 @@ const NewHotel =({setOpen}) => {
                                 <div className="package-details-flex-2">
                                 <CurrencyRupeeIcon /><h2>{info.cheapestPrice} /-</h2>
                                 </div>
+
+                                <h3>Hotel Rating</h3>
+                                <h3>{info.rating}</h3>
+
                             </div>
                            
                         </div>

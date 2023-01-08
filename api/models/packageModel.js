@@ -51,7 +51,7 @@ const packageSchema=new Schema({
     rating:{
         type:Number,
         min:0,
-        max:5
+        max:6
     },
     images :{
         type:[String],

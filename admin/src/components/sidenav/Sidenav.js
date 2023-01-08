@@ -26,7 +26,7 @@ const Sidenav = ({isOpen}) => {
                 </Link>
                 <Link to="/hotels">
                 <li>
-                    <AddBusinessIcon className='sidenav-icn'/><span>Hotels</span>
+                    <AddBusinessIcon className='sidenav-icn'/><span>Properties</span>
                 </li>
                 </Link>
                 <Link to="/bids">

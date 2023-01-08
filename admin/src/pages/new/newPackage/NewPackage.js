@@ -11,7 +11,9 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import CropEasy from '../../../components/crop/CropEasy';
 
 const NewPackage =({setOpen}) => {
+
     const [sidenavOpen, setSideNavOpen] = useState(false)
+
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
@@ -22,29 +24,21 @@ const NewPackage =({setOpen}) => {
     const [files, setFile] = useState("")
     const [info, setinfo] = useState({});
     
-    /* let dayTitle = "";
-    let dayDesc = "";
-    let shedule= []; */
-   /*  const handleDayTitleChange = (e) => {
-        dayTitle = e.target.value;
-    }
-    const handleDayDescChange = (e) => {
-        dayDesc = e.target.value;
-    }
-    const handleaddshedule = (e) => {
-        e.preventDefault()
-        shedule = ([...shedule, {"dayTitle" : dayTitle, "dayDesc": dayDesc}]);
-        console.log(shedule)
-    }
-     */
+  
     const [shedule,setShedule] = useState([])
     const [dayTitle, setDayTitle] = useState("");
     const [dayDesc, setDayDesc] = useState("");
+
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
         console.log(info)
     }
+    const handleChangeLowerCase = (e) => {
+        setinfo((prev) => ({...prev, [e.target.id] : e.target.value.toLowerCase()}))
+        console.log(info)
+    }
     const handleDayTitleChange = (e) => {
+        e.preventDefault();
         const {name, value}= e.target;
 
         if(name === "dayTitle")(
@@ -61,6 +55,8 @@ const NewPackage =({setOpen}) => {
         tempobject["dayTitle"] = dayTitle;
         tempobject["dayDesc"] = dayDesc;
         setShedule((prev)=> ([...prev, tempobject]));
+        document.getElementById('sheduleTitle').value = " ";
+        document.getElementById('sheduleDesc').value = " ";
        
         
    }
@@ -75,6 +71,8 @@ const NewPackage =({setOpen}) => {
    const [photoURL, setPhotoURL] = useState("");
    const [openCrop, setOpenCrop] = useState(false);
    const [imgFiles, setImgFiles] = useState([])
+   const [feature, setFeature] = useState("")
+//    const [features, setFeatures] = useState([])
    const handleImageChange = (e) => {
     const file = e.target.files[0];
     if(file){
@@ -91,11 +89,11 @@ const NewPackage =({setOpen}) => {
   }
   const handleUpdateActivities = ({ target }) => {
     // Update query onKeyPress of input box
-    setActivity(target.value)
+    setActivity(target.value.toLowerCase())
   }
   const handleUpdateLocations = ({ target }) => {
     // Update query onKeyPress of input box
-    setLocationitem(target.value)
+    setLocationitem(target.value.toLowerCase())
   }
 
    const handleNext = (e) => {
@@ -195,12 +193,17 @@ const handlelocationNext = (e) => {
                             </div>
                             <div className="form-item">
                                 <label>Location</label>
-                                <input type="text" id="location" onChange={handleChange}/>
+                                <input type="text" id="location" onChange={handleChangeLowerCase}/>
                             
                             </div>
                             <div className="form-item">
                                 <label>Duration</label>
-                                <input type="text" id="duration" onChange={handleChange}/>
+                                <input type="text" id="duration" onChange={handleChange} placeholder={"eg. 3 Days 4 Nights "}/>
+                            
+                            </div>
+                            <div className="form-item">
+                                <label>Category</label>
+                                <textarea type="text" id="category" onChange={handleChangeLowerCase} placeholder={"eg. Family,Honeymoon,Friends,etc"}/>
                             
                             </div>
                             <div className="form-item">
@@ -215,32 +218,32 @@ const handlelocationNext = (e) => {
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handleNext} className="room-btn">Add room type</button>
+                                <button onClick={handleNext} className="room-btn">Add feature</button>
 
                                 </div>
                                 <div className="form-item">
                                     <label>Activities</label>
-                                    <input type="text" id="activities" onChange={handleUpdateActivities}/>
+                                    <input type="text" id="activities" onChange={handleUpdateActivities} placeholder={"eg. Adventure,Religious,etc"}/>
 
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handleactivityNext} className="room-btn">Add room type</button>
+                                <button onClick={handleactivityNext} className="room-btn">Add activity</button>
 
                                 </div>
                                 <div className="form-item">
                                     <label>Location tags</label>
-                                    <input type="text" id="locations" onChange={handleUpdateLocations}/>
+                                    <input type="text" id="locations" onChange={handleUpdateLocations} placeholder={"eg. Wayanad,Kerala,India"}/>
 
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handlelocationNext} className="room-btn">Add room type</button>
+                                <button onClick={handlelocationNext} className="room-btn">Add Location tag</button>
 
                                 </div>
                             <div className="form-item">
                                 <label>Rating</label>
-                                <input type="number" min="0" max="6" id="rating" onChange={handleChange}/>
+                                <input type="number" min="0" max="6" id="rating" onChange={handleChange} placeholder={"Enter a rating from 0-5 or 6"}/>
                             
                             </div>
                             <div className='shedule-input-con'>
@@ -248,11 +251,11 @@ const handlelocationNext = (e) => {
                                 <div className="shedule-ip-box">
                                     <div className="form-item">
                                         <label>Title</label>
-                                        <input type="text" id="sheduleTitle" onChange={handleDayTitleChange} name="dayTitle"/>
+                                        <input type="text" id="sheduleTitle" onChange={handleDayTitleChange} name="dayTitle" placeholder="Enter the day title here"/>
                                     </div>                                        {/*   reset button must be created */}
                                     <div className="form-item">
                                         <label>Description</label>
-                                        <textarea  id="sheduleDesc" onChange={handleDayTitleChange} name="dayDesc"/>
+                                        <textarea  id="sheduleDesc" onChange={handleDayTitleChange} name="dayDesc" placeholder="Enter the day detailing here"/>
                                     </div>
                                 </div>
                                 <button onClick={handleSave}>Add next day</button>
@@ -283,25 +286,30 @@ const handlelocationNext = (e) => {
                             <div className="package-details-flex-2">
                             <CurrencyRupeeIcon /><h3>{info.cheapestPrice} /-</h3>
                             </div>
+                            <h3>Category </h3> <p>{info.category}</p>
+                            <h3>Features </h3>
                             <div className="package-details-flex">
                                 {features && features.map((obj)=>(
-                                    <span>n{obj}</span>
+                                    <span>{obj}</span>
                                 ))}
                             </div>
+                            
                             <h3>Activities</h3>
 
                             <div className="package-details-flex">
                                 {activities && activities.map((obj)=>(
-                                    <span>n{obj}</span>
+                                    <span>{obj}</span>
                                 ))}
                             </div>
                             <h4>Location tags</h4>
                             <div className="package-details-flex">
                                 {locations && locations.map((obj)=>(
-                                    <span>n{obj}</span>
+                                    <span>{obj}</span>
                                 ))}
                             </div>
-                            <p>Rating value {info.rating}</p>
+                            
+                            <h3>Rating value {info.rating}</h3>
+                            {/* <h3>Rating type {typeof(info.rating)}</h3> */}
                         </div>
                         <div className="package-shedule">
                             <h3>Shedule</h3>

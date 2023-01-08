@@ -65,12 +65,13 @@ const Hotels =() => {
 
             <div className={`hotels-body ${anim}`}>
                     <div className="hotels-body-header">
-                    <h2>Hotels</h2>
-                    
+                    <h2>Properties</h2>
+                   
                     <Link to="/hotels/newHotel">
                             Create a new Hotel
                         </Link>
                     </div>
+                    <p>Browse your Villas,Resorts,Hotels,etc here</p>
                     <div className="package-search">
                       
                       <div className="search-box">

@@ -71,7 +71,7 @@ const SingleBid = () => {
                    
                 </div>
                 <div className="bid-footer-2">
-                   <h3>Maximum price quoted : {<CurrencyRupeeIcon className='icn'/>} {bid.maxAmount} /-</h3>
+                   <h3>Maximum price quoted : {<CurrencyRupeeIcon className='icn'  style={{ height: 19, width: 25, }}/>}<span>{bid.maxAmount}/- </span> </h3>
                    
                 </div>
                 </div>
@@ -117,7 +117,7 @@ const SingleBid = () => {
             </div>
             <div className="bid-card-footer">
            
-                    <h3>Cuuurently Accepted by {bid.accepted ? bid.accepted.length : "0"} vendors</h3>
+                    <h3>Currently Accepted by {bid.accepted ? bid.accepted.length : "0"} vendors</h3>
                     {
                         bid.accepted && bid.accepted.map((itm, i)=> (
                             <div className="hotel-bid-card" key={i}>
