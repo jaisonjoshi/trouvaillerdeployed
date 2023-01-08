@@ -42,7 +42,7 @@ const Packages =() => {
       const {data,loading,error,reFetch}=useFetch(url)
 
       const handleClick = () => {
-        reFetch();//handleclick const for all filters,handle chage just sets values
+        reFetch();//handleclick const for all filters,handle change just sets values
        }
        const handleSearchChange = (e) => {
         //console.log("input val "+e.target.value);

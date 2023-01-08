@@ -7,12 +7,12 @@ const hotelSchema=new Schema({
     },
      type:{
         type:String,
-        required:false
+        required:true
     }, 
    
      address:{
         type:String,
-        required:false
+        required:true
     }, 
     rooms:{
         type:[String],
@@ -31,7 +31,9 @@ const hotelSchema=new Schema({
         required:true
     },
     locations:{
-        type:[String]
+        type:[String],
+        required:true
+
     },
     rating:{
         type:Number,
@@ -44,13 +46,15 @@ const hotelSchema=new Schema({
     },
      facilities:{
         type:[String],
-        required:true
+        required:false
     } ,
     features:{
-        type:[String]
+        type:[String],
+        required:false
     },
     vendorid: {
         type:String
+
     }
 
 },{timestamps:true})

@@ -3,13 +3,21 @@
     padding: 5rem;
     margin-left:200px;
     background-color:#f7f7f7;
+
+    .xyz{
+        padding-top: 10rem;
+        padding-bottom: 300rem;
+    }
     
     .singlepackage-body{
         padding: 2rem 0;
         display: flex;
+
+       
         .singlepack-left{
             width: 40%;
             padding:0;
+            
             .slick-slide {
                 outline: none
             }
@@ -23,25 +31,34 @@
                 }
 
             }
+           
           
                       
         }
+       
         .singlepack-right{
             width: 60%;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             padding: 0 2rem ;
+
+          
             p{
                 color: rgba(0,0,0,0.8);
             }
+
+           
             .single-pack-right-flex{
                 display: flex;
             }
+           
             .singlepackage-btngrp{
                 display: flex;
                 align-items: center;
                 gap: 1rem;
+
+               
                 .singlepackage-btn{
                     border: none;
                     border-radius: 10px;
@@ -53,15 +70,23 @@
                         color: white;
                         background-color: black;
                     }
+                   
                 }
+               
             }
+
+            
         }
+        
+       
     }
     .single-package-body-2{
         padding: 3rem;
         background-color: white;
         border-radius: 10px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+        
         .single-package-body-2-left{
             width: 100%;
            .shedule-day{
@@ -71,6 +96,8 @@
             .shedule-day-left{
                 width: 10%;
             }
+
+            
             .shedule-day-right{
                 width: 80%;
                 padding-left: 1rem;
@@ -86,6 +113,9 @@
            }
         }
     }
+
+
+    
 }
 @media screen and (max-width:1024px) {
     .singlepackage-container{
