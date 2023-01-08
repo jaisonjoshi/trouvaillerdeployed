@@ -9,6 +9,10 @@ import { useEffect, useState } from 'react'
 import Header from '../../../components/header/Header';
 import hotelimg from "../../../Assets/hotel.jpg"
 import Footer from '../../../components/Footer/Footer';
+import BarLoader from "react-spinners/BarLoader";
+
+
+
 const SingleHotel = () => {
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
@@ -42,7 +46,24 @@ const SingleHotel = () => {
       <Header setUserobj={setUserobj}/>
 
             <div className="singlehotel-container">
-               {loading ? ("loading ") : (
+               {loading ?  
+               
+               (
+                <div className='loading-div'>
+                <BarLoader
+     
+     
+                    color={'#32fca7'}
+                    loading={loading}
+     
+                    size={15}
+     
+                    />
+              </div>
+             )
+               
+               
+               : (
                     <div className="singlehotel">
                    
                     <div className="singlehotel-body">
@@ -67,12 +88,18 @@ const SingleHotel = () => {
                         </div>
                         <div className="singlehotel-body-right">  
                             <div className="content">
+                                <div className='flex justify-between items-center '>
                                 <h1 className='p-0'>{hotel.title}</h1>
-                                <div className="flex-container">
-                                    <RoomOutlinedIcon /><p>Munnar</p>
+                                {hotel.type &&
+                                                                <span className='px-4 py-1 rounded-full bg-evergreen'>{hotel.type}</span>
+                                                            }
                                 </div>
                                 <div className="flex-container">
-                                <CurrencyRupeeOutlinedIcon /><h3>7000 /-</h3>
+                                    <RoomOutlinedIcon /><p>{hotel.location  }</p>
+                                </div>
+                               
+                                <div className="flex-container">
+                                <CurrencyRupeeOutlinedIcon /><h3>{hotel.cheapestPrice} /-</h3>
 
                                 </div>
                             </div>
@@ -84,13 +111,35 @@ const SingleHotel = () => {
 
                     </div>
                    
-                       {/* <div className="singlehotel-room-det">
-                           
-                            <h>Room types</h><div className="room-tag">{hotel.rooms}</div>
-                            */} <h>Room types</h>
+                    <div>
+                                    {hotel.rooms &&
+                                    <>
+                                        <h5>Available rooms</h5>
+                                        <div  className='flex gap-[10px]'>
+                                       { hotel.rooms.map((itm)=>(
+                                            <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
+                                        ))}</div></>
+                                    }
+                                </div>
+                                <div >
+                                    {hotel.facilities &&
+                                    <>
+                                        <h5>Facilities</h5>
+                                        <div  className='flex gap-[10px]'>
+                                       { hotel.facilities.map((itm)=>(
+                                            <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
+                                        ))}</div> </>
+                                    }
+                                </div>
                                 <div>
-
-                               {hotel.rooms && hotel.rooms.map((room) => (<li>{room}</li>))}
+                                    {hotel.features &&
+                                        <>
+                                        <h5>Features or attractions</h5>
+                                        <div  className='flex gap-[10px]'>
+                                        {hotel.features.map((itm)=>(
+                                            <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
+                                        ))}</div></>
+                                    }
                                 </div>
 
                                <div className="singlehotel-body-content">

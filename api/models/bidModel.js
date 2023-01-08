@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema
 const Accepted = new Schema({
-    vendorname:{type:String,},vendorid:{type:String},vendoremail:{type:String},vendorphone:{type:String}
+    vendorname:{type:String,},vendorid:{type:String},vendoremail:{type:String},vendorphone:{type:String},hotels:{type:[String]},
 })
 const bidSchema=new Schema({
     destination:{

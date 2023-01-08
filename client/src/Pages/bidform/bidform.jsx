@@ -4,8 +4,10 @@ import Footer from '../components/Footer/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import axios from 'axios'
+import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router'
-
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 const Bidform = () => {
     const [anim, setAnim] = useState("hide")
     const navigate = useNavigate();
@@ -17,8 +19,18 @@ const Bidform = () => {
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
-
+    const {data, loading,err} = useFetch('/locations');
+    const [locationitms, setLocationItms] = useState([{
+        locations: ["loading"]
+    }]);
+    useEffect(()=>{
+        if(data.length!=0){
+            setLocationItms(data)
+            console.log(data)
+        }
+    },[data])
     const [info, setinfo] = useState({});
+    const [value, setValue] = useState("")
    //const error="";
     //const err="Please fill out all the feilds!";
     const handlebidChange = (e) => {
@@ -33,7 +45,7 @@ const Bidform = () => {
             
               
               const newBid = {
-                ...info, username : userobj.username,userid:userobj._id,useremail:userobj.email,userphone:userobj.phone
+                ...info,destination:value, username : userobj.username,userid:userobj._id,useremail:userobj.email,userphone:userobj.phone
               };console.log(newBid)
              
               const res= await axiosInstance.post("/bids", newBid);
@@ -54,7 +66,6 @@ const Bidform = () => {
     }
 
 
-
     return (
         <div className={` animationset ${anim}`}>
             <div className=""><Navbar /></div>
@@ -66,13 +77,28 @@ const Bidform = () => {
                 <div className="py-10 px-12 md:px-20 lg:px-40">
                     <div className="flex mid:mx-10 bordercolour text-graydust-medium rounded-lg w-72 md:w-1/2 py-2">
                     <FontAwesomeIcon icon={solid('location-dot')} className="h-7 w-7 my-auto mx-4"/>
-                    <select name="destination" id="destination" onChange={handlebidChange} className="outline-none border border-none w-full text-gray focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium text-graydust-medium">
-                            <option value="none" className="outline-none border border-none text-center">Where are you going?</option>
-                            <option value="palakkad" className="outline-none border border-none text-center">Palakkad</option>
-                            <option value="wayanad" className="outline-none border border-none text-center">Wayanad</option>
-                            <option value="idukki" className="outline-none border border-none text-center">Idukki</option>
-                            <option value="munnar" className="outline-none border border-none text-center">Munnar</option>
-                        </select>
+                     
+                            <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={locationitms[0].locations}
+                            onInputChange={(event, newInputValue) => {
+                                setValue(newInputValue);
+                              }}
+                            sx={{
+                                width:"100%",
+                                // border: "1px solid blue",
+                                "& .MuiOutlinedInput-root": {
+                                    border: "none",
+                                    borderRadius: "0",
+                                    padding: "0"
+                                },
+                                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                                    border: "none"
+                                }
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
                     </div>
                     <div className="md:flex my-7">
                         <div className="flex bordercolour text-graydust-medium rounded-lg w-72 py-2">

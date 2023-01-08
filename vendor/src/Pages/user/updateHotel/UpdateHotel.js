@@ -20,7 +20,7 @@ const UpdateHotel =() => {
     const [info, setinfo] = useState({});
     const id = location.pathname.split("/")[3];
 
-
+    
     const {data} = useFecth(`/hotels/${id}`);
     var list = data.images
     const handleChange = (e) => {

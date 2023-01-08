@@ -1,5 +1,6 @@
 const Hotel=require('../models/hotelModel')
 const mongoose=require('mongoose')
+const Locations = require('../models/locationModel')
 
 //get all workout
 //inside 'find' you can pass params ifi you need filtered result
@@ -65,6 +66,13 @@ const createHotel=async (req,res)=>{
         rating,
         cheapestPrice,locations,features,
         facilities,vendorid})
+        await Locations.findOneAndUpdate(
+            "63b95d422b6c64920c68534e",
+            { $addToSet: { 
+                      locations:{$each: locations}
+                    } 
+            })
+
     res.status(200).json({hotel})}
     //res.json({mssg:'post a new workouts'})
     catch(error){

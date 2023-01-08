@@ -22,9 +22,13 @@
 
     "@fortawesome/react-fontawesome": "^0.2.0",
 
+    "@material-ui/core": "^4.12.4",
+
     "@mui/icons-material": "^5.10.14",
 
-    "@mui/material": "^5.10.14",
+    "@mui/material": "^5.11.2",
+
+    "@mui/styled-engine-sc": "^5.11.0",
 
     "@testing-library/jest-dom": "^5.16.5",
 
@@ -46,15 +50,21 @@
 
     "react-dom": "^18.2.0",
 
+    "react-easy-crop": "^4.6.3",
+
     "react-router-dom": "^6.4.3",
 
     "react-scripts": "5.0.1",
 
     "react-slick": "^0.29.0",
 
+    "react-spinners": "^0.13.7",
+
     "sass": "^1.56.1",
 
     "slick-carousel": "^1.8.1",
+
+    "styled-components": "^5.3.6",
 
     "web-vitals": "^2.1.4"
 

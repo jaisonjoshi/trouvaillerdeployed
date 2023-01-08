@@ -7,12 +7,15 @@ import { AuthContext } from '../../components/context/AuthContext';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
+import BarLoader from "react-spinners/BarLoader";
+
 import { useEffect, useState, useContext } from 'react';
 import UserCard from '../../components/userCard/UserCard';
 const User = () => {
     const { user, dispatch } = useContext(AuthContext);
     const [hotels,setHotels] = useState([])
   const {data, loading,error } = useFetch(`/hotels?vendorid=${user._id}`)
+  console.log(loading)
   useEffect(()=>{
       setHotels(data);
   },[data])
@@ -44,7 +47,23 @@ const User = () => {
                         <Link to="/vendor/createhotel">New property</Link>
                         </div>
                         <div className="pc-body">
-                            {hotels && hotels.map((hotel)=> (
+                            {loading ?
+                                (
+                                    <div className='loading-div'>
+                                    <BarLoader
+                         
+                         
+                                        color={'#32fca7'}
+                                        loading={loading}
+                         
+                                        size={15}
+                         
+                                        />
+                                  </div>
+                                 )
+                            
+                            
+                            :<> { hotels.map((hotel)=> (
                                 <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>
                                 <div className="img">
                                     <img src={hotel.images[0]} alt="" />
@@ -55,7 +74,10 @@ const User = () => {
                                     <div className='tags'>                                    <span className='tag'>{hotel.location}</span><span className='tag'>{hotel.cheapestPrice}</span>
                                 </div>
                                 </div>
-                            </div>))}
+                            </div>))    }</>
+                            
+                            
+                            }
                            
                         </div>
                     </div>

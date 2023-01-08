@@ -1,7 +1,9 @@
 
 const Bid=require('../models/bidModel')
 const mongoose=require('mongoose')
-
+const {sendMsg} = require(
+    './whatsappMessageController'
+)
 //get all bids
 //inside 'find' you can pass params if you need filtered result
 const getBids=async(req,res)=>{
@@ -49,7 +51,13 @@ const createBid=async (req,res)=>{
         roomCount,
         maxAmount,
         accepted,username,useremail,userid,userphone})
-    res.status(200).json({bid})}
+        sendMsg(req.body.destination)
+
+    res.status(200).json({bid})
+    console.log("succedded whatsapp")
+
+}
+   
     //res.json({mssg:'post a new workouts'})
     catch(error){
         res.status(500).json({error:error.message})

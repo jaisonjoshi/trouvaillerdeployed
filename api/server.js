@@ -13,6 +13,7 @@ const reviewRoutes=require('./routes/reviews')
 //const offerRoutes = require('./routes/offers')
 const authRoutes=require('./routes/auth')
 const userRoutes=require('./routes/users')
+const locationsRoutes = require('./routes/locations')
 const cookieParser=require('cookie-parser')
 
 const cors = require('cors');
@@ -52,4 +53,4 @@ app.use('/api/reviews',reviewRoutes)
 //app.use('/api/offers', offerRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
-
+app.use('/api/locations',locationsRoutes)
