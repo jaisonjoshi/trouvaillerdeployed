@@ -95,6 +95,7 @@ const handleUpdateLocations = ({ target }) => {
 
 
 }
+
     const handleDelete = () => {
         console.info('You clicked the delete icon.');
     };
@@ -255,6 +256,7 @@ const handleUpdateLocations = ({ target }) => {
                                     <input type="text" id="cheapestPrice" onChange={handleChange}/>
                                 
                                 </div>
+                                
                                 <div className="hotel-form-submit">
                                     <button onClick={handleClick}>Create Hotel</button>
 

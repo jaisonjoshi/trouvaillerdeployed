@@ -88,7 +88,7 @@ const SingleHotel = () => {
                         </div>
                         <div className="singlehotel-body-right">  
                             <div className="content">
-                                <div className='flex justify-between items-center '>
+                                <div className='flex justify-start gap-[30px] items-center '>
                                 <h1 className='p-0'>{hotel.title}</h1>
                                 {hotel.type &&
                                                                 <span className='px-4 py-1 rounded-full bg-evergreen'>{hotel.type}</span>
@@ -98,10 +98,20 @@ const SingleHotel = () => {
                                     <RoomOutlinedIcon /><p>{hotel.location  }</p>
                                 </div>
                                
-                                <div className="flex-container">
-                                <CurrencyRupeeOutlinedIcon /><h3>{hotel.cheapestPrice} /-</h3>
+                                {
+                                    hotel.offers ? 
+                                    <div>
+                                    <span className='p-1 bg-[#f8d2d2] text-[red]'>{hotel.offertitle}</span>
+                                    <p className='mt-2'>{hotel.offerdescription}</p>
+                                    <span ><strike className='text-[grey]'>{hotel.cheapestPrice} &#8377;</strike><span className='text-2xl ml-3'><b>{hotel.offerprice} &#8377;</b></span></span>
+                                    </div>  
+                                    :
 
-                                </div>
+                                    <div className="flex-container">
+                                        <CurrencyRupeeOutlinedIcon /><h3>{hotel.cheapestPrice} /-</h3>
+
+                                    </div>
+                                }
                             </div>
                             <div className="singlehotel-btngrp">
                             <button className='singlehotel-btn' onClick={() => handlehotelUpdate(id)}>Update Hotel</button>
@@ -111,8 +121,8 @@ const SingleHotel = () => {
 
                     </div>
                    
-                    <div>
-                                    {hotel.rooms &&
+                    {hotel.rooms && <div>
+                                    {hotel.rooms.length != 0 &&
                                     <>
                                         <h5>Available rooms</h5>
                                         <div  className='flex gap-[10px]'>
@@ -120,9 +130,9 @@ const SingleHotel = () => {
                                             <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
                                         ))}</div></>
                                     }
-                                </div>
-                                <div >
-                                    {hotel.facilities &&
+                                </div>}
+                                {hotel.facilities && <div >
+                                    {hotel.facilities.length != 0 &&
                                     <>
                                         <h5>Facilities</h5>
                                         <div  className='flex gap-[10px]'>
@@ -130,9 +140,9 @@ const SingleHotel = () => {
                                             <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
                                         ))}</div> </>
                                     }
-                                </div>
-                                <div>
-                                    {hotel.features &&
+                                </div>}
+                                {hotel.features && <div>
+                                    {hotel.features.length !=0  &&
                                         <>
                                         <h5>Features or attractions</h5>
                                         <div  className='flex gap-[10px]'>
@@ -140,11 +150,11 @@ const SingleHotel = () => {
                                             <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
                                         ))}</div></>
                                     }
-                                </div>
+                                </div>}
 
                                <div className="singlehotel-body-content">
                                 
-                                 <div> <h5>Hotel details</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, repellat dolor labore, voluptates earum, tenetur cum et porro est commodi aperiam minima mollitia perferendis vitae dolore quas ducimus magnam illo!</p></div>
+                                 <div> <p className='text-blacky-light'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, repellat dolor labore, voluptates earum, tenetur cum et porro est commodi aperiam minima mollitia perferendis vitae dolore quas ducimus magnam illo!</p></div>
                        
                               </div>
                        </div>

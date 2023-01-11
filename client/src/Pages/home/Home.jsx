@@ -92,7 +92,7 @@ Know more
                   <p className='text-center textnormal py-4 mx-12 text-md md:text-lg'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo. Deleniti aut blanditiis sit adipisci nisi dolorem animi, quibusdam tenetur obcaecati in quaerat reiciendis, quidem vitae velit voluptates.</p>
       </div>
 
-      <div className=" mx-8 md:mx-16 offer-container">
+      <div className="mx-2 md:mx-16 offer-container">
         <Offers />
       </div>
       <div className='p-7 text-center mb-12'>

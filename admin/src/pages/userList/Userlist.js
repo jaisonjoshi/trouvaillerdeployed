@@ -11,7 +11,7 @@ const Userlist =() => {
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
-    
+    const url = "/user?isAdmin=false&isVendor=false"
     return(
         <div className="userlist">
             <Navbar onclick={handlesidenavOpen}/>
@@ -19,7 +19,7 @@ const Userlist =() => {
 
             <div className="userlist-body">
                <h1>List of Users</h1>
-                <DataTable />
+                <DataTable url={url}/>
             </div>
 
 

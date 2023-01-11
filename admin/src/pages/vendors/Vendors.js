@@ -19,7 +19,7 @@ const navigate=useNavigate()
     navigate('/vendors/newVendor')
    }
    
-
+  const url="/user?isAdmin=false&isVendor=true"
     
         return(
             <div className="vendorlist">
@@ -33,7 +33,7 @@ const navigate=useNavigate()
                            <button onClick={createVendor}> Add Vendor</button>
                          
                          
-                   <DataTable />
+                   <DataTable url={url}/>
                 </div>
                 
     

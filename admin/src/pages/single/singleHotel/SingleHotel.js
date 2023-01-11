@@ -134,31 +134,37 @@ const SingleHotel = () => {
                                         
                                     
                                 ))}
-                                {/* <div className='img-card'><img src={data.images[1]} alt="" /></div>
-                                <div className='img-card'><img src={data.images[2]} alt="" /></div>
-                                <div className='img-card'><img src={data.images[3]} alt="" /></div>
-                                <div className='img-card'><img src={data.images[4]} alt="" />
-                                </div> */}
+                                
 
                             </div>
                         </div>
                         <div className="singlehotel-body-right">  
                             <div className="content">
-                                <h1>{hotel.title}</h1>
-                                <h3>{hotel.type && hotel.type.toUpperCase()}</h3>
-                                {/* <h3>{hotel.type.toUpperCase()}</h3> */}
+                                <div className='content-head'>
+                                <h2>{hotel.title}</h2>
+                                <h4>{hotel.type}</h4>
+                                </div>
                                 
                                 <div className="flex-container">
-                                    <RoomOutlinedIcon /><h3>{hotel.location && hotel.location.toUpperCase()}</h3>
+                                    <RoomOutlinedIcon /><h3>{hotel.location && hotel.location}</h3>
                                     {/* <RoomOutlinedIcon /><h3>{hotel.location.toUpperCase()}</h3> */}
                                 </div>
+                                <h3>Vendor id: {hotel.vendorid}</h3>
                                 
-                                <h3>Hotel Rating: {hotel.rating}</h3>
+{/*                                 <h3>Hotel Rating: {hotel.rating}</h3>
+ */}
+                                {hotel.offers ? 
+                                    <div className='offers'>
+                                        <span className='offertitle'>{hotel.offertitle}</span>
+                                        <div className='offerblock'><span><strike><span className='cheapprice'>{hotel.cheapestPrice} &#8377;</span></strike><span className='offerprice'>{hotel.offerprice} &#8377;</span></span>
+                                        </div>
+                                    </div>
+                                    
+                                    :
+                                    <div className="flex-container">
+                                    <h2>{hotel.cheapestPrice} &#8377;</h2>
 
-                                <div className="flex-container">
-                                <CurrencyRupeeOutlinedIcon /><h2>{hotel.cheapestPrice} /-</h2>
-
-                                </div>
+                                    </div>}
                             </div>
                             <div className="singlehotel-btngrp">
                             <button className='singlehotel-btn' onClick={() => handlehotelUpdate(id)}>Update Hotel</button>
@@ -173,66 +179,65 @@ const SingleHotel = () => {
                             <h>Room types</h><div className="room-tag">{hotel.rooms}</div>
                             */} 
                             
-                            <div>
-                                <h3>Hotel Location Tags<button onClick={setLocationNull}>Clear All</button></h3>
+                            
+
+                       <div className="singlehotel-body-content">
+
+                            <div className='hoteldesc'>
+                                <p>{hotel.description}</p>
+                            </div>
+                            {hotel.rooms && <div className='rooms'>
+                                    {hotel.rooms.length != 0 &&
+                                    <>
+                                        <h4>Available rooms</h4>
+                                        <div  className='flex-tags'>
+                                       { hotel.rooms.map((itm)=>(
+                                            <span className='tag'>{itm}</span>
+                                        ))}</div></>
+                                    }
+                                </div>}
+                                {hotel.facilities && <div >
+                                    {hotel.facilities.length != 0 &&
+                                    <>
+                                        <h4>Facilities</h4>
+                                        <div  className='flex-tags'>
+                                       { hotel.facilities.map((itm)=>(
+                                            <span className='tag'>{itm}</span>
+                                        ))}</div> </>
+                                    }
+                                </div>}
+                                {hotel.features && <div>
+                                    {hotel.features.length !=0  &&
+                                        <>
+                                        <h4>Features or attractions</h4>
+                                        <div  className='flex-tags'>
+                                        {hotel.features.map((itm)=>(
+                                            <span className='tag'>{itm}</span>
+                                        ))}</div></>
+                                    }
+                                </div>}
+                                {hotel.locations && <div>
+                                    {hotel.locations.length !=0  &&
+                                        <>
+                                        <h4>Locations</h4>
+                                        <div  className='flex-tags'>
+                                        {hotel.locations.map((itm)=>(
+                                            <span className='tag'>{itm}</span>
+                                        ))}</div></>
+                                    }
+                                </div>}
+
                                 
-                                <div>
-                                
-                                {hotel.locations && hotel.locations.map((obj)=> (
-                                    <li >
-                                        <p>{obj}</p>
-                                      
-                                    </li>
-                                ))}
-                                </div>
-                                </div>
 
-                                    <div class="singlehotel-body-content">
-                               <div> <h3>Hotel Address</h3>
-                                <p>{hotel.address}</p>
-                                </div>
-                                    </div>
-                            <h3>Room types<button onClick={setRoomTypesNull}>Clear All</button></h3>
-                                <div>
 
-                               {hotel.rooms && hotel.rooms.map((room) => (<li>{room}</li>))}
-                                </div>
 
-                               <div className="singlehotel-body-content">
-                                
-                                 <div> <h3>Hotel details</h3><p>{hotel.description}</p></div>
-                       
-                              </div>
+                       </div>
+           
 
+                               
                               
 
-                              {/* <div className="content"> */}
-                                <h3>Facilities<button onClick={setFacilitiesNull}>Clear All</button></h3>
-                                
-                                <div>
-                                
-                                {hotel.facilities && hotel.facilities.map((obj)=> (
-                                    <div >
-                                        <p>{obj}</p>
-                                      
-                                    </div>
-                                ))}
-                                </div>
-                                {/* </div> */}
-
-                                <div class= 'mt-50'>
-                                <h3>Features<button onClick={setFeaturesNull}>Clear All</button></h3>
-                                
-                                <div>
-                                
-                                {hotel.features && hotel.features.map((obj)=> (
-                                    <li >
-                                        <p>{obj}</p>
-                                      
-                                    </li>
-                                ))}
-                                </div>
-                                </div>
+                              
 
 
                                 

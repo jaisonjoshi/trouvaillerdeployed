@@ -29,6 +29,7 @@ import Updatepassword from "./Pages/userProfile/Updatepassword.js";
 import CircleLoading from '../src/Pages/components/spinningLoader/CircleLoading'
 import logo from './Pages/Assets/TrouvaillerGreen .png'
 import BarLoader from "react-spinners/BarLoader";
+import Offershotels from "./Pages/offers/offershotels.jsx";
 
 
 
@@ -74,7 +75,7 @@ function App() {
         <Route path="/bidform" element={<Bidform/>}/>
         <Route path="/packages" element={<List1_card/>}/>
         <Route path="/hotels" element={<List2_card/>}/>
-
+       
         {/* {hotels && hotels.map((hotel)=> (
                                 <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>
                                 <div className="img">
@@ -93,6 +94,8 @@ function App() {
         <Route path="/rev" element={<Review/>}/>
         <Route path="/trending" element={<Destination/>}/>
         <Route path="/offers" element={<Offers/>}/>
+        <Route path="/offershotels" element={<Offershotels/>}/>
+
         <Route path="/list/package/:id" element={<Package/>}/>
         <Route path="/list/hotel/:id" element={<Hotel/>}/>
       </Routes>

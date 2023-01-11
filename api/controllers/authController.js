@@ -40,17 +40,17 @@ const login = async (req, res, next) => {
       );
 
     const token = jwt.sign(
-      { id: user._id, isAdmin: user.isAdmin },
+      { id: user._id, isAdmin: user.isAdmin, isVendor: user.isVendor },
       process.env.JWT
     );
 
-    const { password, isAdmin, ...otherDetails } = user._doc;
+    const { password, isAdmin, isVendor, ...otherDetails } = user._doc;
     res
       .cookie("access_token", token, {
         httpOnly: true,
       })
       .status(200)
-      .json({ details: { ...otherDetails }, isAdmin });
+      .json({ details: { ...otherDetails }, isAdmin , isVendor});
   } catch (err) {
     next(err);
   }

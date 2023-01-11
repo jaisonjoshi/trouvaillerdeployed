@@ -8,14 +8,15 @@ import profile from '../../Assets/profile.jpg'
 const UserCard =({userobj})=> {
     return(
         <div className="profile-container">
-        <div className="img">
+        {userobj && <div className="img">
             <img src={userobj.img} />
             <div className="img-data">
             <h2>{userobj.username}</h2>
             <p>Owns 2 properties</p>
             </div>
-        </div>
+        </div>}
        
+        {userobj && 
         <div className="profile-body">
            
                 <div className="pd-itm">
@@ -29,7 +30,7 @@ const UserCard =({userobj})=> {
                 </div>
 
             
-        </div>
+        </div>}
     </div>
     )
 }

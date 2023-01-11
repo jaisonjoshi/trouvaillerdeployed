@@ -49,43 +49,62 @@ const Hotel = () => {
 
                         ))}
                     </Slider>
-                <div className='px-10 md:px-20 sm:w-1/2 flex flex-col justify-center'>
-                    <h1 className='text-2xl font-bold pb-5'>{hote.title}</h1>
+                <div className='px-10 md:px-20 sm:w-1/2 flex gap-[15px] flex-col justify-center'>
+                <div className='flex justify-start gap-[30px] items-center '>
+                    <b><h1 className='p-0 text-3xl'>{hote.title}</h1></b>
+                    {hote.type &&
+                            <span className='px-4 py-1 rounded-full bg-evergreen text-white'>{hote.type}</span>
+                    }
+                </div><div>
+                    <p className='text-xl text-graydust-medium py-2'><FontAwesomeIcon className='pr-1' icon={solid('location-dot')} />{hote.location}</p>
+                    <p className='text-blacky-light whitespace-pre-wrap	'>{hote.description}</p></div>
+                    {hote.rooms && <div>
+                                    {hote.rooms.length != 0 &&
+                                    <>
+                                        <div  className='flex items-center gap-[10px]'>
+                                        <h5>Available rooms</h5>
 
-                    <p className='text-md text-graydust-medium py-2'><FontAwesomeIcon className='pr-1' icon={solid('location-dot')} />{hote.location}</p>
-                    <p className='text-blacky-light whitespace-pre-wrap	'>{hote.description}</p>
-
-                    <div className='flex flex-wrap py-1 '>
-                    {hote.facilities && hote.facilities.map((facility, i) => (
-                        <div className='text-center rounded-full px-4 py-1 bg-evergreen' key={i}>
-                        <h2>{facility}</h2>
-                    </div>
-                    ))
-
-
+                                       { hote.rooms.map((itm)=>(
+                                            <span className='py-1 px-4 rounded-full bg-evergreen text-white'>{itm}</span>
+                                        ))}</div></>
+                                    }
+                                </div>}
+                                {hote.facilities && <div >
+                                    {hote.facilities.length != 0 &&
+                                    <>
+                                        
+                                        <div  className='flex items-center gap-[10px]'>
+                                        <h5>Facilities</h5>
+                                       { hote.facilities.map((itm)=>(
+                                            <span className='py-1 px-4 rounded-full bg-evergreen text-white'>{itm}</span>
+                                        ))}</div> </>
+                                    }
+                                </div>}
+                                {hote.features && <div>
+                                    {hote.features.length !=0  &&
+                                        <>
+                                        <h5>Features or attractions</h5>
+                                        <div  className='flex gap-[10px]'>
+                                        {hote.features.map((itm)=>(
+                                            <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
+                                        ))}</div></>
+                                    }
+                                </div>}
+                    
+                
+                    {
+                        hote.offers?
+                        <div className='my-6'>
+                            <span className='p-1 bg-[#f8d2d2] text-[red]'>{hote.offertitle}</span>
+                            <p className='mt-2'>{hote.offerdescription}</p>
+                            <span ><strike className='text-[grey]'>{hote.cheapestPrice} &#8377;</strike><span className='text-2xl ml-3'><b>{hote.offerprice} &#8377;</b></span></span>
+                                   
+                        </div>
+                        :
+                        <h1 className='font-semibold text-xl py-5'><span className='text-2xl '>{hote.cheapestPrice} &#8377;</span></h1>
 
                     }
-                    
-
-                    
-                </div>
-                <div className='flex flex-wrap py-1 '>
-                    {hote.rooms && hote.rooms.map((room, i) => (
-                        <div className='text-blacky-light text-center rounded-full px-4 py-1 bg-evergreen' key={i}>
-                        <h2>{room}</h2>
-                    </div>
-                    ))
-
-
-
-                    }
-                    
-
-                    
-                </div>
-                <h1 className='font-semibold text-xl py-5'><span className='text-sm '>{hote.cheapestPrice}/-</span></h1>
-
-                    <a href={"https://wa.me/919562523642?text=" + text + hote.title}><button className='bg-evergreen text-blacky-dark flex justify-center gap-3 items-center font-bold p-4 w-full rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button></a>
+                    <a href={"https://wa.me/919562523642?text=" + text + hote.title}><button className='bg-evergreen text-white flex justify-center gap-3 items-center font-bold p-4 rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button></a>
                     {/* Space for map */}
                     {/* <div className='w-full border mt-5'>
                         <h1>Space for map</h1>

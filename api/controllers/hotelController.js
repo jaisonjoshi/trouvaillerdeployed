@@ -51,7 +51,7 @@ const createHotel=async (req,res)=>{
         images,
         description,
         rating,
-        cheapestPrice,locations,features,
+        cheapestPrice,locations,features,offertitle, offerdescription, offerprice,offers,
         facilities,vendorid}=req.body
     //add to db
     try{
@@ -64,7 +64,7 @@ const createHotel=async (req,res)=>{
         images,
         description,
         rating,
-        cheapestPrice,locations,features,
+        cheapestPrice,locations,features,offerdescription,offerprice,offertitle,offers,
         facilities,vendorid})
         await Locations.findOneAndUpdate(
             "63b95d422b6c64920c68534e",
@@ -102,6 +102,12 @@ const updateHotel=async (req,res)=>{
     const hotel=await Hotel.findOneAndUpdate({_id:id},{
         ...req.body
     })
+    await Locations.findOneAndUpdate(
+        "63b95d422b6c64920c68534e",
+        { $addToSet: { 
+                  locations:{$each: req.body.locations}
+                } 
+        })
     if(!hotel){
         return res.status(400).json({error:'No such hotel found'})  
     }

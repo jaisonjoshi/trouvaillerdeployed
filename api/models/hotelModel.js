@@ -12,7 +12,7 @@ const hotelSchema=new Schema({
    
      address:{
         type:String,
-        required:true
+        required:false
     }, 
     rooms:{
         type:[String],
@@ -55,6 +55,19 @@ const hotelSchema=new Schema({
     vendorid: {
         type:String
 
+    },
+    offers:{
+        type:Boolean,
+    },
+    
+    offertitle:{
+        type:String
+    },
+    offerdescription:{
+        type:String
+    },
+    offerprice:{
+        type:String
     }
 
 },{timestamps:true})

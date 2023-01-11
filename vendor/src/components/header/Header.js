@@ -52,10 +52,10 @@ const Header = ({setUserobj}) => {
             </Slider>
             <div className="header-content">
                 <div className="header-nav">
-                    <div className="prof">
+                   { data && <div className="prof">
                         <img src={data.img} />
                         <p className='mr-4'>{data.username}</p>
-                    </div>
+                    </div>}
                     <div className="nav-items">
                     <Link to="/"><a href="www.trouvailler.com">Home</a></Link>
 

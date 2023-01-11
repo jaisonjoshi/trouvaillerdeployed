@@ -19,8 +19,8 @@ const columns = [
 ];
 
 
-export default function DataTable() {
-  const {data, loading,error} = useFetch('/user?isAdmin=false&isVendor=true');
+export default function DataTable({url}) {
+  const {data, loading,error} = useFetch(url);
     console.log(data)
 
   const rows = data;

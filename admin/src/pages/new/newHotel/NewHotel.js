@@ -8,6 +8,9 @@ import axios from "axios"
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import CropEasy from '../../../components/crop/CropEasy';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Chip from '@mui/material/Chip';
 
 const NewHotel =({setOpen}) => {
     const [sidenavOpen, setSideNavOpen] = useState(false)
@@ -23,13 +26,16 @@ const NewHotel =({setOpen}) => {
     const [info, setinfo] = useState({});
     const [query, setQuery] = useState("")
     const [feature, setFeature] = useState("")
+    const [type, setType] = useState('');
 
     const [facility, setFacility] = useState("")
     const [facilities, setFacilities] = useState([])
     const [features, setFeatures] = useState([])
     const [locationitem, setLocationitem] = useState("")
     const [locations, setLocations] = useState([])
-
+    const handleTypeChange = (event) => {
+        setType(event.target.value);
+    };
     const handleUpdateLocations = ({ target }) => {
         // Update query onKeyPress of input box
         setLocationitem(target.value.toLowerCase());
@@ -67,6 +73,22 @@ const NewHotel =({setOpen}) => {
             console.log("in lowercase"+info);
         }  
     // }
+    const handlefacilitiesDelete = (e, value)=> {
+        e.preventDefault();
+        setFacilities(facilities.filter((itm)=> itm !== value))
+    }
+    const handlefeaturesDelete = (e, value)=> {
+        e.preventDefault();
+        setFeatures(features.filter((itm)=> itm !== value))
+    }
+    const handleLocationDelete = (e, value)=> {
+        e.preventDefault();
+        setLocations(locations.filter((itm)=> itm !== value))
+    }
+    const handleroomsDelete = (e, value)=> {
+        e.preventDefault();
+        setRooms(rooms.filter((itm)=> itm !== value))
+    }
     const handleNext = (e) => {
         e.preventDefault()
         //setSearches(searches => [...searches, query])
@@ -170,10 +192,18 @@ const NewHotel =({setOpen}) => {
                                 
                                 </div>
                                 <div className="form-item">
-                                <label > Hotel type</label>
-                                <input type="text" name="" id="type"  onChange={handleChangeLowerCase} placeholder={"eg.Villa,Resort"}/>
-                            
-                                </div>
+                                    <label > Type</label>
+                                        <Select                                         
+                                            value={type}
+                                            onChange={handleTypeChange}
+                                            className="outline-none">
+                                            
+                                        
+                                            <MenuItem value="Villa">Villa</MenuItem>
+                                            <MenuItem value="Hotel">Hotel</MenuItem>
+                                            <MenuItem value="Apartment">Apartment</MenuItem>
+                                        </Select>
+                            </div>
                                 <div className="form-item">
                                     <label>Description</label>
                                     <textarea type="text" id="description" onChange={handleChange}/>
@@ -234,11 +264,11 @@ const NewHotel =({setOpen}) => {
                                     <input type="text" id="cheapestPrice" onChange={handleChange}/>
                                 
                                 </div>
-                                <div className="form-item">
+                                {/* <div className="form-item">
                                 <label>Rating</label>
                                 <input type="number" min="0" max="6" id="rating"  onChange={handleChange} placeholder={"enter a rating from 0-5 or 6"}/>
                             
-                            </div>
+                            </div> */}
                                 <div className="form-item">
                                     <label>Vendor Id</label>
                                     <input type="text" id="vendorid" onChange={handleChange}/>
@@ -251,6 +281,10 @@ const NewHotel =({setOpen}) => {
                             </form>
                         </div>
                         <div className="form-test">
+                        <h3>Upload preview</h3>
+                        <p className='text-sm text-blacky-bright'>Here you can see the preview of what you are going to publish. Please verify all the fields are correct before uploading.</p>
+
+
                             <div className="img-container">
                             {imgFiles && Object.values(imgFiles).map((pic)=>(
                                     <img src={
@@ -262,87 +296,82 @@ const NewHotel =({setOpen}) => {
 
                             </div>
                             <div className="package-details">
-                                <h1>{info.title}</h1>
-                                <div >
-                               <h3>Hotel Type</h3>
-                                <div className='roomTypes'>{info.type}</div>
-                            </div>
+                            <div className='package-details-head'>
+                                <h2>{info.title}</h2>
+                                <span >{type}</span>
 
-                            <h3>Hotel Description</h3>
-                                <p>{info.description}</p>
+                            </div> 
 
-                                <h3>Hotel Address</h3>
-                                <p>{info.address}</p>
+                            <p>{info.location}</p>
+                            <p>{info.address}</p>
+
+                            <p>{info.description}</p>
+
+                            {rooms.length != 0 &&
+                                <div> 
+                                    <label>Room Type</label>
+                                    <div className='roomTypes'>
+                            
+                                        { rooms.map((obj, i)=> (
+                                            <div >
+                                                <Chip label={obj} onDelete={(e)=> {handleroomsDelete(e,obj)}}/>
+                                            
+                                            </div>
+                                        ))}
+                                    </div>                            
+                            </div>}
+
+                            {locations.length != 0 && <div >
+                                <label>Location tags</label>
+                                <div className='roomTypes'>
+                                    
+                                    { locations.map((obj, i)=> (
+                                    
+                                            <Chip label={obj} onDelete={(e)=> {handleLocationDelete(e,obj)}}/>
+                                        
+                                    
+                                    ))}
+                                    
+                                </div>
+                            </div>}
+                            {features.length != 0 && <div >
+                                <label>Features or other attractions</label>
+                                <div className='roomTypes'>
+                                    
+                                    {features.map((obj, i)=> (
+                                            <Chip label={obj} onDelete={(e)=> {handlefeaturesDelete(e,obj)}} />
+                                        
+                                    ))}
+                                    
+                                </div>
+                            </div>}
+                            {facilities && <div >
+                                {facilities.length != 0 &&
+                                <>
+                                    <h5>Facilities</h5>
+                                    <div  className='flex gap-[10px]'>
+                                { facilities.map((obj)=>(
+                                    <Chip label={obj} onDelete={(e)=> {handlefacilitiesDelete(e,obj)}} />
+                                    ))}</div> </>
+                                }
+                            </div>}
                                
-                                 <h3>{info.location}</h3>
 
-                                  {  console.log({rooms})}
-                                 {/*<h3>{info.rooms}</h3>*/}
+                                  
                                  <h3>Vendor Id {info.vendorid}</h3>
 
-                                 <div >
 
-                            <label>Room Type</label>
-                            <div className='roomTypes'>
-                                
-                                {rooms && rooms.map((obj, i)=> (
-                                    <div >
-                                        <p>{obj}</p>
-                                      
-                                    </div>
-                                ))}
-                                
-                            </div>
-                        </div>
-                        <div >
-                            <label>Facilities</label>
-                            <div className='roomTypes'>
-                                
-                                {facilities.map((obj, i)=> (
-                                    <div >
-                                        <p>{obj}</p>
-                                      
-                                    </div>
-                                ))}
-                                
-                            </div>
-                        </div>
-                        <div >
-                            <label>Location tags</label>
-                            <div className='roomTypes'>
-                                
-                                {locations.map((obj, i)=> (
-                                    <div >
-                                        <p>{obj}</p>
-                                      
-                                    </div>
-                                ))}
-                                
-                            </div>
-                        </div>
-
-                        <div >
-                            <label>Features or other attractions</label>
-                            <div className='roomTypes'>
-                                
-                                {features.map((obj, i)=> (
-                                    <div >
-                                        <p>{obj}</p>
-                                      
-                                    </div>
-                                ))}
-                                
-                            </div>
-                        </div>
+                            
+                           
+                       
 
 
                                     
                                 <div className="package-details-flex-2">
-                                <CurrencyRupeeIcon /><h2>{info.cheapestPrice} /-</h2>
+                                <h2>{info.cheapestPrice} &#8377;</h2>
                                 </div>
 
-                                <h3>Hotel Rating</h3>
-                                <h3>{info.rating}</h3>
+                                
 
                             </div>
                            
