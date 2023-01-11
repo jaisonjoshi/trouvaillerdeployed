@@ -116,7 +116,7 @@ fluid={true}
 <Navbar.Toggle className="outline-none nav-toggle-icon"/>
 <Navbar.Collapse className="flex items-center">
 <div className="flex md:order-2 gap-7 ml-0 md:ml-20 items-center  nav-login-box">
-{ user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src={data.img} className="w-[45px] h-[45px] rounded-full"/><h2 className='md:hidden'>{user.username}</h2></span></Link>
+{ user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src={data.img? data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} className="w-[45px] h-[45px] rounded-full"/><h2 className='md:hidden'>{user.username}</h2></span></Link>
         <button className="bg-evergreen text-whiteglow text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-evergreendark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
         <div className="md:flex ">
            <button className="bg-evergreen text-whiteglow text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-evergreendark rounded-md hover:text-whiteglow">
