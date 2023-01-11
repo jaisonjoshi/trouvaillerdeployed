@@ -61,7 +61,7 @@ const Hotel = () => {
                     {hote.rooms && <div>
                                     {hote.rooms.length != 0 &&
                                     <>
-                                        <div  className='flex items-center gap-[10px]'>
+                                        <div  className='flex items-center flex-wrap gap-[10px]'>
                                         <h5>Available rooms</h5>
 
                                        { hote.rooms.map((itm)=>(
@@ -73,7 +73,7 @@ const Hotel = () => {
                                     {hote.facilities.length != 0 &&
                                     <>
                                         
-                                        <div  className='flex items-center gap-[10px]'>
+                                        <div  className='flex items-center flex-wrap gap-[10px]'>
                                         <h5>Facilities</h5>
                                        { hote.facilities.map((itm)=>(
                                             <span className='py-1 px-4 rounded-full bg-evergreen text-white'>{itm}</span>
@@ -84,7 +84,7 @@ const Hotel = () => {
                                     {hote.features.length !=0  &&
                                         <>
                                         <h5>Features or attractions</h5>
-                                        <div  className='flex gap-[10px]'>
+                                        <div  className='flex flex-wrap gap-[10px]'>
                                         {hote.features.map((itm)=>(
                                             <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
                                         ))}</div></>
