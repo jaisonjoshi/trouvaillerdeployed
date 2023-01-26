@@ -33,7 +33,7 @@ const packageSchema=new Schema({
         required:true
     },
     cheapestPrice:{
-        type:String,
+        type:Number,
         required:true
     },
     features:{

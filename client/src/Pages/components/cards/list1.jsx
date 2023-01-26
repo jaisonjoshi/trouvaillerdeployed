@@ -16,6 +16,8 @@ const List1_card = () => {
 
     }, []);
 
+    
+
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     });
@@ -24,6 +26,8 @@ const List1_card = () => {
     const [destination,setDestination]=useState("");
     const [min, setMin] = useState(undefined);
     const [max, setMax] = useState(undefined);
+    const [mintemp, setMintemp] = useState(undefined);
+    const [maxtemp, setMaxtemp] = useState(undefined);
     const [cat,setCat]=useState([]);
     const [cats,setCats]=useState("");
     const [url,setUrl]=useState("");
@@ -34,7 +38,7 @@ const List1_card = () => {
 //     const url2=`/packages`
 //---------original
     const url3 = `/packages?destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
-        min || 0
+        min || 1
       }`;
 
      // add url conditional code to submit button even  handler for fetching through less freq
@@ -71,7 +75,7 @@ const List1_card = () => {
     //             setUrl(url3);
     //  },[destination]);
 
-        
+    
        
 
       
@@ -95,31 +99,35 @@ const List1_card = () => {
        const handleSClick = () => {
 
         reFetch();
-        // if(cat.length)
-        // {
-
-        // }
+      
 
        }
 
 
        const handleSubmitClick = () => {
-        console.log(min);
-        const minval = parseInt(min);
-        setMin(minval);
-        console.log(typeof minval);
-        console.log(max);
-        const maxval = parseInt(max);
-        setMax(maxval);
-        reFetch();
+       
+        const minval = parseInt(mintemp);
+       // setMin(minval);
+        //console.log(typeof minval);
+        //console.log(maxtemp);    
+        //setMax(maxval);
+        //console.log("min value is " + min + " max val is " + max);
+       //console.log("type of min"+ typeof(min)+"type of max"+typeof(max))
+        setMin(minval, ()=>reFetch());
+        const maxval = parseInt(maxtemp);
+       setMax(maxval, ()=>reFetch());
+      // reFetch();
       };
+
+
+
        const handleSearchChange = (e) => {
         //console.log("input val "+e.target.value);
         let tar=e.target.value;
         //console.log("IN LOWER CASE "+tar.toLowerCase())
         //console.log(t.toLowerCase())
         setDestination(tar.toLowerCase());
-    console.log(destination);
+         console.log(destination);
                                         }
 
     // const handleCatChange=(e)=>{
@@ -156,41 +164,54 @@ const handlebudgetChange = (e) => {
 
     if (checked && value == "b1") {
 
-        setMax(10000)
-     
-         setMin(0);
+       
+         setMintemp(1);
+         setMaxtemp(10000);
        
      }
     
     else if (checked && value == "b2") {
-        setMin(10000);
-        setMax(20000);
+
+        setMintemp(10000);
+         setMaxtemp(20000);
     
     } else if (checked && value == "b3") {
 
-      
-      setMin(20000);
-       setMax(40000);
-      //
-    } else if (checked && value == "b4") {
-      
 
-       setMin(40000);
-      setMax(50000);
+      setMintemp(20000)
+        setMaxtemp(40000)
+    } else if (checked && value == "b4") {
+
+      setMintemp(40000);
+      setMaxtemp(50000);
     } else {
-      setMin(0);
+
+
+      setMin(1);
       setMax(999999);
+
+      setMintemp(1);
+      setMaxtemp(999999);
     }
 
-    console.log("min value is " + min + " max val is " + max);
+   // console.log("mint value is " + mintemp + " maxt val is " + maxtemp);
+    //console.log("type of mintmp"+ typeof(mintemp)+"type of maxtmp"+typeof(maxtemp))
   };
 
   const handleMinValueChange = (e) => {
-    setMin(e.target.value);
+   // setMin(e.target.value);
+   setMin(undefined);
+    setMintemp(e.target.value);
+
   };//check the datatype;int or string
   const handleMaxValueChange = (e) => {
-    setMax(e.target.value);
+   
+    setMax(undefined);
+
+    setMaxtemp(e.target.value);
   };
+
+
   const color = "text-blacky-dark"; 
   
    

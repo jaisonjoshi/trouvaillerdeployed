@@ -5,64 +5,36 @@ const mongoose=require('mongoose')
 //inside 'find' you can pass params if you need filtered result
 const getPackages = async(req,res)=>{
    
-    const {min,max,destinations,category,...others}=req.query;
-
-   
-
-    if(destinations && category){
-        const cat=category.split(",")
-    const package=await Package.find({
-        ...others,
-        cheapestPrice:{$gt:min||1,$lt:max||999999},
-        locations:{
-            $in:[destinations],
-        },
-        category:[...cat],
-    }).limit(req.query.limit).sort({createdAt:-1})
-res.status(200).json(package)}
-
-else if(category){
-
-    const cat=category.split(",")
-    const package=await Package.find({
-        ...others,
-        cheapestPrice:{$gt:min||1,$lt:max||999999},
-        category:[...cat],
-       
-    }).limit(req.query.limit).sort({createdAt:-1})
-    res.status(200).json(package)}
-
-else if(destinations){
-
-const package=await Package.find({
-    ...others,
-    cheapestPrice:{$gt:min||1,$lt:max||999999},
-    locations:{
-        $in:[destinations],
-    },
-   
-}).limit(req.query.limit).sort({createdAt:-1})
-res.status(200).json(package)}
-
-
-
-
-
-else{
-
-    const package=await Package.find({
-        ...others,
-        cheapestPrice:{$gt:min||1,$lt:max||999999},
-      
-       
-    }).limit(req.query.limit).sort({createdAt:-1})
-    res.status(200).json(package)}
+    let {min,max,destinations,category,...others}=req.query;
+         min = parseInt(req.query.min) || 1;
+         max = parseInt(req.query.max) || 99999;
+ 
+    const query = {}
+    query.limit=50;
+    if(destinations) query.locations = {$in: [destinations]}
+    if(category) query.category = {$in: category.split(',')}
+    if(min) query.cheapestPrice = {$gt: min, $lt: max}
+    if(max) query.cheapestPrice = {$gt: min, $lt: max}
     
+    const package = await Package.find(query).limit(req.query.limit).sort({createdAt: -1}).catch(err=>console.log(err))
+    console.log(query)
+    res.status(200).json(package)
+   
 
-    //
-   // const package = await Package.find(req.query).sort({createdAt:-1})
-    //res.status(200).json(package)
+
+
+
+    
 }
+
+
+
+
+
+
+
+
+
 //get a single pkg
 const getPackage = async(req,res)=>{
     const {id}=req.params
