@@ -7,52 +7,102 @@ import { Dropdown } from 'flowbite-react/lib/cjs/components/Dropdown';
 import Footer from '../Footer/Footer';
 import NavbarTest from '../navbar/navbar';
 import BarLoader from "react-spinners/BarLoader";
+import axios from "axios";;
 
 const List1_card = () => {
     const [anim, setAnim] = useState("hide")
     useEffect(()=>{
         window.addEventListener('load', setAnim("show"))
 
-    }, [])
+    }, []);
+
+    const axiosInstance = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+    });
 
 
     const [destination,setDestination]=useState("");
     const [min, setMin] = useState(undefined);
     const [max, setMax] = useState(undefined);
-    const [cat,setCat]=useState("");
- // const {data,loading,error}=useFetch("/packages")
-  //const url1=`/packages?location=${destination}`
-  const url1 = `/packages?location=${destination}&max=${max || 999999}&min=${
-    min || 0
-  }`;
-    const url2=`/packages`
-    const url3 = `/packages?location=${destination}&category=${cat}&max=${max || 999999}&min=${
+    const [cat,setCat]=useState([]);
+    const [cats,setCats]=useState("");
+    const [url,setUrl]=useState("");
+
+//   const url1 = `/packages?destinations=${destination}&max=${max || 999999}&min=${
+//     min || 0
+//   }`;
+//     const url2=`/packages`
+//---------original
+    const url3 = `/packages?destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
         min || 0
       }`;
 
-      //add url conditional code to submit button even  handler for fetching through less freq
-    let url=(destination,url1,url2,url3)=>{
+     // add url conditional code to submit button even  handler for fetching through less freq
+    // let url=(destination,url1,url2,url3)=>{
       
-      if(destination){
-        if(cat){return url3}
-        return url1
-      }
-      else{
-        return url2
-      }
+    //   if(destination){
+    //     if(cat){return url3}
+    //     return url1
+    //   }
+    //   else{
+    //     return url2
+    //   }
       
-    }
-    if(destination){
-        if(cat){url=url3}
-        else{
-        url=url1}}
-        else
-        url=url2;
-      const {data,loading,error,reFetch}=useFetch(url)
+    // }
+    // if(destination){
+    //     if(cat){url=url3}
+    //     else{
+    //     url=url1}}
+    //     else
+    //     url=url2;
 
-      const handleClick = () => {
-        reFetch();//handleclick const for all filters,handle chage just sets values
+
+       //original line/
+           const {data,loading,error,reFetch}=useFetch(url3)
+
+        //use effect
+    //      const url1="/packages"
+    //      setUrl(url1)
+    //     const url3="/packages?destinations=${destination}&category=${cat}&max=${max || 999999}&min=${min || 0 }"
+
+    //         const {data,loading,error,reFetch}=useFetch(url);
+
+    //         useEffect(()=>{
+    //             setUrl(url3);
+    //  },[destination]);
+
+        
+       
+
+      
+     
+
+      const handleClick = () => {//for category change
+
+       // const [cats,setCats]=useState("");    
+       // const [cat,setCat]=useState([]);
+
+
+        const catstr=cat.toString();
+        console.log("array to string "+catstr);
+       setCats(catstr);
+       console.log(cats);
+       
+
+       // reFetch();//handleclick const for all filters,handle chage just sets values
        }
+
+       const handleSClick = () => {
+
+        reFetch();
+        // if(cat.length)
+        // {
+
+        // }
+
+       }
+
+
        const handleSubmitClick = () => {
         console.log(min);
         const minval = parseInt(min);
@@ -72,12 +122,34 @@ const List1_card = () => {
     console.log(destination);
                                         }
 
-    const handleCatChange=(e)=>{
-        const { value, checked } = e.target;
+    // const handleCatChange=(e)=>{
+    //     const { value, checked } = e.target;
         
-        if(checked){setCat(value)}
+    //     if(checked){setCat(value)}
+    //     console.log(cat);
+    // }
+
+   const  handleCataChange=(e)=>{
+        const { value, checked } = e.target;
+       
+        const i=cat.indexOf(e.target.value);
+      //  console.log("index "+i);
+        
+        
+        if(checked)
+        {setCat(cat=>[...cat,value])
+        }
+
+        else{//get the target name-search arr for i-pop i val
+            {
+
+                cat.splice(i, 1)
+            }  
+        }
         console.log(cat);
     }
+
+
 const handlebudgetChange = (e) => {
     const { value, checked } = e.target;
     console.log(value + " state is" + checked);
@@ -87,93 +159,21 @@ const handlebudgetChange = (e) => {
         setMax(10000)
      
          setMin(0);
-        // if(max==999999)
-        // {setMax(10000)}
+       
      }
     
     else if (checked && value == "b2") {
         setMin(10000);
         setMax(20000);
-      //test code
-    //   if (min == 0 && max == 999999) {
-    //     setMin(10000);
-    //     setMax(20000);
-    //   } else {
-    //     if (max != 999999) {
-    //       if (max < 20000) {
-    //         setMax(20000);
-    //       }
-    //     }
-
-    //     if (min != 0) {
-    //       if (min > 10000) {
-    //         setMin(10000);
-    //       }
-    //     }
-    //   }
-
-      //test code
-
-      // if(max!=999999)
-      //          {if(max<20000)
-      //             {
-      //                 setMax(20000);
-      //             }
-      //         }
-      // // else{
-      // //     setMin(10000);
-      // //     setMax(20000);
-      // // }
-      // if(min!=0){
-      //         if(min>10000){
-      //             setMin(10000);
-      //         }
-      //     }
-      // else{
-      //     setMin(10000);
-      //     setMax(20000);
-      // }
+    
     } else if (checked && value == "b3") {
 
-        //start
-        // if (min == 0 && max == 999999) {
-        //     setMin(20000);
-        //     setMax(40000);
-        //   } else {
-        //     if (max != 999999) {
-        //       if (max < 40000) {
-        //         setMax(40000);
-        //       }
-        //     }
-    
-        //     if (min != 0) {
-        //       if (min > 20000) {
-        //         setMin(20000);
-        //       }
-        //     }
-        //   }
-        //end
-        //
+      
       setMin(20000);
        setMax(40000);
       //
     } else if (checked && value == "b4") {
-        // if (min == 0 && max == 999999) {
-        //     setMin(40000);
-        //     setMax(50000);
-        //   } else {
-        //     if (max != 999999) {
-        //       if (max < 50000) {
-        //         setMax(50000);
-        //       }
-        //     }
-    
-        //     if (min != 0) {
-        //       if (min > 50000) {
-        //         setMin(50000);
-        //       }
-        //     }
-        //   }
+      
 
        setMin(40000);
       setMax(50000);
@@ -216,7 +216,7 @@ const handlebudgetChange = (e) => {
             </div>
             <div className="flex justify-center py-6">
                     <div className="flex items-center w-[70%] md:w-[60%] lg:w-[30%] justify-between focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
-                        <input type="text border-none outline-none w-[80%] h-[100%] text-2xl" placeholder="Destination" id= "destination" name="destination" onChange={handleSearchChange}/><SearchIcon  className='w=[20%] mx-3 cursor-pointer' onClick={handleClick}/>
+                        <input type="text border-none outline-none w-[80%] h-[100%] text-2xl" placeholder="Destination" id= "destination" name="destination" onChange={handleSearchChange}/><SearchIcon  className='w=[20%] mx-3 cursor-pointer' onClick={handleSClick}/>
                     </div>
                 </div>
             <div className="flex flex-wrap justify-center items-center w-[90%] md:w-[80%] mx-auto gap-4 py-4">
@@ -229,20 +229,28 @@ const handlebudgetChange = (e) => {
                     dismissOnClick={false}
                     class=" flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs">
                     <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="honeymoon" name="category" value="domestic" onChange={handleCatChange}
+                        <input type="checkbox" className=" accent-evergreen" id="honeymoon" name="dom" value="domestic" onChange={handleCataChange}
                         /><label for="honeymoon" className="pl-3 text-base text-blacky-bright"> Domestic</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="radio" className="accent-evergreen" id="family" name="category" value="international" onChange={handleCatChange} 
+                        <input type="checkbox" className="accent-evergreen" id="family" name="int" value="international" onChange={handleCataChange} 
                         /><label for="family" className="pl-3 text-base text-blacky-bright"> International</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="radio" className="accent-evergreen" id="friends" name="category" value="honeymoon"  onChange={handleCatChange}
+                        <input type="checkbox" className="accent-evergreen" id="friends" name="hon" value="honeymoon"  onChange={handleCataChange}
                         /><label for="friends" className="pl-3 text-base text-blacky-bright"> Honeymoon</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="radio" className="accent-evergreen" id="holiday" name="category" value="holiday" onChange={handleCatChange}
+                        <input type="checkbox" className="accent-evergreen" id="holiday" name="hol" value="holiday" onChange={handleCataChange}
                         /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Holiday</label><br />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <input type="checkbox" className="accent-evergreen" id="holiday" name="fam" value="family" onChange={handleCataChange}
+                        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Family</label><br />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <input type="checkbox" className="accent-evergreen" id="holiday" name="fri" value="friends" onChange={handleCataChange}
+                        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Friends</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
                         <input type="submit" className="ml-3 my-2 rounded-md border border-blacky-bright text-blacky-light w-20 h-8 hover:bg-evergreen hover:text-blacky-dark duration-500 hover:border-none" value="Apply" onClick={handleClick}/>
@@ -294,19 +302,19 @@ const handlebudgetChange = (e) => {
                     dismissOnClick={false}
                     class=" w flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs">
                     <Dropdown.Item>
-                        <input type="checkbox" className=" accent-evergreen" id="adventure" name="" value="" />
+                        <input type="radio" className=" accent-evergreen" id="adventure" name="activity" value="" />
                         <label for="adventure" className="pl-3 text-base text-blacky-bright">Adventure</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="checkbox" className=" accent-evergreen" id="nature" name="" value="" />
+                        <input type="radio" className=" accent-evergreen" id="nature" name="activity" value="" />
                         <label for="nature" className="pl-3 text-base text-blacky-bright"> Nature</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="checkbox" className=" accent-evergreen" id="hill" name="" value="" />
+                        <input type="radio" className=" accent-evergreen" id="hill" name="activity" value="" />
                         <label for="hill" className="pl-3 text-base text-blacky-bright"> Hill Station</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <input type="checkbox" className=" accent-evergreen" id="religious" name="" value="" />
+                        <input type="radio" className=" accent-evergreen" id="religious" name="activity" value="" />
                         <label for="religious" className="pl-3 text-base text-blacky-bright"> Religious</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>

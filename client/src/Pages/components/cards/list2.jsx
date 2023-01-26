@@ -15,12 +15,13 @@ const List2_card = () => {
 
   }, [])
   const [destination, setDestination] = useState("");
+  const [searchval, setSearchval] = useState("");
   // const [checked, setChecked] = useState(false);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
   //const [ info, setInfo] = useState({})
   // const {data,loading,error}=useFetch("/packages")
-  const url1 = `/hotels?location=${destination}&max=${max || 999999}&min=${
+  const url1 = `/hotels?destinations=${destination}&max=${max || 999999}&min=${
     min || 0
   }`;
   const url2 = `/hotels`;
@@ -34,9 +35,12 @@ const List2_card = () => {
   if (destination) {
     url = url1;
   } else url = url2;
+
+  //useeffect
   const { data, loading, error, reFetch } = useFetch(url);
 
   const handleClick = () => {
+      // setDestination(searchval);
     reFetch(); //handleclick const for all filters,handle chage just sets values
   };
   const handleSubmitClick = () => {
@@ -54,7 +58,8 @@ const List2_card = () => {
     let tar = e.target.value;
     //console.log("IN LOWER CASE "+tar.toLowerCase())
     //console.log(t.toLowerCase())
-    setDestination(tar.toLowerCase());
+   // setSearchval(tar.toLowerCase());
+    setDestination(tar.toLowerCase());//now set the paste this to dest array upon handle click
     console.log(destination);
   };
 
@@ -248,31 +253,10 @@ const List2_card = () => {
         </div>
       </div>
       <div className="flex flex-wrap justify-center items-center w-[90%] md:w-[80%] mx-auto gap-4 py-4">
-        {/*Drop down of categories */}
+        
 
         {/* <Dropdown
-                    label="Categories"
-                    dismissOnClick={false}
-                    class=" flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs">
-                    <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="honeymoon" name="category" value="honeymoon" onChange={handleChange}/>
-                        <label for="honeymoon" className="pl-3 text-base text-blacky-bright"> Honeymoon</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className="accent-evergreen" id="family" name="category" value="family" onChange={handleChange} />
-                        <label for="family" className="pl-3 text-base text-blacky-bright"> Family</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className="accent-evergreen" id="friends" name="category" value="friends"  onChange={handleChange}/>
-                        <label for="friends" className="pl-3 text-base text-blacky-bright"> Friends</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className="accent-evergreen" id="holiday" name="category" value="holiday" onChange={handleChange}/>
-                        <label for="holiday" className="pl-3 text-base text-blacky-bright"> Holiday</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="submit" className="ml-3 my-2 rounded-md border border-blacky-bright text-blacky-light w-20 h-8 hover:bg-evergreen hover:text-blacky-dark duration-500 hover:border-none" value="Apply" />
-                    </Dropdown.Item>
+                  
                 </Dropdown> */}
 
         <Dropdown

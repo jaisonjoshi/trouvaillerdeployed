@@ -7,15 +7,16 @@ const Locations = require('../models/locationModel')
 const getHotels=async(req,res)=>{
 
 
-    const {min,max,...others}=req.query;
+    const {min,max,destinations,...others}=req.query;
 ///new material
 
-//
-
-    
+  //const loc=req.query
     const hotel=await Hotel.find({
         ...others,
-        cheapestPrice:{$gt:min||1,$lt:max||999999}
+        cheapestPrice:{$gt:min||1,$lt:max||999999},
+        locations:{
+            $in:[destinations],
+        }
     }).limit(req.query.limit).sort({createdAt:-1})
 res.status(200).json(hotel)
 }
@@ -41,7 +42,7 @@ const countHotel = async (req,res) => {
     
 }
 
-//create a single workout--changes with params
+//create a single hotel--changes with params
 const createHotel=async (req,res)=>{
     const {title,
         type,

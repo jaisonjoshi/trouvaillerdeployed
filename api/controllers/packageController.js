@@ -5,20 +5,65 @@ const mongoose=require('mongoose')
 //inside 'find' you can pass params if you need filtered result
 const getPackages = async(req,res)=>{
    
-    const {min,max,...others}=req.query;
+    const {min,max,destinations,category,...others}=req.query;
 
-    
+   
+
+    if(destinations && category){
+        const cat=category.split(",")
     const package=await Package.find({
         ...others,
-        cheapestPrice:{$gt:min||1,$lt:max||999999}
+        cheapestPrice:{$gt:min||1,$lt:max||999999},
+        locations:{
+            $in:[destinations],
+        },
+        category:[...cat],
     }).limit(req.query.limit).sort({createdAt:-1})
-res.status(200).json(package)
+res.status(200).json(package)}
+
+else if(category){
+
+    const cat=category.split(",")
+    const package=await Package.find({
+        ...others,
+        cheapestPrice:{$gt:min||1,$lt:max||999999},
+        category:[...cat],
+       
+    }).limit(req.query.limit).sort({createdAt:-1})
+    res.status(200).json(package)}
+
+else if(destinations){
+
+const package=await Package.find({
+    ...others,
+    cheapestPrice:{$gt:min||1,$lt:max||999999},
+    locations:{
+        $in:[destinations],
+    },
+   
+}).limit(req.query.limit).sort({createdAt:-1})
+res.status(200).json(package)}
+
+
+
+
+
+else{
+
+    const package=await Package.find({
+        ...others,
+        cheapestPrice:{$gt:min||1,$lt:max||999999},
+      
+       
+    }).limit(req.query.limit).sort({createdAt:-1})
+    res.status(200).json(package)}
+    
 
     //
    // const package = await Package.find(req.query).sort({createdAt:-1})
     //res.status(200).json(package)
 }
-//get a single workout
+//get a single pkg
 const getPackage = async(req,res)=>{
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
@@ -40,7 +85,7 @@ const countPackage = async (req,res) => {
 
 }
 
-//create a single workout--changes with params
+//create a single pkg--changes with params
 const createPackage = async (req,res)=>{
     const {
         title,
