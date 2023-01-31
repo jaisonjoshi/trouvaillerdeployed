@@ -21,7 +21,7 @@ router.get("/countvendors", countVendors);
 router.get("/countusers", countUsers);
 
 
-//GET ALL
+//GET ALL 
 router.get("/", getUsers);
 
 module.exports=router
