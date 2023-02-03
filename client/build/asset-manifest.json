@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "./static/css/main.029ce930.css",
+    "main.js": "./static/js/main.48d6174e.js",
+    "static/media/inter.jpg": "./static/media/inter.d12b501e830728f9b61e.jpg",
+    "static/media/SpecialOffer.png": "./static/media/SpecialOffer.a259a320c1ad2a8e6fd3.png",
+    "static/media/h.png": "./static/media/h.572ab5c8e0f8e1470462.png",
+    "static/media/biding.webp": "./static/media/biding.93c775115147658cfa6f.webp",
+    "static/media/avatar.png": "./static/media/avatar.03cb89e32259e8b8cc7c.png",
+    "static/media/loginwall.webp": "./static/media/loginwall.5fc843e317d706d754f3.webp",
+    "static/media/pic5.webp": "./static/media/pic5.6717276d1584a1b16065.webp",
+    "static/media/pic1.webp": "./static/media/pic1.1e015590552b7409d4ca.webp",
+    "static/media/Greenbg.png": "./static/media/Greenbg.e7e4e5e05c833ef57bfb.png",
+    "static/media/pic3.webp": "./static/media/pic3.084300cf43c6d85a2562.webp",
+    "static/media/pic2.webp": "./static/media/pic2.e8e2b9ffa205e1ffe2ae.webp",
+    "static/media/pic4.webp": "./static/media/pic4.d59e0f392e377e0ba266.webp",
+    "static/media/munnar.jpg": "./static/media/munnar.e17140805f199eef14ad.jpg",
+    "static/media/Trouvailler Green.png": "./static/media/Trouvailler Green.4ede73bf19d4d33656b5.png",
+    "static/media/slick.svg": "./static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "./static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "./static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "./index.html",
+    "main.029ce930.css.map": "./static/css/main.029ce930.css.map",
+    "main.48d6174e.js.map": "./static/js/main.48d6174e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.029ce930.css",
+    "static/js/main.48d6174e.js"
+  ]
+}

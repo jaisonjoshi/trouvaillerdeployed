@@ -14,9 +14,11 @@ import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useNavigate } from 'react-router'
 
 const List1_card = ({setlocation, settype}) => {
     const slider = React.useRef(null);
+    const navigate = useNavigate();
 
     const [anim, setAnim] = useState("hide")
     useEffect(()=>{
@@ -171,14 +173,11 @@ const List1_card = ({setlocation, settype}) => {
        // reFetch();//handleclick const for all filters,handle chage just sets values
        }
 
-       const handleSClick = () => {
+       const handleSClick =  () => {
 
-<<<<<<< HEAD
-            setlocation(destination);
-=======
-        reFetch();
-      
->>>>>>> 23eca04c0a3cb172e76d364c5b64e0e8ad6484bf
+             setlocation(destination);
+            navigate("/se");
+            
 
        }
 
@@ -205,10 +204,7 @@ const List1_card = ({setlocation, settype}) => {
         //console.log("IN LOWER CASE "+tar.toLowerCase())
         //console.log(t.toLowerCase())
         setDestination(tar.toLowerCase());
-<<<<<<< HEAD
-=======
          console.log(destination);
->>>>>>> 23eca04c0a3cb172e76d364c5b64e0e8ad6484bf
                                         }
 
     // const handleCatChange=(e)=>{
@@ -333,7 +329,7 @@ const handlebudgetChange = (e) => {
                                                 <input type="text" className="border-0  outline-none w-[100%] h-[100%] text-md text-graydust-medium focus:ring-0 focus:ring-offset-0" placeholder="Enter your Destination" id= "destination" name="destination" onChange={handleSearchChange}/>
 
                                             </div>
-                                            <Link to="/se"><button  className='px-8 py-2 bg-[#2f3560] rounded-full text-white font-bold cursor-pointer' onClick={handleSClick}>Search</button></Link>
+                                            <button  className='px-8 py-2 bg-[#2f3560] rounded-full text-white font-bold cursor-pointer' onClick={handleSClick}>Search</button>
 
                                             </div>
                                        </div>

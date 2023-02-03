@@ -14,155 +14,276 @@ const List2_card = ({setlocation, settype}) => {
       window.addEventListener('load', setAnim("show"))
 
   }, [])
-  const [destination, setDestination] = useState("");
-  const [searchval, setSearchval] = useState("");
-  // const [checked, setChecked] = useState(false);
-  const [min, setMin] = useState(undefined);
-  const [cat,setCat]=useState([]);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const [destination,setDestination]=useState();
+  const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
   const [mintemp, setMintemp] = useState(undefined);
-    const [maxtemp, setMaxtemp] = useState(undefined);
-  
-  const url = `/hotels?destinations=${destination}&max=${max || 999999}&min=${
-    min || 1
-  }`;
-  // const url2 = `/hotels`;
-  // let url = (destination, url1, url2) => {
-  //   if (destination) {
-  //     return url1;
-  //   } else {
-  //     return url2;
+  const [maxtemp, setMaxtemp] = useState(undefined);
+  const [cat,setCat]=useState([]);
+  const [cats,setCats]=useState("");
+  const [url,setUrl]=useState("");
+
+//   const url1 = `/packages?destinations=${destination}&max=${max || 999999}&min=${
+//     min || 0
+//   }`;
+//     const url2=`/packages`
+//---------original
+  const url3 = `/packages?destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
+      min || 1
+    }`;
+
+   // add url conditional code to submit button even  handler for fetching through less freq
+  // let url=(destination,url1,url2,url3)=>{
+    
+  //   if(destination){
+  //     if(cat){return url3}
+  //     return url1
   //   }
-  // };
-  // if (destination) {
-  //   url = url1;
-  // } else url = url2;
+  //   else{
+  //     return url2
+  //   }
+    
+  // }
+  // if(destination){
+  //     if(cat){url=url3}
+  //     else{
+  //     url=url1}}
+  //     else
+  //     url=url2;
 
-  //useeffect
-  const { data, loading, error, reFetch } = useFetch(url);
 
-  const handleClick = () => {
-      // setDestination(searchval);
-    reFetch(); //handleclick const for all filters,handle chage just sets values
-  };
-  const handleSubmitClick = () => {
+     //original line/
+         const {data,loading,error,reFetch}=useFetch(url3)
+
+      //use effect
+  //      const url1="/packages"
+  //      setUrl(url1)
+  //     const url3="/packages?destinations=${destination}&category=${cat}&max=${max || 999999}&min=${min || 0 }"
+
+  //         const {data,loading,error,reFetch}=useFetch(url);
+
+  //         useEffect(()=>{
+  //             setUrl(url3);
+  //  },[destination]);
+
+  
+     
+
+    
    
-    const minval = parseInt(mintemp);
-     setMin(minval, ()=>reFetch());
-     const maxval = parseInt(maxtemp);
-    setMax(maxval, ()=>reFetch());
-  };
-  const handleSearchChange = (e) => {
-    //console.log("input val "+e.target.value);
-    let tar = e.target.value;
-    //console.log("IN LOWER CASE "+tar.toLowerCase())
-    //console.log(t.toLowerCase())
-   // setSearchval(tar.toLowerCase());
-    setDestination(tar.toLowerCase());//now set the paste this to dest array upon handle click
-    console.log(destination);
-  };
 
-  //add each element to array,upon submit,sort arr,setmin and max as first and last val with type conv
-  const handlebudgetChange = (e) => {
-    const { value, checked } = e.target;
-    console.log(value + " state is" + checked);
+    const handleClick = () => {//for category change
 
-    if (checked && value == "b1") {
+     // const [cats,setCats]=useState("");    
+     // const [cat,setCat]=useState([]);
 
-      setMintemp(1);
-      setMaxtemp(10000);
+
+      const catstr=cat.toString();
+      console.log("array to string "+catstr);
+     setCats(catstr);
+     console.log(cats);
+     
+
+     // reFetch();//handleclick const for all filters,handle chage just sets values
      }
-    
-    else if (checked && value == "b2") {
-      setMintemp(10000);
-      setMaxtemp(20000);
-    
-    } else if (checked && value == "b3") {
 
      
-      setMintemp(20000)
-        setMaxtemp(40000)
-      //
-    } else if (checked && value == "b4") {
 
-        setMintemp(40000);
-         setMaxtemp(50000);
 
-    } else {
-      setMin(1);
-      setMax(999999);
+     const handleSubmitClick = () => {
+     
+      const minval = parseInt(mintemp);
+     // setMin(minval);
+      //console.log(typeof minval);
+      //console.log(maxtemp);    
+      //setMax(maxval);
+      //console.log("min value is " + min + " max val is " + max);
+     //console.log("type of min"+ typeof(min)+"type of max"+typeof(max))
+      setMin(minval, ()=>reFetch());
+      const maxval = parseInt(maxtemp);
+     setMax(maxval, ()=>reFetch());
+    // reFetch();
+    };
 
-      setMintemp(1);
-      setMaxtemp(999999);
-    }
+    const handleSClick = () => {
 
-    console.log("min value is " + min + " max val is " + max);
-  };
-  const handleSClick = () => {
+      setlocation(destination);
+  
+  }
 
-    setlocation(destination);
+     const handleSearchChange = (e) => {
+      let tar=e.target.value;
+      //console.log("IN LOWER CASE "+tar.toLowerCase())
+      //console.log(t.toLowerCase())
+      setDestination(tar.toLowerCase());
+       console.log(destination);
+                                      }
 
-}
-  const  handleCataChange=(e)=>{
-    const { value, checked } = e.target;
-   
-    const i=cat.indexOf(e.target.value);
-  //  console.log("index "+i);
-    
-    
-    if(checked)
-    {setCat(cat=>[...cat,value])
-    }
-
-    else{//get the target name-search arr for i-pop i val
-        {
-
-            cat.splice(i, 1)
-        }  
-    }
-    console.log(cat);
-}
-  const handleMinValueChange = (e) => {
-    setMin(undefined);
-   
-
-    setMintemp(e.target.value);
-  };
-  const handleMaxValueChange = (e) => {
-    
-    setMax(undefined);
-
-    setMaxtemp(e.target.value);
-  };
-
-  // const handlemid3Change=(e)=>{}//try one handle change and use if for val
-
-  //const {data,loading,error}=useFetch("/hotels")
-  //const [ info, setInfo] = useState({})
-  //  const [url, setUrl] = useState("");
-  // const handleSearchChange = (e) => {
-  //     setInfo((prev) => ({...prev, [e.target.name] : e.target.value}))
+  // const handleCatChange=(e)=>{
+  //     const { value, checked } = e.target;
+      
+  //     if(checked){setCat(value)}
+  //     console.log(cat);
   // }
+  
+ const  handleCataChange=(e)=>{
+      const { value, checked } = e.target;
+     
+      const i=cat.indexOf(e.target.value);
+    //  console.log("index "+i);
+      
+      
+      if(checked)
+      {setCat(cat=>[...cat,value])
+      }
 
-  // const handleChange = (e) =>{
-  //     const {name,value, checked } =e.target;
-  //     console.log(`${value} is ${checked}`)
+      else{//get the target name-search arr for i-pop i val
+          {
 
-  //     if(checked) {
-  //         setInfo((prev) => ({...prev, [e.target.name] : e.target.value}))
-  //     }
-  //     else{
-  //         setInfo((prev) => ({...prev, [e.target.name] :""}))
-  //     }
+              cat.splice(i, 1)
+          }  
+      }
+      console.log(cat);
+  }
 
-  // }
-  //console.log(info)
-  // const handleClick = () => {
-  //     console.log("i'm going to search for", info.destination,info.checkboxValues)
 
-  // }
-  const color = "text-blacky-dark";
+const handlebudgetChange = (e) => {
+  const { value, checked } = e.target;
+  console.log(value + " state is" + checked);
+
+  if (checked && value == "b1") {
+
+     
+       setMintemp(1);
+       setMaxtemp(10000);
+     
+   }
+  
+  else if (checked && value == "b2") {
+
+      setMintemp(10000);
+       setMaxtemp(20000);
+  
+  } else if (checked && value == "b3") {
+
+
+    setMintemp(20000)
+      setMaxtemp(40000)
+  } else if (checked && value == "b4") {
+
+    setMintemp(40000);
+    setMaxtemp(50000);
+  } else {
+
+
+    setMin(1);
+    setMax(999999);
+
+    setMintemp(1);
+    setMaxtemp(999999);
+  }
+
+ // console.log("mint value is " + mintemp + " maxt val is " + maxtemp);
+  //console.log("type of mintmp"+ typeof(mintemp)+"type of maxtmp"+typeof(maxtemp))
+};
+
+const handleMinValueChange = (e) => {
+ // setMin(e.target.value);
+ setMin(undefined);
+  setMintemp(e.target.value);
+
+};//check the datatype;int or string
+const handleMaxValueChange = (e) => {
+ 
+  setMax(undefined);
+
+  setMaxtemp(e.target.value);
+};
+
+
+const color = "text-blacky-dark"; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className={`w-full animationset ${anim} bg-[#f2f2f2] hotelsexplore`}>
       <NavbarTest color={color} />
