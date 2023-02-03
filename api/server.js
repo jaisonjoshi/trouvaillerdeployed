@@ -5,6 +5,14 @@ const express=require('express')
 const mongoose=require('mongoose')
 const {createServer} = require("http")
 
+//
+const session = require("express-session");
+//const passport = require("passport");
+// const passportLocalMongoose = require("passport-local-mongoose");
+// const GoogleStrategy = require("passport-google-oauth20").Strategy;
+// const findOrCreate = require("mongoose-findorcreate");
+//
+
 const hotelRoutes=require('./routes/hotels')
 const roomRoutes=require('./routes/rooms')
 const bidRoutes=require('./routes/bids')
@@ -29,6 +37,15 @@ const httpServer = createServer(app);
 
 app.use(express.json())
 
+//google
+// app.use(session({
+//     secret: "Our little secret.",
+//     resave: false,
+//     saveUninitialized: false
+//   }));app.use(passport.initialize());
+//   app.use(passport.session());
+//
+
 mongoose.connect(process.env.MONGO_URI,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -43,7 +60,21 @@ mongoose.connect(process.env.MONGO_URI,{
         process.exit(1)
     })
 
-app.use(cors({credentials:true}));
+   // mongoose.set("useCreateIndex", true);
+
+app.use(cors({
+    origin:"http://localhost:3000",
+    methods:"GET,POST,PUT,DELETE",
+    credentials:true}));
+// app.get("/auth/google",
+//   passport.authenticate("google", { scope: ["profile"] })
+// );
+// app.get("/auth/google/callback",
+//   passport.authenticate("google", { failureRedirect: "http://localhost:3000" }),
+//   function(req, res) {
+//     // Successful authentication, redirect secrets.
+//     res.redirect("http://localhost:3000")}
+// );
 
 app.use('/api/hotels',hotelRoutes)
 app.use('/api/rooms',roomRoutes)

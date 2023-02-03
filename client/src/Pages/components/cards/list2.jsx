@@ -21,22 +21,23 @@ const List2_card = ({setlocation, settype}) => {
   const [cat,setCat]=useState([]);
 
   const [max, setMax] = useState(undefined);
-  //const [ info, setInfo] = useState({})
-  // const {data,loading,error}=useFetch("/packages")
-  const url1 = `/hotels?destinations=${destination}&max=${max || 999999}&min=${
-    min || 0
+  const [mintemp, setMintemp] = useState(undefined);
+    const [maxtemp, setMaxtemp] = useState(undefined);
+  
+  const url = `/hotels?destinations=${destination}&max=${max || 999999}&min=${
+    min || 1
   }`;
-  const url2 = `/hotels`;
-  let url = (destination, url1, url2) => {
-    if (destination) {
-      return url1;
-    } else {
-      return url2;
-    }
-  };
-  if (destination) {
-    url = url1;
-  } else url = url2;
+  // const url2 = `/hotels`;
+  // let url = (destination, url1, url2) => {
+  //   if (destination) {
+  //     return url1;
+  //   } else {
+  //     return url2;
+  //   }
+  // };
+  // if (destination) {
+  //   url = url1;
+  // } else url = url2;
 
   //useeffect
   const { data, loading, error, reFetch } = useFetch(url);
@@ -46,14 +47,11 @@ const List2_card = ({setlocation, settype}) => {
     reFetch(); //handleclick const for all filters,handle chage just sets values
   };
   const handleSubmitClick = () => {
-    console.log(min);
-    const minval = parseInt(min);
-    setMin(minval);
-    console.log(typeof minval);
-    console.log(max);
-    const maxval = parseInt(max);
-    setMax(maxval);
-    reFetch();
+   
+    const minval = parseInt(mintemp);
+     setMin(minval, ()=>reFetch());
+     const maxval = parseInt(maxtemp);
+    setMax(maxval, ()=>reFetch());
   };
   const handleSearchChange = (e) => {
     //console.log("input val "+e.target.value);
@@ -72,102 +70,31 @@ const List2_card = ({setlocation, settype}) => {
 
     if (checked && value == "b1") {
 
-        setMax(10000)
-     
-         setMin(0);
-        // if(max==999999)
-        // {setMax(10000)}
+      setMintemp(1);
+      setMaxtemp(10000);
      }
     
     else if (checked && value == "b2") {
-        setMin(10000);
-        setMax(20000);
-      //test code
-    //   if (min == 0 && max == 999999) {
-    //     setMin(10000);
-    //     setMax(20000);
-    //   } else {
-    //     if (max != 999999) {
-    //       if (max < 20000) {
-    //         setMax(20000);
-    //       }
-    //     }
-
-    //     if (min != 0) {
-    //       if (min > 10000) {
-    //         setMin(10000);
-    //       }
-    //     }
-    //   }
-
-      //test code
-
-      // if(max!=999999)
-      //          {if(max<20000)
-      //             {
-      //                 setMax(20000);
-      //             }
-      //         }
-      // // else{
-      // //     setMin(10000);
-      // //     setMax(20000);
-      // // }
-      // if(min!=0){
-      //         if(min>10000){
-      //             setMin(10000);
-      //         }
-      //     }
-      // else{
-      //     setMin(10000);
-      //     setMax(20000);
-      // }
+      setMintemp(10000);
+      setMaxtemp(20000);
+    
     } else if (checked && value == "b3") {
 
-        //start
-        // if (min == 0 && max == 999999) {
-        //     setMin(20000);
-        //     setMax(40000);
-        //   } else {
-        //     if (max != 999999) {
-        //       if (max < 40000) {
-        //         setMax(40000);
-        //       }
-        //     }
-    
-        //     if (min != 0) {
-        //       if (min > 20000) {
-        //         setMin(20000);
-        //       }
-        //     }
-        //   }
-        //end
-        //
-      setMin(20000);
-       setMax(40000);
+     
+      setMintemp(20000)
+        setMaxtemp(40000)
       //
     } else if (checked && value == "b4") {
-        // if (min == 0 && max == 999999) {
-        //     setMin(40000);
-        //     setMax(50000);
-        //   } else {
-        //     if (max != 999999) {
-        //       if (max < 50000) {
-        //         setMax(50000);
-        //       }
-        //     }
-    
-        //     if (min != 0) {
-        //       if (min > 50000) {
-        //         setMin(50000);
-        //       }
-        //     }
-        //   }
 
-       setMin(40000);
-      setMax(50000);
+        setMintemp(40000);
+         setMaxtemp(50000);
+
     } else {
-      setMin(0);
+      setMin(1);
       setMax(999999);
+
+      setMintemp(1);
+      setMaxtemp(999999);
     }
 
     console.log("min value is " + min + " max val is " + max);
@@ -197,10 +124,16 @@ const List2_card = ({setlocation, settype}) => {
     console.log(cat);
 }
   const handleMinValueChange = (e) => {
-    setMin(e.target.value);
+    setMin(undefined);
+   
+
+    setMintemp(e.target.value);
   };
   const handleMaxValueChange = (e) => {
-    setMax(e.target.value);
+    
+    setMax(undefined);
+
+    setMaxtemp(e.target.value);
   };
 
   // const handlemid3Change=(e)=>{}//try one handle change and use if for val

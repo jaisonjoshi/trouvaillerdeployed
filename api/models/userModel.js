@@ -21,22 +21,27 @@ const UserSchema = new Schema(
     img: {
       type: String,
     },
-    city: {
+     google_id: {
       type: String,
-      required: true,
-    }, 
-     country:{
-      type:String,
-      required: true,
     },
+    // city: {
+    //   type: String,
+    //   required: true,
+    // }, 
+    //  country:{
+    //   type:String,
+    //   required: true,
+    // },
     phone: {
       type: String,
       required: true,
     },
      password: {
       type: String,
-      required: true,
+      //required: false,
     },
+   
+
     isAdmin: {
       type: Boolean,
       default: false,

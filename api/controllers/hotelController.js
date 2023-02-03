@@ -7,18 +7,21 @@ const Locations = require('../models/locationModel')
 const getHotels=async(req,res)=>{
 
 
-    const {min,max,destinations,...others}=req.query;
+    let {min,max,destinations,...others}=req.query;
 ///new material
+        min = parseInt(req.query.min) || 1;
+         max = parseInt(req.query.max) || 99999;
 
-  //const loc=req.query
-    const hotel=await Hotel.find({
-        ...others,
-        cheapestPrice:{$gt:min||1,$lt:max||999999},
-        locations:{
-            $in:[destinations],
-        }
-    }).limit(req.query.limit).sort({createdAt:-1})
-res.status(200).json(hotel)
+         const query = {}
+         query.limit=50;
+
+         if(destinations) query.locations = {$in: [destinations]}
+         if(min) query.cheapestPrice = {$gt: min, $lt: max}
+         if(max) query.cheapestPrice = {$gt: min, $lt: max}
+  
+    const hotel=await Hotel.find(query).limit(req.query.limit).sort({createdAt: -1}).catch(err=>console.log(err))
+    console.log(query)
+    res.status(200).json(hotel)
 }
 //get a single workout
 const getHotel=async(req,res)=>{

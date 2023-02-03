@@ -17,9 +17,8 @@ const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
     phone: undefined,
-    email: undefined,
-    city:undefined,
-    country:undefined
+    email: undefined
+    
   });
 
   const { user, loading, error, dispatch } = useContext(AuthContext);
@@ -39,9 +38,7 @@ const [credentials, setCredentials] = useState({
       if(res.data){
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data.details });
       
-      navigate("/login");
-
-                          }
+      navigate("/login"); }
       else{
         dispatch({type:"REGISTER_FAILURE",payload:{message:"Invalid input for Registration!"}})
       }
@@ -73,8 +70,7 @@ const [credentials, setCredentials] = useState({
                     <input type="email" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="E-mail" id="email" required onChange={handleChange}/>
                     <input type="tel" className="mx-14 p-3 ooutline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Mobile Number" id="phone" required onChange={handleChange}/>
                     <input type="password" className="mx-14 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Create Password" id="password" required onChange={handleChange}/>
-                    <input type="text" className="mx-14 p-3 ooutline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="City" id="city" required onChange={handleChange}/>
-                    <input type="text" className="mx-14 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Country" id="country" required onChange={handleChange}/>
+                    
                     
                     </div>
                 <div className="mx-14 my-5">
