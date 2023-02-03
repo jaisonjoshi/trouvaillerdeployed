@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .preloader{
     display: flex;
     opacity: 1 !important;
@@ -94,11 +95,7 @@ input{outline: none;}
 }
 
 
- /* *  {
-    background: #000 !important;
-    color: #0f0 !important;
-    outline: solid #f00 1px !important;
-  } */
+
   input{
       outline: none !important;
   }
@@ -164,4 +161,105 @@ nav li a {
     height: 100%;
 }
 .card-shadow{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;}
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+}
+    .slick-dots li button:before {
+        background-color: #c83838 !important;
+        height: 0px !important;
+        width: 20px !important;
+        text-indent: -9999px !important;
+        overflow:hidden !important; 
+        border: 2px solid;
+        border-radius: 5px;
+        }
+
+
+.nav-itm.active{
+    border-bottom: 2px solid #03965e;
+}
+.nav-itm.active .nav-link{
+    color: #03965e;
+}
+
+
+
+*{
+    outline: none !important;
+}
+
+
+.hotel-img-card{
+    position: relative;
+    background-color: green;
+    
+}
+.hotel-img-card:last-child{
+    background-color: red;
+}
+.hotel-img-card:last-child::before{
+    content: "more photos";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    color: white;
+    font-weight: 800;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000068;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.shadow-shedule-card{
+ border: 1px solid #1ff8a5;
+
+}
+.navbar-gradient{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(140,255,215,1) 0%, rgba(109,246,164,1) 0%, rgba(248,255,255,1) 100%) !important;
+}
+
+.gradient-first{
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,243,202,1) 0%, rgba(109,246,164,1) 0%, rgba(78,252,234,1) 100%);
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none !important;
+}
+.shadow-search{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+
+.type-card{
+    position: relative;
+    background-image: url('../src/Pages/Assets/inter.jpg');
+    background-position: bottom;
+    background-size: cover;
+
+}
+.type-card::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    border-radius: 10px;
+    background-color: #00000091;
+}
+
+/* 
+*  {
+    background: #000 !important;
+    color: #0f0 !important;
+    outline: solid #f00 1px !important;
+  } */
+
+ .hotelsexplore .slick-track{
+     margin-left: 0.25rem !important;
+ }

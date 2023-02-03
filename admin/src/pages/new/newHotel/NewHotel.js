@@ -155,7 +155,7 @@ const NewHotel =({setOpen}) => {
               );
               
               const newHotel = {
-                ...info,rooms:rooms,images:list,facilities:facilities,features:features,locations:locations,
+                ...info,rooms:rooms,images:list,facilities:facilities,features:features,locations:locations,type:type,
         
               };
               await axiosInstance.post("/hotels", newHotel);

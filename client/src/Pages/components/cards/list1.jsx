@@ -7,9 +7,17 @@ import { Dropdown } from 'flowbite-react/lib/cjs/components/Dropdown';
 import Footer from '../Footer/Footer';
 import NavbarTest from '../navbar/navbar';
 import BarLoader from "react-spinners/BarLoader";
-import axios from "axios";;
+import axios from "axios";
+import munnar from '../../Assets/munnar.jpg';
+import ArrowBackIosNewSharpIcon from '@mui/icons-material/ArrowBackIosNewSharp';
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
-const List1_card = () => {
+const List1_card = ({setlocation, settype}) => {
+    const slider = React.useRef(null);
+
     const [anim, setAnim] = useState("hide")
     useEffect(()=>{
         window.addEventListener('load', setAnim("show"))
@@ -20,7 +28,74 @@ const List1_card = () => {
         baseURL: process.env.REACT_APP_API_URL,
     });
 
+    const {data:data2} = useFetch("/hotels?offers=true&limit=3")
 
+    var settings = {
+        dots: true,
+        arrows:false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed: 4000,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings:{
+                    slidesToShow:3,
+                }
+            }
+        ]
+    };
+    var settings1 = {
+        dots: false,
+        arrows:false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed: 4000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings:{
+                    slidesToShow:3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings:{
+                    slidesToShow:2,
+                }
+            },
+        ]
+    };
+    var settings2 = {
+        dots: true,
+        arrows:false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed: 4000,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings:{
+                    slidesToShow:3,
+                }
+            },
+            {
+                breakpoint: 640,
+                settings:{
+                    slidesToShow:2,
+                }
+            }
+        ]
+    };
     const [destination,setDestination]=useState("");
     const [min, setMin] = useState(undefined);
     const [max, setMax] = useState(undefined);
@@ -94,11 +169,7 @@ const List1_card = () => {
 
        const handleSClick = () => {
 
-        reFetch();
-        // if(cat.length)
-        // {
-
-        // }
+            setlocation(destination);
 
        }
 
@@ -114,12 +185,10 @@ const List1_card = () => {
         reFetch();
       };
        const handleSearchChange = (e) => {
-        //console.log("input val "+e.target.value);
         let tar=e.target.value;
         //console.log("IN LOWER CASE "+tar.toLowerCase())
         //console.log(t.toLowerCase())
         setDestination(tar.toLowerCase());
-    console.log(destination);
                                         }
 
     // const handleCatChange=(e)=>{
@@ -128,7 +197,7 @@ const List1_card = () => {
     //     if(checked){setCat(value)}
     //     console.log(cat);
     // }
-
+    
    const  handleCataChange=(e)=>{
         const { value, checked } = e.target;
        
@@ -195,177 +264,179 @@ const handlebudgetChange = (e) => {
   
    
   return (
-    <div className={`w-full animationset ${anim}`}>
-        <NavbarTest />
+
     
-    
-       <div className="mt-36 flex justify-center  ">
-                <div className=' w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] border border-[#00b771]'>
-                    <div className='w-[50%] text-whiteglow flex justify-center items-center px-8 py-2 bg-[#00b771] rounded-l-[1000px]'>
-                        <span>Packages</span>
-                    </div>
-                    <Link  className='w-[50%] flex justify-center items-center px-4 py-2 rounded-r-[1000px]' to="/hotels">Hotels</Link>
-                </div>
-            </div>
-            
-           
-         <hr className="w-[80%] my-5 mx-auto" />
-            <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 pb-8">
-                <h1 style={{fontSize:"32px"}} className='text-center'>Trending Tour Packages for you</h1>
-                <p className='text-center text-blacky-light text-md md:text-lg'>Find the best options out there if you are planning for a honeymoon or a trip with your family.The most exciting offers with a bunch of various options you can choose from.Grab the best deal and add it to your mesmerising travel journey! </p>
-            </div>
-            <div className="flex justify-center py-6">
-                    <div className="flex items-center w-[70%] md:w-[60%] lg:w-[30%] justify-between focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
-                        <input type="text border-none outline-none w-[80%] h-[100%] text-2xl" placeholder="Destination" id= "destination" name="destination" onChange={handleSearchChange}/><SearchIcon  className='w=[20%] mx-3 cursor-pointer' onClick={handleSClick}/>
+    <div className={`w-full animationset ${anim} bg-[#f2f2f2] hotelsexplore`}>
+      <NavbarTest color={color} />
+        <div className='flex justify-start mb-20 md:hidden fixed z-[49] bg-[white] top-[60px] left-0 right-0'>
+                    <div className=' flex gap-4 text-md   font-bold'>
+                            <Link to="/packages" className='px-4 py-2 cursor-pointer text-[#2f3560]'>Packages</Link>
+                        <span  className="px-4 py-2 cursor-pointer border-b border-b-[2px] text-[#2f3560]  border-b-[#2f3560]">Hotels</span>
                     </div>
                 </div>
-            <div className="flex flex-wrap justify-center items-center w-[90%] md:w-[80%] mx-auto gap-4 py-4">
-               
+        <div className="mt-[60px] pt-24 sm:pt-28  md:pt-32 px-4 sm:px-16 md:px-20 2xl:px-40  gradient-first relative">
+                
 
-                {/*Drop down of categories */}
 
-                <Dropdown
-                    label="Categories"
-                    dismissOnClick={false}
-                    class=" flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs">
-                    <Dropdown.Item>
-                        <input type="checkbox" className=" accent-evergreen" id="honeymoon" name="dom" value="domestic" onChange={handleCataChange}
-                        /><label for="honeymoon" className="pl-3 text-base text-blacky-bright"> Domestic</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="checkbox" className="accent-evergreen" id="family" name="int" value="international" onChange={handleCataChange} 
-                        /><label for="family" className="pl-3 text-base text-blacky-bright"> International</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="checkbox" className="accent-evergreen" id="friends" name="hon" value="honeymoon"  onChange={handleCataChange}
-                        /><label for="friends" className="pl-3 text-base text-blacky-bright"> Honeymoon</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="checkbox" className="accent-evergreen" id="holiday" name="hol" value="holiday" onChange={handleCataChange}
-                        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Holiday</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="checkbox" className="accent-evergreen" id="holiday" name="fam" value="family" onChange={handleCataChange}
-                        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Family</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="checkbox" className="accent-evergreen" id="holiday" name="fri" value="friends" onChange={handleCataChange}
-                        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Friends</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="submit" className="ml-3 my-2 rounded-md border border-blacky-bright text-blacky-light w-20 h-8 hover:bg-evergreen hover:text-blacky-dark duration-500 hover:border-none" value="Apply" onClick={handleClick}/>
-                    </Dropdown.Item>
-                </Dropdown>
 
-                <Dropdown
-                    label="Budget"
-                    dismissOnClick={false}
-                    class=" flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs">
-                    <Dropdown.Item>
-                        <input type="radio" className="accent-evergreen" id="budget1" name="budget" value="b1" onChange={handlebudgetChange}
-                     />   <label for="budget1" className="pl-3 text-base text-blacky-bright"> Less than 10,000</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className="accent-evergreen" id="family" name="budget" value="b2" onChange={handlebudgetChange} />
-                        <label for="family" className="pl-3 text-base text-blacky-bright"> 10,000 - 20,000</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="friends" name="budget" value="b3" onChange={handlebudgetChange} />
-                        <label for="friends" className="pl-3 text-base text-blacky-bright"> 20,000 - 40,000</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="holiday" name="budget" value="b4" onChange={handlebudgetChange} />
-                        <label for="holiday" className="pl-3 text-base text-blacky-bright"> 40,000 - 50,000</label><br />
-                    </Dropdown.Item>
 
-                    <div className="flex">
-                        <div className="flex items-center">
-                            <Dropdown.Item>
-                                <label for="min_budget" className="text-blacky-bright">Min</label>
-                                <input type="number" id="min_budget" name="min_budget" placeholder="₹1000" className="ml-2 pl-3 outline-none border text-graydust-medium w-24 h-10 rounded-xl" onChange={handleMinValueChange}/>
-                            </Dropdown.Item>
-                        </div>
-                        <div className="flex items-center">
-                            <Dropdown.Item>
-                                <label for="max_budget" className="ml-6 text-blacky-bright">Max</label>
-                                <input type="number" id="max_budget" name="max_budget" placeholder="₹3000" className="ml-2 pl-3 outline-none border text-graydust-medium w-24 h-10 rounded-xl"  onChange={handleMaxValueChange}/>
-                            </Dropdown.Item>
-                        </div>
+                <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 sm:pb-4">
+                    <h1 className='text-center text-3xl sm:text-4xl text-[#2f3560] font-bold'>Find your next stay
+</h1>
+                    <p className='text-center text-blacky-light text-md md:text-lg'>Search low prices on hotels, homes and much more...
+
+</p>
+                </div>
+
+
+                <div className=" flex justify-center relative bottom-[-3rem] sm:bottom-[-5rem]">
+                    <div className='bg-[white] py-8 border-none rounded-[10px] w-[90%] lg:w-[60%] shadow-search '>
+                                
+                                <div className='flex gap-4  justify-center '>
+                                       <div className='flex w-[90%] lg:w-[70%] flex-col items-start gap-4 '>
+                                            <h1 className='font-bold text-graydust-dark ml-2 text-lg text-left sm:text-xl'>Ready to get started !</h1>
+                                            <div className='flex flex-col items-start sm:flex-row w-full gap-4'>
+                                            <div className="flex items-center w-[100%] sm:w-[70%] md:w-[60%] lg:w-[100%] border border-[2px] rounded-full border-[#00b777] justify-between focus:ring-0 focus:ring-offset-0 bg-[white]  outline-none py-1 sm:py-2 px-4">
+                                                <input type="text" className="border-0  outline-none w-[100%] h-[100%] text-md text-graydust-medium focus:ring-0 focus:ring-offset-0" placeholder="Enter your Destination" id= "destination" name="destination" onChange={handleSearchChange}/>
+
+                                            </div>
+                                            <Link to="/se"><button  className='px-8 py-2 bg-[#2f3560] rounded-full text-white font-bold cursor-pointer' onClick={handleSClick}>Search</button></Link>
+
+                                            </div>
+                                       </div>
+                                        
+                                    
+                                </div>
+
+                               
+
+
+
+
+
                     </div>
-                    <Dropdown.Item>
-                        <input type="submit" className="align-middle ml-3 my-5 rounded-md border border-blacky-bright text-blacky-light w-20 h-8 hover:bg-evergreen hover:text-blacky-dark duration-500 hover:border-none" value="Apply" onClick={handleSubmitClick} />
-                    </Dropdown.Item>
-                </Dropdown>
-
-                {/* <Dropdown
-                    label="Activities"
-                    dismissOnClick={false}
-                    class=" w flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs">
-                    <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="adventure" name="activity" value="" />
-                        <label for="adventure" className="pl-3 text-base text-blacky-bright">Adventure</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="nature" name="activity" value="" />
-                        <label for="nature" className="pl-3 text-base text-blacky-bright"> Nature</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="hill" name="activity" value="" />
-                        <label for="hill" className="pl-3 text-base text-blacky-bright"> Hill Station</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="radio" className=" accent-evergreen" id="religious" name="activity" value="" />
-                        <label for="religious" className="pl-3 text-base text-blacky-bright"> Religious</label><br />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="submit" className=" rounded-md border border-blacky-bright text-blacky-light w-20 h-8 hover:bg-evergreen hover:text-blacky-dark duration-500 hover:border-none" value="Apply" />
-                    </Dropdown.Item>
-                </Dropdown> */}
+                    </div>
 
 
-               
-            </div>
-      {loading?(
-          <div className='loading-div'>
-          <BarLoader
 
-
-              color={'#32fca7'}
-              loading={loading}
-
-              size={15}
-
-              />
         </div>
+        <div className='mt-[4rem] sm:mt-[11rem] py-8 rounded-[10px]  mx-4 sm:mx-16 md:mx-20 2xl:mx-40 '>
+            <div className='flex justify-between items-center'>
+            <h1 className='text-xl sm:text-2xl md:text-3xl font-bold'>Browse by Types</h1>   
+
+            </div>
+            <Slider {...settings} className="lg:hidden pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
+                <Link to="/set">                 <div className='w-[100%] px-2 sm:px-4' onClick={()=> settype("international")}><div className='type-card py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div></div></Link>
+                 <div className='w-[100%] px-2 sm:px-4'><div className='type-card py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Hotel</span></div></div>                 
+                 <div className='w-[100%] px-2  sm:px-4'><div className='type-card  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Resort</span></div></div>                
+                 <div className='w-[100%] px-2  sm:px-4'><div className='type-card  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Apartment</span></div></div>             
+                 <div className='w-[100%] px-2  sm:px-4'><div className='type-card  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Villa</span></div></div>                 
+
+            </Slider>
+            <div className='hidden pt-8 justify-between text-[white] font-bold text-xl lg:flex'>
+                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>
+                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>
+                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>
+                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>
+                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>   
+            </div>
+
+                           
+        </div>
+        <div className='mt-8 sm:mt-[4rem] px-4 sm:px-8 py-8 rounded-[10px] shadow-search mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
+            <div className='flex justify-between items-center'>
+            <h1 className='text-xl text-2xl md:text-3xl font-bold'>Best Deals on Hotels</h1>   
+                <div className='flex gap-3 bg-evergreen-tag rounded-full px-4 py-1'>
+                    <button onClick={() => slider?.current?.slickPrev()}><ArrowBackIosNewSharpIcon sx={{fontSize:20,color:"#03965e"}}/></button>
+                    <button onClick={() => slider?.current?.slickNext()}><ArrowForwardIosSharpIcon sx={{fontSize:20, color:"#03965e"}}/></button>
+                </div>
+            </div>
+
+            <div className=' pt-8 '>
+            <Slider ref={slider} {...settings1}>
+                {data2.map((itm, i)=>(
+                <div key={i} className="pr-4 sm:pr-8  ">
+                    <div className='mb-4  pb-3 card-shadow'>
+                        <div className="relative w-full">
+                            <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
+                            <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
+                            <h3 className='text-md md:text-xl font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
+                        </div>
+                        <div className='py-1 mx-1 md:mx-3'>
+
+                            <h3 className='text-sm md:text-xl mb-0 '><b>{itm.offertitle}</b></h3>   
+                            <p className="text-xs md:text-md text-blacky-light">{itm.offerdescription}</p> 
+                        </div>
+                        <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
+                            <span className=" font-bold"><span  className="text-[grey] text-xs md:text-md"><strike>{itm.cheapestPrice} &#8377; </strike></span><span className="text-sm md:text-2xl">&nbsp;{itm.offerprice} &#8377;</span></span>
+                                
+                        </div>
+
+                    </div>
+                </div>
+                ))}
+            </Slider>
 
 
-      ):(
-        <div className='px-8 lg:px-28 flex flex-wrap md:gap-[10%] lg:gap-[5%]'>
-        {data.map((item)=>(
 
-          <div  key={item._id} className="pb-16 md:w-[45%] lg:w-[30%] bg-whiteglow card-shadow rounded mb-8 pb-4">
-       <div className='relative'> 
-       <h3 className='text-xl md:text-2xl font-bold text-whiteglow absolute px-3 bottom-[3px] md:bottom-[15px] z-50'>{item.title}</h3>
-       <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-       <p className="text-md md:text-lg font-bold bg-[#00c676b0] absolute rounded text-whiteglow m-[5px] px-[8px] py-[3px]">{item.duration}</p>
 
-       <img className='w-[100%] aspect-video rounded-lg skeleton' src={item.images[0]} alt="" /></div>
-        <div className='py-2 mx-8'>
-            <p className='text-sm md:text-[17px]  text-blacky-light card-text'>{item.description}</p>    
+             </div>                  
+        </div>
+       
+        <div className='mt-8 sm:mt-[4rem] py-2 sm:py-8 rounded-[10px]  mx-4 sm:mx-16 md:mx-20 2xl:mx-40 '>
+            <div className='flex justify-between items-center'>
+            <h1 className='text-xl sm:text-2xl md:text-3xl font-bold'>Browse by Types</h1>   
+
+            </div>
+            <Slider {...settings2} className="lg:hidden pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
+            
+                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
+                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
+                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
+                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
+                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
+
+            
+            
+            
+            
+            
+            </Slider>
+            <div className='hidden pt-8 justify-between text-[white] font-bold text-xl lg:flex'>
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>   
+            </div>
+
+                           
+        </div>
+        <div className='my-[4rem] px-8 py-8 rounded-[10px] shadow-search mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
+            <div className='flex justify-between items-center'>
+            <h1 className='text-3xl font-bold'>Why book with Trouvailler block</h1>   
+
+            </div>
+
+                           
         </div>
         
-        <div className="py-1 mx-8 flex justify-between items-center">
-            <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice}</p>
-            <Link  to={`/list/package/${item._id}`}>
-<button className="bg-evergreen text-whiteglow font-semibold text-sm px-8 py-2 rounded-md ">View</button></Link>
-   
-            </div>
-          
-        </div>
-        ))}
+        
 
-        </div>
-      )}
+
+
+       
+
+
+
+
+           
+            
+           
+            
+      
+       
+          
        
 
 
@@ -377,3 +448,7 @@ const handlebudgetChange = (e) => {
 
 
 export default List1_card
+
+
+
+

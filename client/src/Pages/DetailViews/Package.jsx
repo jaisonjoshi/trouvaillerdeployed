@@ -9,19 +9,99 @@ import { useLocation } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import h from '../Assets/h.png'
+import Backdrop from '@mui/material/Backdrop';
+import CloseIcon from '@mui/icons-material/Close';
+import Map from '../components/map/Map';
+import TourIcon from '@mui/icons-material/Tour';
 const Package = () => {
     const [anim, setAnim] = useState("hide")
     useEffect(()=>{
         window.addEventListener('load', setAnim("show"))
 
     }, [])
+    const hotelNavCon = document.querySelector('.hotelNavCon');
+
+    const handleTabChange = () => {
+
+        hotelNavCon.style.position = "sticky"
+        hotelNavCon.style.top = 0;
+
+
+    }
+    const [open, setOpen] = useState(false);
+
+    
+    const handleClose = () => {
+        setOpen(false);
+      };
+      const handleToggle = () => {
+        setOpen(!open);
+      };
+    
+    const sections = document.querySelectorAll('.nav-box');
+
+    const navli = document.querySelectorAll('.nav-itm')
+
+    window.addEventListener('scroll', ()=>{
+        let current ='';
+        sections.forEach(section => {
+            const sectionTop =section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if(window.pageYOffset >= (sectionTop -110 )){
+                current = section.getAttribute('id');
+            }
+        })
+        navli.forEach( li => {
+            li.classList.remove('active');
+            if(li.classList.contains(current)){
+                li.classList.add('active');
+            }
+        })
+    })
+      
     var settings = {
-        dots: true,
+        dots: false,
+        arrows:false,
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed: 4000,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings:{
+                    slidesToShow:2,
+                }
+            }
+        ]
     };
+    var settings1 = {
+        dots: true,
+        arrows:true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed: 4000,
+        
+        responsive: [
+            {
+                breakpoint: 640,
+                settings:{
+                    slidesToShow:1,
+                }
+            }
+        ]
+    };
+    const handleNavigate = (idval) => {
+        const pos = document.getElementById(idval).offsetTop;
+        window.scrollTo(0, pos -110)
+    }
 
     const [pack,setPackage] =useState([])
 
@@ -39,49 +119,476 @@ const Package = () => {
         
         <div className={` animationset ${anim}`}>
             <Navbar />
-            {/* Header */}
-            <div className='mt-20 md:mt-32'>
-                <div className='flex flex-col md:gap-8 lg:gap-0 lg:flex-row'>
-                    <Slider className='sm:w-[20%] md:w-[70%] mx-[10%] md:ml-[15%] md:mr-[15%] lg:mx-[0%] lg:w-1/2' {...settings}>
-                        {pack.images && pack.images.map((img,i)=>(
-                                <img className='h-auto ' src={img} key={i} alt="Car in road" />
-
-                        ))}
-                         </Slider>
-                    <div className='px-[10%] md:pl-[15%] md:pr-[15%] lg:px-20 flex flex-col justify-center md:w-[100%] lg:w-1/2'>
-                        <h1 className='text-2xl font-bold pb-5 mt-8'>{pack.title}</h1>
-                        <p className='text-blacky-light whitespace-pre-wrap	'>{pack.description}</p>
-                        <h3 className='font-bold text-sm pt-4 text-xl'>{pack.duration}</h3>
-                        <h1 className='font-semibold text-xl py-5'> {pack.cheapestPrice}/-<span className='text-sm line-through text-graydust-medium'>19,000/-</span></h1>
-
-                        <a href={"https://wa.me/919562523642?text=" + text + pack.title }><button className='bg-evergreen text-blacky-dark flex justify-center gap-3 items-center font-bold p-4 w-full rounded'><WhatsAppIcon /><span>WhatsApp Us</span></button></a>
-                    </div>
-                </div>
-                  
-
-                <div className='sm:flex mb-10 sm:mx-16 lg:mx-20 mt-12'>
-
-                    {/* Itinerary section*/}
-
-                    <div className='m-[10%] p-5  sm:w-[100%] shadow-lg shadow-graydust-normal m-3 rounded'>
-                        <div className='text-xl my-5 font-bold border-b w-20 border-graydust-normal'><h1>Itinerary</h1></div>
-                        {/* Repeating day details */}
-                        {pack.shedule && pack.shedule.map((obj,i)=>(
-                            <div className='sm:flex my-2' key={i}>
-                            <div className='text-xl w-32 p-2 text-graydust-medium font-semibold w-[10%]'><h1>Day {i+1}</h1></div>
-                            <div className='border-l-2 p-4 text-justify border-graydust-normal w-[90%]'>
-                                <h1 className='text-xl font-semibold'>{obj.dayTitle}</h1>
-                                <p className='text-blacky-light whitespace-pre-wrap	'> {obj.dayDesc}</p>
-                            </div>
+            <Backdrop 
+                        sx={{ color: '#fff',opacity:0.1, zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                        open={open}
+                        
+                    >
+                        <div onClick={handleClose} className='absolute rounded p-1 top-40 sm:top-20 right-4 sm:right-20 bg-[#7bbc67]'>                        <CloseIcon />
                         </div>
-                        ))}
+                        <Slider className='w-[90%] bg-[white] py-8 mx-auto md:w-[90%]' {...settings1}>
+                            {pack.images && pack.images.map((img,i)=>(
+                                            <div className='px-8'><img className='h-auto  w-full' src={img} key={i} alt="Car in road" /></div>
+
+                                    ))}
+                                </Slider>
+                    </Backdrop>
+            <div className='mt-[60px] pt-8 px-4 sm:px-16 md:px-20 2xl:px-40'>
+                <div className='flex gap-2 pt-2 text-sm sm:text-md text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Tour Packages</span><span>&#47;</span><span className='text-[black]'>{pack.title}</span></div>
+            </div>
+            <div className='px-6 sm:px-16 md:px-20 2xl:px-40 mt-10'>
+                 <div className='w-[100%] flex flex-col-reverse xl:flex-row'>
+                       
+              
+                
+
+
+                <div className='hidden xl:flex w-[50%] pr-28 flex  flex-col justify-start gap-6  pt-8'>
+                        <div className=' flex flex-col gap-2  items-start'>
+                            <h3 className='font-bold text-evergreendark text-md  '>{pack.duration}</h3>
+
+                            <h1 className='text-3xl font-bold '>{pack.title}</h1>
+                                 <p className='text-[grey] text-lg'>{pack.location}</p>
+
+                        </div>
+                        <div className='flex gap-2 text-md text-graydust-dark items-end'>
+                            <LocationOnIcon /> <span>Kerala, India</span>
+                        </div>
+                        <div className='flex flex-col gap-2 items-start'>
+                        <span className='px-4 py-1 bg-evergreen-tag rounded-full'>{pack.category}</span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nihil eos cumque, amet doloribus, quae maiores assumenda minus eligendi quisquam distinctio ipsam, accusantium exercitationem blanditiis ea odio ab ex id!</p>
                         
+                        </div>
+                       <div className='flex  justify-between items-end'>
+                                    
+                                    <div className='hidden flex flex-col'>
+                                        <h1 className='font-semibold text-2xl '>&#8377; {pack.cheapestPrice}</h1>
+                                        <span className='text-graydust-dark text-xs'>Per person</span>
+                                    
+                                    </div>
+                                    <div className=''>
+                                        <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>Flat 15% off</span>
+                                        <p className='mt-2'>Grab this offer soon</p>
+                                        <span ><span className='text-2xl '><b>&#8377; 5000 </b></span><strike className='text-[grey]'>&#8377; {pack.cheapestPrice} </strike></span><br />
+                                        <span className='text-sm text-[red]'>per night</span>
+                                            
+                                    </div>
+                                <div className='flex flex-col items-end gap-2'>
+                                    <span className='font-bold text-sm text-graydust-dark'>BOOK NOW</span>
+                                    <a href={"https://wa.me/919562523642?text=" + text + pack.title }><button className='bg-evergreen text-white flex justify-center gap-2 items-center font-bold px-3 py-2 w-full text-sm rounded'><span>WhatsApp Us</span> <span className=''><WhatsAppIcon /></span></button></a>
+
+                                </div>
+
+                     </div>
+                        
+                </div>
+
+                <div className='mt-8 sm:mt-12 flex xl:hidden flex-col gap-4'>
+                    <div className='flex justify-between items-end sm:items-center'>
+                        <div className=' flex flex-col gap-1 sm:gap-2  items-start'>
+                               <div className='flex gap-2 items-center'>
+                               <h3 className='font-bold text-evergreendark text-sm sm:text-md  '>{pack.duration}</h3>
+                                <span className='hidden sm:block px-4 py-1 bg-evergreen-tag font-bold text-sm sm:text-md rounded-full'>{pack.category}</span>
+
+                               </div>
+                                <h1 className='text-lg sm:text-3xl font-bold '>{pack.title}</h1>
+                                    <p className='text-[grey] text-sm sm:text-lg'>{pack.location}</p>
+
+                            </div>
+                                    <div className='flex hidden items-start gap-6'>
+
+                                    <div className='flex  flex-col items-end sm:gap-1'>
+
+                                        <h1 className='font-semibold text-lg sm:text-2xl '>&#8377; {pack.cheapestPrice}</h1>
+                                        <span className='text-graydust-dark text-xs sm:text-sm xl:text-xs'>Per person</span>
+
+
+
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div className='flex flex-col items-end'>
+                                        <span className='p-1 bg-[#f8d2d2] text-xs sm:text-md font-bold text-[red]'>Flat 15% off</span>
+                                        <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-md text-[grey]'>&#8377; {pack.cheapestPrice} </strike></span>
+                                        <span className='text-sm text-[red]'>per night</span>
+                                            
+                                    </div>
+                            
+                    </div>
+                    <div className='flex gap-2 text-sm sm:text-md text-graydust-dark items-end'>
+                            <LocationOnIcon /> <span>Kerala, India</span>
+                        </div>
+                        <div className='flex flex-col gap-2 items-start'>
+                        <span className='block sm:hidden px-4 py-1 bg-evergreen-tag text-sm font-bold sm:text-md rounded-full'>{pack.category}</span>
+
+                        <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nihil eos cumque, amet doloribus, quae maiores assumenda minus eligendi quisquam distinctio ipsam, accusantium exercitationem blanditiis ea odio ab ex id!</p>
+                        
+                        </div>
+                        <div className='flex items-end pt-4 gap-4'>
+                        <span className='font-bold'>Book now </span><a href={"https://wa.me/919562523642?text=" + text + pack.title }><button className='bg-evergreen text-white flex justify-center gap-2 items-center font-bold px-3 py-2 w-full text-sm rounded'><span>WhatsApp Us</span> <span className=''><WhatsAppIcon /></span></button></a>
+
+                        </div>
+
+
+                </div>
+
+
+
+
+                <div className='w-[100%] xl:w-[50%]'>
+                    {pack.images && 
+                        <div className='hidden xl:block'>
+                            <img src={pack.images[0]} className='w-[60%] xl:w-[100%]' alt="" />
+                        </div>
+
+                        
+                    
+                    }
+                    <div className='flex flex-col sm:flex-row w-[100%] gap-[10px] xl:hidden justify-start'>
+                        <div className='w-[100%] sm:w-[75%] bg-[green]'>
+                            {pack.images && 
+                           <img src={pack.images[0]} className='h-auto  w-[100%] ' alt="" srcset="" />
+                                }
+                        </div>
+                        <div className='flex flex-row sm:flex-col gap-[3.333333%] justify-start w-[100%] sm:w-[25%] '>
+                                {pack.images &&   
+                                    pack.images.slice(1,4).map((itm,i)=> (
+                                        <div className='h-auto sm:h-[31%] w-[31%] sm:w-full relative' ><img src={itm} className='sm:absolute top-0 left-0 w-[100%] h-[100%] object-cover' alt="" srcset="" /></div>
+
+
+                                    ))
+                                
+                                }
+                        </div>
                         
                     </div>
 
-                    {/* Related results */}
-
                 </div>
+                </div> 
+
+
+
+
+                <div className='flex flex-col lg:flex-row gap-[5%]'>
+                        <div className='flex justify-start flex-col w-[100%] lg:w-[70%] 2xl:w-[80%]  mt-20 bg-[white]'>
+
+                            <div className='flex border-b border-b-2 gap-2 sm:gap-3 text-sm md:text-lg font-bold w-full hotelNavCon sticky top-[60px] h-[70px] bg-[white] text-graydust-dark' onClick={handleTabChange}>
+                                <div className='px-1 lg:px-4 py-1 flex items-center nav-itm cursor-pointer desc  ' onClick={()=> handleNavigate('desc')} ><a className='no-underline nav-link '>Overview</a></div>
+
+                                <div className='px-1 lg:px-4 py-1  flex items-center nav-itm cursor-pointer fac' onClick={()=> handleNavigate('fac')}><a className='no-underline nav-link'>Itinerary</a></div>
+
+                                <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm cursor-pointer things' onClick={()=> handleNavigate('things')}><a className='no-underline nav-link' >Things to do</a></div>
+                                <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm cursor-pointer images' onClick={()=> handleNavigate('images')}><a className='no-underline nav-link' >Images</a></div>
+
+                                <div className='px-1 lg:px-4 py-1 hidden sm:flex items-center nav-itm cursor-pointer location ' onClick={()=> handleNavigate('location')}><a className='no-underline nav-link' >Location</a></div>
+
+
+                            </div>
+
+
+
+                            <div className='sm:px-4'>
+
+                                    {pack.description &&
+                                        <div className='pt-6 sm:py-6 nav-box' id="desc">
+                                            <h1 className='text-lg sm:text-2xl font-bold mb-2'>{pack.title}</h1>
+                                            <p className='text-sm sm:text-md'>{pack.description}</p>
+                                            {pack.features.length !== 0 && 
+                                                <div className='pt-3'>
+                                                    <h1 className='text-md sm:text-lg font-bold mb-2'>Features</h1>
+                                                    <div className='px-2'>
+                                                        <ul className='list-disc px-4 text-md'>
+                                                        {pack.features.map((itm)=> (
+                                                            <li>{itm}</li>
+                                                        ))}
+                                                        </ul>
+                                                        
+                                                    </div>
+
+                                                </div>
+                                            }
+
+                                            </div>}
+                                        {pack.shedule &&
+                                            <div className=' nav-box' id="fac">
+                                                {pack.shedule.length !== 0 &&
+                                                <div className='pt-6 sm:py-6'>
+                                                <h1 className='text-lg sm:text-xl font-bold mb-2'>Shedule</h1>
+                                                <div className='flex flex-col gap-4 py-2'>
+                                                {pack.shedule && pack.shedule.map((obj,i)=>(
+                                                    <div className='sm:flex my-2  py-2 rounded shadow-shedule-card' key={i}>
+                                                    <div className='text-md sm:text-xl w-32 p-2 text-graydust-medium flex items-center font-semibold w-[100%] sm:w-[20%] xl:w-[10%]'><h1>Day {i+1}</h1></div>
+                                                    <div className='sm:border-l-2 p-4 text-justify sm:border-[silver] w-[100%] sm:w-[80%] xl:w-[90%]'>
+                                                        <h1 className='text-md sm:text-xl font-semibold'>{obj.dayTitle}</h1>
+                                                        <p className='text-sm sm:text-md text-graydust-dark whitespace-pre-wrap	'> {obj.dayDesc}</p>
+                                                    </div>
+                                                </div>
+                                                ))}
+                                                </div> </div>}
+                                            </div>
+
+
+
+                                        }
+                                        {pack.activities  && 
+                                            <div className=' nav-box' id="things">
+                                                {
+                                                    pack.activities.length !== 0 &&
+                                                    <div className='pt-6 sm:py-6'>
+                                                        <h1 className='text-lg sm:text-xl font-bold mb-2'>Things to do</h1>
+
+                                                            <div className='px-2 text-md sm:text-lg'>
+                                                                    <ul className='list-none flex flex-col py-4 gap-6 px-1 sm:px-4'>
+                                                                    {pack.activities.map((itm)=> (
+                                                                        <li className='flex gap-3 items-center'><span><TourIcon sx={{color:"#3cb500", fontSize: 40}}/></span><span>{itm}</span></li>
+                                                                    ))}
+                                                                    </ul>
+                                                                    
+                                                                </div> 
+                                                    </div>
+                                                }                               </div>
+                                        }
+
+
+
+                                    {pack.location && <div className='pt-6 sm:py-6 nav-box' id="images">
+                                        <div className='flex items-center justify-between pr-[3%]'>
+                                            <span className='text-lg sm:text-xl font-bold'>Image Gallery</span>
+                                            {pack.images.length> 1 &&
+                                                <span className='text-[blue] cursor-pointer font-bold' onClick={handleToggle}>View more</span>
+                                            }
+                                            </div>
+                                            <div className='pt-6 flex'>
+                                                <div className='flex flex-wrap gap-[3%]'>
+                                                    {pack.images.slice(0,6).map((itm)=>(
+                                                        <div className='w-[47%] xl:w-[30%]'><img src={itm} className="w-full" alt="" /></div>
+                                                    ))}
+                                                </div>
+                                               
+                                            </div>
+                                        </div>}
+
+
+
+                                    {pack.location && <div className='pt-6 sm:py-6 nav-box' id="location">
+                                            <h1 className='text-lg sm:text-xl font-bold'>Location</h1>
+                                            <div className='py-6 flex'>
+                                                <div>
+                                                <Map />
+                                                </div>
+                                               
+                                            </div>
+                                        </div>}
+                                        
+                                </div>
+                        
+                        
+                        </div>
+                        <div className='lg:w-[25%] 2xl:w-[20%] my-20 hidden lg:block'>
+                            <div className='h-[70px] flex items-center pt-2'>
+                            <h1 className='text-lg font-bold py-2 flex items-center text-graydust-dark mb-2'>Similar Packages</h1>
+
+                            </div>
+                    <div className='flex flex-col gap-8 xl:gap-16'>
+                        <div>
+                            <img src={h} className='rounded' alt="" />
+                            <div  className='flex flex-col xl:flex-row pt-2'>
+                                <div className='w-[100%] xl:w-[60%]'>
+                                    <h1 className='text-md xl:text-xl  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-sm xl:text-md'>Palakkad, Kerala</p>
+                           
+                                </div>
+                                <div className='w-[100%] xl:w-[40%] flex flex-col xl:items-end'>
+                                    <span className='text-md font-bold'>&#8377; 5000</span><span className='text-sm xl:text-right text-graydust-medium'>per room per night</span> 
+                                </div>
+                            </div>
+                            </div>
+
+
+
+
+
+
+                            <div>
+                            <img src={h} className='rounded' alt="" />
+                            <div  className='flex pt-2'>
+                                <div className='w-[60%]'>
+                                    <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                           
+                                </div>
+                                <div className='w-[40%] flex flex-col items-end'>
+                                    <span className='text-lg font-bold'>&#8377; 5000</span><span className='text-sm text-graydust-medium'>per room per night</span> 
+                                </div>
+                            </div>
+                            </div>
+
+
+
+
+
+
+
+
+                            <div>
+                            <img src={h} className='rounded' alt="" />
+                            <div  className='flex pt-2'>
+                                <div className='w-[60%]'>
+                                    <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                           
+                                </div>
+                                <div className='w-[40%] flex flex-col items-end'>
+                                    <span className='text-lg font-bold'>&#8377; 5000</span><span className='text-sm text-graydust-medium'>per room per night</span> 
+                                </div>
+                            </div>
+                            </div>
+
+
+
+
+
+
+
+
+                            <div>
+                            <img src={h} className='rounded' alt="" />
+                            <div  className='flex pt-2'>
+                                <div className='w-[60%]'>
+                                    <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                           
+                                </div>
+                                <div className='w-[40%] flex flex-col items-end'>
+                                    <span className='text-lg font-bold'>&#8377; 5000</span><span className='text-sm text-graydust-medium'>per room per night</span> 
+                                </div>
+                            </div>
+                            </div>
+
+
+
+
+
+                            
+                    </div>
+                </div>
+                <div className='block lg:hidden w-[100%] py-8 sm:py-0 px-2'>
+                <h1 className='text-lg sm:text-xl font-bold'>Similar Packages</h1>
+                        <div>
+                            <Slider className='' {...settings}>
+                    
+
+
+
+
+
+                            
+
+
+
+                            <div className='my-4 w-[85%] mr-[15%]'>
+                            <img src={h} className='rounded w-full' alt="" />
+                            <div  className='flex flex-col pt-2'>
+                                <div className='w-[100%]'>
+                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
+                           
+                                </div>
+                                <div className='w-[100%] flex flex-wrap items-center gap-1 sm:gap-2 py-1'>
+                                    <span className='text-sm sm:text-lg font-bold'>&#8377; 5000</span><span className='text-xs sm:text-sm text-graydust-medium'>per room per night</span> 
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div className='my-4 w-[85%] mr-[15%]'>
+                            <img src={h} className='rounded w-full' alt="" />
+                            <div  className='flex flex-col pt-2'>
+                                <div className='w-[100%]'>
+                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
+                           
+                                </div>
+                                <div className='w-[100%] flex flex-wrap items-center gap-1 sm:gap-2 py-1'>
+                                    <span className='text-sm sm:text-lg font-bold'>&#8377; 5000</span><span className='text-xs sm:text-sm text-graydust-medium'>per room per night</span> 
+                                </div>
+                            </div>
+                            </div>
+
+
+
+                            <div className='my-4 w-[85%] mr-[15%]'>
+                            <img src={h} className='rounded w-full' alt="" />
+                            <div  className='flex flex-col pt-2'>
+                                <div className='w-[100%]'>
+                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
+                           
+                                </div>
+                                <div className='w-[100%] flex flex-wrap items-center gap-1 sm:gap-2 py-1'>
+                                    <span className='text-sm sm:text-lg font-bold'>&#8377; 5000</span><span className='text-xs sm:text-sm text-graydust-medium'>per room per night</span> 
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div className='my-4 w-[85%] mr-[15%]'>
+                            <img src={h} className='rounded w-full' alt="" />
+                            <div  className='flex flex-col pt-2'>
+                                <div className='w-[100%]'>
+                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
+                           
+                                </div>
+                                <div className='w-[100%] flex flex-wrap items-center gap-1 sm:gap-2 py-1'>
+                                    <span className='text-sm sm:text-lg font-bold'>&#8377; 5000</span><span className='text-xs sm:text-sm text-graydust-medium'>per room per night</span> 
+                                </div>
+                            </div>
+                            </div>
+
+
+
+
+
+
+
+                        
+
+
+
+                            
+
+
+
+
+
+
+
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </Slider>
+                        </div>
+                </div>
+                </div> 
+
+
+
+
+
+              
             </div>
             <Footer></Footer>
         </div>

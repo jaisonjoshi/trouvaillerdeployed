@@ -171,7 +171,7 @@ const SingleHotel = () => {
                             <button className='singlehotel-btn' onClick={() => handlehotelDelete(id)}>Delete Hotel</button>
                         </div>
                         </div>
-
+                        {/* <div><img src={item} /> </div> */}
                     </div>
                    
                        {/* <div className="singlehotel-room-det">

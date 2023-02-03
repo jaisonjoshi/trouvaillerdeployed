@@ -28,7 +28,7 @@ const DestCard = () => {
 
              <div  key={item._id}  className="bg-whiteglow card-shadow rounded pb-4 relative"  >
               <div className="relative">
-              <p className="text-lg text-blacky-light font-bold absolute z-50  top-[2px] left-[2px] bg-[#00c676b0] rounded text-whiteglow m-[5px] px-[8px] py-[3px]">{item.duration}</p>
+              <p className="text-sm  text-blacky-light font-bold absolute z-50  top-[2px] left-[2px] bg-[#00c676] rounded text-whiteglow m-[5px] px-[8px] py-[3px]">{item.duration}</p>
               <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
               <img className='w-full aspect-video skeleton rounded-lg' src={item.images[0]} alt="" />
               <h3 className='text-xl font-bold z-50 text-whiteglow px-3  absolute bottom-[3px] md:bottom-[10px]'>{item.title}</h3>

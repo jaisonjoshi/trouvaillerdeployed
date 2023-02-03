@@ -10,6 +10,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       'evergreen': '#00b771',
+      'evergreen-tag': '#d8ffd8',
       'evergreendark' : '#03965e',
       'whiteglow': '#FFFFFF',
       'blacky': {
@@ -50,3 +51,6 @@ module.exports = {
 
 }
 //#2AF599
+
+/* 'evergreen': '#00b771',
+ */

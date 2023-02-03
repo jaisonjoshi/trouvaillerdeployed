@@ -30,6 +30,8 @@ import CircleLoading from '../src/Pages/components/spinningLoader/CircleLoading'
 import logo from './Pages/Assets/TrouvaillerGreen .png'
 import BarLoader from "react-spinners/BarLoader";
 import Offershotels from "./Pages/offers/offershotels.jsx";
+import SearchList from "./Pages/searchlist/SearchList.js";
+import SearchListType from "./Pages/searchlist/SearchListType.js";
 
 
 
@@ -43,7 +45,8 @@ function App() {
     }, 2000)
   }, [])
   const [open, setOpen] = useState(false)
-
+  const [location, setlocation] = useState("")
+  const [type, settype] = useState("")
   return (
     <div className="App">
       <CircleLoading open={open}/>
@@ -65,6 +68,9 @@ function App() {
     <BrowserRouter>
     <ScrollToTop />
       <Routes>
+      <Route path="/se" element={<SearchList location={location} settype={settype}/>}/>
+      <Route path="/set" element={<SearchListType type={type}/>}/>
+
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
@@ -73,8 +79,8 @@ function App() {
         <Route path="/user/update/password" element={<Updatepassword />} />
 
         <Route path="/bidform" element={<Bidform/>}/>
-        <Route path="/packages" element={<List1_card/>}/>
-        <Route path="/hotels" element={<List2_card/>}/>
+        <Route path="/packages" element={<List2_card setlocation={setlocation}/>}/>
+        <Route path="/hotels" element={<List1_card/>}/>
        
         {/* {hotels && hotels.map((hotel)=> (
                                 <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>

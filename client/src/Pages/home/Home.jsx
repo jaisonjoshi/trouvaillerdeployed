@@ -56,7 +56,7 @@ const Home = () => {
             Enter a country, a city or even just a landmark and we'll find the right tours for you
           </p>
 
-          <Link className="" to="/packages"> <button className="flex justify-center items-center bg-evergreen text-whiteglow w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500">
+          <Link className="" to="/hotels"> <button className="flex justify-center items-center bg-evergreen text-whiteglow w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500">
             Explore
           </button></Link>
           </div>
@@ -108,7 +108,7 @@ Know more
             <p className=' pt-4 textnormal text-md md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
           </div>
         </div>
-        <div className='grid md:mx-16 sm:grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-10 m-11'>
+        <div className='grid md:mx-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 m-11'>
           <DestCard />
           
         </div>
