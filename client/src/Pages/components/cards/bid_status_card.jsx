@@ -25,15 +25,15 @@ const BidStatusCard = ({bid}) => {
                     </div>
                 </div>
                 <div className='flex flex-wrap'>
-                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-md'><span ><FontAwesomeIcon icon={solid('user-group')} /></span> {bid.accomodation} Guests</div>
-                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-md'><span  ><FontAwesomeIcon icon={solid('person-shelter')} /></span> {bid.roomCount} Room</div>
-                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-md'>{bid.ac}</div>
+                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-base'><span ><FontAwesomeIcon icon={solid('user-group')} /></span> {bid.accomodation} Guests</div>
+                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-base'><span  ><FontAwesomeIcon icon={solid('person-shelter')} /></span> {bid.roomCount} Room</div>
+                    <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-base'>{bid.ac}</div>
                     <div className='border-graydust-normal border p-2 mt-2 rounded-lg text-blacky-light '>Max Amount you bided : {bid.maxAmount}</div>
                 </div>
                 <hr className='mt-5 text-graydust-medium' />
                 <details>
                 <summary>
-                    <span className='pl-3 text-blacky-light text-sm md:text-md'>
+                    <span className='pl-3 text-blacky-light text-sm md:text-base'>
                     Your Bid is accepted by {bid.accepted.length} hotels 
                     </span>
                 </summary>

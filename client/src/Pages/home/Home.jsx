@@ -52,7 +52,7 @@ const Home = () => {
           <h1 className="text-5xl text-whiteglow font-bold ">
             THE BEST TOURS IN JUST 3 CLICKS
           </h1>
-          <p className="text-md md:text-lg text-whiteglow py-5">
+          <p className="text-base md:text-lg text-whiteglow py-5">
             Enter a country, a city or even just a landmark and we'll find the right tours for you
           </p>
 
@@ -65,12 +65,12 @@ const Home = () => {
       </div>
 
       {/* Bid section */}
-      <div className='flex flex-col-reverse pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52 bg-gradient-to-r from-[rgba(230,255,232,0.37)] to-[rgba(232,255,230,1)] md:pr-12 lg:pr-20 py-20'>
+      <div className='flex flex-col-reverse pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52 bg-gradient-to-r from-[rgba(230,255,232,0.37)] to-[rgba(232,255,230,1)] md:pr-12 lg:pr-20 py-8 sm:py-20'>
         <div className='text-center items-center md:items-start md:text-left flex flex-col justify-center gap-[20px] w-[100%] md:w-[50%] 2xl:w-[60%]'>
           <h1 style={{fontSize:"35px", fontWeight:"800"}}>
     Bid For Today
           </h1>
-          <p className='textnormal text-md md:text-lg'>
+          <p className='textnormal text-sm sm:text-base md:text-lg'>
           Wish you could bid hotel prices for your budget and make your trip more pocket friendly? Here's an end to your worries because we let you place your bid for today's lowest hotel prices.
           </p>
           <h3 style={{fontSize:"25px"}}>
@@ -87,28 +87,28 @@ Know more
       
       {/* special offers block */}
 
-      <div className="mt-20 mb-12">
-        <h1 className='text-center mx-28 font-bold text-blacky-dark text-2xl'>Special Offers</h1>
-                  <p className='text-center textnormal py-4 mx-12 text-md md:text-lg'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo. Deleniti aut blanditiis sit adipisci nisi dolorem animi, quibusdam tenetur obcaecati in quaerat reiciendis, quidem vitae velit voluptates.</p>
+      <div className="mt-8 sm:mt-20 mb-8 px-4 sm:px-16 md:px-20 2xl:px-40">
+        <h1 className='text-center font-bold text-blacky-dark text-2xl sm:text-4xl'>Special Offers</h1>
+                  <p className='text-center textnormal py-4 text-sm  sm:text-base md:text-lg'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo.</p>
       </div>
 
-      <div className="mx-2 md:mx-16 offer-container">
+      <div className="px-4 sm:px-16 md:px-20 2xl:px-40 offer-container">
         <Offers />
       </div>
-      <div className='p-7 text-center mb-12'>
-          <Link to="/offers" ><button className='font-medium border-graydust-dark border p-2 rounded-md w-full sm:w-auto px-10 hover:bg-evergreen hover:text-whiteglow hover:border-transparent hover:transition-colors hover:duration-200' >View All Offers</button></Link>
+      <div className='px-7 text-center mb-8'>
+          <Link to="/traveloffers" ><button className='font-medium border-graydust-dark border p-2 rounded-md w-full sm:w-auto px-10 hover:bg-evergreen hover:text-whiteglow hover:border-transparent hover:transition-colors hover:duration-200' >View All Offers</button></Link>
         </div>
       <div>
 
         {/* Trending destinations block */}
 
-        <div className='pt-28 pb-8 px-4'>
+        <div className='pt-4 sm:pt-28 pb-8  px-4 sm:px-16 md:px-20 2xl:px-40'>
           <div className='text-center'>
-            <h1 className='font-bold text-2xl'>Trending Destinations</h1>
-            <p className=' pt-4 textnormal text-md md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
+            <h1 className='font-bold text-2xl sm:text-4xl'>Trending Destinations</h1>
+            <p className=' pt-4 textnormal text-sm md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
           </div>
         </div>
-        <div className='grid md:mx-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 m-11'>
+        <div className='grid  px-4 sm:px-16 md:px-20 2xl:px-40  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 auto-rows-[1fr] '>
           <DestCard />
           
         </div>
@@ -120,7 +120,7 @@ Know more
       {/* Reviews block */}
 
       <div className='bg-graydust-light pb-12'>
-        <h1 className='font-bold text-4xl text-center pt-7 mb-8'>Reviews</h1>
+        <h1 className='font-bold text-2xl sm:text-4xl text-center pt-7 mb-8'>Reviews</h1>
         <div className='px-4 sm:px-20'><Reviews /></div>
 
       </div>

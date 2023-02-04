@@ -7,11 +7,11 @@ import {Link} from 'react-router-dom'
 const Footer = () => {
   return (
     <div  id="footer">
-      <footer className='bg-blacky-light p-4'>
+      <footer className='bg-blacky-light p-4 '>
         
        <div className=" flex w-[90%] gap-[1%] flex-wrap xl:w-[60%] mx-auto justify-between py-8 sm:py-12">
           <div className="w-[49%] md:w-[30%]">
-              <h2 className='text-[white] text-md sm:text-lg pb-4 sm:pb-8'>Sitemap</h2>
+              <h2 className='text-[white] text-base sm:text-lg pb-4 sm:pb-8'>Sitemap</h2>
               <ul className='flex flex-col gap-[10px]'>
                 <li className='text-[#e2e2e2] text-xs sm:text-sm  hover:text-[white]'><Link to="/"> Home</Link></li>
                 <li className='text-[#e2e2e2] text-xs sm:text-sm  hover:text-[white]'><Link to="/bid-status"> My Bids</Link></li>
@@ -22,7 +22,7 @@ const Footer = () => {
           </div>
             <div className="w-[49%] md:w-[30%]">
 
-          <h2 className='text-[white] text-md sm:text-lg pb-4 sm:pb-8'>Services</h2>
+          <h2 className='text-[white] text-base sm:text-lg pb-4 sm:pb-8'>Services</h2>
               <ul className=' flex flex-col gap-[10px] text-xs sm:text-sm'>
                 <li className='text-[#e2e2e2]  hover:text-[white]'><Link to="/what-is-bid"> Bid for a stay</Link></li>
                 <li className='text-[#e2e2e2]  hover:text-[white]'><Link to="/hotels"> Hotels</Link></li>
@@ -32,7 +32,7 @@ const Footer = () => {
 
           </div>
           <div className="w-[100%] md:w-[30%]">
-            <h2 className='text-[white] pt-8 md:pt-0 text-md sm:text-lg pb-4 md:pb-8'>Connect us</h2>
+            <h2 className='text-[white] pt-8 md:pt-0 text-base sm:text-lg pb-4 md:pb-8'>Connect us</h2>
 
               <p className='text-[#e2e2e2] text-xs sm:text-sm '>Get in touch with us anytime through our official WhatsApp handle </p>
               <a href="https://wa.me/918129177335"><button className='bg-evergreen text-sm text-blacky-dark  font-bold rounded px-8 py-3 mt-4 flex items-center'><span>WhatsApp</span> <FontAwesomeIcon icon={faWhatsapp} className="ml-3 text-lg" /></button></a>

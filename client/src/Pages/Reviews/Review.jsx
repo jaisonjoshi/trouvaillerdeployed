@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import useFetch from "../../hooks/useFetch";
+import BarLoader from "react-spinners/BarLoader";
 
 const Reviews = () => {
   const { data, loading, error } = useFetch("/reviews");
@@ -32,14 +33,25 @@ const Reviews = () => {
   return (
       <div className="reviews">
         {loading ? (
-          "Loading"
+           <div className='loading-div'>
+           <BarLoader
+
+
+
+               color={'#32fca7'}
+               loading={loading}
+
+               size={15}
+
+               />
+         </div>
         ) : (
           
           <Slider {...settings}>
                   {data.map((item) => (
-                    <div className="p-10 h-full flex-col justify-between" key={item._id}>
+                    <div className=" p-4 sm:p-10 h-full flex-col justify-between" key={item._id}>
                       <div className="flex justify-center">
-                        <div className=" rounded-full flex justify-center w-[60%] h-[60%] md:w-[30%] md:h-[30%] xl:w-[30%] xl:h[30%] skeleton">
+                        <div className=" rounded-full flex justify-center w-[45%] h-[45%] md:w-[30%] md:h-[30%] xl:w-[30%] xl:h[30%] skeleton">
                           <img
                             className="w-full object-cover rounded-full w-[100%] h-[100%]"
                             src={item.image}
@@ -47,7 +59,7 @@ const Reviews = () => {
                         </div>
                       </div>
                      <div className="flex flex-col justify-between ">
-                     <p className="text-center px-8 pt-8 text-blacky-light text-md md:text-lg">{item.reviewnote}</p>
+                     <p className="text-center px-2 sm:px-8 pt-8 text-blacky-light text-sm md:text-lg">{item.reviewnote}</p>
                       <div className=" text-center pt-8">
                         <span className="font-medium">{item.author},{item.place}</span>
                         <span> {item.rating}</span>

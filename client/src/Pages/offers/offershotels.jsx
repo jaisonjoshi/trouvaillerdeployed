@@ -1,71 +1,94 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar/navbar';
 import Offer from './offer';
 import Footer from '../components/Footer/Footer';
-
-import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
+import { Link } from 'react-router-dom';
+import BarLoader from "react-spinners/BarLoader";
 
 
 const Offershotels = () => {
+  const [anim, setAnim] = useState("hide")
+    useEffect(()=>{
+        window.addEventListener('load', setAnim("show"))
 
-    const {data,loading, error} = useFetch("/hotels?offers=true");
-    
+    }, []);
+
+    const [hoteloffers, sethoteloffers] = useState([])
+    const { data, loading, error } = useFetch("/hotels?offers=false");
+
+    useEffect(()=>{
+        sethoteloffers(data)
+    }, [data])
     return (
-        <div className="">
+        <div className={`animationset ${anim}`}>
             
         <Navbar />
-        <div className="mt-36 flex justify-center">
-        <div className=" w-[80%] sm:w-[60%] md:w-[50%] flex justify-center font-bold rounded-[1000px] border border-[#00b771]">
-          <Link
-            to="/offers"
-            className="w-[50%] flex justify-center items-center px-4 py-2 rounded-l-[1000px]"
-          >
-            <span>Packages</span>
-          </Link>
-          <div
-            className="w-[50%] text-whiteglow flex justify-center items-center px-8 py-2 bg-[#00b771] rounded-r-[1000px]"
-            to="/hotels"
-          >
-            Hotels
-          </div>
-        </div>
+        <div className='flex justify-start mb-20 card-shadow  fixed z-[49] bg-[white] top-[60px] left-0 right-0'>
+                    <div className=' flex gap-4 text-base   font-bold'>
+                            <Link to="/traveloffers"  className='px-4 py-2 cursor-pointer  text-[#2f3560]'>Package Offers</Link>
+                        <span  className="px-4 py-2  text-[#2f3560] border-b border-b-[2px] border-b-[#2f3560]   ">Hotel offers</span>
+                    </div>
+                </div>
+
+
+                <div className="mt-[60px] pt-28 pb-16 gradient-first mb-8 px-4 sm:px-16 md:px-20 2xl:px-40">
+        <h1 className=' font-bold text-blacky-dark text-2xl sm:text-4xl'>Top discounts on Homestays, hotels...</h1>
+                  <p className=' textnormal py-4 text-sm  sm:text-base md:text-lg'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo.</p>
       </div>
-        <div className="flex flex-col items-center justify-center px-8 , mt-16 md:px-20 lg:px-40 gap-8 pb-8">
-                <h1 style={{fontSize:"32px"}} className='text-center' >Trending Offers</h1>
-                <p className='text-center text-blacky-light text-md md:text-lg'>Grab out the best Offers before the season ends! Clock's ticking, time is running and the offers are gonna leave soon..!Find the best packages of this season in the offer prices and enjoy a pocket friendly vacation.  </p>
-        </div>
-       <div className='flex justify-start flex-wrap px-4 md:px-12 lg:px-16 gap-[6%] pb-20'>
-            {data && data.map((itm, i)=> (
-                <div key={i} className=" w-[47%] lg:w-[30%] card-shadow ">
-                <div className="relative w-full">
-                    <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                    <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
-                    <h3 className='text-md md:text-xl font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
-                </div>
-                <div className='py-1 mx-1 md:mx-3'>
 
-                    <h3 className='text-sm md:text-xl mb-0 '><b>{itm.offertitle}</b></h3>   
-                    <p className="text-xs md:text-md text-blacky-light">{itm.offerdescription}</p> 
-                </div>
-                <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                    <span className=" font-bold"><span  className="text-[grey] text-xs md:text-md"><strike>{itm.cheapestPrice} &#8377; </strike></span><span className="text-sm md:text-2xl">&nbsp;{itm.offerprice} &#8377;</span></span>
-                         
-                </div>
 
-              </div>
-            ))}
-
-       </div>
+        <div className="px-4 sm:px-16 md:px-20 2xl:px-40 offer-container">
+        {loading ? 
         
-    
-    
-    
-    
-    
-    
-    
-     <Footer/>
+        (
+          <div className='loading-div'>
+          <BarLoader
+
+
+
+              color={'#32fca7'}
+              loading={loading}
+
+              size={15}
+
+              />
+        </div>
+       )
+      
+      
+      
+      
+      
+      
+      
+      :
+      (
+        <div className="flex justify-start flex-wrap  px-4  gap-[4%] sm:pb-20">
+            {hoteloffers.map((itm, i)=>(
+              <div key={i} className=" w-[48%] mb-10 md:w-[30%] lg:w-[22%] pb-3 card-shadow ">
+              <div className="relative w-full">
+                  <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
+                  <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
+                  <h3 className='text-base md:text-lg font-bold z-[41] text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
+              </div>
+              <div className='py-1 mx-1 md:mx-3'>
+
+                  <h3 className='text-sm md:text-base mb-0 '><b>{itm.offertitle}</b></h3>   
+                  <p className="text-[0.75rem] sm:text-[0.875rem] text-blacky-light">{itm.offerdescription}</p> 
+              </div>
+              <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
+                  <span className=" font-bold"><span  className="text-[grey] text-xs md:text-base"><strike>{itm.cheapestPrice} &#8377; </strike></span><span className="text-sm md:text-lg">&nbsp;{itm.offerprice} &#8377;</span></span>
+                       
+              </div>
+
+            </div>
+            ))}
+          </div>
+      )}
+        </div>
+
+            <Footer/>
 
         </div>    
     )

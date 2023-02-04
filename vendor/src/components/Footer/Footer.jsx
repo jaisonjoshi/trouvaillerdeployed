@@ -14,9 +14,9 @@ const Footer = () => {
           <div className="w-[49%] md:w-[30%]">
               <h2 className='text-[white] text-lg pb-8'>Sitemap</h2>
               <ul className='flex flex-col gap-[10px]'>
-                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/"> Home</Link></li>
-                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/bid-status"> My Bids</Link></li>
-                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link> Terms & conditions</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-base hover:text-[white]'><Link to="/"> Home</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-base hover:text-[white]'><Link to="/bid-status"> My Bids</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-base hover:text-[white]'><Link> Terms & conditions</Link></li>
 
               </ul>
 
@@ -25,9 +25,9 @@ const Footer = () => {
 
           <h2 className='text-[white] text-lg pb-8'>Services</h2>
               <ul className=' flex flex-col gap-[10px]'>
-                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/what-is-bid"> Bid for a stay</Link></li>
-                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/hotels"> Hotels</Link></li>
-                <li className='text-[#e2e2e2] text-sm md:text-md hover:text-[white]'><Link to="/packages"> Travel Packages</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-base hover:text-[white]'><Link to="/what-is-bid"> Bid for a stay</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-base hover:text-[white]'><Link to="/hotels"> Hotels</Link></li>
+                <li className='text-[#e2e2e2] text-sm md:text-base hover:text-[white]'><Link to="/packages"> Travel Packages</Link></li>
 
               </ul>
 
@@ -35,7 +35,7 @@ const Footer = () => {
           <div className="w-[100%] md:w-[30%]">
             <h2 className='text-[white] pt-16 md:pt-0 text-lg pb-4 md:pb-8'>Connect us</h2>
 
-              <p className='text-[#e2e2e2] text-sm md:text-md'>Get in touch with us anytime through our official WhatsApp handle </p>
+              <p className='text-[#e2e2e2] text-sm md:text-base'>Get in touch with us anytime through our official WhatsApp handle </p>
               <a href="https://wa.me/918129177335"><button className='bg-evergreen text-whiteglow rounded px-8 py-3 mt-4'>WhatsApp <FontAwesomeIcon icon={faWhatsapp} className="ml-3 text-2xl" /></button></a>
 
           </div>

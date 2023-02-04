@@ -42,7 +42,7 @@ const NavbarTest = ({color}) => {
   
   const navigate = useNavigate();
 
-  let url;
+  /* let url;
   if(user){
     url = `/user/find/${user._id}`
   }
@@ -50,7 +50,7 @@ const NavbarTest = ({color}) => {
     url = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
   }
   const {data} = useFetch(url)
-  console.log(data)
+  console.log(data) */
   //logout code fetching
   const handleClick = async (e) => {
       e.preventDefault();
@@ -123,23 +123,23 @@ const NavbarTest = ({color}) => {
     }}
   return (
     <div>
-    <Navbar className={`w-full z-50 top-0 left-0 bar-shadow fixed right-0 ${bg}  transition-all h-[60px]  duration-300 ease-in-out transition-all duration-500 ease-in-out navbar-padding`}
+    <Navbar className={`w-full z-[10000] top-0 left-0 bar-shadow fixed right-0 ${bg}  transition-all h-[60px]  duration-300 ease-in-out transition-all duration-500 ease-in-out navbar-padding`}
 fluid={true} rounded={true}
 
 >
 <Navbar.Brand>
   <Link to="/">
 <img src={require('../../Assets/TrouvaillerGreen .png')}
-                className="mr-3 ml-4 sm:ml-12 lg:ml-16 2xl:ml-36 h-6 sm:h-9  "
+                className="mr-3 ml-4 sm:ml-12 h-6 sm:h-9    lg:ml-16 2xl:ml-36 "
                 alt="Trouvailler Logo"
             />
 </Link>
 </Navbar.Brand>
-<NavModel open={open} setOpen={setOpen} user={user} data={data} handleClick={handleClick}/>
+<NavModel open={open} setOpen={setOpen} user={user} handleClick={handleClick}/>
 <MenuIcon sx={{fontSize:40}} onClick={handleOpen} className='block md:hidden'/>
-<Navbar.Collapse className="flex items-center md:mr-12 lg:mr-16 2xl:mr-36">
-<div className="flex md:order-2 gap-7 ml-0 lg:ml-20 items-center  nav-login-box">
-{ user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src= {data.img ?data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" } className="w-[45px] h-[45px] rounded-full"/><h2 className='md:hidden'>{user.username}</h2></span></Link>
+<Navbar.Collapse className="flex items-center md:mr-8  lg:mr-16 2xl:mr-36">
+<div className="flex md:order-2 gap-5 ml-0 lg:ml-12 items-center  nav-login-box">
+{ user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src= {user ? user.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" } className="w-[35px] h-[35px] rounded-full"/><h2 className='md:hidden'>{user.username}</h2></span></Link>
         <button className="bg-evergreen text-whiteglow text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-evergreendark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
         <div className="md:flex ">
            <button className="bg-evergreen text-whiteglow text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-evergreendark rounded-md hover:text-whiteglow">
@@ -155,16 +155,16 @@ fluid={true} rounded={true}
 </div>
 
 <Navbar.Link href="/" 
-                class={`py-3 px-1 lg::p-2 text-lg   ${colord} md:hover:text-evergreen duration-500`}>
+                class={`py-3 px-1 lg:pt-2 text-lg   ${colord} md:hover:text-evergreen duration-500`}>
                 Home
             </Navbar.Link>
 
             { user?(<Navbar.Link href="/bid-status"
-                class={`py-3 px-1 lg:p-2 text-lg  ${colord}  hover:text-evergreen duration-500`}>
+                class={`py-3 px-1 lg:pt-2 text-lg  ${colord} hidden lg:block hover:text-evergreen duration-500`}>
                 My bids
             </Navbar.Link>):
             (<Navbar.Link href="/login"
-                class={`py-3 px-1 lg:p-2 text-lg ${colord}  hover:text-evergreen duration-500`}>
+                class={`py-3 px-1 lg:pt-2 text-lg ${colord}  hidden lg:block hover:text-evergreen duration-500`}>
                 My bids
             </Navbar.Link>)}
 
@@ -172,8 +172,16 @@ fluid={true} rounded={true}
                 class={`p-3 sm:p-0 text-lg text-blacky-dark hover:text-evergreen duration-500`}>
                 About
             </Navbar.Link> */}
+             <Navbar.Link 
+                class={`py-3 px-1 lg:pt-2 text-lg ${colord}  hover:text-evergreen duration-500`} >
+                <Link to="/hotels">Hotels</Link>
+            </Navbar.Link>
+            <Navbar.Link
+                class={`py-3 px-1 lg:pt-2 text-lg ${colord}  hover:text-evergreen duration-500`} >
+                <Link to="/packages">Packages</Link>
+            </Navbar.Link>
             <Navbar.Link href="/"
-                class={`py-3 px-1 lg:p-2 text-lg ${colord}  hover:text-evergreen duration-500`} >
+                class={`py-3 px-1 lg:pt-2 text-lg ${colord} hidden lg:block hover:text-evergreen duration-500`} >
                 Contact
             </Navbar.Link>
 </Navbar.Collapse>
@@ -204,11 +212,11 @@ const NavModel = ({open, setOpen, user, data, handleClick}) => {
             {user?<div className='shadow-md navbar-gradient my-2 px-4 py-3'>
               <div className='flex'>
                 <div className='w-[30%]'>
-                  <img className='flex justify-center items-center rounded-full w-[70%]' src={data.img ? data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} alt="" />
+                  <img className='flex justify-center items-center rounded-full w-[70%]' src={user ? user.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} alt="" />
                 </div>
                 <div className='w-[70%] flex flex-col justify-center items-start'>
                   <p className='text-xs'>Logined as</p>
-                  <h1 className='font-bold text-sm'>{data.username}</h1>
+                  <h1 className='font-bold text-sm'>{user.username}</h1>
                 </div>
               </div>
               <div className='py-2 text-xs font-bold '>
@@ -234,7 +242,7 @@ const NavModel = ({open, setOpen, user, data, handleClick}) => {
            </div>
           </div>)}
 
-          <div className='px-4 py-3 text-md '>
+          <div className='px-4 py-3 text-base '>
             <h1>Quick Links</h1>
             <ul className='px-3 text-graydust-dark'>
               <Link to='/' onClick={handleNavClick}><li className='py-1 hover:text-[#03965e] '>Home</li></Link>

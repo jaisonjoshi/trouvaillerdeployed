@@ -5,7 +5,7 @@ const mongoose=require('mongoose')
 //inside 'find' you can pass params if you need filtered result
 const getPackages = async(req,res)=>{
    
-    let {min,max,destinations,category,...others}=req.query;
+    let {min,max,destinations,category,offers,...others}=req.query;
          min = parseInt(req.query.min) || 1;
          max = parseInt(req.query.max) || 99999;
  
@@ -15,6 +15,7 @@ const getPackages = async(req,res)=>{
     if(category) query.category = {$in: category.split(',')}
     if(min) query.cheapestPrice = {$gt: min, $lt: max}
     if(max) query.cheapestPrice = {$gt: min, $lt: max}
+    if(offers) query.offers = offers
     
     const package = await Package.find(query).limit(req.query.limit).sort({createdAt: -1}).catch(err=>console.log(err))
     console.log(query)
@@ -69,7 +70,7 @@ const createPackage = async (req,res)=>{
         cheapestPrice,
         features,activities,locations,
         shedule,
-        offers,
+        offers,offertitle,offerdescription, offerprice,
         category
         } = req.body
         //add to db
@@ -85,7 +86,7 @@ const createPackage = async (req,res)=>{
         cheapestPrice,
         features,activities,locations,
         shedule,
-        offers,
+        offers,offertitle,offerdescription, offerprice,
         category
     
     })

@@ -20,7 +20,6 @@ import Package from "./Pages/DetailViews/Package.jsx";
 import Hotel from "./Pages/DetailViews/Hotel.jsx";
 import Review from "./Pages/rev/rev.jsx";
 import Destination from "./Pages/trending/trending.jsx";
-import Offers from "./Pages/offers/offers.jsx";
 import List1_card from "./Pages/components/cards/list1.jsx";
 import List2_card from "./Pages/components/cards/list2.jsx";
 import Userprofile from "./Pages/userProfile/Userprofile.js";
@@ -31,6 +30,10 @@ import logo from './Pages/Assets/TrouvaillerGreen .png'
 import BarLoader from "react-spinners/BarLoader";
 import Offershotels from "./Pages/offers/offershotels.jsx";
 import SearchList from "./Pages/searchlist/SearchList.js";
+import Offerspage from "./Pages/offers/Offerspage.jsx";
+import SearchListPack from "./Pages/searchlist/SearchlistPack.js";
+import SearchListType from "./Pages/searchlist/searchListType.js";
+import SearchListPackType from "./Pages/searchlist/SearchListPackType.js";
 
 
 
@@ -68,7 +71,12 @@ function App() {
     <BrowserRouter>
     <ScrollToTop />
       <Routes>
-      <Route path="/se" element={<SearchList location={location} settype={settype}/>}/>
+      <Route path="/se" element={<SearchList location={location} />}/>
+      <Route path="/set" element={<SearchListType type={type} />}/>
+
+      <Route path="/sep" element={<SearchListPack location={location}/>}/>
+      <Route path="/sept" element={<SearchListPackType type={type}/>}/>
+
 
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
@@ -78,8 +86,8 @@ function App() {
         <Route path="/user/update/password" element={<Updatepassword />} />
 
         <Route path="/bidform" element={<Bidform/>}/>
-        <Route path="/packages" element={<List2_card />}/>
-        <Route path="/hotels" element={<List1_card setlocation={setlocation}/>}/>
+        <Route path="/packages" element={<List2_card setlocation={setlocation} settype={settype}/>}/>
+        <Route path="/hotels" element={<List1_card setlocation={setlocation} settype={settype}/>}/>
        
         {/* {hotels && hotels.map((hotel)=> (
                                 <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>
@@ -98,7 +106,9 @@ function App() {
         <Route path="/hotel" element={<Hotel/>}/>
         <Route path="/rev" element={<Review/>}/>
         <Route path="/trending" element={<Destination/>}/>
-        <Route path="/offers" element={<Offers/>}/>
+        <Route path="/traveloffers" element={<Offerspage/>}/>
+        <Route path="/hoteloffers" element={<Offershotels/>}/>
+
         <Route path="/offershotels" element={<Offershotels/>}/>
 
         <Route path="/list/package/:id" element={<Package/>}/>

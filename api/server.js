@@ -63,8 +63,8 @@ mongoose.connect(process.env.MONGO_URI,{
    // mongoose.set("useCreateIndex", true);
 
 app.use(cors({
-    origin:"http://localhost:3000",
-    methods:"GET,POST,PUT,DELETE",
+    origin:["https:trouvailler.com", "https://admin.trouvailler.com"],
+    methods:"GET,POST,PUT,DELETE,PATCH",
     credentials:true}));
 // app.get("/auth/google",
 //   passport.authenticate("google", { scope: ["profile"] })

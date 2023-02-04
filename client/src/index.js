@@ -10,7 +10,7 @@ root.render(
     <AuthContextProvider>
         <GoogleOAuthProvider clientId="426134563814-tvoq8vr23v9hrqa6gtb7hc8mju00aakp.apps.googleusercontent.com">
         <App />
-            </GoogleOAuthProvider>;
+            </GoogleOAuthProvider>
    
     </AuthContextProvider>
     

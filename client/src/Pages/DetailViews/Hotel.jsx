@@ -127,7 +127,7 @@ const Hotel = () => {
         <div className={`animationset ${anim}`}>
             <NavbarTest />
             <div className='mt-[60px] pt-8 px-4 sm:px-16 md:px-20 2xl:px-40'>
-                <div className='flex gap-2 pt-2 text-sm sm:text-md text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[black]'>{hote.title}</span></div>
+                <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[black]'>{hote.title}</span></div>
                            
 
                 
@@ -246,7 +246,7 @@ const Hotel = () => {
                                 <p className='text-sm'>{hote.description}</p>
                                 {hote.features.length !== 0 && 
                                     <div className='pt-3'>
-                                        <h1 className='text-md sm:text-lg font-bold mb-2'>Features</h1>
+                                        <h1 className='text-base sm:text-lg font-bold mb-2'>Features</h1>
                                         <div className='px-2'>
                                             <ul className='list-disc px-4 text-sm'>
                                             {hote.features.map((itm)=> (
@@ -267,7 +267,7 @@ const Hotel = () => {
                                     <h1 className='text-lg sm:text-xl font-bold mb-2'>Facilities Available</h1>
                                     <div className='flex gap-4 py-2'>
                                         {hote.facilities.map((itm)=> (
-                                            <span className='border-2 px-4 py-1 text-sm sm:text-md text-graydust-dark rounded'>{itm}</span>
+                                            <span className='border-2 px-4 py-1 text-sm sm:text-base text-graydust-dark rounded'>{itm}</span>
                                         ))}
                                     </div> </div>}
                                 </div>
@@ -318,12 +318,12 @@ const Hotel = () => {
                             <img src={h} className='rounded' alt="" />
                             <div  className='flex flex-col xl:flex-row pt-2'>
                                 <div className='w-[100%] xl:w-[60%]'>
-                                    <h1 className='text-md xl:text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-sm xl:text-md'>Palakkad, Kerala</p>
+                                    <h1 className='text-base xl:text-xl  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-sm xl:text-base'>Palakkad, Kerala</p>
                            
                                 </div>
                                 <div className='w-[100%] xl:w-[40%] flex flex-col xl:items-end'>
-                                    <span className='text-md font-bold'>&#8377; 5000</span><span className='text-sm xl:text-right text-graydust-medium'>per room per night</span> 
+                                    <span className='text-base font-bold'>&#8377; 5000</span><span className='text-sm xl:text-right text-graydust-medium'>per room per night</span> 
                                 </div>
                             </div>
                             </div>
@@ -338,7 +338,7 @@ const Hotel = () => {
                             <div  className='flex pt-2'>
                                 <div className='w-[60%]'>
                                     <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
                            
                                 </div>
                                 <div className='w-[40%] flex flex-col items-end'>
@@ -359,7 +359,7 @@ const Hotel = () => {
                             <div  className='flex pt-2'>
                                 <div className='w-[60%]'>
                                     <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
                            
                                 </div>
                                 <div className='w-[40%] flex flex-col items-end'>
@@ -380,7 +380,7 @@ const Hotel = () => {
                             <div  className='flex pt-2'>
                                 <div className='w-[60%]'>
                                     <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
                            
                                 </div>
                                 <div className='w-[40%] flex flex-col items-end'>
@@ -414,7 +414,7 @@ const Hotel = () => {
                             <img src={h} className='rounded w-full' alt="" />
                             <div  className='flex flex-col pt-2'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
                                      <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
                            
                                 </div>
@@ -429,7 +429,7 @@ const Hotel = () => {
                             <img src={h} className='rounded w-full' alt="" />
                             <div  className='flex flex-col pt-2'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
                                      <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
                            
                                 </div>
@@ -445,7 +445,7 @@ const Hotel = () => {
                             <img src={h} className='rounded w-full' alt="" />
                             <div  className='flex flex-col pt-2'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
                                      <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
                            
                                 </div>
@@ -460,7 +460,7 @@ const Hotel = () => {
                             <img src={h} className='rounded w-full' alt="" />
                             <div  className='flex flex-col pt-2'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
                                      <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
                            
                                 </div>

@@ -32,7 +32,7 @@
 }
 body {
     font-family: Roboto, Helvetica, Arial, sans-serif !important;
-    background-color: rgb(254, 254, 254);
+    background-color: white;
   }
 nav{
     background-color: transparent !important;
@@ -231,14 +231,33 @@ button:focus {
     outline: none !important;
 }
 .shadow-search{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+    box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px !important;
 }
 
 .type-card{
     position: relative;
-    background-image: url('../src/Pages/Assets/inter.jpg');
     background-position: bottom;
     background-size: cover;
+
+}
+.type-card-1{
+    background-image: url('../src/Pages/Assets/inter.jpg');
+
+}
+.type-card-2{
+    background-image: url('../src/Pages/Assets/hotels.jpg');
+
+}
+.type-card-3{
+    background-image: url('../src/Pages/Assets/resorts.jpg');
+
+}
+.type-card-4{
+    background-image: url('../src/Pages/Assets/homestays.jpg');
+
+}
+.type-card-5{
+    background-image: url('../src/Pages/Assets/apartments.jpg');
 
 }
 .type-card::before{
@@ -260,6 +279,28 @@ button:focus {
     outline: solid #f00 1px !important;
   } */
 
- .hotelsexplore .slick-track{
+ /* .hotelsexplore .slick-track{
      margin-left: 0.25rem !important;
- }
+ } */
+ 
+
+
+ .slick-m .slick-track
+{
+    display: flex !important;
+}
+
+.slick-m .slick-slide
+{
+    height: inherit !important;
+    display: flex !important;
+}
+.slick-m .slick-slide>div{
+    display: flex !important;
+    width: 100%;
+}
+.slick-m .slick-slide>div>div{
+    display: flex !important;
+    flex-direction: column;
+}
+.slick-track .slick-track { display: none !important; }

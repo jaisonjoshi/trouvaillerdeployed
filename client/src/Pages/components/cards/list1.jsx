@@ -15,6 +15,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useNavigate } from 'react-router'
+import kashmir from '../../Assets/kashmir.jpg'
+import mysore from '../../Assets/mysore.jpg'
+import wayanad from '../../Assets/wayanad.jpg'
+import goa from '../../Assets/goa.jpg'
+
+
+
+
+
+
 
 const List1_card = ({setlocation, settype}) => {
     const slider = React.useRef(null);
@@ -32,7 +42,7 @@ const List1_card = ({setlocation, settype}) => {
         baseURL: process.env.REACT_APP_API_URL,
     });
 
-    const {data:data2} = useFetch("/hotels?offers=true&limit=3")
+    const {data:data2} = useFetch("/hotels?offers=true&limit=6")
 
     var settings = {
         dots: true,
@@ -52,28 +62,29 @@ const List1_card = ({setlocation, settype}) => {
             }
         ]
     };
-    var settings1 = {
+    var settings_1 = {
         dots: false,
         arrows:false,
         infinite: false,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow:4 ,
         slidesToScroll: 1,
         autoplay:true,
         autoplaySpeed: 4000,
         responsive: [
-            {
-                breakpoint: 1024,
-                settings:{
-                    slidesToShow:3,
-                }
-            },
             {
                 breakpoint: 768,
                 settings:{
                     slidesToShow:2,
                 }
             },
+            {
+                breakpoint: 1024,
+                settings:{
+                    slidesToShow:3,
+                }
+            },
+            
         ]
     };
     var settings2 = {
@@ -172,11 +183,30 @@ const List1_card = ({setlocation, settype}) => {
 
        // reFetch();//handleclick const for all filters,handle chage just sets values
        }
+       const handleTypesubmit = (value) => {
+
+        settype(value);
+        
+        navigate('/set');
+  
+      }
+      const handleS2submit = (value) => {
+
+        setlocation(value);
+        
+           navigate('/se');
+    
+    }
 
        const handleSClick =  () => {
 
              setlocation(destination);
-            navigate("/se");
+            if(destination.trim() !== ""){
+                navigate('/se');
+            }
+            else{
+                alert("Please enter a location to search")
+            }
             
 
        }
@@ -298,7 +328,7 @@ const handlebudgetChange = (e) => {
     <div className={`w-full animationset ${anim} bg-[#f2f2f2] hotelsexplore`}>
       <NavbarTest color={color} />
         <div className='flex justify-start mb-20 md:hidden fixed z-[49] bg-[white] top-[60px] left-0 right-0'>
-                    <div className=' flex gap-4 text-md   font-bold'>
+                    <div className=' flex gap-4 text-base   font-bold'>
                             <Link to="/packages" className='px-4 py-2 cursor-pointer text-[#2f3560]'>Packages</Link>
                         <span  className="px-4 py-2 cursor-pointer border-b border-b-[2px] text-[#2f3560]  border-b-[#2f3560]">Hotels</span>
                     </div>
@@ -312,7 +342,7 @@ const handlebudgetChange = (e) => {
                 <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 sm:pb-4">
                     <h1 className='text-center text-3xl sm:text-4xl text-[#2f3560] font-bold'>Find your next stay
 </h1>
-                    <p className='text-center text-blacky-light text-md md:text-lg'>Search low prices on hotels, homes and much more...
+                    <p className='text-center text-blacky-light text-base md:text-lg'>Search low prices on hotels, homes and much more...
 
 </p>
                 </div>
@@ -324,9 +354,9 @@ const handlebudgetChange = (e) => {
                                 <div className='flex gap-4  justify-center '>
                                        <div className='flex w-[90%] lg:w-[70%] flex-col items-start gap-4 '>
                                             <h1 className='font-bold text-graydust-dark ml-2 text-lg text-left sm:text-xl'>Ready to get started !</h1>
-                                            <div className='flex flex-col items-start sm:flex-row w-full gap-4'>
+                                            <div className='flex flex-col items-start sm:items-center sm:flex-row w-full gap-4'>
                                             <div className="flex items-center w-[100%] sm:w-[70%] md:w-[60%] lg:w-[100%] border border-[2px] rounded-full border-[#00b777] justify-between focus:ring-0 focus:ring-offset-0 bg-[white]  outline-none py-1 sm:py-2 px-4">
-                                                <input type="text" className="border-0  outline-none w-[100%] h-[100%] text-md text-graydust-medium focus:ring-0 focus:ring-offset-0" placeholder="Enter your Destination" id= "destination" name="destination" onChange={handleSearchChange}/>
+                                                <input type="text" className="border-0  outline-none w-[100%] h-[100%] text-base text-graydust-medium focus:ring-0 focus:ring-offset-0" placeholder="Enter your Destination" id= "destination" name="destination" onChange={handleSearchChange}/>
 
                                             </div>
                                             <button  className='px-8 py-2 bg-[#2f3560] rounded-full text-white font-bold cursor-pointer' onClick={handleSClick}>Search</button>
@@ -355,54 +385,55 @@ const handlebudgetChange = (e) => {
 
             </div>
             <Slider {...settings} className="lg:hidden pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
-                <Link to="/set">                 <div className='w-[100%] px-2 sm:px-4' onClick={()=> settype("international")}><div className='type-card py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div></div></Link>
-                 <div className='w-[100%] px-2 sm:px-4'><div className='type-card py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Hotel</span></div></div>                 
-                 <div className='w-[100%] px-2  sm:px-4'><div className='type-card  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Resort</span></div></div>                
-                 <div className='w-[100%] px-2  sm:px-4'><div className='type-card  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Apartment</span></div></div>             
-                 <div className='w-[100%] px-2  sm:px-4'><div className='type-card  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Villa</span></div></div>                 
+                <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("international")}><div className='type-card type-card-1 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div></div>
+                 <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("Restaurants")}><div className='type-card type-card-2 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Restaurants</span></div></div>                 
+                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("Resorts")}><div className='type-card type-card-3  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Resorts</span></div></div>                
+                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("Homestays")}><div className='type-card type-card-4  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Homestays</span></div></div>             
+                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("Apartments")}><div className='type-card type-card-5  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Apartments</span></div></div>                 
 
             </Slider>
             <div className='hidden pt-8 justify-between text-[white] font-bold text-xl lg:flex'>
-                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>
-                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>
-                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>
-                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>
-                 <div className='type-card w-[19%] py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div>   
+                 <div className='type-card type-card-1 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("international")}><span className='z-10'>International</span></div>
+                 <div className='type-card type-card-2 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("Restaurants")}><span className='z-10'>Restaurants</span></div>
+                 <div className='type-card type-card-3 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("Resorts")}><span className='z-10'>Resorts</span></div>
+                 <div className='type-card type-card-4 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("Homestays")}><span className='z-10'>Homestays</span></div>
+                 <div className='type-card type-card-5 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("Apartments")}><span className='z-10'>Apartments</span></div>   
             </div>
 
                            
         </div>
         <div className='mt-8 sm:mt-[4rem] px-4 sm:px-8 py-8 rounded-[10px] shadow-search mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
             <div className='flex justify-between items-center'>
-            <h1 className='text-xl text-2xl md:text-3xl font-bold'>Best Deals on Hotels</h1>   
+            <h1 className='text-xl text-2xl md:text-3xl font-bold'>Best Deals on Hotels</h1>  
                 <div className='flex gap-3 bg-evergreen-tag rounded-full px-4 py-1'>
                     <button onClick={() => slider?.current?.slickPrev()}><ArrowBackIosNewSharpIcon sx={{fontSize:20,color:"#03965e"}}/></button>
                     <button onClick={() => slider?.current?.slickNext()}><ArrowForwardIosSharpIcon sx={{fontSize:20, color:"#03965e"}}/></button>
                 </div>
             </div>
+            <p className='text-sm sm:text-base lg:text-lg py-2 '>Grab Best deals on homestays, hotels and resorts</p> 
 
             <div className=' pt-8 '>
-            <Slider ref={slider} {...settings1}>
+            <Slider ref={slider} className='slick-m' {...settings_1} >
                 {data2.map((itm, i)=>(
-                <div key={i} className="pr-4 sm:pr-8  ">
-                    <div className='mb-4  pb-3 card-shadow'>
-                        <div className="relative w-full">
-                            <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                            <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
-                            <h3 className='text-md md:text-xl font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
-                        </div>
-                        <div className='py-1 mx-1 md:mx-3'>
+                    <div key={i} className="pr-4 sm:pr-8  ">
+                        <div className='mb-4 h-[100%] pb-3 card-shadow cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
+                            <div className="relative w-full">
+                                <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
+                                <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
+                                <h3 className='text-base md:text-xl font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
+                            </div>
+                            <div className='py-1 mx-1 md:mx-3'>
 
-                            <h3 className='text-sm md:text-xl mb-0 '><b>{itm.offertitle}</b></h3>   
-                            <p className="text-xs md:text-md text-blacky-light">{itm.offerdescription}</p> 
-                        </div>
-                        <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                            <span className=" font-bold"><span  className="text-[grey] text-xs md:text-md"><strike>{itm.cheapestPrice} &#8377; </strike></span><span className="text-sm md:text-2xl">&nbsp;{itm.offerprice} &#8377;</span></span>
-                                
-                        </div>
+                                <h3 className='text-sm md:text-xl mb-0 '><b>{itm.offertitle}</b></h3>   
+                                <p className="text-xs md:text-base text-blacky-light">{itm.offerdescription}</p> 
+                            </div>
+                            <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
+                                <span className=" font-bold"><span  className="text-[grey] text-xs md:text-base"><strike>{itm.cheapestPrice} &#8377; </strike></span><span className="text-sm md:text-2xl">&nbsp;{itm.offerprice} &#8377;</span></span>
+                                    
+                            </div>
 
+                        </div>
                     </div>
-                </div>
                 ))}
             </Slider>
 
@@ -412,18 +443,20 @@ const handlebudgetChange = (e) => {
              </div>                  
         </div>
        
-        <div className='mt-8 sm:mt-[4rem] py-2 sm:py-8 rounded-[10px]  mx-4 sm:mx-16 md:mx-20 2xl:mx-40 '>
+        <div className='mt-8 sm:mt-[4rem] py-2 sm:py-8 rounded-[10px] mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 '>
             <div className='flex justify-between items-center'>
-            <h1 className='text-xl sm:text-2xl md:text-3xl font-bold'>Browse by Types</h1>   
+            <h1 className='text-xl sm:text-2xl md:text-3xl font-bold'>Popular Destinations</h1> 
 
             </div>
-            <Slider {...settings2} className="lg:hidden pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
-            
-                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
-                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
-                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
-                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
-                <div className='w-[100%] px-2 sm:px-4'><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
+            <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4'>Explore and choose the best homestays, hotels or properties in most popular destinations</p>  
+
+            <Slider {...settings2} className="lg:hidden pt-4 sm:pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
+            <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleS2submit("kashmir")}><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={kashmir} alt="" /><h1 className='absolute left-3 bottom-3'>Kashmir</h1></div></div>                
+
+                <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleS2submit("goa")}><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={goa} alt="" /><h1 className='absolute left-3 bottom-3'>Goa</h1></div></div>                
+                <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleS2submit("wayanad")}><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={wayanad} alt="" /><h1 className='absolute left-3 bottom-3'>Wayanad</h1></div></div>                
+                <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleS2submit("munnar")}><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div></div>                
+                <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleS2submit("mysore")}><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={mysore} alt="" /><h1 className='absolute left-3 bottom-3'>Mysore</h1></div></div>                
 
             
             
@@ -431,24 +464,25 @@ const handlebudgetChange = (e) => {
             
             
             </Slider>
-            <div className='hidden pt-8 justify-between text-[white] font-bold text-xl lg:flex'>
-                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
-                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
-                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
-                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
-                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative'><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>   
+            <div className='hidden pt-8 justify-between text-[white] mb-12 font-bold text-xl lg:flex'>
+            <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer' onClick={()=> handleS2submit("kashmir")}><img src={kashmir} alt="" /><h1 className='absolute left-3 bottom-3'>Kashmir</h1></div>
+
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer' onClick={()=> handleS2submit("goa")}><img src={goa} alt="" /><h1 className='absolute left-3 bottom-3'>Goa</h1></div>
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer' onClick={()=> handleS2submit("wayanad")}><img src={wayanad} alt="" /><h1 className='absolute left-3 bottom-3'>Wayanad</h1></div>
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer' onClick={()=> handleS2submit("munnar")}><img src={munnar} alt="" /><h1 className='absolute left-3 bottom-3'>Munnar</h1></div>
+                 <div className='flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer' onClick={()=> handleS2submit("mysore")}><img src={mysore} alt="" /><h1 className='absolute left-3 bottom-3'>Mysore</h1></div>   
             </div>
 
                            
         </div>
-        <div className='my-[4rem] px-8 py-8 rounded-[10px] shadow-search mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
+        {/* <div className='my-[4rem] px-8 py-8 rounded-[10px] shadow-search mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
             <div className='flex justify-between items-center'>
             <h1 className='text-3xl font-bold'>Why book with Trouvailler block</h1>   
 
             </div>
 
                            
-        </div>
+        </div> */}
         
         
 

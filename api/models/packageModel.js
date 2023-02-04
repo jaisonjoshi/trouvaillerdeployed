@@ -48,6 +48,15 @@ const packageSchema=new Schema({
         type:Boolean,
         required:false
     },
+    offertitle:{
+        type:String
+    },
+    offerdescription:{
+        type:String
+    },
+    offerprice:{
+        type:String
+    },
     rating:{
         type:Number,
         min:0,

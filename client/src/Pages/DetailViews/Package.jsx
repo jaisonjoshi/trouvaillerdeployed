@@ -134,7 +134,7 @@ const Package = () => {
                                 </Slider>
                     </Backdrop>
             <div className='mt-[60px] pt-8 px-4 sm:px-16 md:px-20 2xl:px-40'>
-                <div className='flex gap-2 pt-2 text-sm sm:text-md text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Tour Packages</span><span>&#47;</span><span className='text-[black]'>{pack.title}</span></div>
+                <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Tour Packages</span><span>&#47;</span><span className='text-[black]'>{pack.title}</span></div>
             </div>
             <div className='px-6 sm:px-16 md:px-20 2xl:px-40 mt-10'>
                  <div className='w-[100%] flex flex-col-reverse xl:flex-row'>
@@ -145,13 +145,13 @@ const Package = () => {
 
                 <div className='hidden xl:flex w-[50%] pr-28 flex  flex-col justify-start gap-6  pt-8'>
                         <div className=' flex flex-col gap-2  items-start'>
-                            <h3 className='font-bold text-evergreendark text-md  '>{pack.duration}</h3>
+                            <h3 className='font-bold text-evergreendark text-base  '>{pack.duration}</h3>
 
                             <h1 className='text-3xl font-bold '>{pack.title}</h1>
                                  <p className='text-[grey] text-lg'>{pack.location}</p>
 
                         </div>
-                        <div className='flex gap-2 text-md text-graydust-dark items-end'>
+                        <div className='flex gap-2 text-base text-graydust-dark items-end'>
                             <LocationOnIcon /> <span>Kerala, India</span>
                         </div>
                         <div className='flex flex-col gap-2 items-start'>
@@ -160,19 +160,20 @@ const Package = () => {
                         
                         </div>
                        <div className='flex  justify-between items-end'>
+                                    {pack.offers ?
                                     
-                                    <div className='hidden flex flex-col'>
-                                        <h1 className='font-semibold text-2xl '>&#8377; {pack.cheapestPrice}</h1>
-                                        <span className='text-graydust-dark text-xs'>Per person</span>
-                                    
-                                    </div>
-                                    <div className=''>
+                                    (<div className=''>
                                         <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>Flat 15% off</span>
                                         <p className='mt-2'>Grab this offer soon</p>
                                         <span ><span className='text-2xl '><b>&#8377; 5000 </b></span><strike className='text-[grey]'>&#8377; {pack.cheapestPrice} </strike></span><br />
                                         <span className='text-sm text-[red]'>per night</span>
                                             
-                                    </div>
+                                    </div>):
+                                    (<div className=' flex flex-col'>
+                                    <h1 className='font-semibold text-2xl '>&#8377; {pack.cheapestPrice}</h1>
+                                    <span className='text-graydust-dark text-xs'>Per person</span>
+                                
+                                </div>)}
                                 <div className='flex flex-col items-end gap-2'>
                                     <span className='font-bold text-sm text-graydust-dark'>BOOK NOW</span>
                                     <a href={"https://wa.me/919562523642?text=" + text + pack.title }><button className='bg-evergreen text-white flex justify-center gap-2 items-center font-bold px-3 py-2 w-full text-sm rounded'><span>WhatsApp Us</span> <span className=''><WhatsAppIcon /></span></button></a>
@@ -183,44 +184,68 @@ const Package = () => {
                         
                 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div className='mt-8 sm:mt-12 flex xl:hidden flex-col gap-4'>
                     <div className='flex justify-between items-end sm:items-center'>
                         <div className=' flex flex-col gap-1 sm:gap-2  items-start'>
                                <div className='flex gap-2 items-center'>
-                               <h3 className='font-bold text-evergreendark text-sm sm:text-md  '>{pack.duration}</h3>
-                                <span className='hidden sm:block px-4 py-1 bg-evergreen-tag font-bold text-sm sm:text-md rounded-full'>{pack.category}</span>
+                               <h3 className='font-bold text-evergreendark text-sm sm:text-base  '>{pack.duration}</h3>
+                                <span className='hidden sm:block px-4 py-1 bg-evergreen-tag font-bold text-sm sm:text-base rounded-full'>{pack.category}</span>
 
                                </div>
                                 <h1 className='text-lg sm:text-3xl font-bold '>{pack.title}</h1>
                                     <p className='text-[grey] text-sm sm:text-lg'>{pack.location}</p>
 
                             </div>
-                                    <div className='flex hidden items-start gap-6'>
-
-                                    <div className='flex  flex-col items-end sm:gap-1'>
-
-                                        <h1 className='font-semibold text-lg sm:text-2xl '>&#8377; {pack.cheapestPrice}</h1>
-                                        <span className='text-graydust-dark text-xs sm:text-sm xl:text-xs'>Per person</span>
-
-
-
-                                    </div>
-                                    
-                                    
+                            {pack.offers ? (
+                                    <div className='flex flex-col items-end'>
+                                    <span className='p-1 bg-[#f8d2d2] text-xs sm:text-base font-bold text-[red]'>Flat 15% off</span>
+                                    <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-base text-[grey]'>&#8377; {pack.cheapestPrice} </strike></span>
+                                    <span className='text-sm text-[red]'>per night</span>
+                                        
                                 </div>
-                                <div className='flex flex-col items-end'>
-                                        <span className='p-1 bg-[#f8d2d2] text-xs sm:text-md font-bold text-[red]'>Flat 15% off</span>
-                                        <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-md text-[grey]'>&#8377; {pack.cheapestPrice} </strike></span>
-                                        <span className='text-sm text-[red]'>per night</span>
-                                            
-                                    </div>
+                                
+                            ) : (
+                                <div className='flex  items-start gap-6'>
+
+                                <div className='flex  flex-col items-end sm:gap-1'>
+
+                                    <h1 className='font-semibold text-lg sm:text-2xl '>&#8377; {pack.cheapestPrice}</h1>
+                                    <span className='text-graydust-dark text-xs sm:text-sm xl:text-xs'>Per person</span>
+
+
+
+                                </div>
+                                
+                                
+                            </div>
+                            )}
+                                   
+                                
                             
                     </div>
-                    <div className='flex gap-2 text-sm sm:text-md text-graydust-dark items-end'>
+                    <div className='flex gap-2 text-sm sm:text-base text-graydust-dark items-end'>
                             <LocationOnIcon /> <span>Kerala, India</span>
                         </div>
                         <div className='flex flex-col gap-2 items-start'>
-                        <span className='block sm:hidden px-4 py-1 bg-evergreen-tag text-sm font-bold sm:text-md rounded-full'>{pack.category}</span>
+                        <span className='block sm:hidden px-4 py-1 bg-evergreen-tag text-sm font-bold sm:text-base rounded-full'>{pack.category}</span>
 
                         <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nihil eos cumque, amet doloribus, quae maiores assumenda minus eligendi quisquam distinctio ipsam, accusantium exercitationem blanditiis ea odio ab ex id!</p>
                         
@@ -293,12 +318,12 @@ const Package = () => {
                                     {pack.description &&
                                         <div className='pt-6 sm:py-6 nav-box' id="desc">
                                             <h1 className='text-lg sm:text-2xl font-bold mb-2'>{pack.title}</h1>
-                                            <p className='text-sm sm:text-md'>{pack.description}</p>
+                                            <p className='text-sm sm:text-base'>{pack.description}</p>
                                             {pack.features.length !== 0 && 
                                                 <div className='pt-3'>
-                                                    <h1 className='text-md sm:text-lg font-bold mb-2'>Features</h1>
+                                                    <h1 className='text-base sm:text-lg font-bold mb-2'>Features</h1>
                                                     <div className='px-2'>
-                                                        <ul className='list-disc px-4 text-md'>
+                                                        <ul className='list-disc px-4 text-base'>
                                                         {pack.features.map((itm)=> (
                                                             <li>{itm}</li>
                                                         ))}
@@ -318,10 +343,10 @@ const Package = () => {
                                                 <div className='flex flex-col gap-4 py-2'>
                                                 {pack.shedule && pack.shedule.map((obj,i)=>(
                                                     <div className='sm:flex my-2  py-2 rounded shadow-shedule-card' key={i}>
-                                                    <div className='text-md sm:text-xl w-32 p-2 text-graydust-medium flex items-center font-semibold w-[100%] sm:w-[20%] xl:w-[10%]'><h1>Day {i+1}</h1></div>
+                                                    <div className='text-base sm:text-xl w-32 p-2 text-graydust-medium flex items-center font-semibold w-[100%] sm:w-[20%] xl:w-[10%]'><h1>Day {i+1}</h1></div>
                                                     <div className='sm:border-l-2 p-4 text-justify sm:border-[silver] w-[100%] sm:w-[80%] xl:w-[90%]'>
-                                                        <h1 className='text-md sm:text-xl font-semibold'>{obj.dayTitle}</h1>
-                                                        <p className='text-sm sm:text-md text-graydust-dark whitespace-pre-wrap	'> {obj.dayDesc}</p>
+                                                        <h1 className='text-base sm:text-xl font-semibold'>{obj.dayTitle}</h1>
+                                                        <p className='text-sm sm:text-base text-graydust-dark whitespace-pre-wrap	'> {obj.dayDesc}</p>
                                                     </div>
                                                 </div>
                                                 ))}
@@ -338,7 +363,7 @@ const Package = () => {
                                                     <div className='pt-6 sm:py-6'>
                                                         <h1 className='text-lg sm:text-xl font-bold mb-2'>Things to do</h1>
 
-                                                            <div className='px-2 text-md sm:text-lg'>
+                                                            <div className='px-2 text-base sm:text-lg'>
                                                                     <ul className='list-none flex flex-col py-4 gap-6 px-1 sm:px-4'>
                                                                     {pack.activities.map((itm)=> (
                                                                         <li className='flex gap-3 items-center'><span><TourIcon sx={{color:"#3cb500", fontSize: 40}}/></span><span>{itm}</span></li>
@@ -395,12 +420,12 @@ const Package = () => {
                             <img src={h} className='rounded' alt="" />
                             <div  className='flex flex-col xl:flex-row pt-2'>
                                 <div className='w-[100%] xl:w-[60%]'>
-                                    <h1 className='text-md xl:text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-sm xl:text-md'>Palakkad, Kerala</p>
+                                    <h1 className='text-base xl:text-xl  font-bold'>Hotel Paramount</h1>
+                                     <p className='text-graydust-dark text-sm xl:text-base'>Palakkad, Kerala</p>
                            
                                 </div>
                                 <div className='w-[100%] xl:w-[40%] flex flex-col xl:items-end'>
-                                    <span className='text-md font-bold'>&#8377; 5000</span><span className='text-sm xl:text-right text-graydust-medium'>per room per night</span> 
+                                    <span className='text-base font-bold'>&#8377; 5000</span><span className='text-sm xl:text-right text-graydust-medium'>per room per night</span> 
                                 </div>
                             </div>
                             </div>
@@ -415,7 +440,7 @@ const Package = () => {
                             <div  className='flex pt-2'>
                                 <div className='w-[60%]'>
                                     <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
                            
                                 </div>
                                 <div className='w-[40%] flex flex-col items-end'>
@@ -436,7 +461,7 @@ const Package = () => {
                             <div  className='flex pt-2'>
                                 <div className='w-[60%]'>
                                     <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
                            
                                 </div>
                                 <div className='w-[40%] flex flex-col items-end'>
@@ -457,7 +482,7 @@ const Package = () => {
                             <div  className='flex pt-2'>
                                 <div className='w-[60%]'>
                                     <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-md'>Palakkad, Kerala</p>
+                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
                            
                                 </div>
                                 <div className='w-[40%] flex flex-col items-end'>
@@ -491,7 +516,7 @@ const Package = () => {
                             <img src={h} className='rounded w-full' alt="" />
                             <div  className='flex flex-col pt-2'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
                                      <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
                            
                                 </div>
@@ -506,7 +531,7 @@ const Package = () => {
                             <img src={h} className='rounded w-full' alt="" />
                             <div  className='flex flex-col pt-2'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
                                      <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
                            
                                 </div>
@@ -522,7 +547,7 @@ const Package = () => {
                             <img src={h} className='rounded w-full' alt="" />
                             <div  className='flex flex-col pt-2'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
                                      <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
                            
                                 </div>
@@ -537,7 +562,7 @@ const Package = () => {
                             <img src={h} className='rounded w-full' alt="" />
                             <div  className='flex flex-col pt-2'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-md  font-bold'>Hotel Paramount</h1>
+                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
                                      <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
                            
                                 </div>

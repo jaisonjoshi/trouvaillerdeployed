@@ -7,14 +7,14 @@ const Locations = require('../models/locationModel')
 const getHotels=async(req,res)=>{
 
 
-    let {min,max,destinations,...others}=req.query;
+    let {min,max,destinations,type,...others}=req.query;
 ///new material
         min = parseInt(req.query.min) || 1;
          max = parseInt(req.query.max) || 99999;
 
          const query = {}
          query.limit=50;
-
+         if(type) query.type = type
          if(destinations) query.locations = {$in: [destinations]}
          if(min) query.cheapestPrice = {$gt: min, $lt: max}
          if(max) query.cheapestPrice = {$gt: min, $lt: max}

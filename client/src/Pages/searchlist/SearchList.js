@@ -268,12 +268,12 @@ const SearchList = ({location}) => {
 
 
         <div className='lg:pt-48 px-4 pb-4 pt-12 sm:px-16 md:px-20 2xl:px-40 flex flex-col gap-4'>
-                <div className='flex gap-2 pt-2 text-sm sm:text-md text-graydust-medium'> <span>Home</span><span>&#47;</span><span className='text-[black]'>Hotels in Goa</span></div>
+                <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[black]'>Hotels in {destination}</span></div>
                            
 
                 
            
-             <h1 className='text-2xl font-bold '>Search results for Hotels</h1>
+             <h1 className='text-2xl font-bold '>Search results for Hotels in {destination}</h1>
 
 
         </div>
@@ -294,7 +294,7 @@ const SearchList = ({location}) => {
                     <div className="pt-2">
                         <div className='flex justify-between items-center'>
                         {item.offers ? <div className="md:py-1 mx-1  flex justify-between items-center">
-                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice} &#8377;</span> <span  className="text-[grey] text-xs md:text-md"><strike>{item.cheapestPrice} &#8377; </strike></span></span>
+                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice} &#8377;</span> <span  className="text-[grey] text-xs md:text-base"><strike>{item.cheapestPrice} &#8377; </strike></span></span>
                                   
                           </div>:
                                                   <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice} &#8377;</span> </span>

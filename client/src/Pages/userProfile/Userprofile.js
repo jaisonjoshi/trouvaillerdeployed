@@ -64,8 +64,8 @@ const Userprofile = () => {
                     </div>
                     <div className="w-[100%] md:w-[50%] flex flex-col gap-[10px] items-start">
                         <h2 className='text-2xl md:text-4xl'>{userdet.username}</h2>
-                        <h4 className='text-md'>{userdet.email}</h4>
-                        <h4 className='text-md'> {userdet.phone}</h4>
+                        <h4 className='text-base'>{userdet.email}</h4>
+                        <h4 className='text-base'> {userdet.phone}</h4>
                         <p className='flex w-[100%] gap-[20px] '>
                         <Link className='rounded py-[3px] px-[8px] bg-evergreen text-sm text-whiteglow' to="/user/update">Update profile</Link>
                         {userdet.google_id?<div></div>:<Link  className='rounded text-sm py-[3px] px-[8px] bg-evergreen text-whiteglow' to="/user/update/password">Change password</Link>

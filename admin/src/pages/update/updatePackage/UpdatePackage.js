@@ -37,7 +37,8 @@ const UpdatePackage =() => {
    const [locations, setLocations] = useState([]);
    const [features, setFeatures] = useState([]);
    const [activities, setActivities] = useState([]);
-  
+   const [offers, setOffers] = useState(false)
+
 
    const [query, setQuery] = useState("");
    const [activity, setActivity] = useState("");
@@ -91,6 +92,12 @@ const UpdatePackage =() => {
         console.log(activities)
        
         
+    }
+
+    const handleofferChange = ()=> {
+        
+        setOffers(!offers)
+        console.log("offer set")
     }
     const handlelocationNext = (e) => {
         e.preventDefault()
@@ -185,7 +192,8 @@ const UpdatePackage =() => {
                 features:old_features,
                 activities:old_activities,
                 locations:old_locations,
-                shedule:old_schedule,
+                shedule:old_schedule,offers:offers,
+
               };
               console.log(updatedPackage)
               await axiosInstance.patch(`/packages/${id}`, updatedPackage);
@@ -295,6 +303,28 @@ const UpdatePackage =() => {
                                     </div>
                                     <button onClick={handleSave}>Add next Day</button> 
                                 </div>
+                            <div className="flex items-center gap-[5px]">
+                                <label>Offer</label>
+                                <input type="checkbox" id="offers" onChange={handleofferChange}/>                                
+                            </div>
+                            {offers && 
+                                <div className='px-3 my-4 py-4 border border-[#e8e8e8] shadow-lg rounded'>
+                                    <div className="form-item">
+                                        <label>Offer Title</label>
+                                        <input type="text" id="offertitle" defaultValue={data.offertitle} onChange={handleChange}/>
+                                    
+                                    </div>
+                                    <div className="form-item">
+                                        <label>Offer description</label>
+                                        <input type="text" id="offerdescription" defaultValue={data.offerdescription} onChange={handleChange}/>
+                                    
+                                    </div>
+                                    <div className="form-item">
+                                        <label>Offer Price</label>
+                                        <input type="text" id="offerprice" defaultValue={data.offerprice} onChange={handleChange}/>
+                                    
+                                    </div>
+                                </div>}
                             
                             
                             <div className="package-form-submit">
