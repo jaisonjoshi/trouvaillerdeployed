@@ -35,7 +35,7 @@ const Offers = () => {
         ): (
         <>
         <div className="bg-[white]  lg:px-10 sm:py-8">
-        <h1 className=" pb-8 font-bold text-lg text-center sm:text-left sm:text-2xl">Offers on Trending Travel Destinations and packages</h1>
+        <h1 className=" pb-8 font-bold text-lg text-center sm:text-left  sm:text-2xl">Offers on Trending Travel Destinations and packages</h1>
           <div className="flex justify-start flex-wrap  px-4 gap-[4%] ">
             {data.map((item,i) => (
               <div key={item._id} className="w-[90%] mx-auto sm:mx-0 sm:w-[48%] lg:w-[30%] pb-3 mb-10 card-shadow cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)}>

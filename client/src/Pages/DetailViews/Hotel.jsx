@@ -265,7 +265,7 @@ const Hotel = () => {
                                     {hote.facilities.length !== 0 &&
                                     <div className='py-6'>
                                     <h1 className='text-lg sm:text-xl font-bold mb-2'>Facilities Available</h1>
-                                    <div className='flex gap-4 py-2'>
+                                    <div className='flex gap-4 py-2 flex-wrap'>
                                         {hote.facilities.map((itm)=> (
                                             <span className='border-2 px-4 py-1 text-sm sm:text-base text-graydust-dark rounded'>{itm}</span>
                                         ))}

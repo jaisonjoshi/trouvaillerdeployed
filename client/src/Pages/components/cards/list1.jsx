@@ -386,18 +386,18 @@ const handlebudgetChange = (e) => {
             </div>
             <Slider {...settings} className="lg:hidden pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
                 <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("international")}><div className='type-card type-card-1 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div></div>
-                 <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("Restaurants")}><div className='type-card type-card-2 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Restaurants</span></div></div>                 
-                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("Resorts")}><div className='type-card type-card-3  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Resorts</span></div></div>                
-                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("Homestays")}><div className='type-card type-card-4  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Homestays</span></div></div>             
-                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("Apartments")}><div className='type-card type-card-5  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Apartments</span></div></div>                 
+                 <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("restaurant")}><div className='type-card type-card-2 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Restaurants</span></div></div>                 
+                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("resort")}><div className='type-card type-card-3  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Resorts</span></div></div>                
+                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("homestay")}><div className='type-card type-card-4  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Homestays</span></div></div>             
+                 <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("apartment")}><div className='type-card type-card-5  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Apartments</span></div></div>                 
 
             </Slider>
             <div className='hidden pt-8 justify-between text-[white] font-bold text-xl lg:flex'>
                  <div className='type-card type-card-1 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("international")}><span className='z-10'>International</span></div>
-                 <div className='type-card type-card-2 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("Restaurants")}><span className='z-10'>Restaurants</span></div>
-                 <div className='type-card type-card-3 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("Resorts")}><span className='z-10'>Resorts</span></div>
-                 <div className='type-card type-card-4 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("Homestays")}><span className='z-10'>Homestays</span></div>
-                 <div className='type-card type-card-5 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("Apartments")}><span className='z-10'>Apartments</span></div>   
+                 <div className='type-card type-card-2 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("restaurant")}><span className='z-10'>Restaurants</span></div>
+                 <div className='type-card type-card-3 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("resort")}><span className='z-10'>Resorts</span></div>
+                 <div className='type-card type-card-4 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("homestay")}><span className='z-10'>Homestays</span></div>
+                 <div className='type-card type-card-5 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={()=> handleTypesubmit("apartment")}><span className='z-10'>Apartments</span></div>   
             </div>
 
                            
@@ -416,7 +416,7 @@ const handlebudgetChange = (e) => {
             <Slider ref={slider} className='slick-m' {...settings_1} >
                 {data2.map((itm, i)=>(
                     <div key={i} className="pr-4 sm:pr-8  ">
-                        <div className='mb-4 h-[100%] pb-3 card-shadow cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
+                        <div className='mb-4 h-[100%] pb-3 card-shadow-1 cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
                             <div className="relative w-full">
                                 <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
                                 <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />

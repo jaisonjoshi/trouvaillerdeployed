@@ -49,7 +49,7 @@ const Home = () => {
         </Slider>
         <div className=" absolute top-0 h-[100vh] flex items-center pl-12 md:pl-16 lg:pl-40 pr-8 md:pr-0">
           <div>
-          <h1 className="text-5xl text-whiteglow font-bold ">
+          <h1 className="text-5xl font-bold text-whiteglow">
             THE BEST TOURS IN JUST 3 CLICKS
           </h1>
           <p className="text-base md:text-lg text-whiteglow py-5">
@@ -67,7 +67,7 @@ const Home = () => {
       {/* Bid section */}
       <div className='flex flex-col-reverse pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52 bg-gradient-to-r from-[rgba(230,255,232,0.37)] to-[rgba(232,255,230,1)] md:pr-12 lg:pr-20 py-8 sm:py-20'>
         <div className='text-center items-center md:items-start md:text-left flex flex-col justify-center gap-[20px] w-[100%] md:w-[50%] 2xl:w-[60%]'>
-          <h1 style={{fontSize:"35px", fontWeight:"800"}}>
+          <h1 style={{fontSize:"35px", fontWeight:"800"}} >
     Bid For Today
           </h1>
           <p className='textnormal text-sm sm:text-base md:text-lg'>
@@ -89,7 +89,7 @@ Know more
 
       <div className="mt-8 sm:mt-20 mb-8 px-4 sm:px-16 md:px-20 2xl:px-40">
         <h1 className='text-center font-bold text-blacky-dark text-2xl sm:text-4xl'>Special Offers</h1>
-                  <p className='text-center textnormal py-4 text-sm  sm:text-base md:text-lg'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo.</p>
+                  <p className='text-center textnormal py-4 text-sm  sm:text-base md:text-lg font-body'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo.</p>
       </div>
 
       <div className="px-4 sm:px-16 md:px-20 2xl:px-40 offer-container">

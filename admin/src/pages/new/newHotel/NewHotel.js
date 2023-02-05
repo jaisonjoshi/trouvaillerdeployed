@@ -198,10 +198,12 @@ const NewHotel =({setOpen}) => {
                                             onChange={handleTypeChange}
                                             className="outline-none">
                                             
-                                        
-                                            <MenuItem value="Villa">Villa</MenuItem>
-                                            <MenuItem value="Hotel">Hotel</MenuItem>
-                                            <MenuItem value="Apartment">Apartment</MenuItem>
+                                            <MenuItem value="international">international</MenuItem>
+                                            <MenuItem value="resort">resort</MenuItem>
+
+                                            <MenuItem value="restaurant">restaurant</MenuItem>
+                                            <MenuItem value="apartment">apartment</MenuItem>
+                                            <MenuItem value="homestay">homestay</MenuItem>
                                         </Select>
                             </div>
                                 <div className="form-item">

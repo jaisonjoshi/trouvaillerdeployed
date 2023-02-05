@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
+
+.font-head{
+    font-family: 'Montserrat', sans-serif !important;
+}
+.font-body{
+    font-family: 'Roboto', sans-serif !important;
+
+}
+
+
 .preloader{
     display: flex;
     opacity: 1 !important;
@@ -304,3 +317,7 @@ button:focus {
     flex-direction: column;
 }
 .slick-track .slick-track { display: none !important; }
+
+
+.card-shadow-1{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;}
