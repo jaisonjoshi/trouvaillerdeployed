@@ -538,7 +538,7 @@ const color = "text-blacky-dark";
             <p className='text-sm sm:text-base lg:text-lg py-2 '>Grab Best deals on homestays, hotels and resorts</p> 
 
             <div className=' pt-8 '>
-            <Slider ref={slider} {...settings1} className='slick-m slick-w-full'>
+            <Slider ref={slider} {...settings1} className='slick-m '>
                 {data2.map((item, i)=>(
 
 <div key={item._id} className="w-[90%] mx-auto sm:mx-0  pb-3 mb-10 card-shadow-1 rounded-md cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)} >
@@ -608,7 +608,7 @@ const color = "text-blacky-dark";
         <div className="px-4 pt-4 sm:pt-20 pb-8 sm:px-16 md:px-20 2xl:px-40">
         <h1 className='text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold'>Top selling packages</h1> 
         <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4'>Explore and choose the best homestays, hotels or properties in most popular destinations</p>  
-        <Slider {...settings3} className=" pt-4 sm:pt-8 pb-4 slick-m slick-w-full">
+        <Slider {...settings3} className=" pt-4 sm:pt-8 pb-4 slick-m ">
         {data2.map((item) => (
             <div className="px-4">
         <Link  to={`/list/package/${item._id}`}><div  key={item._id}  className="w-[100%] sm:w-[80%] sm:w-auto mx-auto sm:mx-0 bg-whiteglow cursor-pointer mb-4 card-shadow rounded pb-4 relative"  >
