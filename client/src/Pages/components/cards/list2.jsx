@@ -433,14 +433,14 @@ const color = "text-blacky-dark";
 
 
                 <div className=" flex justify-center relative bottom-[-3rem] sm:bottom-[-5rem]">
-                    <div className='bg-[white] py-8 border-none rounded-[10px] w-[90%] lg:w-[60%] shadow-search '>
+                    <div className='bg-[white] py-8 border-none rounded-[10px] w-[90%] lg:w-[60%] shadow-search card-shadow-1 '>
                                 
                                 <div className='flex gap-4  justify-center '>
                                        <div className='flex w-[90%] lg:w-[70%] flex-col items-start gap-4 '>
                                             <h1 className='font-bold text-graydust-dark ml-2 text-lg text-left sm:text-xl'>Ready to get started !</h1>
                                             <div className='flex flex-col items-start sm:items-center sm:flex-row w-full gap-4'>
                                             <div className="flex items-center w-[100%] sm:w-[70%] md:w-[60%] lg:w-[100%] border border-[2px] rounded-full border-[#00b777] justify-between focus:ring-0 focus:ring-offset-0 bg-[white]  outline-none py-1 sm:py-2 px-4">
-                                                <input type="text" className="border-0  outline-none w-[100%] h-[100%] text-base text-graydust-medium focus:ring-0 focus:ring-offset-0" placeholder="Enter your Destination" id= "destination" name="destination" onChange={handleSearchChange}/>
+                                                <input type="text" className="border-0  outline-none w-[100%] h-[100%] text-sm text-graydust-medium focus:ring-0 focus:ring-offset-0" placeholder="Enter your Destination" id= "destination" name="destination" onChange={handleSearchChange}/>
 
                                             </div>
                                             <button  className='px-8 py-2 bg-[#2f3560] rounded-full text-white font-bold cursor-pointer' onClick={handleSClick}>Search</button>
@@ -527,35 +527,36 @@ const color = "text-blacky-dark";
 
 
 <div className="bg-[#f2f2f2] py-2 pb-4 sm:pb-10">
-      <div className='mt-6 sm:mt-[4rem] px-4 sm:px-8 pt-8 sm:pb-8  rounded-[10px] shadow-search mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
+      <div className='mt-6 sm:mt-[4rem] px-4 sm:px-8 pt-8 sm:pb-8  sm:rounded-[10px] shadow-search sm:mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
             <div className='flex justify-between items-center'>
-            <h1 className='text-xl text-2xl md:text-3xl font-bold'>Trending discounts on Tour Packages</h1>  
-                <div className='flex gap-3 bg-evergreen-tag rounded-full px-4 py-1'>
-                    <button onClick={() => slider?.current?.slickPrev()}><ArrowBackIosNewSharpIcon sx={{fontSize:20,color:"#03965e"}}/></button>
-                    <button onClick={() => slider?.current?.slickNext()}><ArrowForwardIosSharpIcon sx={{fontSize:20, color:"#03965e"}}/></button>
+            <h1 className='text-md sm:text-2xl md:text-3xl font-medium sm:font-bold'>Trending discounts on Tour Packages</h1>  
+                <div className='flex gap-3 border border-[2px] rounded-full px-2 py-[1px]'>
+                    <button onClick={() => slider?.current?.slickPrev()}><ArrowBackIosNewSharpIcon sx={{fontSize:15,color:"#03965e"}}/></button>
+                    <button onClick={() => slider?.current?.slickNext()}><ArrowForwardIosSharpIcon sx={{fontSize:15, color:"#03965e"}}/></button>
                 </div>
             </div>
             <p className='text-sm sm:text-base lg:text-lg py-2 '>Grab Best deals on homestays, hotels and resorts</p> 
 
             <div className=' pt-8 '>
-            <Slider ref={slider} {...settings1} className='slick-m'>
+            <Slider ref={slider} {...settings1} className='slick-m slick-w-full'>
                 {data2.map((item, i)=>(
 
-<div key={item._id} className="w-[90%] mx-auto sm:mx-0  pb-3 mb-10 card-shadow cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)} >
+<div key={item._id} className="w-[90%] mx-auto sm:mx-0  pb-3 mb-10 card-shadow-1 rounded-md cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)} >
                   <div className="relative w-full">
                   <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
 
                     <img src={item.images[0]} alt="" className="aspect-video skeleton w-full rounded-md h-auto w-full " />
                     <div className="absolute opacity-90 bottom-2 w-[96%] z-50 left-[50%] translate-x-[-50%] flex flex-col rounded-lg p-2">
-                        <h1 className="font-bold text-white  text-sm">For a Thrilling Escape into the wild</h1>
+                        <h1 className="font-bold text-white  text-sm sm:text-base">For a Thrilling Escape into the wild</h1>
                     </div>
                   </div>
 
                   {/*Texts*/}
 
-                  <div className="px-2 py-4">
-                   <div className="flex items center justify-between text-sm h-[2.5rem]"> <span className="w-[70%] text-blacky-medium font-bold text-base sm:text-lg  ">{item.title}</span>
-                    <span className="w-[30%] text-[#03965e] flex items-center text-sm text-right font-bold">{item.duration}</span></div>
+                  <div className="px-2 py-4 flex flex-col items-start">
+                   <div className="flex items-start justify-between  "> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold text-sm sm:text-base card-text ">{item.title}</span>
+                    <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">{item.duration}</span></div>
+                    <h3 className='text-xs px-2 py-[2px] rounded md:text-xl mb-0 bg-[red] text-[white]'><b>15% off</b></h3>   
 
                     <p className="text-sm text-[red] my-2 text-graydust-dark ">Grab upto 30% off on kerala tourist packages</p>
                     
@@ -564,7 +565,7 @@ const color = "text-blacky-dark";
                   {/*Buttons*/}
                   <div className="px-2 flex flex-col" >
                   <div className='flex justify-start items-center gap-2'>
-                   <span className="font-bold text-2xl">4999 &#8377;</span><strike className='text-base text-graydust-medium'><span>5000 &#8377;</span></strike> 
+                   <span className="font-bold text-lg sm:text-2xl">{item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><strike className='text-xs sm:text-base text-graydust-medium'><span>5,000 &#8377;</span></strike> 
                    </div>
                    <span className="text-xs sm:text-sm text-graydust-medium">per person</span>
                     
@@ -596,40 +597,49 @@ const color = "text-blacky-dark";
 
                     <img src={international} className='hidden md:block rounded-[20px]' alt="" />
                     <div className="absolute w-[80%] lg:w-[50%] z-[45] text-[white] flex flex-col items-start gap-2 lg:gap-5 left-[10%] top-[50%] translate-y-[-50%]">
-                    <h1 className=" font-bold text-xl md:text-2xl lg:text-4xl">International Destinations</h1>
+                    <h1 className="font-medium sm:font-bold text-lg md:text-2xl lg:text-4xl">International Destinations</h1>
                     <p className="text-xs sm:text-base lg:text-lg">Trouvailler has been curated the most wonderful international trips for you. Grab the best deals on international travel packages</p>
-                    <span className="flex gap-1 text-sm sm:text-md lg:text-xl items-center border border-[2px] border-[white] rounded-full px-4 py-1 cursor-pointer" onClick={()=>handleTypesubmit("international")}><span>Explore</span> <ArrowForwardIcon /></span>
+                    <span className="flex gap-1 text-sm sm:text-md lg:text-xl items-center border border-[2px] border-[white] my-2 rounded-full px-2 sm:px-4 sm:py-1 cursor-pointer" onClick={()=>handleTypesubmit("international")}><span>Explore</span> <ArrowForwardIcon sx={{fontSize:15}} /></span>
                  
                     </div>
                      </div>
         </div>
 
-        <div className="px-4 pt-8 sm:pt-20 pb-8 sm:px-16 md:px-20 2xl:px-40">
-        <h1 className='text-xl sm:text-2xl md:text-3xl font-bold'>Top selling packages</h1> 
+        <div className="px-4 pt-4 sm:pt-20 pb-8 sm:px-16 md:px-20 2xl:px-40">
+        <h1 className='text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold'>Top selling packages</h1> 
         <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4'>Explore and choose the best homestays, hotels or properties in most popular destinations</p>  
-        <Slider {...settings3} className=" pt-4 sm:pt-8 pb-4 slick-m">
+        <Slider {...settings3} className=" pt-4 sm:pt-8 pb-4 slick-m slick-w-full">
         {data2.map((item) => (
             <div className="px-4">
         <Link  to={`/list/package/${item._id}`}><div  key={item._id}  className="w-[100%] sm:w-[80%] sm:w-auto mx-auto sm:mx-0 bg-whiteglow cursor-pointer mb-4 card-shadow rounded pb-4 relative"  >
               <div className="relative">
               <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
               <img className='w-full aspect-video skeleton rounded-lg' src={item.images[0]} alt="" />
-              <h3 className='text-lg sm:text-xl font-bold z-50 text-whiteglow px-3  absolute bottom-[3px] md:bottom-[10px]'>{item.title}</h3>
+              <h3 className='text-base sm:text-xl font-medium sm:font-bold z-50 text-whiteglow px-3  absolute bottom-[3px] md:bottom-[10px]'>{item.title}</h3>
 
               </div>
            <div className='py-3 mx-3'>
-              <span className="font-bold text-[#03965e]">{item.duration}</span>
-               <p className='text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal  '>{item.description}</p>    
+           <span className="font-bold text-[#03965e]">{item.duration}</span>
+
+               <p className='text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal  '>{item.description}</p>  
+  
            </div>
            
            <div className="py-2 mx-3 ">
-               <div className="flex justify-start gap-1 items-center"><span className=" text-xl font-bold">₹ {item.cheapestPrice}</span> <span className="text-xs text-graydust-dark">Per person</span></div>
+             {item.offers ? (
                <div className="flex flex-col items-start gap-2">
-                 <span className="text-sm text-white bg-[red] px-2 py-1 rounded">15% off</span>
+                 <span className="text-2xs text-white bg-[red] px-2 py-1 rounded">15% off</span>
                  <div className="flex gap-2 items-center">
-                 <span className=" text-xl font-bold">₹ {item.cheapestPrice}</span><strike><span className=" text-sm text-graydust-dark font-bold">₹ {item.cheapestPrice}</span></strike> <span className="text-xs text-graydust-dark">Per person</span>
-                 </div>
-               </div>
+                 <span className="text-lg font-medium sm:font-bold">₹ {item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><strike><span className=" text-xs text-graydust-dark sm:font-bold">₹ {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></strike>
+                 </div>                    <span className="text-2xs text-graydust-dark">Per person</span>
+             </div>
+  ):
+                 
+                 
+                 (
+                  <div className="flex justify-start gap-1 items-center"><span className=" text-lg font-bold">₹ {item.cheapestPrice}</span> <span className="text-xs text-graydust-dark">Per person</span></div>
+
+                 )   }
          
             </div>
               

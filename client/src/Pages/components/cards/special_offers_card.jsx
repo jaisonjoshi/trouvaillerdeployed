@@ -32,68 +32,85 @@ const Offers = () => {
 
                />
          </div>
-        ): (
+        ): ( 
         <>
-        <div className="bg-[white]  lg:px-10 sm:py-8">
-        <h1 className=" pb-8 font-bold text-lg text-center sm:text-left  sm:text-2xl">Offers on Trending Travel Destinations and packages</h1>
+        <div className="bg-[#f2f2f2]  lg:px-10 sm:py-8">
+        <h1 className=" pb-8 font-medium sm:font-bold text-base text-center  sm:text-left  sm:text-2xl">Offers on Trending Travel Destinations and packages</h1>
           <div className="flex justify-start flex-wrap  px-4 gap-[4%] ">
-            {data.map((item,i) => (
-              <div key={item._id} className="w-[90%] mx-auto sm:mx-0 sm:w-[48%] lg:w-[30%] pb-3 mb-10 card-shadow cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)}>
+          {data.map((item, i)=>(
+
+          <div key={item._id} className="w-[90%] mx-auto bg-[white] sm:mx-0 sm:w-[48%] lg:w-[30%] pb-3 mb-10 card-shadow-1 rounded-md cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)} >
                   <div className="relative w-full">
                   <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
 
                     <img src={item.images[0]} alt="" className="aspect-video skeleton w-full rounded-md h-auto w-full " />
                     <div className="absolute opacity-90 bottom-2 w-[96%] z-50 left-[50%] translate-x-[-50%] flex flex-col rounded-lg p-2">
-                        <h1 className="font-bold text-white  text-sm">{item.offertitle}</h1>
+                        <h1 className="font-bold text-white  text-sm sm:text-base">For a Thrilling Escape into the wild</h1>
                     </div>
                   </div>
 
                   {/*Texts*/}
 
-                  <div className="px-2 py-4">
-                   <div className="flex items center justify-between text-sm"> <span className="w-[70%] text-blacky-medium font-bold text-lg sm:text-lg  ">{item.title}</span>
-                    <span className="w-[30%] text-[#03965e] flex items-center text-sm text-right font-bold">{item.duration}</span></div>
+                  <div className="px-2 py-4 flex flex-col items-start">
+                   <div className="flex items-start justify-between text-sm sm:text-lg"> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold  sm:text-lg card-text ">{item.title}</span>
+                    <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">{item.duration}</span></div>
+                    <h3 className='text-xs px-2 py-[2px] rounded md:text-lg mb-0 bg-[red] text-[white]'><b>15% off</b></h3>   
 
-                    <p className="text-sm text-[red] my-2 text-graydust-dark ">{item.offerdescription}</p>
+                    <p className="text-sm text-[red] my-2 text-graydust-dark ">Grab upto 30% off on kerala tourist packages</p>
                     
                   </div>
 
                   {/*Buttons*/}
                   <div className="px-2 flex flex-col" >
                   <div className='flex justify-start items-center gap-2'>
-                   <span className="font-bold text-2xl">{item.offerprice} &#8377;</span><strike className='text-base text-graydust-medium'><span>{item.cheapestPrice} &#8377;</span></strike> 
+                   <span className="font-bold text-lg sm:text-2xl">&#8377; {item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><strike className='text-xs sm:text-base text-graydust-medium'><span>&#8377; {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span></strike> 
                    </div>
                    <span className="text-xs sm:text-sm text-graydust-medium">per person</span>
                     
 
                   </div>
               </div>
-            ))}
+
+
+
+
+
+
+
+               
+                ))}
           </div>
         </div>
         <div className=" lg:px-10 py-4 sm:py-8">
           <h1 className=" pb-8 font-bold text-lg text-center sm:text-left sm:text-2xl">Offers on Hotels, Homestays and properties</h1>
 
-          <div className="flex justify-start flex-wrap  px-4  gap-[4%] sm:pb-20">
-            {data2.map((itm, i)=>(
-              <div key={i} className=" w-[48%] mb-10 md:w-[30%] lg:w-[22%] pb-3 card-shadow cursor-pointer" onClick={()=> navigate(`/list/hotel/${itm._id}`)}>
-              <div className="relative w-full">
-                  <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                  <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
-                  <h3 className='text-base md:text-lg font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
-              </div>
-              <div className='py-1 mx-1 md:mx-3'>
+          <div className="flex justify-start flex-wrap  px-4  gap-[2%] sm:pb-20">
+          {data2.map((itm, i)=>(
+                    <div key={i} className="px-1  w-[49%] mb-10 md:w-[30%] lg:w-[22%] pr-2 sm:px-2 sm:px-4  ">
+                        <div className='mb-4 h-[100%] pb-3 card-shadow-1 bg-[white] rounded-t-lg  cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
+                            <div className="relative w-full">
+                                <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
+                                <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
+                                <h3 className='hidden sm:block sm:text-base md:text-lg sm:font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
+                            </div>
+                            
+                            <h3 className='text-xs z-50 py-1 mx-1 md:mx-3 text-[black] font-semibold sm:hidden  card-text '>{itm.title}</h3>
 
-                  <h3 className='text-sm md:text-base mb-0 '><b>{itm.offertitle}</b></h3>   
-                  <p className="text-[0.75rem] sm:text-[0.875rem] text-blacky-light">{itm.offerdescription}</p> 
-              </div>
-              <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                  <span className=" font-bold"><span  className="text-[grey] text-xs md:text-base"><strike>{itm.cheapestPrice} &#8377; </strike></span><span className="text-sm md:text-lg">&nbsp;{itm.offerprice} &#8377;</span></span>
-                       
-              </div>
+                            <div className='py-1 sm:py-3 mx-1 md:mx-3 flex flex-col gap-1 items-start'>
 
-            </div>
-            ))}
+                                <h3 className='text-xs px-2 py-[2px] rounded md:text-md mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>   
+                                <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">{itm.offerdescription}</p> 
+                            </div>
+                            <div className=" md:py-2 mx-2 md:mx-3 flex justify-between items-center">
+                                <span className=" "><span className="text-sm font-bold md:text-2xl pr-1">&nbsp;{itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><span  className="text-[grey] font-bold text-xs md:text-base"><strike>{itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
+                                
+                            </div>
+                            
+
+
+                        </div>
+                    </div>
+                ))}
           </div></div>
         </>
       )}

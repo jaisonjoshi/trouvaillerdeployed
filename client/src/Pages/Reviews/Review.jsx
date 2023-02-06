@@ -59,7 +59,7 @@ const Reviews = () => {
                         </div>
                       </div>
                      <div className="flex flex-col justify-between ">
-                     <p className="text-center px-2 sm:px-8 pt-8 text-blacky-light text-sm md:text-lg">{item.reviewnote}</p>
+                     <p className="text-center px-2 sm:px-8 pt-8 text-[gray] italic font-medium  text-md md:text-lg"><span className="text-lg">"</span> {item.reviewnote} <span className="text-lg">"</span></p>
                       <div className=" text-center pt-8">
                         <span className="font-medium">{item.author},{item.place}</span>
                         <span> {item.rating}</span>

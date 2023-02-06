@@ -346,7 +346,7 @@ const SearchListPack = ({location}) => {
 
                 
            
-             <h1 className='text-2xl font-bold '>Search results for {destination}</h1>
+             <h1 className='text-lg md:text-2xl font-bold '>Search results for {destination}</h1>
 
 
         </div>
@@ -366,18 +366,18 @@ const SearchListPack = ({location}) => {
                     </div>
                     <div className="pt-2">
                         <div className='flex justify-between items-center'>
-                        {item.offers ? <div className="md:py-1 mx-1  flex justify-between items-center">
-                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice} &#8377;</span> <span  className="text-[grey] text-xs md:text-base"><strike>{item.cheapestPrice} &#8377; </strike></span></span>
+                        {item.offers ?<div className='flex justify-between items-center'> <div className="md:py-1 mx-1  flex justify-between items-center">
+                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> <span  className="text-[grey] text-xs md:text-base"><strike>{item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
                                   
-                          </div>:
-                                                  <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice} &#8377;</span> </span>
+                          </div>                              <span className='mr-1 text-sm bg-[red] text-[white] px-2 py-1 rounded'>{item.offertitle}</span></div>
+:
+                                                  <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> </span>
 
                           }
-                              <span className='mr-1 text-sm bg-[red] text-[white] px-2 py-1 rounded'>{item.offertitle}</span>
                         </div>
                     
-                    <h3 className='text-lg md:text-lg font-bold z-[48] text-graydust-dark px-2  '>{item.title}</h3>
-                      <span className='mx-2 text-sm'>{item.location}</span>
+                    <h3 className='text-base md:text-lg font-medium z-[48] text-[black] px-2  '>{item.title}</h3>
+                      <span className='mx-2 font-bold text-graydust-dark text-sm'>{item.location}</span>
                       
                     </div>
                     

@@ -346,7 +346,7 @@ const SearchListPackType = ({type}) => {
 
                 
            
-             <h1 className='text-2xl font-bold '>Search results for {type} packages</h1>
+             <h1 className='text-lg sm:text-2xl font-bold '>Search results for {type} packages</h1>
 
 
         </div>
@@ -369,17 +369,17 @@ const SearchListPackType = ({type}) => {
                     <div className="pt-2">
                         <div className='flex justify-between items-center'>
                         {item.offers ? <div className="md:py-1 mx-1  flex justify-between items-center">
-                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice} &#8377;</span> <span  className="text-[grey] text-xs md:text-base"><strike>{item.cheapestPrice} &#8377; </strike></span></span>
+                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> <span  className="text-[grey] text-xs md:text-base"><strike>{item.cheapestPrice} &#8377; </strike></span></span>
                                   
                           </div>:
-                                                  <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.offerprice} &#8377;</span> </span>
+                                                  <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> </span>
 
                           }
                               <span className='mr-1 text-sm bg-[red] text-[white] px-2 py-1 rounded'>{item.offertitle}</span>
                         </div>
                     
-                    <h3 className='text-lg md:text-lg font-bold z-[48] text-graydust-dark px-2  '>{item.title}</h3>
-                      <span className='mx-2 text-sm'>{item.location}</span>
+                    <h3 className='textbase md:text-lg font-medium z-[48] text-[black] px-2  '>{item.title}</h3>
+                      <span className='mx-2 text-md font-bold text-graydust-dark'>{item.location}</span>
                       
                     </div>
                     

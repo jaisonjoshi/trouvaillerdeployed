@@ -47,7 +47,7 @@ const List1_card = ({setlocation, settype}) => {
     var settings = {
         dots: true,
         arrows:false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -90,7 +90,7 @@ const List1_card = ({setlocation, settype}) => {
     var settings2 = {
         dots: true,
         arrows:false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -349,14 +349,14 @@ const handlebudgetChange = (e) => {
 
 
                 <div className=" flex justify-center relative bottom-[-3rem] sm:bottom-[-5rem]">
-                    <div className='bg-[white] py-8 border-none rounded-[10px] w-[90%] lg:w-[60%] shadow-search '>
+                    <div className='bg-[white] py-8 border-none rounded-[10px] w-[90%] lg:w-[60%] shadow-search card-shadow-1 '>
                                 
                                 <div className='flex gap-4  justify-center '>
                                        <div className='flex w-[90%] lg:w-[70%] flex-col items-start gap-4 '>
                                             <h1 className='font-bold text-graydust-dark ml-2 text-lg text-left sm:text-xl'>Ready to get started !</h1>
                                             <div className='flex flex-col items-start sm:items-center sm:flex-row w-full gap-4'>
                                             <div className="flex items-center w-[100%] sm:w-[70%] md:w-[60%] lg:w-[100%] border border-[2px] rounded-full border-[#00b777] justify-between focus:ring-0 focus:ring-offset-0 bg-[white]  outline-none py-1 sm:py-2 px-4">
-                                                <input type="text" className="border-0  outline-none w-[100%] h-[100%] text-base text-graydust-medium focus:ring-0 focus:ring-offset-0" placeholder="Enter your Destination" id= "destination" name="destination" onChange={handleSearchChange}/>
+                                                <input type="text" className="border-0  outline-none w-[100%] h-[100%] text-sm text-graydust-medium focus:ring-0 focus:ring-offset-0" placeholder="Enter your Destination" id= "destination" name="destination" onChange={handleSearchChange}/>
 
                                             </div>
                                             <button  className='px-8 py-2 bg-[#2f3560] rounded-full text-white font-bold cursor-pointer' onClick={handleSClick}>Search</button>
@@ -381,7 +381,7 @@ const handlebudgetChange = (e) => {
         </div>
         <div className='mt-[4rem] sm:mt-[11rem] py-8 rounded-[10px]  mx-4 sm:mx-16 md:mx-20 2xl:mx-40 '>
             <div className='flex justify-between items-center'>
-            <h1 className='text-xl sm:text-2xl md:text-3xl font-bold'>Browse by Types</h1>   
+            <h1 className='text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold'>Browse by Types</h1>   
 
             </div>
             <Slider {...settings} className="lg:hidden pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
@@ -402,35 +402,40 @@ const handlebudgetChange = (e) => {
 
                            
         </div>
-        <div className='mt-8 sm:mt-[4rem] px-4 sm:px-8 py-8 rounded-[10px] shadow-search mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
+        <div className='mt-8 sm:mt-[4rem] px-4 sm:px-8 py-8 sm:rounded-[10px] shadow-search sm:mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] '>
             <div className='flex justify-between items-center'>
-            <h1 className='text-xl text-2xl md:text-3xl font-bold'>Best Deals on Hotels</h1>  
-                <div className='flex gap-3 bg-evergreen-tag rounded-full px-4 py-1'>
-                    <button onClick={() => slider?.current?.slickPrev()}><ArrowBackIosNewSharpIcon sx={{fontSize:20,color:"#03965e"}}/></button>
-                    <button onClick={() => slider?.current?.slickNext()}><ArrowForwardIosSharpIcon sx={{fontSize:20, color:"#03965e"}}/></button>
+            <h1 className='text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold'>Best Deals on Hotels</h1>  
+                <div className='flex gap-3  border border-[2px] rounded-full px-2 py-[1px]'>
+                    <button onClick={() => slider?.current?.slickPrev()}><ArrowBackIosNewSharpIcon sx={{fontSize:15,color:"#03965e"}}/></button>
+                    <button onClick={() => slider?.current?.slickNext()}><ArrowForwardIosSharpIcon sx={{fontSize:15, color:"#03965e"}}/></button>
                 </div>
             </div>
             <p className='text-sm sm:text-base lg:text-lg py-2 '>Grab Best deals on homestays, hotels and resorts</p> 
 
             <div className=' pt-8 '>
-            <Slider ref={slider} className='slick-m' {...settings_1} >
+            <Slider ref={slider} className='slick-m ' {...settings_1} >
                 {data2.map((itm, i)=>(
-                    <div key={i} className="pr-4 sm:pr-8  ">
-                        <div className='mb-4 h-[100%] pb-3 card-shadow-1 cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
+                    <div key={i} className="px-1 pr-2 sm:px-2 sm:px-4  ">
+                        <div className='mb-4 h-[100%] pb-3 card-shadow-1 rounded-t-lg  cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
                             <div className="relative w-full">
                                 <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
                                 <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
-                                <h3 className='text-base md:text-xl font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
+                                <h3 className='hidden sm:block sm:text-base md:text-base sm:font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
                             </div>
-                            <div className='py-1 mx-1 md:mx-3'>
+                            
+                            <h3 className='text-xs z-50 py-1 mx-1 md:mx-3 text-[black] font-semibold sm:hidden  card-text '>{itm.title}</h3>
 
-                                <h3 className='text-sm md:text-xl mb-0 '><b>{itm.offertitle}</b></h3>   
-                                <p className="text-xs md:text-base text-blacky-light">{itm.offerdescription}</p> 
+                            <div className='py-1 sm:py-3 mx-1 md:mx-3 flex flex-col gap-1 items-start'>
+
+                                <h3 className='text-xs px-2 py-[2px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>   
+                                <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">{itm.offerdescription}</p> 
                             </div>
-                            <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                                <span className=" font-bold"><span  className="text-[grey] text-xs md:text-base"><strike>{itm.cheapestPrice} &#8377; </strike></span><span className="text-sm md:text-2xl">&nbsp;{itm.offerprice} &#8377;</span></span>
-                                    
+                            <div className=" md:py-2 mx-2 md:mx-3 flex justify-between items-center">
+                                <span className=" "><span className="text-sm font-bold md:text-2xl pr-1">&nbsp;{itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><span  className="text-[grey] font-bold text-xs md:text-base"><strike>{itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
+                                
                             </div>
+                            
+
 
                         </div>
                     </div>
@@ -445,7 +450,7 @@ const handlebudgetChange = (e) => {
        
         <div className='mt-8 sm:mt-[4rem] py-2 sm:py-8 rounded-[10px] mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 '>
             <div className='flex justify-between items-center'>
-            <h1 className='text-xl sm:text-2xl md:text-3xl font-bold'>Popular Destinations</h1> 
+            <h1 className='text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold'>Popular Destinations</h1> 
 
             </div>
             <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4'>Explore and choose the best homestays, hotels or properties in most popular destinations</p>  
