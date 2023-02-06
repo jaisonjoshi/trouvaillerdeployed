@@ -27,6 +27,7 @@ const Package = () => {
 
         hotelNavCon.style.position = "sticky"
         hotelNavCon.style.top = 0;
+       
 
 
     }
@@ -117,7 +118,7 @@ const Package = () => {
 
 
         
-        <div className={` animationset ${anim}`}>
+        <div className={` animationset ${anim} bg-[#f2f2f2] `}>
             <Navbar />
             <Backdrop 
                         sx={{ color: '#fff',opacity:0.1, zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -136,8 +137,8 @@ const Package = () => {
             <div className='mt-[60px] pt-8 px-4 sm:px-16 md:px-20 2xl:px-40'>
                 <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Tour Packages</span><span>&#47;</span><span className='text-[black]'>{pack.title}</span></div>
             </div>
-            <div className='px-6 sm:px-16 md:px-20 2xl:px-40 mt-10'>
-                 <div className='w-[100%] flex flex-col-reverse xl:flex-row'>
+            <div className='px-0 sm:px-16 md:px-20 2xl:px-40 mt-10'>
+                 <div className='w-[100%] bg-[white] pl-4 pr-4 pt-4 pb-12 sm:rounded-[10px] sm:card-shadow flex flex-col-reverse xl:flex-row'>
                        
               
                 
@@ -151,15 +152,13 @@ const Package = () => {
                                  <p className='text-[grey] text-lg'>{pack.location}</p>
 
                         </div>
-                        <div className='flex gap-2 text-base text-graydust-dark items-end'>
-                            <LocationOnIcon /> <span>Kerala, India</span>
-                        </div>
+                        
                         <div className='flex flex-col gap-2 items-start'>
                         <span className='px-4 py-1 bg-evergreen-tag rounded-full'>{pack.category}</span>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nihil eos cumque, amet doloribus, quae maiores assumenda minus eligendi quisquam distinctio ipsam, accusantium exercitationem blanditiis ea odio ab ex id!</p>
                         
                         </div>
-                       <div className='flex  justify-between items-end'>
+                       <div className='flex  justify-between items-start'>
                                     {pack.offers ?
                                     
                                     (<div className=''>
@@ -215,7 +214,7 @@ const Package = () => {
 
                             </div>
                             {pack.offers ? (
-                                    <div className='flex flex-col items-end'>
+                                    <div className='flex w-[40%] flex-col items-end'>
                                     <span className='p-1 bg-[#f8d2d2] text-xs sm:text-base font-bold text-[red]'>Flat 15% off</span>
                                     <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-base text-[grey]'>&#8377; {pack.cheapestPrice} </strike></span>
                                     <span className='text-sm text-[red]'>per night</span>
@@ -241,9 +240,7 @@ const Package = () => {
                                 
                             
                     </div>
-                    <div className='flex gap-2 text-sm sm:text-base text-graydust-dark items-end'>
-                            <LocationOnIcon /> <span>Kerala, India</span>
-                        </div>
+                    
                         <div className='flex flex-col gap-2 items-start'>
                         <span className='block sm:hidden px-4 py-1 bg-evergreen-tag text-sm font-bold sm:text-base rounded-full'>{pack.category}</span>
 
@@ -264,7 +261,7 @@ const Package = () => {
                 <div className='w-[100%] xl:w-[50%]'>
                     {pack.images && 
                         <div className='hidden xl:block'>
-                            <img src={pack.images[0]} className='w-[60%] xl:w-[100%]' alt="" />
+                            <img src={pack.images[0]} className='w-[60%] rounded xl:w-[100%]' alt="" />
                         </div>
 
                         
@@ -295,18 +292,18 @@ const Package = () => {
 
 
 
-                <div className='flex flex-col lg:flex-row gap-[5%]'>
-                        <div className='flex justify-start flex-col w-[100%] lg:w-[70%] 2xl:w-[80%]  mt-20 bg-[white]'>
+                <div className='flex flex-col mb-12 lg:flex-row gap-[5%]'>
+                        <div className='flex justify-start flex-col w-[100%] lg:w-[70%] 2xl:w-[80%] px-8 py-4 sm:rounded-[10px] sm:card-shadow mt-4 sm:mt-20 bg-[white]'>
 
                             <div className='flex border-b border-b-2 gap-2 sm:gap-3 text-sm md:text-lg font-bold w-full hotelNavCon sticky top-[60px] h-[70px] bg-[white] text-graydust-dark' onClick={handleTabChange}>
-                                <div className='px-1 lg:px-4 py-1 flex items-center nav-itm cursor-pointer desc  ' onClick={()=> handleNavigate('desc')} ><a className='no-underline nav-link '>Overview</a></div>
+                                <div className='px-1 lg:px-4 py-1 flex items-center text-sm md:text-xl nav-itm cursor-pointer desc  ' onClick={()=> handleNavigate('desc')} ><a className='no-underline nav-link '>Overview</a></div>
 
-                                <div className='px-1 lg:px-4 py-1  flex items-center nav-itm cursor-pointer fac' onClick={()=> handleNavigate('fac')}><a className='no-underline nav-link'>Itinerary</a></div>
+                                <div className='px-1 lg:px-4 py-1  flex items-center nav-itm text-sm md:text-xl cursor-pointer fac' onClick={()=> handleNavigate('fac')}><a className='no-underline nav-link'>Itinerary</a></div>
 
-                                <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm cursor-pointer things' onClick={()=> handleNavigate('things')}><a className='no-underline nav-link' >Things to do</a></div>
-                                <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm cursor-pointer images' onClick={()=> handleNavigate('images')}><a className='no-underline nav-link' >Images</a></div>
+                                <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm text-sm md:text-xl cursor-pointer things' onClick={()=> handleNavigate('things')}><a className='no-underline nav-link' >Things to do</a></div>
+                                <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm text-sm md:text-xl cursor-pointer images' onClick={()=> handleNavigate('images')}><a className='no-underline nav-link' >Images</a></div>
 
-                                <div className='px-1 lg:px-4 py-1 hidden sm:flex items-center nav-itm cursor-pointer location ' onClick={()=> handleNavigate('location')}><a className='no-underline nav-link' >Location</a></div>
+                                <div className='px-1 lg:px-4 py-1 hidden sm:flex items-center text-sm md:text-xl nav-itm cursor-pointer location ' onClick={()=> handleNavigate('location')}><a className='no-underline nav-link' >Location</a></div>
 
 
                             </div>
@@ -317,8 +314,8 @@ const Package = () => {
 
                                     {pack.description &&
                                         <div className='pt-6 sm:py-6 nav-box' id="desc">
-                                            <h1 className='text-lg sm:text-2xl font-bold mb-2'>{pack.title}</h1>
-                                            <p className='text-sm sm:text-base'>{pack.description}</p>
+                                            <h1 className='text-lg sm:text-xl font-medium mb-2'>{pack.title}</h1>
+                                            <p className='text-sm text-graydust-dark sm:text-base'>{pack.description}</p>
                                             {pack.features.length !== 0 && 
                                                 <div className='pt-3'>
                                                     <h1 className='text-base sm:text-lg font-bold mb-2'>Features</h1>
@@ -387,7 +384,7 @@ const Package = () => {
                                             <div className='pt-6 flex'>
                                                 <div className='flex flex-wrap gap-[3%]'>
                                                     {pack.images.slice(0,6).map((itm)=>(
-                                                        <div className='w-[47%] xl:w-[30%]'><img src={itm} className="w-full" alt="" /></div>
+                                                        <div className='w-[47%] xl:w-[30%] mb-4'><img src={itm} className="w-full" alt="" /></div>
                                                     ))}
                                                 </div>
                                                
@@ -410,7 +407,7 @@ const Package = () => {
                         
                         
                         </div>
-                        <div className='lg:w-[25%] 2xl:w-[20%] my-20 hidden lg:block'>
+                        <div className='lg:w-[30%] 2xl:w-[25%] my-20 rounded-[10px] card-shadow hidden lg:block bg-[white] px-8'>
                             <div className='h-[70px] flex items-center pt-2'>
                             <h1 className='text-lg font-bold py-2 flex items-center text-graydust-dark mb-2'>Similar Packages</h1>
 

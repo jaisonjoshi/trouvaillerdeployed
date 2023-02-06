@@ -227,9 +227,7 @@ nav li a {
 }
 
 .shadow-shedule-card{
- border: 1px solid #1ff8a5;
-
-}
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;}
 .navbar-gradient{
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(140,255,215,1) 0%, rgba(109,246,164,1) 0%, rgba(248,255,255,1) 100%) !important;
 }
