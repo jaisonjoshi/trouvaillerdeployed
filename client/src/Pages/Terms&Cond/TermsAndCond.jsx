@@ -6,7 +6,7 @@ const TermsAndCond = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className='sm:mx-5 lg:mx-44 mt-24 mb-24'>
+            <div className='mx-10 sm:mx-10 lg:mx-44 mt-24 mb-24'>
                 <h1 className='text-2xl font-bold'> Trouvailler Terms and Conditions for  Enterprises Private Limited , an Online Travel Aggregator</h1> 
 
                 <p className='text-blacky-bright font-light'> Last Updated: February 8, 2023</p> <br />
