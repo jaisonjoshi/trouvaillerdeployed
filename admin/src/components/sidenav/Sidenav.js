@@ -17,7 +17,7 @@ const Sidenav = ({isOpen}) => {
 
     const sidenavOpenClass = isOpen ? "sidenav open" : "sidenav";
     return(
-        <div className={`${sidenavOpenClass} ${sideanim}`}>
+        <div className={`${sidenavOpenClass} ${sideanim} bg-[#e6e6e6]`}>
             <ul>
                 <Link to="/users">
                 <li>
@@ -44,11 +44,7 @@ const Sidenav = ({isOpen}) => {
                         <ReviewsIcon className='sidenav-icn'/><span>Reviews</span>
                     </li>
                 </Link>
-                <Link to="/offers">
-                    <li>
-                        <LocalOfferIcon className='sidenav-icn'/><span>Offers</span>
-                    </li>
-                </Link>
+               
                 <Link to="/vendors">
                     <li>
                         <PeopleAltIcon className='sidenav-icn'/><span>Vendors</span>

@@ -9,6 +9,7 @@ import axios from "axios"
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import CropEasy from '../../../components/crop/CropEasy';
+import Chip from '@mui/material/Chip';
 
 const NewPackage =({setOpen}) => {
 
@@ -24,7 +25,18 @@ const NewPackage =({setOpen}) => {
     const [files, setFile] = useState("")
     const [info, setinfo] = useState({});
     
-  
+    const handlefeaturesDelete = (e, value)=> {
+        e.preventDefault();
+        setFeatures(features.filter((itm)=> itm !== value))
+    }
+    const handlelocationsDelete = (e, value)=> {
+        e.preventDefault();
+        setLocations(locations.filter((itm)=> itm !== value))
+    }
+    const handleactivitiesDelete = (e, value)=> {
+        e.preventDefault();
+        setActivities(activities.filter((itm)=> itm !== value))
+    }
     const [shedule,setShedule] = useState([])
     const [dayTitle, setDayTitle] = useState("");
     const [dayDesc, setDayDesc] = useState("");
@@ -218,7 +230,7 @@ const handlelocationNext = (e) => {
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handleNext} className="room-btn">Add feature</button>
+                                <button onClick={handleNext} className=" bg-[#00ff9f] px-4 py-1 rounded">Add feature</button>
 
                                 </div>
                                 <div className="form-item">
@@ -228,7 +240,7 @@ const handlelocationNext = (e) => {
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handleactivityNext} className="room-btn">Add activity</button>
+                                <button onClick={handleactivityNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add activity</button>
 
                                 </div>
                                 <div className="form-item">
@@ -238,7 +250,7 @@ const handlelocationNext = (e) => {
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handlelocationNext} className="room-btn">Add Location tag</button>
+                                <button onClick={handlelocationNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add Location tag</button>
 
                                 </div>
                             <div className="form-item">
@@ -267,9 +279,12 @@ const handlelocationNext = (e) => {
                         </form>
                     </div>
                     <div className="form-test">
+                    <h3 className='mb-4'>Upload preview</h3>
+                    <p className='text-sm mb-4 text-blacky-bright'>Here you can see the preview of what you are going to publish. Please verify all the fields are correct before uploading.</p>
+<hr className='mb-4'/>
                         <div className="img-container">
                         {imgFiles && Object.values(imgFiles).map((pic)=>(
-                                    <img src={
+                                    <img className='mb-4' src={
                                         pic
                                         ? URL.createObjectURL(pic)
                                         : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
@@ -279,39 +294,50 @@ const handlelocationNext = (e) => {
                         </div>
                         <div className="package-details">
                             <h1>{info.title}</h1>
-                            <p>{info.description}</p>
+                            <p className='whitespace-pre-wrap'>{info.description}</p>
                             <div className="package-details-flex">
-                            <h4>{info.duration}</h4><h4>{info.location}</h4>
+                            <h4 className='text-[#03965e] font-bold'>{info.duration}</h4><h4 className='text-lg'>{info.location}</h4>
                             </div>
-                            <div className="package-details-flex-2">
+                            {info.cheapestPrice && <div className="package-details-flex-2">
                             <CurrencyRupeeIcon /><h3>{info.cheapestPrice} /-</h3>
-                            </div>
-                            <h3>Category </h3> <p>{info.category}</p>
-                            <h3>Features </h3>
+                            </div>}
+                             {info.category && <span className='bg-[#caffe6] px-4 py-1 rounded'>{info.category}</span>}
+                            {features.length !== 0 && <div><h3>Features </h3>
                             <div className="package-details-flex">
                                 {features && features.map((obj)=>(
-                                    <span>{obj}</span>
-                                ))}
-                            </div>
+                                                <Chip label={obj} onDelete={(e)=> {handlefeaturesDelete(e,obj)}}/>
+                                                ))}
+                            </div></div>}
                             
-                            <h3>Activities</h3>
 
-                            <div className="package-details-flex">
-                                {activities && activities.map((obj)=>(
-                                    <span>{obj}</span>
-                                ))}
+                            {activities && activities.length !== 0 && 
+                                <div>
+                                        <h3>Activities</h3>
+
+                                        <div className="package-details-flex">
+                                            {activities && activities.map((obj)=>(
+                                                <Chip label={obj} onDelete={(e)=> {handleactivitiesDelete(e,obj)}}/>
+                                                ))}
+                                        </div>                                   
+                                </div>
+                            }
+                            {locations && locations.length !== 0 && 
+                            <div>
+                                <h4>Location tags</h4>
+                                <div className="package-details-flex">
+                                    {locations && locations.map((obj)=>(
+                                                <Chip label={obj} onDelete={(e)=> {handlelocationsDelete(e,obj)}}/>
+                                                ))}
+                                </div>
+
                             </div>
-                            <h4>Location tags</h4>
-                            <div className="package-details-flex">
-                                {locations && locations.map((obj)=>(
-                                    <span>{obj}</span>
-                                ))}
-                            </div>
+                            }
                             
-                            <h3>Rating value {info.rating}</h3>
+                            
+                            {info.rating && <h4>Rating value {info.rating}</h4>}
                             {/* <h3>Rating type {typeof(info.rating)}</h3> */}
                         </div>
-                        <div className="package-shedule">
+                        {shedule && shedule.length !== 0 &&<div className="package-shedule">
                             <h3>Shedule</h3>
                             <div className="shedule-con">
                                 {shedule.map((obj, i)=> (
@@ -322,7 +348,7 @@ const handlelocationNext = (e) => {
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </div>}
                     </div>
                    </div>
 

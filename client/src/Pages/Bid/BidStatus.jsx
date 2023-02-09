@@ -16,11 +16,16 @@ const BidStatus = () => {
     const userobj = JSON.parse(window.localStorage.getItem('user'))
     const userid = userobj._id;
     const [bid,setbid] = useState([])
-    const {data, loading, error} = useFetch(`/bids?userid=${userid}`);
+    const [prevbids, setprevbids] = useState([])
+    const {data, loading, error} = useFetch(`/bids?userid=${userid}&closed=false`);
+    const {data:data2, loading:loading2} = useFetch(`/bids?userid=${userid}&closed=true`)
     useEffect(()=>{
         setbid(data);
+
     },[data])
-    console.log(data)
+    useEffect(()=> {
+        setprevbids(data2)
+    }, [data2]);
     return (
         <div className={` animationset ${anim}`}>
             <Navbar />
@@ -28,6 +33,12 @@ const BidStatus = () => {
                 <h1 className='text-2xl font-bold text-blacky-bright py-7'>Bid Status</h1>
                 {bid && bid.map((obj,i)=>(
                     <BidStatusCard key={i} bid={obj}/>
+                ))}
+
+                <h1 className='text-2xl font-bold text-blacky-bright py-7'  >Previous Bids</h1>
+                {prevbids && prevbids.map((obj, i)=>(
+                                        <BidStatusCard key={i} bid={obj}/>
+
                 ))}
                 
             </div>

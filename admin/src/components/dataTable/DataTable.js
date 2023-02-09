@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import useFetch from '../../hooks/useFetch';
+import { useEffect, useState } from 'react';
 
 const columns = [
   { field: 'username', headerName: 'username', width: 200 },
@@ -19,17 +20,15 @@ const columns = [
 ];
 
 
-export default function DataTable({url}) {
-  const {data, loading,error} = useFetch(url);
-    console.log(data)
-
-  const rows = data;
+export default function DataTable({row}) {
+  
 
 
   return (
     <div style={{ height: 650, width: '100%' }}>
-      <DataGrid
-        rows={rows}
+     
+       <DataGrid
+        rows={row}
         columns={columns}
         sx={{
           boxShadow:5,
@@ -42,7 +41,7 @@ export default function DataTable({url}) {
         rowsPerPageOptions={[10]}
         getRowId={(row) => row._id}
 
-      />
+      /> 
     </div>
   );
 }

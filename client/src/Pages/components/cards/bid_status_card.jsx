@@ -2,8 +2,20 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 const BidStatusCard = ({bid}) => {
+    const axiosInstance = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+    })
+    const handlewithdraw = async (id) => {
+        try{
+            await axiosInstance.delete(`/bids/${id}`);
+        }catch(err){
+            console.log(err);
+        }
+    }
     
     return (
         <div>
@@ -29,6 +41,9 @@ const BidStatusCard = ({bid}) => {
                     <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-base'><span  ><FontAwesomeIcon icon={solid('person-shelter')} /></span> {bid.roomCount} Room</div>
                     <div className='border-graydust-normal border p-2 mt-2 rounded-lg mr-2 text-blacky-light text-sm md:text-base'>{bid.ac}</div>
                     <div className='border-graydust-normal border p-2 mt-2 rounded-lg text-blacky-light '>Max Amount you bided : {bid.maxAmount}</div>
+                </div>
+                <div className='flex justify-end '>
+                    <button className='px-4 py-1 bg-evergreen rounded text-[white]' onClick={()=> handlewithdraw(bid._id)}>Withdraw your bid</button>
                 </div>
                 <hr className='mt-5 text-graydust-medium' />
                 <details>

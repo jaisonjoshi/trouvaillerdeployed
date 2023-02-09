@@ -135,12 +135,7 @@ const Hotel = () => {
             </div>
             
             <div className='xl:flex xl:flex-row justify-start px-4 sm:px-16 md:px-20 2xl:px-40 pt-12 gap-[5%]' >
-                {/* <Slider className='w-[85%] pb-8 mx-auto md:w-[40%]' {...settings}>
-                {hote.images && hote.images.map((img,i)=>(
-                                <img className='h-auto ' src={img} key={i} alt="Car in road" />
-
-                        ))}
-                    </Slider> */}
+                
 
                    <div className='w-[100%] xl:w-[65%] 2xl:w-[70%]  '>
                    <div className='flex flex-col sm:flex-row w-[100%] gap-[10px] justify-start'>

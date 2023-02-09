@@ -15,10 +15,7 @@ import Hotels from './pages/Hotels/Hotels';
 import NewHotel from './pages/new/newHotel/NewHotel';
 import SingleHotel from './pages/single/singleHotel/SingleHotel';
 import UpdateHotel from './pages/update/updateHotel/UpdateHotel';
-import Offers from './pages/offers/Offers';
-import SingleOffer from './pages/single/singleOffer/SIngleOffer';
-import UpdateOffer from './pages/update/updateOffer/UpdateOffer';
-import NewOffer from './pages/new/newOffer/NewOffer';
+
 import BidsContainer from './pages/bids/BidsContainer';
 import SingleBid from './pages/single/singleBid/SingleBid';
 import { useContext, useMemo } from 'react';
@@ -120,12 +117,7 @@ function App() {
             <Route path='newreview' element={<NewReview  setOpen={setOpen} />} />
 
           </Route>
-          <Route path="offers">
-            <Route index element={<Offers />} />
-            <Route path=":id" element= {<SingleOffer />} />
-            <Route path=':id/update' element={<UpdateOffer />} />
-            <Route path='newoffer' element={<NewOffer />} />
-          </Route>
+         
           <Route path='bids'>
             <Route index element={<BidsContainer />} />
             <Route path=':id' element={<SingleBid />} />

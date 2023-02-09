@@ -45,7 +45,7 @@ const Bidform = () => {
             
               
               const newBid = {
-                ...info,destination:value, username : userobj.username,userid:userobj._id,useremail:userobj.email,userphone:userobj.phone
+                ...info,destination:value, username : userobj.username,userid:userobj._id,useremail:userobj.email,userphone:userobj.phone, closed:false,
               };console.log(newBid)
              
               const res= await axiosInstance.post("/bids", newBid);

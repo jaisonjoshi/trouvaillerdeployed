@@ -16,7 +16,13 @@ const Home =() => {
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
+    const {data:data2, loading:loading2} = useFetch('/bids?limit=5')
+
     const {data,loading,error} = useFetch('/hotels/count')
+    const [homebids,sethomebids] = useState([])
+    useEffect(()=>{
+        sethomebids(data2);
+    }, [data2])
     const [anim, setAnim] = useState("")
     useEffect(()=>{
         window.addEventListener('load', setAnim("show"))
@@ -40,7 +46,9 @@ const Home =() => {
                 </div>
                 <div className="home-bid">
                         <h2>Recent Bid requests</h2>
-                        <BidTable count="5" />
+                        {(homebids != undefined && homebids.length !== 0) ? (<BidTable row={homebids} />) :    (<h1 className='text-center text-base text-[gray] my-12'>You have no bids to show</h1>)}
+
+                        
                     </div>
                 {/* <div className="left">
                     <div className="home-left-header">

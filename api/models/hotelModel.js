@@ -30,6 +30,10 @@ const hotelSchema=new Schema({
         type:String,
         required:true
     },
+    googlelocation : {
+        type:String,
+        
+    },
     locations:{
         type:[String],
         required:true

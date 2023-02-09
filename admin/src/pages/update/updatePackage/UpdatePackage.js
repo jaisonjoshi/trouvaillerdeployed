@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'
 import Navbar from '../../../components/navbar/Navbar';
 import Sidenav from '../../../components/sidenav/Sidenav';
@@ -8,6 +8,8 @@ import axios from "axios"
 import useFecth from '../../../hooks/useFetch';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+import CropEasy from '../../../components/crop/CropEasy';
+import Chip from '@mui/material/Chip';
 
 
 const UpdatePackage =() => {
@@ -16,11 +18,7 @@ const UpdatePackage =() => {
     const id = location.pathname.split("/")[2];
     const {data} = useFecth(`/packages/find/${id}`);
     console.log(data.features);
-    var old_features=data.features;
-    var old_activities=data.activities;
-    var old_locations=data.locations;
-    var old_schedule=data.shedule;
-
+    
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
@@ -46,8 +44,20 @@ const UpdatePackage =() => {
    const [shedule,setShedule] = useState([]);
    const [dayTitle, setDayTitle] = useState("");
    const [dayDesc, setDayDesc] = useState("");
-   
+   const [imgFiles, setImgFiles] = useState([])
 
+   useEffect(()=>{
+    if(data.length !=0){
+        setActivities(data.activities)
+        setFeatures(data.features)
+        setLocations(data.locations)
+        setOffers(data.offers)
+        if(offers){
+            document.getElementById('offers').checked =true;
+        }
+        
+    }
+},[data])
     
 
     const handleChange = (e) => {
@@ -93,6 +103,18 @@ const UpdatePackage =() => {
        
         
     }
+    const handlefeaturesDelete = (e, value)=> {
+        e.preventDefault();
+        setFeatures(features.filter((itm)=> itm !== value))
+    }
+    const handlelocationsDelete = (e, value)=> {
+        e.preventDefault();
+        setLocations(locations.filter((itm)=> itm !== value))
+    }
+    const handleactivitiesDelete = (e, value)=> {
+        e.preventDefault();
+        setActivities(activities.filter((itm)=> itm !== value))
+    }
 
     const handleofferChange = ()=> {
         
@@ -125,7 +147,22 @@ const UpdatePackage =() => {
             setDayDesc(value);
         }
     }
+    const [photoURL, setPhotoURL] = useState("");
+    const [openCrop, setOpenCrop] = useState(false);
 
+    //Declare aspect ration for the cropeasy output image
+    const size = 16/9;
+
+    //calling cropeasy for croping and receiving output image
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if(file){
+            setFile(file);
+            setPhotoURL(URL.createObjectURL(file)); 
+            setOpenCrop(true);
+            console.log(imgFiles)
+        }
+    }
     const handleSave = (e) => {
         e.preventDefault();
         let tempobject = {}
@@ -141,58 +178,34 @@ const UpdatePackage =() => {
     const updatehandleClick = async e => {
         e.preventDefault();
 
-        if(features.length !== 0)
-        {
-            console.log("features array is not empty now");
-            console.log(features);
-            old_features=features;
-            
-        }
-        if(activities.length !== 0)
-        {
-           
-            console.log("activities array is not empty now");
-            console.log(activities);
-            old_activities=activities;
-        }
-        if(locations.length !== 0)
-        {
-            console.log("locations array is not empty now");
-            console.log(locations);
-            old_locations=locations;
-        }
-        if(shedule.length !== 0)
-        {
-            console.log("schedule array is not empty now");
-            console.log(shedule);
-            old_schedule=shedule;
-        }
+       
+       
+       
         try{
-            if(files != ""){
-                 list = await Promise.all(
-                    Object.values(files).map(async (file) => {
-                      const data = new FormData();
-                      data.append("file", file);
-                      data.append("upload_preset", "upload");
-                      const uploadRes = await axiosInstance.post(
+            if(imgFiles != ""){
+                list = await Promise.all(
+                    Object.values(imgFiles).map(async (file) => {
+                        const data = new FormData();
+                        data.append("file", file);
+                        data.append("upload_preset", "upload");
+                        const uploadRes = await axiosInstance.post(
                         "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
                         data
-                      );
-            
-                      const  url  = uploadRes.data.url;
-                      return url;
-                    })
-                  );
-            }
+                        );
+                        const  url  = uploadRes.data.url;
+                        return url;
+                    }) 
+                );
+            }  
             
               
               const updatedPackage = {
                 ...info,
                 images: list,
-                features:old_features,
-                activities:old_activities,
-                locations:old_locations,
-                shedule:old_schedule,offers:offers,
+                features:features,
+                activities:activities,
+                locations:locations,
+                shedule:shedule,offers:offers,
 
               };
               console.log(updatedPackage)
@@ -212,13 +225,16 @@ const UpdatePackage =() => {
             <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newpackage-body">
+            {openCrop &&
+                <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
+            
                     <h1>Update the Package : {data.title}({data._id})</h1>
                     <div className="new-package-box">
                     <div className="newpackageform-container">
                         <form >
                         <div className="form-item-file">
                         <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
-                                <input type="file" name="" id="img-input" multiple onChange={(e) => setFile(e.target.files)}/>
+                                <input type="file" name="" id="img-input" multiple onChange={handleImageChange}/>
                             
                             </div>
                             <div className="form-item">
@@ -259,7 +275,7 @@ const UpdatePackage =() => {
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handlelocationNext} className="room-btn">Add Location tag</button>
+                                <button onClick={handlelocationNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add Location tag</button>
 
                                 </div>
                             
@@ -270,7 +286,7 @@ const UpdatePackage =() => {
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handleNext} className="room-btn">Add feature</button>
+                                <button onClick={handleNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add feature</button>
 
                                 </div>
                                 <div className="form-item">
@@ -280,7 +296,7 @@ const UpdatePackage =() => {
                                 </div>
                                 
                                 <div className="room-btn-box">
-                                <button onClick={handleactivityNext} className="room-btn">Add activity</button>
+                                <button onClick={handleactivityNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add activity</button>
 
                                 </div>
                                 <div className="form-item">
@@ -301,7 +317,10 @@ const UpdatePackage =() => {
                                             <textarea id="sheduleDesc" onChange={handleDayTitleChange} name="dayDesc" placeholder="Enter the day detailing here"/>
                                         </div>
                                     </div>
+                                    <div className='flex justify-end mr-8'>
                                     <button onClick={handleSave}>Add next Day</button> 
+
+                                    </div>
                                 </div>
                             <div className="flex items-center gap-[5px]">
                                 <label>Offer</label>
@@ -334,58 +353,66 @@ const UpdatePackage =() => {
                         </form>
                     </div>
                     <div className="form-test">
+                    <h3 className='mb-4'>update preview</h3>
+                        <p className='text-sm mb-4 text-blacky-bright'>The update preview of the package can be reviewed here before updating. Please keep in mind that if you want to update or add a new image, you have to upload the all images again as there is no provision provided here for adding updating or deleting a single image. For the updation of shedules also, the same follows.</p>
+<hr className='mb-4'/>
+
                         <div className="img-container">
-                           {files && Object.values(files).map((pic)=>(
+                           {imgFiles && Object.values(imgFiles).map((pic)=>(
                                 <img src={
                                     pic
                                       ? URL.createObjectURL(pic)
                                       : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                                   } alt="" />
-                           ))}
+                           ))
+                                  
+                           }
 
                         </div>
                         <div className="package-details">
-                            <h1>{info.title}</h1>
-                            <p>{info.description}</p>
+                        <h3 className='text-[#03965e] font-bold'>{info.duration ? info.duration : data.duration}</h3>
+                            <h3 className='text-2xl font-medium text-[black]'>{info.title ? info.title : data.title}</h3>
+                            <h3 className=''>{info.location? info.location : data.location}</h3>
+
+                            <p>{info.description ? info.description : data.description}</p>
                             <div className="package-details-flex">
-                            <h3>{info.location}</h3><h3>{info.duration}</h3>
                             </div>
-                            <div className="package-details-flex-2">
-                            <CurrencyRupeeIcon /><h2>{info.cheapestPrice} /-</h2>
-                            </div>
+                            
+                             <p className='px-4 py-1 rounded bg-[#00ffa5]'>{info.category ? info.category : data.category}</p>
 
-                            <h3>Category </h3> <p>{info.category}</p>
-
-                            <h4>Location tags</h4>
+                            {locations.length !== 0 && <div><h3>Location tags</h3>
                             <div className="package-details-flex">
                                 {locations && locations.map((obj)=>(
-                                    <span>{obj}</span>
-                                ))}
+                                                <Chip label={obj} onDelete={(e)=> {handlelocationsDelete(e,obj)}}/>
+                                                ))}
                             </div>
+                            </div>}
+
+                            {features.length !== 0 && <div>
                             <h3>Features </h3>
                            
                             <div className="package-details-flex">
-                                {features && features.map((obj)=>(
-                                    <span>{obj}</span>
-                                ))}
-                            </div>
-                            
+                                {features && features.map((obj,i)=>(
+                                                <Chip label={obj} onDelete={(e)=> {handlefeaturesDelete(e,obj)}}/>
+                                                ))}
+                            </div></div>}
+                           {activities.length !== 0 && <div>
                             <h3>Activities</h3>
 
                             <div className="package-details-flex">
                                 {activities && activities.map((obj)=>(
-                                    <span>{obj}</span>
-                                ))}
-                            </div>
+                                                <Chip label={obj} onDelete={(e)=> {handleactivitiesDelete(e,obj)}}/>
+                                                ))}
+                            </div></div>}
                             
                             
-                            <h3>Rating value {info.rating}</h3>
+                            {info.rating ? <h3>Rating value {info.rating}</h3>:<h3> Rating value {data.rating}</h3> }
 
                         </div>
-                        <div className="package-shedule">
+                        {shedule.length !== 0 && <div className="package-shedule">
                             <h2>Shedule</h2>
                             <div className="shedule-con">
-                                {shedule && shedule.map((obj, i)=> (
+                                { shedule.map((obj, i)=> (
                                     <div className="shedule-card">
                                         <h3>Day {i+1}</h3>
                                         <h2>{obj.dayTitle}</h2>
@@ -393,7 +420,20 @@ const UpdatePackage =() => {
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </div>}
+
+                        {offers && 
+                            <div className='offer'>
+                                <h3 className='text-[black]'>You are adding an offer for this hotel</h3>
+                                <div className='offer-con'>
+                                    <span className='offertitle'>{info.offertitle ? info.offertitle : data.offertitle}</span>
+                                    <p>{info.offerdescription ? info.offerdescription : data.offerdescription}</p>
+                                    <span>Price:<span><b>{info.offerprice ? info.offerprice: data.offerprice} &#8377;</b></span></span>
+
+                                </div>
+                            </div>}
+
+
                     </div>
                     </div>
             </div>

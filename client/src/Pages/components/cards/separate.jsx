@@ -139,3 +139,24 @@
                 </Link>
               </div>
             </div>
+
+
+
+
+
+
+<DataGrid className='data-grid'
+                    rows={bids }
+                    columns= {columns.concat(actionColumn)}
+                    sx={{
+                        boxShadow: 5,
+                        my:5,
+                        px:2,
+                        py:2,
+                        fontSize:18,
+                        
+                      }}
+                      pageSize={count}
+                      rowsPerPageOptions={[count]}
+                      getRowId={(row) => row._id}
+                    />

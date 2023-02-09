@@ -11,10 +11,11 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { useEffect, useState } from 'react'
 import { Table } from '@mui/material'
 const SingleBid = () => {
-    const [sidenavOpen, setSideNavOpen] = useState(false)
+    const [sidenavOpen, setSideNavOpen] = useState(true)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
+    const checkboxclosed =  document.querySelector('#closed');
     
    const navigate = useNavigate();
    const [bid, setbid] = useState({})
@@ -23,8 +24,37 @@ const SingleBid = () => {
     const {data, loading, error } = useFetch(`/bids/${id}`)
     useEffect(()=>{
         setbid(data)
+    },[data])
+    useEffect(()=>{
+        if(bid.closed){
+            checkboxclosed.checked = true;
+        }
+    }, [bid])
+    
+    //axios instance initialisation
+    const axiosInstance = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
     })
-   console.log(bid)
+
+    const handleclosedchange = async () => {
+        if(checkboxclosed.checked == true){
+            const updatebid = {
+                closed :true
+            }
+            await axiosInstance.patch(`/bids/${bid._id}`, updatebid)
+            
+
+
+        }
+        else{
+            const updatebid = {
+                closed :false
+            }
+            await axiosInstance.patch(`/bids/${bid._id}`, updatebid)
+        }
+
+       
+    }
    
     return(
 
@@ -134,6 +164,14 @@ const SingleBid = () => {
                     }
                    
                
+                    </div>
+
+                    <div className='my-2 border rounded-[10px] px-4 py-2'>
+                        <h3>Status of the bid</h3>
+                        <div className='flex gap-2 items-center'>
+                            <label> Mark this bid as closed</label>
+                            <input type="checkbox" id="closed" onChange={ handleclosedchange}/>
+                        </div>
                     </div>
                 </div>
 

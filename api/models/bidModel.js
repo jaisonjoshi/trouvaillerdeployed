@@ -56,6 +56,9 @@ const bidSchema=new Schema({
     userphone:{
         type: String,
         default:true
+    },
+    closed:{
+        type:Boolean
     }
 },{timestamps:true})
 //giving a name workout to schema  model

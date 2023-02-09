@@ -87,7 +87,7 @@ console.log(data)
             setLocations(data.locations)
             setOffers(data.offers)
             if(offers){
-                document.getElementById('offers').checked =true;
+                document.querySelector('.offerhotelcheck').checked =true;
             }
             
         }
@@ -367,7 +367,7 @@ console.log(data)
 
                             <div className="flex items-center gap-[5px]">
                                 <label>Offer</label>
-                                <input type="checkbox" id="offers" onChange={handleofferChange}/>                                
+                                <input type="checkbox" id="offers" className='offerhotelcheck' onChange={handleofferChange}/>                                
                             </div>
                                 {offers && 
                                 <div className='px-3 my-4 py-4 border border-[#e8e8e8] shadow-lg rounded'>

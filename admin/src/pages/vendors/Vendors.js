@@ -2,9 +2,10 @@ import Navbar from '../../components/navbar/Navbar';
 import Sidenav from '../../components/sidenav/Sidenav';
 import './vendorlist.scss'
 import { Link, Navigate } from 'react-router-dom';
-import DataTable from '../../components/dataTable/Dtatable';
+import DataTable from '../../components/dataTable/DataTable';
 import { useNavigate } from 'react-router-dom';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import useFetch from '../../hooks/useFetch';
 
 
 const Vendors =() => {
@@ -18,8 +19,12 @@ const navigate=useNavigate()
    const createVendor=()=>{
     navigate('/vendors/newVendor')
    }
+   const [vendors, setVendors] = useState([]);
+   const {data, loading, error} = useFetch("/user?isAdmin=false&isVendor=true")
+   useEffect(()=>{
+       setVendors(data)
+   }, [data])
    
-  const url="/user?isAdmin=false&isVendor=true"
     
         return(
             <div className="vendorlist">
@@ -28,12 +33,13 @@ const navigate=useNavigate()
 
     
                 <div className="vendorlist-body">
+                   <div className='flex justify-between'>   
                    <h2>List of Vendors </h2><br />
-                   <p>List of all vendors</p>
-                           <button onClick={createVendor}> Add Vendor</button>
+                    <button onClick={createVendor} className="px-4 py-1 bg-[#00b771] rounded text-[white]"> Add Vendor</button>
+                   </div>
                          
                          
-                   <DataTable url={url}/>
+                   {vendors != undefined && <DataTable row={vendors}/>}
                 </div>
                 
     

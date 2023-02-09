@@ -56,7 +56,7 @@ const createHotel=async (req,res)=>{
         images,
         description,
         rating,
-        cheapestPrice,locations,features,offertitle, offerdescription, offerprice,offers,
+        cheapestPrice,locations,features,offertitle, offerdescription, offerprice,offers,googlelocation,
         facilities,vendorid}=req.body
     //add to db
     try{
@@ -69,7 +69,7 @@ const createHotel=async (req,res)=>{
         images,
         description,
         rating,
-        cheapestPrice,locations,features,offerdescription,offerprice,offertitle,offers,
+        cheapestPrice,locations,features,offerdescription,offerprice,offertitle,offers,googlelocation,
         facilities,vendorid})
         await Locations.findOneAndUpdate(
             "63b95d422b6c64920c68534e",

@@ -130,6 +130,10 @@
                         border-radius: 50px;
                     }
                 }
+                label{
+                    color: black;
+                    font-size: 1.1rem;
+                }
                 .roomTypes{
                     display: flex;
                     padding: 5px;
@@ -215,4 +219,7 @@
         }
     }
     
+}
+.mb-4{
+    margin-bottom: 1rem;
 }

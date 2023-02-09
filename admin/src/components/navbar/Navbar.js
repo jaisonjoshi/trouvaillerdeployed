@@ -42,7 +42,7 @@ const Navbar = ({onclick}) => {
     
 
     return(
-        <div className={navanim}>
+        <div className={`${navanim}  h-[60px]`} >
             <div className="navbar-brand">
                 <MenuIcon className='navbar-brand-icon' onClick={onclick}/>
                 <Link to="/">

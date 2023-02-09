@@ -35,7 +35,7 @@ const createBid=async (req,res)=>{
         roomCount,
         maxAmount,
         accepted,
-        username,useremail,userid,userphone
+        username,useremail,userid,userphone,closed
 
 }=req.body
     //add to db
@@ -49,7 +49,7 @@ const createBid=async (req,res)=>{
         checkOut,
         accomodation,
         roomCount,
-        maxAmount,
+        maxAmount,closed,
         accepted,username,useremail,userid,userphone})
         sendMsg(req.body.destination)
 

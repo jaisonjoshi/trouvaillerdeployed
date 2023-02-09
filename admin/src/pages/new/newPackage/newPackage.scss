@@ -109,17 +109,8 @@
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                .package-details-flex{
-                    display: flex;
-                    padding: 1rem 0;
-                    justify-content: flex-start;
-                    gap: 3rem;
-                    h4{
-                        padding: 5px 20px;
-                        background-color: #00ff9f;
-                        border-radius: 50px;
-                    }
-                }
+                align-items: flex-start;
+               
                 .package-details-flex-2{
                     display: flex;
                     padding: 1rem 0;

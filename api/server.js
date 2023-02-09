@@ -63,7 +63,7 @@ mongoose.connect(process.env.MONGO_URI,{
    // mongoose.set("useCreateIndex", true);
 
 app.use(cors({
-    origin:["https://trouvailler.com", "https://admin.trouvailler.com", "http://localhost:3000"],
+    origin:["https://trouvailler.com", "https://admin.trouvailler.com", "http://localhost:3000", "http://localhost:3001"],
     methods:"GET,POST,PUT,DELETE,PATCH",
     credentials:true}));
 // app.get("/auth/google",

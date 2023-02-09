@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from '../../components/assets/Green.png'
 
 import axios from "axios";
 import './login.scss'
@@ -50,13 +51,16 @@ const Login = () => {
   return (
     <div className="login-box">
       
-      <div className="login-con">
+      <div className="login-con bg-[white]">
         <div className="login-box-content">
+          <div className="flex justify-center mb-4">
+            <img src={Logo} alt="" />
+          </div>
     <div className="login-head">
-      <h3>Login/SignUp</h3>
+      <h3 className="text-base">Login/SignUp</h3>
     </div>
         
-        <div className=" login-input">
+        <div className=" login-input my-8">
           <input
             type="text"
             className="mx-14 p-3 outline-none border border-transparent border-b-blacky-medium hover:border-b-evergreen duration-500"
@@ -73,23 +77,18 @@ const Login = () => {
           />
         </div>
 
-        <div className=" login-btn">
+        <div className=" login-btn flex justify-center">
           <button
             disabled={loading}
             onClick={handleClick}
-            className=""
+            className="px-4 py-1 bg-[#00b771] rounded text-[white]"
           >
             Login
           </button>
           {error && <span>{error.message}</span>}
         </div>
 
-        <p className="">
-          New here?
-          <Link className="" to="/signup">
-            Signup
-          </Link>
-        </p></div>
+        </div>
       </div>
      {/*  <div className="">
         <img src={require("../../components/assets/profile.jpg")} alt="" className="" />

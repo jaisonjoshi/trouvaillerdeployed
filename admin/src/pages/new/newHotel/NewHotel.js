@@ -222,6 +222,11 @@ const NewHotel =({setOpen}) => {
                                 
                                 </div>
                                 <div className="form-item">
+                                    <label>Google map Location link</label>
+                                    <input type="text" id="googlelocation" onChange={handleChangeLowerCase}/>
+                                
+                                </div>
+                                <div className="form-item">
                                     <label>Room types</label>
                                     <input type="text" id="rooms" onChange={handleUpdateQuery} placeholder={"eg.single bed,double bed"}/>
 
@@ -283,9 +288,9 @@ const NewHotel =({setOpen}) => {
                             </form>
                         </div>
                         <div className="form-test">
-                        <h3>Upload preview</h3>
-                        <p className='text-sm text-blacky-bright'>Here you can see the preview of what you are going to publish. Please verify all the fields are correct before uploading.</p>
-
+                        <h3 className='mb-4'>Upload preview</h3>
+                        <p className='text-sm mb-4 text-blacky-bright'>Here you can see the preview of what you are going to publish. Please verify all the fields are correct before uploading.</p>
+<hr className='mb-4'/>
 
                             <div className="img-container">
                             {imgFiles && Object.values(imgFiles).map((pic)=>(
@@ -293,21 +298,21 @@ const NewHotel =({setOpen}) => {
                                         pic
                                         ? URL.createObjectURL(pic)
                                         : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                                    } alt="" />
+                                    } alt="" className='mb-4'/>
                             ))}
 
                             </div>
                             <div className="package-details">
                             <div className='package-details-head'>
                                 <h2>{info.title}</h2>
-                                <span >{type}</span>
+                                {type && <span >{type}</span>}
 
                             </div> 
 
                             <p>{info.location}</p>
                             <p>{info.address}</p>
 
-                            <p>{info.description}</p>
+                            <p className='whitespace-pre-wrap'>{info.description}</p>
 
                             {rooms.length != 0 &&
                                 <div> 
@@ -359,8 +364,8 @@ const NewHotel =({setOpen}) => {
                             </div>}
                                
 
-                                  
-                                 <h3>Vendor Id {info.vendorid}</h3>
+                                 { info.vendorid &&
+                                 <h3>Vendor Id {info.vendorid}</h3>}
 
 
                             
@@ -369,10 +374,10 @@ const NewHotel =({setOpen}) => {
 
 
                                     
-                                <div className="package-details-flex-2">
+                               { info.cheapestPrice && <div className="package-details-flex-2">
                                 <h2>{info.cheapestPrice} &#8377;</h2>
                                 </div>
-
+}
                                 
 
                             </div>

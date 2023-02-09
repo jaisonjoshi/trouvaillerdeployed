@@ -1,20 +1,14 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import useFecth from '../../hooks/useFetch';
 import './bidTable.scss'
 
-const BidTable = ({count}) => {
+const BidTable = ({dat}) => {
 
 
 
-    const [bids, setBids] = useState([]);
-    const {data, loading, err} = useFecth("/bids");
-    useEffect(() => {
-        setBids(data);
-    },[data]);
+    
 
-   console.log(bids)
     const actionColumn = [
         {
             field : "action",
@@ -41,7 +35,7 @@ const BidTable = ({count}) => {
         { field : 'status', headerName : "Status", width:200,
             renderCell:(params) => {
                 return (
-                    <div className='statusCell'>Accepted by : {params.row.accepted.length}</div>
+                    <div className='statusCell'>Accepted by : { params.row.accepted.length }</div>
                 )
             } 
     }
@@ -49,8 +43,9 @@ const BidTable = ({count}) => {
 
 
     return (
-        <DataGrid className='data-grid'
-                    rows={bids }
+        <div style={{ height: 650, width: '100%' }}>
+            <DataGrid className='data-grid'
+                    rows={dat }
                     columns= {columns.concat(actionColumn)}
                     sx={{
                         boxShadow: 5,
@@ -60,10 +55,12 @@ const BidTable = ({count}) => {
                         fontSize:18,
                         
                       }}
-                      pageSize={count}
-                      rowsPerPageOptions={[count]}
+                      pageSize={10}
+                      rowsPerPageOptions={[10]}
                       getRowId={(row) => row._id}
                     />
+        </div>
+        
                 
     )
 }
