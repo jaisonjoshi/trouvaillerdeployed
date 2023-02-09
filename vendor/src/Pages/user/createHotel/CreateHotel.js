@@ -1,10 +1,6 @@
 
 import { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import Chip from '@mui/material/Chip';
 
 import './createHotel.scss';
 import axios from "axios"
@@ -12,9 +8,9 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import Header from '../../../components/header/Header';
 import Footer from '../../../components/Footer/Footer';
-import CropEasy from '../../../components/crop/CropEasy';
 
-const CreateHotel =({setOpen}) => {
+
+const CreateHotel =() => {
     const [userobj, setUserobj] = useState({})
 
     const axiosInstance = axios.create({
@@ -69,10 +65,6 @@ const handleUpdateLocations = ({ target }) => {
     // Update query onKeyPress of input box
     setLocationitem(target.value)
   }
-  const handleLocationDelete = (e, value)=> {
-        e.preventDefault();
-        setLocations(locations.filter((itm)=> itm !== value))
-  }
   const handlelocationNext = (e) => {
     e.preventDefault()
     //setSearches(searches => [...searches, query])
@@ -92,20 +84,7 @@ const handleUpdateLocations = ({ target }) => {
     console.log(features)
    
     
-
-
 }
-
-    const handleDelete = () => {
-        console.info('You clicked the delete icon.');
-    };
-    const [type, setType] = useState('');
-
-    const handleTypeChange = (event) => {
-        setType(event.target.value);
-    };
-
-
     const navigate = useNavigate();
     const [files, setFile] = useState("")
 
@@ -115,26 +94,12 @@ const handleUpdateLocations = ({ target }) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
     }
     const vendorObj = JSON.parse(window.localStorage.getItem('user'))
-    const size = 16/9;
 
-    const [photoURL, setPhotoURL] = useState("");
-       const [openCrop, setOpenCrop] = useState(false);
-       const [imgFiles, setImgFiles] = useState([])
-       const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if(file){
-            setFile(file);
-            setPhotoURL(URL.createObjectURL(file)); 
-            setOpenCrop(true);
-            console.log(imgFiles)
-        }
-       }
     const handleClick = async e => {
-        setOpen(true)
         e.preventDefault();
         try{
             const list = await Promise.all(
-                Object.values(imgFiles).map(async (file) => {
+                Object.values(files).map(async (file) => {
                   const data = new FormData();
                   data.append("file", file);
                   data.append("upload_preset", "upload");
@@ -147,17 +112,17 @@ const handleUpdateLocations = ({ target }) => {
                   return url;
                 })
               );
+              
               const newHotel = {
                 ...info,
                 images: list,
-                vendorid: vendorObj._id, locations: locations,type: type,rooms:rooms,facilities:facilities,features:features,
+                vendorid: vendorObj._id
               };
               await axiosInstance.post("/hotels", newHotel);
-              navigate('/vendor')
+              console.log(newHotel)
         } catch(err){
             console.log(err)
         }
-        setOpen(false)
         
     }
     
@@ -166,9 +131,7 @@ const handleUpdateLocations = ({ target }) => {
     return(
         <div className="new-hotel">
       <Header setUserobj={setUserobj}/>
-      {openCrop &&
-            <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
-            
+
             <div className="newhotel-body-1">
                     <h1>Create a Hotel</h1>
                     <p>Here you can create a new property and publish to the public. Ensure that all the details are correct before submitting the form.</p>
@@ -177,28 +140,13 @@ const handleUpdateLocations = ({ target }) => {
                             <form >
                             <div className="form-item-file">
                             <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
-                                    <input type="file" name="" id="img-input" onChange={handleImageChange}/><p className='text-[grey]'>You can upload multiple images one at a time</p>
+                                    <input type="file" name="" id="img-input" multiple onChange={(e) => setFile(e.target.files)}/>
                                 
                                 </div>
                                 <div className="form-item">
                                     <label > Title</label>
                                     <input type="text" name="" id="title" onChange={handleChange}/>
                                 
-                                </div>
-                                <div className="form-item">
-                                    <label > Type</label>
-                                        <Select
-                                        
-                                        
-                                            value={type}
-                                            onChange={handleTypeChange}
-                                            className="outline-none"
-                                            
-                                        >
-                                            <MenuItem value="Villa">Villa</MenuItem>
-                                            <MenuItem value="Hotel">Hotel</MenuItem>
-                                            <MenuItem value="Apartment">Apartment</MenuItem>
-                                        </Select>
                                 </div>
                                 <div className="form-item">
                                     <label>Description</label>
@@ -216,8 +164,8 @@ const handleUpdateLocations = ({ target }) => {
 
                                 </div>
                                 
-                                <div className="room-btn-box flex justify-end">
-                                <button onClick={handleNext} className="room-btn bg-evergreen px-4 py-1 rounded">Add room type</button>
+                                <div className="room-btn-box">
+                                <button onClick={handleNext} className="room-btn">Add room type</button>
 
                                 </div>
                                 <div className="form-item">
@@ -226,8 +174,8 @@ const handleUpdateLocations = ({ target }) => {
 
                                 </div>
                                 
-                                <div className="room-btn-box flex justify-end">
-                                <button onClick={handleFacility} className="room-btn bg-evergreen px-4 py-1 rounded">Add facility</button>
+                                <div className="room-btn-box">
+                                <button onClick={handleFacility} className="room-btn">Add facility</button>
 
                                 </div>
                                 <div className="form-item">
@@ -236,8 +184,8 @@ const handleUpdateLocations = ({ target }) => {
 
                                 </div>
                                 
-                                <div className="room-btn-box flex justify-end">
-                                <button onClick={handlefeatureNext} className="room-btn bg-evergreen px-4 py-1 rounded">Add features</button>
+                                <div className="room-btn-box">
+                                <button onClick={handlefeatureNext} className="room-btn">Add facility</button>
 
                                 </div>
                                 <div className="form-item">
@@ -246,8 +194,8 @@ const handleUpdateLocations = ({ target }) => {
 
                                 </div>
                                 
-                                <div className="room-btn-box flex justify-end">
-                                <button onClick={handlelocationNext} className="room-btn bg-evergreen px-4 py-1 rounded">Add locations</button>
+                                <div className="room-btn-box">
+                                <button onClick={handlelocationNext} className="room-btn">Add room type</button>
 
                                 </div>
                             
@@ -256,7 +204,6 @@ const handleUpdateLocations = ({ target }) => {
                                     <input type="text" id="cheapestPrice" onChange={handleChange}/>
                                 
                                 </div>
-                                
                                 <div className="hotel-form-submit">
                                     <button onClick={handleClick}>Create Hotel</button>
 
@@ -269,9 +216,8 @@ const handleUpdateLocations = ({ target }) => {
 
                             <h3>Upload preview</h3>
                             <p>Here you can see the preview of what you are going to publish. Please verify all the fields are correct before uploading.</p>
-                            <hr className='bg-[grey]'></hr>
                             <div className="img-container">
-                            {imgFiles && Object.values(imgFiles).map((pic)=>(
+                            {files && Object.values(files).map((pic)=>(
                                     <img src={
                                         pic
                                         ? URL.createObjectURL(pic)
@@ -281,12 +227,8 @@ const handleUpdateLocations = ({ target }) => {
 
                             </div>
                             <div className="package-details">
-                                <div className='flex justify-between items-center'>
                                 <h2>{info.title? info.title: "Hotel Name"}</h2>
-                                <span className='px-4 py-1 bg-evergreen rounded-full'>{type}</span>
-
-                                </div>
-                                <p>{info.description? info.description: "This is the decscription of your hotel"}</p>
+                                <p>{info.description? info.description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}</p>
                                
                                  <p className='loc-tag'>{info.location? info.location:"Location"}</p>
                                <div> <label>Room Type</label>
@@ -294,7 +236,7 @@ const handleUpdateLocations = ({ target }) => {
                                 
                                 {rooms && rooms.map((obj, i)=> (
                                     <div >
-                                        <span className='px-2 py-1 rounded-full bg-evergreen'>{obj}</span>
+                                        <p>{obj}</p>
                                       
                                     </div>
                                 ))}
@@ -306,7 +248,7 @@ const handleUpdateLocations = ({ target }) => {
                                 
                                 {facilities.map((obj, i)=> (
                                     <div >
-                                        <span className='px-2 py-1 rounded-full bg-evergreen'>{obj}</span>
+                                        <p>{obj}</p>
                                       
                                     </div>
                                 ))}
@@ -316,11 +258,11 @@ const handleUpdateLocations = ({ target }) => {
                             <label>Location tags</label>
                             <div className='roomTypes'>
                                 
-                                {locations && locations.map((obj, i)=> (
-                                   
-                                        <Chip label={obj} onDelete={(e)=> {handleLocationDelete(e,obj)}}/>
+                                {locations.map((obj, i)=> (
+                                    <div >
+                                        <p>{obj}</p>
                                       
-                                 
+                                    </div>
                                 ))}
                                 
                             </div>
@@ -329,8 +271,10 @@ const handleUpdateLocations = ({ target }) => {
                             <div className='roomTypes'>
                                 
                                 {features.map((obj, i)=> (
-                                        <Chip label={obj} onDelete={handleDelete}/>
+                                    <div >
+                                        <p>{obj}</p>
                                       
+                                    </div>
                                 ))}
                                 
                             </div>

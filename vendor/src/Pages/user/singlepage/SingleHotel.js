@@ -9,10 +9,6 @@ import { useEffect, useState } from 'react'
 import Header from '../../../components/header/Header';
 import hotelimg from "../../../Assets/hotel.jpg"
 import Footer from '../../../components/Footer/Footer';
-import BarLoader from "react-spinners/BarLoader";
-
-
-
 const SingleHotel = () => {
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
@@ -46,24 +42,7 @@ const SingleHotel = () => {
       <Header setUserobj={setUserobj}/>
 
             <div className="singlehotel-container">
-               {loading ?  
-               
-               (
-                <div className='loading-div'>
-                <BarLoader
-     
-     
-                    color={'#32fca7'}
-                    loading={loading}
-     
-                    size={15}
-     
-                    />
-              </div>
-             )
-               
-               
-               : (
+               {loading ? ("loading ") : (
                     <div className="singlehotel">
                    
                     <div className="singlehotel-body">
@@ -88,30 +67,14 @@ const SingleHotel = () => {
                         </div>
                         <div className="singlehotel-body-right">  
                             <div className="content">
-                                <div className='flex justify-start gap-[30px] items-center '>
                                 <h1 className='p-0'>{hotel.title}</h1>
-                                {hotel.type &&
-                                                                <span className='px-4 py-1 rounded-full bg-evergreen'>{hotel.type}</span>
-                                                            }
+                                <div className="flex-container">
+                                    <RoomOutlinedIcon /><p>Munnar</p>
                                 </div>
                                 <div className="flex-container">
-                                    <RoomOutlinedIcon /><p>{hotel.location  }</p>
+                                <CurrencyRupeeOutlinedIcon /><h3>7000 /-</h3>
+
                                 </div>
-                               
-                                {
-                                    hotel.offers ? 
-                                    <div>
-                                    <span className='p-1 bg-[#f8d2d2] text-[red]'>{hotel.offertitle}</span>
-                                    <p className='mt-2'>{hotel.offerdescription}</p>
-                                    <span ><strike className='text-[grey]'>{hotel.cheapestPrice} &#8377;</strike><span className='text-2xl ml-3'><b>{hotel.offerprice} &#8377;</b></span></span>
-                                    </div>  
-                                    :
-
-                                    <div className="flex-container">
-                                        <CurrencyRupeeOutlinedIcon /><h3>{hotel.cheapestPrice} /-</h3>
-
-                                    </div>
-                                }
                             </div>
                             <div className="singlehotel-btngrp">
                             <button className='singlehotel-btn' onClick={() => handlehotelUpdate(id)}>Update Hotel</button>
@@ -121,40 +84,18 @@ const SingleHotel = () => {
 
                     </div>
                    
-                    {hotel.rooms && <div>
-                                    {hotel.rooms.length != 0 &&
-                                    <>
-                                        <h5>Available rooms</h5>
-                                        <div  className='flex gap-[10px]'>
-                                       { hotel.rooms.map((itm)=>(
-                                            <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
-                                        ))}</div></>
-                                    }
-                                </div>}
-                                {hotel.facilities && <div >
-                                    {hotel.facilities.length != 0 &&
-                                    <>
-                                        <h5>Facilities</h5>
-                                        <div  className='flex gap-[10px]'>
-                                       { hotel.facilities.map((itm)=>(
-                                            <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
-                                        ))}</div> </>
-                                    }
-                                </div>}
-                                {hotel.features && <div>
-                                    {hotel.features.length !=0  &&
-                                        <>
-                                        <h5>Features or attractions</h5>
-                                        <div  className='flex gap-[10px]'>
-                                        {hotel.features.map((itm)=>(
-                                            <span className='py-1 px-4 rounded-full bg-evergreen'>{itm}</span>
-                                        ))}</div></>
-                                    }
-                                </div>}
+                       {/* <div className="singlehotel-room-det">
+                           
+                            <h>Room types</h><div className="room-tag">{hotel.rooms}</div>
+                            */} <h>Room types</h>
+                                <div>
+
+                               {hotel.rooms && hotel.rooms.map((room) => (<li>{room}</li>))}
+                                </div>
 
                                <div className="singlehotel-body-content">
                                 
-                                 <div> <p className='text-blacky-light'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, repellat dolor labore, voluptates earum, tenetur cum et porro est commodi aperiam minima mollitia perferendis vitae dolore quas ducimus magnam illo!</p></div>
+                                 <div> <h5>Hotel details</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, repellat dolor labore, voluptates earum, tenetur cum et porro est commodi aperiam minima mollitia perferendis vitae dolore quas ducimus magnam illo!</p></div>
                        
                               </div>
                        </div>

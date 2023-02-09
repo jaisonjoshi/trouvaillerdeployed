@@ -27,18 +27,29 @@ const Home = () => {
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
 })
-
-
     
   const [hotels,setHotels] = useState([])
   const {data, loading,error } = useFetch(`/hotels?vendorid=${user._id}`)
   useEffect(()=>{
-    setHotels(data)
-  }, [data])
-
-  
-   
-
+      setHotels(data);
+      
+     
+  },[data])
+  const [url ,setUrl] = useState("")
+  useEffect(()=>{
+    if(hotels.length != 0){
+      setUrl("/bids?")
+      hotels.map((hotel)=>{
+        return hotel.locations.map((obj)=>{
+          setUrl(url+"destination="+ obj +"&")
+        })
+      })
+    }
+    else{
+      setUrl("/bids?destination=nojj")
+    }
+    console.log(url)
+  },[hotels])
   
   //logout code fetching
   const handleClick = async (e) => {
@@ -77,7 +88,7 @@ const Home = () => {
                          
                         </div>
                         <div className="pc-body">
-                        <HomeBid hotels={hotels}/>
+                        <HomeBid url={url}/>
 
                             
                          

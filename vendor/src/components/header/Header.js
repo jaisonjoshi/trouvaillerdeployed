@@ -1,5 +1,5 @@
 import './header.scss'
-import {useContext, useEffect} from 'react'
+import {useContext, useEffect, useState} from 'react'
 import { AuthContext } from '../context/AuthContext';
 import logo from '../../Assets/logo.png'
 import Slider from "react-slick";
@@ -12,7 +12,15 @@ import "slick-carousel/slick/slick-theme.css";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
+import {useNavigate} from "react-router-dom"
+import axios from "axios";
+
 const Header = ({setUserobj}) => {
+
+    const axiosInstance = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+    })
+    const navigate = useNavigate();
     const settings = {
         infinite: true,
        
@@ -37,6 +45,25 @@ const Header = ({setUserobj}) => {
             setUserobj(data)
 
         },[data])
+
+        //logout
+        const handleClick = async (e) => {
+            e.preventDefault();
+            dispatch({ type: "LOGOUT" });
+            try {
+              const res = await axiosInstance.get("/auth/logout");
+              localStorage.removeItem("user");
+              if(res){
+              
+              navigate("/login");
+        
+                                  }
+              
+            } catch (err) {
+              dispatch({ type: "LOGOUT", payload: {message:"logged out"} });
+            }
+          };
+        //
     return(
         <div className="header">
              <Slider {...settings}>
@@ -52,10 +79,11 @@ const Header = ({setUserobj}) => {
             </Slider>
             <div className="header-content">
                 <div className="header-nav">
-                   { data && <div className="prof">
+                    <div className="prof">
                         <img src={data.img} />
-                        <p className='mr-4'>{data.username}</p>
-                    </div>}
+                        <button className='mr-4' onClick={handleClick}>Logout</button>
+                        {/* <p className='mr-4'>{data.username}</p> */}
+                    </div>
                     <div className="nav-items">
                     <Link to="/"><a href="www.trouvailler.com">Home</a></Link>
 
