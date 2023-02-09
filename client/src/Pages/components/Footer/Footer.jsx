@@ -48,7 +48,8 @@ const Footer = () => {
             <img src={Logo} alt="Trouvailler" className='sm:w-100 xl:w-3/4'/>
 </a>          
          
-         <div className='flex justify-evenly'>
+         <div className='flex justify-evenly items-center'>
+           <Link className='mx-4 text-[#e2e2e2] text-xs text-underline' to="/termandconditions">Terms and Conditions</Link>
             <a href="https://www.facebook.com/travelwithtrouvailler/">
               <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faFacebookF} /></div>
             </a>
