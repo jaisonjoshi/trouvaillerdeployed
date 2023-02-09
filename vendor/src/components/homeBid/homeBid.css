@@ -2,7 +2,6 @@
 .home-bid{
     width: 100%;
     display: flex;
-    flex-direction: column;
     gap: 3%;
 }
 .home-bid h1{
