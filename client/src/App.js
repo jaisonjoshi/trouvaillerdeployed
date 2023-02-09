@@ -9,6 +9,7 @@ import {
   Switch,
 }from "react-router-dom";
 import {useState, useEffect} from 'react'
+import TermsAndCond from "./Pages/Terms&Cond/TermsAndCond.jsx"
 import ScrollToTop from "./scrollToTop/scrollToTop.js";
 import Bidform from "./Pages/bidform/bidform.jsx";
 import Home from "./Pages/home/Home.jsx";
@@ -113,6 +114,8 @@ function App() {
 
         <Route path="/list/package/:id" element={<Package/>}/>
         <Route path="/list/hotel/:id" element={<Hotel/>}/>
+        
+        <Route path="/termandconditions" element={<TermsAndCond/>}/>
       </Routes>
     </BrowserRouter>
 }
