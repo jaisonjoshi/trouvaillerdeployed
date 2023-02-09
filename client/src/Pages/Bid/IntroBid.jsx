@@ -59,12 +59,6 @@ const IntroBid = () => {
                 <h1 className='pt-6 text-center font-bold text-2xl'>Frequently asked questions</h1>
                 <div className='py-6'>
                     <FAQ />
-                    <FAQ />
-                    <FAQ />
-                    <FAQ />
-                    <FAQ />
-                    <FAQ />
-                  
                 </div>
             </div>
             <Footer/>
