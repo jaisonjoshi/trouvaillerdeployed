@@ -19,7 +19,8 @@ const navigate=useNavigate();
                 throw error;
             }
         }).catch((err)=>{
-            console.log(err)
+            //console.log(err);
+            alert("An unexpected error occured!");
         })
 
     });

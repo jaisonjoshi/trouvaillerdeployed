@@ -83,7 +83,7 @@ const SingleHotel = () => {
     useEffect(()=>{
         setHotel(data)
     },[data])
-    console.log(data)
+    //console.log(data)
     const handlehotelUpdate = (id) => {
         navigate(`/hotels/${id}/update`)
     }
@@ -91,9 +91,24 @@ const SingleHotel = () => {
         try{
             await axiosInstance.delete(`/hotels/${id}`);
             navigate('/hotels')
-        }catch(err){
-            console.log(err);
         }
+            catch(error){
+                if (error.response && error.response.status==400) {  
+                    
+                    alert('Sorry, no such hotel found');
+                  }
+                  if (error.response && error.response.status==404) {  
+                    
+                    alert('Failed to delete hotel!');
+                  }
+                  else if (error.request) {  
+                        alert('Network error! Please try again later');
+                    }
+                else{
+                    alert(error.message);
+                }
+            }
+        
 
     }
     const handleNavigate = (idval) => {
@@ -107,7 +122,7 @@ const SingleHotel = () => {
                
                 features:clear,
               };
-              console.log(updatedHotel)
+              //console.log(updatedHotel)
               await axiosInstance.patch(`/hotels/${id}`, updatedHotel);
               reFetch();
         }
@@ -130,7 +145,7 @@ const SingleHotel = () => {
                
                 locations:clear,
               };
-              console.log(updatedHotel)
+              //console.log(updatedHotel)
               await axiosInstance.patch(`/hotels/${id}`, updatedHotel);
               reFetch();
               
@@ -147,7 +162,7 @@ const SingleHotel = () => {
                
                 rooms:clear,
               };
-              console.log(updatedHotel)
+             // console.log(updatedHotel)
               await axiosInstance.patch(`/hotels/${id}`, updatedHotel);
               reFetch();
               
@@ -164,7 +179,7 @@ const SingleHotel = () => {
                
                 facilities:clear,
               };
-              console.log(updatedHotel)
+             // console.log(updatedHotel)
               await axiosInstance.patch(`/hotels/${id}`, updatedHotel);
               reFetch();
         }

@@ -6,12 +6,22 @@ import './newVendor.scss';
 import axios from "axios"
 import {useContext,useState} from "react";
 import {AuthContext} from '../../../components/context/AuthContext';
+// var validate = require("react-email-validator");
+// var res = require("react-email-validator");
+
 
 const NewVendor =() => {
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+   // const [emailerr,setEmailerr] = useState(false);
+
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+
     
     //register procedure
 const [credentials, setCredentials] = useState({
@@ -24,10 +34,24 @@ const [credentials, setCredentials] = useState({
     isVendor:true
   });
 
-  const { user, loading, error, dispatch } = useContext(AuthContext);
+  const { user, loading, err, dispatch } = useContext(AuthContext);
+  
+ 
 
     
+  const handleChangeEmail = (e) =>{
 
+    setEmail(e.target.value);
+    if (!emailRegex.test(e.target.value)) {
+      setEmailError('Invalid email address');
+     // setEmailerr(true);
+    } else {
+        
+      setEmailError('');
+      setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+
+    }
+  }
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
@@ -38,24 +62,55 @@ const [credentials, setCredentials] = useState({
     const handleClick = async e => {
        
         e.preventDefault();
-        dispatch({ type: "REGISTER_START" });
+        //dispatch({ type: "REGISTER_VENDOR_START" });
         try {
+
+           if(!emailError)
+           {
 
            
           const res = await axiosInstance.post("/auth/register", credentials);
           //if(res.data.isAdmin){//check this code to control user and admin access to login
           if(res.data){
-          dispatch({ type: "REGISTER_SUCCESS", payload: res.data.details });
+          //dispatch({ type: "REGISTER_VENDOR_SUCCESS", payload: res.data.details });
           
-          navigate("/vendors");
+          navigate("/vendors")
+         
     
                               }
           else{
-            dispatch({type:"REGISTER_FAILURE",payload:{message:"Invalid input for Registration!"}})
-            
+           // dispatch({type:"REGISTER_VENDOR_FAILURE",payload:{message:"Invalid input for Registration!"}})
+            alert("Failed to create new vendor. Please try again.")
           }
-        } catch (err) {
-          dispatch({ type: "REGISTER_FAILURE", payload: {message:"Registration Unsuccessful! Please try again"}});
+        }
+        else{
+            alert('Kindly try again with a valid email id.')
+        }
+        } catch (error) {
+
+            if(error.response){
+            
+            if (error.response && error.response.status==403) {  
+                
+                alert('Sorry, the username already exists!');
+              }
+              else if (error.response && error.response.status==405) {  
+                
+                alert('Sorry, the email id alredy exists!');
+              }
+             
+              else if (error.response && error.response.status==500) {  
+                
+                alert('Unable to create a new vendor. Kindly fill all the mandatory fields.');
+              }
+              else{
+                alert(error.message + '. Please try again later.');
+            }
+            }
+            else{
+                alert(error.message + '. Please try again later.');
+            }
+              
         }
     
     }
@@ -72,26 +127,29 @@ const [credentials, setCredentials] = useState({
                            <form >
                             
                                 <div className="form-item">
-                                    <label > Username</label>
-                                    <input type="text"  id="username" onChange={handleChange}/>
+                                    <label> Username <span style={{ color: "red" }}> *</span></label>
+                                    <input type="text"  id="username" onChange={handleChange} required/>
                                 
                                 </div>
                                 <div className="form-item">
-                                    <label>Email-Id</label>
-                                    <textarea type="email" id="email" onChange={handleChange}/>
+                                    <label>Email-Id <span style={{ color: "red" }}> *</span></label>
+                                    <input type="email" id="email" onChange={handleChangeEmail} required/>
+                                   
                                 
                                 </div>
+                                { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
+
                                 <div className="form-item">
-                                    <label>Phone number</label>
-                                    <input type="tel" id="phone" onChange={handleChange}/>
+                                    <label>Phone number <span style={{ color: "red" }}> *</span></label>
+                                    <input type="tel" id="phone" onChange={handleChange} required/>
+                                </div>
+
+                                <div className="form-item">
+                                    <label>Password <span style={{ color: "red" }}> *</span></label>
+                                    <input type="password" id="password" onChange={handleChange} required/>
                                 
                                 </div>
-                                <div className="form-item">
-                                    <label>Password</label>
-                                    <input type="password" id="password" onChange={handleChange}/>
-                                
-                                </div>
-                                <div className="form-item">
+                                {/* <div className="form-item">
                                     <label>City</label>
                                     <input type="text" id="city" onChange={handleChange}/>
                                     
@@ -102,11 +160,12 @@ const [credentials, setCredentials] = useState({
                                     <label>Country</label>
                                     <input type="text" id="country" onChange={handleChange}/>
                                 
-                                </div>
+                                </div> */}
                                 
                                 <div className="hotel-form-submit">
-                                    <button onClick={handleClick}>Create Vendor</button>
-                                    {error && <span>{error.message}</span>} 
+
+                                    <button  onClick={handleClick}>Create Vendor</button>
+                                    {/* {err && <div style={{ color: "red" }}>{error.message}</div>}  */}
                                 </div>
                             </form>
 

@@ -70,14 +70,14 @@ const SinglePackage = () => {
         ]
     };
     
-    console.log(data)
+    //console.log(data)
     const [clear, setClear] = useState([]);
     const [updateMode,setUpdateMode]=useState(false);
     const [dayTitle, setDayTitle] = useState("");
     const [dayDescUp, setDayDescUp] = useState("");
     const schedule_update=data.shedule;
-    console.log(data.shedule);
-    console.log(schedule_update);
+    //console.log(data.shedule);
+    //console.log(schedule_update);
     //console.log("specific schedule of first day title only "+ schedule_update[0].dayTitle);
 
     const settings = {
@@ -96,33 +96,48 @@ const SinglePackage = () => {
         try{
             await axiosInstance.delete(`/packages/${id}`);
             navigate('/packages')
-        }catch(err){
-            console.log(err);
         }
+            catch(error){
+                if (error.response && error.response.status==400) {  
+                    
+                    alert('Sorry, no such review found');
+                  }
+                  if (error.response && error.response.status==404) {  
+                    
+                    alert('Sorry, no such review found');
+                  }
+                  else if (error.request) {  
+                        alert('Network error! Please try again later');
+                    }
+                else{
+                    alert(error.message);
+                }
+            }
+        
 
     }
 
 
     const handleTitleChange = (e,i) => {
         
-            console.log("index value is "+i);
+            //console.log("index value is "+i);
             
             
              schedule_update[i].dayTitle=e.target.value;
            
-             console.log("new title is"+schedule_update[i].dayTitle);
+            // console.log("new title is"+schedule_update[i].dayTitle);
 
            
         }
     
 
     const handleDescChange = (e,i) => {
-        console.log("index value is "+i);
+        //console.log("index value is "+i);
             
             
              schedule_update[i].dayDesc=e.target.value;
            
-             console.log("new desc is"+schedule_update[i].dayDesc);
+            // console.log("new desc is"+schedule_update[i].dayDesc);
     
     }
     const handleClose = () => {
@@ -140,7 +155,7 @@ const SinglePackage = () => {
                 shedule:schedule_update,
             };
             await axios.patch(`/packages/${id}`, updatedPackage);
-            console.log("package has been updated")
+           // console.log("package has been updated")
 
             reFetch();
         }catch(err){
@@ -157,7 +172,7 @@ const SinglePackage = () => {
            
             shedule:clear,
           };
-          console.log(updatedPackage)
+         // console.log(updatedPackage)
           await axiosInstance.patch(`/packages/${id}`, updatedPackage);
           reFetch();
           
@@ -175,7 +190,7 @@ const SinglePackage = () => {
                
                 locations:clear,
               };
-              console.log(updatedPackage)
+             // console.log(updatedPackage)
               await axiosInstance.patch(`/packages/${id}`, updatedPackage);
               reFetch();
               

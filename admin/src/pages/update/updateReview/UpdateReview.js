@@ -23,39 +23,63 @@ const UpdateReview =() => {
 
     const [info, setinfo] = useState({});
     const id = location.pathname.split("/")[2];
+    let url="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg";
 
 
     const {data} = useFecth(`/reviews/${id}`);
-    console.log(data)
+    //console.log(data)
+    
     
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
     }
     const handleReviewClick = async e => {
         e.preventDefault();
+        try{
+        if(file!=0){
         const data = new FormData();
             data.append("file", file);
             data.append("upload_preset", "upload");
-        try{
+        
             
             const uploadRes = await axiosInstance.post(
                 "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
                 data
               );
 
-              const  {url}  = uploadRes.data;
-                
+                url  = uploadRes.data;
+            }  
             const newReview = {
                 ...info,image:url,
             };
-            console.log(newReview)
+            //console.log(newReview)
             await axiosInstance.patch(`/reviews/${id}`, newReview);
-            console.log("new review has been created")
+            //console.log("new review has been created")
 
              navigate('/reviews')
-        }catch(err){
-            console.log(err)
-        }
+        }catch(error)
+        {
+         
+            if(error.response){
+              if (error.response.status==400) {  
+                
+                alert('Sorry, no such review found');
+              }
+              if (error.response.status==404) {  
+                
+                alert('Sorry, failed to find review!');
+              }
+            }
+              else if (error.request) {  
+                    alert('Network error! Please try again later');
+                }
+            else{
+                alert(error.message);
+            }
+              }
+
+             
+        
         
     }
 
@@ -73,22 +97,22 @@ const UpdateReview =() => {
                         <form >
                         <div className="form-item-file">
                             <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
-                                    <input type="file" name="" id="img-input" onChange={(e) => setFile(e.target.files[0])}/>
+                                    <input type="file" name="" id="img-input" onChange={(e) => setFile(e.target.files[0])} />
                                 
                                 </div>
                             <div className="form-item">
-                                <label > Review</label>
-                                <textarea type="text" name="" id="reviewnote" onChange={handleChange} defaultValue={data.reviewnote}/>
+                                <label > Review<span style={{ color: "red" }}> *</span></label>
+                                <textarea type="text" name="" id="reviewnote" onChange={handleChange} defaultValue={data.reviewnote} required/>
                             
                             </div>
                             <div className="form-item">
-                                <label>Author</label>
-                                <input type="text" id="author" onChange={handleChange} defaultValue={data.author}/>
+                                <label>Author<span style={{ color: "red" }}> *</span></label>
+                                <input type="text" id="author" onChange={handleChange} defaultValue={data.author} required/>
                             
                             </div>
                             <div className="form-item">
-                                <label>Place</label>
-                                <input type="text" id="place" onChange={handleChange} defaultValue={data.place}/>
+                                <label>Place<span style={{ color: "red" }}> *</span></label>
+                                <input type="text" id="place" onChange={handleChange} defaultValue={data.place} required/>
                             
                             </div>
                             

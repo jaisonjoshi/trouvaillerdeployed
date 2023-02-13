@@ -47,7 +47,7 @@ const NewHotel =({setOpen}) => {
         setLocations(locations=>[...locations, locationitem])
         document.getElementById('locations').value = " "
         setLocationitem("")
-        console.log(locations)  
+        //console.log(locations)  
          }
 
     const handleUpdateQuery = ({ target }) => {
@@ -68,9 +68,9 @@ const NewHotel =({setOpen}) => {
     }
     // const handleRoomChange = (e) => {
         const handleChangeLowerCase = (e) => {
-            console.log(e.target.value.toLowerCase())
+            //console.log(e.target.value.toLowerCase())
             setinfo((prev) => ({...prev, [e.target.id] : e.target.value.toLowerCase()}))
-            console.log("in lowercase"+info);
+            //console.log("in lowercase"+info);
         }  
     // }
     const handlefacilitiesDelete = (e, value)=> {
@@ -95,7 +95,7 @@ const NewHotel =({setOpen}) => {
         setRooms(rooms=>[...rooms, query])
         document.getElementById('rooms').value = " "
         setQuery("")
-        console.log(rooms)
+       // console.log(rooms)
        
         
    }
@@ -106,7 +106,7 @@ const NewHotel =({setOpen}) => {
         setFeatures(features=>[...features, feature])
         document.getElementById('features').value = " "
         setFeature("")
-        console.log(features)   
+       // console.log(features)   
    }
 
    const handleFacility = (e) => {
@@ -116,7 +116,7 @@ const NewHotel =({setOpen}) => {
     document.getElementById('facilities').value = " "
     setFacility("")
 
-    console.log(rooms)
+    //console.log(rooms)
    
     
 }
@@ -129,7 +129,7 @@ const NewHotel =({setOpen}) => {
         setFile(file);
         setPhotoURL(URL.createObjectURL(file)); 
         setOpenCrop(true);
-        console.log(imgFiles)
+        //console.log(imgFiles)
     }
    }
 
@@ -158,10 +158,21 @@ const NewHotel =({setOpen}) => {
                 ...info,rooms:rooms,images:list,facilities:facilities,features:features,locations:locations,type:type,
         
               };
-              await axiosInstance.post("/hotels", newHotel);
+         await axiosInstance.post("/hotels", newHotel);
                 navigate('/hotels')
-        } catch(err){
-            console.log(err)
+        } catch(error){
+            //err 1 fill out all feilds
+            //err 2 network error
+            if (error.response) {
+                // The request was made and the server responded with a status code that falls out of the range of 2xx
+                alert('Error creating new hotel. Please fill out all the necessary feilds and try again.');
+               
+              } else if (error.request) {    
+                  alert('Network error! Please try again later.')
+              } 
+                else {
+                    alert(error.message + '. Please try again later.');
+                }
         }
         setOpen(false)
         
@@ -187,27 +198,27 @@ const NewHotel =({setOpen}) => {
                                 <p>click again to upload next image</p>
                                 </div>
                                 <div className="form-item">
-                                    <label > Title</label>
+                                    <label > Title <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" name="" id="title" onChange={handleChange}/>
                                 
                                 </div>
                                 <div className="form-item">
-                                    <label > Type</label>
+                                    <label > Type <span style={{ color: "red" }}> *</span></label>
                                         <Select                                         
                                             value={type}
                                             onChange={handleTypeChange}
                                             className="outline-none">
                                             
-                                            <MenuItem value="international">international</MenuItem>
-                                            <MenuItem value="resort">resort</MenuItem>
+                                            <MenuItem value="hotel">Hotel</MenuItem>
+                                            <MenuItem value="private villa">Private Villa</MenuItem>
 
-                                            <MenuItem value="restaurant">restaurant</MenuItem>
-                                            <MenuItem value="apartment">apartment</MenuItem>
-                                            <MenuItem value="homestay">homestay</MenuItem>
+                                            <MenuItem value="home stay">Home Stay</MenuItem>
+                                            <MenuItem value="resort">Resort</MenuItem>
+                                            <MenuItem value="campsite">Campsite</MenuItem>
                                         </Select>
                             </div>
                                 <div className="form-item">
-                                    <label>Description</label>
+                                    <label>Description <span style={{ color: "red" }}> *</span></label>
                                     <textarea type="text" id="description" onChange={handleChange}/>
                                 
                                 </div>
@@ -217,7 +228,7 @@ const NewHotel =({setOpen}) => {
                             
                             </div>
                                 <div className="form-item">
-                                    <label>Location</label>
+                                    <label>Location <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="location" onChange={handleChangeLowerCase}/>
                                 
                                 </div>
@@ -227,7 +238,7 @@ const NewHotel =({setOpen}) => {
                                 
                                 </div>
                                 <div className="form-item">
-                                    <label>Room types</label>
+                                    <label>Room types <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="rooms" onChange={handleUpdateQuery} placeholder={"eg.single bed,double bed"}/>
 
                                 </div>
@@ -257,7 +268,7 @@ const NewHotel =({setOpen}) => {
 
                                 </div>
                                 <div className="form-item">
-                                    <label>Location tags</label>
+                                    <label>Location tags <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="locations" onChange={handleUpdateLocations} placeholder={"eg.Wayanad,Kerala,India"}/>
 
                                 </div>
@@ -267,7 +278,7 @@ const NewHotel =({setOpen}) => {
 
                                 </div>
                                 <div className="form-item">
-                                    <label>Price</label>
+                                    <label>Price <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="cheapestPrice" onChange={handleChange}/>
                                 
                                 </div>

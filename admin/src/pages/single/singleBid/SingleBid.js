@@ -37,6 +37,7 @@ const SingleBid = () => {
     })
 
     const handleclosedchange = async () => {
+        try{
         if(checkboxclosed.checked == true){
             const updatebid = {
                 closed :true
@@ -52,6 +53,26 @@ const SingleBid = () => {
             }
             await axiosInstance.patch(`/bids/${bid._id}`, updatebid)
         }
+    }
+    catch(error){
+        if(error.response){
+            if (error.response.status==400) {  
+                
+                alert('Sorry, no such hotel found.');
+              }
+              if (error.response.status==404) {  
+                
+                alert('Sorry, unable to find hotel!');
+              }
+            }
+              else if (error.request) {  
+                    alert('Network error! Please try again later');
+                }
+            else{
+                alert(error.message);
+            }
+
+    }
 
        
     }

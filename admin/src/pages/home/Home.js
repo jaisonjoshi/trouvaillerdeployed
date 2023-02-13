@@ -28,7 +28,7 @@ const Home =() => {
         window.addEventListener('load', setAnim("show"))
 
     }, [])
-    console.log(data)
+    //console.log(data)
     return(
         <div className="home">
             <Navbar onclick={handlesidenavOpen}/>
@@ -46,7 +46,7 @@ const Home =() => {
                 </div>
                 <div className="home-bid">
                         <h2>Recent Bid requests</h2>
-                        {(homebids != undefined && homebids.length !== 0) ? (<BidTable row={homebids} />) :    (<h1 className='text-center text-base text-[gray] my-12'>You have no bids to show</h1>)}
+                        {/* {(homebids != undefined && homebids.length !== 0) ? (<BidTable row={homebids} />) :    (<h1 className='text-center text-base text-[gray] my-12'>You have no bids to show</h1>)} */}
 
                         
                     </div>

@@ -12,11 +12,7 @@ const columns = [
     headerName: 'phone',
     width: 200,
     },
-  {
-    field: 'city',
-    headerName: 'City',
-    width: 150,
-  },
+ 
 ];
 
 

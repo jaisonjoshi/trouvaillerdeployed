@@ -29,13 +29,14 @@ const Navbar = ({onclick}) => {
           const res = await axiosInstance.get("/auth/logout");
           localStorage.removeItem("user");
           if(res){
-          
+         alert("You are successfully Logged out!")
           navigate("/login");
     
                               }
           
         } catch (err) {
           dispatch({ type: "LOGOUT", payload: {message:"logged out"} });
+          alert("You are successfully Logged out!")
         }
       };
     //

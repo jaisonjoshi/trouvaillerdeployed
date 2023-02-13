@@ -23,7 +23,7 @@ const UpdateHotel =() => {
 
     //fetching the hotel details
     const {data} = useFecth(`/hotels/find/${id}`);
-console.log(data)
+    //console.log(data)
 
     //collapsible navigation bar code
     const [sidenavOpen, setSideNavOpen] = useState(false)
@@ -57,7 +57,7 @@ console.log(data)
             setFile(file);
             setPhotoURL(URL.createObjectURL(file)); 
             setOpenCrop(true);
-            console.log(imgFiles)
+            //console.log(imgFiles)
         }
     }
 
@@ -101,9 +101,9 @@ console.log(data)
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}));
     }
     const handleChangeLowerCase = (e) => {
-        console.log(e.target.value.toLowerCase())
+       // console.log(e.target.value.toLowerCase())
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value.toLowerCase()}))
-        console.log("in lowercase"+info);
+        //console.log("in lowercase"+info);
     }
 
     //hotel type
@@ -121,7 +121,7 @@ console.log(data)
         setRooms(rooms=>[...rooms, query])
         document.getElementById('rooms').value = " "
         setQuery("")
-        console.log(rooms) ;   
+        //console.log(rooms) ;   
     }
 
     const handleroomsDelete = (e, value)=> {
@@ -140,7 +140,7 @@ console.log(data)
         setLocations(locations=>[...locations, locationitem])
         document.getElementById('locations').value = " "
         setLocationitem("")
-        console.log(locations)  
+       // console.log(locations)  
     }
 
     const handleLocationDelete = (e, value)=> {
@@ -159,7 +159,7 @@ console.log(data)
         setFeatures(features=>[...features, feature])
         document.getElementById('features').value = " "
         setFeature("")
-        console.log(features)
+       // console.log(features)
        
         
    }
@@ -191,7 +191,7 @@ console.log(data)
     const handleofferChange = ()=> {
         
         setOffers(!offers)
-        console.log("offer set")
+        //console.log("offer set")
     }
 
 
@@ -228,9 +228,24 @@ console.log(data)
             //patch request initialisation
             await axiosInstance.patch(`/hotels/${id}`, updatedHotel)
             navigate(`/hotels/${id}`)
-            console.log(updatedHotel)
-        } catch(err){
-            console.log(err)
+           // console.log(updatedHotel)
+        } catch(error){
+            if(error.response){
+            if (error.response.status==400) {  
+                
+                alert('Sorry, no such hotel found.');
+              }
+              if (error.response.status==404) {  
+                
+                alert('Sorry, unable to find hotel!');
+              }
+            }
+              else if (error.request) {  
+                    alert('Network error! Please try again later');
+                }
+            else{
+                alert(error.message);
+            }
         }
     }
 

@@ -18,6 +18,18 @@ const LocalStorage = require("node-localstorage").LocalStorage,
 
 const register = async (req, res, next) => {
   try {
+
+    const username_c = await User.findOne({ username: req.body.username });
+    const email_c = await User.findOne({ email: req.body.email});
+    if(username_c)
+    {
+      return res.status(403).json({error:'Username cannot be same'})  
+    }
+    if(email_c)
+    {
+      return res.status(405).json({error:'Email cannot be same'})  
+    }
+
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
     // User.plugin(passportLocalMongoose);
@@ -51,7 +63,9 @@ const register = async (req, res, next) => {
     await newUser.save();
     res.status(200).send("User has been created.");
   } catch (err) {
-    next(err);
+ 
+          res.status(500).json({error: "Sorry! An unexpected error occurred."})
+
   }
 };
 const login = async (req, res, next) => {
@@ -82,8 +96,8 @@ const login = async (req, res, next) => {
       })
       .status(200)
       .json({ details: { ...otherDetails }, isAdmin, isVendor });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
 

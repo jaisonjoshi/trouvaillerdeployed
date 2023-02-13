@@ -12,7 +12,7 @@ const header = {
     }
 }
 const sendMsg = async (destination) => {
-    console.log(destination,"ypu are seacrching for")
+    //console.log(destination,"ypu are seacrching for")
     const body = { "messaging_product":  "whatsapp",
     "to":  "919562523642",
     "type":  "template",
@@ -38,7 +38,7 @@ const sendMsg = async (destination) => {
     const getVendorPhone = async () => {
         let vendorNums = [];
         const hote = await Hotel.find({ locations: { "$in" : [destination]} });
-        console.log(hote,"set")
+        //console.log(hote,"set")
         await Promise.all(hote.map((h)=>{
             User.findById(h.vendorid).then((res)=>{
                 if(!vendorNums.includes(res.phone)){

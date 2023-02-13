@@ -36,7 +36,7 @@ function App() {
     /* const socket = useMemo(()=>{
       io.connect("http://localhost:4040")
     },[]) */
-
+    const { user} = useContext(AuthContext);
     // cleaner fn using useeffect
     const [loading, setLoading] = useState(true)
     useEffect(()=> {
@@ -87,39 +87,39 @@ function App() {
                    </ProtectedRoute>
                     } />
           <Route path="users">
-            <Route index element={<Userlist />} />
+            <Route index element={user?<Userlist />:<Login/>} />
 
           </Route>
           <Route path="hotels">
-            <Route index element={<Hotels />} />
-            <Route path=":id" element= {<SingleHotel />} />
-            <Route path=':id/update' element={<UpdateHotel />} />
-            <Route path='newhotel' element={<NewHotel setOpen={setOpen}/>} />
+            <Route index element={user?<Hotels />:<Login/>} />
+            <Route path=":id" element= {user?<SingleHotel />:<Login/>} />
+            <Route path=':id/update' element={user?<UpdateHotel />:<Login/>} />
+            <Route path='newhotel' element={user?<NewHotel setOpen={setOpen}/>:<Login/>} />
           
           </Route>
           
 
           <Route path="vendors">
-            <Route index element={<Vendors />} />
+            <Route index element={user?<Vendors />:<Login/>} />
             <Route path='newvendor' element={<NewVendor />} />
           </Route>
 
         
           <Route path="packages">
-            <Route index element={<Packages />} />
+            <Route index element={user?<Packages />:<Login/>} />
             <Route path=":id" element= {<SinglePackage />} />
             <Route path=':id/update' element={<UpdatePackage />} />
             <Route path='newpackage' element={<NewPacakge setOpen={setOpen}/>} />
           </Route>
           <Route path="reviews">
-            <Route index element={<Reviews />} />
+            <Route index element={user?<Reviews />:<Login/>} />
               <Route path=':id/update' element={<UpdateReview />} />
             <Route path='newreview' element={<NewReview  setOpen={setOpen} />} />
 
           </Route>
          
           <Route path='bids'>
-            <Route index element={<BidsContainer />} />
+            <Route index element={user?<BidsContainer />:<Login/>} />
             <Route path=':id' element={<SingleBid />} />
           </Route>
           

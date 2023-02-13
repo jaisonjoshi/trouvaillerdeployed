@@ -17,7 +17,7 @@ const UpdatePackage =() => {
    
     const id = location.pathname.split("/")[2];
     const {data} = useFecth(`/packages/find/${id}`);
-    console.log(data.features);
+    //console.log(data.features);
     
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
@@ -66,7 +66,7 @@ const UpdatePackage =() => {
 
     const handleChangeLowerCase = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value.toLowerCase()}))
-        console.log(info)
+       // console.log(info)
     }
 
     const handleUpdateQuery = ({ target }) => {
@@ -88,7 +88,7 @@ const UpdatePackage =() => {
         setFeatures(features=>[...features, query])
         document.getElementById('features').value = " "
         setQuery("")
-        console.log(features)
+       // console.log(features)
         
        
         
@@ -99,7 +99,7 @@ const UpdatePackage =() => {
         setActivities(activities=>[...activities, activity])
         document.getElementById('activities').value = " "
         setActivity("")
-        console.log(activities)
+      //  console.log(activities)
        
         
     }
@@ -119,7 +119,7 @@ const UpdatePackage =() => {
     const handleofferChange = ()=> {
         
         setOffers(!offers)
-        console.log("offer set")
+       // console.log("offer set")
     }
     const handlelocationNext = (e) => {
         e.preventDefault()
@@ -127,7 +127,7 @@ const UpdatePackage =() => {
         setLocations(locations=>[...locations, locationitem])
         document.getElementById('locations').value = " "
         setLocationitem("")
-        console.log(locations)
+       // console.log(locations)
        
         
     }
@@ -160,7 +160,7 @@ const UpdatePackage =() => {
             setFile(file);
             setPhotoURL(URL.createObjectURL(file)); 
             setOpenCrop(true);
-            console.log(imgFiles)
+           // console.log(imgFiles)
         }
     }
     const handleSave = (e) => {
@@ -208,11 +208,27 @@ const UpdatePackage =() => {
                 shedule:shedule,offers:offers,
 
               };
-              console.log(updatedPackage)
+            //  console.log(updatedPackage)
               await axiosInstance.patch(`/packages/${id}`, updatedPackage);
                 navigate(`/packages/${id}`)
-        } catch(err){
-            console.log(err)
+        } catch(error){
+
+             if(error.response){
+            if (error.response.status==400) {  
+                
+                alert('Sorry, no such package found.');
+              }
+              if (error.response.status==404) {  
+                
+                alert('Sorry, unable to find package!');
+              }
+            }
+              else if (error.request) {  
+                    alert('Network error! Please try again later');
+                }
+            else{
+                alert(error.message);
+            }
         }
        
         

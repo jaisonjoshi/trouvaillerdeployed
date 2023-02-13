@@ -46,7 +46,7 @@ const Login = () => {
       dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
     }
   };
-  console.log(user);
+ // console.log(user);
 
   return (
     <div className="login-box">
