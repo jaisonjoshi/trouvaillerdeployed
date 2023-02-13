@@ -12,27 +12,6 @@ const header = {
     }
 }
 const sendMsg = async (destination) => {
-<<<<<<< HEAD
-    //console.log(destination,"ypu are seacrching for")
-    const body = { "messaging_product":  "whatsapp",
-    "to":  "919562523642",
-    "type":  "template",
-    "template": {  
-        "name":  "sample_shipping_confirmation",
-        "language": {  
-            "code":  "en_US" 
-         }, 
-         "components":[{
-            "type": "body",
-            "parameters":[
-            {
-                "type": "text",
-                "text" : "h"
-            }
-        ]
-    } ]
-=======
->>>>>>> 1cab1a8f5fb5bb957d54471a0822a730f3bfbec0
     
     
     const getVendorPhone = async () => {
