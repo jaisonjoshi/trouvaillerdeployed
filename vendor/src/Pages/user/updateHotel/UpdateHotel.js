@@ -241,6 +241,9 @@ const UpdateHotel =() => {
       <Header/>
 
             <div className="newhotel-body-1">
+            {openCrop &&
+                <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
+            
                     <h1>Update the Hotel : {data.title}</h1>
                     <p>Here you can create a new property and publish to the public. Ensure that all the details are correct before submitting the form.</p>
 
