@@ -1,7 +1,8 @@
+const Hotel=require('../models/hotelModel')
 
 const Bid=require('../models/bidModel')
 const mongoose=require('mongoose')
-const {sendMsg} = require(
+const {sendMsg, sendUsrMsg} = require(
     './whatsappMessageController'
 )
 //get all bids
@@ -9,6 +10,34 @@ const {sendMsg} = require(
 const getBids=async(req,res)=>{
     const bid=await Bid.find(req.query).sort({createdAt:-1})
 res.status(200).json(bid)
+}
+
+
+const getVendorBids = async (req,res)=> {
+    let {vendorid, ...others} = req.query;
+    const query = {}
+
+    if(vendorid) query.vendorid = vendorid;
+    const hotels = await Hotel.find(query);
+    console.log(hotels)
+    const vendorLocations = [];
+    await Promise.all(hotels.map((hotel)=> {
+        if(hotel.locations.length !== 0){
+            hotel.locations.map((itm)=>{
+                if(!vendorLocations.includes(itm)){
+                    vendorLocations.push(itm)
+
+                }
+            })
+        }
+    }))
+    console.log(vendorLocations)
+    const bids = await Bid.find({destination : {$in : vendorLocations}})
+    console.log(bids)
+    res.status(200).json(bids)
+
+   
+
 }
 //get a single bid
 const getBid=async(req,res)=>{
@@ -34,7 +63,7 @@ const createBid=async (req,res)=>{
         accomodation,
         roomCount,
         maxAmount,
-        accepted,
+        accepted,acceptedCount,
         username,useremail,userid,userphone,closed
 
 }=req.body
@@ -49,9 +78,10 @@ const createBid=async (req,res)=>{
         checkOut,
         accomodation,
         roomCount,
-        maxAmount,closed,
+        maxAmount,closed,acceptedCount,
         accepted,username,useremail,userid,userphone})
         sendMsg(req.body.destination)
+        sendUsrMsg(req.body.userphone)
 
     res.status(200).json({bid})
     //console.log("succedded whatsapp")
@@ -93,6 +123,9 @@ const updateBid=async (req,res)=>{
     const bid=await Bid.findOneAndUpdate({_id:id},{
         ...req.body
     })
+    if(req.body.accepted){
+        sendUsrMsg(req.body.userphone)
+    }
     if(!bid){
         return res.status(400).json({error:'No such hotel found'})  
     }
@@ -108,5 +141,6 @@ module.exports={
     getBid,
     getBids,
     deleteBid,
-    updateBid
+    updateBid,
+    getVendorBids
 }

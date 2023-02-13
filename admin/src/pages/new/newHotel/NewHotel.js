@@ -288,7 +288,7 @@ const NewHotel =({setOpen}) => {
                             
                             </div> */}
                                 <div className="form-item">
-                                    <label>Vendor Id</label>
+                                    <label>Vendor ID</label>
                                     <input type="text" id="vendorid" onChange={handleChange}/>
                                 
                                 </div>

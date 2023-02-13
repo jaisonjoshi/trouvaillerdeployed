@@ -16,7 +16,7 @@ const Home =() => {
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
-    const {data:data2, loading:loading2} = useFetch('/bids?limit=5')
+    const {data:data2, loading:loading2} = useFetch('/bids')
 
     const {data,loading,error} = useFetch('/hotels/count')
     const [homebids,sethomebids] = useState([])
@@ -46,7 +46,7 @@ const Home =() => {
                 </div>
                 <div className="home-bid">
                         <h2>Recent Bid requests</h2>
-                        {/* {(homebids != undefined && homebids.length !== 0) ? (<BidTable row={homebids} />) :    (<h1 className='text-center text-base text-[gray] my-12'>You have no bids to show</h1>)} */}
+                        {(typeof homebids !== undefined && homebids.length !== 0) ?  (<BidTable  dat={homebids}/>): (<h2 className='text-[gray] text-base'>Sorry, You have no bids to show. Please check again later</h2>)}
 
                         
                     </div>

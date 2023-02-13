@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Navbar from '../components/navbar/navbar'
 import Footer from '../components/Footer/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,7 +8,10 @@ import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { AuthContext } from '../components/context/AuthContext'
 const Bidform = () => {
+    const { user, dispatch } = useContext(AuthContext);
+
     const [anim, setAnim] = useState("hide")
     const navigate = useNavigate();
     useEffect(()=>{
@@ -39,13 +42,12 @@ const Bidform = () => {
     }
     const handleClick = async e => {
         e.preventDefault();
-        const userobj = JSON.parse(window.localStorage.getItem('user'));
        
         try{
             
               
               const newBid = {
-                ...info,destination:value, username : userobj.username,userid:userobj._id,useremail:userobj.email,userphone:userobj.phone, closed:false,
+                ...info,destination:value, username : user.username,userid:user._id,useremail:user.email,userphone:user.phone, closed:false,acceptedCount:0,
               };console.log(newBid)
              
               const res= await axiosInstance.post("/bids", newBid);

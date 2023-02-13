@@ -34,7 +34,7 @@ const Offers = () => {
          </div>
         ): ( 
         <>
-        <div className="bg-[#f2f2f2]  lg:px-10 sm:py-8">
+        <div className="  lg:px-10 sm:py-8">
         <h1 className=" pb-8 font-medium sm:font-bold text-base text-center  sm:text-left  sm:text-2xl">Offers on Trending Travel Destinations and packages</h1>
           <div className="flex justify-start flex-wrap  px-4 gap-[4%] ">
           {data.map((item, i)=>(

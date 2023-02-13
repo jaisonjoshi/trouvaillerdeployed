@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 
 
 
-const Login = () => {
+const Login = ({setOpen}) => {
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
 })
@@ -34,6 +34,7 @@ const Login = () => {
   };
 
   const handleClick = async (e) => {
+    setOpen(true)
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
@@ -49,6 +50,7 @@ const Login = () => {
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
     }
+    setOpen(false)
   };
 
   const googleSignIn=async(value) => {
@@ -85,13 +87,13 @@ const Login = () => {
   console.log(user);
 
   return (
-    <div className="login-box">
+    <div className="login-box ">
       
 
       
       
-      <div className="login-con">
-      <div className="login-box-content">
+      <div className="login-con bg-[white] ">
+      <div className="login-box-content bg-[white]">
       <div className="login-head">
       <h3>Login/SignUp</h3>
     </div>
@@ -114,19 +116,23 @@ const Login = () => {
           />
         </div>
 
-        <div className=" loginbtn">
+        <div className=" loginbtn flex flex-col items-center justify-center">
+        {error && <p className="text-center text-[red]">{error.message}</p>}
+
           <button
             disabled={loading}
             onClick={handleClick}
-            className=" "
+            className=" bg-[#3aac38]  px-4 py-1 text-[white] rounded "
           >
             Login
           </button>
-          {error && <span>{error.message}</span>}
+
         </div>
-        <div>or
+
+        <div className="googlelogin">
+          <p className="text-center">or</p>
         
-           {/* //google login button */}
+          {/* //google login button */}
        <GoogleLogin onSuccess={credentialResponse=>{
         //console.log(credentialResponse.credential);
         console.log(credentialResponse);
@@ -155,7 +161,7 @@ const Login = () => {
         console.log("Login failed");
       }}/>
         </div>
-      <div>
+      <div className="text-center my-8">
         <p className="">
           New here?
           <Link className="text-[#339633]" to="/signup">

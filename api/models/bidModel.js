@@ -59,7 +59,11 @@ const bidSchema=new Schema({
     },
     closed:{
         type:Boolean
+    },
+    acceptedCount:{
+        type: Number
     }
+
 },{timestamps:true})
 //giving a name workout to schema  model
 module.exports=mongoose.model('Bid',bidSchema)

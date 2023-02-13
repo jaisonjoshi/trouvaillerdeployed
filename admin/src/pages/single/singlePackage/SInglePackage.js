@@ -45,7 +45,7 @@ const SinglePackage = () => {
     const handleTabChange = () => {
 
         hotelNavCon.style.position = "sticky"
-        hotelNavCon.style.top = 0;
+        hotelNavCon.style.top = "60px";
        
 
 
@@ -238,7 +238,7 @@ const SinglePackage = () => {
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
 
-            <div className="singlepackage-container">
+            <div className="singlepackage-container md:p-20">
                {loading ? ("loading ") : (
                     <div className="singlepackage">
                         <Backdrop 
@@ -412,7 +412,7 @@ const SinglePackage = () => {
                 <div className='flex flex-col mb-12 lg:flex-row gap-[5%]'>
                         <div className='flex justify-start flex-col w-[100%]  px-8 py-4 sm:rounded-[10px] sm:card-shadow mt-4 sm:mt-20 bg-[white]'>
 
-                            <div className='flex border-b border-b-2 gap-2 sm:gap-3 text-sm md:text-lg font-bold w-full hotelNavCon sticky top-[60px] h-[70px] bg-[white] text-graydust-dark' onClick={handleTabChange}>
+                            <div className='flex border-b border-b-2 gap-2 sm:gap-3 text-sm md:text-lg font-bold w-full hotelNavCon sticky top-[60px] z-[100] h-[70px] bg-[white] text-graydust-dark' onClick={handleTabChange}>
                                 <div className='px-1 lg:px-4 py-1 flex items-center text-sm md:text-xl nav-itm cursor-pointer desc  ' onClick={()=> handleNavigate('desc')} ><a className='no-underline nav-link '>Overview</a></div>
 
                                 <div className='px-1 lg:px-4 py-1  flex items-center nav-itm text-sm md:text-xl cursor-pointer fac' onClick={()=> handleNavigate('fac')}><a className='no-underline nav-link'>Itinerary</a></div>
@@ -420,7 +420,6 @@ const SinglePackage = () => {
                                 <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm text-sm md:text-xl cursor-pointer things' onClick={()=> handleNavigate('things')}><a className='no-underline nav-link' >Things to do</a></div>
                                 <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm text-sm md:text-xl cursor-pointer images' onClick={()=> handleNavigate('images')}><a className='no-underline nav-link' >Images</a></div>
 
-                                <div className='px-1 lg:px-4 py-1 hidden sm:flex items-center text-sm md:text-xl nav-itm cursor-pointer location ' onClick={()=> handleNavigate('location')}><a className='no-underline nav-link' >Location</a></div>
 
 
                             </div>
@@ -449,27 +448,94 @@ const SinglePackage = () => {
                                             }
 
                                             </div>}
-                                        {pack.shedule &&
-                                            <div className=' nav-box' id="fac">
-                                                {pack.shedule.length !== 0 &&
-                                                <div className='pt-6 sm:py-6'>
-                                                <h2 className='text-lg sm:text-xl font-bold mb-2'>Shedule</h2>
-                                                <div className='flex flex-col gap-4 py-2'>
-                                                {pack.shedule && pack.shedule.map((obj,i)=>(
-                                                    <div className='sm:flex my-2  py-2 rounded shadow-shedule-card' key={i}>
-                                                    <div className='text-base sm:text-lg w-32 p-2 text-graydust-medium flex items-center font-medium w-[100%] sm:w-[20%] xl:w-[10%]'><h3>Day {i+1}</h3></div>
-                                                    <div className='sm:border-l-2 p-4 text-justify sm:border-[silver] w-[100%] sm:w-[80%] xl:w-[90%]'>
-                                                        <h2 className='text-base sm:text-xl font-semibold'>{obj.dayTitle}</h2>
-                                                        <p className='text-sm sm:text-base text-graydust-dark whitespace-pre-wrap	'> {obj.dayDesc}</p>
-                                                    </div>
-                                                </div>
-                                                ))}
-                                                </div> </div>}
-                                            </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                {updateMode?(
+                                    <div>
+                                    <h2 className='font-bold text-2xl'>Schedule</h2>
+                                    {data.shedule && data.shedule.map((obj, i)=> (
+                                    <div className='shedule-day shadow-md  border px-4 py-2 my-4'>
+                                        <div className="shedule-day-left">
+                                            
+                                            <h2 className='font-bold text-[grey] text-lg mb-3'>Day {i+1}</h2>
+                                           
+                                           
+                                        </div>
+                                        <div className="shedule-day-right">
+                                            <h2  className="text-xl  mb-3">
+                                            <input type="text" name="" id="s_title" className='text-[#585858] px-4 py-1 outline-none w-full rounded border border-[3px]' defaultValue={obj.dayTitle} onChange={e=>handleTitleChange(e,i)} />
+                                               </h2> 
+                                                
+                                                {/*  {obj.dayTitle}</h2> onChange={handleTitleChange}*/}
+                                            <p>
+                                            <textarea  name="" id="s_desc" className='text-[#585858] px-4 py-1 outline-none w-full rounded border border-[3px]' defaultValue={obj.dayDesc} onChange={e=>handleDescChange(e,i)}/>
+                                                
+                                                {/* {obj.dayDesc} */}
+                                                
+                                                </p>
+                                        </div>
+                                    </div>
+                                ))}
+                                <Button className='z-[50]' onClick={handleUpdateSchedule}>Update Schedule Changes</Button>
 
+                                </div>  ):(
+                                    <div>
+                                 <h2 className='font-bold text-2xl'>Schedule</h2>
+                                 {(data.shedule)?
+                                 (<div className='flex gap-4 py-4'>
+                                 <button onClick={()=>setUpdateMode(true)} className='px-4 py-1 bg-[#d2ffd2] rounded shadow-sm'>EDIT</button><button className='px-4 py-1 bg-[#d2ffd2] rounded shadow-sm' onClick={handleDeleteSchedule}>DELETE</button>
+                                 </div>):
+                                 (<div></div>)
+                                 }
 
-
-                                        }
+                                {data.shedule && data.shedule.map((obj, i)=> (
+                                    <div className='shedule-day shadow-md  border px-4 py-2 my-4'>
+                                        <div className="shedule-day-left">
+                                            
+                                            <h2 className='font-bold text-[grey] text-lg'>Day {i+1}</h2>
+                                        </div>
+                                        <div className="shedule-day-right">
+                                            <h2 className="text-xl mb-3">{obj.dayTitle}</h2>
+                                            <p className='text-[#585858]'>{obj.dayDesc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                                   </div> )}    
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                         {pack.activities  && 
                                             <div className=' nav-box' id="things">
                                                 {
@@ -491,7 +557,7 @@ const SinglePackage = () => {
 
 
 
-                                    {pack.location && <div className='pt-6 sm:py-6 nav-box' id="images">
+                                    {pack.images && <div className='pt-6 sm:py-6 nav-box' id="images">
                                         <div className='flex items-center justify-between pr-[3%]'>
                                             <span className='text-lg sm:text-xl font-bold'>Image Gallery</span>
                                             {pack.images.length> 1 &&

@@ -87,15 +87,15 @@ Know more
       
       {/* special offers block */}
 
-      <div className="pt-8 sm:pt-20 pb-8 px-4 sm:px-16 md:px-20 2xl:px-40 bg-[#f2f2f2]">
+      <div className="pt-8 sm:pt-20 pb-8 px-4 sm:px-16 md:px-20 2xl:px-40 ">
         <h1 className='text-center font-bold text-blacky-dark text-2xl sm:text-4xl'>Special Offers</h1>
                   <p className='text-center textnormal py-4 text-sm  sm:text-base md:text-lg font-body'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo.</p>
       </div>
 
-      <div className="px-4 sm:px-16 md:px-20 2xl:px-40 offer-container bg-[#f2f2f2]">
+      <div className="px-4 sm:px-16 md:px-20 2xl:px-40 offer-container ">
         <Offers />
       </div>
-      <div className='px-7 text-center pb-8 bg-[#f2f2f2]'>
+      <div className='px-7 text-center pb-8'>
           <Link to="/traveloffers" ><button className='font-medium border-graydust-dark border p-2 rounded-md w-full sm:w-auto px-10 hover:bg-evergreen hover:text-whiteglow hover:border-transparent hover:transition-colors hover:duration-200' >View All Offers</button></Link>
         </div>
       <div>
