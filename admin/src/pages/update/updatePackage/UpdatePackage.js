@@ -307,6 +307,7 @@ const UpdatePackage =() => {
                             
                                 <div className='shedule-input-con'>
                                     <h3>Shedule</h3>
+                                    <p className='text-[red] mr-8'>Note: Inorder to make changes to the existing shedules, Please use the shedule update option in the Package details page. Here you can create only new shedules from scratch.</p>
                                     <div className="shedule-ip-box">
                                         <div className="form-item">
                                             <label>Title</label>

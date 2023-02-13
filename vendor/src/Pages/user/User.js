@@ -22,16 +22,13 @@ const User = () => {
     const [maxtemp, setMaxtemp] = useState(undefined);
     const { user, dispatch } = useContext(AuthContext);
     const [hotels,setHotels] = useState([])
-  const {data, loading,error ,reFetch} = useFetch(`/hotels?vendorid=${user._id}&destinations=${destination}&max=${max || 999999}&min=${min || 1}`)
+  const {data, loading,error ,reFetch} = useFetch(`/hotels?vendorid=${user._id}`)
   useEffect(()=>{
       setHotels(data);
   },[data])
-    const [userobj, setUserobj] = useState({})
 
     const navigate = useNavigate()
-    const handleClick = (val) => {
-        navigate(`/vendor/hotel/${val}`);
-    }
+    
    
     const handleSubmitClick = () => {
    
@@ -112,10 +109,10 @@ const User = () => {
    
     return(
         <>
-       <Header setUserobj={setUserobj}/>
+      <Header />
             <div className="profile">
                 <div className="left">
-                    <UserCard userobj={userobj}/>
+                    <UserCard />
                     <div className="profile-container-1">
                         <p className="mb-8">See all bids that you have in your region. Make fast accept the bids inorder to have the customer</p>
                         <Link to="/">Go to Bids</Link>
@@ -129,7 +126,7 @@ const User = () => {
                         <p>All your properties are listed here. You can update or delete them. To create a new property please the following button </p> 
                         <Link to="/vendor/createhotel">New property</Link>
                         
-                        <div className="flex justify-center py-6">
+                       {/*  <div className="flex justify-center py-6">
                         <div className="flex items-center w-[70%] md:w-[60%] lg:w-[30%] justify-between focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
                           <input
                           type="text border-none outline-none w-[80%] h-[100%] text-2xl"
@@ -143,16 +140,14 @@ const User = () => {
                           onClick={handleSClick}
                              />
                          </div>
-                         </div>
+                         </div> */}
                                     
 
                         <div>
-                        <div className="flex flex-wrap justify-center items-center w-[90%] md:w-[80%] mx-auto gap-4 py-4">
+                       {/*  <div className="flex flex-wrap justify-center items-center w-[90%] md:w-[80%] mx-auto gap-4 py-4">
         
 
-        {/* <Dropdown
-                  
-                </Dropdown> */}
+
 
         <Dropdown
           label="Budget"
@@ -261,24 +256,42 @@ const User = () => {
             />
           </Dropdown.Item>
         </Dropdown>
-        </div>
+        </div> */}
                         </div>
 
                         </div>
-                        <div className="pc-body">
-                            {hotels && hotels.map((hotel)=> (
-                                <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>
-                                <div className="img">
-                                    <img src={hotel.images[0]} alt="" />
+                        <div className="pc-body " >
+                            {hotels && hotels.length!==0 && hotels.map((hotel)=> (
+                                <Link to={`/vendor/hotel/${hotel._id}`} className='pb-16 w-[90%] cursor-pointer mx-auto sm:mx-0 sm:w-[45%] md:w-[31%] mb-4 card-shadow lg:w-[22%] pb-8' >
+                                <div key={hotel._id} className=" ">
+                                <div className="relative w-full">
+                                      <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
+                                      <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={hotel.images[0]} alt="" />
+              
+                                  </div>
+                                  <div className="pt-2">
+                                      <div className='flex justify-between items-center'>
+                                      {hotel.offers ? <div className='flex justify-between items-center'><div className="md:py-1 mx-1  flex justify-between items-center">
+                                            <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;&#8377; {hotel.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> <span  className="text-[grey] text-xs md:text-base"><strike>&#8377; {hotel.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
+                                                
+                                        </div>                               <span className='mr-1 text-sm bg-[red] text-[white] px-2 py-1 rounded'>{hotel.offertitle}</span></div>
+              :
+                                                                <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;  &#8377; {hotel.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span> </span>
+              
+                                        }
+                                      </div>
+                                  
+                                  <h3 className='text-lg md:text-lg font-medium z-[48] text-[black] px-2  '>{hotel.title}</h3>
+                                    <span className='mx-2 font-bold text-graydust-dark text-sm'>{hotel.location}</span>
+                                    
+                                  </div>
+                                  
                                 </div>
-                                <div className="card-body">
-                                    <h3>{hotel.title}</h3>
-                                    <p>{hotel.description}</p>
-                                    <div className='tags'>                                    <span className='tag'>{hotel.location}</span><span className='tag'>{hotel.cheapestPrice}</span>
-                                </div>
-                                </div>
-                            </div>))}
-                           
+              
+                              </Link>))}
+                              <div className='flex justify-center px-4'>
+                              {hotels && hotels.length== 0 && <h3 className='text-[grey] text-center'>You have no any properites till now. Create a new property.</h3>}
+                           </div>
                         </div>
                     </div>
                 </div>

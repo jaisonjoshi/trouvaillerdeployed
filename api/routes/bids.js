@@ -1,13 +1,14 @@
 const express=require('express')
 const router=express.Router()
 const Bid=require('../models/bidModel')
-const { createBid,getBid,getBids,deleteBid,updateBid
+const { createBid,getBid,getBids,deleteBid,getVendorBids,updateBid
 }=require('../controllers/bidController')
 
 //from server,/api/workout/users will be path
 
 //get request ,get all request
 router.get('/',getBids)
+router.get('/getvendorbids', getVendorBids)
 //to get single workout
 router.get('/:id',getBid)
 //post a new request

@@ -7,7 +7,7 @@ const useFetch = (url) => {
         baseURL: process.env.REACT_APP_API_URL,
     })
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
 

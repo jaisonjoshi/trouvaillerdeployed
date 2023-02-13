@@ -7,33 +7,12 @@ const User=require('../models/userModel')
 
 const header = {
     headers:{
-        Authorization: 'Bearer EAAJujYnp37kBAFopddcy89JZBujOBC82shN4aQQPQf2qZC9XGuF4fnrY7xbyhO8mBZCq8jdLT0ApOb47nZBlJ55sqg6kNIeYVkfLP9ZAlZCMLcJFafMrbr7094bvTdaIk9eihSVDSexZApxCed2VLI5F0ZBjyoe4hJDseAmE7XdAYTFV4ZBztrFl6HzQM8a0rfpDZAYUaJJXnXrwZDZD',
+        Authorization: 'Bearer EAAMkPj4omZCIBAApZCCLnV1qKpfDgAqOdZAT5s9anfWVfN5AO4jby7BwRul8ZB4ZAGFxnXfcnazNGtzeaZAmRj9ZCZCCH1IszaE0zHKMyLQ8EWLVHmVvZCoYxUlimwWmi7SRlmQitN4QZB6aUbb3tPHVsOmM2zow7pxkVZCCS75e2nniz5vVpjeZCaZC7',
         Accept: 'application/json'
     }
 }
 const sendMsg = async (destination) => {
-    console.log(destination,"ypu are seacrching for")
-    const body = { "messaging_product":  "whatsapp",
-    "to":  "919562523642",
-    "type":  "template",
-    "template": {  
-        "name":  "sample_shipping_confirmation",
-        "language": {  
-            "code":  "en_US" 
-         }, 
-         "components":[{
-            "type": "body",
-            "parameters":[
-            {
-                "type": "text",
-                "text" : "h"
-            }
-        ]
-    } ]
     
-    }
-
-    }
     
     const getVendorPhone = async () => {
         let vendorNums = [];
@@ -64,7 +43,8 @@ const sendMsg = async (destination) => {
                                     }
 
                                     }
-                    axios.post('https://graph.facebook.com/v15.0/103762359272731/messages',body, header)
+                    
+                    axios.post('https://graph.facebook.com/v15.0/107724862224943/messages',body, header)
                     .then((res)=> (
                         console.log("msg success", res)
                     ))
@@ -85,7 +65,37 @@ const sendMsg = async (destination) => {
     
 }
 
+const sendUsrMsg = async (userphone) => {
+    const body = { "messaging_product":  "whatsapp",
+    "to":  "91"+ userphone,
+    "type":  "template",
+    "template": {  
+        "name":  "sample_shipping_confirmation",
+        "language": {  
+            "code":  "en_US" 
+        }, 
+        "components":[{
+            "type": "body",
+            "parameters":[
+            {
+                "type": "text",
+                "text" : "hello"
+            }
+        ]
+    } ]
+    
+    }
 
+    }
+    axios.post('https://graph.facebook.com/v15.0/107724862224943/messages',body, header)
+                    .then((res)=> (
+                        console.log("msg success", res)
+                    ))
+                    .catch((err)=> (
+                        console.log("error happened",err)
+                    ))
+}
 module.exports = {
-    sendMsg
+    sendMsg,
+    sendUsrMsg
 }

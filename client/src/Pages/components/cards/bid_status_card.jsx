@@ -22,7 +22,7 @@ const BidStatusCard = ({bid}) => {
             <div className='shadow-md shadow-gra2remydust-normal p-5 pb-8 my-5 rounded-lg'>
                 <div className='flex justify-between flex-wrap'>
                     <h1 className='text-xl font-bold text-blacky-light mr-[50px] md:mr-[0] flex items-center pb-4 md:pb-0'><span className='text-3xl font-light pr-2'><FontAwesomeIcon icon={solid('location-dot')} /></span>{bid.destination}</h1>
-                    <div className='bg-status-150 p-2 rounded-full border-graydust-normal'><h3><span className='text-status-100'><FontAwesomeIcon icon={solid('circle-check')} /></span> Accepted by {bid.accepted.length}</h3> </div>
+                    <div className='bg-status-150 p-2 rounded-full border-graydust-normal'><h3><span className='text-status-100'><FontAwesomeIcon icon={solid('circle-check')} /></span> Accepted by {bid.acceptedCount}</h3> </div>
                     {/* Code for other status indicators */}
                 </div>
                 <div className='flex items-center py-2'>
@@ -43,13 +43,14 @@ const BidStatusCard = ({bid}) => {
                     <div className='border-graydust-normal border p-2 mt-2 rounded-lg text-blacky-light '>Max Amount you bided : {bid.maxAmount}</div>
                 </div>
                 <div className='flex justify-end '>
-                    <button className='px-4 py-1 bg-evergreen rounded text-[white]' onClick={()=> handlewithdraw(bid._id)}>Withdraw your bid</button>
+                    {bid.acceptedCount === 0 &&                     <button className='px-4 py-1 bg-evergreen rounded text-[white]' onClick={()=> handlewithdraw(bid._id)}>Withdraw your bid</button>
+}
                 </div>
                 <hr className='mt-5 text-graydust-medium' />
                 <details>
                 <summary>
                     <span className='pl-3 text-blacky-light text-sm md:text-base'>
-                    Your Bid is accepted by {bid.accepted.length} hotels 
+                    Your Bid is accepted by {bid.acceptedCount} hotels 
                     </span>
                 </summary>
                 <div>

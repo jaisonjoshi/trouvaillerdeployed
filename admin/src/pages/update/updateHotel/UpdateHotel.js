@@ -353,6 +353,10 @@ console.log(data)
                                 <label>Price</label>
                                 <input type="text" id="cheapestPrice" defaultValue={data.cheapestPrice} onChange={handleChange}/>                            
                             </div>
+                            <div className="form-item">
+                                <label>Vendor ID</label>
+                                <input type="text" id="vendorid" defaultValue={data.vendorid} onChange={handleChange}/>                            
+                            </div>
 
 
 

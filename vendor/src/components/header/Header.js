@@ -15,7 +15,7 @@ import useFetch from '../../hooks/useFetch';
 import {useNavigate} from "react-router-dom"
 import axios from "axios";
 
-const Header = ({setUserobj}) => {
+const Header = () => {
 
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
@@ -33,19 +33,7 @@ const Header = ({setUserobj}) => {
       };
 
       const { user, loading, error, dispatch } = useContext(AuthContext);
-      let url;
-        if(user){
-            url = `/user/find/${user._id}`
-        }
-        else{
-            url = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-        }
-        const {data} = useFetch(url)
-        useEffect(()=>{
-            setUserobj(data)
-
-        },[data])
-
+       const {data} = useFetch(`/user/find/${user._id}`)
         //logout
         const handleClick = async (e) => {
             e.preventDefault();
@@ -63,7 +51,6 @@ const Header = ({setUserobj}) => {
               dispatch({ type: "LOGOUT", payload: {message:"logged out"} });
             }
           };
-        //
     return(
         <div className="header">
              <Slider {...settings}>
@@ -80,7 +67,7 @@ const Header = ({setUserobj}) => {
             <div className="header-content">
                 <div className="header-nav">
                     <div className="prof">
-                        <img src={data.img} />
+                        <img src={data != undefined && data.img} />
                         <button className='mr-4' onClick={handleClick}>Logout</button>
                         {/* <p className='mr-4'>{data.username}</p> */}
                     </div>

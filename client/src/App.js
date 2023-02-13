@@ -5,8 +5,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Ridirect,
-  Switch,
+  
 }from "react-router-dom";
 import {useState, useEffect} from 'react'
 import TermsAndCond from "./Pages/Terms&Cond/TermsAndCond.jsx"
@@ -90,18 +89,7 @@ function App() {
         <Route path="/packages" element={<List2_card setlocation={setlocation} settype={settype}/>}/>
         <Route path="/hotels" element={<List1_card setlocation={setlocation} settype={settype}/>}/>
        
-        {/* {hotels && hotels.map((hotel)=> (
-                                <div className="hotel-card" key={hotel._id} onClick={() => handleClick(hotel._id)}>
-                                <div className="img">
-                                    <img src={hotel.images[0]} alt="" />
-                                </div>
-                                <div className="card-body">
-                                    <h3>{hotel.title}</h3>
-                                    <p>{hotel.description}</p>
-                                    <div className='tags'>                                    <span className='tag'>{hotel.location}</span><span className='tag'>{hotel.cheapestPrice}</span>
-                                </div>
-                                </div>
-                            </div>))}  */}  <Route path="/what-is-bid" element={<IntroToBid/>}/>
+        <Route path="/what-is-bid" element={<IntroToBid/>}/>
         <Route path="/bid-status" element={<BidStatus/>}/>
         <Route path="/package" element={<Package/>}/>
         <Route path="/hotel" element={<Hotel/>}/>
