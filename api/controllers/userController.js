@@ -3,6 +3,16 @@ const bcrypt = require("bcryptjs");
 
 	
 	const updateUser = async (req,res,next)=>{
+		const username_c = await User.findOne({ username: req.body.username });
+		const email_c = await User.findOne({ email: req.body.email});
+		if(username_c)
+		{
+		  return res.status(403).json({error:'Username cannot be same'})  
+		}
+		if(email_c)
+		{
+		  return res.status(405).json({error:'Email cannot be same'})  
+		}
 
 			if(req.body.password){
 				const salt = await bcrypt.genSaltSync(10);
@@ -15,10 +25,13 @@ const bcrypt = require("bcryptjs");
 	},
 	{ new: true }
 	);
+	if(!updatedUser){
+		return res.status(400).json({error:'No such user found!'}) 
+	}
 	res.status(200).json(updatedUser);
 	} 
-	catch (err) {
-	res.status(500).json(err);
+	catch (error) {
+		res.status(500).json({ error: 'Server Error' });
 	}
 	
 }

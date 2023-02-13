@@ -50,7 +50,7 @@ const CreateHotel =({setOpen}) => {
         setRooms(rooms=>[...rooms, query])
         document.getElementById('rooms').value = " "
         setQuery("")
-        console.log(rooms)
+        //console.log(rooms)
        
         
    }
@@ -61,7 +61,7 @@ const CreateHotel =({setOpen}) => {
     document.getElementById('facilities').value = " "
     setFacility("")
 
-    console.log(rooms)
+   // console.log(rooms)
    
     
 }
@@ -75,7 +75,7 @@ const handleUpdateLocations = ({ target }) => {
     setLocations(locations=>[...locations, locationitem])
     document.getElementById('locations').value = " "
     setLocationitem("")
-    console.log(locations)
+   // console.log(locations)
    
     
 }
@@ -96,9 +96,9 @@ const handleroomsDelete = (e, value)=> {
     setRooms(rooms.filter((itm)=> itm !== value))
 }
 const handleChangeLowerCase = (e) => {
-    console.log(e.target.value.toLowerCase())
+    //console.log(e.target.value.toLowerCase())
     setinfo((prev) => ({...prev, [e.target.id] : e.target.value.toLowerCase()}))
-    console.log("in lowercase"+info);
+    //console.log("in lowercase"+info);
 } 
 const handleTypeChange = (event) => {
     setType(event.target.value);
@@ -110,7 +110,7 @@ const handleTypeChange = (event) => {
     setFeatures(features=>[...features, feature])
     document.getElementById('features').value = " "
     setFeature("")
-    console.log(features)
+    //console.log(features)
    
     
 }
@@ -123,7 +123,7 @@ const [photoURL, setPhotoURL] = useState("");
         setFile(file);
         setPhotoURL(URL.createObjectURL(file)); 
         setOpenCrop(true);
-        console.log(imgFiles)
+        //console.log(imgFiles)
     }
    }
     const navigate = useNavigate();
@@ -162,8 +162,18 @@ const [photoURL, setPhotoURL] = useState("");
               };
               await axiosInstance.post("/hotels", newHotel);
               navigate(`/vendor`)
-            } catch(err){
-            console.log(err)
+            } catch(error){
+
+             if (error.response) {
+                // The request was made and the server responded with a status code that falls out of the range of 2xx
+                alert('Error creating new hotel. Please fill out all the necessary feilds and try again.');
+               
+              } else if (error.request) {    
+                  alert('Network error! Please try again later.')
+              } 
+                else {
+                    alert(error.message + '. Please try again later.');
+                }
         }
         setOpen(false)
 
@@ -193,27 +203,28 @@ const [photoURL, setPhotoURL] = useState("");
                                 <p>click again to upload next image</p>
                                 </div>
                                 <div className="form-item">
-                                    <label > Title</label>
+                                    <label > Title <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" name="" id="title" onChange={handleChange}/>
                                 
                                 </div>
                                 <div className="form-item">
-                                    <label > Type</label>
+                                    <label > Type <span style={{ color: "red" }}> *</span></label>
                                         <Select                                         
                                             value={type}
                                             onChange={handleTypeChange}
                                             className="outline-none">
                                             
-                                            <MenuItem value="international">international</MenuItem>
-                                            <MenuItem value="resort">resort</MenuItem>
+                                           
+                                            <MenuItem value="hotel">Hotel</MenuItem>
+                                            <MenuItem value="private villa">Private Villa</MenuItem>
 
-                                            <MenuItem value="restaurant">restaurant</MenuItem>
-                                            <MenuItem value="apartment">apartment</MenuItem>
-                                            <MenuItem value="homestay">homestay</MenuItem>
+                                            <MenuItem value="home stay">Home Stay</MenuItem>
+                                            <MenuItem value="resort">Resort</MenuItem>
+                                            <MenuItem value="campsite">Campsite</MenuItem>
                                         </Select>
                             </div>
                                 <div className="form-item">
-                                    <label>Description</label>
+                                    <label>Description <span style={{ color: "red" }}> *</span></label>
                                     <textarea type="text" id="description" onChange={handleChange}/>
                                 
                                 </div>
@@ -223,7 +234,7 @@ const [photoURL, setPhotoURL] = useState("");
                             
                             </div>
                                 <div className="form-item">
-                                    <label>Location</label>
+                                    <label>Location <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="location" onChange={handleChangeLowerCase}/>
                                 
                                 </div>
@@ -233,7 +244,7 @@ const [photoURL, setPhotoURL] = useState("");
                                 
                                 </div>
                                 <div className="form-item">
-                                    <label>Room types</label>
+                                    <label>Room types <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="rooms" onChange={handleUpdateQuery} placeholder={"eg.single bed,double bed"}/>
 
                                 </div>
@@ -263,7 +274,7 @@ const [photoURL, setPhotoURL] = useState("");
 
                                 </div>
                                 <div className="form-item">
-                                    <label>Location tags</label>
+                                    <label>Location tags <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="locations" onChange={handleUpdateLocations} placeholder={"eg.Wayanad,Kerala,India"}/>
 
                                 </div>
@@ -273,7 +284,7 @@ const [photoURL, setPhotoURL] = useState("");
 
                                 </div>
                                 <div className="form-item">
-                                    <label>Price</label>
+                                    <label>Price <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="cheapestPrice" onChange={handleChange}/>
                                 
                                 </div>

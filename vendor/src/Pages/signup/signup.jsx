@@ -24,6 +24,9 @@ const [credentials, setCredentials] = useState({
     isVendor:true
     
   });
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
 
   const { user, loading, error, dispatch } = useContext(AuthContext);
 
@@ -32,24 +35,71 @@ const [credentials, setCredentials] = useState({
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  const handleChangeEmail = (e) =>{
+
+    setEmail(e.target.value);
+    if (!emailRegex.test(e.target.value)) {
+      setEmailError('Invalid email address');
+     // setEmailerr(true);
+    } else {
+        
+      setEmailError('');
+      setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+
+    }
+  }
 
   const handleClick = async (e) => {
     e.preventDefault();
-    dispatch({ type: "REGISTER_START" });
+   // dispatch({ type: "REGISTER_START" });
     try {
+      if(!emailError)
+      {
       const res = await axiosInstance.post("/auth/register", credentials);
       //if(res.data.isAdmin){//check this code to control user and admin access to login
       if(res.data){
-      dispatch({ type: "REGISTER_SUCCESS", payload: res.data.details });
+     // dispatch({ type: "REGISTER_SUCCESS", payload: res.data.details });
       
       navigate("/login"); }
       else{
-        dispatch({type:"REGISTER_FAILURE",payload:{message:"Invalid input for Registration!"}})
+        dispatch({type:"REGISTER_FAILURE",payload:{message:"Registration Unsuccessful! Please try again"}})
       }
-    } catch (err) {
-     // dispatch({ type: "REGISTER_FAILURE", payload: {message:error}});
-     dispatch({ type: "REGISTER_FAILURE", payload: {message:"Registration Unsuccessful! Please try again"}});
     }
+    else{
+     // dispatch({type:"REGISTER_FAILURE",payload:{message:"Registration Unsuccessful! Please try again"}})
+      alert('Kindly try again with a valid email id.')
+  }
+  }
+  catch (error) {
+   // dispatch({type:"REGISTER_FAILURE",payload:{message:"Registration Unsuccessful! Please try again"}})
+
+    if(error.response){
+    
+    if (error.response && error.response.status==403) {  
+        
+        alert('Sorry, the username already exists!');
+      }
+      else if (error.response && error.response.status==405) {  
+        
+        alert('Sorry, the email id alredy exists!');
+      }
+     
+      else if (error.response && error.response.status==500) {  
+        
+        alert('Unable to create a new user. Kindly fill all the mandatory fields.');
+      }
+      else{
+        alert(error.message + '. Please try again later.');
+    }
+    }
+    else{
+        alert(error.message + '. Please try again later.');
+    }}
+      
+// } catch (err) {
+//      // dispatch({ type: "REGISTER_FAILURE", payload: {message:error}});
+//      dispatch({ type: "REGISTER_FAILURE", payload: {message:"Registration Unsuccessful! Please try again"}});
+//     }
   };
 
   const googleSignIn=async(value) => {
@@ -82,7 +132,7 @@ const [credentials, setCredentials] = useState({
   
  
 };
-  console.log(user);
+ // console.log(user);
 
 
 
@@ -128,10 +178,11 @@ const [credentials, setCredentials] = useState({
                 <p className="text-center text-blacky-light text-sm mt-8">- OR -</p>
 
                 <div className="flex flex-col">
-                     <input type="text" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Your Name" id="username"required onChange={handleChange}/>
-                    <input type="email" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="E-mail" id="email" required onChange={handleChange}/>
-                    <input type="tel" className="mx-14 p-3 ooutline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Mobile Number" id="phone" required onChange={handleChange}/>
-                    <input type="password" className="mx-14 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Create Password" id="password"  required onChange={handleChange}/>
+                     <input type="text" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Your Name *" id="username"required onChange={handleChange}/>
+                    <input type="email" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="E-mail *" id="email" required onChange={handleChangeEmail}/>
+                    { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
+                    <input type="tel" className="mx-14 p-3 ooutline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Mobile Number *" id="phone" required onChange={handleChange}/>
+                    <input type="password" className="mx-14 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="  Create Password *" id="password"  required onChange={handleChange}/>
                     
                     
                     </div>

@@ -38,8 +38,22 @@ const SingleHotel = () => {
         try{
             await axiosInstance.delete(`/hotels/${id}`);
             navigate('/vendor')
-        }catch(err){
-            console.log(err);
+        }
+        catch(error){
+            if (error.response && error.response.status==400) {  
+                
+                alert('Sorry, no such hotel found');
+              }
+              if (error.response && error.response.status==404) {  
+                
+                alert('Failed to delete hotel!');
+              }
+              else if (error.request) {  
+                    alert('Network error! Please try again later');
+                }
+            else{
+                alert(error.message);
+            }
         }
 
     }

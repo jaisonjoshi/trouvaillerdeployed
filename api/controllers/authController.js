@@ -97,7 +97,7 @@ const login = async (req, res, next) => {
       .status(200)
       .json({ details: { ...otherDetails }, isAdmin, isVendor });
   } catch (error) {
-    next(error);
+    res.status(500).json({ error: "server error" })
   }
 };
 

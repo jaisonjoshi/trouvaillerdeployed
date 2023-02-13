@@ -158,8 +158,23 @@ const SinglePackage = () => {
            // console.log("package has been updated")
 
             reFetch();
-        }catch(err){
-            console.log(err)
+        }catch(error){
+            if(error.response){
+                if (error.response.status==400) {  
+                    
+                    alert('Sorry, no such package found.');
+                  }
+                  if (error.response.status==404) {  
+                    
+                    alert('Sorry, unable to find package!');
+                  }
+                }
+                  else if (error.request) {  
+                        alert('Network error! Please try again later');
+                    }
+                else{
+                    alert(error.message);
+                }
         }
 
         setUpdateMode(false);
@@ -177,8 +192,23 @@ const SinglePackage = () => {
           reFetch();
           
     }
-    catch(err){
-        console.log(err)
+    catch(error){
+        if(error.response){
+            if (error.response.status==400) {  
+                
+                alert('Sorry, no such package found.');
+              }
+              if (error.response.status==404) {  
+                
+                alert('Sorry, unable to find package!');
+              }
+            }
+              else if (error.request) {  
+                    alert('Network error! Please try again later');
+                }
+            else{
+                alert(error.message);
+            }
     }
 
    }

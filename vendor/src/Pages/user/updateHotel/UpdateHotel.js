@@ -23,7 +23,7 @@ const UpdateHotel =() => {
  
      //fetching the hotel details
      const {data} = useFecth(`/hotels/find/${id}`);
- console.log(data)
+    //console.log(data)
  
      //collapsible navigation bar code
      const [sidenavOpen, setSideNavOpen] = useState(false)
@@ -57,7 +57,7 @@ const UpdateHotel =() => {
              setFile(file);
              setPhotoURL(URL.createObjectURL(file)); 
              setOpenCrop(true);
-             console.log(imgFiles)
+             //console.log(imgFiles)
          }
      }
  
@@ -101,9 +101,9 @@ const UpdateHotel =() => {
          setinfo((prev) => ({...prev, [e.target.id] : e.target.value}));
      }
      const handleChangeLowerCase = (e) => {
-         console.log(e.target.value.toLowerCase())
+         //console.log(e.target.value.toLowerCase())
          setinfo((prev) => ({...prev, [e.target.id] : e.target.value.toLowerCase()}))
-         console.log("in lowercase"+info);
+        // console.log("in lowercase"+info);
      }
  
      //hotel type
@@ -121,7 +121,7 @@ const UpdateHotel =() => {
          setRooms(rooms=>[...rooms, query])
          document.getElementById('rooms').value = " "
          setQuery("")
-         console.log(rooms) ;   
+        // console.log(rooms) ;   
      }
  
      const handleroomsDelete = (e, value)=> {
@@ -140,7 +140,7 @@ const UpdateHotel =() => {
          setLocations(locations=>[...locations, locationitem])
          document.getElementById('locations').value = " "
          setLocationitem("")
-         console.log(locations)  
+         //console.log(locations)  
      }
  
      const handleLocationDelete = (e, value)=> {
@@ -159,7 +159,7 @@ const UpdateHotel =() => {
          setFeatures(features=>[...features, feature])
          document.getElementById('features').value = " "
          setFeature("")
-         console.log(features)
+         //console.log(features)
         
          
     }
@@ -191,7 +191,7 @@ const UpdateHotel =() => {
      const handleofferChange = ()=> {
          
          setOffers(!offers)
-         console.log("offer set")
+        // console.log("offer set")
      }
  
  
@@ -228,9 +228,24 @@ const UpdateHotel =() => {
              //patch request initialisation
              await axiosInstance.patch(`/hotels/${id}`, updatedHotel)
              navigate(`/vendor/hotel/${id}`)
-             console.log(updatedHotel)
-         } catch(err){
-             console.log(err)
+             //console.log(updatedHotel)
+         } catch(error){
+            if(error.response){
+                if (error.response.status==400) {  
+                    
+                    alert('Sorry, no such hotel found.');
+                  }
+                  if (error.response.status==404) {  
+                    
+                    alert('Sorry, unable to find hotel!');
+                  }
+                }
+                  else if (error.request) {  
+                        alert('Network error! Please try again later');
+                    }
+                else{
+                    alert(error.message);
+                }
          }
      }
 
@@ -272,12 +287,12 @@ const UpdateHotel =() => {
                                             className="outline-none">
                                             
                                         
-                                            <MenuItem value="international">international</MenuItem>
-                                            <MenuItem value="resort">resort</MenuItem>
+                                            <MenuItem value="hotel">Hotel</MenuItem>
+                                            <MenuItem value="private villa">Private Villa</MenuItem>
 
-                                            <MenuItem value="restaurant">restaurant</MenuItem>
-                                            <MenuItem value="apartment">apartment</MenuItem>
-                                            <MenuItem value="homestay">homestay</MenuItem>
+                                            <MenuItem value="home stay">Home Stay</MenuItem>
+                                            <MenuItem value="resort">Resort</MenuItem>
+                                            <MenuItem value="campsite">Campsite</MenuItem>
                                         </Select>
                             </div>
                             
@@ -312,7 +327,7 @@ const UpdateHotel =() => {
                             
                             </div>
                             <div className="room-btn-box">
-                                <button onClick={handlelocationNext} className="room-btn">Add location tag</button>
+                                <button onClick={handlelocationNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add location tag</button>
                             </div>
 
 
@@ -323,7 +338,7 @@ const UpdateHotel =() => {
                                 <input type="text" id="rooms" onChange={handleUpdateQuery}/>
                             </div>
                             <div className="room-btn-box">
-                                <button onClick={handleNext} className="room-btn">Add room type</button>
+                                <button onClick={handleNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add room type</button>
                             </div>
 
 
@@ -333,7 +348,7 @@ const UpdateHotel =() => {
                                 <input type="text" id="facilities" onChange={handleUpdateFacility}/>
                             </div>
                             <div className="room-btn-box">
-                                <button onClick={handleFacility} className="room-btn">Add facility</button>
+                                <button onClick={handleFacility} className="bg-[#00ff9f] px-4 py-1 rounded">Add facility</button>
                             </div>
 
 
@@ -344,7 +359,7 @@ const UpdateHotel =() => {
                                 <input type="text" id="features" onChange={handleUpdateFeatures}/>
                             </div>
                             <div className="room-btn-box">
-                                <button onClick={handlefeatureNext} className="room-btn">Add feature</button>
+                                <button onClick={handlefeatureNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add feature</button>
                             </div>
                             
 

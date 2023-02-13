@@ -286,12 +286,12 @@ const UpdateHotel =() => {
                                             className="outline-none">
                                             
                                         
-                                            <MenuItem value="international">international</MenuItem>
-                                            <MenuItem value="resort">resort</MenuItem>
+                                            <MenuItem value="hotel">Hotel</MenuItem>
+                                            <MenuItem value="private villa">Private Villa</MenuItem>
 
-                                            <MenuItem value="restaurant">restaurant</MenuItem>
-                                            <MenuItem value="apartment">apartment</MenuItem>
-                                            <MenuItem value="homestay">homestay</MenuItem>
+                                            <MenuItem value="home stay">Home Stay</MenuItem>
+                                            <MenuItem value="resort">Resort</MenuItem>
+                                            <MenuItem value="campsite">Campsite</MenuItem>
                                         </Select>
                             </div>
                             

@@ -19,6 +19,11 @@ import {useContext, useEffect} from 'react'
 import { AuthContext } from '../../../components/context/AuthContext';
 
 const UpdateUser = ({setOpen}) => {
+
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+   
     const { user, dispatch } = useContext(AuthContext);
 
     const axiosInstance = axios.create({
@@ -27,14 +32,27 @@ const UpdateUser = ({setOpen}) => {
     const navigate = useNavigate();
 
     const {data, loading, error} = useFetch(`/user/find/${user._id}`)
-    console.log(data)
+    //console.log(data)
     const [info, setinfo] = useState({});
 
     const size = 1;
+    const handleChangeEmail = (e) =>{
+
+        setEmail(e.target.value);
+        if (!emailRegex.test(e.target.value)) {
+          setEmailError('Invalid email address');
+         // setEmailerr(true);
+        } else {
+            
+          setEmailError('');
+          setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
+    
+        }
+      }
 
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
-        console.log(info)
+       // console.log(info)
     }
     const [file, setFile] = useState("")
 
@@ -47,7 +65,7 @@ const UpdateUser = ({setOpen}) => {
             setFile(file);
             setPhotoURL(URL.createObjectURL(file)); 
             setOpenCrop(true);
-            console.log(imgFiles)
+           // console.log(imgFiles)
         }
        }
 
@@ -57,6 +75,9 @@ const UpdateUser = ({setOpen}) => {
         setOpen(true)
 
         try{
+
+            if(!emailError)
+            {
             let url = data.img
             if(file != ""){
                 const data = new FormData();
@@ -74,12 +95,39 @@ const UpdateUser = ({setOpen}) => {
             const newUser = {
                 ...info,img:url,
             };
-            console.log(newUser, "HAI")
+          //  console.log(newUser, "HAI")
             await axiosInstance.patch(`/user/${user._id}`, newUser);
+            //after updating user automatically loggs out and then goes to login page
+             navigate('/login')}
+             else{
+                alert('Kindly try again with a valid email id.')
+            }
 
-             navigate('/vendor')
-        }catch(err){
-            console.log(err)
+        }catch(error){
+            if(error.response){
+                if (error.response.status==403) {  
+                
+                    alert('Sorry, the username already exists!');
+                  }
+                  else if (error.response.status==405) {  
+                    
+                    alert('Sorry, the email id alredy exists!');
+                  }
+                else if (error.response.status==400) {  
+                    
+                    alert('Error! User not found.');
+                  }
+                else{
+                    alert(error.message+' Please try again.');
+                }
+                  
+                }
+                  else if (error.request) {  
+                        alert('Network error! Please try again later.');
+                    }
+                else{
+                    alert(error.message);
+                }
         }
         setOpen(false)
 
@@ -107,10 +155,11 @@ const UpdateUser = ({setOpen}) => {
                     <input type="file" id='profilephoto' className='hidden' onChange={handleImageChange}/>
                     <div className="w-[100%] md:w-[50%] mt-4 flex flex-col gap-[10px] items-start">
                        <form action="" className='flex flex-col gap-[10px] items-start text-[grey]'>
-                           <label htmlFor="">User Name</label> <input className='border-none px-4 py-1 rounded outline-none' type="text" defaultValue={data.username} id="username" onChange={handleChange} />
-                            <label htmlFor="">Email</label><input type="text" className='border-none px-4 py-1 rounded outline-none' defaultValue={data.email} id="email" onChange={handleChange}/>
-                           <label htmlFor="">Phone</label> <input type="text" className='border-none px-4 py-1 rounded outline-none' defaultValue={data.phone} id="phone" onChange={handleChange}/>
-                            <label htmlFor="">Password</label><input type="password" className='border-none px-4 py-1 rounded outline-none'  id="password" onChange={handleChange}/>
+                           <label htmlFor="">User Name </label> <input className='border-none px-4 py-1 rounded outline-none' type="text" defaultValue={data.username} id="username" onChange={handleChange} />
+                            <label htmlFor="">Email </label><input type="text" className='border-none px-4 py-1 rounded outline-none' defaultValue={data.email} id="email" onChange={handleChangeEmail}/>
+                            { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
+                           <label htmlFor="">Phone </label> <input type="text" className='border-none px-4 py-1 rounded outline-none' defaultValue={data.phone} id="phone" onChange={handleChange}/>
+                            <label htmlFor="">Password </label><input type="password" className='border-none px-4 py-1 rounded outline-none'  id="password" onChange={handleChange} placeholder="Enter new password"/>
 
                             <button  className="flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500" onClick={handleReviewClick}>Update</button>
                        </form>
