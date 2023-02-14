@@ -50,10 +50,10 @@ const Home = () => {
         <div className=" absolute top-0 h-[100vh] flex items-center pl-12 md:pl-16 lg:pl-40 pr-8 md:pr-0">
           <div>
           <h1 className="text-5xl font-bold text-whiteglow">
-            THE BEST TOURS IN JUST 3 CLICKS
+          Discover Your Next Adventure
           </h1>
           <p className="text-base md:text-lg text-whiteglow py-5">
-            Enter a country, a city or even just a landmark and we'll find the right tours for you
+          Experience the adventure of a lifetime with our handpicked travel packages. Book now and create memories that will last a lifetime!
           </p>
 
           <Link className="" to="/hotels"> <button className="flex justify-center items-center bg-evergreen text-whiteglow w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500">
