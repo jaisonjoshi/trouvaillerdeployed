@@ -25,16 +25,19 @@ const UserCard =()=> {
         <div className="profile-body">
            
                 <div className="pd-itm">
-                    <WhatsAppIcon className='icn'/><p>{data.phone}</p>
+                    <WhatsAppIcon className='icn' sx={{fontSize:18}}/><p>{data.phone}</p>
                 </div>
                 <div className="pd-itm">
-                    <EmailIcon className='icn'/><p>{data.email}</p>
+                    <EmailIcon sx={{fontSize:18}} className='icn'/><p>{data.email}</p>
                 </div>
                 <div className="pd-itm">
                     <p><b>Your user ID : </b>{data._id}</p>
                 </div>
-                <div className="pd-itm">
-                   <Link to="/vendor/updateprofile"> <CreateRoundedIcon className='icn'/><p>Edit Profile</p></Link>
+                <div className="pd-itm  flex justify-start">
+                    <div className='bg-[#c0f6c0] px-4 py-1 rounded shadow-md'>
+                    <Link to="/vendor/updateprofile"> <CreateRoundedIcon sx={{fontSize:15}} className='icn'/><span className='text-sm'>Edit Profile</span></Link>
+
+                    </div>
                 </div>
 
             

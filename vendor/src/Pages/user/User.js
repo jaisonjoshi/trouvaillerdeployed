@@ -111,7 +111,7 @@ const User = () => {
         <>
       <Header />
             <div className="profile">
-                <div className="left">
+                <div className="left p-4 sm:p-8">
                     <UserCard />
                     <div className="profile-container-1">
                         <p className="mb-8">See all bids that you have in your region. Make fast accept the bids inorder to have the customer</p>
@@ -263,7 +263,7 @@ const User = () => {
                         <div className="pc-body " >
                             {hotels && hotels.length!==0 && hotels.map((hotel)=> (
                                 <Link to={`/vendor/hotel/${hotel._id}`} className='pb-16 w-[90%] cursor-pointer mx-auto sm:mx-0 sm:w-[45%] md:w-[31%] mb-4 card-shadow lg:w-[22%] pb-8' >
-                                <div key={hotel._id} className=" ">
+                                <div key={hotel._id} className="shadow-lg ">
                                 <div className="relative w-full">
                                       <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
                                       <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={hotel.images[0]} alt="" />

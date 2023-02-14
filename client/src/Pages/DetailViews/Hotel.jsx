@@ -9,6 +9,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useLocation } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import { useState } from 'react';
+import axios from 'axios';
 import { useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CloseIcon from '@mui/icons-material/Close';
@@ -21,6 +22,9 @@ import h from '../Assets/h.png'
 
 
 const Hotel = () => {
+    const axiosInstance = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+    })
     const [anim, setAnim] = useState("hide")
     useEffect(()=>{
         window.addEventListener('load', setAnim("show"))
@@ -121,8 +125,19 @@ const Hotel = () => {
             setHotel(data)
         },[data])
         console.log(hote)
-        const text = "i would like to book for the hotel "
-
+        const text = "Hi, I would like to book for the hotel "
+        const [url,seturl] = useState("")
+        useEffect(()=>{
+            if(hote != undefined && hote.length !== 0){
+                seturl(`/hotels?destinations=${hote.location}&limit=4`)
+            }
+            else(
+                seturl(`/hotels?destinations=nolocation&limit=4`)
+            )
+        }, [hote])
+        const {data:data2, loading:loadin2} = useFetch(url)
+        console.log(data2)
+            
     return (
         <div className={`animationset ${anim}`}>
             <NavbarTest />
@@ -213,7 +228,7 @@ const Hotel = () => {
                     }
                     <hr className='hidden sm:block'/>
                         <div className='px-3 sm:px-6 pt-6 sm:py-4'>
-                            <a href={"https://wa.me/919562523642?text=" + text + hote.title}><button className='bg-evergreen text-white flex justify-center gap-3 items-center font-bold px-4 py-2 rounded'><span>WhatsApp Us</span><WhatsAppIcon /></button></a>
+                            <a href={"https://wa.me/918129177335?text=" + text + hote.title}><button className='bg-evergreen text-white flex justify-center gap-3 items-center font-bold px-4 py-2 rounded'><span>WhatsApp Us</span><WhatsAppIcon /></button></a>
 
                         </div>
                     </div>
@@ -288,11 +303,11 @@ const Hotel = () => {
                                         </div>
                                     }                               </div>
                             }
-                           {hote.location && <div className='py-6 nav-box' id="location">
+                           {hote.googlelocation && <div className='py-6 nav-box' id="location">
                                 <h1 className='text-lg sm:text-xl font-bold'>Location</h1>
                                 <div className='py-6 flex'>
                                     <div>
-                                    <Map />
+                                    <Map googlelocation={hote.googlelocation}/>
                                     </div>
                                     <div className='px-8 py-8 hidden 2xl:block'>
                                         <p className='text-sm'>Hotel paramount is located at kadambazhipuram, on state highway side in palakkad district</p>
@@ -309,38 +324,43 @@ const Hotel = () => {
 
                     </div>
                     <div className='flex flex-col gap-8 xl:gap-16'>
-                        <div>
-                            <img src={h} className='rounded' alt="" />
-                            <div  className='flex flex-col xl:flex-row pt-2'>
-                                <div className='w-[100%] xl:w-[60%]'>
-                                    <h1 className='text-base xl:text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-sm xl:text-base'>Palakkad, Kerala</p>
+                       
+
+
+
+                        {data2 != undefined && data2.length !== 0 &&  data2.filter((item)=>{return item._id !== hote._id}).map((itm)=> (
+                             <div className='relative'>
+                                 {itm.offers &&
+                                    <span className='absolute top-2 right-2 bg-[red] rounded text-[white] px-3 py-1'>{itm.offertitle}</span>
+                                }
+                             <img src={itm.images[0]} className='rounded' alt="" />
+                             <div  className='flex pt-2'>
+                                 <div className='w-[60%]'>
+                                     <h1 className='text-base  font-bold'>{itm.title}</h1>
+                                      <p className='text-graydust-dark text-base'>{itm.location}</p>
+                            
+                                 </div>
+                                 <div className='w-[40%] flex flex-col items-end'>
+
+{itm.offers ?
+                                   <div className='flex flex-col items-end'><div> <strike className='text-[gray]'><span className='text-sm text-[gray] font-bold'>&#8377; {itm.cheapestPrice}</span></strike><span className='text-lg font-bold'>&#8377; {itm.offerprice}</span></div><span className='text-sm text-graydust-medium'>per room per night</span> </div>
+        :                                 <div className='flex flex-col items-end'>   <span className='text-lg font-bold'>&#8377; {itm.cheapestPrice}</span><span className='text-sm text-graydust-medium'>per room per night</span> </div>
+
+}
+</div>
+                             </div>
+                             </div>
+
+                        ))
+                        
+                        
+                        
+                        
+                        
+                        
+                        }
+
                            
-                                </div>
-                                <div className='w-[100%] xl:w-[40%] flex flex-col xl:items-end'>
-                                    <span className='text-base font-bold'>&#8377; 5000</span><span className='text-sm xl:text-right text-graydust-medium'>per room per night</span> 
-                                </div>
-                            </div>
-                            </div>
-
-
-
-
-
-
-                            <div>
-                            <img src={h} className='rounded' alt="" />
-                            <div  className='flex pt-2'>
-                                <div className='w-[60%]'>
-                                    <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
-                           
-                                </div>
-                                <div className='w-[40%] flex flex-col items-end'>
-                                    <span className='text-lg font-bold'>&#8377; 5000</span><span className='text-sm text-graydust-medium'>per room per night</span> 
-                                </div>
-                            </div>
-                            </div>
 
 
 
@@ -349,41 +369,14 @@ const Hotel = () => {
 
 
 
-                            <div>
-                            <img src={h} className='rounded' alt="" />
-                            <div  className='flex pt-2'>
-                                <div className='w-[60%]'>
-                                    <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
-                           
-                                </div>
-                                <div className='w-[40%] flex flex-col items-end'>
-                                    <span className='text-lg font-bold'>&#8377; 5000</span><span className='text-sm text-graydust-medium'>per room per night</span> 
-                                </div>
-                            </div>
-                            </div>
+                          
 
 
 
 
 
 
-
-
-                            <div>
-                            <img src={h} className='rounded' alt="" />
-                            <div  className='flex pt-2'>
-                                <div className='w-[60%]'>
-                                    <h1 className='text-xl  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-base'>Palakkad, Kerala</p>
-                           
-                                </div>
-                                <div className='w-[40%] flex flex-col items-end'>
-                                    <span className='text-lg font-bold'>&#8377; 5000</span><span className='text-sm text-graydust-medium'>per room per night</span> 
-                                </div>
-                            </div>
-                            </div>
-
+                         
 
 
 
@@ -391,116 +384,7 @@ const Hotel = () => {
                             
                     </div>
                 </div>
-                <div className='block lg:hidden py-8 sm:py-0 w-[100%] px-2'>
-                <h1 className='text-lg sm:text-xl font-bold'>Nearest Hotels</h1>
-                        <div>
-                            <Slider className='' {...settings}>
-                    
-
-
-
-
-
-                            
-
-
-
-                            <div className='my-4 w-[85%] mr-[15%]'>
-                            <img src={h} className='rounded w-full' alt="" />
-                            <div  className='flex flex-col pt-2'>
-                                <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
-                           
-                                </div>
-                                <div className='w-[100%] flex flex-wrap items-center gap-1 sm:gap-2 py-1'>
-                                    <span className='text-sm sm:text-lg font-bold'>&#8377; 5000</span><span className='text-xs sm:text-sm text-graydust-medium'>per room per night</span> 
-                                </div>
-                            </div>
-                            </div>
-
-
-                            <div className='my-4 w-[85%] mr-[15%]'>
-                            <img src={h} className='rounded w-full' alt="" />
-                            <div  className='flex flex-col pt-2'>
-                                <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
-                           
-                                </div>
-                                <div className='w-[100%] flex flex-wrap items-center gap-1 sm:gap-2 py-1'>
-                                    <span className='text-sm sm:text-lg font-bold'>&#8377; 5000</span><span className='text-xs sm:text-sm text-graydust-medium'>per room per night</span> 
-                                </div>
-                            </div>
-                            </div>
-
-
-
-                            <div className='my-4 w-[85%] mr-[15%]'>
-                            <img src={h} className='rounded w-full' alt="" />
-                            <div  className='flex flex-col pt-2'>
-                                <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
-                           
-                                </div>
-                                <div className='w-[100%] flex flex-wrap items-center gap-1 sm:gap-2 py-1'>
-                                    <span className='text-sm sm:text-lg font-bold'>&#8377; 5000</span><span className='text-xs sm:text-sm text-graydust-medium'>per room per night</span> 
-                                </div>
-                            </div>
-                            </div>
-
-
-                            <div className='my-4 w-[85%] mr-[15%]'>
-                            <img src={h} className='rounded w-full' alt="" />
-                            <div  className='flex flex-col pt-2'>
-                                <div className='w-[100%]'>
-                                    <h1 className='text-sm sm:text-base  font-bold'>Hotel Paramount</h1>
-                                     <p className='text-graydust-dark text-xs sm:text-sm'>Palakkad, Kerala</p>
-                           
-                                </div>
-                                <div className='w-[100%] flex flex-wrap items-center gap-1 sm:gap-2 py-1'>
-                                    <span className='text-sm sm:text-lg font-bold'>&#8377; 5000</span><span className='text-xs sm:text-sm text-graydust-medium'>per room per night</span> 
-                                </div>
-                            </div>
-                            </div>
-
-
-
-
-
-
-
-                        
-
-
-
-                            
-
-
-
-
-
-
-
-                            
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        </Slider>
-                        </div>
-                </div>
-              
+                
                
           
             </div>

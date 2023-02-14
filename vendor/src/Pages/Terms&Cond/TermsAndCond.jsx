@@ -1,11 +1,9 @@
 import React from 'react';
-import Navbar from '../components/navbar/navbar';
-import Footer from "../components/Footer/Footer"
+
 
 const TermsAndCond = () => {
     return (
         <div>
-            <Navbar></Navbar>
             <div className='mx-10 sm:mx-10 lg:mx-44 mt-24 mb-24 text-blacky-light'>
                 <h1 className='text-2xl font-bold'> Trouvailler Terms and Conditions for  Enterprises Private Limited , an Online Travel Aggregator</h1> 
 
@@ -50,7 +48,6 @@ const TermsAndCond = () => {
                 <h2 className='text-base font-semibold'>Contact Us</h2>
                 If you have any questions or concerns about this Privacy Policy, please contact us at suppory@trouvailler.com or +91 8129177335 / +91 8075404343 / +91 8891483310
             </div>
-            <Footer></Footer>
         </div>
     )
 }

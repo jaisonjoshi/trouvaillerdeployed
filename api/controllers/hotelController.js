@@ -2,6 +2,7 @@ const Hotel=require('../models/hotelModel')
 const mongoose=require('mongoose')
 const Locations = require('../models/locationModel')
 
+
 //get all workout
 //inside 'find' you can pass params ifi you need filtered result
 const getHotels=async(req,res)=>{

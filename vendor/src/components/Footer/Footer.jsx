@@ -43,13 +43,13 @@ const Footer = () => {
 
        </div>
 
-        <div className='border-t-2 border-graydust-medium flex justify-between items-end align-middle px-0 py-6 md:pl-6  ml-4 sm:mx-10'>
+        <div className='border-t-2 border-graydust-medium flex justify-between items-end align-middle px-0 py-3 sm:py-6 md:pl-6  ml-4 sm:mx-10'>
          <a href="" className='w-[25%] sm:w-[10%]'>
             <img src={Logo} alt="Trouvailler" className='sm:w-100 xl:w-3/4'/>
 </a>          
          
          <div className='flex justify-evenly items-center'>
-           <Link className='mx-4 text-[#e2e2e2] text-xs text-underline' to="/termandconditions">Terms and Conditions</Link>
+           <Link className='mx-4 text-[#e2e2e2] hidden sm:block text-xs text-underline' to="/termandconditions">Terms and Conditions</Link>
             <a href="https://www.facebook.com/travelwithtrouvailler/">
               <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faFacebookF} /></div>
             </a>
@@ -61,7 +61,12 @@ const Footer = () => {
             </a>
            
           </div>
+          
         </div>
+        <div className='ml-4 text-[gray] sm:hidden'>
+            <span className='text-xs'>Trouvailler &copy;2023</span><Link className='mx-4 underline  text-xs ' to="/termandconditions">Terms and Conditions</Link>
+
+          </div>
       </footer>
     </div >
   )

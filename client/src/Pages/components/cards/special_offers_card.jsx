@@ -45,7 +45,7 @@ const Offers = () => {
 
                     <img src={item.images[0]} alt="" className="aspect-video skeleton w-full rounded-md h-auto w-full " />
                     <div className="absolute opacity-90 bottom-2 w-[96%] z-50 left-[50%] translate-x-[-50%] flex flex-col rounded-lg p-2">
-                        <h1 className="font-bold text-white  text-sm sm:text-base">For a Thrilling Escape into the wild</h1>
+                        <h1 className="font-bold text-white  text-sm sm:text-base">{item.offerdescription}</h1>
                     </div>
                   </div>
 
@@ -54,9 +54,8 @@ const Offers = () => {
                   <div className="px-2 py-4 flex flex-col items-start">
                    <div className="flex items-start justify-between text-sm sm:text-lg"> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold  sm:text-lg card-text ">{item.title}</span>
                     <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">{item.duration}</span></div>
-                    <h3 className='text-xs px-2 py-[2px] rounded md:text-lg mb-0 bg-[red] text-[white]'><b>15% off</b></h3>   
+                    <h3 className='text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></h3>   
 
-                    <p className="text-sm text-[red] my-2 text-graydust-dark ">Grab upto 30% off on kerala tourist packages</p>
                     
                   </div>
 

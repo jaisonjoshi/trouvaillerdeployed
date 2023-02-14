@@ -88,7 +88,7 @@ const SingleHotel = () => {
         <div className="Single-hotel">
       <Header />
 
-            <div className="singlehotel-container">
+            <div className="singlehotel-container sm:p-8">
                {loading ? ("loading ") : (
                     <div className="singlehotel">
                    
@@ -110,7 +110,7 @@ const SingleHotel = () => {
                          <div className='flex flex-row sm:flex-col gap-[3.333333%] justify-start w-[100%] sm:w-[25%] '>
                                  {hote.images &&   
                                      hote.images.slice(1,4).map((itm,i)=> {
-                                         if(i<hote.images.length-2){
+                                         if(i!=2){
                                              return(
                                                  <div className='h-auto sm:h-[31%] w-[31%] sm:w-full relative hotel-img-card' ><img src={itm} className='sm:absolute top-0 left-0 w-[100%] h-[100%] object-cover' alt="" srcset="" /></div>
  
@@ -135,7 +135,7 @@ const SingleHotel = () => {
                          open={open}
                          
                      >
-                         <div onClick={handleClose} className='absolute rounded p-1 top-20 right-20 bg-[#7bbc67]'>                        <CloseIcon />
+                         <div onClick={handleClose} className='absolute rounded p-1 top-4 sm:top-20 right-4 sm:right-20 bg-[#7bbc67]'>                        <CloseIcon />
  </div>
                          <Slider className='w-[90%] bg-[white] py-8 mx-auto md:w-[90%]' {...settings1}>
                              {hote.images && hote.images.map((img,i)=>(
@@ -184,7 +184,7 @@ const SingleHotel = () => {
                  </div>
              </div>
              <div className='flex  flex-col lg:flex-row  gap-[5%]'>
-                <div className='flex justify-start flex-col w-[100%] px-8 py-8 rounded-[10px]  mt-20 bg-[white]'>
+                <div className='flex justify-start flex-col w-[100%] px-8 py-8 rounded-[10px] mt-2 sm:mt-20 bg-[white]'>
                  <div className='flex border-b border-b-2 border-[#e4e4e4] gap-2 sm:gap-3 text-sm sm:text-lg font-bold w-full hotelNavCon sticky top-0 h-[70px] bg-[white] text-graydust-dark' onClick={handleTabChange}>
                          {hote.description &&                     <div className='px-1 sm:px-4 py-1 flex items-center nav-itm cursor-pointer desc ' onClick={()=> handleNavigate('desc')} ><a className='no-underline nav-link '>Description</a></div>
  }
@@ -252,11 +252,11 @@ const SingleHotel = () => {
                                          </div>
                                      }                               </div>
                              }
-                             {hote.location && <div className='py-6 nav-box' id="location">
+                             {hote.googlelocation && <div className='py-6 nav-box' id="location">
                                 <h1 className='text-lg sm:text-xl font-bold'>Location</h1>
                                 <div className='py-6 flex'>
                                     <div>
-                                    <Map />
+                                    <Map googlelocation={hote.googlelocation}/>
                                     </div>
                                     
                                 </div>

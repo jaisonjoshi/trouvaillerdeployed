@@ -182,7 +182,7 @@ const [photoURL, setPhotoURL] = useState("");
             <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
            
                     <h1>Create a Hotel</h1>
-                    <p>Here you can create a new property and publish to the public. Ensure that all the details are correct before submitting the form.</p>
+                    <p className='text-sm'>Here you can create a new property and publish to the public. Ensure that all the details are correct before submitting the form.</p>
                    <div className="new-hotel-box">
                     <   div className="newhotelform-container">
                     <form >
@@ -332,7 +332,7 @@ const [photoURL, setPhotoURL] = useState("");
 
                             {locations.length != 0 && <div >
                                 <label>Location tags</label>
-                                <div className='roomTypes'>
+                                <div className='roomTypes flex flex-wrap'>
                                     
                                     { locations.map((obj, i)=> (
                                     
@@ -345,7 +345,7 @@ const [photoURL, setPhotoURL] = useState("");
                             </div>}
                             {features.length != 0 && <div >
                                 <label>Features or other attractions</label>
-                                <div className='roomTypes'>
+                                <div className='roomTypes flex flex-wrap'>
                                     
                                     {features.map((obj, i)=> (
                                             <Chip label={obj} onDelete={(e)=> {handlefeaturesDelete(e,obj)}} />
@@ -358,7 +358,7 @@ const [photoURL, setPhotoURL] = useState("");
                                 {facilities.length != 0 &&
                                 <>
                                     <h5>Facilities</h5>
-                                    <div  className='flex gap-[10px]'>
+                                    <div  className='flex flex-wrap gap-[10px]'>
                                 { facilities.map((obj)=>(
                                     <Chip label={obj} onDelete={(e)=> {handlefacilitiesDelete(e,obj)}} />
                                     ))}</div> </>

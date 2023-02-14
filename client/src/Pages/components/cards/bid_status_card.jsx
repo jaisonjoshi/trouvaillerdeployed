@@ -3,15 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router';
 
 const BidStatusCard = ({bid}) => {
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
+    const navigate = useNavigate();
+
     const handlewithdraw = async (id) => {
         try{
             await axiosInstance.delete(`/bids/${id}`);
+            navigate('/')
+            
         }catch(err){
             console.log(err);
         }

@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     .login-con{
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         border-radius: 10px;
         width: 30%;
         display: flex;
@@ -23,13 +22,12 @@
                 gap: 2rem;
                 input{
                     border: none;
-                    border-bottom: 1px solid rgb(100, 100, 100);
                     padding: 1rem;
                     outline: none;
                 }
             }
             .loginbtn{
-                padding: 3rem 0;
+                padding: 1rem 0;
                 margin: 1rem 0;
             }
         }
@@ -38,7 +36,8 @@
 @media screen and (max-width:768px){
     .login-box{
         .login-con{
-            width: 90%;
+            width: 80%;
+            
 
         }
     }

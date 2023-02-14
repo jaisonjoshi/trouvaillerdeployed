@@ -17,8 +17,8 @@ import CreateHotel from "./Pages/user/createHotel/CreateHotel.js";
 import SingleHotel from "./Pages/user/singlepage/SingleHotel.js";
 import UpdateHotel from "./Pages/user/updateHotel/UpdateHotel.js";
 import CircleLoading from './components/spinningLoader/CircleLoading';
-import PropagateLoader from "react-spinners/PropagateLoader";
-
+import BarLoader from "react-spinners/BarLoader";
+import TermsAndCond from "./Pages/Terms&Cond/TermsAndCond.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -46,7 +46,7 @@ function App() {
             {loading ?
            <div className='preloader'>
              <img src={logo} />
-             <PropagateLoader
+             <BarLoader
 
 
            color={'#32fca7'}
@@ -61,6 +61,7 @@ function App() {
     <Routes>
     
       <Route path='/'>
+      < Route path="termandconditions" element={<TermsAndCond/>}/>
 
         <Route path='login' >
             <Route index element={<Login  setOpen={setOpen}/>} />

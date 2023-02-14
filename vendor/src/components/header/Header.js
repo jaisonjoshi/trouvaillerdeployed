@@ -53,34 +53,30 @@ const Header = () => {
           };
     return(
         <div className="header">
-             <Slider {...settings}>
-             <div className='pic4 w-screen h-[50vh]'></div>
+             <div className='pic1 w-full h-[50vh]'></div>
 
-                <div className='pic1 w-screen h-[50vh]'></div>
-                <div className='pic2 w-screen h-[50vh]'></div>
-                <div className='pic3 w-screen h-[50vh]'></div>
+               
 
 
 
 
-            </Slider>
             <div className="header-content">
                 <div className="header-nav">
                     <div className="prof">
-                        <img src={data != undefined && data.img} />
-                        <button className='mr-4' onClick={handleClick}>Logout</button>
+                        <img className='w-[20px] h-[20px] sm:w-[30px] rounded-full sm:h-[30px] ' src={data != undefined && data.img} />
+                        <button className='mr-4 text-xs sm:text-base' onClick={handleClick}>Logout</button>
                         {/* <p className='mr-4'>{data.username}</p> */}
                     </div>
                     <div className="nav-items">
-                    <Link to="/"><a href="www.trouvailler.com">Home</a></Link>
+                    <Link to="/"><a href="www.trouvailler.com" className='text-xs sm:text-base'>Home</a></Link>
 
                     <span className='header-txt'>Explore <a href="www.trouvailler.com">trouvailler.com</a></span>
-                   <a href='https://www.facebook.com/travelwithtrouvailler/'><FacebookIcon className='nav-icon'/></a> <a href="https://wa.me/918129177335"><WhatsAppIcon className='nav-icon'/></a><a href="https://www.instagram.com/trouvailler_guides/"><InstagramIcon  className='nav-icon'/></a>
+                   <a href='https://www.facebook.com/travelwithtrouvailler/'><FacebookIcon className='nav-icon' sx={{fontSize:18}}/></a> <a href="https://wa.me/918129177335"><WhatsAppIcon sx={{fontSize:18}} className='nav-icon'/></a><a href="https://www.instagram.com/trouvailler_guides/"><InstagramIcon sx={{fontSize:18}} className='nav-icon'/></a>
                     </div>
                 </div>
                 <div className='header-logo'>
                     <img src={logo} />
-                    <p>
+                    <p className='text-sm sm:text-base'>
 Travel takes us out of our comfort zones and inspires us to see, taste and try new things</p>
                 </div>
             </div>

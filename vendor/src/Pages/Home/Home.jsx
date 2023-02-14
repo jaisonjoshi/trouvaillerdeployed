@@ -43,7 +43,7 @@ const Home = () => {
       {/* Header */}
       <Header/>
       <div className="profile">
-                <div className="left">
+                <div className="left p-4 sm:p-8">
                     <UserCard />
                     <div className="profile-container-1">
                         <p className="mb-8">See all bids that you have in your region. Make fast accept the bids inorder to have the customer</p>
