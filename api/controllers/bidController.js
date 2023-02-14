@@ -84,7 +84,8 @@ const createBid=async (req,res)=>{
         sendUsrMsg(req.body.userphone, req.body.destination)
 
     res.status(200).json({bid})
-    console.log("succedded whatsapp")
+    //console.log("succedded whatsapp")
+   
 
 }
    
@@ -100,19 +101,25 @@ const deleteBid=async (req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such bid to delete'})
     }
+    try{
     const bid=await Bid.findOneAndDelete({_id:id})
     if(!bid){
         return res.status(400).json({error:'No such bid found'})  
     }
     res.status(200).json(bid)
+    }
+    catch(error){
+        res.status(500).json({ error: 'Server Error' }); 
+    }
 }
 
-//update a workout
+//update a bid
 const updateBid=async (req,res)=>{
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such hotel to delete'})
     }
+    try{
     const bid=await Bid.findOneAndUpdate({_id:id},{
         ...req.body
     })
@@ -123,6 +130,10 @@ const updateBid=async (req,res)=>{
         return res.status(400).json({error:'No such hotel found'})  
     }
     res.status(200).json(bid)
+    }
+    catch(error){
+        res.status(500).json({ error: 'Server Error' }); 
+    }
 }
 //exports
 module.exports={

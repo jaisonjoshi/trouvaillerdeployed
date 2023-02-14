@@ -28,7 +28,7 @@ const Home =() => {
         window.addEventListener('load', setAnim("show"))
 
     }, [])
-    console.log(data)
+    //console.log(data)
     return(
         <div className="home">
             <Navbar onclick={handlesidenavOpen}/>

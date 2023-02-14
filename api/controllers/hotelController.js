@@ -23,7 +23,7 @@ const getHotels=async(req,res)=>{
          if(vendorid) query.vendorid = vendorid
   
     const hotel=await Hotel.find(query).limit(req.query.limit).sort({createdAt: -1}).catch(err=>console.log(err))
-    console.log(query)
+   // console.log(query)
     res.status(200).json(hotel)
 }
 //get a single workout
@@ -87,25 +87,31 @@ const createHotel=async (req,res)=>{
     }
 }
 
-//delete a workout
+//delete a hotel
 const deleteHotel=async (req,res)=>{
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such hotel to delete'})
     }
+    try{
     const hotel=await Hotel.findOneAndDelete({_id:id})
     if(!hotel){
         return res.status(400).json({error:'No such hotel found'})  
     }
     res.status(200).json(hotel)
 }
+catch (error){
+    res.status(500).json({ error: 'Server Error' }); 
+}
+}
 
-//update a workout
+//update a hotel
 const updateHotel=async (req,res)=>{
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such hotel to delete'})
     }
+    try{
     const hotel=await Hotel.findOneAndUpdate({_id:id},{
         ...req.body
     })
@@ -119,6 +125,11 @@ const updateHotel=async (req,res)=>{
         return res.status(400).json({error:'No such hotel found'})  
     }
     res.status(200).json(hotel)
+    }
+    catch(error){
+       // console.error(error);
+        res.status(500).json({ error: 'Server Error' });
+    }
 }
 //exports
 module.exports={

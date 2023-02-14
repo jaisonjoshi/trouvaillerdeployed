@@ -28,7 +28,7 @@ const Reviews =() => {
     useEffect(()=> {
          setReviews(data);
     }, [data]);
-   console.log(reviews)
+   //console.log(reviews)
     const navigate = useNavigate();
     const handleReviewUpdate = (id) => {
         navigate(`/reviews/${id}/update`);
@@ -38,8 +38,21 @@ const Reviews =() => {
             await axiosInstance.delete(`/reviews/${id}`);
             reFetch("/reviews")
             
-        }catch(err){
-            console.log(err)
+        }catch(error){
+            if (error.response && error.response.status==400) {  
+                
+                alert('Sorry, no such review found');
+              }
+              if (error.response && error.response.status==404) {  
+                
+                alert('Sorry, no such review found');
+              }
+              else if (error.request) {  
+                    alert('Network error! Please try again later');
+                }
+            else{
+                alert(error.message);
+            }
         }
     }
     

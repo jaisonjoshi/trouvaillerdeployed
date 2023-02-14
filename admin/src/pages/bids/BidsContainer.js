@@ -13,8 +13,11 @@ const BidsContainer =() => {
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
+    
     const [prevbids, setPrevBids] = useState([])
+   
     const {data:data2, loading:loading2} = useFetch("/bids?closed=true")
+       
     useEffect(()=>{
         setPrevBids(data2);
     }, [data2])
@@ -23,6 +26,7 @@ const BidsContainer =() => {
     useEffect(() => {
         setBids(data);
     },[data]);
+       
 
     return(
         <div className="bids-container">

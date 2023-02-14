@@ -18,7 +18,7 @@ const getPackages = async(req,res)=>{
     if(offers) query.offers = offers
     
     const package = await Package.find(query).limit(req.query.limit).sort({createdAt: -1}).catch(err=>console.log(err))
-    console.log(query)
+    //console.log(query)
     res.status(200).json(package)
    
 
@@ -103,11 +103,18 @@ const deletePackage = async (req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such package to delete'})
     }
+    try{
     const package = await Package.findOneAndDelete({_id:id})
     if(!package){
         return res.status(400).json({error:'No such package found'})  
     }
     res.status(200).json(package)
+    }
+    catch(error)
+    {
+        res.status(500).json({ error: 'Server Error' }); 
+    }
+
 }
 
 //update a workout
@@ -116,6 +123,7 @@ const updatePackage = async (req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such Pacakge to delete'})
     }
+    try{
     const package = await Package.findOneAndUpdate({_id:id},{
         ...req.body
     })
@@ -123,6 +131,11 @@ const updatePackage = async (req,res)=>{
         return res.status(400).json({error:'No such package found'})  
     }
     res.status(200).json(package)
+    }
+    catch(error){
+        res.status(500).json({ error: 'Server Error' });
+    }
+
 }
 //exports
 module.exports={

@@ -18,7 +18,7 @@ const sendMsg = async (destination) => {
     const getVendorPhone = async () => {
         let vendorNums = [];
         const hote = await Hotel.find({ locations: { "$in" : [destination]} });
-        console.log(hote,"set")
+        //console.log(hote,"set")
         await Promise.all(hote.map((h)=>{
             User.findById(h.vendorid).then((res)=>{
                 if(!vendorNums.includes(res.phone)){

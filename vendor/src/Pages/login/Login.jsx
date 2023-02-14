@@ -75,8 +75,21 @@ const Login = ({setOpen}) => {
       else{
         dispatch({type:"LOGIN_FAILURE",payload:{message:"Invalid credentials"}})
       }
-    } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
+    } catch (error) {
+
+      dispatch({ type: "LOGIN_FAILURE", payload: {message:"Login Unsuccessfull"} });
+      if (error.response) {
+        // The request was made and the server responded with a status code that falls out of the range of 2xx
+       alert('Please try again')
+       
+      } else if (error.request) {    
+          alert('Network error! Please try again later.')
+      } 
+        else {
+            alert(error.message + '. Please try again later.');
+        }
+
+
     }
 
     //
@@ -84,7 +97,7 @@ const Login = ({setOpen}) => {
  
 };
 
-  console.log(user);
+ // console.log(user);
 
   return (
     <div className="login-box h-[100vh] ">
@@ -135,7 +148,7 @@ const Login = ({setOpen}) => {
           {/* //google login button */}
        <GoogleLogin onSuccess={credentialResponse=>{
         //console.log(credentialResponse.credential);
-        console.log(credentialResponse);
+       // console.log(credentialResponse);
         const gid=credentialResponse.clientId
         var token=credentialResponse.credential;
         //verifyGoogleToken(token);
@@ -155,7 +168,7 @@ const Login = ({setOpen}) => {
         googleSignIn(google_user);
 
         
-        console.log(user);
+      //  console.log(user);
       }}
       onError={()=>{
         console.log("Login failed");

@@ -42,7 +42,17 @@ const createReview = async (req,res)=>{
     res.status(200).json({review})}
     
     catch(error){
-        res.status(500).json({error:error.message})
+      //  res.status(500).json({error:error.message})
+     
+        if (error.name === 'ValidationError') {
+            res.status(400).json({error: "Please provide all the required fields"})
+        } //else if (error.code === 11000) {
+           // res.status(400).json({error: "Duplicate entry found"})
+       // }
+        else {
+            res.status(500).json({error: "Unexpected error occurred"})
+        }
+    
     }
 }
 
@@ -51,29 +61,41 @@ const createReview = async (req,res)=>{
 const deleteReview = async (req,res)=>{
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:'No such package to delete'})
+        return res.status(404).json({error:'No such review to delete'})
     }
+    try{
     const review = await Review.findOneAndDelete({_id:id})
     if(!review){
-        return res.status(400).json({error:'No such package found'})  
+        return res.status(400).json({error:'No such review found'})  
     }
     res.status(200).json(review)
-}
+        }
+    catch(error){
+   // console.error(error);
+    res.status(500).json({ error: 'Server Error' });    
+        }}
 
 //update
 
 const updateReview = async (req,res)=>{
+
     const {id}=req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:'No such Pacakge to delete'})
+        return res.status(404).json({error:'No such review to delete'})
     }
+    try{
     const review = await Review.findOneAndUpdate({_id:id},{
         ...req.body
     })
     if(!review){
-        return res.status(400).json({error:'No such package found'})  
+        return res.status(400).json({error:'No such review found'})  
     }
     res.status(200).json(review)
+    }
+    catch(error){
+        //console.error(error);
+        res.status(500).json({ error: 'Server Error' });
+    }
 }
 
 //exports

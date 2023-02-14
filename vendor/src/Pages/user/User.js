@@ -22,6 +22,7 @@ const User = () => {
     const [maxtemp, setMaxtemp] = useState(undefined);
     const { user, dispatch } = useContext(AuthContext);
     const [hotels,setHotels] = useState([])
+
   const {data, loading,error ,reFetch} = useFetch(`/hotels?vendorid=${user._id}`)
   useEffect(()=>{
       setHotels(data);
@@ -44,12 +45,12 @@ const User = () => {
         //console.log(t.toLowerCase())
        // setSearchval(tar.toLowerCase());
         setDestination(tar.toLowerCase());//now set the paste this to dest array upon handle click
-        console.log(destination);
+        //console.log(destination);
       };
 
       const handlebudgetChange = (e) => {
         const { value, checked } = e.target;
-        console.log(value + " state is" + checked);
+        //console.log(value + " state is" + checked);
     
         if (checked && value == "b1") {
     
@@ -80,7 +81,7 @@ const User = () => {
           setMaxtemp(999999);
         }
     
-        console.log("min value is " + min + " max val is " + max);
+        //console.log("min value is " + min + " max val is " + max);
       };
     
       const handleMinValueChange = (e) => {

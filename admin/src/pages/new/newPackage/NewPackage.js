@@ -43,11 +43,11 @@ const NewPackage =({setOpen}) => {
 
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
-        console.log(info)
+        //console.log(info)
     }
     const handleChangeLowerCase = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value.toLowerCase()}))
-        console.log(info)
+       // console.log(info)
     }
     const handleDayTitleChange = (e) => {
         e.preventDefault();
@@ -91,7 +91,7 @@ const NewPackage =({setOpen}) => {
         setFile(file);
         setPhotoURL(URL.createObjectURL(file)); 
         setOpenCrop(true);
-        console.log(imgFiles)
+       // console.log(imgFiles)
     }
    }
 
@@ -114,7 +114,7 @@ const NewPackage =({setOpen}) => {
     setFeatures(features=>[...features, query])
     document.getElementById('features').value = " "
     setQuery("")
-    console.log(features)
+    //console.log(features)
    
     
 }
@@ -124,7 +124,7 @@ const handleactivityNext = (e) => {
     setActivities(activities=>[...activities, activity])
     document.getElementById('activities').value = " "
     setActivity("")
-    console.log(activities)
+    //console.log(activities)
    
     
 }
@@ -134,7 +134,7 @@ const handlelocationNext = (e) => {
     setLocations(locations=>[...locations, locationitem])
     document.getElementById('locations').value = " "
     setLocationitem("")
-    console.log(locations)
+    //console.log(locations)
    
     
 }
@@ -163,10 +163,19 @@ const handlelocationNext = (e) => {
                 images: list,offers:true,features:features,activities:activities,locations:locations,
               };
               await axiosInstance.post("/packages", newPackage);
-              console.log(newPackage)
+             // console.log(newPackage)
                 navigate('/packages')
-        } catch(err){
-            console.log(err)
+        } catch(error){
+            if (error.response) {
+                // The request was made and the server responded with a status code that falls out of the range of 2xx
+                alert('Error creating new Package. Please fill out all the necessary feilds and try again.');
+               
+              } else if (error.request) {    
+                  alert('Network error! Please try again later.')
+              } 
+                else {
+                    alert(error.message + '. Please try again later.');
+                }
         }
        
         setOpen(false)
@@ -194,32 +203,32 @@ const handlelocationNext = (e) => {
                                 <p>click again to upload next image</p>
                             </div>
                             <div className="form-item">
-                                <label > Title</label>
+                                <label > Title <span style={{ color: "red" }}> *</span></label>
                                 <input type="text" name="" id="title" onChange={handleChange}/>
                             
                             </div>
                             <div className="form-item">
-                                <label>Description</label>
+                                <label>Description <span style={{ color: "red" }}> *</span></label>
                                 <textarea type="text" id="description" onChange={handleChange}/>
                             
                             </div>
                             <div className="form-item">
-                                <label>Location</label>
+                                <label>Location <span style={{ color: "red" }}> *</span></label>
                                 <input type="text" id="location" onChange={handleChangeLowerCase}/>
                             
                             </div>
                             <div className="form-item">
-                                <label>Duration</label>
+                                <label>Duration <span style={{ color: "red" }}> *</span></label>
                                 <input type="text" id="duration" onChange={handleChange} placeholder={"eg. 3 Days 4 Nights "}/>
                             
                             </div>
                             <div className="form-item">
-                                <label>Category</label>
+                                <label>Category <span style={{ color: "red" }}> *</span></label>
                                 <textarea type="text" id="category" onChange={handleChangeLowerCase} placeholder={"eg. Family,Honeymoon,Friends,etc"}/>
                             
                             </div>
                             <div className="form-item">
-                                <label>Price</label>
+                                <label>Price <span style={{ color: "red" }}> *</span></label>
                                 <input type="text" id="cheapestPrice" onChange={handleChange}/>
                             
                             </div>
@@ -244,7 +253,7 @@ const handlelocationNext = (e) => {
 
                                 </div>
                                 <div className="form-item">
-                                    <label>Location tags</label>
+                                    <label>Location tags </label>
                                     <input type="text" id="locations" onChange={handleUpdateLocations} placeholder={"eg. Wayanad,Kerala,India"}/>
 
                                 </div>
@@ -259,7 +268,7 @@ const handlelocationNext = (e) => {
                             
                             </div>
                             <div className='shedule-input-con'>
-                                <h3>Shedule</h3>
+                                <h3>Shedule <span style={{ color: "red" }}> *</span></h3>
                                 <div className="shedule-ip-box">
                                     <div className="form-item">
                                         <label>Title</label>

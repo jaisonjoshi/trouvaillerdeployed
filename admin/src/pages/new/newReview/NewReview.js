@@ -30,13 +30,15 @@ const NewReview =({setOpen}) => {
     const [photoURL, setPhotoURL] = useState("");
     const [openCrop, setOpenCrop] = useState(false);
     const [imgFiles, setImgFiles] = useState([])
+    //const [open, setOpen] = useState(false);
+    const [message,setMessage] = useState("");
     const handleImageChange = (e) => {
     const file = e.target.files[0];
     if(file){
         setFile(file);
         setPhotoURL(URL.createObjectURL(file)); 
         setOpenCrop(true);
-        console.log(imgFiles)
+       // console.log(imgFiles)
     }
    }
 
@@ -63,14 +65,38 @@ const NewReview =({setOpen}) => {
             const newReview = {
                 ...info,image:url,
             };
-            console.log(newReview)
-            await axiosInstance.post('/reviews', newReview);
-            console.log("new review has been created")
+           // console.log(newReview)
+           const res = await axiosInstance.post('/reviews', newReview);
+           // console.log("new review has been created")
 
              navigate('/reviews')
-        }catch(err){
-            console.log(err)
         }
+
+        catch (error) {
+           
+            if (error.response) {
+              // The request was made and the server responded with a status code that falls out of the range of 2xx
+              alert('Error creating review. Please fill out all the necessary feilds and try again later.');
+             
+            } else if (error.request) {    
+                alert('Network error! Please try again later.')
+            } 
+            else{
+                alert(error.message + '. Please try again later.');
+            }
+      
+        }
+
+        //
+            // catch (error) {
+            //    
+            //     if(error.response.status==500)
+            //     alert('Error creating review. Please fill out all the necessary feild and try again later.');
+            //     else{
+            //         alert('Network error!.Please try again later');
+            //     }
+            //   }
+ 
         
     }
 
@@ -95,18 +121,18 @@ const NewReview =({setOpen}) => {
                                 
                                 </div>
                             <div className="form-item">
-                                <label > Review</label>
-                                <textarea type="text" name="" id="reviewnote" onChange={handleChange}/>
+                                <label> Review  <span style={{ color: "red" }}> *</span></label>
+                                <textarea type="text" name="" id="reviewnote" onChange={handleChange} required/>
+                            
+                            </div> 
+                            <div className="form-item">
+                                <label>Author <span style={{ color: "red" }}> *</span></label>
+                                <input type="text" id="author" onChange={handleChange} required/>
                             
                             </div>
                             <div className="form-item">
-                                <label>Author</label>
-                                <input type="text" id="author" onChange={handleChange}/>
-                            
-                            </div>
-                            <div className="form-item">
-                                <label>Place</label>
-                                <input type="text" id="place" onChange={handleChange}/>
+                                <label>Place <span style={{ color: "red" }}> *</span></label>
+                                <input type="text" id="place" onChange={handleChange} required/>
                             
                             </div>
                             
