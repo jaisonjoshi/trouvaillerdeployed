@@ -177,20 +177,11 @@ const [credentials, setCredentials] = useState({
 
                 <p className="text-center text-blacky-light text-sm mt-8">- OR -</p>
 
-<<<<<<< HEAD
                 <div className="flex flex-col gap-2 ">
                      <input type="text" className="mx-14 rounded p-3 outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Your Name" id="username"required onChange={handleChange}/>
                     <input type="email" className="mx-14 rounded p-3 outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="E-mail" id="email" required onChange={handleChange}/>
                     <input type="tel" className="mx-14 p-3 rounded ooutline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Mobile Number" id="phone" required onChange={handleChange}/>
                     <input type="password" className="mx-14  p-3 rounded outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Create Password" id="password"  required onChange={handleChange}/>
-=======
-                <div className="flex flex-col">
-                     <input type="text" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Your Name *" id="username"required onChange={handleChange}/>
-                    <input type="email" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="E-mail *" id="email" required onChange={handleChangeEmail}/>
-                    { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
-                    <input type="tel" className="mx-14 p-3 ooutline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Mobile Number *" id="phone" required onChange={handleChange}/>
-                    <input type="password" className="mx-14 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="  Create Password *" id="password"  required onChange={handleChange}/>
->>>>>>> 99da1a27f5e2915e986548071b4ffb00485fbfb8
                     
                     
                     </div>
