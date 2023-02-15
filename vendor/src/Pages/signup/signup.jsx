@@ -63,7 +63,8 @@ const [credentials, setCredentials] = useState({
       
       navigate("/login"); }
       else{
-        dispatch({type:"REGISTER_FAILURE",payload:{message:"Registration Unsuccessful! Please try again"}})
+        //dispatch({type:"REGISTER_FAILURE",payload:{message:"Registration Unsuccessful! Please try again"}})
+        alert('Failed to create new user. Please try again')
       }
     }
     else{
@@ -93,6 +94,9 @@ const [credentials, setCredentials] = useState({
         alert(error.message + '. Please try again later.');
     }
     }
+    else if (error.request) {    
+      alert('Network error! Please try again later.')
+  } 
     else{
         alert(error.message + '. Please try again later.');
     }}
@@ -125,14 +129,33 @@ const [credentials, setCredentials] = useState({
       else{
         dispatch({type:"LOGIN_FAILURE",payload:{message:"Invalid credentials"}})
       }
-    } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
+    } catch (error) {
+      dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      if(error.response){
+
+         if (error.response && error.response.status==405){
+           alert('The user with this mail id already exists. Please try again with a different account')
+           dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+         else if (error.response && error.response.status==403){
+           alert('Please try again with a different account');
+           dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+        else{
+          alert('Please try again with a different account!');
+          } 
+      }
+      else if (error.request) {    
+        alert('Network error! Please try again later.')
+    } 
+    else {
+      alert(error.message + '. Please try again later.');
+  }
     }
+  }
 
     //
   
  
-};
+
  // console.log(user);
 
 
@@ -149,9 +172,11 @@ const [credentials, setCredentials] = useState({
                 <h1 className="text-center mb-12 font-bold text-2xl">Create an Account</h1>
 
                 {/* <div className='mt-16'><div className="flex justify-center border border-2 rounded mx-14 gap-2 py-1 items-center "><img src={google} /><span>Sign Up with Google</span></div></div> */}
-                <GoogleLogin onSuccess={credentialResponse=>{
+                <GoogleLogin 
+                 buttonText="Sign up with Google"
+                 onSuccess={credentialResponse=>{
         //console.log(credentialResponse.credential);
-        console.log(credentialResponse);
+        //console.log(credentialResponse);
         const gid=credentialResponse.clientId
         var token=credentialResponse.credential;
         //verifyGoogleToken(token);
@@ -171,7 +196,7 @@ const [credentials, setCredentials] = useState({
         googleSignIn(google_user);
 
         
-        console.log(user);
+       // console.log(user);
       }}
       onError={()=>{
         console.log("Login failed");
@@ -179,17 +204,19 @@ const [credentials, setCredentials] = useState({
 
                 <p className="text-center text-blacky-light text-sm mt-4">- OR -</p>
 
-                <div className="flex flex-col gap-4 ">
-                     <input type="text" className="mx-14 rounded p-3 outline-none border border-[1px] border-[#d3d3d3] focus:ring-0 focus:ring-offset-0   duration-500" placeholder="Your Name" id="username"required onChange={handleChange}/>
-                    <input type="email" className="mx-14 rounded p-3 outline-none border border-[1px] border-[#d3d3d3] focus:ring-0 focus:ring-offset-0   duration-500" placeholder="E-mail" id="email" required onChange={handleChange}/>
-                    <input type="tel" className="mx-14 p-3 rounded outline-none border border-[1px] border-[#d3d3d3] focus:ring-0 focus:ring-offset-0  duration-500" placeholder="Mobile Number" id="phone" required onChange={handleChange}/>
-                    <input type="password" className="mx-14  p-3 rounded outline-none border border-[1px] border-[#d3d3d3] focus:ring-0 focus:ring-offset-0   duration-500" placeholder="Create Password" id="password"  required onChange={handleChange}/>
+                <div className="flex flex-col gap-2 ">
+                     <input type="text" className="mx-14 rounded p-3 outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Username *" id="username"required onChange={handleChange}/>
+                    <input type="email" className="mx-14 rounded p-3 outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="E-mail *" id="email" required onChange={handleChangeEmail}/>
+                        { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
+                    <input type="tel" className="mx-14 p-3 rounded ooutline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Mobile Number *" id="phone" required onChange={handleChange}/>
+                    <input type="password" className="mx-14  p-3 rounded outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Create Password *" id="password"  required onChange={handleChange}/>
                     
                     
                     </div>
                 <div className="mx-14 my-5">
-                    <button className="buttongrad hover:bg-evergreen duration-500 bg-blacky-dark text-whiteglow w-full rounded-md font-bold p-2 my-5" disabled={loading} onClick={handleClick}>Create Account</button>
-                    {error && <span className='py-2'>{error.message}</span>}
+                    <button className=" hover:bg-evergreen duration-500 bg-blacky-dark text-whiteglow w-full rounded-md p-2 my-5" disabled={loading} onClick={handleClick}>Create Account</button>
+                    
+                    {error && <p className="text-center text-[red]">{error.message}</p>}
                 </div>
 
                 <p className="mx-14 text-center">Already have an account?

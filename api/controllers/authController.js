@@ -1,12 +1,10 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-require('dotenv').config();
-const {OAuth2Client} = require('google-auth-library');
+require("dotenv").config();
+const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client(process.env.CLIENT_ID);
-
-
-
+const { body, validationResult } = require("express-validator");
 
 const { generateToken } = require("../utils/verifyToken");
 //import { createError } from "../utils/error.js";
@@ -18,16 +16,13 @@ const LocalStorage = require("node-localstorage").LocalStorage,
 
 const register = async (req, res, next) => {
   try {
-
     const username_c = await User.findOne({ username: req.body.username });
-    const email_c = await User.findOne({ email: req.body.email});
-    if(username_c)
-    {
-      return res.status(403).json({error:'Username cannot be same'})  
+    const email_c = await User.findOne({ email: req.body.email });
+    if (username_c) {
+      return res.status(403).json({ error: "Username cannot be same" });
     }
-    if(email_c)
-    {
-      return res.status(405).json({error:'Email cannot be same'})  
+    if (email_c) {
+      return res.status(405).json({ error: "Email cannot be same" });
     }
 
     const salt = bcrypt.genSaltSync(10);
@@ -63,9 +58,7 @@ const register = async (req, res, next) => {
     await newUser.save();
     res.status(200).send("User has been created.");
   } catch (err) {
- 
-          res.status(500).json({error: "Sorry! An unexpected error occurred."})
-
+    res.status(500).json({ error: "Sorry! An unexpected error occurred." });
   }
 };
 const login = async (req, res, next) => {
@@ -97,13 +90,11 @@ const login = async (req, res, next) => {
       .status(200)
       .json({ details: { ...otherDetails }, isAdmin, isVendor });
   } catch (error) {
-    res.status(500).json({ error: "server error" })
+    res.status(500).json({ error: "server error" });
   }
 };
 
 // const verify = async (req,res,next)=>{//
-
- 
 
 //   const ticket = await client.verifyIdToken({
 //       idToken: token,
@@ -118,45 +109,88 @@ const login = async (req, res, next) => {
 
 // //verify().catch(console.error);
 
-
 // }
 
 const googlelogin = async (req, res, next) => {
- 
- 
+  const filter = { google_id: req.body.google_id, email: req.body.email, username: req.body.username };
 
-      //update user or create
-	try {
-	const updatedUser = await User.findOneAndUpdate(
-    { google_id: req.body.google_id },
-	{ $set:req.body	},
-  { upsert: true, new: true },
-	);
-	//res.status(200).json(updatedUser);
-  if (!updatedUser) return next(res.status(404).json({ error: "User not found" }));
-	
+  try {
+   const doc =  await User.findOne(filter)
+     
+      if (!doc) {
+       // check for email id and username repetition and show alert in frontend
+        // const username_c = username
+        //  const email_c = email
+        //  if(username_c)
+        //  {
+        //    return res.status(403).json({error:'Username cannot be same'})
+        //  }
+        //  if(email_c)
+        //  {
+        //    return res.status(405).json({error:'Email cannot be same'})
+        //  }
 
-  const token = jwt.sign(
-    { id: updatedUser._id, isAdmin: updatedUser.isAdmin, isVendor: updatedUser.isVendor },
-    process.env.JWT
-  );
+        // Document not found, create a new one with the request body
+        const newDoc = new User(req.body);
 
-  const { google_id, isAdmin, isVendor, ...otherDetails } = updatedUser._doc;
-  res.cookie("access_token", token, {
-      httpOnly: true,
-    }).status(200).json({ details: { ...otherDetails }, isAdmin, isVendor,google_id });
+        newDoc.save(function (err, savedDoc) {
+          if (err) {
+            // handle error
+            res.status(502).json(err);
+          } else {
+            // The new document was saved
+            //console.log("generate tokens and cookies here--new doc created and saved");
+            const token = jwt.sign(
+              {
+                id: newDoc._id,
+                isAdmin: newDoc.isAdmin,
+                isVendor: newDoc.isVendor,
+              },
+              process.env.JWT
+            );
+
+            const { password, isAdmin, isVendor, ...otherDetails } =
+              newDoc._doc;
+            res
+              .cookie("access_token", token, {
+                httpOnly: true,
+              })
+              .status(200)
+              .json({ details: { ...otherDetails }, isAdmin, isVendor });
+          }
+        });
+      } else {
+        // The document was found, update it
+        doc.email = req.body.email;
+        doc.google_id = req.body.google_id;
+        doc.save(function (err, savedDoc) {
+          if (err) {
+            // handle error
+            res.status(503).json(err);
+          } else {
+            // The existing document was updated
+            //console.log("delete the updation code here and simply generate cookies");
+            const token = jwt.sign(
+              { id: doc._id, isAdmin: doc.isAdmin, isVendor: doc.isVendor },
+              process.env.JWT
+            );
+
+            const { password, isAdmin, isVendor, ...otherDetails } = doc._doc;
+            res
+              .cookie("access_token", token, {
+                httpOnly: true,
+              })
+              .status(200)
+              .json({ details: { ...otherDetails }, isAdmin, isVendor });
+          }
+        });
+      }
+   
   }
-
-	catch (err) {
-	res.status(500).json(err);
-	}
-  //login automatically and navigate to home upon success
-    }
-  
-
- 
-  //   
-
+   catch (error) {
+    res.status(500).json(error);
+  }
+};
 
 const logout = (req, res) => {
   const maxAge = 0;
@@ -170,7 +204,6 @@ const logout = (req, res) => {
 
   //res.redirect('/')
 };
-
 
 module.exports = {
   register,
