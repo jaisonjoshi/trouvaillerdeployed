@@ -1,7 +1,7 @@
 const { createContext, useEffect, useReducer } =require('react') ;
 
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("user"))||null ,
+  user: JSON.parse(sessionStorage.getItem("user")) || null,
   loading: false,
   error: null,
 };
@@ -40,22 +40,18 @@ const AuthReducer = (state, action) => {
           loading: true,
           error: null,
         };
-       
     case "REGISTER_SUCCESS":
         return {
           user: action.payload,
           loading: false,
           error: null,
         };
-   
     case "REGISTER_FAILURE":
       return {
         user: null,
         loading: false,
         error: action.payload,
       };
-     
-    
     default:
       return state;
   }
@@ -65,7 +61,7 @@ const AuthReducer = (state, action) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(state.user));
+    sessionStorage.setItem("user", JSON.stringify(state.user));
   }, [state.user]);
 
   return (

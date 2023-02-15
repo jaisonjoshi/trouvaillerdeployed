@@ -13,7 +13,9 @@ const navigate=useNavigate();
             method:"GET"
             
         }).then((res)=>{
+            sessionStorage.removeItem("user");
             navigate('/login',{replace:true});
+            
             if(res.status!=200){
                 const error=new Error (res.error);
                 throw error;

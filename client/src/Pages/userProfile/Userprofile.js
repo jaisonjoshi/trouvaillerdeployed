@@ -23,7 +23,8 @@ const Userprofile = () => {
 
     }, [])
 
-    const userObj = JSON.parse(window.localStorage.getItem('user'))
+    // const userObj = JSON.parse(window.localStorage.getItem('user'))
+    const userObj = JSON.parse(window.sessionStorage.getItem('user'))
 
     const [userdet, setUser] = useState({})
     const {data, loading, error} = useFetch(`/user/find/${userObj._id}`)

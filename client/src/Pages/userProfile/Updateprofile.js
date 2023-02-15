@@ -20,7 +20,8 @@ import './userprofile.css'
 import CropEasy from '../../Pages/components/crop/CropEasy'
 const Updateuser = ({setOpen}) => {
     
-    const userObj = JSON.parse(window.localStorage.getItem('user'))
+    // const userObj = JSON.parse(window.localStorage.getItem('user'))
+    const userObj = JSON.parse(window.sessionStorage.getItem('user'))
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -69,7 +70,8 @@ const Updateuser = ({setOpen}) => {
 
               url  = uploadRes.data.url;
             }
-            localStorage.setItem('user.img', url)
+            // localStorage.setItem('user.img', url)
+            sessionStorage.setItem('user.img', url)
                 
             const newUser = {
                 ...info,img:url,

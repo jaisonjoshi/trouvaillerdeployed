@@ -18,7 +18,8 @@ import axios from "axios";
 import './userprofile.css'
 
 const Updatepassword = () => {
-    const userObj = JSON.parse(window.localStorage.getItem('user'))
+    //const userObj = JSON.parse(window.localStorage.getItem('user'))
+    const userObj = JSON.parse(window.sessionStorage.getItem('user'))
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })

@@ -40,7 +40,8 @@ const Header = () => {
             dispatch({ type: "LOGOUT" });
             try {
               const res = await axiosInstance.get("/auth/logout");
-              localStorage.removeItem("user");
+              sessionStorage.removeItem("user");
+            //   localStorage.removeItem("user");
               if(res){
               
               navigate("/login");

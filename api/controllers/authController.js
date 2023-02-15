@@ -193,6 +193,7 @@ const googlelogin = async (req, res, next) => {
 };
 
 const logout = (req, res) => {
+  try{
   const maxAge = 0;
   const token = generateToken("2839373889", "logout");
   res.cookie("jwt", token, {
@@ -200,7 +201,12 @@ const logout = (req, res) => {
     maxAge: maxAge,
   });
   res.json({ message: "successfully logged out" });
-  localStorage.removeItem("user");
+  //sessionStorage.removeItem("user");
+}
+
+  catch (error) {
+    res.status(500).json(error);
+  }
 
   //res.redirect('/')
 };

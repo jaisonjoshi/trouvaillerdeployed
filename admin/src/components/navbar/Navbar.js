@@ -27,7 +27,7 @@ const Navbar = ({onclick}) => {
         dispatch({ type: "LOGOUT" });
         try {
           const res = await axiosInstance.get("/auth/logout");
-          localStorage.removeItem("user");
+          sessionStorage.removeItem("user");
           if(res){
          alert("You are successfully Logged out!")
           navigate("/login");

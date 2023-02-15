@@ -1,7 +1,7 @@
 const { createContext, useEffect, useReducer } =require('react') ;
 
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("user"))||null ,
+  user: JSON.parse(sessionStorage.getItem("user")) || null,
   loading: false,
   error: null,
 };
@@ -61,7 +61,7 @@ const AuthReducer = (state, action) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(state.user));
+    sessionStorage.setItem("user", JSON.stringify(state.user));
   }, [state.user]);
 
   return (

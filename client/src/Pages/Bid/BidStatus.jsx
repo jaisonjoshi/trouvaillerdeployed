@@ -13,7 +13,8 @@ const BidStatus = () => {
         window.addEventListener('load', setAnim("show"))
 
     }, [])
-    const userobj = JSON.parse(window.localStorage.getItem('user'))
+    //const userobj = JSON.parse(window.localStorage.getItem('user'))
+    const userobj = JSON.parse(window.sessionStorage.getItem('user'))
     const userid = userobj._id;
     const [bid,setbid] = useState([])
     const [prevbids, setprevbids] = useState([])
