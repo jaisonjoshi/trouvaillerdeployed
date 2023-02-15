@@ -50,10 +50,10 @@ const Home = () => {
         <div className=" absolute top-0 h-[100vh] flex items-center pl-12 md:pl-16 lg:pl-40 pr-8 md:pr-0">
           <div>
           <h1 className="text-5xl font-bold text-whiteglow">
-            THE BEST TOURS IN JUST 3 CLICKS
+          Discover Your Next Adventure
           </h1>
           <p className="text-base md:text-lg text-whiteglow py-5">
-            Enter a country, a city or even just a landmark and we'll find the right tours for you
+          Experience the adventure of a lifetime with our handpicked travel packages. Book now and create memories that will last a lifetime!
           </p>
 
           <Link className="" to="/hotels"> <button className="flex justify-center items-center bg-evergreen text-whiteglow w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500">
@@ -89,7 +89,7 @@ Know more
 
       <div className="pt-8 sm:pt-20 pb-8 px-4 sm:px-16 md:px-20 2xl:px-40 ">
         <h1 className='text-center font-bold text-blacky-dark text-2xl sm:text-4xl'>Special Offers</h1>
-                  <p className='text-center textnormal py-4 text-sm  sm:text-base md:text-lg font-body'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo.</p>
+                  <p className='text-center textnormal py-4 text-sm  sm:text-base md:text-lg font-body'>Get ready to explore the world with our unbeatable travel deals!</p>
       </div>
 
       <div className="px-4 sm:px-16 md:px-20 2xl:px-40 offer-container ">
@@ -105,7 +105,7 @@ Know more
         <div className='pt-4 sm:pt-28 pb-8  px-4 sm:px-16 md:px-20 2xl:px-40'>
           <div className='text-center'>
             <h1 className='font-bold text-2xl sm:text-4xl'>Trending Destinations</h1>
-            <p className=' pt-4 textnormal text-sm md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
+            <p className=' pt-4 textnormal  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
           </div>
         </div>
         <div className='grid  px-4 sm:px-16 md:px-20 2xl:px-40  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 auto-rows-[1fr] '>
