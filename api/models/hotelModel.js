@@ -62,6 +62,7 @@ const hotelSchema=new Schema({
     },
     offers:{
         type:Boolean,
+        default: false
     },
     
     offertitle:{

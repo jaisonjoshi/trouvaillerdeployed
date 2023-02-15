@@ -84,8 +84,8 @@ const UpdateUser = ({setOpen}) => {
                 data.append("file", file);
                 data.append("upload_preset", "upload");
                 const uploadRes = await axiosInstance.post(
-                "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
-                data
+                  "https://api.cloudinary.com/v1_1/difxlqrlc/image/upload",
+                  data
               );
 
               url  = uploadRes.data.url;
@@ -98,6 +98,7 @@ const UpdateUser = ({setOpen}) => {
           //  console.log(newUser, "HAI")
             await axiosInstance.patch(`/user/${user._id}`, newUser);
             //after updating user automatically loggs out and then goes to login page
+            alert('Please Sign In again with your google account')
              navigate('/login')}
              else{
                 alert('Kindly try again with a valid email id.')
@@ -156,10 +157,11 @@ const UpdateUser = ({setOpen}) => {
                     <div className="w-[100%] md:w-[50%] mt-4 flex flex-col gap-[10px] items-start">
                        <form action="" className='flex flex-col gap-[10px] items-start text-[grey]'>
                            <label htmlFor="">User Name </label> <input className='border-none px-4 py-1 rounded outline-none' type="text" defaultValue={data.username} id="username" onChange={handleChange} />
-                            <label htmlFor="">Email </label><input type="text" className='border-none px-4 py-1 rounded outline-none' defaultValue={data.email} id="email" onChange={handleChangeEmail}/>
+
+                           { user.google_id?<div></div>:<><label htmlFor="">Email </label><input type="text" className='border-none px-4 py-1 rounded outline-none' defaultValue={data.email} id="email" onChange={handleChangeEmail}/></>}
                             { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
                            <label htmlFor="">Phone </label> <input type="text" className='border-none px-4 py-1 rounded outline-none' defaultValue={data.phone} id="phone" onChange={handleChange}/>
-                            <label htmlFor="">Password </label><input type="password" className='border-none px-4 py-1 rounded outline-none'  id="password" onChange={handleChange} placeholder="Enter new password"/>
+                            {user.google_id?<div></div>:<><label htmlFor="">Password </label><input type="password" className='border-none px-4 py-1 rounded outline-none'  id="password" onChange={handleChange} placeholder="Enter new password"/></>}
 
                             <button  className="flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500" onClick={handleReviewClick}>Update</button>
                        </form>

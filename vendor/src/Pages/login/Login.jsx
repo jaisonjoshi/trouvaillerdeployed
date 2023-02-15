@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './login.scss'
 import axios from "axios";
+import logo from '../../Assets/logo.png'
 
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -47,8 +48,20 @@ const Login = ({setOpen}) => {
       else{
         dispatch({type:"LOGIN_FAILURE",payload:{message:"Invalid credentials"}})
       }
-    } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
+    } catch (error) {
+      dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      if(error.response){
+        alert('Please try again!')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
+      else if(error.request){
+        alert('Network error! Please try again later.')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
+      else{
+        alert(error.message +'. Please try again')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
     }
     setOpen(false)
   };
@@ -77,10 +90,20 @@ const Login = ({setOpen}) => {
       }
     } catch (error) {
 
-      dispatch({ type: "LOGIN_FAILURE", payload: {message:"Login Unsuccessfull"} });
+      dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
       if (error.response) {
+       
+          if (error.response && error.response.status==405){
+          alert('The user with this mail id already exists. Please try again with a different account')
+          dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+          else if (error.response && error.response.status==403){
+            alert('Please try again with a different account');
+            dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+          
         // The request was made and the server responded with a status code that falls out of the range of 2xx
-       alert('Please try again')
+          else{
+            alert('Please try again with a different account!');
+            } 
        
       } else if (error.request) {    
           alert('Network error! Please try again later.')
@@ -100,7 +123,7 @@ const Login = ({setOpen}) => {
  // console.log(user);
 
   return (
-    <div className="login-box h-[100vh] ">
+    <div className="login-box h-[100vh] bg-[white]">
       
 
       
@@ -108,42 +131,44 @@ const Login = ({setOpen}) => {
       <div className="login-con  ">
       <div className="login-box-content ">
       <div className="login-head">
-      <h3>Login/SignUp</h3>
+        <img src={logo} className="w-[50%] sm:w-[30%] md:w-[50%] lg:w-[40%] mb-8 mx-auto" alt="" />
+      <h3 className="font-medium">Welcome back, Login into your account</h3>
     </div>
 
        
-      <div className=" login-input">
+      <div className=" login-input mt-8">
           <input
             type="text"
-            className=""
-            placeholder="username"
+            className=" rounded "
+            placeholder="Username"
             id="username"
             onChange={handleChange}
           />
           <input
             type="password"
-            className=""
-            placeholder="password"
+            className="rounded"
+            placeholder="Password"
             id="password"
             onChange={handleChange}
           />
         </div>
 
         <div className=" loginbtn flex flex-col items-center justify-center">
-        {error && <p className="text-center text-[red]">{error.message}</p>}
+        
 
           <button
             disabled={loading}
             onClick={handleClick}
-            className=" bg-[#3aac38]  px-4 py-1 text-[white] rounded "
+            className=" bg-[#3aac38] w-full buttongrad font-bold px-4 py-2 text-[white] rounded "
           >
             Login
           </button>
+          {error && <p className="text-center text-[red]">{error.message}</p>}
 
         </div>
 
         <div className="googlelogin">
-          <p className="text-center">or</p>
+          <p className="text-center mb-4">or</p>
         
           {/* //google login button */}
        <GoogleLogin onSuccess={credentialResponse=>{
@@ -176,10 +201,10 @@ const Login = ({setOpen}) => {
         </div>
       <div className="text-center my-8">
         <p className="">
-          New here?
-          <Link className="text-[#339633]" to="/signup">
-            Signup
-          </Link>
+          New here? 
+          <Link className="text-[#339633] ml-1" to="/signup">
+             Signup
+          </Link> to create an account
         </p></div></div>
       </div>
 

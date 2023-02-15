@@ -15,7 +15,7 @@ const Footer = () => {
               <ul className='flex flex-col gap-[10px]'>
                 <li className='text-[#e2e2e2] text-xs sm:text-sm  hover:text-[white]'><Link to="/"> Home</Link></li>
                 <li className='text-[#e2e2e2] text-xs sm:text-sm  hover:text-[white]'><Link to="/bid-status"> My Bids</Link></li>
-                <li className='text-[#e2e2e2] text-xs sm:text-sm  hover:text-[white]'><Link> Terms & conditions</Link></li>
+                <li className='text-[#e2e2e2] text-xs sm:text-sm  hover:text-[white]'><Link to="/termandconditions"> Terms & conditions</Link></li>
 
               </ul>
 
@@ -49,7 +49,9 @@ const Footer = () => {
 </a>          
          
          <div className='flex justify-evenly items-center'>
-           <Link className='mx-4 text-[#e2e2e2] text-xs text-underline' to="/termandconditions">Terms and Conditions</Link>
+           <Link className='mx-4 text-[#e2e2e2] hidden sm:block text-xs text-underline' to="/termandconditions">Terms and Conditions</Link>
+           <Link className='mx-4 text-[#e2e2e2] hidden sm:block text-xs text-underline' to="/privacypolicy">Privacy Policy</Link>
+
             <a href="https://www.facebook.com/travelwithtrouvailler/">
               <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faFacebookF} /></div>
             </a>
@@ -61,7 +63,12 @@ const Footer = () => {
             </a>
            
           </div>
+          
         </div>
+        <div className='ml-4 text-[gray] sm:hidden'>
+            <span className='text-xs'>Trouvailler &copy;2023</span><Link className='mx-1 underline  text-xs ' to="/termandconditions">Terms and Conditions</Link><Link className='mx-1 underline  text-xs ' to="/privacypolicy">Privacy Policy</Link>
+
+          </div>
       </footer>
     </div >
   )

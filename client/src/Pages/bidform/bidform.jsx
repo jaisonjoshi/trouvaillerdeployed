@@ -29,7 +29,7 @@ const Bidform = () => {
     useEffect(()=>{
         if(data.length!=0){
             setLocationItms(data)
-            console.log(data)
+            //console.log(data)
         }
     },[data])
     const [info, setinfo] = useState({});
@@ -48,7 +48,7 @@ const Bidform = () => {
               
               const newBid = {
                 ...info,destination:value, username : user.username,userid:user._id,useremail:user.email,userphone:user.phone, closed:false,acceptedCount:0,
-              };console.log(newBid)
+              };//console.log(newBid)
              
               const res= await axiosInstance.post("/bids", newBid);
               if(res.data){
@@ -57,7 +57,7 @@ const Bidform = () => {
               else{
                 res.status(404).json({ error: "Error" })
               }
-               console.log(newBid)
+               //console.log(newBid)
            
         } catch(err){
             

@@ -10,7 +10,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import { useEffect } from 'react';
 
-
+import logo from '../Assets/Trouvailler Green.png'
 
 
 
@@ -71,7 +71,19 @@ const Login = () => {
             dispatch({type:"LOGIN_FAILURE",payload:{message:"Invalid credentials"}})
           }
         } catch (err) {
-          dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
+          dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      if(error.response){
+        alert('Please try again!')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
+      else if(error.request){
+        alert('Network error! Please try again later.')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
+      else{
+        alert(error.message +'. Please try again')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
         }
       };
      
@@ -105,8 +117,28 @@ const Login = () => {
           else{
             dispatch({type:"LOGIN_FAILURE",payload:{message:"Invalid credentials"}})
           }
-        } catch (err) {
-          dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
+        } catch (error) {
+          dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+         if (error.response) {
+       
+             if (error.response && error.response.status==405){
+                 alert('The user with this mail id already exists. Please try again with a different account')
+                 dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+             else if (error.response && error.response.status==403){
+                  alert('Please try again with a different account');
+                  dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+          
+        // The request was made and the server responded with a status code that falls out of the range of 2xx
+             else{
+                alert('Please try again with a different account!');
+              } 
+       
+         } else if (error.request) {    
+          alert('Network error! Please try again later.')
+          } 
+        else {
+            alert(error.message + '. Please try again later.');
+        }
         }
 
         //
@@ -121,11 +153,12 @@ const Login = () => {
     return (
 
         <div className="grid grid-cols-1 lg:grid-cols-2 h-screen w-full">
-            <div className="h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-40">
+            <div className="googlelogin h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-40">
 
+            <img src={logo} className="w-[30%] sm:w-[25%] md:w-[25%] lg:w-[20%] mb-8 mx-auto" alt="" />
 
                 
-            <div className='flex justify-center'><p style={{fontSize:"18px"}} className="text-[grey]">Welcome to Trouvailler.com</p></div>
+            <div className='flex justify-center'><h3 style={{fontSize:"18px"}} className="font-medium text-2xl mb-8">Welcome back, Login now</h3></div>
       
            
 
@@ -184,8 +217,7 @@ const Login = () => {
             onClick={handleClick}
             className=" hover:bg-evergreen duration-500 bg-blacky-dark text-whiteglow w-full rounded-md p-2 my-5"
           >Login</button>
-          <p>Forgot password</p>
-                {error && <span className='text-[red]'>{error.message} username or password. Please try again</span>}        
+                {error && <span className='text-[red] py-2'>{error.message} username or password. Please try again</span>}        
                 </div>
 
                 <p className="mx-14 text-center">Don't have an account? 

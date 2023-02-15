@@ -270,10 +270,14 @@ const User = () => {
                                       <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={hotel.images[0]} alt="" />
               
                                   </div>
-                                  <div className="pt-2">
+                                  <div className="pt-2 pb-2">
+                                  <h3 className='text-base md:text-base font-medium z-[48] text-[black] px-2 card-text '>{hotel.title}</h3>
+                                    <span className='mx-2 font-bold text-graydust-dark text-sm'>{hotel.location}</span>
+                                    
                                       <div className='flex justify-between items-center'>
+                                        
                                       {hotel.offers ? <div className='flex justify-between items-center'><div className="md:py-1 mx-1  flex justify-between items-center">
-                                            <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;&#8377; {hotel.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> <span  className="text-[grey] text-xs md:text-base"><strike>&#8377; {hotel.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
+                                            <span className="font-bold"><span className="text-sm md:text-lg">&nbsp;&#8377; {hotel.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> <span  className="text-[grey] text-xs md:text-sm"><strike>&#8377; {hotel.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
                                                 
                                         </div>                               <span className='mr-1 text-sm bg-[red] text-[white] px-2 py-1 rounded'>{hotel.offertitle}</span></div>
               :
@@ -282,9 +286,7 @@ const User = () => {
                                         }
                                       </div>
                                   
-                                  <h3 className='text-lg md:text-lg font-medium z-[48] text-[black] px-2  '>{hotel.title}</h3>
-                                    <span className='mx-2 font-bold text-graydust-dark text-sm'>{hotel.location}</span>
-                                    
+                                  
                                   </div>
                                   
                                 </div>

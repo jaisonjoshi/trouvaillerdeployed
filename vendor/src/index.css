@@ -84,3 +84,16 @@ h3{
     margin-left: auto !important;
     margin-right: auto !important;
 }
+.card-text{
+    word-wrap: break-word !important;
+    overflow: hidden !important;
+    max-height: 3.6em !important; /* (Number of lines you want visible) * (line-height) */
+    line-height: 1.2em !important;
+    height: 3.6em !important;
+    min-width: 3.6em !important;
+}
+
+.buttongrad{
+    background: rgb(26,163,122) !important;
+    background: linear-gradient(140deg, rgba(26,163,122,1) 0%, rgba(157,255,179,1) 100%) !important;
+}
