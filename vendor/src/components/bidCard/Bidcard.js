@@ -64,17 +64,17 @@ const Bidcard = ({bid}) => {
     return(
        <div className="bid-card mb-8">
            <div className="bid-header">
-                <h3>               You have a bid request in the region<span> {bid.destination}</span></h3>
+                <h3 className='text-base sm:text-lg'>               You have a bid request in the region<span> {bid.destination}</span></h3>
                 
            </div>
            <div className="bid-calendar">
                 <CalendarMonthIcon className="calendar-icon"/>
-                <span>CheckIn : {bid.checkIn}</span>
-                <span>CheckOut : {bid.checkOut}</span>
+                <span className='text-xs sm:text-base'>CheckIn : {bid.checkIn}</span>
+                <span className='text-xs sm:text-base'>CheckOut : {bid.checkOut}</span>
            </div>
            <div className="bid-facilities">
                <p>Required facilities:</p>
-               <div className="facilities">
+               <div  className='facilities text-xs sm:text-base'>
                    <span className="facilities-itm">{bid.accomodation} Guests</span><span className="facilities-itm">{bid.roomCount} Rooms</span><span className="facilities-itm">{bid.ac}</span><span className="facilities-itm">{bid.categories}</span>
                </div>
            </div>
@@ -82,7 +82,7 @@ const Bidcard = ({bid}) => {
                <p>Amount for which bid is made :<br></br> <span className='bid-price-tag'>{bid.maxAmount} /-</span></p>
            </div>
            <div className="bid-footer">
-               <p>You can accept this bid by clicking the Accept now button below. Once you are accepted, our agent will connect with you when the user completes the booking.</p>
+               <p className='text-xs sm:text-base' >You can accept this bid by clicking the Accept now button below. Once you are accepted, our agent will connect with you when the user completes the booking.</p>
                <label htmlFor="">Choose hotels</label>
                <Select
                     multiple
@@ -105,7 +105,7 @@ const Bidcard = ({bid}) => {
                     }
                    
                 </Select>
-                <button id="myBtn" onClick={updatebid}>{statustxt}</button>
+                <button id="myBtn" onClick={updatebid} className='text-xs sm:text-base'>{statustxt}</button>
 
 
            </div>

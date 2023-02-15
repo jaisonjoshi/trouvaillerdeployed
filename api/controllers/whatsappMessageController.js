@@ -4,10 +4,11 @@ const Bid=require('../models/bidModel')
 const Hotel=require('../models/hotelModel')
 const User=require('../models/userModel')
 
+require('dotenv').config()
 
 const header = {
     headers:{
-        Authorization: 'Bearer EAAMkPj4omZCIBAApZCCLnV1qKpfDgAqOdZAT5s9anfWVfN5AO4jby7BwRul8ZB4ZAGFxnXfcnazNGtzeaZAmRj9ZCZCCH1IszaE0zHKMyLQ8EWLVHmVvZCoYxUlimwWmi7SRlmQitN4QZB6aUbb3tPHVsOmM2zow7pxkVZCCS75e2nniz5vVpjeZCaZC7',
+        Authorization: process.env.WHATSAPP_TOKEN,
         Accept: 'application/json'
     }
 }
@@ -26,7 +27,7 @@ const sendMsg = async (destination) => {
                                     "to":  "91"+ res.phone,
                                     "type":  "template",
                                     "template": {  
-                                        "name":  "sample_shipping_confirmation",
+                                        "name":  "a_new_vendor_bid_alert",
                                         "language": {  
                                             "code":  "en_US" 
                                         }, 
@@ -35,7 +36,7 @@ const sendMsg = async (destination) => {
                                             "parameters":[
                                             {
                                                 "type": "text",
-                                                "text" : "hello"
+                                                "text" : destination
                                             }
                                         ]
                                     } ]
@@ -65,12 +66,12 @@ const sendMsg = async (destination) => {
     
 }
 
-const sendUsrMsg = async (userphone) => {
+const sendUsrMsg = async (userphone, destination) => {
     const body = { "messaging_product":  "whatsapp",
     "to":  "91"+ userphone,
     "type":  "template",
     "template": {  
-        "name":  "sample_shipping_confirmation",
+        "name":  "user_bid_alert",
         "language": {  
             "code":  "en_US" 
         }, 
@@ -79,7 +80,7 @@ const sendUsrMsg = async (userphone) => {
             "parameters":[
             {
                 "type": "text",
-                "text" : "hello"
+                "text" : destination
             }
         ]
     } ]
@@ -95,7 +96,38 @@ const sendUsrMsg = async (userphone) => {
                         console.log("error happened",err)
                     ))
 }
+
+const sendUsracceptedMsg = async (userphone) => {
+    const body = { "messaging_product":  "whatsapp",
+    "to":  "91"+ userphone,
+    "type":  "template",
+    "template": {  
+        "name":  "bid_accepted_alert",
+        "language": {  
+            "code":  "en_US" 
+        }
+    
+    }
+
+    }
+    axios.post('https://graph.facebook.com/v15.0/107724862224943/messages',body, header)
+                    .then((res)=> (
+                        console.log("msg success", res)
+                    ))
+                    .catch((err)=> (
+                        console.log("error happened",err)
+                    ))
+}
+
+
+
+
+
+
+
+
 module.exports = {
     sendMsg,
-    sendUsrMsg
+    sendUsrMsg,
+    sendUsracceptedMsg
 }

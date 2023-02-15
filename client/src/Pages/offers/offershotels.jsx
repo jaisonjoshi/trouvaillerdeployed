@@ -15,7 +15,7 @@ const Offershotels = () => {
     }, []);
 
     const [hoteloffers, sethoteloffers] = useState([])
-    const { data, loading, error } = useFetch("/hotels?offers=false");
+    const { data, loading, error } = useFetch("/hotels?offers=true");
 
     useEffect(()=>{
         sethoteloffers(data)

@@ -122,13 +122,13 @@ const Login = ({setOpen}) => {
  // console.log(user);
 
   return (
-    <div className="login-box ">
+    <div className="login-box h-[100vh] ">
       
 
       
       
-      <div className="login-con bg-[white] ">
-      <div className="login-box-content bg-[white]">
+      <div className="login-con  ">
+      <div className="login-box-content ">
       <div className="login-head">
       <h3>Login/SignUp</h3>
     </div>

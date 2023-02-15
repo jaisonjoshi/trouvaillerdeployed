@@ -180,10 +180,7 @@ fluid={true} rounded={true}
                 class={`py-3 px-1 lg:pt-2 text-lg ${colord}  hover:text-evergreen duration-500`} >
                 <Link to="/packages">Packages</Link>
             </Navbar.Link>
-            <Navbar.Link href="/"
-                class={`py-3 px-1 lg:pt-2 text-lg ${colord} hidden lg:block hover:text-evergreen duration-500`} >
-                Contact
-            </Navbar.Link>
+            
 </Navbar.Collapse>
 </Navbar>
     
@@ -252,7 +249,6 @@ const NavModel = ({open, setOpen, user, data, handleClick}) => {
 
               <Link to="/what-is-bid" onClick={handleNavClick}><li className='py-1 hover:text-[#03965e]'>Bid now</li></Link>
 
-              <a href="#footer" onClick={handleNavClick}><li className='py-1 hover:text-[#03965e]'>Contacts</li></a>
 
             </ul>
           </div>

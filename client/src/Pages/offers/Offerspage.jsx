@@ -15,7 +15,7 @@ const Offerspage = () => {
     }, []);
 
     const [packoffers, setpackoffers] = useState([])
-    const { data, loading, error } = useFetch("/packages");
+    const { data, loading, error } = useFetch("/packages?offers=true");
 
     useEffect(()=>{
         setpackoffers(data)
@@ -73,17 +73,17 @@ const Offerspage = () => {
 
                     <img src={item.images[0]} alt="" className="aspect-video skeleton w-full rounded-md h-auto w-full " />
                     <div className="absolute opacity-90 bottom-2 w-[96%] z-[41] left-[50%] translate-x-[-50%] flex flex-col rounded-lg p-2">
-                        <h1 className="font-bold text-white text-sm md:text-lg">For a Thrilling Escape into the wild</h1>
+                        <h1 className="font-bold text-white text-sm md:text-base md:text-lg">{item.offerdescription}</h1>
                     </div>
                   </div>
 
                   {/*Texts*/}
 
                   <div className="px-2 py-4">
-                   <div className="flex items center justify-between text-sm"> <span className="w-[70%] text-blacky-medium font-bold text-lg sm:text-lg  ">{item.title}</span>
-                    <span className="w-[30%] text-[#03965e] flex items-center text-sm text-right font-bold">{item.duration}</span></div>
+                   <div className="flex items-center justify-between text-sm"> <span className="w-[70%] text-blacky-medium font-bold text-lg sm:text-lg card-text  ">{item.title}</span>
+                    <span className="w-[30%] text-[#03965e] flex items-start justify-end text-sm md:text-base text-right font-bold">{item.duration}</span></div>
+                    <span className='text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></span>   
 
-                    <p className="text-sm text-[red] my-2 text-graydust-dark ">Grab upto 30% off on kerala tourist packages</p>
                     
                   </div>
 

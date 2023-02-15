@@ -2,7 +2,7 @@ const Hotel=require('../models/hotelModel')
 
 const Bid=require('../models/bidModel')
 const mongoose=require('mongoose')
-const {sendMsg, sendUsrMsg} = require(
+const {sendMsg, sendUsrMsg, sendUsracceptedMsg} = require(
     './whatsappMessageController'
 )
 //get all bids
@@ -81,7 +81,7 @@ const createBid=async (req,res)=>{
         maxAmount,closed,acceptedCount,
         accepted,username,useremail,userid,userphone})
         sendMsg(req.body.destination)
-        sendUsrMsg(req.body.userphone)
+        sendUsrMsg(req.body.userphone, req.body.destination)
 
     res.status(200).json({bid})
     //console.log("succedded whatsapp")
@@ -124,7 +124,7 @@ const updateBid=async (req,res)=>{
         ...req.body
     })
     if(req.body.accepted){
-        sendUsrMsg(req.body.userphone)
+        sendUsracceptedMsg(req.body.userphone)
     }
     if(!bid){
         return res.status(400).json({error:'No such hotel found'})  
