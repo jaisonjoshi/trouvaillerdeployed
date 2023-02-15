@@ -33,7 +33,7 @@ const Offerspage = () => {
 
 
                 <div className="mt-[60px] pt-28 pb-16 gradient-first mb-8 px-4 sm:px-16 md:px-20 2xl:px-40">
-        <h1 className=' font-bold text-blacky-dark text-2xl sm:text-4xl'>Best deals on Tour packages </h1>
+        <h1 className=' font-bold text-blacky-dark text-2xl sm:text-4xl'>Best Deals on Tour Packages </h1>
                   <p className=' textnormal py-4 text-sm  sm:text-base md:text-lg'>Pack your bags and save big! Unbeatable deals on the best tour packages. Book now and make unforgettable memories without breaking the bank</p>
       </div>
 

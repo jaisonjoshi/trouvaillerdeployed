@@ -33,8 +33,8 @@ const Offershotels = () => {
 
 
                 <div className="mt-[60px] pt-28 pb-16 gradient-first mb-8 px-4 sm:px-16 md:px-20 2xl:px-40">
-        <h1 className=' font-bold text-blacky-dark text-2xl sm:text-4xl'>Top discounts on Homestays, hotels...</h1>
-                  <p className=' textnormal py-4 text-sm  sm:text-base md:text-lg'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore iure odit nemo.</p>
+        <h1 className=' font-bold text-blacky-dark text-2xl sm:text-4xl'>Top Discounts on Homestays & Hotels</h1>
+                  <p className=' textnormal py-4 text-sm  sm:text-base md:text-lg'>Make Every Stay a Dream: Discounted Homestays and Hotels Await!</p>
       </div>
 
 
