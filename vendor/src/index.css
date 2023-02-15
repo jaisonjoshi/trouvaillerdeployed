@@ -84,3 +84,11 @@ h3{
     margin-left: auto !important;
     margin-right: auto !important;
 }
+.card-text{
+    word-wrap: break-word !important;
+    overflow: hidden !important;
+    max-height: 3.6em !important; /* (Number of lines you want visible) * (line-height) */
+    line-height: 1.2em !important;
+    height: 3.6em !important;
+    min-width: 3.6em !important;
+}

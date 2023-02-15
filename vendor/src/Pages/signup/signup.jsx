@@ -142,7 +142,7 @@ const [credentials, setCredentials] = useState({
     return (
 
         <div className="grid grid-cols-1 lg:grid-cols-2 h-screen w-full">
-            <div className="googlelogin h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-40">
+            <div className="googlelogin h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-12 md:pt-40">
 
                 <h1 className="text-center m-4 font-bold text-2xl">Create an Account</h1>
 

@@ -162,7 +162,7 @@ const SingleHotel = () => {
                     <div className='flex flex-col sm:border sm:border-2 sm:border-[#e4e4e4] rounded-[10px]  mx-auto'>    
                      
                     
-                     <div className='flex flex-col items-start gap-1 px-3 sm:px-6 py-8'>
+                     <div className='flex flex-col items-start gap-1  sm:px-6 py-8'>
                     
                      {hote.type &&
                                  <b><span className='px-4 mx-4 py-1 text-xs ml-[-10px] rounded-full bg-[#00ffa5] text-blacky-light'>{hote.type}</span></b>
@@ -185,11 +185,11 @@ const SingleHotel = () => {
                                     
                          </div>
                          :
-                         <h1 className='font-semibold text-xl px-6 '><span className='text-2xl '>&#8377; {hote.cheapestPrice} </span><span className='text-sm text-[red]'>per night</span></h1>
+                         <h1 className='font-semibold text-xl px-6 '><span className='text-xl '>&#8377; {hote.cheapestPrice} </span><span className='text-sm font-light text-[red]'>per night</span></h1>
  
                      }
                      <hr className='hidden sm:block border-[#e4e4e4] my-4'/>
-                         <div className='px-3 sm:px-6  my-2 flex gap-2'>
+                         <div className=' sm:px-6 mt-8  my-2 flex gap-2'>
                          <button className='bg-[#00ffa5] px-4 py-2 rounded-[10px]' onClick={() => handlehotelUpdate(id)}>Update Hotel</button><button className='bg-[#00ffa5] px-4 py-2 rounded-[10px]' onClick={() => handlehotelDelete(id)}>Delete hotel</button>
  
                          </div>
