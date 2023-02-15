@@ -19,16 +19,15 @@
             .login-input{
                 display: flex;
                 flex-direction: column;
-                gap: 2rem;
+                gap: 1rem;
                 input{
-                    border: none;
-                    padding: 1rem;
+                    border: 1px solid #d3d3d3;
+                    padding: .5rem 1rem;
                     outline: none;
                 }
             }
             .loginbtn{
                 padding: 1rem 0;
-                margin: 1rem 0;
             }
         }
     }

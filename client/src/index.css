@@ -312,3 +312,7 @@ button:focus {
 .slick-w-full .slick-track{
         width: 100% !important;
     }
+    .googlelogin iframe{
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }

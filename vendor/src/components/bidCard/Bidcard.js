@@ -105,7 +105,7 @@ const Bidcard = ({bid}) => {
                     }
                    
                 </Select>
-                <button id="myBtn" onClick={updatebid} className='text-xs sm:text-base'>{statustxt}</button>
+                <button id="myBtn" onClick={updatebid} className='text-xs font-bold text-[white] sm:text-base'>{statustxt}</button>
 
 
            </div>

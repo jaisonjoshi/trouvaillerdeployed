@@ -92,3 +92,8 @@ h3{
     height: 3.6em !important;
     min-width: 3.6em !important;
 }
+
+.buttongrad{
+    background: rgb(26,163,122) !important;
+    background: linear-gradient(140deg, rgba(26,163,122,1) 0%, rgba(157,255,179,1) 100%) !important;
+}
