@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "./static/css/main.f2c25b14.css",
+    "main.js": "./static/js/main.5d09a5c4.js",
+    "static/media/vendorbg1.jpg": "./static/media/vendorbg1.4e2a788922dfa1d2f0c4.jpg",
+    "static/media/vendorbg3.jpg": "./static/media/vendorbg3.07ba6e383ef236b09506.jpg",
+    "static/media/vendorbg4.jpg": "./static/media/vendorbg4.fc1b8d39a587d6e62bca.jpg",
+    "static/media/vendorbg2.jpg": "./static/media/vendorbg2.e3d231a4481ebc1182c0.jpg",
+    "static/media/profile.jpg": "./static/media/profile.1d714dafbffae01eaa1f.jpg",
+    "static/media/loginwall.webp": "./static/media/loginwall.5fc843e317d706d754f3.webp",
+    "static/media/villa.jpg": "./static/media/villa.178f80748bb0c45d7d0b.jpg",
+    "static/media/logo.png": "./static/media/logo.da8e785d53f4e549a6a9.png",
+    "static/media/hotel.jpg": "./static/media/hotel.5ac2ae0ccada1afb36f5.jpg",
+    "static/media/slick.svg": "./static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "./static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "./static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "./index.html",
+    "main.f2c25b14.css.map": "./static/css/main.f2c25b14.css.map",
+    "main.5d09a5c4.js.map": "./static/js/main.5d09a5c4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2c25b14.css",
+    "static/js/main.5d09a5c4.js"
+  ]
+}
