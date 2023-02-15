@@ -472,7 +472,11 @@ const color = "text-blacky-dark";
 
             <img src={honeymoon} className="w-[100%] rounded-[10px]" alt="" />
             <div className="absolute top-[50%] flex flex-col gap-1 translate-y-[-50%] left-4 lg:left-8 z-[45] w-[80%] 2xl:w-[50%]">
-              <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">Enjoy your honeymoon with our best packages and make moments unforgettable</p>
+              <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">Create unforgettable honeymoon memories with our curated packages.
+
+
+
+</p>
               <span className="text-lg lg:text-2xl xl:text-3xl font-bold text-[white] ">HoneyMoon Packages</span>
           
             </div>
@@ -484,7 +488,7 @@ const color = "text-blacky-dark";
 
                 <img src={adventure} className="w-[100%] rounded-[10px]" alt="" />
                 <div className="absolute top-[50%] flex flex-col gap-1 translate-y-[-50%] left-4 lg:left-8 z-[45] w-[80%] 2xl:w-[50%]">
-                  <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">We has put together a handy list of the best Adventure destinations, where you can finally leave everything else behind and celebrate </p>
+                  <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">Discover premier adventure destinations and break free to celebrate.</p>
                   <span className="text-lg lg:text-2xl xl:text-3xl font-bold text-[white] ">Adventure Travel<br className="hidden lg:block" /> Packages</span>
               
                 </div>
@@ -497,8 +501,8 @@ const color = "text-blacky-dark";
 
                 <img src={family} className="w-[100%] rounded-[10px]" alt="" />
                 <div className="absolute top-[50%] flex flex-col gap-1 translate-y-[-50%] left-4 lg:left-8 z-[45]  w-[80%] 2xl:w-[50%]">
-                  <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">Got your family around?<br></br>
-                  Make moments wonderful with Trouvailler family travel plans </p>
+                  <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">
+                  Experience unforgettable moments with Trouvailler's family travel packages. </p>
                   <span className=" text-lg lg:text-2xl xl:text-3xl font-bold text-[white] ">Family Trip<br className="hidden lg:block" /> Packages</span>
               
                 </div>
@@ -512,7 +516,7 @@ const color = "text-blacky-dark";
 
                 <img src={friends} className="w-[100%] rounded-[10px]" alt="" />
                 <div className="absolute  flex flex-col gap-1 top-[50%] translate-y-[-50%] left-4 lg:left-8 z-[45] w-[80%] 2xl:w-[50%]">
-                  <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">Hangout and celebrate with your gang with Trouvailler Tour packages specifically curated for your vibe </p>
+                  <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">Celebrate in style with Trouvailler's tailored tour packages for your group.</p>
                   <span className=" text-lg lg:text-2xl xl:text-3xl font-bold text-[white] ">Friends Travel<br className="hidden lg:block"/> Packages</span>
               
                 </div>
