@@ -13,7 +13,7 @@ const router=express.Router();
 router.patch("/:id", updateUser);
 
 //DELETE
-router.delete("/:id", verifyUser, deleteUser);
+router.delete("/:id", deleteUser);
 
 //GET
 router.get("/find/:id", getUser);

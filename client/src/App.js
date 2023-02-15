@@ -34,6 +34,7 @@ import Offerspage from "./Pages/offers/Offerspage.jsx";
 import SearchListPack from "./Pages/searchlist/SearchlistPack.js";
 import SearchListType from "./Pages/searchlist/searchListType.js";
 import SearchListPackType from "./Pages/searchlist/SearchListPackType.js";
+import PrivacyPolicy from "./Pages/privacy policy/privacypolicy.jsx";
 
 
 
@@ -104,6 +105,8 @@ function App() {
         <Route path="/list/hotel/:id" element={<Hotel/>}/>
         
         <Route path="/termandconditions" element={<TermsAndCond/>}/>
+        <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
+
       </Routes>
     </BrowserRouter>
 }

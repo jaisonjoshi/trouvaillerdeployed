@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "./static/css/main.aede11ec.css",
-    "main.js": "./static/js/main.e9c090e4.js",
+    "main.css": "./static/css/main.7e7ba046.css",
+    "main.js": "./static/js/main.cf209711.js",
     "static/media/goa.jpg": "./static/media/goa.08ee354aa0810925c7f7.jpg",
     "static/media/kashmir.jpg": "./static/media/kashmir.8ed801f6656222425278.jpg",
-    "static/media/inter.jpg": "./static/media/inter.d12b501e830728f9b61e.jpg",
     "static/media/mysore.jpg": "./static/media/mysore.3bafc0c3efe26da1e14a.jpg",
+    "static/media/apartments.jpg": "./static/media/apartments.2a572292f8b18922fdfa.jpg",
     "static/media/SpecialOffer.png": "./static/media/SpecialOffer.a259a320c1ad2a8e6fd3.png",
     "static/media/homestays.jpg": "./static/media/homestays.8ff8739afd8d7ac7679e.jpg",
     "static/media/wayanad.jpg": "./static/media/wayanad.066d8dc6a7c7462b5b8f.jpg",
     "static/media/resorts.jpg": "./static/media/resorts.222a17d78babfddb286b.jpg",
     "static/media/h.png": "./static/media/h.572ab5c8e0f8e1470462.png",
     "static/media/biding.webp": "./static/media/biding.93c775115147658cfa6f.webp",
+    "static/media/inter.jpg": "./static/media/inter.a2c80d218107cc414532.jpg",
     "static/media/hotels.jpg": "./static/media/hotels.669f6ae05b86b5605b48.jpg",
-    "static/media/apartments.jpg": "./static/media/apartments.d7dc6815619fcafacada.jpg",
     "static/media/international.jpg": "./static/media/international.b4cdd38d7322ef9f130b.jpg",
     "static/media/avatar.png": "./static/media/avatar.03cb89e32259e8b8cc7c.png",
     "static/media/loginwall.webp": "./static/media/loginwall.5fc843e317d706d754f3.webp",
@@ -35,11 +35,11 @@
     "static/media/slick.ttf": "./static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
     "index.html": "./index.html",
-    "main.aede11ec.css.map": "./static/css/main.aede11ec.css.map",
-    "main.e9c090e4.js.map": "./static/js/main.e9c090e4.js.map"
+    "main.7e7ba046.css.map": "./static/css/main.7e7ba046.css.map",
+    "main.cf209711.js.map": "./static/js/main.cf209711.js.map"
   },
   "entrypoints": [
-    "static/css/main.aede11ec.css",
-    "static/js/main.e9c090e4.js"
+    "static/css/main.7e7ba046.css",
+    "static/js/main.cf209711.js"
   ]
 }

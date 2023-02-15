@@ -19,6 +19,7 @@ import UpdateHotel from "./Pages/user/updateHotel/UpdateHotel.js";
 import CircleLoading from './components/spinningLoader/CircleLoading';
 import BarLoader from "react-spinners/BarLoader";
 import TermsAndCond from "./Pages/Terms&Cond/TermsAndCond.jsx";
+import PrivacyPolicy from "./Pages/privacy policy/privacypolicy.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -62,6 +63,7 @@ function App() {
     
       <Route path='/'>
       < Route path="termandconditions" element={<TermsAndCond/>}/>
+      < Route path="privacypolicy" element={<PrivacyPolicy/>}/>
 
         <Route path='login' >
             <Route index element={<Login  setOpen={setOpen}/>} />

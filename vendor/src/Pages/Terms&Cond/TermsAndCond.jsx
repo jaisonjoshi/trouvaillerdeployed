@@ -5,7 +5,7 @@ const TermsAndCond = () => {
     return (
         <div>
             <div className='mx-10 sm:mx-10 lg:mx-44 mt-24 mb-24 text-blacky-light'>
-                <h1 className='text-2xl font-bold'> Trouvailler Terms and Conditions for  Enterprises Private Limited , an Online Travel Aggregator</h1> 
+                <h1 className='text-2xl font-bold'>  Terms and Conditions for Trouvailler Enterprises Private Limited , an Online Travel Aggregator</h1> 
 
                 <p className='text-blacky-bright font-light'> Last Updated: February 8, 2023</p> <br />
 
@@ -46,7 +46,8 @@ const TermsAndCond = () => {
                 <p>These terms and conditions are governed by the laws of Kerala and the India, and you agree to submit to the jurisdiction of the courts located in Thiruvananthapuram, Kerala India.
                </p> <br />
                 <h2 className='text-base font-semibold'>Contact Us</h2>
-                If you have any questions or concerns about this Privacy Policy, please contact us at suppory@trouvailler.com or +91 8129177335 / +91 8075404343 / +91 8891483310
+                <p>If you have any questions or concerns about this Terms and Conditions, please contact us at <a href="mailto:suppory@trouvailler.com" className='underline text-[blue]'>suppory@trouvailler.com</a>  or +91 8129177335, +91 8075404343, +91 8891483310
+            </p>
             </div>
         </div>
     )

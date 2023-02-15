@@ -43,7 +43,7 @@ const UpdateReview =() => {
         
             
             const uploadRes = await axiosInstance.post(
-                "https://api.cloudinary.com/v1_1/dihrq9pgs/image/upload",
+                "https://api.cloudinary.com/v1_1/difxlqrlc/image/upload",
                 data
               );
 

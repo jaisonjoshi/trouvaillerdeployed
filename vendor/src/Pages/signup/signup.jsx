@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../components/context/AuthContext';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
+import logo from '../../Assets/logo.png'
 
 
 
@@ -164,10 +165,11 @@ const [credentials, setCredentials] = useState({
 //
     return (
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-screen w-full">
-            <div className="googlelogin h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-40">
+        <div className="grid grid-cols-1 lg:grid-cols-2 bg-[white] h-screen w-full">
+            <div className="googlelogin h-full bg-[white] flex flex-col justify-center lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto ">
+            <img src={logo} className="w-[30%] sm:w-[25%] md:w-[25%] lg:w-[20%] mb-8 mx-auto" alt="" />
 
-                <h1 className="text-center m-4 font-bold text-2xl">Create an Account</h1>
+                <h1 className="text-center mb-12 font-bold text-2xl">Create an Account</h1>
 
                 {/* <div className='mt-16'><div className="flex justify-center border border-2 rounded mx-14 gap-2 py-1 items-center "><img src={google} /><span>Sign Up with Google</span></div></div> */}
                 <GoogleLogin 
@@ -200,14 +202,14 @@ const [credentials, setCredentials] = useState({
         console.log("Login failed");
       }}/>
 
-                <p className="text-center text-blacky-light text-sm mt-8">- OR -</p>
+                <p className="text-center text-blacky-light text-sm mt-4">- OR -</p>
 
                 <div className="flex flex-col gap-2 ">
-                     <input type="text" className="mx-14 rounded p-3 outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Your Name" id="username"required onChange={handleChange}/>
-                    <input type="email" className="mx-14 rounded p-3 outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="E-mail" id="email" required onChange={handleChangeEmail}/>
-                    { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
-                    <input type="tel" className="mx-14 p-3 rounded ooutline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Mobile Number" id="phone" required onChange={handleChange}/>
-                    <input type="password" className="mx-14  p-3 rounded outline-none  focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Create Password" id="password"  required onChange={handleChange}/>
+                     <input type="text" className="mx-14 rounded p-3 outline-none border border-[1px] border-[#d3d3d3] focus:ring-0 focus:ring-offset-0  hover:border-b-evergreen duration-500" placeholder="Username *" id="username"required onChange={handleChange}/>
+                    <input type="email" className="mx-14 rounded p-3 outline-none border border-[1px] border-[#d3d3d3] focus:ring-0 focus:ring-offset-0  hover:border-b-evergreen duration-500" placeholder="E-mail *" id="email" required onChange={handleChangeEmail}/>
+                        { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
+                    <input type="tel" className="mx-14 p-3 rounded ooutline-none border border-[1px] border-[#d3d3d3] focus:ring-0 focus:ring-offset-0  hover:border-b-evergreen duration-500" placeholder="Mobile Number *" id="phone" required onChange={handleChange}/>
+                    <input type="password" className="mx-14  p-3 rounded outline-none border border-[1px] border-[#d3d3d3] focus:ring-0 focus:ring-offset-0  hover:border-b-evergreen duration-500" placeholder="Create Password *" id="password"  required onChange={handleChange}/>
                     
                     
                     </div>
@@ -217,8 +219,8 @@ const [credentials, setCredentials] = useState({
                     {error && <p className="text-center text-[red]">{error.message}</p>}
                 </div>
 
-                <p className="mx-14">Already have an account?
-                    <Link className="text-[#339633]" to="/Login">Login</Link></p>
+                <p className="mx-14 text-center">Already have an account?
+                    <Link className="text-[#339633] ml-1" to="/Login">Login</Link> now</p>
             </div>
 
             <div style={{backgroundImage:`url(${loginwall})`}} className="hidden lg:flex justify-center items-center h-[100vh] bg-center bg-no-repeat bg-cover">
