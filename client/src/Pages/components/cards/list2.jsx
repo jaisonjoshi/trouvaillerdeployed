@@ -424,9 +424,9 @@ const color = "text-blacky-dark";
 
 
                 <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 sm:pb-4">
-                    <h1 className='text-center text-3xl sm:text-4xl text-[#2f3560] font-bold'>Find your next stay
+                    <h1 className='text-center text-3xl sm:text-4xl text-[#2f3560] font-bold'> Discover Your Dream Destination with Us
 </h1>
-                    <p className='text-center text-blacky-light text-base md:text-lg'>Search low prices on hotels, homes and much more...
+                    <p className='text-center text-blacky-light text-base md:text-lg'>Find and Book Your Dream Tour Package Now!
 
 </p>
                 </div>
