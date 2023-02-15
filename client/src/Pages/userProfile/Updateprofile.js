@@ -114,7 +114,7 @@ const Updateuser = ({setOpen}) => {
                     <div className="w-[100%] md:w-[50%] flex flex-col gap-[10px] items-start">
                        <form action="" className='flex flex-col gap-[10px] items-start text-[grey]'>
                             <input className='border-none rounded outline-none' type="text" defaultValue={data.username} id="username" onChange={handleChange} />
-                            <input type="text" className='border-none rounded outline-none' defaultValue={data.email} id="email" onChange={handleChange}/>
+                           {data.google_id?<div></div>: <input type="text" className='border-none rounded outline-none' defaultValue={data.email} id="email" onChange={handleChange}/>}
                             <input type="text" className='border-none rounded outline-none' defaultValue={data.phone} id="phone" onChange={handleChange}/>
                             <button  className="flex justify-center items-center bg-evergreen text-blacky-medium w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500" onClick={handleReviewClick}>Update</button>
                        </form>

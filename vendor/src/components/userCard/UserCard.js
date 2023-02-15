@@ -33,6 +33,7 @@ const UserCard =()=> {
                 <div className="pd-itm">
                     <p><b>Your user ID : </b>{data._id}</p>
                 </div>
+                
                 <div className="pd-itm">
                    <Link to="/vendor/updateprofile"> <CreateRoundedIcon className='icn'/><p>Edit Profile</p></Link>
                 </div>

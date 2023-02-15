@@ -62,7 +62,8 @@ const [credentials, setCredentials] = useState({
       
       navigate("/login"); }
       else{
-        dispatch({type:"REGISTER_FAILURE",payload:{message:"Registration Unsuccessful! Please try again"}})
+        //dispatch({type:"REGISTER_FAILURE",payload:{message:"Registration Unsuccessful! Please try again"}})
+        alert('Failed to create new user. Please try again')
       }
     }
     else{
@@ -92,6 +93,9 @@ const [credentials, setCredentials] = useState({
         alert(error.message + '. Please try again later.');
     }
     }
+    else if (error.request) {    
+      alert('Network error! Please try again later.')
+  } 
     else{
         alert(error.message + '. Please try again later.');
     }}
@@ -124,14 +128,33 @@ const [credentials, setCredentials] = useState({
       else{
         dispatch({type:"LOGIN_FAILURE",payload:{message:"Invalid credentials"}})
       }
-    } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
+    } catch (error) {
+      dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      if(error.response){
+
+         if (error.response && error.response.status==405){
+           alert('The user with this mail id already exists. Please try again with a different account')
+           dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+         else if (error.response && error.response.status==403){
+           alert('Please try again with a different account');
+           dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+        else{
+          alert('Please try again with a different account!');
+          } 
+      }
+      else if (error.request) {    
+        alert('Network error! Please try again later.')
+    } 
+    else {
+      alert(error.message + '. Please try again later.');
+  }
     }
+  }
 
     //
   
  
-};
+
  // console.log(user);
 
 
@@ -147,9 +170,11 @@ const [credentials, setCredentials] = useState({
                 <h1 className="text-center m-4 font-bold text-2xl">Create an Account</h1>
 
                 {/* <div className='mt-16'><div className="flex justify-center border border-2 rounded mx-14 gap-2 py-1 items-center "><img src={google} /><span>Sign Up with Google</span></div></div> */}
-                <GoogleLogin onSuccess={credentialResponse=>{
+                <GoogleLogin 
+                 buttonText="Sign up with Google"
+                 onSuccess={credentialResponse=>{
         //console.log(credentialResponse.credential);
-        console.log(credentialResponse);
+        //console.log(credentialResponse);
         const gid=credentialResponse.clientId
         var token=credentialResponse.credential;
         //verifyGoogleToken(token);
@@ -169,7 +194,7 @@ const [credentials, setCredentials] = useState({
         googleSignIn(google_user);
 
         
-        console.log(user);
+       // console.log(user);
       }}
       onError={()=>{
         console.log("Login failed");
@@ -188,7 +213,8 @@ const [credentials, setCredentials] = useState({
                     </div>
                 <div className="mx-14 my-5">
                     <button className=" hover:bg-evergreen duration-500 bg-blacky-dark text-whiteglow w-full rounded-md p-2 my-5" disabled={loading} onClick={handleClick}>Create Account</button>
-                    {error && <span>{error.message}</span>}
+                    
+                    {error && <p className="text-center text-[red]">{error.message}</p>}
                 </div>
 
                 <p className="mx-14">Already have an account?

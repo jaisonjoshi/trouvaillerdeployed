@@ -47,8 +47,20 @@ const Login = ({setOpen}) => {
       else{
         dispatch({type:"LOGIN_FAILURE",payload:{message:"Invalid credentials"}})
       }
-    } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: {message:"Invalid"} });
+    } catch (error) {
+      dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      if(error.response){
+        alert('Please try again!')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
+      else if(error.request){
+        alert('Network error! Please try again later.')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
+      else{
+        alert(error.message +'. Please try again')
+        dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
+      }
     }
     setOpen(false)
   };
@@ -77,10 +89,20 @@ const Login = ({setOpen}) => {
       }
     } catch (error) {
 
-      dispatch({ type: "LOGIN_FAILURE", payload: {message:"Login Unsuccessfull"} });
+      dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });
       if (error.response) {
+       
+          if (error.response && error.response.status==405){
+          alert('The user with this mail id already exists. Please try again with a different account')
+          dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+          else if (error.response && error.response.status==403){
+            alert('Please try again with a different account');
+            dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
+          
         // The request was made and the server responded with a status code that falls out of the range of 2xx
-       alert('Please try again')
+          else{
+            alert('Please try again with a different account!');
+            } 
        
       } else if (error.request) {    
           alert('Network error! Please try again later.')
@@ -130,7 +152,7 @@ const Login = ({setOpen}) => {
         </div>
 
         <div className=" loginbtn flex flex-col items-center justify-center">
-        {error && <p className="text-center text-[red]">{error.message}</p>}
+        
 
           <button
             disabled={loading}
@@ -139,6 +161,7 @@ const Login = ({setOpen}) => {
           >
             Login
           </button>
+          {error && <p className="text-center text-[red]">{error.message}</p>}
 
         </div>
 
