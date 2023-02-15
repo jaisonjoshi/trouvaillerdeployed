@@ -339,7 +339,7 @@ const List1_card = ({ setlocation, settype }) => {
 
 
                 <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 sm:pb-4">
-                    <h1 className='text-center text-3xl sm:text-4xl text-[#2f3560] font-bold'>Find your next stayd
+                    <h1 className='text-center text-3xl sm:text-4xl text-[#2f3560] font-bold'>Find your next stay
                     </h1>
                     <p className='text-center text-blacky-light text-base md:text-lg'>Find your next stay with us and experience comfort, convenience, and quality like never before.
 
@@ -409,7 +409,7 @@ const List1_card = ({ setlocation, settype }) => {
                         <button onClick={() => slider?.current?.slickNext()}><ArrowForwardIosSharpIcon sx={{ fontSize: 15, color: "#03965e" }} /></button>
                     </div>
                 </div>
-                <p className='text-sm sm:text-base lg:text-lg py-2 '>Grab Best deals on homestays, hotels and resorts</p>
+                <p className='text-sm sm:text-base lg:text-lg py-2 '>Score Big Savings on Your Next Stay - Check Out Our Best Hotel Deals Now!</p>
 
                 <div className=' pt-8 '>
                     <Slider ref={slider} className='slick-m ' {...settings_1} >
@@ -452,7 +452,7 @@ const List1_card = ({ setlocation, settype }) => {
                     <h1 className='text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold'>Popular Destinations</h1>
 
                 </div>
-                <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4'>Explore and choose the best homestays, hotels or properties in most popular destinations</p>
+                <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4'>Discover Our Most Popular Destinations and Plan Your Next Adventure Today!</p>
 
                 <Slider {...settings2} className="lg:hidden pt-4 sm:pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
                     <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={() => handleS2submit("kashmir")}><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={kashmir} alt="" /><h1 className='absolute left-3 bottom-3'>Kashmir</h1></div></div>
