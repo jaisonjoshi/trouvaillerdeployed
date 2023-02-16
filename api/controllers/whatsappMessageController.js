@@ -27,7 +27,7 @@ const sendMsg = async (destination) => {
                                     "to":  "91"+ res.phone,
                                     "type":  "template",
                                     "template": {  
-                                        "name":  "sample_shipping_confirmation",
+                                        "name":  "vendor_bid_alert",
                                         "language": {  
                                             "code":  "en_US" 
                                         }, 
@@ -71,7 +71,7 @@ const sendUsrMsg = async (userphone, destination) => {
     "to":  "91"+ userphone,
     "type":  "template",
     "template": {  
-        "name":  "sample_shipping_confirmation",
+        "name":  "user_bid_create_alert",
         "language": {  
             "code":  "en_US" 
         }, 
@@ -102,7 +102,7 @@ const sendUsracceptedMsg = async (userphone) => {
     "to":  "91"+ userphone,
     "type":  "template",
     "template": {  
-        "name":  "sample_shipping_confirmation",
+        "name":  "user_bid_accept_alert",
         "language": {  
             "code":  "en_US" 
         }
