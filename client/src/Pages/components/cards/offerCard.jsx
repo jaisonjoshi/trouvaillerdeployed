@@ -15,7 +15,7 @@ const OfferCard=({item})=>{
 </div>
 <div className="package-card-footer">
 
-<h3 className='text-evergreen text-xl font-bold'>₹{item.cheapestPrice}
+<h3 className='text-evergreen text-xl font-bold'>₹{item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
 </h3> 
 <br></br>
 </div></div>

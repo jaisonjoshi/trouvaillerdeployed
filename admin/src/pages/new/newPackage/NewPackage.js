@@ -308,7 +308,7 @@ const handlelocationNext = (e) => {
                             <h4 className='text-[#03965e] font-bold'>{info.duration}</h4><h4 className='text-lg'>{info.location}</h4>
                             </div>
                             {info.cheapestPrice && <div className="package-details-flex-2">
-                            <CurrencyRupeeIcon /><h3>{info.cheapestPrice} /-</h3>
+                            <CurrencyRupeeIcon /><h3>{info.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} /-</h3>
                             </div>}
                              {info.category && <span className='bg-[#caffe6] px-4 py-1 rounded'>{info.category}</span>}
                             {features.length !== 0 && <div><h3>Features </h3>

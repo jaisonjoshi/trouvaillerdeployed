@@ -312,12 +312,12 @@ const SinglePackage = () => {
                                     (<div className=''>
                                         <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>Flat 15% off</span>
                                         <p className='mt-2'>Grab this offer soon</p>
-                                        <span ><span className='text-2xl '><b>&#8377; 5000 </b></span><strike className='text-[grey]'>&#8377; {pack.cheapestPrice} </strike></span><br />
+                                        <span ><span className='text-2xl '><b>&#8377; 5000 </b></span><strike className='text-[grey]'>&#8377; {pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span><br />
                                         <span className='text-sm text-[red]'>per night</span>
                                             
                                     </div>):
                                     (<div className=' flex flex-col'>
-                                    <h2 className='font-semibold text-2xl '>&#8377; {pack.cheapestPrice}</h2>
+                                    <h2 className='font-semibold text-2xl '>&#8377; {pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h2>
                                     <span className='text-graydust-dark text-xs'>Per person</span>
                                 
                                 </div>)}
@@ -363,7 +363,7 @@ const SinglePackage = () => {
                             {pack.offers ? (
                                     <div className='flex w-[40%] flex-col items-end'>
                                     <span className='p-1 bg-[#f8d2d2] text-xs sm:text-base font-bold text-[red]'>Flat 15% off</span>
-                                    <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-base text-[grey]'>&#8377; {pack.cheapestPrice} </strike></span>
+                                    <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-base text-[grey]'>&#8377; {pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span>
                                     <span className='text-sm text-[red]'>per night</span>
                                         
                                 </div>
@@ -373,7 +373,7 @@ const SinglePackage = () => {
 
                                 <div className='flex  flex-col items-end sm:gap-1'>
 
-                                    <h2 className='font-semibold text-lg sm:text-2xl '>&#8377; {pack.cheapestPrice}</h2>
+                                    <h2 className='font-semibold text-lg sm:text-2xl '>&#8377; {pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h2>
                                     <span className='text-graydust-dark text-xs sm:text-sm xl:text-xs'>Per person</span>
 
 

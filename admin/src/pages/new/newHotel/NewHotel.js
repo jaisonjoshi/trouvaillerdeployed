@@ -386,7 +386,7 @@ const NewHotel =({setOpen}) => {
 
                                     
                                { info.cheapestPrice && <div className="package-details-flex-2">
-                                <h2>{info.cheapestPrice} &#8377;</h2>
+                                <h2>{info.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</h2>
                                 </div>
 }
                                 

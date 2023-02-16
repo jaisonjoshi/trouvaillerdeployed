@@ -369,7 +369,7 @@ const SearchListPackType = ({type}) => {
                     <div className="pt-2">
                         <div className='flex justify-between items-center'>
                         {item.offers ? <div className="md:py-1 mx-1  flex justify-between items-center">
-                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp; {item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> <span  className="text-[grey] text-xs md:text-base"><strike>{item.cheapestPrice} &#8377; </strike></span></span>
+                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp; {item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> <span  className="text-[grey] text-xs md:text-base"><strike>{item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
                                   
                           </div>:
                                                   <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> </span>

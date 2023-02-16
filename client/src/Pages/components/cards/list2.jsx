@@ -640,7 +640,7 @@ const color = "text-blacky-dark";
                  
                  
                  (
-                  <div className="flex justify-start gap-1 items-center"><span className=" text-lg font-bold">₹ {item.cheapestPrice}</span> <span className="text-xs text-graydust-dark">Per person</span></div>
+                  <div className="flex justify-start gap-1 items-center"><span className=" text-lg font-bold">₹ {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span> <span className="text-xs text-graydust-dark">Per person</span></div>
 
                  )   }
          

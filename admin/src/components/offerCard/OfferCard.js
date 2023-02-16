@@ -25,7 +25,7 @@ const OfferCard = ({offer}) => {
             <div className="offer-card-footer">
             <h3 className='duration'>{offer.location}</h3> 
 
-                <h2><CurrencyRupeeIcon /> {offer.cheapestPrice}</h2>
+                <h2><CurrencyRupeeIcon /> {offer.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h2>
             </div>
         </div>
     )

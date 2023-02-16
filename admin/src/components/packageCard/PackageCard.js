@@ -27,7 +27,7 @@ const PackageCard = ({pack}) => {
             <div className="package-card-footer">
             <h4 className='duration'>{pack.duration}</h4> 
 
-                <h4><CurrencyRupeeIcon /> <span>{pack.cheapestPrice}</span></h4>
+                <h4><CurrencyRupeeIcon /> <span>{pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></h4>
             </div>
         </div>
     )

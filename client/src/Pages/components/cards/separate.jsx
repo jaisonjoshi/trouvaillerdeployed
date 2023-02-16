@@ -160,3 +160,21 @@
                       rowsPerPageOptions={[count]}
                       getRowId={(row) => row._id}
                     />
+
+
+
+
+
+
+
+
+
+
+                    <Slider {...settings} className="lg:hidden pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
+                    <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("international")}><div className='type-card type-card-2 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>International</span></div></div>
+                     <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("restaurant")}><div className='type-card type-card-1 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Restaurants</span></div></div>                 
+                     <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("resort")}><div className='type-card type-card-3  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Resorts</span></div></div>                
+                     <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("homestay")}><div className='type-card type-card-4  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Homestays</span></div></div>             
+                     <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={()=> handleTypesubmit("apartment")}><div className='type-card type-card-5  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Apartments</span></div></div>                 
+    
+                </Slider>

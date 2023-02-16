@@ -78,7 +78,7 @@ const Offershotels = () => {
                   <p className="text-[0.75rem] sm:text-[0.875rem] text-blacky-light">{itm.offerdescription}</p> 
               </div>
               <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                  <span className=" font-bold"><span  className="text-[grey] text-xs md:text-base"><strike>{itm.cheapestPrice} &#8377; </strike></span><span className="text-sm md:text-lg">&nbsp;{itm.offerprice} &#8377;</span></span>
+                  <span className=" font-bold"><span  className="text-[grey] text-xs md:text-base"><strike>{itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span><span className="text-sm md:text-lg">&nbsp;{itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span></span>
                        
               </div>
 

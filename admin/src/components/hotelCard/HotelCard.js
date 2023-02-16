@@ -24,7 +24,7 @@ const HotelCard = ({hotel}) => {
             <div className="hotel-card-footer">
             <h4 className='duration'>{hotel.location}</h4> 
 
-                <h4><CurrencyRupeeIcon /> {hotel.cheapestPrice}</h4>
+                <h4><CurrencyRupeeIcon /> {hotel.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h4>
             </div>
         </div>
     )

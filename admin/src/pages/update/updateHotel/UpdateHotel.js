@@ -510,7 +510,7 @@ const UpdateHotel =() => {
                 
                                 
                             <div className="package-details-flex-2">
-                            <h3>{info.cheapestPrice ? info.cheapestPrice : data.cheapestPrice} &#8377;</h3>
+                            <h3>{info.cheapestPrice ? info.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,") : data.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</h3>
                             </div>
 
                             {/* <h3>Hotel Rating</h3>
@@ -523,7 +523,7 @@ const UpdateHotel =() => {
                                 <div className='offer-con'>
                                     <span className='offertitle'>{info.offertitle ? info.offertitle : data.offertitle}</span>
                                     <p>{info.offerdescription ? info.offerdescription : data.offerdescription}</p>
-                                    <span>Price:<span><b>{info.offerprice ? info.offerprice: data.offerprice} &#8377;</b></span></span>
+                                    <span>Price:<span><b>{info.offerprice ? info.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,"): data.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</b></span></span>
 
                                 </div>
                             </div>}

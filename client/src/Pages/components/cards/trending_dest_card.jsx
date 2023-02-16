@@ -50,7 +50,7 @@ const DestCard = () => {
           </div>):(  <div className="flex flex-col items-start gap-2 ">             
                       <span className="text-sm text-white bg-[red] px-2 py-1 invisible rounded">15% off</span>
 
-          <div className="flex justify-start gap-1 items-center"><span className=" text-xl font-bold">₹ {item.cheapestPrice}</span> <span className="text-xs text-graydust-dark">Per person</span></div></div>
+          <div className="flex justify-start gap-1 items-center"><span className=" text-xl font-bold">₹ {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span> <span className="text-xs text-graydust-dark">Per person</span></div></div>
 ) 
             }
                
