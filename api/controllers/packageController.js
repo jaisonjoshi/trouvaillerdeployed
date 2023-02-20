@@ -116,7 +116,9 @@ const updatePackage = async (req,res)=>{
     const package = await Package.findOneAndUpdate({_id:id},{
         ...req.body
     })
-    
+    if(!package){
+        return res.status(400).json({error:'No such package found'})  
+    }
     res.status(200).json(package)
     }
     catch(error){
