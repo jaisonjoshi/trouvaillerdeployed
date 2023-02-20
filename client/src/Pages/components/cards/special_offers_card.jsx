@@ -62,7 +62,7 @@ const Offers = () => {
                   {/*Buttons*/}
                   <div className="px-2 flex flex-col" >
                   <div className='flex justify-start items-center gap-2'>
-                   <span className="font-bold text-lg sm:text-2xl">&#8377; {item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><strike className='text-xs sm:text-base text-graydust-medium'><span>&#8377; {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span></strike> 
+                   <span className="font-bold text-lg sm:text-2xl">&#8377; {item.offerprice && item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><strike className='text-xs sm:text-base text-graydust-medium'><span>&#8377; {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span></strike> 
                    </div>
                    <span className="text-xs sm:text-sm text-graydust-medium">per person</span>
                     
@@ -101,7 +101,7 @@ const Offers = () => {
                                 <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">{itm.offerdescription}</p> 
                             </div>
                             <div className=" md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                                <span className=" "><span className="text-sm font-bold md:text-2xl pr-1">&nbsp;{itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><span  className="text-[grey] font-bold text-xs md:text-base"><strike>{itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
+                                <span className=" "><span className="text-sm font-bold md:text-2xl pr-1">&nbsp;{itm.offerprice && itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><span  className="text-[grey] font-bold text-xs md:text-base"><strike>{itm.cheapestPrice && itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
                                 
                             </div>
                             

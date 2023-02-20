@@ -17,7 +17,7 @@ const DestinationCard=({item})=>{
             <img src={require('../../Assets/People.png')} alt="" className="h-6" />
         </div>
         <div className="p-5 flex justify-between">
-            <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</p>
+            <p className="text-evergreen text-xl font-bold">₹{item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</p>
             <button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">Whats app</button>
         </div>
         </div></Link>

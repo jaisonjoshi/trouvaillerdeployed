@@ -430,7 +430,7 @@ const List1_card = ({ setlocation, settype }) => {
                                         <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">{itm.offerdescription}</p>
                                     </div>
                                     <div className=" md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                                        <span className=" "><span className="text-sm font-bold md:text-2xl pr-1">&nbsp;{itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><span className="text-[grey] font-bold text-xs md:text-base"><strike>{itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
+                                        <span className=" "><span className="text-sm font-bold md:text-2xl pr-1">&nbsp;{itm.offerprice && itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><span className="text-[grey] font-bold text-xs md:text-base"><strike>{itm.cheapestPrice && itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
 
                                     </div>
 

@@ -294,11 +294,11 @@ const SearchList = ({location}) => {
                     <div className="pt-2">
                         <div className='flex justify-between items-center'>
                         {item.offers ? <div className='flex justify-between items-center'><div className="md:py-1 mx-1  flex justify-between items-center">
-                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;&#8377; {item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> <span  className="text-[grey] text-xs md:text-base"><strike>&#8377; {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
+                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;&#8377; {item.offerprice && item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> <span  className="text-[grey] text-xs md:text-base"><strike>&#8377; {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
                                   
                           </div>                               <span className='mr-1 text-sm bg-[red] text-[white] px-2 py-1 rounded'>{item.offertitle}</span></div>
 :
-                                                  <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;  &#8377; {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span> </span>
+                                                  <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;  &#8377; {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span> </span>
 
                           }
                         </div>

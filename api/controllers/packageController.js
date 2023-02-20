@@ -20,20 +20,9 @@ const getPackages = async(req,res)=>{
     const package = await Package.find(query).limit(req.query.limit).sort({createdAt: -1}).catch(err=>console.log(err))
     //console.log(query)
     res.status(200).json(package)
-   
-
-
-
 
     
 }
-
-
-
-
-
-
-
 
 
 //get a single pkg
@@ -127,9 +116,7 @@ const updatePackage = async (req,res)=>{
     const package = await Package.findOneAndUpdate({_id:id},{
         ...req.body
     })
-    if(!package){
-        return res.status(400).json({error:'No such package found'})  
-    }
+    
     res.status(200).json(package)
     }
     catch(error){

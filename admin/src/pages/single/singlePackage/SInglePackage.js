@@ -100,11 +100,11 @@ const SinglePackage = () => {
             catch(error){
                 if (error.response && error.response.status==400) {  
                     
-                    alert('Sorry, no such review found');
+                    alert('Sorry, no such package found');
                   }
                   if (error.response && error.response.status==404) {  
                     
-                    alert('Sorry, no such review found');
+                    alert('Sorry, no such package found');
                   }
                   else if (error.request) {  
                         alert('Network error! Please try again later');
@@ -312,12 +312,12 @@ const SinglePackage = () => {
                                     (<div className=''>
                                         <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>Flat 15% off</span>
                                         <p className='mt-2'>Grab this offer soon</p>
-                                        <span ><span className='text-2xl '><b>&#8377; 5000 </b></span><strike className='text-[grey]'>&#8377; {pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span><br />
+                                        <span ><span className='text-2xl '><b>&#8377; 5000 </b></span><strike className='text-[grey]'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span><br />
                                         <span className='text-sm text-[red]'>per night</span>
                                             
                                     </div>):
                                     (<div className=' flex flex-col'>
-                                    <h2 className='font-semibold text-2xl '>&#8377; {pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h2>
+                                    <h2 className='font-semibold text-2xl '>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h2>
                                     <span className='text-graydust-dark text-xs'>Per person</span>
                                 
                                 </div>)}
@@ -363,7 +363,7 @@ const SinglePackage = () => {
                             {pack.offers ? (
                                     <div className='flex w-[40%] flex-col items-end'>
                                     <span className='p-1 bg-[#f8d2d2] text-xs sm:text-base font-bold text-[red]'>Flat 15% off</span>
-                                    <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-base text-[grey]'>&#8377; {pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span>
+                                    <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-base text-[grey]'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span>
                                     <span className='text-sm text-[red]'>per night</span>
                                         
                                 </div>
@@ -373,7 +373,7 @@ const SinglePackage = () => {
 
                                 <div className='flex  flex-col items-end sm:gap-1'>
 
-                                    <h2 className='font-semibold text-lg sm:text-2xl '>&#8377; {pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h2>
+                                    <h2 className='font-semibold text-lg sm:text-2xl '>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h2>
                                     <span className='text-graydust-dark text-xs sm:text-sm xl:text-xs'>Per person</span>
 
 
@@ -497,7 +497,7 @@ const SinglePackage = () => {
                                 {updateMode?(
                                     <div>
                                     <h2 className='font-bold text-2xl'>Schedule</h2>
-                                    {data.shedule && data.shedule.map((obj, i)=> (
+                                    {pack.shedule && pack.shedule.map((obj, i)=> (
                                     <div className='shedule-day shadow-md  border px-4 py-2 my-4'>
                                         <div className="shedule-day-left">
                                             
@@ -525,14 +525,14 @@ const SinglePackage = () => {
                                 </div>  ):(
                                     <div>
                                  <h2 className='font-bold text-2xl'>Schedule</h2>
-                                 {(data.shedule)?
+                                 {(pack.shedule)?
                                  (<div className='flex gap-4 py-4'>
                                  <button onClick={()=>setUpdateMode(true)} className='px-4 py-1 bg-[#d2ffd2] rounded shadow-sm'>EDIT</button><button className='px-4 py-1 bg-[#d2ffd2] rounded shadow-sm' onClick={handleDeleteSchedule}>DELETE</button>
                                  </div>):
                                  (<div></div>)
                                  }
 
-                                {data.shedule && data.shedule.map((obj, i)=> (
+                                {pack.shedule && pack.shedule.map((obj, i)=> (
                                     <div className='shedule-day shadow-md  border px-4 py-2 my-4'>
                                         <div className="shedule-day-left">
                                             

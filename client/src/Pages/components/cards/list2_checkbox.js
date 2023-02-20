@@ -431,7 +431,7 @@ const handlebudgetChange = (e) => {
               </div>
               <div className=" pb-5 flex justify-between items-center">
                 <p className="text-evergreen text-xl font-bold">
-                  ₹{item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
+                  ₹{item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}
                 </p>
                 <Link to={`/list/hotel/${item._id}`}>
                   <button className="bg-evergreen text-blacky-light font-semibold rounded-md w-32 h-10">

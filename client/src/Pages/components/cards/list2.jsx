@@ -568,7 +568,7 @@ const color = "text-blacky-dark";
                   {/*Buttons*/}
                   <div className="px-2 flex flex-col" >
                   <div className='flex justify-start items-center gap-2'>
-                   <span className="font-bold text-lg sm:text-2xl">{item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><strike className='text-xs sm:text-base text-graydust-medium'><span>5,000 &#8377;</span></strike> 
+                   <span className="font-bold text-lg sm:text-2xl">{item.offerprice && item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><strike className='text-xs sm:text-base text-graydust-medium'><span>5,000 &#8377;</span></strike> 
                    </div>
                    <span className="text-xs sm:text-sm text-graydust-medium">per person</span>
                     
@@ -633,14 +633,14 @@ const color = "text-blacky-dark";
                <div className="flex flex-col items-start gap-2">
                  <span className="text-2xs text-white bg-[red] px-2 py-1 rounded">15% off</span>
                  <div className="flex gap-2 items-center">
-                 <span className="text-lg font-medium sm:font-bold">₹ {item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><strike><span className=" text-xs text-graydust-dark sm:font-bold">₹ {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></strike>
+                 <span className="text-lg font-medium sm:font-bold">₹ {item.offerprice && item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><strike><span className=" text-xs text-graydust-dark sm:font-bold">₹ {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></strike>
                  </div>                    <span className="text-2xs text-graydust-dark">Per person</span>
              </div>
   ):
                  
                  
                  (
-                  <div className="flex justify-start gap-1 items-center"><span className=" text-lg font-bold">₹ {item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span> <span className="text-xs text-graydust-dark">Per person</span></div>
+                  <div className="flex justify-start gap-1 items-center"><span className=" text-lg font-bold">₹ {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span> <span className="text-xs text-graydust-dark">Per person</span></div>
 
                  )   }
          

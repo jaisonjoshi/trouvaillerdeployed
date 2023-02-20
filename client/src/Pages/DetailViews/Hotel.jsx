@@ -219,11 +219,11 @@ const Hotel = () => {
                         <div className='px-3 sm:px-6 '>
                             <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>{hote.offertitle}</span>
                             <p className='mt-2'>{hote.offerdescription}</p>
-                            <span ><strike className='text-[grey]'>&#8377; {hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike><span className='text-2xl ml-3'><b>&#8377; {hote.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </b></span><span className='text-sm text-[red]'>per night</span></span>
+                            <span ><strike className='text-[grey]'>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike><span className='text-2xl ml-3'><b>&#8377; {hote.offerprice && hote.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </b></span><span className='text-sm text-[red]'>per night</span></span>
                                    
                         </div>
                         :
-                        <h1 className='font-semibold text-xl px-6 '><span className='text-2xl '>&#8377; {hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span><span className='text-sm text-[red]'>per night</span></h1>
+                        <h1 className='font-semibold text-xl px-6 '><span className='text-2xl '>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span><span className='text-sm text-[red]'>per night</span></h1>
 
                     }
                     <hr className='hidden sm:block'/>
@@ -343,8 +343,8 @@ const Hotel = () => {
                                  <div className='w-[40%] flex flex-col items-end'>
 
 {itm.offers ?
-                                   <div className='flex flex-col items-end'><div> <strike className='text-[gray]'><span className='text-sm text-[gray] font-bold'>&#8377; {itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></strike><span className='text-lg font-bold'>&#8377; {itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></div><span className='text-sm text-graydust-medium'>per room per night</span> </div>
-        :                                 <div className='flex flex-col items-end'>   <span className='text-lg font-bold'>&#8377; {itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><span className='text-sm text-graydust-medium'>per room per night</span> </div>
+                                   <div className='flex flex-col items-end'><div> <strike className='text-[gray]'><span className='text-sm text-[gray] font-bold'>&#8377; {itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></strike><span className='text-lg font-bold'>&#8377; {itm.offerprice && itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></div><span className='text-sm text-graydust-medium'>per room per night</span> </div>
+        :                                 <div className='flex flex-col items-end'>   <span className='text-lg font-bold'>&#8377; {itm.cheapestPrice && itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><span className='text-sm text-graydust-medium'>per room per night</span> </div>
 
 }
 </div>

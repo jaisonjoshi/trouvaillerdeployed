@@ -445,7 +445,7 @@ const UpdatePackage =() => {
                                 <div className='offer-con'>
                                     <span className='offertitle'>{info.offertitle ? info.offertitle : data.offertitle}</span>
                                     <p>{info.offerdescription ? info.offerdescription : data.offerdescription}</p>
-                                    <span>Price:<span><b>{info.offerprice ? info.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,"): data.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</b></span></span>
+                                    <span>Price:<span><b>{info.offerprice ? info.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,"): data.offerprice && data.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</b></span></span>
 
                                 </div>
                             </div>}
