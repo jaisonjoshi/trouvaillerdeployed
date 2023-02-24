@@ -52,6 +52,7 @@ const UpdatePackage =() => {
         setFeatures(data.features)
         setLocations(data.locations)
         setOffers(data.offers)
+        setShedule(data.shedule)
         if(offers){
             document.getElementById('offers').checked =true;
         }
