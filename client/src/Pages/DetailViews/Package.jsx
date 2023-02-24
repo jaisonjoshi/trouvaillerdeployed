@@ -319,7 +319,6 @@ const Package = () => {
                                 <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm text-sm md:text-xl cursor-pointer things' onClick={()=> handleNavigate('things')}><a className='no-underline nav-link' >Things to do</a></div>
                                 <div className=' px-1 lg:px-4 py-1 flex items-center nav-itm text-sm md:text-xl cursor-pointer images' onClick={()=> handleNavigate('images')}><a className='no-underline nav-link' >Images</a></div>
 
-                                <div className='px-1 lg:px-4 py-1 hidden sm:flex items-center text-sm md:text-xl nav-itm cursor-pointer location ' onClick={()=> handleNavigate('location')}><a className='no-underline nav-link' >Location</a></div>
 
 
                             </div>
@@ -409,15 +408,7 @@ const Package = () => {
 
 
 
-                                    {pack.location && <div className='pt-6 sm:py-6 nav-box' id="location">
-                                            <h1 className='text-lg sm:text-xl font-bold'>Location</h1>
-                                            <div className='py-6 flex'>
-                                                <div>
-                                                <Map />
-                                                </div>
-                                               
-                                            </div>
-                                        </div>}
+                                    
                                         
                                 </div>
                         

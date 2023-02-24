@@ -46,7 +46,8 @@ const packageSchema=new Schema({
     },
     offers:{
         type:Boolean,
-        required:false
+        required:false,
+        default:false,
     },
     offertitle:{
         type:String
