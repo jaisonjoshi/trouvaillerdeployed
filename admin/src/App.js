@@ -108,7 +108,7 @@ function App() {
           <Route path="packages">
             <Route index element={user?<Packages />:<Login/>} />
             <Route path=":id" element= {<SinglePackage />} />
-            <Route path=':id/update' element={<UpdatePackage />} />
+            <Route path=':id/update' element={<UpdatePackage setOpen={setOpen}/>} />
             <Route path='newpackage' element={<NewPacakge setOpen={setOpen}/>} />
           </Route>
           <Route path="reviews">

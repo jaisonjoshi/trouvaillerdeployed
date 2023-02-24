@@ -12,7 +12,7 @@ import CropEasy from '../../../components/crop/CropEasy';
 import Chip from '@mui/material/Chip';
 
 
-const UpdatePackage =() => {
+const UpdatePackage =({setOpen}) => {
     const location = useLocation();
    
     const id = location.pathname.split("/")[2];
@@ -177,6 +177,8 @@ const UpdatePackage =() => {
     
 
     const updatehandleClick = async e => {
+        setOpen(true)
+
         e.preventDefault();
 
        
@@ -231,6 +233,8 @@ const UpdatePackage =() => {
                 alert(error.message);
             }
         }
+        setOpen(false)
+
        
         
     }

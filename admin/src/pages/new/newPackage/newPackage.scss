@@ -110,6 +110,15 @@
                 flex-direction: column;
                 gap: 10px;
                 align-items: flex-start;
+                .package-details-flex{
+                    display: flex;
+                    padding: 1rem 0;
+                    justify-content: flex-start;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                    
+                }
                
                 .package-details-flex-2{
                     display: flex;

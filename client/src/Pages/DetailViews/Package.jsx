@@ -121,7 +121,7 @@ const Package = () => {
             seturl(`/packages?destinations=${pack.location}&limit=4`)
         }
         else(
-            seturl(`/packages?destinations=nolocation&limit=4`)
+            seturl(`/packages?destinations=nolocation&limit=0`)
         )
     }, [pack])
     const {data:data2, loading:loadin2} = useFetch(url)

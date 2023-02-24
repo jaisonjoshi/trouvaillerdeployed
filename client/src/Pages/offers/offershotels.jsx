@@ -76,9 +76,11 @@ const Offershotels = () => {
 
                   <h3 className='text-sm md:text-base mb-0 '><b>{itm.offertitle}</b></h3>   
                   <p className="text-[0.75rem] sm:text-[0.875rem] text-blacky-light">{itm.offerdescription}</p> 
+                  <p className="text-[0.70rem] sm:text-[0.70rem] card-text text-graydust-medium my-2">{itm.description}</p> 
+
               </div>
               <div className="md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                  <span className=" font-bold"><span  className="text-[grey] text-xs md:text-base"><strike>{itm.cheapestPrice && itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span><span className="text-sm md:text-lg">&nbsp;{itm.offerprice && itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span></span>
+                  <span className=" font-bold"><span  className="text-xs md:text-base">&#8377; {itm.offerprice && itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </span><span className="text-[grey] text-sm md:text-lg "><strike>&nbsp;&#8377; {itm.cheapestPrice && itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span></span>
                        
               </div>
 

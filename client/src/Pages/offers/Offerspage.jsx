@@ -80,9 +80,10 @@ const Offerspage = () => {
                   {/*Texts*/}
 
                   <div className="px-2 py-4">
-                   <div className="flex items-center justify-between text-sm"> <span className="w-[70%] text-blacky-medium font-bold text-lg sm:text-lg card-text  ">{item.title}</span>
+                   <div className="flex items-START justify-between text-sm"> <span className="w-[70%] text-blacky-medium font-medium text-lg sm:text-lg   ">{item.title}</span>
                     <span className="w-[30%] text-[#03965e] flex items-start justify-end text-sm md:text-base text-right font-bold">{item.duration}</span></div>
-                    <span className='text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></span>   
+                    <p className='card-text text-[gray] text-2xs my-4 sm:text-sm'>{item.description}</p>
+                    <span className='text-xs px-2 py-[4px] rounded md:text-sm mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></span>   
 
                     
                   </div>
@@ -90,7 +91,7 @@ const Offerspage = () => {
                   {/*Buttons*/}
                   <div className="px-2 flex flex-col" >
                   <div className='flex justify-start items-center gap-2'>
-                   <span className="font-bold text-2xl">4999 &#8377;</span><strike className='text-base text-graydust-medium'><span>5000 &#8377;</span></strike> 
+                   <span className="font-bold text-xl"> &#8377; {item.offerprice && item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span><strike className='text-sm text-graydust-medium'><span>&#8377; {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></strike> 
                    </div>
                    <span className="text-xs sm:text-sm text-graydust-medium">per person</span>
                     
