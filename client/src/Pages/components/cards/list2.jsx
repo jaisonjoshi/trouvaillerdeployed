@@ -37,7 +37,7 @@ const List2_card = ({setlocation, settype}) => {
       window.addEventListener('load', setAnim("show"))
 
   }, [])
-  const {data:data2} = useFetch("/packages")
+  const {data:data2} = useFetch("/packages?offers=true")
   var settings1 = {
     dots: false,
     arrows:false,
@@ -539,7 +539,7 @@ const color = "text-blacky-dark";
                     <button onClick={() => slider?.current?.slickNext()}><ArrowForwardIosSharpIcon sx={{fontSize:15, color:"#03965e"}}/></button>
                 </div>
             </div>
-            <p className='text-sm sm:text-base lg:text-lg py-2 '>Hurry! Grab the Best Deals on Trending Tour Packages - Book Now and Save Big!</p> 
+            <p className='text-sm sm:text-base text-graydust-dark lg:text-lg py-2 '>Hurry! Grab the Best Deals on Trending Tour Packages - Book Now and Save Big!</p> 
 
             <div className=' pt-8 '>
             <Slider ref={slider} {...settings1} className='slick-m '>
@@ -558,8 +558,9 @@ const color = "text-blacky-dark";
                   {/*Texts*/}
 
                   <div className="px-2 py-4 flex flex-col items-start">
-                   <div className="flex items-start justify-between  "> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold text-sm sm:text-base card-text ">{item.title}</span>
+                   <div className="flex items-start justify-between w-full "> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold text-base card-text ">{item.title}</span>
                     <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">{item.duration}</span></div>
+                    <p className="card-text text-xs sm:text-sm my-2 text-[gray]">{item.description}</p>
                     <h3 className='text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></h3>   
 
                     
@@ -610,7 +611,7 @@ const color = "text-blacky-dark";
 
         <div className="px-4 pt-4 sm:pt-20 pb-8 sm:px-16 md:px-20 2xl:px-40">
         <h1 className='text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold'>Top selling packages</h1> 
-        <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4'>Join the Many Happy Travelers Who Have Experienced Our Top-Selling Tour Packages - Book Yours Now!</p>  
+        <p className='text-sm sm:text-base text-graydust-dark lg:text-lg py-2 sm:py-4'>Join the Many Happy Travelers Who Have Experienced Our Top-Selling Tour Packages - Book Yours Now!</p>  
         <Slider {...settings3} className=" pt-4 sm:pt-8 pb-4 slick-m ">
         {data2.map((item) => (
             <div className="px-4">
@@ -624,7 +625,7 @@ const color = "text-blacky-dark";
            <div className='py-3 mx-3'>
            <span className="font-bold text-[#03965e]">{item.duration}</span>
 
-               <p className='text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal  '>{item.description}</p>  
+               <p className='text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal text-[gray] '>{item.description}</p>  
   
            </div>
            
@@ -662,7 +663,7 @@ const color = "text-blacky-dark";
             <h1 className='text-xl sm:text-2xl md:text-3xl font-bold'>Popular Destinations</h1> 
 
             </div>
-            <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4'>Discover Our Most Popular Destinations and Plan Your Next Adventure Today!</p>  
+            <p className='text-sm sm:text-base lg:text-lg py-2 sm:py-4 text-graydust-dark'>Discover Our Most Popular Destinations and Plan Your Next Adventure Today!</p>  
 
             <Slider {...settings2} className="lg:hidden pt-4 sm:pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
             <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={()=> handleS2submit("kashmir")}><div className='flex flex-col gap-2 rounded-[10px] overflow-hidden relative'><img src={kashmir} alt="" /><h1 className='absolute left-3 bottom-3'>Kashmir</h1></div></div>                

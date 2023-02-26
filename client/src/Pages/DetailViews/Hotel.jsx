@@ -253,7 +253,7 @@ const Hotel = () => {
                         {hote.description &&
                             <div className='py-6 nav-box' id="desc">
                                 <h1 className='text-2xl font-bold mb-2'>About {hote.title}</h1>
-                                <p className='text-sm'>{hote.description}</p>
+                                <p className='text-sm '>{hote.description}</p>
                                 {hote.features.length !== 0 && 
                                     <div className='pt-3'>
                                         <h1 className='text-base sm:text-lg font-bold mb-2'>Features</h1>
