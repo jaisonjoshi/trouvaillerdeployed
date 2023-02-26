@@ -2,10 +2,8 @@ import React, {useState,useEffect} from 'react'
 import DestCard from '../components/cards/trending_dest_card'
 import Offers from '../components/cards/special_offers_card'
 import Reviews from '../Reviews/Review'
-import ReviewMob from '../Reviews/ReviewsMob'
 import Footer from '../components/Footer/Footer'
 import { Link } from "react-router-dom";
-import Timer from '../components/timer/timer'
 import NavbarTest from '../components/navbar/navbar'
 import Slider from "react-slick";
 

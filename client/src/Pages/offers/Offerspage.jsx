@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar/navbar';
-import Offer from './offer';
 import Footer from '../components/Footer/Footer';
 import useFetch from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
@@ -80,7 +79,7 @@ const Offerspage = () => {
                   {/*Texts*/}
 
                   <div className="px-2 py-4">
-                   <div className="flex items-START justify-between text-sm"> <span className="w-[70%] text-blacky-medium font-medium text-lg sm:text-lg   ">{item.title}</span>
+                   <div className="flex items-START justify-between text-sm"> <span className="w-[70%] text-blacky-medium font-medium text-base sm:text-lg   ">{item.title}</span>
                     <span className="w-[30%] text-[#03965e] flex items-start justify-end text-sm md:text-base text-right font-bold">{item.duration}</span></div>
                     <p className='card-text text-[gray] text-2xs my-4 sm:text-sm'>{item.description}</p>
                     <span className='text-xs px-2 py-[4px] rounded md:text-sm mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></span>   

@@ -54,6 +54,7 @@ const Offers = () => {
                   <div className="px-2 py-4 flex flex-col items-start">
                    <div className="flex items-start justify-between w-full text-sm sm:text-lg"> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold  sm:text-lg card-text ">{item.title}</span>
                     <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">{item.duration}</span></div>
+                    <p className="card-text text-xs my-2 text-[gray] sm:text-sm">{item.description}</p>
                     <h3 className='text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></h3>   
 
                     
@@ -85,24 +86,23 @@ const Offers = () => {
 
           <div className="flex justify-start flex-wrap   gap-[2%] sm:pb-20">
           {data2.map((itm, i)=>(
-                    <div key={i} className="px-1  w-[49%] mb-10 md:w-[30%] lg:w-[22%] pr-2 sm:px-2 sm:px-4  ">
-                        <div className='mb-4 h-[100%] pb-3 card-shadow-1 bg-[white] rounded-t-sm  cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
+                    <div key={i} className="  w-[49%] mb-10 md:w-[30%] lg:w-[22%] md:pr-2 sm:px-2 sm:px-4  ">
+                        <div className='mb-4 h-[100%] pb-3 card-shadow-1 bg-[white] rounded-lg  cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
                             <div className="relative w-full">
                                 <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                                <img className='w-[100%] aspect-video skeleton rounded-t-sm' src={itm.images[0]} alt="" />
+                                <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
                                 <h3 className='hidden sm:block sm:text-base md:text-lg sm:font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
                             </div>
                             
-                            <h3 className='text-xs z-50 py-1 mx-1 md:mx-3 text-[black] font-semibold sm:hidden  card-text '>{itm.title}</h3>
+                            <h3 className='text-xs z-50 py-1 pt-4 mx-1 md:mx-3 text-[black] font-semibold sm:hidden  card-text '>{itm.title}</h3>
 
                             <div className='py-1 sm:py-3 mx-1 md:mx-3 flex flex-col gap-1 items-start'>
 
-                                <h3 className='text-xs px-2 py-[2px] rounded md:text-md mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>   
+                                <h3 className='text-2xs px-2 py-[2px] rounded md:text-sm mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>   
                                 <p className="text-2xs sm:text-xs my-2 md:text-base text-graydust-medium">{itm.offerdescription}</p> 
-                                <p className="text-2xs sm:text-xs md:text-sm my-1 card-text text-graydust-medium">{itm.description}</p> 
 
                             </div>
-                            <div className=" md:py-2 mx-2 md:mx-2 flex justify-between items-center">
+                            <div className=" md:py-2 mx-1 md:mx-2 flex justify-between items-center">
                                 <span className=" "><span className="text-sm font-bold md:text-xl pr-1">&nbsp; &#8377;{itm.offerprice && itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span><span  className="text-[grey] font-bold text-xs md:text-sm"><strike>&#8377; {itm.cheapestPrice && itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
                                 
                             </div>

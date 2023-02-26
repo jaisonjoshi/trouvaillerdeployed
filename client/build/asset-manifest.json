@@ -1,12 +1,11 @@
 {
   "files": {
-    "main.css": "./static/css/main.8d28c148.css",
-    "main.js": "./static/js/main.3b1476ba.js",
+    "main.css": "./static/css/main.08201ba2.css",
+    "main.js": "./static/js/main.5617c2dd.js",
     "static/media/goa.jpg": "./static/media/goa.08ee354aa0810925c7f7.jpg",
     "static/media/kashmir.jpg": "./static/media/kashmir.8ed801f6656222425278.jpg",
     "static/media/mysore.jpg": "./static/media/mysore.3bafc0c3efe26da1e14a.jpg",
     "static/media/apartments.jpg": "./static/media/apartments.2a572292f8b18922fdfa.jpg",
-    "static/media/SpecialOffer.png": "./static/media/SpecialOffer.a259a320c1ad2a8e6fd3.png",
     "static/media/homestays.jpg": "./static/media/homestays.8ff8739afd8d7ac7679e.jpg",
     "static/media/wayanad.jpg": "./static/media/wayanad.066d8dc6a7c7462b5b8f.jpg",
     "static/media/resorts.jpg": "./static/media/resorts.222a17d78babfddb286b.jpg",
@@ -35,11 +34,11 @@
     "static/media/slick.ttf": "./static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
     "index.html": "./index.html",
-    "main.8d28c148.css.map": "./static/css/main.8d28c148.css.map",
-    "main.3b1476ba.js.map": "./static/js/main.3b1476ba.js.map"
+    "main.08201ba2.css.map": "./static/css/main.08201ba2.css.map",
+    "main.5617c2dd.js.map": "./static/js/main.5617c2dd.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d28c148.css",
-    "static/js/main.3b1476ba.js"
+    "static/css/main.08201ba2.css",
+    "static/js/main.5617c2dd.js"
   ]
 }
