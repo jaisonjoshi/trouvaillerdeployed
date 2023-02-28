@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 import axios from 'axios';
-export default function DataTable({row}) {
+export default function DataTable({row, usertype}) {
 
   const navigate = useNavigate();
 
@@ -46,10 +46,25 @@ export default function DataTable({row}) {
         }
     }
   ]
+  const actionColumn1 = [
+    {
+        field : "action",
+        headerName: "Action",
+        width: 200,
+        flex:1,
+        renderCell : (params) => {
+            return (
+                <div className='cell-action'>
+                    <button className='cellAction-btn' onClick={()=>navigate(`/vendors/${params.row._id}`)}>View</button>
+                </div>
+            )
+        }
+    }
+  ]
 
   return (
     <div style={{ height: 650, width: '100%' }}>
-     
+     {usertype == "user" && 
        <DataGrid
         rows={row}
         columns= {columns.concat(actionColumn)}
@@ -64,7 +79,23 @@ export default function DataTable({row}) {
         rowsPerPageOptions={[10]}
         getRowId={(row) => row._id}
 
-      /> 
+      /> }
+      {usertype == "vendor" && 
+       <DataGrid
+        rows={row}
+        columns= {columns.concat(actionColumn1)}
+        sx={{
+          boxShadow:5,
+          my:3,
+          px:1,
+          py:2,
+          fontSize:18,
+        }}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+        getRowId={(row) => row._id}
+
+      /> }
     </div>
   );
 }

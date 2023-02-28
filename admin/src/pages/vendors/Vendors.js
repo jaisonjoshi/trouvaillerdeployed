@@ -39,7 +39,7 @@ const navigate=useNavigate()
                    </div>
                          
                          
-                  {vendors != undefined && <DataTable row={vendors}/>}
+                  {vendors != undefined && <DataTable row={vendors} usertype={"vendor"}/>}
                 </div>
                 
     

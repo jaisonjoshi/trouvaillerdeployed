@@ -428,9 +428,12 @@ const List1_card = ({ setlocation, settype }) => {
 
                                         <h3 className='text-xs px-2 py-[2px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>
                                         <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">{itm.offerdescription}</p>
+                                        <p className="text-[0.70rem] sm:text-[0.70rem] card-text text-graydust-medium my-2">
+                    {itm.description}
+                  </p>
                                     </div>
                                     <div className=" md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                                        <span className=" "><span className="text-sm font-bold md:text-2xl pr-1">&nbsp;{itm.offerprice && itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span><span className="text-[grey] font-bold text-xs md:text-base"><strike>{itm.cheapestPrice && itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
+                                        <span className=" "><span className="text-sm font-bold md:text-2xl pr-1">&nbsp;&#8377; {itm.offerprice && itm.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span><span className="text-[grey] font-bold text-xs md:text-base"><strike>&#8377; {itm.cheapestPrice && itm.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
 
                                     </div>
 

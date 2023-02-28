@@ -253,12 +253,12 @@ const Hotel = () => {
                         {hote.description &&
                             <div className='py-6 nav-box' id="desc">
                                 <h1 className='text-2xl font-bold mb-2'>About {hote.title}</h1>
-                                <p className='text-sm '>{hote.description}</p>
+                                <p className='text-sm sm:text-base'>{hote.description}</p>
                                 {hote.features.length !== 0 && 
                                     <div className='pt-3'>
                                         <h1 className='text-base sm:text-lg font-bold mb-2'>Features</h1>
                                         <div className='px-2'>
-                                            <ul className='list-disc px-4 text-sm'>
+                                            <ul className='list-disc px-4 text-sm sm:text-base'>
                                             {hote.features.map((itm)=> (
                                                 <li>{itm}</li>
                                             ))}
@@ -292,7 +292,7 @@ const Hotel = () => {
                                         <div className='py-6'>
                                             <h1 className='text-lg sm:text-xl font-bold mb-2'>Type of Rooms</h1>
 
-                                                <div className='px-2 text-sm'>
+                                                <div className='px-2 text-sm sm:text-base'>
                                                         <ul className='list-none flex flex-col gap-4 px-1 sm:px-4'>
                                                         {hote.rooms.map((itm)=> (
                                                             <li>{itm}</li>

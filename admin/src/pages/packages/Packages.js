@@ -202,8 +202,8 @@ const Packages =() => {
                     dismissOnClick={false}
                     class=" flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs">
                     <Dropdown.Item>
-                        <input type="checkbox" className=" accent-evergreen" id="honeymoon" name="dom" value="domestic" onChange={handleCataChange}
-                        /><label for="honeymoon" className="pl-3 text-base text-blacky-bright"> Domestic</label><br />
+                        <input type="checkbox" className=" accent-evergreen" id="honeymoon" name="dom" value="adventure" onChange={handleCataChange}
+                        /><label for="honeymoon" className="pl-3 text-base text-blacky-bright"> adventure</label><br />
                     </Dropdown.Item>
                     <Dropdown.Item>
                         <input type="checkbox" className="accent-evergreen" id="family" name="int" value="international" onChange={handleCataChange} 
@@ -213,10 +213,7 @@ const Packages =() => {
                         <input type="checkbox" className="accent-evergreen" id="friends" name="hon" value="honeymoon"  onChange={handleCataChange}
                         /><label for="friends" className="pl-3 text-base text-blacky-bright"> Honeymoon</label><br />
                     </Dropdown.Item>
-                    <Dropdown.Item>
-                        <input type="checkbox" className="accent-evergreen" id="holiday" name="hol" value="holiday" onChange={handleCataChange}
-                        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Holiday</label><br />
-                    </Dropdown.Item>
+                   
                     <Dropdown.Item>
                         <input type="checkbox" className="accent-evergreen" id="holiday" name="fam" value="family" onChange={handleCataChange}
                         /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Family</label><br />

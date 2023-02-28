@@ -74,7 +74,7 @@ const createHotel=async (req,res)=>{
         cheapestPrice,locations,features,offerdescription,offerprice,offertitle,offers,googlelocation,
         facilities,vendorid})
         await Locations.findOneAndUpdate(
-            "63b95d422b6c64920c68534e",
+            "63fc915beabe1f26084c3703",
             { $addToSet: { 
                       locations:{$each: locations}
                     } 
@@ -116,7 +116,7 @@ const updateHotel=async (req,res)=>{
         ...req.body
     })
     await Locations.findOneAndUpdate(
-        "63b95d422b6c64920c68534e",
+        "63fc915beabe1f26084c3703",
         { $addToSet: { 
                   locations:{$each: req.body.locations}
                 } 

@@ -224,7 +224,8 @@ const handlelocationNext = (e) => {
                             </div>
                             <div className="form-item">
                                 <label>Category <span style={{ color: "red" }}> *</span></label>
-                                <textarea type="text" id="category" onChange={handleChangeLowerCase} placeholder={"eg. Family,Honeymoon,Friends,etc"}/>
+                                <textarea type="text" id="category" onChange={handleChangeLowerCase} placeholder={"family,honeymoon,Friends, adventure, international"}/>
+                                
                             
                             </div>
                             <div className="form-item">
@@ -244,7 +245,7 @@ const handlelocationNext = (e) => {
                                 </div>
                                 <div className="form-item">
                                     <label>Activities</label>
-                                    <input type="text" id="activities" onChange={handleUpdateActivities} placeholder={"eg. Adventure,Religious,etc"}/>
+                                    <input type="text" id="activities" onChange={handleUpdateActivities} />
 
                                 </div>
                                 

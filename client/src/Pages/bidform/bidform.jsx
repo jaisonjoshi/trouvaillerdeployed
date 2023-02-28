@@ -33,7 +33,9 @@ const Bidform = () => {
         }
     },[data])
     const [info, setinfo] = useState({});
-    const [value, setValue] = useState("")
+    const [open, setOpen] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+
    //const error="";
     //const err="Please fill out all the feilds!";
     const handlebidChange = (e) => {
@@ -47,7 +49,7 @@ const Bidform = () => {
             
               
               const newBid = {
-                ...info,destination:value, username : user.username,userid:user._id,useremail:user.email,userphone:user.phone, closed:false,acceptedCount:0,
+                ...info,destination:inputValue, username : user.username,userid:user._id,useremail:user.email,userphone:user.phone, closed:false,acceptedCount:0,
               };//console.log(newBid)
              
               const res= await axiosInstance.post("/bids", newBid);
@@ -72,7 +74,7 @@ const Bidform = () => {
         <div className={` animationset ${anim}`}>
             <div className=""><Navbar /></div>
             <div className="w-full mt-40 px-12 md:px-20 lg:px-40">
-                <h1 className="text-4xl  text-blacky-medium font-bold">Bid Today</h1>
+                <h1 className="text-4xl  text-blacky-medium font-bold">Bid a stay for your budget</h1>
                 <p className="text-lg my-5 text-sm md:text-[18px] text-blacky-light">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
             </div>
             <form action="" className="" method="post">
@@ -81,12 +83,28 @@ const Bidform = () => {
                     <FontAwesomeIcon icon={solid('location-dot')} className="h-7 w-7 my-auto mx-4"/>
                      
                             <Autocomplete
+                                open={open}
+                                onOpen={() => {
+                                    // only open when in focus and inputValue is not empty
+                                    if (inputValue) {
+                                      setOpen(true);
+                                    }
+                                  }}
+                                  onClose={() => setOpen(false)}
+                                  inputValue={inputValue}
+                                  onInputChange={(e, value, reason) => {
+                                    setInputValue(value);
+                              
+                                    // only open when inputValue is not empty after the user typed something
+                                    if (!value) {
+                                      setOpen(false);
+                                    }
+                                  }}
+
                             disablePortal
                             id="combo-box-demo"
                             options={locationitms[0].locations}
-                            onInputChange={(event, newInputValue) => {
-                                setValue(newInputValue);
-                              }}
+                            
                             sx={{
                                 width:"100%",
                                 // border: "1px solid blue",
@@ -142,7 +160,7 @@ const Bidform = () => {
                         </div>
                     </div>
 
-                    <p className="my-5 text-graydust-normal pt-8">Enter the amount you can pay</p>
+                    <p className="my-5 text-graydust-normal pt-8">Enter the amount you can pay for a room per night</p>
 
                     <div className="md:flex">
                        {/*  <div className="my-5">

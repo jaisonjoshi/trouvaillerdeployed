@@ -100,6 +100,9 @@ const Offers = () => {
 
                                 <h3 className='text-2xs px-2 py-[2px] rounded md:text-sm mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>   
                                 <p className="text-2xs sm:text-xs my-2 md:text-base text-graydust-medium">{itm.offerdescription}</p> 
+                                <p className="text-[0.70rem] sm:text-[0.70rem] card-text text-graydust-medium my-2">
+                    {itm.description}
+                  </p>
 
                             </div>
                             <div className=" md:py-2 mx-1 md:mx-2 flex justify-between items-center">

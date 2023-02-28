@@ -23,7 +23,7 @@ const Userlist =() => {
 
             <div className="userlist-body">
                <h1>List of Users</h1>
-                {users != undefined && <DataTable row={users}/>}
+                {users != undefined && <DataTable row={users} usertype={"user"}/>}
             </div>
 
 

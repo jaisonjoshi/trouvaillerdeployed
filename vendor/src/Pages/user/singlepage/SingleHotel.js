@@ -181,13 +181,13 @@ const SingleHotel = () => {
                          <div className='px-3 sm:px-6 '>
                              <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>{hote.offertitle}</span>
                              <p className='mt-2'>{hote.offerdescription}</p>
-                             { hote.cheapestPrice &&<span ><strike className='text-[grey]'>&#8377; { hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike><span className='text-2xl ml-3'><b>&#8377; {hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </b></span><span className='text-sm text-[red]'>per night</span>
+                             { hote.cheapestPrice &&<span ><strike className='text-[grey]'>&#8377; { hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike><span className='text-2xl ml-3'><b>&#8377; {hote.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </b></span><span className='text-sm text-[red]'>per night</span>
                              </span>}
                                     
                          </div>
                          :
-                         <h1 className='font-semibold text-xl px-6 '>  <span className='text-xl '>&#8377; { hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span><span className='text-sm font-light text-[red]'>per night</span>
-                     </h1>
+                         <p className='font-semibold text-xl px-6 '>  <span className='text-xl '>&#8377; { hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span><span className='text-sm font-light text-[red]'>per night</span>
+                     </p>
  
                      }
                      <hr className='hidden sm:block border-[#e4e4e4] my-4'/>
@@ -269,7 +269,7 @@ const SingleHotel = () => {
                                      }                               </div>
                              }
                              {hote.googlelocation && <div className='py-6 nav-box' id="location">
-                                <h1 className='text-lg sm:text-xl font-bold'>Location</h1>
+                                <h2 className='text-lg sm:text-xl font-bold'>Location</h2>
                                 <div className='py-6 flex'>
                                     <div>
                                     <Map googlelocation={hote.googlelocation}/>

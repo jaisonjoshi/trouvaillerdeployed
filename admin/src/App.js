@@ -29,6 +29,7 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import logo from './components/assets/logo.png'
 import Loading from './components/spinningLoader/CircleLoading';
 import CircleLoading from './components/spinningLoader/CircleLoading';
+import VendorDetails from './pages/vendors/VendorDetails';
 
 
 function App() {
@@ -102,6 +103,7 @@ function App() {
           <Route path="vendors">
             <Route index element={user?<Vendors />:<Login/>} />
             <Route path='newvendor' element={<NewVendor />} />
+            <Route path=":id" element={<VendorDetails />} />
           </Route>
 
         

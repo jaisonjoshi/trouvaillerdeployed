@@ -4,12 +4,14 @@ import Footer from "../components/Footer/Footer";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
+import { useNavigate } from 'react-router'
 
 const Offershotels = () => {
   const [anim, setAnim] = useState("hide");
   useEffect(() => {
     window.addEventListener("load", setAnim("show"));
   }, []);
+  const navigate = useNavigate();
 
   const [hoteloffers, sethoteloffers] = useState([]);
   const { data, loading, error } = useFetch("/hotels?offers=true");
@@ -52,8 +54,8 @@ const Offershotels = () => {
           <div className="flex justify-start flex-wrap  px-4  gap-[4%] sm:pb-20">
             {hoteloffers.map((itm, i) => (
               <div
-                key={i}
-                className=" w-[48%] mb-10 md:w-[30%] lg:w-[22%] pb-3 card-shadow "
+                key={i} onClick={()=> navigate(`/list/hotel/${itm._id}`)}
+                className=" w-[48%] mb-10 md:w-[30%] cursor-pointer lg:w-[22%] pb-3 card-shadow "
               >
                 <div className="relative w-full">
                   <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
