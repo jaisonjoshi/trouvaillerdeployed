@@ -232,11 +232,7 @@ const NewHotel =({setOpen}) => {
                                     <input type="text" id="location" onChange={handleChangeLowerCase}/>
                                 
                                 </div>
-                                <div className="form-item">
-                                    <label>Google map Location link</label>
-                                    <input type="text" id="googlelocation" onChange={handleChangeLowerCase}/>
                                 
-                                </div>
                                 <div className="form-item">
                                     <label>Room types <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="rooms" onChange={handleUpdateQuery} placeholder={"eg.single bed,double bed"}/>

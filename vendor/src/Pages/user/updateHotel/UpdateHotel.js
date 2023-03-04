@@ -319,11 +319,7 @@ const UpdateHotel =() => {
                             
                             </div>
 
-                            <div className="form-item">
-                                    <label>Google map Location link</label>
-                                    <input type="text" id="googlelocation" defaultValue={data.googlelocation} onChange={handleChangeLowerCase}/>
-                                
-                                </div>
+                            
 
                             <div className="form-item">
                                 <label>Location tags</label>

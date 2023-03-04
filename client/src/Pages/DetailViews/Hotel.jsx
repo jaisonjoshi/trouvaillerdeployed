@@ -13,7 +13,6 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CloseIcon from '@mui/icons-material/Close';
-import Map from '../components/map/Map';
 import NavbarTest from '../components/navbar/navbar';
 
 import h from '../Assets/h.png'
@@ -243,7 +242,6 @@ const Hotel = () => {
 
                         <div className=' px-1 sm:px-4 py-1 flex items-center nav-itm cursor-pointer rooms' onClick={()=> handleNavigate('rooms')}><a className='no-underline nav-link' >Rooms</a></div>
 
-                        <div className='px-1 sm:px-4 py-1  flex items-center nav-itm cursor-pointer location' onClick={()=> handleNavigate('location')}><a className='no-underline nav-link' >Location</a></div>
 
 
                     </div>
@@ -303,17 +301,7 @@ const Hotel = () => {
                                         </div>
                                     }                               </div>
                             }
-                           {hote.googlelocation && <div className='py-6 nav-box' id="location">
-                                <h1 className='text-lg sm:text-xl font-bold'>Location</h1>
-                                <div className='py-6 flex'>
-                                    <div>
-                                    <Map googlelocation={hote.googlelocation}/>
-                                    </div>
-                                    <div className='px-8 py-8 hidden 2xl:block'>
-                                        <p className='text-sm'>Hotel paramount is located at kadambazhipuram, on state highway side in palakkad district</p>
-                                    </div>
-                                </div>
-                            </div>}
+                           
                             
                     </div>
                     

@@ -97,13 +97,14 @@ const Login = ({setOpen}) => {
           alert('The user with this mail id already exists. Please try again with a different account')
           dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
           else if (error.response && error.response.status==403){
-            alert('Please try again with a different account');
+            alert( 'Please try again with a different account');
+
             dispatch({ type: "LOGIN_FAILURE", payload: {message:" "} });}
           
         // The request was made and the server responded with a status code that falls out of the range of 2xx
           else{
-            alert('Please try again with a different account!');
-            } 
+            alert("Please try again with a different account!");
+              } 
        
       } else if (error.request) {    
           alert('Network error! Please try again later.')

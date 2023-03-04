@@ -208,7 +208,6 @@ const SingleHotel = () => {
  
                          <div className=' px-1 sm:px-4 py-1 flex items-center nav-itm cursor-pointer rooms' onClick={()=> handleNavigate('rooms')}><a className='no-underline nav-link' >Rooms</a></div>
  
-                         <div className='px-1 sm:px-4 py-1  flex items-center nav-itm cursor-pointer location' onClick={()=> handleNavigate('location')}><a className='no-underline nav-link' >Location</a></div>
  
  
                      </div>
@@ -268,15 +267,7 @@ const SingleHotel = () => {
                                          </div>
                                      }                               </div>
                              }
-                             {hote.googlelocation && <div className='py-6 nav-box' id="location">
-                                <h2 className='text-lg sm:text-xl font-bold'>Location</h2>
-                                <div className='py-6 flex'>
-                                    <div>
-                                    <Map googlelocation={hote.googlelocation}/>
-                                    </div>
-                                    
-                                </div>
-                            </div>}
+                             
                             
                              
                      </div>
