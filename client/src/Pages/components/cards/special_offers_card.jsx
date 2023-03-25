@@ -15,7 +15,7 @@ const Offers = () => {
     baseURL: process.env.REACT_APP_API_URL,
 })
   const { data, loading, error } = useFetch("/packages?offers=true&limit=3");
-    const {data:data2} = useFetch("/hotels?offers=true&limit=4")
+  const {data:data2} = useFetch("/hotels?offers=true&limit=4")
   const text = "i would like to book for the package "
   return (
     <div>
@@ -37,7 +37,7 @@ const Offers = () => {
         <div className="   sm:py-8">
         <h1 className=" pb-8 font-medium sm:font-bold text-base text-center  sm:text-left  sm:text-2xl">Offers on Trending Travel Destinations and packages</h1>
           <div className="flex justify-start flex-wrap   gap-[4%] ">
-          {data.map((item, i)=>(
+          {data && data.map((item, i)=>(
 
           <div key={item._id} className="w-[90%] mx-auto bg-[white] sm:mx-0 sm:w-[48%] lg:w-[30%] pb-3 mb-10 card-shadow-1 rounded-md cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)} >
                   <div className="relative w-full">
@@ -85,7 +85,7 @@ const Offers = () => {
           <h1 className=" pb-8 font-bold text-lg text-center sm:text-left sm:text-2xl">Offers on Hotels, Homestays and properties</h1>
 
           <div className="flex justify-start flex-wrap   gap-[2%] sm:pb-20">
-          {data2.map((itm, i)=>(
+          {data2 && data2.map((itm, i)=>(
                     <div key={i} className="  w-[49%] mb-10 md:w-[30%] lg:w-[22%] md:pr-2 sm:px-2 sm:px-4  ">
                         <div className='mb-4 h-[100%] pb-3 card-shadow-1 bg-[white] rounded-lg  cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
                             <div className="relative w-full">
