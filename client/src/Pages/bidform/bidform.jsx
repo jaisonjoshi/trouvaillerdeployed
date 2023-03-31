@@ -36,11 +36,23 @@ const Bidform = () => {
     const [open, setOpen] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
+    //getting cuurent dates
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+  
+    const todayDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+    const tomorrowDate = `${tomorrow.getDate()}/${tomorrow.getMonth() + 1}/${tomorrow.getFullYear()}`;
+    //console.log("today"+todayDate)
+    //console.log("tmr"+tomorrowDate)
+    //console.log("type of today date obtained"+typeof(todayDate))
+
    //const error="";
     //const err="Please fill out all the feilds!";
     const handlebidChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.name] : e.target.value}))
         console.log(info)
+        //console.log("type of date selected"+typeof(info.checkIn))
     }
     const handleClick = async e => {
         e.preventDefault();
@@ -49,9 +61,10 @@ const Bidform = () => {
             
               
               const newBid = {
-                ...info,destination:inputValue, username : user.username,userid:user._id,useremail:user.email,userphone:user.phone, closed:false,acceptedCount:0,
-              };//console.log(newBid)
+                ...info,destination:inputValue, username : user.username,userid:user._id,useremail:user.email,userphone:user.phone, closed:false,acceptedCount:0,checkIn:todayDate,checkOut:tomorrowDate
+              };
              
+              
               const res= await axiosInstance.post("/bids", newBid);
               if(res.data){
                 navigate("/bid-status")
@@ -63,7 +76,16 @@ const Bidform = () => {
            
         } catch(err){
             
-            console.log(err)
+            if (err.response) {
+                // The request was made and the server responded with a status code that falls out of the range of 2xx
+                alert('Sorry the bid cannot be placed. Please fill out all the necessary feilds and try again.');
+               
+              } else if (err.request) {    
+                  alert('Network error! Please try again later.')
+              } 
+                else {
+                    alert(err.message + ' Please try again later.');
+                }
            
         }
         
@@ -124,6 +146,7 @@ const Bidform = () => {
                         <div className="flex bordercolour text-graydust-medium rounded-lg w-72 py-2">
                         <FontAwesomeIcon icon={solid('list')} className="h-6 w-6 my-auto mx-4" />
                             <select name="categories" id="categories" onChange={handlebidChange} className="border border-none focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none text-graydust-medium">
+                            <option value="" disabled hidden>Select a category</option>
                                 <option value="vacation" className="border border-none outline-none text-center">Vacation</option>
                                 <option value="honeymoon" className="border border-none outline-none text-center">Honeymoon</option>
                                 <option value="tour" className="border border-none outline-none text-center">Tour</option>
@@ -140,12 +163,14 @@ const Bidform = () => {
 
                     <div className="md:flex">
                         <div className="flex justify-center items-center px-3 rounded-lg my-7 md:my-5 bordercolour text-graydust-medium py-2 p-1 w-72">
-                            <h6 className="">Check in &nbsp;</h6>
-                            <input type="date" id="checkIn" name="checkIn" onChange={handlebidChange} className="border border-none focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none " />
-                        </div>
+                            <h6><div className="">Check in &nbsp;</div>
+                            <input type="string" id="checkIn" name="checkIn" value={todayDate} readOnly className="border border-none focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none " />
+                            </h6>
+                            </div>
                         <div className="flex justify-center items-center px-3 rounded-lg my-7 md:my-5 bordercolour text-graydust-medium py-2 md:ml-10 p-1 w-72">
-                            <h6 className="">Check out &nbsp;</h6>
-                            <input type="date" id="checkOut" name="checkOut" onChange={handlebidChange} className="border focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium border-none outline-none" />
+                            <h6><div className="">Check out &nbsp;</div>
+                            <input type="string" id="checkOut" name="checkOut" value={tomorrowDate} readOnly  className="border focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium border-none outline-none" />
+                            </h6>
                         </div>
                     </div> 
 

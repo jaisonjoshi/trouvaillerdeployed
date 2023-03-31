@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.f52abc03.css",
-    "main.js": "./static/js/main.dae3b080.js",
+    "main.js": "./static/js/main.c340a407.js",
     "static/media/goa.jpg": "./static/media/goa.08ee354aa0810925c7f7.jpg",
     "static/media/kashmir.jpg": "./static/media/kashmir.8ed801f6656222425278.jpg",
     "static/media/mysore.jpg": "./static/media/mysore.3bafc0c3efe26da1e14a.jpg",
@@ -35,10 +35,10 @@
     "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
     "index.html": "./index.html",
     "main.f52abc03.css.map": "./static/css/main.f52abc03.css.map",
-    "main.dae3b080.js.map": "./static/js/main.dae3b080.js.map"
+    "main.c340a407.js.map": "./static/js/main.c340a407.js.map"
   },
   "entrypoints": [
     "static/css/main.f52abc03.css",
-    "static/js/main.dae3b080.js"
+    "static/js/main.c340a407.js"
   ]
 }
