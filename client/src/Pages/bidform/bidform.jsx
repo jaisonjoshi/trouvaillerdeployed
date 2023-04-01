@@ -145,13 +145,13 @@ const Bidform = () => {
                     <div className="md:flex my-7">
                         <div className="flex bordercolour text-graydust-medium rounded-lg w-72 py-2">
                         <FontAwesomeIcon icon={solid('list')} className="h-6 w-6 my-auto mx-4" />
-                            <select name="categories" id="categories" onChange={handlebidChange} className="border border-none focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none text-graydust-medium">
-                            <option value="" disabled hidden>Select a category</option>
-                                <option value="vacation" className="border border-none outline-none text-center">Vacation</option>
-                                <option value="honeymoon" className="border border-none outline-none text-center">Honeymoon</option>
-                                <option value="tour" className="border border-none outline-none text-center">Tour</option>
-                                <option value="adventure" className="border border-none outline-none text-center">Adventure</option>
-                            </select>
+                        <select name="categories" id="categories" onChange={handlebidChange} className="border border-none focus:ring-0 focus:ring-offset-0 focus:border-graydust-medium outline-none text-graydust-medium">
+                               <option value="" className="border border-none outline-none text-center" disabled hidden>Select a category</option>
+                               <option value="vacation" className="border border-none outline-none text-center">Vacation</option>
+                               <option value="honeymoon" className="border border-none outline-none text-center">Honeymoon</option>
+                               <option value="tour" className="border border-none outline-none text-center">Tour</option>
+                               <option value="adventure" className="border border-none outline-none text-center">Adventure</option>
+                           </select>
                         </div>
                         <div className="md:my-auto mt-7">
                             <input type="radio" id="ac" name="ac" onChange={handlebidChange} value="ac" className="md:ml-20 outline-none" />
