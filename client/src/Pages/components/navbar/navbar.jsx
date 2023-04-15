@@ -240,8 +240,8 @@ const NavModel = ({open, setOpen, user, data, handleClick}) => {
            </div>
           </div>)}
 
-          <div className='px-4 py-3 text-base '>
-            <h1>Quick Links</h1>
+          <div className='py-3 text-base '>
+            {/* <h1>Quick Links</h1> */}
             <ul className='px-3 text-graydust-dark'>
               <Link to='/' onClick={handleNavClick}><li className='py-1 hover:text-[#03965e] '>Home</li></Link>
               <Link to="/hotels" onClick={handleNavClick}><li className='py-1 hover:text-[#03965e]'>Hotels</li></Link>
