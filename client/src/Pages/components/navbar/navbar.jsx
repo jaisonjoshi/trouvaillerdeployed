@@ -131,7 +131,7 @@ fluid={true} rounded={true}
 <Navbar.Brand>
   <Link to="/">
 <img src={require('../../Assets/TrouvaillerGreen .png')}
-                className="mr-3 ml-4 sm:ml-12 h-6 sm:h-9    lg:ml-16 2xl:ml-36 "
+                className="mr-3 ml-12 sm:ml-12 h-6 sm:h-9 lg:ml-16 2xl:ml-36 "
                 alt="Trouvailler Logo"
             />
 </Link>
@@ -240,8 +240,8 @@ const NavModel = ({open, setOpen, user, data, handleClick}) => {
            </div>
           </div>)}
 
-          <div className='px-4 py-3 text-base '>
-            <h1>Quick Links</h1>
+          <div className='py-3 text-base '>
+            {/* <h1>Quick Links</h1> */}
             <ul className='px-3 text-graydust-dark'>
               <Link to='/' onClick={handleNavClick}><li className='py-1 hover:text-[#03965e] '>Home</li></Link>
               <Link to="/hotels" onClick={handleNavClick}><li className='py-1 hover:text-[#03965e]'>Hotels</li></Link>
