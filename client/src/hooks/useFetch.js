@@ -4,7 +4,7 @@ import axios from "axios"
 
 const useFetch = (url) => {
     const axiosInstance = axios.create({
-        baseURL: "http://localhost:8080/api",
+        baseURL: process.env.REACT_APP_API_URL,
     })
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
