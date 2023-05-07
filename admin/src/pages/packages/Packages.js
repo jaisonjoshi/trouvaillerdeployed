@@ -9,18 +9,12 @@ import PackageCard from '../../components/packageCard/PackageCard';
 import SearchIcon from '@mui/icons-material/Search'
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { Dropdown } from "flowbite-react/lib/cjs/components/Dropdown";
+import axios from 'axios';
 
 const Packages =() => {
 
 
-  const [destination,setDestination]=useState("");
-  
-  const [min, setMin] = useState(undefined);
-  const [max, setMax] = useState(undefined);
-  const [cat,setCat]=useState([]);
-  const [cats,setCats]=useState("");
-
-  
+ 
   
   const [anim, setAnim] = useState("")
   useEffect(()=>{
@@ -52,113 +46,202 @@ const Packages =() => {
     //     url=url1}
     //     else
     //     url=url2;
-    const url= `/packages?destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
-      min || 0
+    const axiosInstance = axios.create({
+      baseURL: process.env.REACT_APP_API_URL,
+  });
+
+ 
+
+
+  const [destination,setDestination]=useState('');
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
+  const [mintemp, setMintemp] = useState(undefined);
+  const [maxtemp, setMaxtemp] = useState(undefined);
+  const [cat,setCat]=useState([]);
+  const [cats,setCats]=useState("");
+  const [url,setUrl]=useState("");
+
+//   const url1 = `/packages?destinations=${destination}&max=${max || 999999}&min=${
+//     min || 0
+//   }`;
+//     const url2=`/packages`
+//---------original
+  const url3 = `/packages?destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
+      min || 1
     }`;
-      const {data,loading,error,reFetch}=useFetch(url)
 
-      const handleClick = () => {//for category change
+   // add url conditional code to submit button even  handler for fetching through less freq
+  // let url=(destination,url1,url2,url3)=>{
+    
+  //   if(destination){
+  //     if(cat){return url3}
+  //     return url1
+  //   }
+  //   else{
+  //     return url2
+  //   }
+    
+  // }
+  // if(destination){
+  //     if(cat){url=url3}
+  //     else{
+  //     url=url1}}
+  //     else
+  //     url=url2;
 
-        // const [cats,setCats]=useState("");    
-        // const [cat,setCat]=useState([]);
+
+     //original line/
+         const {data,loading,error,reFetch}=useFetch(url3)
+
+      //use effect
+  //      const url1="/packages"
+  //      setUrl(url1)
+  //     const url3="/packages?destinations=${destination}&category=${cat}&max=${max || 999999}&min=${min || 0 }"
+
+  //         const {data,loading,error,reFetch}=useFetch(url);
+
+  //         useEffect(()=>{
+  //             setUrl(url3);
+  //  },[destination]);
+
   
-  
-         const catstr=cat.toString();
-         //console.log("array to string "+catstr);
-         setCats(catstr);
-        // console.log(cats);
-        
-  
-        // reFetch();//handleclick const for all filters,handle chage just sets values
-        }
+     
 
-        const handleSClick = () => {
-
-          reFetch();
+    
    
-         }
 
-         const handleSubmitClick = () => {
-          //console.log(min);
-          const minval = parseInt(min);
-          setMin(minval);
-          //console.log(typeof minval);
-          //console.log(max);
-          const maxval = parseInt(max);
-          setMax(maxval);
-          reFetch();
-        };
+    const handleClick = () => {//for category change
 
-        const handleSearchChange = (e) => {
-          //console.log("input val "+e.target.value);
-          let tar=e.target.value;
-          //console.log("IN LOWER CASE "+tar.toLowerCase())
-          //console.log(t.toLowerCase())
-          setDestination(tar.toLowerCase());
-          //console.log(destination);
-           }
+     // const [cats,setCats]=useState("");    
+     // const [cat,setCat]=useState([]);
 
-           const  handleCataChange=(e)=>{
-           const { value, checked } = e.target;
-                                           
-            const i=cat.indexOf(e.target.value);
-           //  console.log("index "+i);
-                                            
-                                            
-           if(checked)
-            {setCat(cat=>[...cat,value])
-            }
-                                     
-            else{//get the target name-search arr for i-pop i val
-              {
-                                     
+
+      const catstr=cat.toString();
+      console.log("array to string "+catstr);
+     setCats(catstr);
+     console.log(cats);
+     
+
+     // reFetch();//handleclick const for all filters,handle chage just sets values
+     }
+
+     
+
+     
+     const handleSubmitClick = () => {
+     
+      const minval = parseInt(mintemp);
+     // setMin(minval);
+      //console.log(typeof minval);
+      //console.log(maxtemp);    
+      //setMax(maxval);
+      //console.log("min value is " + min + " max val is " + max);
+     //console.log("type of min"+ typeof(min)+"type of max"+typeof(max))
+      setMin(minval, ()=>reFetch());
+      const maxval = parseInt(maxtemp);
+     setMax(maxval, ()=>reFetch());
+    // reFetch();
+    };
+
+   /*  const handleSClick = () => {
+
+      setlocation(destination);
+  
+  } */
+
+     const handleSearchChange = (e) => {
+      let tar=e.target.value;
+      //console.log("IN LOWER CASE "+tar.toLowerCase())
+      //console.log(t.toLowerCase())
+      setDestination(tar.toLowerCase());
+       console.log(destination);
+                                      }
+
+  // const handleCatChange=(e)=>{
+  //     const { value, checked } = e.target;
+      
+  //     if(checked){setCat(value)}
+  //     console.log(cat);
+  // }
+  
+ const  handleCataChange=(e)=>{
+      const { value, checked } = e.target;
+     
+      const i=cat.indexOf(e.target.value);
+    //  console.log("index "+i);
+      
+      
+      if(checked)
+      {setCat(cat=>[...cat,value])
+      }
+
+      else{//get the target name-search arr for i-pop i val
+          {
+
               cat.splice(i, 1)
-              }  
-            }
-          //console.log(cat);
-            }
+          }  
+      }
+      console.log(cat);
+  }
 
-            const handlebudgetChange = (e) => {
-              const { value, checked } = e.target;
-              //console.log(value + " state is" + checked);
-           
-              if (checked && value == "b1") {
-           
-                  setMax(10000)
-               
-                   setMin(0);
-                 
-               }
-              
-              else if (checked && value == "b2") {
-                  setMin(10000);
-                  setMax(20000);
-              
-              } else if (checked && value == "b3") {
-           
-                
-                setMin(20000);
-                 setMax(40000);
-                //
-              } else if (checked && value == "b4") {
-                
-           
-                 setMin(40000);
-                setMax(50000);
-              } else {
-                setMin(0);
-                setMax(999999);
-              }
-           
-              //console.log("min value is " + min + " max val is " + max);
-            };
-           
-            const handleMinValueChange = (e) => {
-              setMin(e.target.value);
-            };//check the datatype;int or string
-            const handleMaxValueChange = (e) => {
-              setMax(e.target.value);
-            };
+
+const handlebudgetChange = (e) => {
+  const { value, checked } = e.target;
+  console.log(value + " state is" + checked);
+
+  if (checked && value == "b1") {
+
+     
+       setMintemp(1);
+       setMaxtemp(10000);
+     
+   }
+  
+  else if (checked && value == "b2") {
+
+      setMintemp(10000);
+       setMaxtemp(20000);
+  
+  } else if (checked && value == "b3") {
+
+
+    setMintemp(20000)
+      setMaxtemp(40000)
+  } else if (checked && value == "b4") {
+
+    setMintemp(40000);
+    setMaxtemp(50000);
+  } else {
+
+
+    setMin(1);
+    setMax(999999);
+
+    setMintemp(1);
+    setMaxtemp(999999);
+  }
+
+ // console.log("mint value is " + mintemp + " maxt val is " + maxtemp);
+  //console.log("type of mintmp"+ typeof(mintemp)+"type of maxtmp"+typeof(maxtemp))
+};
+
+const handleMinValueChange = (e) => {
+ // setMin(e.target.value);
+ setMin(undefined);
+  setMintemp(e.target.value);
+
+};//check the datatype;int or string
+const handleMaxValueChange = (e) => {
+ 
+  setMax(undefined);
+
+  setMaxtemp(e.target.value);
+};
+
+
+const color = "text-blacky-dark";
+
 
 
 
@@ -279,7 +362,7 @@ const Packages =() => {
                     </Dropdown.Item>
                 </Dropdown> 
                       </div>
-                    <div className="package-container">
+                     <div className="package-container">
                       
                       
                         {loading ? 
@@ -304,7 +387,7 @@ const Packages =() => {
                         
                         
                         
-                        data && data.map((pack) => (
+                        data != undefined && data.map((pack) => (
                             
                             <PackageCard key={pack._id} pack={pack} />
                                 
@@ -313,7 +396,7 @@ const Packages =() => {
                         )
                         ) }
                         
-                    </div>
+                    </div> 
             </div>
 
 

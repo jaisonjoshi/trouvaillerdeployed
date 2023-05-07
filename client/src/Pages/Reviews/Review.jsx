@@ -1,21 +1,34 @@
 
-import React from "react";
+import React, { useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import useFetch from "../../hooks/useFetch";
 import BarLoader from "react-spinners/BarLoader";
+import bgimg from '../Assets/homeCarousel/pic1.webp'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+
 
 const Reviews = () => {
+  const sliderRef = useRef(null)
+  
+
+  
   const { data, loading, error } = useFetch("/reviews");
   var settings = {
-    dots: true,
-    arrows: false,
+    dots: false,
+    arrows:false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
+    
     slidesToScroll: 1,
-    responsive: [
+    autoplay: true,
+    autoplaySpeed: 2000, 
+   
+       responsive: [
       {
         breakpoint: 1024,
         settings:{
@@ -47,33 +60,36 @@ const Reviews = () => {
          </div>
         ) : (
           
-          <Slider {...settings}>
+          <div className="w-[90%] mx-auto relative">
+              <button className="button absolute top-[30%] bg-[#2AF4A0] rounded w-[40px] h-[40px]  flex justify-center items-center font-bold text-2xl  z-[1000000000] left-0" onClick={()=> sliderRef.current.slickPrev()}>
+            &lt;
+          </button>
+          <button className="button absolute top-[30%] bg-[#2AF4A0] rounded-[10px] w-[40px] h-[40px] flex justify-center items-center font-bold text-2xl z-[1000000000] right-0" onClick={()=> sliderRef.current.slickNext()}>
+          &gt;       </button>
+          
+            <Slider {...settings} ref={sliderRef}>
                   {data.map((item) => (
-                    <div className=" p-4 sm:p-10 h-full flex-col justify-between" key={item._id}>
-                      <div className="flex justify-center">
-                        <div className=" rounded-full flex justify-center w-[45%] h-[45%] md:w-[30%] md:h-[30%] xl:w-[30%] xl:h[30%] skeleton">
-                          <img
-                            className="w-full object-cover rounded-full w-[100%] h-[100%]"
-                            src={item.image}
-                          />
-                        </div>
-                      </div>
-                     <div className="flex flex-col justify-between ">
-                     <p className="text-center px-2 sm:px-8 pt-8 text-[gray] italic font-medium  text-md md:text-lg"><span className="text-lg">"</span> {item.reviewnote} <span className="text-lg">"</span></p>
-                      <div className=" text-center pt-8">
-                        <span className="font-medium">{item.author},{item.place}</span>
-                        <span> {item.rating}</span>
-                      </div>
+                     <div className=" p-4 sm:p-10 h-full flex-col justify-between" key={item._id}>
+                     <div className="flex justify-center">
+                       <div className=" rounded-full flex justify-center w-[45%] h-[45%] md:w-[30%] md:h-[30%] xl:w-[30%] xl:h[30%] skeleton">
+                         <img
+                           className="w-full object-cover rounded-full w-[100%] h-[100%]"
+                           src={item.image}
+                         />
+                       </div>
+                     </div>
+                    <div className="flex flex-col justify-between ">
+                    <p className="text-left px-2 sm:px-8 pt-8 text-[gray]  font-normal  text-md md:text-lg"> {item.reviewnote}</p>
+                     <div className=" text-left px-2 sm:px-8 pt-8">
+                       <span className="font-normal">{item.author},{item.place}</span>
+                       <span> {item.rating}</span>
                      </div>
                     </div>
+                   </div>
                   ))}
-                  {/* <div className="">1</div>
-                  <div className="">2</div>
-                  <div className="">3</div>
-                  <div className="">4</div>
-                  <div className="">6</div>
-                  <div className="">5</div> */}
+                  
           </Slider>
+          </div>
                 
         )}
       </div>

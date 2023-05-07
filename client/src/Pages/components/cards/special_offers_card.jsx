@@ -14,7 +14,7 @@ const Offers = () => {
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
 })
-  const { data, loading, error } = useFetch("/packages?offers=true&limit=3");
+  const { data, loading, error } = useFetch("/packages?offers=true&limit=4");
     const {data:data2} = useFetch("/hotels?offers=true&limit=4")
   const text = "i would like to book for the package "
   return (
@@ -36,10 +36,10 @@ const Offers = () => {
         <>
         <div className="   sm:py-8">
         <h1 className=" pb-8 font-medium sm:font-bold text-base text-center  sm:text-left  sm:text-2xl">Offers on Trending Travel Destinations and packages</h1>
-          <div className="flex justify-start flex-wrap   gap-[4%] ">
+          <div className="flex justify-start flex-wrap   gap-[2%] ">
           {data.map((item, i)=>(
 
-          <div key={item._id} className="w-[90%] mx-auto bg-[white] sm:mx-0 sm:w-[48%] lg:w-[30%] pb-3 mb-10 card-shadow-1 rounded-md cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)} >
+          <div key={item._id} className=" mx-auto bg-[white] sm:mx-0 w-[48%] lg:w-[23%] pb-3 mb-10 card-shadow-1 rounded-md cursor-pointer" onClick={()=> navigate(`/list/package/${item._id}`)} >
                   <div className="relative w-full">
                   <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
 
@@ -54,7 +54,7 @@ const Offers = () => {
                   <div className="px-2 py-4 flex flex-col items-start">
                    <div className="flex items-start justify-between w-full text-sm sm:text-lg"> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold  sm:text-lg card-text ">{item.title}</span>
                     <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">{item.duration}</span></div>
-                    <p className="card-text text-xs my-2 text-[gray] sm:text-sm">{item.description}</p>
+                    <p className="card-text text-xs my-2 text-[gray] sm:text-base">{item.description}</p>
                     <h3 className='text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></h3>   
 
                     
@@ -84,7 +84,7 @@ const Offers = () => {
         <div className="  py-4 sm:py-8">
           <h1 className=" pb-8 font-bold text-lg text-center sm:text-left sm:text-2xl">Offers on Hotels, Homestays and properties</h1>
 
-          <div className="flex justify-start flex-wrap   gap-[2%] sm:pb-20">
+          <div className="flex justify-start flex-wrap   gap-[4%] sm:pb-20">
           {data2.map((itm, i)=>(
                     <div key={i} className="  w-[49%] mb-10 md:w-[30%] lg:w-[22%] md:pr-2 sm:px-2 sm:px-4  ">
                         <div className='mb-4 h-[100%] pb-3 card-shadow-1 bg-[white] rounded-lg  cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
@@ -100,7 +100,7 @@ const Offers = () => {
 
                                 <h3 className='text-2xs px-2 py-[2px] rounded md:text-sm mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>   
                                 <p className="text-2xs sm:text-xs my-2 md:text-base text-graydust-medium">{itm.offerdescription}</p> 
-                                <p className="text-[0.70rem] sm:text-[0.70rem] card-text text-graydust-medium my-2">
+                                <p className="text-[0.90rem] sm:text-[0.90rem] card-text text-graydust-medium my-2">
                     {itm.description}
                   </p>
 

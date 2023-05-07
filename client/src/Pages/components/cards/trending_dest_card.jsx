@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
 const DestCard = () => {
   const { data, loading, error } = useFetch(
-    "/packages?rating=1&rating=2&rating=3&limit=3"
+    "/packages?rating=1&rating=2&rating=3&limit=12"
   );
 
   return (

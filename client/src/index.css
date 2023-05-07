@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
 
@@ -124,8 +124,7 @@ input{outline: none;}
 
 
 .navbar-shadow{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px !important;
-}
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
 .animationset{
     transition: all ease-in .3s;
 }
@@ -136,7 +135,7 @@ input{outline: none;}
     opacity: 1 !important;
 }
 .textnormal{
-    color: #000000d4 !important;
+    color: #000000b4 !important;
 }
 
 .skeleton{
@@ -174,7 +173,7 @@ nav li a {
     height: 100%;
 }
 .card-shadow{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
     .slick-dots li button:before {
         background-color: #c83838 !important;
@@ -316,3 +315,43 @@ button:focus {
         margin-left: auto !important;
         margin-right: auto !important;
     }
+
+    .bg-package{
+        background-image: url('./Pages//Assets/bgpackage.jpg');
+        background-position: bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .bg-hotel{
+        background-image: url('./Pages//Assets/bgpackage.jpg');
+        background-position: bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .buttongrad{
+        background: rgb(26,163,122) !important;
+        background: linear-gradient(140deg, rgba(26,163,122,1) 0%, rgba(157,255,179,1) 100%) !important;
+    }
+
+    .background-header{
+        background-image: url('./Pages//Assets/bghomepic.png');
+    
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+    }
+  .title-font{
+    font-family: 'Open Sans', sans-serif !important;
+  }
+
+  
+
+  .review-bg{
+    background: linear-gradient(to right, #ECF1F0 0%, transparent 15%, transparent 85%, #ECF1F0 100%);
+
+  }
+  .slick-prev,
+.slick-next {
+  display: block !important;
+}

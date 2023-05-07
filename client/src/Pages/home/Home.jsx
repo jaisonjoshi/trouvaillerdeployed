@@ -6,10 +6,12 @@ import Footer from '../components/Footer/Footer'
 import { Link } from "react-router-dom";
 import NavbarTest from '../components/navbar/navbar'
 import Slider from "react-slick";
-
+import logo from '../Assets/TrouvaillerGreen .png'
 import "slick-carousel/slick/slick.css";
-import bidingImg from '../Assets/biding.webp'
+import bidingImg from '../Assets/biddingImg.png'
 import "slick-carousel/slick/slick-theme.css";
+import DestCardMob from '../components/cards/trending_dest_card_mob'
+import Emi from '../components/cards/emi'
 
 
 const Home = () => {
@@ -32,59 +34,73 @@ const Home = () => {
   const color = "text-whiteglow"
   return (
     <div className={`animationset ${anim}`}>
-      <div className=" w-full h-screen">
+      <div className=" w-full h-[100vh] background-header">
            <NavbarTest color={color}/>
-             <Slider {...settings}>
-                <div className='pic1 w-screen h-screen'></div>
-                <div className='pic2 w-screen h-screen'></div>
-                <div className='pic3 w-screen h-screen'></div>
-
-                <div className='pic4 w-screen h-screen'></div>
-
-                <div className='pic5 w-screen h-screen'></div>
-
-
-        </Slider>
-        <div className=" absolute top-0 h-[100vh] flex items-center pl-12 md:pl-16 lg:pl-40 pr-8 md:pr-0">
-          <div>
-          <h1 className="text-5xl font-bold text-whiteglow">
-          Discover Your Next Adventure
+             
+        <div className=" absolute  top-0 h-[100vh] w-full flex justify-center items-center ">
+          <div className='flex flex-col items-center mt-28'>
+          <h1 className="text-xl md:text-5xl text-whiteglow font-extrabold title-font text-center">
+          Discover Your Next Adventure</h1><h1 className=' w-full mt-3 title-font text-2xl md:text-5xl text-whiteglow font-extrabold text-center'> with <img className='inline w-[30%]' src={logo} alt="" />
           </h1>
-          <p className="text-base md:text-lg text-whiteglow py-5">
-          Experience the adventure of a lifetime with our handpicked travel packages. Book now and create memories that will last a lifetime!
+          <p className="text-sm w-[70%] md:w-full  md:text-lg text-whiteglow text-center pt-10">
+          Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
           </p>
 
-          <Link className="" to="/hotels"> <button className="flex justify-center items-center bg-evergreen text-whiteglow w-36 font-bold rounded-md p-2 my-5 hover:bg-whiteglow duration-500">
+          <Link className="" to="/hotels"> <button className="flex justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-36 font-bold p-2 my-2 hover:bg-whiteglow duration-500">
             Explore
           </button></Link>
+          <div className='rounded-full mt-20 bg-[white] px-2 py-1 flex justify-between shadow-xl w-[80%] md:w-[50%]'>
+          <input type="text" placeholder='Search Destinations ' className='outline-none border-none focus:ring-[transparent] text-sm md:text-base  focus:border-[transparent]'/>
+<button className='font-bold text-white bg-[#00c676] text-sm md:text-base py-2 rounded-full px-6'>Search</button>
+          </div>
           </div>
 
         </div>
       </div>
 
       {/* Bid section */}
-      <div className='flex flex-col-reverse pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52 bg-gradient-to-r from-[rgba(230,255,232,0.37)] to-[rgba(232,255,230,1)] md:pr-12 lg:pr-20 py-8 sm:py-20'>
+      <div className='flex  bg-[#effef6] flex-col-reverse pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52  md:pr-12 lg:pr-20 py-8 sm:py-20'>
+      <div className='w-[100%] md:w-[50%] 2xl:w-[40%] flex justify-center items-center'>
+          <img src={bidingImg} className="w-[100%] sm:w-[50%] md:w-[100%] lg:w-[90%]" alt="" />
+        </div>
         <div className='text-center items-center md:items-start md:text-left flex flex-col justify-center gap-[20px] w-[100%] md:w-[50%] 2xl:w-[60%]'>
-          <h1 style={{fontSize:"35px", fontWeight:"800"}} >
-    Bid For Today
+          <h1 className='title-font font-extrabold text-5xl'  >
+    Bid For <span className='text-[#00c676]'>Today</span>
           </h1>
-          <p className='textnormal text-sm sm:text-base md:text-lg'>
-          Wish you could bid hotel prices for your budget and make your trip more pocket friendly? Here's an end to your worries because we let you place your bid for today's lowest hotel prices.
+          <p className='textnormal text-sm sm:text-base md:text-[18px] leading-8 font-medium title-font w-[70%]'>
+          Wish you could bid hotel prices for your budget and make your trip more pocket friendly?      Here's an end to your worries because we let you place your bid for today's lowest hotel prices.
           </p>
-          <h3 style={{fontSize:"25px"}}>
-          Interesting isn't it?
-          </h3>
-          <Link to="/what-is-bid"><button className='flex justify-center items-center bg-evergreen text-whiteglow w-36 font-bold rounded-md p-2 my-5 hover:bg-evergreendark duration-500'>
+         
+          <Link to="/what-is-bid"><button className='flex justify-center items-center border border-[#00c676] rounded-full text-xl text-[#00c676] font-bold shadow-lg  px-8 py-2 my-5 hover:bg-evergreendark duration-500'>
 Know more
           </button></Link>
         </div>
-        <div className='w-[100%] md:w-[50%] 2xl:w-[40%] flex justify-center items-center'>
-          <img src={bidingImg} className="w-[100%] sm:w-[50%] md:w-[100%] lg:w-[70%]" alt="" />
-        </div>
+        
       </div>
       
       {/* special offers block */}
+      <div className='pt-4 sm:pt-28 pb-8   px-4 sm:px-16 md:px-20 2xl:px-40'>
+          <div className='text-center'>
+            <h1 className='font-bold text-2xl sm:text-4xl'>Trending Destinations</h1>
+            <p className=' pt-4 textnormal  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
+          </div>
+        </div>
+        <div className=' hidden sm:grid  px-4 sm:px-16 md:px-20 2xl:px-40  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 auto-rows-[1fr] '>
+          <DestCard />
+          
+        </div>
+        <div className=' block sm:hidden   px-4 sm:px-16 md:px-20 2xl:px-40  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 auto-rows-[1fr] '>
+          
+          <DestCardMob />
+          
+        </div>
+        <div className='p-7 text-center   mb-12'>
+          <Link to="/packages" ><button className='font-medium border-graydust-dark border p-2 rounded-md w-full sm:w-auto px-10 hover:bg-evergreen hover:text-whiteglow hover:border-transparent hover:transition-colors hover:duration-200' >More destinations</button></Link>
+        </div>
 
+        <div className='px-4 bg-[#ECF1F0] sm:px-16 md:px-20 2xl:px-40'>
+          <Emi />
+        </div>
       <div className="pt-8 sm:pt-20 pb-8 px-4 sm:px-16 md:px-20 2xl:px-40 ">
         <h1 className='text-center font-bold text-blacky-dark text-2xl sm:text-4xl'>Special Offers</h1>
                   <p className='text-center textnormal py-4 text-sm  sm:text-base md:text-lg font-body'>Get ready to explore the world with our unbeatable travel deals!</p>
@@ -100,25 +116,13 @@ Know more
 
         {/* Trending destinations block */}
 
-        <div className='pt-4 sm:pt-28 pb-8  px-4 sm:px-16 md:px-20 2xl:px-40'>
-          <div className='text-center'>
-            <h1 className='font-bold text-2xl sm:text-4xl'>Trending Destinations</h1>
-            <p className=' pt-4 textnormal  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
-          </div>
-        </div>
-        <div className='grid  px-4 sm:px-16 md:px-20 2xl:px-40  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 auto-rows-[1fr] '>
-          <DestCard />
-          
-        </div>
-        <div className='p-7 text-center mb-12'>
-          <Link to="/packages" ><button className='font-medium border-graydust-dark border p-2 rounded-md w-full sm:w-auto px-10 hover:bg-evergreen hover:text-whiteglow hover:border-transparent hover:transition-colors hover:duration-200' >More destinations</button></Link>
-        </div>
+        
       </div >
 
       {/* Reviews block */}
 
-      <div className='bg-graydust-light pb-12'>
-        <h1 className='font-bold text-2xl sm:text-4xl text-center pt-7 mb-8'>Reviews</h1>
+      <div className='bg-[#ECF1F0] pb-12 pt-20'>
+        <h1 className='font-bold text-2xl sm:text-4xl text-center pt-7 mb-8'>What People Say About Us</h1>
         <div className='px-4 sm:px-20'><Reviews /></div>
 
       </div>
