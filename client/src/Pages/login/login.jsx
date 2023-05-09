@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 
 import logo from '../Assets/Trouvailler Green.png'
 
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 
 
@@ -148,22 +149,29 @@ const Login = () => {
  
   
         //
-      
+        function showPassword() {
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
 
     return (
 
         <div className="grid grid-cols-1 lg:grid-cols-2 h-screen w-full">
             <div className="googlelogin h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-40">
 
-            <img src={logo} className="w-[30%] sm:w-[25%] md:w-[25%] lg:w-[20%] mb-8 mx-auto" alt="" />
 
                 
             <div className='flex justify-center'><h3 style={{fontSize:"18px"}} className="font-medium text-2xl mb-8">Welcome back, Login now</h3></div>
       
            
 
+<div className='mx-14 glogin'>
 
-      <GoogleLogin onSuccess={credentialResponse=>{
+<GoogleLogin onSuccess={credentialResponse=>{
         //console.log(credentialResponse.credential);
         console.log(credentialResponse);
         const gid=credentialResponse.clientId
@@ -189,33 +197,37 @@ const Login = () => {
       onError={()=>{
         console.log("Login failed");
       }}/>
+</div>
       
-            {/* <form action="http://localhost:8080/auth/google"><button>
-            <div className='mt-16'><div className="flex justify-center border border-2 rounded mx-14 gap-2 py-1 items-center "><img src={google} /><span>Login with Google</span></div></div>
-            </button></form> */}
+            
             <p className='text-center mt-8'>or</p>
-                <div className="flex flex-col mt-5">
+                <div className="flex mx-14 flex-col mt-5">
+                <div className='bg-[#eeeeee] rounded mb-8'>
                 <input
             type="text"
-            className="mx-14 p-3 outline-none border border-transparent focus:border-transparent focus:ring-0 border-b-blacky-medium focus:border-b-evergreen duration-500"
-            placeholder="username"
+            className="  p-3 outline-none  rounded  border-transparent bg-transparent w-[100%] focus:ring-[transparent]  focus:border-[transparent] "
+            placeholder="Username"
             id="username"
             onChange={handleChange}
           />
+                </div>
+          <div className='bg-[#eeeeee] rounded'>
           <input
             type="password"
-            className="mx-14 p-3 outline-none border border-transparent focus:border-transparent focus:ring-0 border-b-blacky-medium focus:border-b-evergreen duration-500"
-            placeholder="password"
+            className=" p-3 outline-none rounded  border-transparent bg-transparent w-[90%] focus:ring-[transparent]  focus:border-[transparent] "
+            placeholder="Password"
             id="password"
             onChange={handleChange}
-          />
+          ></input>
+          <VisibilityIcon onClick={showPassword} className="text-[grey]"/>
+          </div>
           </div>
 
                 <div className="mx-14 my-5">
                 <button
             disabled={loading}
             onClick={handleClick}
-            className=" hover:bg-evergreen duration-500 bg-blacky-dark text-whiteglow w-full rounded-md p-2 my-5"
+            className=" bg-evergreen text-whiteglow font-bold w-full rounded-md p-2 my-5"
           >Login</button>
                 {error && <span className='text-[red] py-2'>{error.message} username or password. Please try again</span>}        
                 </div>

@@ -12,6 +12,7 @@ import bidingImg from '../Assets/biddingImg.png'
 import "slick-carousel/slick/slick-theme.css";
 import DestCardMob from '../components/cards/trending_dest_card_mob'
 import Emi from '../components/cards/emi'
+import InterestForm from '../components/cards/interestForm'
 
 
 const Home = () => {
@@ -42,7 +43,7 @@ const Home = () => {
           <h1 className="text-xl md:text-5xl text-whiteglow font-extrabold title-font text-center">
           Discover Your Next Adventure</h1><h1 className=' w-full mt-3 title-font text-2xl md:text-5xl text-whiteglow font-extrabold text-center'> with <img className='inline w-[30%]' src={logo} alt="" />
           </h1>
-          <p className="text-sm w-[70%] md:w-full  md:text-lg text-whiteglow text-center pt-10">
+          <p className="text-sm w-[70%] md:w-full  md:text-xl text-whiteglow text-center pb-6 pt-10">
           Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
           </p>
 
@@ -50,8 +51,8 @@ const Home = () => {
             Explore
           </button></Link>
           <div className='rounded-full mt-20 bg-[white] px-2 py-1 flex justify-between shadow-xl w-[80%] md:w-[50%]'>
-          <input type="text" placeholder='Search Destinations ' className='outline-none border-none focus:ring-[transparent] text-sm md:text-base  focus:border-[transparent]'/>
-<button className='font-bold text-white bg-[#00c676] text-sm md:text-base py-2 rounded-full px-6'>Search</button>
+          <input type="text" placeholder='Search Destinations ' className='outline-none rounded border-none text-sm md:text-base focus:ring-[transparent]  focus:border-[transparent]'/>
+<button className='font-bold text-white bg-[#00c676] text-xs md:text-base py-2 rounded-full px-4 md:px-6'>Search</button>
           </div>
           </div>
 
@@ -59,19 +60,19 @@ const Home = () => {
       </div>
 
       {/* Bid section */}
-      <div className='flex  bg-[#effef6] flex-col-reverse pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52  md:pr-12 lg:pr-20 py-8 sm:py-20'>
+      <div className='flex  bg-[#effef6] flex-col pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52  md:pr-12 lg:pr-20 py-8 sm:py-20'>
       <div className='w-[100%] md:w-[50%] 2xl:w-[40%] flex justify-center items-center'>
           <img src={bidingImg} className="w-[100%] sm:w-[50%] md:w-[100%] lg:w-[90%]" alt="" />
         </div>
-        <div className='text-center items-center md:items-start md:text-left flex flex-col justify-center gap-[20px] w-[100%] md:w-[50%] 2xl:w-[60%]'>
-          <h1 className='title-font font-extrabold text-5xl'  >
+        <div className='text-center items-center md:items-start md:text-left flex flex-col justify-center mt-12 md:mt-0 gap-[20px] w-[100%] md:w-[50%] 2xl:w-[60%]'>
+          <h1 className='title-font font-extrabold text-3xl md:text-5xl'  >
     Bid For <span className='text-[#00c676]'>Today</span>
           </h1>
-          <p className='textnormal text-sm sm:text-base md:text-[18px] leading-8 font-medium title-font w-[70%]'>
+          <p className='textnormal text-sm sm:text-base md:text-[18px] leading-8 font-medium title-font md:w-[70%]'>
           Wish you could bid hotel prices for your budget and make your trip more pocket friendly?      Here's an end to your worries because we let you place your bid for today's lowest hotel prices.
           </p>
          
-          <Link to="/what-is-bid"><button className='flex justify-center items-center border border-[#00c676] rounded-full text-xl text-[#00c676] font-bold shadow-lg  px-8 py-2 my-5 hover:bg-evergreendark duration-500'>
+          <Link to="/what-is-bid"><button className='flex justify-center items-center border border-[#00c676] rounded-full md:text-xl text-[#00c676] font-bold shadow-lg  px-8 py-2 my-5 hover:bg-evergreendark duration-500'>
 Know more
           </button></Link>
         </div>
@@ -79,7 +80,7 @@ Know more
       </div>
       
       {/* special offers block */}
-      <div className='pt-4 sm:pt-28 pb-8   px-4 sm:px-16 md:px-20 2xl:px-40'>
+      <div className=' pt-12 md:pt-4 sm:pt-28 pb-8   px-4 sm:px-16 md:px-20 2xl:px-40'>
           <div className='text-center'>
             <h1 className='font-bold text-2xl sm:text-4xl'>Trending Destinations</h1>
             <p className=' pt-4 textnormal  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
@@ -120,7 +121,7 @@ Know more
       </div >
 
       {/* Reviews block */}
-
+<InterestForm />
       <div className='bg-[#ECF1F0] pb-12 pt-20'>
         <h1 className='font-bold text-2xl sm:text-4xl text-center pt-7 mb-8'>What People Say About Us</h1>
         <div className='px-4 sm:px-20'><Reviews /></div>

@@ -25,6 +25,7 @@ import goa from "../../Assets/goa.jpg";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import munnar from "../../Assets/munnar.jpg";
 import { useNavigate } from "react-router";
+import InterestForm from "./interestForm";
 
 const List2_card = ({ setlocation, settype }) => {
   const slider = React.useRef(null);
@@ -737,7 +738,7 @@ const List2_card = ({ setlocation, settype }) => {
           </div>
         </div>
       </div>
-
+<InterestForm />
       <Footer />
     </div>
   );

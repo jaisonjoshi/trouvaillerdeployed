@@ -86,7 +86,7 @@ const Offers = () => {
 
           <div className="flex justify-start flex-wrap   gap-[4%] sm:pb-20">
           {data2.map((itm, i)=>(
-                    <div key={i} className="  w-[49%] mb-10 md:w-[30%] lg:w-[22%] md:pr-2 sm:px-2 sm:px-4  ">
+                    <div key={i} className="  w-[48%] mb-10 md:w-[30%] lg:w-[22%] md:pr-2 sm:px-2 sm:px-4  ">
                         <div className='mb-4 h-[100%] pb-3 card-shadow-1 bg-[white] rounded-lg  cursor-pointer' onClick={()=> navigate(`/list/hotel/${itm._id}`)} >
                             <div className="relative w-full">
                                 <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>

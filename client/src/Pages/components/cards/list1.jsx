@@ -19,6 +19,7 @@ import kashmir from '../../Assets/kashmir.jpg'
 import mysore from '../../Assets/mysore.jpg'
 import wayanad from '../../Assets/wayanad.jpg'
 import goa from '../../Assets/goa.jpg'
+import InterestForm from './interestForm';
 
 
 
@@ -494,7 +495,7 @@ const List1_card = ({ setlocation, settype }) => {
 
 
 
-
+<InterestForm />
 
 
 

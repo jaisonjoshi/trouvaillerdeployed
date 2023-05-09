@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import {AuthContext} from "../components/context/AuthContext";
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+
 const Signup = () => {
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
@@ -21,7 +23,14 @@ const [credentials, setCredentials] = useState({
     email: undefined
     
   });
-
+  function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -156,6 +165,7 @@ const [credentials, setCredentials] = useState({
                 <h1 className="text-center m-4 font-bold text-2xl">Create an Account</h1>
 
                 {/* <div className='mt-16'><div className="flex justify-center border border-2 rounded mx-14 gap-2 py-1 items-center "><img src={google} /><span>Sign Up with Google</span></div></div> */}
+                <div className='mx-14 glogin'>
                 <GoogleLogin 
                  buttonText="Sign up with Google"
                  onSuccess={credentialResponse=>{
@@ -185,20 +195,24 @@ const [credentials, setCredentials] = useState({
       onError={()=>{
         console.log("Login failed");
       }}/>
+                </div>
 
                 <p className="text-center text-blacky-light text-sm mt-8">- OR -</p>
 
                 <div className="flex flex-col">
-                     <input type="text" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Username *" id="username"required onChange={handleChange}/>
-                    <input type="email" className="mx-14 p-3 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="E-mail *" id="email" required onChange={handleChangeEmail}/>
+                     <input type="text" className="mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="Username" id="username"required onChange={handleChange}/>
+                    <input type="email" className="mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="E-mail" id="email" required onChange={handleChangeEmail}/>
                     { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
-                    <input type="tel" className="mx-14 p-3 ooutline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Mobile Number *" id="phone" required onChange={handleChange}/>
-                    <input type="password" className="mx-14 outline-none border border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:ring-offset-0 border-b-blacky-medium hover:border-b-evergreen duration-500" placeholder="Create Password *" id="password" required onChange={handleChange}/>
-                    
+                    <input type="tel" className="mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="Mobile Number" id="phone" required onChange={handleChange}/>
+<div className='bg-[#eeeeee] mx-14 rounded'>
+<input type="password" className=" w-[90%] outline-none border-none focus:ring-[transparent]  focus:border-[transparent] bg-transparent" placeholder="Create Password" id="password" required onChange={handleChange}/>
+<VisibilityIcon onClick={showPassword} className="text-[grey]"/>
+
+</div>                    
                     
                     </div>
                 <div className="mx-14 my-5">
-                    <button className=" hover:bg-evergreen duration-500 bg-blacky-dark text-whiteglow w-full rounded-md p-2 my-5" disabled={loading} onClick={handleClick}>Create Account</button>
+                    <button className=" bg-evergreen duration-500 font-bold text-whiteglow w-full rounded-md p-2 my-5" disabled={loading} onClick={handleClick}>Create Account</button>
                     {error && <span>{error.message}</span>}
                 </div>
 

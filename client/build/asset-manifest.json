@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "./static/css/main.7bb3a1cf.css",
-    "main.js": "./static/js/main.d790a7c4.js",
+    "main.css": "./static/css/main.707d1b20.css",
+    "main.js": "./static/js/main.c39bf64b.js",
     "static/media/emi.png": "./static/media/emi.dda9b6df09c0dff0e036.png",
     "static/media/bghomepic.png": "./static/media/bghomepic.e97c6dd4350116dd6c0f.png",
-    "static/media/biddingImg.png": "./static/media/biddingImg.8d4c0614ca651a97f71c.png",
+    "static/media/emiBody.png": "./static/media/emiBody.0b1a9afa295f3e07c6b4.png",
+    "static/media/biddingImg.png": "./static/media/biddingImg.6d81f4667d2bff3fee67.png",
+    "static/media/emiHeader.png": "./static/media/emiHeader.70383a59e7bf4172efaa.png",
     "static/media/bgpackage.jpg": "./static/media/bgpackage.62a3de7e6b879fac5680.jpg",
     "static/media/goa.jpg": "./static/media/goa.08ee354aa0810925c7f7.jpg",
     "static/media/kashmir.jpg": "./static/media/kashmir.8ed801f6656222425278.jpg",
     "static/media/mysore.jpg": "./static/media/mysore.3bafc0c3efe26da1e14a.jpg",
     "static/media/apartments.jpg": "./static/media/apartments.2a572292f8b18922fdfa.jpg",
     "static/media/homestays.jpg": "./static/media/homestays.8ff8739afd8d7ac7679e.jpg",
+    "static/media/intrstbg.png": "./static/media/intrstbg.879f8bb8a68ee7623d09.png",
     "static/media/wayanad.jpg": "./static/media/wayanad.066d8dc6a7c7462b5b8f.jpg",
     "static/media/resorts.jpg": "./static/media/resorts.222a17d78babfddb286b.jpg",
     "static/media/h.png": "./static/media/h.572ab5c8e0f8e1470462.png",
@@ -21,27 +24,24 @@
     "static/media/loginwall.webp": "./static/media/loginwall.5fc843e317d706d754f3.webp",
     "static/media/internationalmobile.jpg": "./static/media/internationalmobile.dc68da7e9fa7f1be725c.jpg",
     "static/media/adventure.jpg": "./static/media/adventure.3f65188b76ad81fd6b6a.jpg",
-    "static/media/pic5.webp": "./static/media/pic5.6717276d1584a1b16065.webp",
     "static/media/family.jpg": "./static/media/family.bb15d0b97ed2a755f436.jpg",
     "static/media/pic1.webp": "./static/media/pic1.1e015590552b7409d4ca.webp",
     "static/media/friends.jpg": "./static/media/friends.34271f998b6cdce5bd44.jpg",
     "static/media/Greenbg.png": "./static/media/Greenbg.e7e4e5e05c833ef57bfb.png",
-    "static/media/pic3.webp": "./static/media/pic3.084300cf43c6d85a2562.webp",
     "static/media/Honeymoon.jpg": "./static/media/Honeymoon.c2ffa05e6c3e33c2b57a.jpg",
-    "static/media/pic2.webp": "./static/media/pic2.e8e2b9ffa205e1ffe2ae.webp",
-    "static/media/pic4.webp": "./static/media/pic4.d59e0f392e377e0ba266.webp",
     "static/media/munnar.jpg": "./static/media/munnar.6752ece2d1cd575469b9.jpg",
     "static/media/Trouvailler Green.png": "./static/media/Trouvailler Green.4ede73bf19d4d33656b5.png",
+    "static/media/488.gif": "./static/media/488.136f467e6d77521197ff.gif",
     "static/media/slick.svg": "./static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "./static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "./static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
     "index.html": "./index.html",
-    "main.7bb3a1cf.css.map": "./static/css/main.7bb3a1cf.css.map",
-    "main.d790a7c4.js.map": "./static/js/main.d790a7c4.js.map"
+    "main.707d1b20.css.map": "./static/css/main.707d1b20.css.map",
+    "main.c39bf64b.js.map": "./static/js/main.c39bf64b.js.map"
   },
   "entrypoints": [
-    "static/css/main.7bb3a1cf.css",
-    "static/js/main.d790a7c4.js"
+    "static/css/main.707d1b20.css",
+    "static/js/main.c39bf64b.js"
   ]
 }

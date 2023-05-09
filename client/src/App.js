@@ -19,6 +19,7 @@ import Updateuser from "./Pages/userProfile/Updateprofile.js";
 import Updatepassword from "./Pages/userProfile/Updatepassword.js";
 import CircleLoading from "../src/Pages/components/spinningLoader/CircleLoading";
 import logo from "./Pages/Assets/TrouvaillerGreen .png";
+import loadinggif from './Pages/Assets/488.gif'
 import BarLoader from "react-spinners/BarLoader";
 import Offershotels from "./Pages/offers/offershotels.jsx";
 import SearchList from "./Pages/searchlist/SearchList.js";
@@ -27,25 +28,32 @@ import SearchListPack from "./Pages/searchlist/SearchlistPack.js";
 import SearchListType from "./Pages/searchlist/searchListType.js";
 import SearchListPackType from "./Pages/searchlist/SearchListPackType.js";
 import PrivacyPolicy from "./Pages/privacy policy/privacypolicy.jsx";
+import Emipage from "./Pages/emipage/Emipage.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  /* useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, []);
+  }, []); */
   const [open, setOpen] = useState(false);
   const [location, setlocation] = useState("");
   const [type, settype] = useState("");
+  window.onload = () => {
+    setTimeout(()=>{
+      setLoading(false);
+    },1000)
+  };
   return (
     <div className="App">
       <CircleLoading open={open} />
       {loading ? (
         <div className="preloader">
-          <img src={logo} />
-          <BarLoader color={"#00b771"} loading={loading} size={8} />
+          <img src={loadinggif}  className="w-[30px]"/>
+          <h1 className="text-[#4f4d4db4] text-center px-16">Almost there, your destination is just around the corner!
+</h1>
         </div>
       ) : (
         <BrowserRouter>
@@ -69,6 +77,7 @@ function App() {
               element={<Updateuser setOpen={setOpen} />}
             />
             <Route path="/user/update/password" element={<Updatepassword />} />
+            <Route path="/emi" element={<Emipage />} />
 
             <Route path="/bidform" element={<Bidform />} />
             <Route
