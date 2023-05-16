@@ -8,7 +8,7 @@ import NavbarTest from '../components/navbar/navbar'
 import Slider from "react-slick";
 import logo from '../Assets/TrouvaillerGreen .png'
 import "slick-carousel/slick/slick.css";
-import bidingImg from '../Assets/biddingImg.png'
+import bidingImg from '../Assets/biddingImg.webp'
 import "slick-carousel/slick/slick-theme.css";
 import DestCardMob from '../components/cards/trending_dest_card_mob'
 import Emi from '../components/cards/emi'

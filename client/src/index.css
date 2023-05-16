@@ -244,7 +244,7 @@ button:focus {
 
 }
 .type-card-5{
-    background-image: url('../src/Pages/Assets/apartments.jpg');
+    background-image: url('../src/Pages/Assets/apartments.webp');
 
 }
 .type-card::before{
@@ -294,13 +294,13 @@ button:focus {
     }
 
     .bg-package{
-        background-image: url('./Pages//Assets/bgpackage.jpg');
+        background-image: url('./Pages//Assets/bgpackage.webp');
         background-position: bottom;
         background-size: cover;
         background-repeat: no-repeat;
     }
     .bg-hotel{
-        background-image: url('./Pages//Assets/bgpackage.jpg');
+        background-image: url('./Pages//Assets/bgpackage.webp');
         background-position: bottom;
         background-size: cover;
         background-repeat: no-repeat;
@@ -312,7 +312,7 @@ button:focus {
     }
 
     .background-header{
-        background-image: url('./Pages//Assets/bghomepic.png');
+        background-image: url('./Pages//Assets/bghomepic.webp');
     
         background-size: cover;
         background-position: top;
