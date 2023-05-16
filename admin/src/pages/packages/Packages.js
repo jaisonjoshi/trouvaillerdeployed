@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 import PackageCard from '../../components/packageCard/PackageCard';
 import SearchIcon from '@mui/icons-material/Search'
 import PropagateLoader from "react-spinners/PropagateLoader";
-import { Dropdown } from "flowbite-react/lib/cjs/components/Dropdown";
 import axios from 'axios';
 
 const Packages =() => {

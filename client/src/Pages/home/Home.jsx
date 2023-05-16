@@ -40,7 +40,7 @@ const Home = () => {
              
         <div className=" absolute  top-0 h-[100vh] w-full flex justify-center items-center ">
           <div className='flex flex-col items-center mt-28'>
-          <h1 className="text-xl md:text-5xl text-whiteglow font-extrabold title-font text-center">
+          <h1 className="text-xl md:text-5xl text-whiteglow font-bold text-center">
           Discover Your Next Adventure</h1><h1 className=' w-full mt-3 title-font text-2xl md:text-5xl text-whiteglow font-extrabold text-center'> with <img className='inline w-[30%]' src={logo} alt="" />
           </h1>
           <p className="text-sm w-[70%] md:w-full  md:text-xl text-whiteglow text-center pb-6 pt-10">

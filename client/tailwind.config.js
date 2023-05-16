@@ -3,7 +3,6 @@ module.exports = {
   important: true,
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
 
   ],
   theme: {
@@ -57,8 +56,8 @@ module.exports = {
 
     },
   },
-  plugins: [require('tailwind-scrollbar-hide'),
-  require('flowbite/plugin')],
+  plugins: [require('tailwind-scrollbar-hide')
+  ],
 
 }
 //#2AF599

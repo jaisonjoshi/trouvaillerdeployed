@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import HotelCard from '../../components/hotelCard/HotelCard';
 import SearchIcon from '@mui/icons-material/Search'
 import PropagateLoader from "react-spinners/PropagateLoader";
-import { Dropdown } from "flowbite-react/lib/cjs/components/Dropdown";
 
 const Hotels =() => {
   const [anim, setAnim] = useState("")

@@ -24,7 +24,7 @@ Don't let financial constraints hold you back from experiencing the world - book
             </div>
 
             </div>
-            <div className="px-4 sm:px-16 md:px-20 2xl:px-40 pt-12 md:pt-0 md:py-20">
+            <div className="px-4 sm:px-16 md:px-20 2xl:px-40 pt-12 md:pt-20 md:py-20">
                 <h1 className="title-font font-bold text-2xl md:text-4xl text-center">Dream, Plan, Travel</h1>
                 <div className="flex flex-row justify-between w-[100%]  my-20 flex-wrap  mx-auto">
                     <div className="flex grow w-[40%] md:w-[20%] px-4 md:px-16 flex-col gap-6 items-center">

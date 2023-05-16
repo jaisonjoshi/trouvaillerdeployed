@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios";
 import MenuIcon from '@mui/icons-material/Menu';
 import useFetch from '../../../hooks/useFetch';
-import { Navbar } from 'flowbite-react/lib/cjs/components/Navbar';
 import './navbar.css';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
@@ -15,10 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faYoutube , faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import HomeWorkRoundedIcon from '@mui/icons-material/HomeWorkRounded';
-import PlaylistAddCheckRoundedIcon from '@mui/icons-material/PlaylistAddCheckRounded';
-import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded';
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -147,21 +143,20 @@ const NavbarTest = ({color}) => {
     }}
   return (
     <div>
-    <Navbar className={`w-full z-[10000000000000000] top-0 left-0 navbar-shadow fixed right-0 ${bg}  transition-all h-[60px]  duration-300 ease-in-out transition-all duration-500 ease-in-out navbar-padding`}
+    <div className={`w-full z-[10000000000000000] top-0 left-0 navbar-shadow flex justify-between fixed right-0 ${bg}  transition-all h-[60px] py-4  duration-300 ease-in-out transition-all duration-500 ease-in-out navbar-padding`}
 fluid={true} rounded={true}
 
 >
-<Navbar.Brand>
+<div>
   <Link to="/">
 <img src={require('../../Assets/TrouvaillerGreen .png')}
                 className="mr-3 ml-4 md:ml-12 sm:ml-12 h-6 sm:h-9 lg:ml-16 2xl:ml-36 "
                 alt="Trouvailler Logo"
             />
 </Link>
-</Navbar.Brand>
+</div>
 <NavModel open={open} setOpen={setOpen} user={user} handleClick={handleClick}/>
 <MenuIcon sx={{fontSize:30, color: isScrolled ? 'black' : 'white'}} onClick={handleOpen} className='block md:hidden'/>
-<Navbar.Collapse className="flex items-center md:mr-8  lg:mr-16 2xl:mr-36">
 <div className="flex md:order-2 gap-5 ml-0 lg:ml-12 items-center  nav-login-box">
 { user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src= {user ? user.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" } className="w-[35px] h-[35px] rounded-full"/><h2 className='md:hidden'>{user.username}</h2></span></Link>
         <button className="bg-evergreen text-whiteglow text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-evergreendark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
@@ -176,36 +171,38 @@ fluid={true} rounded={true}
 }
 
 </div>
-
-<Navbar.Link href="/" 
-                class={`py-3 px-1 lg:pt-2 text-base font-bold flex gap-1 items-end  ${colord} md:hover:text-evergreen duration-500`}>
+<div className='flex gap-12'>
+<Link to="/" 
+                class={`py-3 px-1 lg:pt-2 text-base font-bold   ${colord} md:hover:text-evergreen duration-500`}>
                 Home
-            </Navbar.Link>
+            </Link>
 
-            { user?(<Navbar.Link href="/bid-status"
+            { user?(<Link to="/bid-status"
                 class={`py-3 px-1 lg:pt-2 text-base font-bold  ${colord} hidden lg:block hover:text-evergreen duration-500`}>
                 My bids
-            </Navbar.Link>):
-            (<Navbar.Link href="/login"
+            </Link>):
+            (<Link to="/login"
                 class={`py-3 px-1 lg:pt-2 text-base flex gap-1 font-bold ${colord}  hidden lg:block hover:text-evergreen duration-500`}>
                 My bids
-            </Navbar.Link>)}
+            </Link>)}
 
         {/*     <Navbar.Link href="/"
                 class={`p-3 sm:p-0 text-lg text-blacky-dark hover:text-evergreen duration-500`}>
                 About
             </Navbar.Link> */}
-             <Navbar.Link 
+             <Link 
                 class={`py-3 px-1 lg:pt-2 text-base  ${colord}  hover:text-evergreen duration-500`} >
                 <Link to="/hotels" className='font-bold flex gap-1'>Hotels</Link>
-            </Navbar.Link>
-            <Navbar.Link
+            </Link>
+            <Link
                 class={`py-3 px-1 lg:pt-2 text-base  ${colord}  hover:text-evergreen duration-500`} >
                 <Link to="/packages" className='font-bold flex gap-1'>Packages</Link>
-            </Navbar.Link>
+            </Link>
+</div>
+
+
             
-</Navbar.Collapse>
-</Navbar>
+</div>
     
 </div>
   )
