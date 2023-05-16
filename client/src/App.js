@@ -41,10 +41,18 @@ function App() {
   const [open, setOpen] = useState(false);
   const [location, setlocation] = useState("");
   const [type, settype] = useState("");
-  window.onload = () => {
-    setTimeout(()=>{
+  useEffect(() => {
+    document.addEventListener("DOMContentLoaded", handleContentLoaded);
+
+    return () => {
+      document.removeEventListener("DOMContentLoaded", handleContentLoaded);
+    };
+  }, []);
+
+  const handleContentLoaded = () => {
+    setTimeout(() => {
       setLoading(false);
-    },1000)
+    }, 1000);
   };
   return (
     <div className="App">
