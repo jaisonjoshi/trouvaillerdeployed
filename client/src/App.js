@@ -32,16 +32,16 @@ import Emipage from "./Pages/emipage/Emipage.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  /* useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, []); */
+  }, []);
   const [open, setOpen] = useState(false);
   const [location, setlocation] = useState("");
   const [type, settype] = useState("");
-  useEffect(() => {
+ /*  useEffect(() => {
     document.addEventListener("DOMContentLoaded", handleContentLoaded);
 
     return () => {
@@ -53,7 +53,7 @@ function App() {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  };
+  }; */
   return (
     <div className="App">
       <CircleLoading open={open} />
