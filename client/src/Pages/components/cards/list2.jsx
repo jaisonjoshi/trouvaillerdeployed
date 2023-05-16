@@ -380,7 +380,7 @@ const List2_card = ({ setlocation, settype }) => {
                   )}
                 </div>
                 <div className="py-3 mx-3">
-                  <h3 className="text-sm sm:text-xl font-medium sm:font-bold z-50 text-black  card-text">
+                  <h3 className="text-sm sm:text-xl font-medium sm:font-bold z-50 text-black  card-text-heading">
                     {item.title}
                   </h3>
                   <span className="font-bold text-sm md:text-base text-[#03965e]">
@@ -565,7 +565,7 @@ const List2_card = ({ setlocation, settype }) => {
                   <div className="px-2 py-4 flex flex-col items-start">
                     <div className="flex items-start justify-between w-full ">
                       {" "}
-                      <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold text-sm md:text-lg card-text-heading ">
+                      <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold text-sm md:text-[1rem] card-text-heading ">
                         {item.title}
                       </span>
                       <span className="w-[30%] text-[#03965e] flex items-center justify-end  text-right font-bold text-xs">

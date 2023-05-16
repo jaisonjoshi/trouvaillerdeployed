@@ -8,7 +8,7 @@ const Emi = () => {
     <div className='w-[90%] md:w-[60%] flex justify-center'>
     <div className='md:w-[70%]'>
     <h1 className='text-3xl md:text-5xl mb-12 font-bold'>Travel now Pay Later</h1>
-    <h1 className='text-sm md:text-[1.125rem] textnormal'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde sequi inventore eveniet eum accusamus alias asperiores maiores voluptatem magni, voluptates accusantium ea laudantium rem explicabo incidunt ad enim minus sunt?</h1>
+    <h1 className='text-[0.90rem] sm:text-[1rem] card-text text-graydust-medium my-2'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde sequi inventore eveniet eum accusamus alias asperiores maiores voluptatem magni, voluptates accusantium ea laudantium rem explicabo incidunt ad enim minus sunt?</h1>
     <Link to="/emi"><button className='text-lg mt-8 px-4 py-2 bg-[#00ffa7] rounded text-white font-semibold'>Know more</button>
 </Link>
     </div>

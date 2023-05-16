@@ -54,7 +54,7 @@ const Offers = () => {
                   <div className="px-2 py-4 flex flex-col items-start">
                    <div className="flex items-start justify-between w-full text-sm sm:text-lg"> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold  sm:text-lg card-text ">{item.title}</span>
                     <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">{item.duration}</span></div>
-                    <p className="card-text text-xs my-2 text-[gray] sm:text-base">{item.description}</p>
+                    <p className="text-[0.90rem] sm:text-[0.90rem] card-text text-graydust-medium my-2">{item.description}</p>
                     <h3 className='text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></h3>   
 
                     
