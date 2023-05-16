@@ -43,8 +43,8 @@ const List2_card = ({ setlocation, settype }) => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 2,
-    autoplay: true,
-    autoplaySpeed: 1000,
+    autoplay: false,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1280,
@@ -61,7 +61,7 @@ const List2_card = ({ setlocation, settype }) => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
         },
       },
     ],
@@ -81,13 +81,13 @@ const List2_card = ({ setlocation, settype }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2.5,
         },
       },
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
         },
       },
     ],
@@ -348,7 +348,7 @@ const List2_card = ({ setlocation, settype }) => {
           </div>
         </div>
       </div>
-      <div className=" mt-[6rem] sm:mt-[11rem] pb-8 sm:px-16 md:px-20 2xl:px-40">
+      <div className=" mt-[6rem] sm:mt-[11rem] pb-8 px-4 sm:px-16 md:px-20 2xl:px-40">
         <h1 className="text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold">
           Top selling packages
         </h1>
@@ -380,10 +380,10 @@ const List2_card = ({ setlocation, settype }) => {
                   )}
                 </div>
                 <div className="py-3 mx-3">
-                  <h3 className="text-base sm:text-xl font-medium sm:font-bold z-50 text-black  ">
+                  <h3 className="text-sm sm:text-xl font-medium sm:font-bold z-50 text-black  card-text">
                     {item.title}
                   </h3>
-                  <span className="font-bold text-[#03965e]">
+                  <span className="font-bold text-sm md:text-base text-[#03965e]">
                     {item.duration}
                   </span>
 
@@ -392,11 +392,11 @@ const List2_card = ({ setlocation, settype }) => {
                   </p>
                 </div>
 
-                <div className="py-2 mx-3 ">
+                <div className="md:py-2 mx-3 ">
                   {item.offers ? (
                     <div className="flex flex-col items-start gap-2">
                       <div className="flex gap-2 items-center">
-                        <span className="text-lg font-medium sm:font-bold">
+                        <span className="text-sm md:text-lg font-bold sm:font-bold">
                           ₹{" "}
                           {item.offerprice &&
                             item.offerprice
@@ -418,7 +418,7 @@ const List2_card = ({ setlocation, settype }) => {
                     </div>
                   ) : (
                     <div className="flex justify-start gap-1 items-center">
-                      <span className=" text-lg font-bold">
+                      <span className=" text-sm md:text-lg font-bold">
                         ₹{" "}
                         {item.cheapestPrice &&
                           item.cheapestPrice
@@ -540,11 +540,11 @@ const List2_card = ({ setlocation, settype }) => {
           </p>
 
           <div className=" pt-8 ">
-            <Slider ref={slider} {...settings1} className="slick-m ">
+            <Slider ref={slider} {...settings1} className="slick-m offerpacks ">
               {data2.map((item, i) => (
                 <div
                   key={item._id}
-                  className=" w-[90%]  pb-3 mb-10 card-shadow-1 rounded-md cursor-pointer"
+                  className=" w-[91%] ml-3  pb-3 mb-10 card-shadow-1 rounded-md cursor-pointer"
                   onClick={() => navigate(`/list/package/${item._id}`)}
                 >
                   <div className="relative w-full">
@@ -565,17 +565,17 @@ const List2_card = ({ setlocation, settype }) => {
                   <div className="px-2 py-4 flex flex-col items-start">
                     <div className="flex items-start justify-between w-full ">
                       {" "}
-                      <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold text-lg card-text ">
+                      <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold text-sm md:text-lg card-text-heading ">
                         {item.title}
                       </span>
-                      <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">
+                      <span className="w-[30%] text-[#03965e] flex items-center justify-end  text-right font-bold text-xs">
                         {item.duration}
                       </span>
                     </div>
-                    <p className="card-text text-base my-2 text-[gray]">
+                    <p className="card-text text-sm md:text-base my-2 text-[gray]">
                       {item.description}
                     </p>
-                    <h3 className="text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]">
+                    <h3 className="text-2xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]">
                       <b>{item.offertitle}</b>
                     </h3>
                   </div>

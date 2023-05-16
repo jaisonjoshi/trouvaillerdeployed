@@ -158,9 +158,9 @@ const [credentials, setCredentials] = useState({
 
 //
     return (
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-screen w-full">
-            <div className="h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-40">
+<div>
+<div className="hidden md:grid grid-cols-1 lg:grid-cols-2 h-screen w-full">
+            <div className="h-[100vh] lg:h-auto w-[100%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto pt-40">
 
                 <h1 className="text-center m-4 font-bold text-2xl">Create an Account</h1>
 
@@ -200,11 +200,11 @@ const [credentials, setCredentials] = useState({
                 <p className="text-center text-blacky-light text-sm mt-8">- OR -</p>
 
                 <div className="flex flex-col">
-                     <input type="text" className="mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="Username" id="username"required onChange={handleChange}/>
-                    <input type="email" className="mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="E-mail" id="email" required onChange={handleChangeEmail}/>
+                     <input type="text" className="mx-8 md:mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="Username" id="username"required onChange={handleChange}/>
+                    <input type="email" className="mx-8 md:mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="E-mail" id="email" required onChange={handleChangeEmail}/>
                     { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
-                    <input type="tel" className="mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="Mobile Number" id="phone" required onChange={handleChange}/>
-<div className='bg-[#eeeeee] mx-14 rounded'>
+                    <input type="tel" className="mx-8 md:mx-14 p-3 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="Mobile Number" id="phone" required onChange={handleChange}/>
+<div className='bg-[#eeeeee] mx-8 md:mx-14 rounded'>
 <input type="password" className=" w-[90%] outline-none border-none focus:ring-[transparent]  focus:border-[transparent] bg-transparent" placeholder="Create Password" id="password" required onChange={handleChange}/>
 <VisibilityIcon onClick={showPassword} className="text-[grey]"/>
 
@@ -224,6 +224,97 @@ const [credentials, setCredentials] = useState({
                 
                 </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div className="md:hidden loginbg h-[60vh] w-full">
+            <div className=" bg-white absolute top-0 left-0 bottom-0 w-full  mx-auto">
+
+                <h1 className="text-left mx-8 mb-8 mt-8 font-medium text-xl">Create an Account</h1>
+
+                {/* <div className='mt-16'><div className="flex justify-center border border-2 rounded mx-14 gap-2 py-1 items-center "><img src={google} /><span>Sign Up with Google</span></div></div> */}
+                
+
+                <div className="flex flex-col">
+                  <label htmlFor="" className='text-sm mx-8 text-[grey]'>User Name</label>
+                     <input type="text" className="mx-8 md:mx-14 px-3 py-2 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="" id="username"required onChange={handleChange}/>
+                    <label htmlFor=""  className='text-sm mx-8 text-[grey]'>E-mail</label>
+                    <input type="email" className="mx-8 md:mx-14 px-3 py-2 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="" id="email" required onChange={handleChangeEmail}/>
+                    { emailError && <div className="email-err" style={{ color: "red" }}>{emailError}</div>}
+                   <label  className='text-sm mx-8 text-[grey]'>Mobile Number</label>
+                    <input type="tel" className="mx-8 md:mx-14 px-3 py-2 outline-none border-none rounded mb-4 bg-[#eeeeee] focus:ring-[transparent]  focus:border-[transparent]" placeholder="" id="phone" required onChange={handleChange}/>
+                    <label htmlFor=""  className='text-sm mx-8 text-[grey]'>Create Password</label>
+
+<div className='bg-[#eeeeee] mx-8 md:mx-14 rounded'>
+<input type="password" className=" w-[90%] outline-none border-none focus:ring-[transparent]  focus:border-[transparent] bg-transparent" placeholder="" id="password" required onChange={handleChange}/>
+<VisibilityIcon onClick={showPassword} className="text-[grey]"/>
+
+</div>                    
+                    
+                    </div>
+                <div className="mx-8 ">
+                    <button className=" bg-evergreen duration-500 font-bold text-whiteglow w-full rounded-full p-2 my-5" disabled={loading} onClick={handleClick}>Create Account</button>
+                    {error && <span>{error.message}</span>}
+                </div>
+
+                <p className="mx-14 text-center">
+                    <Link className="text-[grey] text-base" to="/Login">    Already have an account?</Link></p>
+                    <p className="text-center text-blacky-light text-sm mt-4">- OR -</p>
+
+                    <div className='mx-14 mb-8 glogin'>
+                <GoogleLogin 
+                 buttonText="Sign up with Google"
+                 onSuccess={credentialResponse=>{
+        //console.log(credentialResponse.credential);
+        //console.log(credentialResponse);
+        const gid=credentialResponse.clientId
+        var token=credentialResponse.credential;
+        //verifyGoogleToken(token);
+
+        var decoded = jwt_decode(credentialResponse.credential);
+        //console.log(decoded);
+        var checkemail=decoded.email
+        var google_user={};
+        google_user.username=decoded.given_name
+        google_user.email=decoded.email
+        var number="add phone number"
+        google_user.phone=number//
+        google_user.google_id=gid
+        google_user.img=decoded.picture
+        
+
+        googleSignIn(google_user);
+
+        
+       // console.log(user);
+      }}
+      onError={()=>{
+        console.log("Login failed");
+      }}/>
+                </div>
+
+            </div>
+
+           
+        </div>
+</div>
+        
     )
 }
 export default Signup

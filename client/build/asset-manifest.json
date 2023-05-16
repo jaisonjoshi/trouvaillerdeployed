@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.707d1b20.css",
-    "main.js": "./static/js/main.c39bf64b.js",
+    "main.css": "./static/css/main.ba65ecf2.css",
+    "main.js": "./static/js/main.2a7f0413.js",
     "static/media/emi.png": "./static/media/emi.dda9b6df09c0dff0e036.png",
     "static/media/bghomepic.png": "./static/media/bghomepic.e97c6dd4350116dd6c0f.png",
     "static/media/emiBody.png": "./static/media/emiBody.0b1a9afa295f3e07c6b4.png",
+    "static/media/loginbg.jpg": "./static/media/loginbg.4e8a305ba15190b1fe2a.jpg",
     "static/media/biddingImg.png": "./static/media/biddingImg.6d81f4667d2bff3fee67.png",
     "static/media/emiHeader.png": "./static/media/emiHeader.70383a59e7bf4172efaa.png",
     "static/media/bgpackage.jpg": "./static/media/bgpackage.62a3de7e6b879fac5680.jpg",
+    "static/media/emimobile.png": "./static/media/emimobile.4eb32601d8aec74260e2.png",
     "static/media/goa.jpg": "./static/media/goa.08ee354aa0810925c7f7.jpg",
     "static/media/kashmir.jpg": "./static/media/kashmir.8ed801f6656222425278.jpg",
     "static/media/mysore.jpg": "./static/media/mysore.3bafc0c3efe26da1e14a.jpg",
@@ -37,11 +39,11 @@
     "static/media/slick.ttf": "./static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
     "index.html": "./index.html",
-    "main.707d1b20.css.map": "./static/css/main.707d1b20.css.map",
-    "main.c39bf64b.js.map": "./static/js/main.c39bf64b.js.map"
+    "main.ba65ecf2.css.map": "./static/css/main.ba65ecf2.css.map",
+    "main.2a7f0413.js.map": "./static/js/main.2a7f0413.js.map"
   },
   "entrypoints": [
-    "static/css/main.707d1b20.css",
-    "static/js/main.c39bf64b.js"
+    "static/css/main.ba65ecf2.css",
+    "static/js/main.2a7f0413.js"
   ]
 }

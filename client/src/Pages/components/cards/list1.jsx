@@ -44,24 +44,7 @@ const List1_card = ({ setlocation, settype }) => {
 
     const { data: data2 } = useFetch("/hotels?offers=true&limit=6")
 
-    var settings = {
-        dots: true,
-        arrows: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 4000,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                }
-            }
-        ]
-    };
+    
     var settings_1 = {
         dots: false,
         arrows: false,
@@ -396,15 +379,15 @@ const List1_card = ({ setlocation, settype }) => {
                                 <div className='mb-4 h-[100%] pb-3 card-shadow-1 rounded-t-lg  cursor-pointer' onClick={() => navigate(`/list/hotel/${itm._id}`)} >
                                     <div className="relative w-full">
                                         <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                                        <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={itm.images[0]} alt="" />
+                                        <img className='w-[100%] aspect-video skeleton rounded-lg' src={itm.images[0]} alt="" />
                                         <h3 className='hidden sm:block sm:text-base md:text-base sm:font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]'>{itm.title}</h3>
                                     </div>
 
-                                    <h3 className='text-xs z-50 py-1 mx-1 md:mx-3 text-[black] font-semibold sm:hidden  card-text '>{itm.title}</h3>
+                                    <h3 className='text-xs z-50 py-1 mx-1 md:mx-3 text-[black] font-semibold sm:hidden  card-text-heading '>{itm.title}</h3>
 
                                     <div className='py-1 sm:py-3 mx-1 md:mx-3 flex flex-col gap-1 items-start'>
 
-                                        <h3 className='text-xs px-2 py-[2px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>
+                                        <h3 className='text-2xs px-1 py-[1px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>
                                         <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">{itm.offerdescription}</p>
                                         <p className="text-[0.70rem] sm:text-[0.90rem] card-text text-graydust-medium my-2">
                     {itm.description}
@@ -433,20 +416,13 @@ const List1_card = ({ setlocation, settype }) => {
                     <h1 className='text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold'>Browse by Types</h1>
 
                 </div>
-                <Slider {...settings} className="lg:hidden pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl">
-                    <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={() => handleTypesubmit("hotel")}><div className='type-card type-card-1 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Hotels</span></div></div>
-                    <div className='w-[100%] px-2 sm:px-4 cursor-pointer' onClick={() => handleTypesubmit("private villa")}><div className='type-card type-card-2 py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>private villas</span></div></div>
-                    <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={() => handleTypesubmit("resort")}><div className='type-card type-card-3  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Resorts</span></div></div>
-                    <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={() => handleTypesubmit("home stay")}><div className='type-card type-card-4  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>Homestays</span></div></div>
-                    <div className='w-[100%] px-2  sm:px-4 cursor-pointer' onClick={() => handleTypesubmit("campsite")}><div className='type-card type-card-5  py-4 sm:py-6 md:py-8 rounded-[10px] flex justify-center '><span className='z-10'>campsites</span></div></div>
-
-                </Slider>
-                <div className='hidden pt-8 justify-between text-[white] font-bold text-xl lg:flex'>
-                    <div className='type-card type-card-1 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={() => handleTypesubmit("hotel")}><span className='z-10'>Hotels</span></div>
-                    <div className='type-card type-card-2 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={() => handleTypesubmit("private villa")}><span className='z-10'>private villas</span></div>
-                    <div className='type-card type-card-3 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={() => handleTypesubmit("resort")}><span className='z-10'>Resorts</span></div>
-                    <div className='type-card type-card-4 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={() => handleTypesubmit("home stay")}><span className='z-10'>Homestays</span></div>
-                    <div className='type-card type-card-5 w-[19%] py-8 rounded-[10px] flex justify-center cursor-pointer' onClick={() => handleTypesubmit("campsite")}><span className='z-10'>campsites</span></div>
+              
+                <div className=' pt-8 justify-between text-[white] font-bold text-base md:text-xl gap-4 flex overflow-auto	'>
+                    <div className='type-card type-card-1 px-10 md:w-[19%] py-2 md:py-8 rounded-[10px] flex justify-center items-center text-center cursor-pointer' onClick={() => handleTypesubmit("hotel")}><span className='z-10'>Hotels</span></div>
+                    <div className='type-card type-card-2 px-10 md:w-[19%] py-2 md:py-8 rounded-[10px] flex justify-center items-center text-center cursor-pointer' onClick={() => handleTypesubmit("private villa")}><span className='z-10'>private villas</span></div>
+                    <div className='type-card type-card-3 px-10 md:w-[19%] py-2 md:py-8 rounded-[10px] flex justify-center items-center text-center cursor-pointer' onClick={() => handleTypesubmit("resort")}><span className='z-10'>Resorts</span></div>
+                    <div className='type-card type-card-4 px-10 md:w-[19%] py-2 md:py-8 rounded-[10px] flex justify-center items-center text-center cursor-pointer' onClick={() => handleTypesubmit("home stay")}><span className='z-10'>Homestays</span></div>
+                    <div className='type-card type-card-5 px-10 md:w-[19%] py-2 md:py-8 rounded-[10px] flex justify-center items-center text-center cursor-pointer' onClick={() => handleTypesubmit("campsite")}><span className='z-10'>campsites</span></div>
                 </div>
 
 

@@ -47,7 +47,7 @@ const Home = () => {
           Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
           </p>
 
-          <Link className="" to="/hotels"> <button className="flex justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-36 font-bold p-2 my-2 hover:bg-whiteglow duration-500">
+          <Link className="" to="/packages"> <button className="flex justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-36 font-bold p-2 my-2 hover:bg-whiteglow duration-500">
             Explore
           </button></Link>
           <div className='rounded-full mt-20 bg-[white] px-2 py-1 flex justify-between shadow-xl w-[80%] md:w-[50%]'>

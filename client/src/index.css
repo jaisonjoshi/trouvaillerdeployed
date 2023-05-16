@@ -90,6 +90,14 @@ input{outline: none;}
     height: 3.6em !important;
     min-width: 3.6em !important;
 }
+.card-text-heading{
+    word-wrap: break-word !important;
+    overflow: hidden !important;
+    max-height: 2.4em !important; /* (Number of lines you want visible) * (line-height) */
+    line-height: 1.2em !important;
+    height: 2.4em !important;
+    min-width: 2.4em !important;
+}
 
 
 .navbar-shadow{
@@ -352,3 +360,13 @@ input:-webkit-autofill {
 input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 50px #eeeeee inset;
 }
+
+@media screen and (max-width:764px) {
+    .loginbg{
+        background-image: url('./Pages/Assets/loginbg.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+.offerpacks .slick-list{padding:0 20% 0 0;}
