@@ -43,7 +43,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [location, setlocation] = useState("");
   const [type, settype] = useState("");
-  useEffect(() => {
+  /* useEffect(() => {
     document.addEventListener("DOMContentLoaded", handleContentLoaded);
 
     return () => {
@@ -56,7 +56,7 @@ function App() {
       setLoading(false);
 
     }, 1000);
-  };
+  }; */
 
   const LoadingScreen = ()=> {
     return(
