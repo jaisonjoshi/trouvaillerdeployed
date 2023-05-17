@@ -34,16 +34,16 @@ const Bidform = lazy(()=>import("./Pages/bidform/bidform.jsx"))
 
 function App() {
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  /* useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, []);
+  }, []); */
   const [open, setOpen] = useState(false);
   const [location, setlocation] = useState("");
   const [type, settype] = useState("");
- /*  useEffect(() => {
+  useEffect(() => {
     document.addEventListener("DOMContentLoaded", handleContentLoaded);
 
     return () => {
@@ -56,7 +56,7 @@ function App() {
       setLoading(false);
 
     }, 1000);
-  }; */
+  };
 
   const LoadingScreen = ()=> {
     return(

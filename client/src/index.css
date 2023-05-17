@@ -312,7 +312,7 @@ button:focus {
     }
 
     .background-header{
-        background-image: url('./Pages//Assets/bghomepic.webp');
+        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/v1684314478/site/bghomepic_2_xrog5p.webp');
     
         background-size: cover;
         background-position: top;
