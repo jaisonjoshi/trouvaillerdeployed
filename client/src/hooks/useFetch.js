@@ -25,7 +25,7 @@ const useFetch = (url) => {
         }
 
         fetchData();
-    },[url, axiosInstance]);
+    },[url]);
 
 
     const reFetch = async ()=> {
