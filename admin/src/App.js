@@ -34,11 +34,8 @@ import VendorDetails from './pages/vendors/VendorDetails';
 
 function App() {
 
-    /* const socket = useMemo(()=>{
-      io.connect("http://localhost:4040")
-    },[]) */
+   
     const { user} = useContext(AuthContext);
-    // cleaner fn using useeffect
     const [loading, setLoading] = useState(true)
     useEffect(()=> {
       setLoading(true);
