@@ -1,7 +1,7 @@
 {
   "name": "travel-app",
   "version": "0.1.0",
-  "homepage": "https://trouvailler.com",
+  "homepage": "https://trouvailler.com/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
