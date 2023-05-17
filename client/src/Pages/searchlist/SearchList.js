@@ -293,7 +293,7 @@ const SearchList = ({location}) => {
                     </div>
                     <h3 className='text-base md:text-lg pt-2 font-medium z-[48] text-[black] px-2  '>{item.title}</h3>
                     <p className='mx-2 font-bold text-graydust-dark text-sm'>{item.location}</p>
-                    <p className='mx-2 text-[gray] text-xs sm:text-sm card-text'>{item.description}</p>
+                    <p className='text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal'>{item.description}</p>
                     <div className="pt-2">
                         <div className='flex justify-between items-center'>
                         {item.offers ? <div className='flex justify-between items-center'><div className="md:py-1 mx-1  flex justify-between items-center">

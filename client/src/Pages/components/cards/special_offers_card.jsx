@@ -45,7 +45,7 @@ const Offers = () => {
 
                     <img src={item.images[0]} alt="" className="aspect-video skeleton w-full rounded-md h-auto w-full " />
                     <div className="absolute opacity-90 bottom-2 w-[96%] z-50 left-[50%] translate-x-[-50%] flex flex-col rounded-lg p-2">
-                        <h1 className="font-bold text-white  text-sm sm:text-base">{item.offerdescription}</h1>
+                        <h1 className="font-bold text-white  text-xs sm:text-base">{item.offerdescription}</h1>
                     </div>
                   </div>
 
@@ -54,7 +54,7 @@ const Offers = () => {
                   <div className="px-2 py-4 flex flex-col items-start">
                    <div className="flex items-start justify-between w-full text-sm sm:text-lg"> <span className="w-[70%] text-blacky-medium font-semibold sm:font-bold  sm:text-lg card-text ">{item.title}</span>
                     <span className="w-[30%] text-[#03965e] flex items-center justify-end text-sm text-right font-bold">{item.duration}</span></div>
-                    <p className="text-[0.90rem] sm:text-[0.90rem] card-text text-graydust-medium my-2">{item.description}</p>
+                    <p className="text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal ">{item.description}</p>
                     <h3 className='text-xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{item.offertitle}</b></h3>   
 
                     
@@ -100,7 +100,7 @@ const Offers = () => {
 
                                 <h3 className='text-2xs px-2 py-[2px] rounded md:text-sm mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>   
                                 <p className="text-2xs sm:text-xs my-2 md:text-base text-graydust-medium">{itm.offerdescription}</p> 
-                                <p className="text-[0.90rem] sm:text-[0.90rem] card-text text-graydust-medium my-2">
+                                <p className="text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal ">
                     {itm.description}
                   </p>
 

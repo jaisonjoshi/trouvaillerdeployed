@@ -373,7 +373,7 @@ const List1_card = ({ setlocation, settype }) => {
                 <p className='text-sm sm:text-base lg:text-lg py-2 text-graydust-dark'>Score Big Savings on Your Next Stay - Check Out Our Best Hotel Deals Now!</p>
 
                 <div className=' pt-8 '>
-                    <Slider ref={slider} className='slick-m ' {...settings_1} >
+                    <Slider ref={slider} className='slick-m ' initialSlide={0} {...settings_1} >
                         {data2.map((itm, i) => (
                             <div key={i} className="px-1 pr-2 sm:px-2 sm:px-4  ">
                                 <div className='mb-4 h-[100%] pb-3 card-shadow-1 rounded-t-lg  cursor-pointer' onClick={() => navigate(`/list/hotel/${itm._id}`)} >
@@ -389,7 +389,7 @@ const List1_card = ({ setlocation, settype }) => {
 
                                         <h3 className='text-2xs px-1 py-[1px] rounded md:text-base mb-0 bg-[red] text-[white]'><b>{itm.offertitle}</b></h3>
                                         <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">{itm.offerdescription}</p>
-                                        <p className="text-[0.70rem] sm:text-[0.90rem] card-text text-graydust-medium my-2">
+                                        <p className="text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal">
                     {itm.description}
                   </p>
                                     </div>

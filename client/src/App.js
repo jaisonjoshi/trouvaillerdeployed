@@ -1,34 +1,36 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
-import TermsAndCond from "./Pages/Terms&Cond/TermsAndCond.jsx";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useState, useEffect,lazy, Suspense } from "react";
 import ScrollToTop from "./scrollToTop/scrollToTop.js";
-import Bidform from "./Pages/bidform/bidform.jsx";
-import Home from "./Pages/home/Home.jsx";
-import Login from "./Pages/login/login.jsx";
-import Signup from "./Pages/signup/signup.jsx";
-import IntroToBid from "./Pages/Bid/IntroBid.jsx";
-import BidStatus from "./Pages/Bid/BidStatus.jsx";
-import Package from "./Pages/DetailViews/Package.jsx";
-import Hotel from "./Pages/DetailViews/Hotel.jsx";
-import Review from "./Pages/rev/rev.jsx";
-import Destination from "./Pages/trending/trending.jsx";
-import List1_card from "./Pages/components/cards/list1.jsx";
-import List2_card from "./Pages/components/cards/list2.jsx";
-import Userprofile from "./Pages/userProfile/Userprofile.js";
-import Updateuser from "./Pages/userProfile/Updateprofile.js";
-import Updatepassword from "./Pages/userProfile/Updatepassword.js";
 import CircleLoading from "../src/Pages/components/spinningLoader/CircleLoading";
 import logo from "./Pages/Assets/TrouvaillerGreen .png";
 import loadinggif from './Pages/Assets/488.gif'
-import BarLoader from "react-spinners/BarLoader";
-import Offershotels from "./Pages/offers/offershotels.jsx";
-import SearchList from "./Pages/searchlist/SearchList.js";
-import Offerspage from "./Pages/offers/Offerspage.jsx";
-import SearchListPack from "./Pages/searchlist/SearchlistPack.js";
-import SearchListType from "./Pages/searchlist/searchListType.js";
-import SearchListPackType from "./Pages/searchlist/SearchListPackType.js";
-import PrivacyPolicy from "./Pages/privacy policy/privacypolicy.jsx";
-import Emipage from "./Pages/emipage/Emipage.js";
+const TermsAndCond = lazy(()=>import('./Pages/Terms&Cond/TermsAndCond'))
+const Emipage = lazy(()=>import('./Pages/emipage/Emipage.js'))
+const PrivacyPolicy = lazy(()=> import("./Pages/privacy policy/privacypolicy.jsx"))
+const SearchListPackType = lazy(()=>import("./Pages/searchlist/SearchListPackType.js"))
+const SearchListType =lazy(()=>import("./Pages/searchlist/searchListType.js"))
+const SearchListPack = lazy(()=>import("./Pages/searchlist/SearchlistPack.js"))
+const Offerspage = lazy(()=>import("./Pages/offers/Offerspage.jsx"))
+const SearchList = lazy(()=>import("./Pages/searchlist/SearchList.js"))
+const Offershotels = lazy(()=>import("./Pages/offers/offershotels.jsx"))
+const Updatepassword = lazy(()=>import("./Pages/userProfile/Updatepassword.js"))
+const Updateuser = lazy(()=>import("./Pages/userProfile/Updateprofile.js"))
+const Userprofile = lazy(()=>import("./Pages/userProfile/Userprofile.js"))
+const List2_card = lazy(()=>import("./Pages/components/cards/list2.jsx"))
+const List1_card = lazy(()=>import("./Pages/components/cards/list1.jsx"))
+const Destination = lazy(()=>import("./Pages/trending/trending.jsx"))
+const Hotel = lazy(()=>import( "./Pages/DetailViews/Hotel.jsx"))
+const Package = lazy(()=>import("./Pages/DetailViews/Package.jsx"))
+const BidStatus = lazy(()=>import("./Pages/Bid/BidStatus.jsx"))
+const IntroToBid = lazy(()=>import("./Pages/Bid/IntroBid.jsx"))
+const Signup = lazy(()=>import("./Pages/signup/signup.jsx"))
+const Login = lazy(()=>import("./Pages/login/login.jsx"))
+const Home = lazy(()=>import("./Pages/home/Home.jsx"))
+const Bidform = lazy(()=>import("./Pages/bidform/bidform.jsx"))
+
+
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -52,8 +54,19 @@ function App() {
   const handleContentLoaded = () => {
     setTimeout(() => {
       setLoading(false);
+
     }, 1000);
   }; */
+
+  const LoadingScreen = ()=> {
+    return(
+      <div className="preloader">
+      <img src={loadinggif}  className="w-[30px]"/>
+      <h1 className="text-[#4f4d4db4] text-center px-16">Almost there, your destination is just around the corner!
+</h1>
+    </div>
+    )
+  }
   return (
     <div className="App">
       <CircleLoading open={open} />
@@ -67,56 +80,58 @@ function App() {
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
-            <Route path="/se" element={<SearchList location={location} />} />
-            <Route path="/set" element={<SearchListType type={type} />} />
+            <Route path="/se" element={<Suspense fallback={<LoadingScreen />}><SearchList location={location} /></Suspense>} />
+            <Route path="/set" element={<Suspense fallback={<LoadingScreen />}><SearchListType type={type} /></Suspense>} />
 
             <Route
               path="/sep"
-              element={<SearchListPack location={location} />}
+              element={<Suspense fallback={<LoadingScreen />}><SearchListPack location={location} /></Suspense>}
             />
-            <Route path="/sept" element={<SearchListPackType type={type} />} />
+            <Route path="/sept" element={<Suspense fallback={<LoadingScreen />}><SearchListPackType type={type} /></Suspense>} />
 
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/user" element={<Userprofile />} />
+            <Route path="/" element={<Suspense fallback={<LoadingScreen />}><Home /></Suspense>} />
+            <Route path="/login" element={<Suspense fallback={<LoadingScreen />}><Login /></Suspense>} />
+            <Route path="/signup" element={<Suspense fallback={<LoadingScreen />}><Signup /></Suspense>} />
+            <Route path="/user" element={<Suspense fallback={<LoadingScreen />}><Userprofile /></Suspense>} />
             <Route
               path="/user/update"
-              element={<Updateuser setOpen={setOpen} />}
+              element={<Suspense fallback={<LoadingScreen />}><Updateuser setOpen={setOpen} /></Suspense>}
             />
-            <Route path="/user/update/password" element={<Updatepassword />} />
-            <Route path="/emi" element={<Emipage />} />
+            <Route path="/user/update/password" element={<Suspense fallback={<LoadingScreen />}><Updatepassword /></Suspense>} />
+            <Route path="/emi" element={<Suspense fallback={<LoadingScreen />}><Emipage /></Suspense>} />
+            
 
-            <Route path="/bidform" element={<Bidform />} />
+            <Route path="/bidform" element={<Suspense fallback={<LoadingScreen />}><Bidform /></Suspense>} />
             <Route
               path="/packages"
               element={
-                <List2_card setlocation={setlocation} settype={settype} />
+                <Suspense fallback={<LoadingScreen />}><List2_card setlocation={setlocation} settype={settype} /></Suspense>
               }
             />
             <Route
               path="/hotels"
               element={
-                <List1_card setlocation={setlocation} settype={settype} />
+                <Suspense fallback={<LoadingScreen />}><List1_card setlocation={setlocation} settype={settype} /></Suspense>
               }
             />
 
-            <Route path="/what-is-bid" element={<IntroToBid />} />
-            <Route path="/bid-status" element={<BidStatus />} />
-            <Route path="/package" element={<Package />} />
-            <Route path="/hotel" element={<Hotel />} />
-            <Route path="/rev" element={<Review />} />
-            <Route path="/trending" element={<Destination />} />
-            <Route path="/traveloffers" element={<Offerspage />} />
-            <Route path="/hoteloffers" element={<Offershotels />} />
+            <Route path="/what-is-bid" element={<Suspense fallback={<LoadingScreen />}><IntroToBid /></Suspense>} />
+            <Route path="/bid-status" element={<Suspense fallback={<LoadingScreen />}><BidStatus /></Suspense>} />
+            <Route path="/package" element={<Suspense fallback={<LoadingScreen />}><Package /></Suspense>} />
+            <Route path="/hotel" element={<Suspense fallback={<LoadingScreen />}><Hotel /></Suspense>} />
+            <Route path="/trending" element={<Suspense fallback={<LoadingScreen />}><Destination /></Suspense>} />
+            <Route path="/traveloffers" element={<Suspense fallback={<LoadingScreen />}><Offerspage /></Suspense>} />
+            <Route path="/hoteloffers" element={<Suspense fallback={<LoadingScreen />}><Offershotels /></Suspense>} />
 
-            <Route path="/offershotels" element={<Offershotels />} />
+            <Route path="/offershotels" element={<Suspense fallback={<LoadingScreen />}><Offershotels /></Suspense>} />
 
-            <Route path="/list/package/:id" element={<Package />} />
-            <Route path="/list/hotel/:id" element={<Hotel />} />
+            <Route path="/list/package/:id" element={<Suspense fallback={<LoadingScreen />}><Package /></Suspense>} />
+            <Route path="/list/hotel/:id" element={<Suspense fallback={<LoadingScreen />}><Hotel /></Suspense>} />
 
-            <Route path="/termandconditions" element={<TermsAndCond />} />
-            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/termandconditions" element={<Suspense fallback={<LoadingScreen />}>
+              <TermsAndCond />
+            </Suspense>} />
+            <Route path="/privacypolicy" element={<Suspense fallback={<LoadingScreen />}><PrivacyPolicy /></Suspense>} />
           </Routes>
         </BrowserRouter>
       )}

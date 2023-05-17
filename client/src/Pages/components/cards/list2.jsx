@@ -387,7 +387,7 @@ const List2_card = ({ setlocation, settype }) => {
                     {item.duration}
                   </span>
 
-                  <p className="text-[0.75rem] sm:text-[0.940rem] card-text my-2 text-[#404040d4] ">
+                  <p className="text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal ">
                     {item.description}
                   </p>
                 </div>
@@ -572,7 +572,7 @@ const List2_card = ({ setlocation, settype }) => {
                         {item.duration}
                       </span>
                     </div>
-                    <p className="card-text text-sm md:text-base my-2 text-[gray]">
+                    <p className="text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal">
                       {item.description}
                     </p>
                     <h3 className="text-2xs px-2 py-[4px] rounded md:text-base mb-0 bg-[red] text-[white]">
