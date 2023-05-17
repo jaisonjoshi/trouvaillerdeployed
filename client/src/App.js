@@ -77,7 +77,7 @@ function App() {
 </h1>
         </div>
       ) : (
-        <BrowserRouter basename="https://trouvailler.com">
+        <BrowserRouter>
           <ScrollToTop />
           <Routes>
             <Route path="/se" element={<Suspense fallback={<LoadingScreen />}><SearchList location={location} /></Suspense>} />
