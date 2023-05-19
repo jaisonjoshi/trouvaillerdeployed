@@ -149,7 +149,7 @@ fluid={true} rounded={true}
 >
 <div>
   <Link to="/">
-<img src={require('../../Assets/TrouvaillerGreen .png')}
+<img src={require('../../Assets/Trouvailler Green.png')}
                 className="mr-3 ml-4 md:ml-12 sm:ml-12 h-6 sm:h-9 lg:ml-16 2xl:ml-36 "
                 alt="Trouvailler Logo"
             />

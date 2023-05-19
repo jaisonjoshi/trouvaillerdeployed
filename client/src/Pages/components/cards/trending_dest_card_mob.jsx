@@ -44,7 +44,7 @@ const DestCardMob = () => {
 
 <Link  to={`/list/package/${item._id}`} className='flex mb-8'><div  key={item._id}  className="w-[95%] sm:w-auto mx-auto sm:mx-0 bg-whiteglow cursor-pointer card-shadow rounded pb-4 relative"  >
               <div className="relative">
-              <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
+              <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded image-gradient"></div>
               <img className='w-full aspect-video skeleton rounded-t-lg' src={item.images[0]} alt="" />
               <h3 className='text-sm font-bold z-50 text-whiteglow px-3  absolute bottom-[3px] md:bottom-[10px]'>{item.title}</h3>
               <span className="font-bold absolute top-0 text-sm text-[white] right-0 bg-[#0000008a] px-2 py-1 rounded">{item.duration}</span>

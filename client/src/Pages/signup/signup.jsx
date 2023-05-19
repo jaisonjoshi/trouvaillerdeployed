@@ -220,7 +220,7 @@ const [credentials, setCredentials] = useState({
                     <Link className="text-[#339633]" to="/Login">    Login</Link></p>
             </div>
 
-            <div style={{backgroundImage:`url(${loginwall})`}} className="hidden lg:flex justify-center items-center h-[100vh] bg-center bg-no-repeat bg-cover">
+            <div style={{backgroundImage:`url(https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684527559/site/loginwall_pfjmtp.webp)`}} className="hidden lg:flex justify-center items-center h-[100vh] bg-center bg-no-repeat bg-cover">
                 
                 </div>
         </div>

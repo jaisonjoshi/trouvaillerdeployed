@@ -4,11 +4,8 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/context/AuthContext";
-import loginwall from "../Assets/loginwall.webp";
-import google from "../Assets/google.png";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
-import { useEffect } from "react";
 
 import logo from "../Assets/Trouvailler Green.png";
 
@@ -236,7 +233,7 @@ const Login = () => {
         </div>
 
         <div
-          style={{ backgroundImage: `url(${loginwall})` }}
+          style={{ backgroundImage: `url(https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684527559/site/loginwall_pfjmtp.webp)` }}
           className="hidden lg:flex justify-center items-center h-[100vh] bg-center bg-no-repeat bg-cover"
         ></div>
       </div>

@@ -12,7 +12,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Reviews = () => {
   const sliderRef = useRef(null)
-  
+  const generateUrl = (url)=>{
+    const [baseUrl, ...rest] = url.split("/upload/");
+
+  return `${baseUrl}/upload/c_fill,h_200,w_200/f_auto/q_auto/${rest.join("/upload/")}`;
+
+
+  }
 
   
   const { data, loading, error } = useFetch("/reviews");
@@ -73,12 +79,12 @@ const Reviews = () => {
                        <div className=" rounded-full flex justify-center w-[45%] h-[45%] md:w-[30%] md:h-[30%] xl:w-[30%] xl:h[30%] skeleton">
                          <img
                            className="w-full object-cover rounded-full w-[100%] h-[100%]"
-                           src={item.image}
+                           src={generateUrl(item.image)}
                          />
                        </div>
                      </div>
                     <div className="flex flex-col justify-between ">
-                    <p className="text-[0.75rem] sm:text-[1rem] card-text my-2 textnormal title-font text-center leading-6"> {item.reviewnote}</p>
+                    <p className="text-[0.75rem] sm:text-[1rem]  my-2 textnormal title-font text-center leading-6"> {item.reviewnote}</p>
                      <div className=" text-center px-2 sm:px-8 pt-8">
                        <span className="font-normal">{item.author},{item.place}</span>
                        <span> {item.rating}</span>

@@ -7,9 +7,11 @@ import './newReview.scss';
 import axios from "axios"
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CropEasy from '../../../components/crop/CropEasy';
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 const NewReview =({setOpen}) => {
+    const [loading, setLoading] = useState(false)
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
@@ -45,6 +47,7 @@ const NewReview =({setOpen}) => {
 
    const size = 1;
     const handleReviewClick = async e => {
+        setLoading(true)
         e.preventDefault();
         
         try{
@@ -53,6 +56,7 @@ const NewReview =({setOpen}) => {
                 const data = new FormData();
                 data.append("file", file);
                 data.append("upload_preset", "upload");
+
                 const uploadRes = await axiosInstance.post(
                     "https://api.cloudinary.com/v1_1/difxlqrlc/image/upload",
                 data
@@ -65,14 +69,17 @@ const NewReview =({setOpen}) => {
             const newReview = {
                 ...info,image:url,
             };
-           // console.log(newReview)
+
+           console.log(newReview)
            const res = await axiosInstance.post('/reviews', newReview);
            // console.log("new review has been created")
-
+            setLoading(false)
              navigate('/reviews')
         }
 
         catch (error) {
+            setLoading(false)
+
            
             if (error.response) {
               // The request was made and the server responded with a status code that falls out of the range of 2xx
@@ -137,8 +144,9 @@ const NewReview =({setOpen}) => {
                             </div>
                             
                            
-                            <div className="review-form-submit">
+                            <div className="review-form-submit flex items-center gap-4">
                                 <button onClick={handleReviewClick}>Create Review</button>
+                                {loading && <ClipLoader color='#00ffa5'/>}
 
                             </div>
                         </form>

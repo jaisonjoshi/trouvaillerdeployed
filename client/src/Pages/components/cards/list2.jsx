@@ -1,31 +1,19 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
-import { Dropdown } from "flowbite-react/lib/cjs/components/Dropdown";
 import ArrowBackIosNewSharpIcon from "@mui/icons-material/ArrowBackIosNewSharp";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import international from "../../Assets/international.jpg";
-import internationalm from "../../Assets/internationalmobile.jpg";
 
 import Footer from "../Footer/Footer";
 import NavbarTest from "../navbar/navbar";
-import BarLoader from "react-spinners/BarLoader";
-import honeymoon from "../../Assets/Honeymoon.jpg";
-import adventure from "../../Assets/adventure.jpg";
-import family from "../../Assets/family.jpg";
-import friends from "../../Assets/friends.jpg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import kashmir from "../../Assets/kashmir.jpg";
-import mysore from "../../Assets/mysore.jpg";
-import wayanad from "../../Assets/wayanad.jpg";
-import goa from "../../Assets/goa.jpg";
+
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import munnar from "../../Assets/munnar.jpg";
 import { useNavigate } from "react-router";
 import InterestForm from "./interestForm";
+import LazyLoad from "react-lazyload";
 
 const List2_card = ({ setlocation, settype }) => {
   const slider = React.useRef(null);
@@ -288,7 +276,13 @@ const List2_card = ({ setlocation, settype }) => {
   };
 
   const color = "text-blacky-dark";
+  const generateUrl = (url)=>{
+    const [baseUrl, ...rest] = url.split("/upload/");
 
+  return `${baseUrl}/upload/c_fill,w_400/f_auto/q_auto/${rest.join("/upload/")}`;
+
+
+  }
   return (
     <div className={`w-full animationset ${anim} bg-[white] hotelsexplore`}>
       <NavbarTest color={color} />
@@ -370,7 +364,7 @@ const List2_card = ({ setlocation, settype }) => {
                    */}{" "}
                   <img
                     className="w-full aspect-video skeleton rounded-lg"
-                    src={item.images[0]}
+                    src={generateUrl(item.images[0])}
                     alt=""
                   />
                   {item.offers && (
@@ -446,7 +440,7 @@ const List2_card = ({ setlocation, settype }) => {
         >
           <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-[#00000085]"></div>
 
-          <img src={honeymoon} className="w-[100%] rounded-[10px]" alt="" />
+          <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684520311/site/Honeymoon_iogbop.jpg" className="w-[100%] rounded-[10px]" alt="" />
           <div className="absolute top-[50%] flex flex-col gap-1 translate-y-[-50%] left-4 lg:left-8 z-[45] w-[80%] 2xl:w-[50%]">
             <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">
               Create unforgettable honeymoon memories with our curated packages.
@@ -463,7 +457,7 @@ const List2_card = ({ setlocation, settype }) => {
         >
           <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-[#00000085]"></div>
 
-          <img src={adventure} className="w-[100%] rounded-[10px]" alt="" />
+          <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684520331/site/adventure_r19fpm.jpg" className="w-[100%] rounded-[10px]" alt="" />
           <div className="absolute top-[50%] flex flex-col gap-1 translate-y-[-50%] left-4 lg:left-8 z-[45] w-[80%] 2xl:w-[50%]">
             <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">
               Discover premier adventure destinations and break free to
@@ -482,7 +476,7 @@ const List2_card = ({ setlocation, settype }) => {
         >
           <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-[#00000085]"></div>
 
-          <img src={family} className="w-[100%] rounded-[10px]" alt="" />
+          <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684520351/site/family_qstl2o.jpg" className="w-[100%] rounded-[10px]" alt="" />
           <div className="absolute top-[50%] flex flex-col gap-1 translate-y-[-50%] left-4 lg:left-8 z-[45]  w-[80%] 2xl:w-[50%]">
             <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">
               Experience unforgettable moments with Trouvailler's family travel
@@ -501,7 +495,7 @@ const List2_card = ({ setlocation, settype }) => {
         >
           <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-[#00000085]"></div>
 
-          <img src={friends} className="w-[100%] rounded-[10px]" alt="" />
+          <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684520357/site/friends_lpwyuz.jpg" className="w-[100%] rounded-[10px]" alt="" />
           <div className="absolute  flex flex-col gap-1 top-[50%] translate-y-[-50%] left-4 lg:left-8 z-[45] w-[80%] 2xl:w-[50%]">
             <p className="text-[white] text-xs sm:text-sm xl:text-base w-[100%]">
               Celebrate in style with Trouvailler's tailored tour packages for
@@ -551,7 +545,7 @@ const List2_card = ({ setlocation, settype }) => {
                     <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
 
                     <img
-                      src={item.images[0]}
+                      src={generateUrl(item.images[0])}
                       alt=""
                       className="aspect-video skeleton w-full rounded-md h-auto w-full "
                     />
@@ -608,14 +602,14 @@ const List2_card = ({ setlocation, settype }) => {
         <div className="relative ">
           <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded-[20px] rounded bg-[#0000004a]"></div>
           <img
-            src={internationalm}
+            src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/v1684523704/site/internationalmobile_lbdpxh.jpg"
             className="block md:hidden rounded-[20px]"
             alt=""
           />
 
           <img
-            src={international}
-            className="hidden md:block rounded-[20px]"
+            src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/v1684523647/site/international_intqgj.jpg"
+            className="hidden md:block rounded-[20px] w-full"
             alt=""
           />
           <div className="absolute w-[80%] lg:w-[50%] z-[45] text-[white] flex flex-col items-start gap-2 lg:gap-5 left-[10%] top-[50%] translate-y-[-50%]">
@@ -648,97 +642,48 @@ const List2_card = ({ setlocation, settype }) => {
           Today!
         </p>
 
-        <Slider
-          {...settings2}
-          className="lg:hidden pt-4 sm:pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl"
-        >
+        
+        <div className=" pt-8 justify-between text-[white] mb-12 font-bold text-xl flex gap-[2%] location-container">
           <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("kashmir")}
           >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-              <img src={kashmir} alt="" />
-              <h1 className="absolute left-3 bottom-3">Kashmir</h1>
-            </div>
-          </div>
-
-          <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("goa")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-              <img src={goa} alt="" />
-              <h1 className="absolute left-3 bottom-3">Goa</h1>
-            </div>
-          </div>
-          <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("wayanad")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-              <img src={wayanad} alt="" />
-              <h1 className="absolute left-3 bottom-3">Wayanad</h1>
-            </div>
-          </div>
-          <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("munnar")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-              <img src={munnar} alt="" />
-              <h1 className="absolute left-3 bottom-3">Munnar</h1>
-            </div>
-          </div>
-          <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("mysore")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-              <img src={mysore} alt="" />
-              <h1 className="absolute left-3 bottom-3">Mysore</h1>
-            </div>
-          </div>
-        </Slider>
-        <div className="hidden pt-8 justify-between text-[white] mb-12 font-bold text-xl lg:flex">
-          <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
-            onClick={() => handleS2submit("kashmir")}
-          >
-            <img src={kashmir} alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520897/site/kashmir_d4vjg6.jpg" alt="" />
             <h1 className="absolute left-3 bottom-3">Kashmir</h1>
           </div>
 
           <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("goa")}
           >
-            <img src={goa} alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" />
             <h1 className="absolute left-3 bottom-3">Goa</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("wayanad")}
           >
-            <img src={wayanad} alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt="" />
             <h1 className="absolute left-3 bottom-3">Wayanad</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("munnar")}
           >
-            <img src={munnar} alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt="" />
             <h1 className="absolute left-3 bottom-3">Munnar</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("mysore")}
           >
-            <img src={mysore} alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" />
             <h1 className="absolute left-3 bottom-3">Mysore</h1>
           </div>
         </div>
       </div>
-<InterestForm />
+      <LazyLoad offset={200}><InterestForm /></LazyLoad>
+
       <Footer />
     </div>
   );

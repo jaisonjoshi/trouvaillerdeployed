@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
 
@@ -228,23 +227,23 @@ button:focus {
 
 }
 .type-card-2{
-    background-image: url('../src/Pages/Assets/inter.jpg');
+    background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_300/v1684526783/site/inter_dbnnxm.jpg');
 
 }
 .type-card-1{
-    background-image: url('../src/Pages/Assets/hotels.jpg');
+    background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_300/v1684526746/site/hotels_lbuhot.jpg');
 
 }
 .type-card-3{
-    background-image: url('../src/Pages/Assets/resorts.jpg');
+    background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_300/v1684526723/site/resorts_jk1e00.jpg');
 
 }
 .type-card-4{
-    background-image: url('../src/Pages/Assets/homestays.jpg');
+    background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_300/v1684526711/site/homestays_kqt4of.jpg');
 
 }
 .type-card-5{
-    background-image: url('../src/Pages/Assets/apartments.webp');
+    background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_300/v1684526697/site/apartments_mssde8.webp');
 
 }
 .type-card::before{
@@ -294,13 +293,13 @@ button:focus {
     }
 
     .bg-package{
-        background-image: url('./Pages//Assets/bgpackage.webp');
+        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_2000/v1684519745/site/bgpackage_bntyyx.webp');
         background-position: bottom;
         background-size: cover;
         background-repeat: no-repeat;
     }
     .bg-hotel{
-        background-image: url('./Pages//Assets/bgpackage.webp');
+        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_2000/v1684519745/site/bgpackage_bntyyx.webp');
         background-position: bottom;
         background-size: cover;
         background-repeat: no-repeat;
@@ -312,7 +311,7 @@ button:focus {
     }
 
     .background-header{
-        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/v1684314478/site/bghomepic_2_xrog5p.webp');
+        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/f_auto/q_auto/v1684314478/site/bghomepic_2_xrog5p.webp');
     
         background-size: cover;
         background-position: top;
@@ -334,13 +333,13 @@ button:focus {
 }
 
 .emi-footer{
-    background-image: url('./Pages/Assets/emiBody.png');
+    background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/f_auto/q_auto/w_1000/v1684528080/site/emiBody_ttypdg.png');
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
 }
 .interest{
-    background-image: url('./Pages/Assets/intrstbg.png');
+    background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/v1684525710/site/intrstbg_evgt7w.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -363,10 +362,64 @@ input:-webkit-autofill:focus {
 
 @media screen and (max-width:764px) {
     .loginbg{
-        background-image: url('./Pages/Assets/loginbg.jpg');
+        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684527461/site/loginbg_u3grss.jpg');
         background-position: center;
         background-size: cover;
     }
 }
 
 .offerpacks .slick-list{padding:0 20% 0 0;}
+.imagegradient{
+    background-image: linear-gradient(to bottom, transparent, transparent, black) !important;
+
+}
+
+input::placeholder, textarea::placeholder {
+    color: #d9d9d9 !important; /* Change the color to your desired value */
+  }
+
+  @media screen and (max-width:764px) {
+   
+      input::placeholder, textarea::placeholder {
+    color: #d9d9d9 !important; /* Change the color to your desired value */
+    font-size: 0.85rem;
+  }
+  }
+  select option {
+    background-color: rgba(0, 0, 0, 0.678); /* Set the background color of the dropdown options */
+    padding: 2px 4px !important;
+    color: rgb(187, 187, 187); /* Set the text color of the dropdown options */
+  }
+
+
+  .lazyload-wrapper{
+      width: 100% !important;
+  }
+
+  .location-container {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  
+  .location-container::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  
+  .location-container::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  .location-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+ 
+  @media screen and (max-width:764px) {
+    .interestm{
+        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/v1684531495/site/interestformbgm_dbpscp.jpg');
+        background-size: cover;
+        background-position: right;
+        background-repeat: no-repeat;
+    }
+  }

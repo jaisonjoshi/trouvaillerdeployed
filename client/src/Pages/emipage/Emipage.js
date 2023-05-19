@@ -9,8 +9,8 @@ const Emipage =()=> {
     return(
         <div>
            <NavbarTest color={color}/>
-            <img src={emiHeader} className="hidden md:block" />
-<img src={emimobile} className="md:hidden"/>
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1500/v1684528067/site/emiHeader_lb4mkn.png" className="hidden w-full md:block" />
+<img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684528069/site/emimobile_ks92eu.png" className="md:hidden w-full"/>
             
             <div className="emi-footer">
             <div className=" px-4 sm:px-16 md:px-20 2xl:px-40 py-20">
