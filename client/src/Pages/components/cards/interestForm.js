@@ -12,19 +12,29 @@ const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 const [loading, setLoading] = useState(false)
-const [loadingTxt, setLoadingTxt] = useState("Sending")
+const [loadingTxt, setLoadingTxt] = useState("")
 const handleSubmit = async (e) => {
   setLoading(true)
   e.preventDefault();
-  try {
-    await axiosInstance.post('/interests', info);
-    setLoading(false)
-    setLoadingTxt("Successfully sent")
-  } catch (error) {
-    console.log(error)
-    setLoading(false)
+  if(loadingTxt !== "Successfully sent"){
+    try {
+      setLoadingTxt("Sending")
 
+      const newInterest = {
+        ...info
+      }
+      await axiosInstance.post('/interests', newInterest);
+      setLoading(false)
+      setLoadingTxt("Successfully sent")
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+      setLoadingTxt("Sorry, something happened. Please try again!")
+  
+    }
   }
+  setLoading(false)
+
 }
   return (
     <div className="interest interestm relative  px-4 sm:px-16 md:px-20 2xl:px-40 py-8 md:py-20">
@@ -47,6 +57,7 @@ const handleSubmit = async (e) => {
             <input
               type="text"
               id="name"
+              onChange={handleChange}
               autoComplete="off"
               className="noautofill min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent  focus:ring-[transparent]  "
               placeholder="Name"
@@ -57,6 +68,7 @@ const handleSubmit = async (e) => {
               type="text"
               id="phone"
               autoComplete="off"
+              onChange={handleChange}
 
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1   border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Phone"
@@ -67,6 +79,7 @@ const handleSubmit = async (e) => {
               type="text"
               id="email"
               autoComplete="off"
+              onChange={handleChange}
 
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="E-mail"
@@ -77,6 +90,7 @@ const handleSubmit = async (e) => {
               type="text"
               id="destination"
               autoComplete="off"
+              onChange={handleChange}
 
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Destination"
@@ -87,6 +101,7 @@ const handleSubmit = async (e) => {
               type="text"
               id="month"
               autoComplete="off"
+              onChange={handleChange}
 
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Preferred month of Travel"
@@ -98,6 +113,7 @@ const handleSubmit = async (e) => {
               type="text"
               id="noOfPeople"
               autoComplete="off"
+              onChange={handleChange}
 
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Estimated number of people"
@@ -105,44 +121,48 @@ const handleSubmit = async (e) => {
           </div>
           
           <div>
-            <select name="" id="travellingWith" className=" bg-transparent min-w-[200px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
+            <select name="" id="travellingWith" className=" bg-transparent min-w-[200px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent"               onChange={handleChange}
+>
               <option disabled selected value="" >
                   Travelling with 
               </option>
-              <option value="option1">Couple</option>
-              <option value="option2">Bachelor</option>
-              <option value="option3">Family</option>
-              <option value="option3">Group</option>
+              <option value="Couple">Couple</option>
+              <option value="Bachelor">Bachelor</option>
+              <option value="Family">Family</option>
+              <option value="Group">Group</option>
 
             </select>
           </div>
           <div className="flex text-sm md:text-base flex-col gap-4">
             <textarea id="description"
                           autoComplete="off"
+                          onChange={handleChange}
 
               className="min-w-[300px] sm:min-w-[1000px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Any special or specific expectations from the trip"
             />
           </div>
           <div>
-            <select name="" id="salaried" className=" bg-transparent min-w-[300px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
+            <select name=""               onChange={handleChange}
+ id="salaried" className=" bg-transparent min-w-[300px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
               <option disabled selected value="">
               Are you a salaried employee
 
               </option>
-              <option value="option1">Yes</option>
-              <option value="option3">No</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
 
             </select>
           </div>
           <div>
-            <select name="" id="itr" className=" bg-transparent min-w-[300px] sm:min-w-[400px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
+            <select               onChange={handleChange}
+ name="" id="itr" className=" bg-transparent min-w-[300px] sm:min-w-[400px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
               <option disabled selected value="">
               Are you a business owner who files ITR 
 
               </option>
-              <option value="option1">Yes</option>
-              <option value="option3">No</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
 
             </select>
           </div>
@@ -153,7 +173,7 @@ const handleSubmit = async (e) => {
             Send <SendIcon style={{ fontSize: "18px" }} />
           </button>
           {loading && <ClipLoader color="#00d67b"/>}
-          {loading && <span className="text-white italic">{loadingTxt}</span>}
+          {loadingTxt !== "" && <span className="text-white italic">{loadingTxt}</span>}
          </div>
         </form>
       </div>

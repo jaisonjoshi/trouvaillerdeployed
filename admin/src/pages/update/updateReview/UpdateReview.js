@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'
 import Navbar from '../../../components/navbar/Navbar';
 import Sidenav from '../../../components/sidenav/Sidenav';
@@ -7,13 +7,30 @@ import '../../new/newReview/newReview.scss';
 import axios from "axios"
 import useFecth from '../../../hooks/useFetch';
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+import CropEasy from '../../../components/crop/CropEasy';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 
 const UpdateReview =() => {
+    const [updateLoading, setUploadLoading] = useState(false)
+    const [photoURL, setPhotoURL] = useState("");
+    const [openCrop, setOpenCrop] = useState(false);
+    const [imgFiles, setImgFiles] = useState([])
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if(file){
+            setFile(file);
+            setPhotoURL(URL.createObjectURL(file)); 
+            setOpenCrop(true);
+           // console.log(imgFiles)
+        }
+       }
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
         setSideNavOpen(!sidenavOpen);
     }
+    const size = 1;
+
     const axiosInstance = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
     })
@@ -23,43 +40,43 @@ const UpdateReview =() => {
 
     const [info, setinfo] = useState({});
     const id = location.pathname.split("/")[2];
-    let url="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg";
-
 
     const {data} = useFecth(`/reviews/${id}`);
     //console.log(data)
     
-    
+    let url = data.image
     const handleChange = (e) => {
         setinfo((prev) => ({...prev, [e.target.id] : e.target.value}))
     }
     const handleReviewClick = async e => {
         e.preventDefault();
+        setUploadLoading(true)
         try{
-        if(file!=0){
-        const data = new FormData();
-            data.append("file", file);
-            data.append("upload_preset", "upload");
-        
-            
-            const uploadRes = await axiosInstance.post(
-                "https://api.cloudinary.com/v1_1/difxlqrlc/image/upload",
+            if(file != ""){
+                const data = new FormData();
+                data.append("file", file);
+                data.append("upload_preset", "upload");
+
+                const uploadRes = await axiosInstance.post(
+                    "https://api.cloudinary.com/v1_1/difxlqrlc/image/upload",
                 data
               );
 
-                url  = uploadRes.data;
-            }  
+              url = uploadRes.data.url;
+            } 
             const newReview = {
                 ...info,image:url,
             };
             //console.log(newReview)
             await axiosInstance.patch(`/reviews/${id}`, newReview);
             //console.log("new review has been created")
+            setUploadLoading(false)
 
              navigate('/reviews')
         }catch(error)
         {
-         
+            setUploadLoading(false)
+
             if(error.response){
               if (error.response.status==400) {  
                 
@@ -91,13 +108,16 @@ const UpdateReview =() => {
             <Sidenav isOpen={sidenavOpen}/>
 
             <div className="newreview-body">
+            {openCrop &&
+            <div className='crop-box-con'><CropEasy {...{ photoURL, setOpenCrop, setPhotoURL, setFile ,imgFiles,setImgFiles, size}} /></div>}
+            
                     <h1>Update the review</h1>
                     <div className="new-review-box">
                     <div className="newreviewform-container">
                         <form >
                         <div className="form-item-file">
                             <span>Upload image</span><label htmlFor='img-input'>  <DriveFolderUploadIcon className='upload-icn'/></label>
-                                    <input type="file" name="" id="img-input" onChange={(e) => setFile(e.target.files[0])} />
+                                    <input type="file" name="" id="img-input" onChange={handleImageChange} />
                                 
                                 </div>
                             <div className="form-item">
@@ -117,9 +137,9 @@ const UpdateReview =() => {
                             </div>
                             
                            
-                            <div className="review-form-submit">
+                            <div className="review-form-submit flex items-center gap-4">
                                 <button onClick={handleReviewClick}>Update Review</button>
-
+                                {updateLoading && <ClipLoader color='' />}
                             </div>
                         </form>
                     </div>

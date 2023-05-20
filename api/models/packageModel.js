@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema
 
-const Shedule = new Schema({
+const schedule = new Schema({
     dayTitle :{
         type:String,
         required:true
@@ -66,13 +66,13 @@ const packageSchema=new Schema({
     images :{
         type:[String],
     },
-    shedule : {
-        type:[Shedule],
+    schedule : {
+        type:[schedule],
         required: true
     },
     category : {
         type:String,
-        required: true
+        required: false
     }
     
     

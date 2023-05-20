@@ -58,7 +58,7 @@ const createPackage = async (req,res)=>{
         rating,
         cheapestPrice,
         features,activities,locations,
-        shedule,
+        schedule,
         offers,offertitle,offerdescription, offerprice,
         category
         } = req.body
@@ -74,7 +74,7 @@ const createPackage = async (req,res)=>{
         rating,
         cheapestPrice,
         features,activities,locations,
-        shedule,
+        schedule,
         offers,offertitle,offerdescription, offerprice,
         category
     

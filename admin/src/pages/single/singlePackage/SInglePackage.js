@@ -76,8 +76,8 @@ const SinglePackage = () => {
     const [updateMode,setUpdateMode]=useState(false);
     const [dayTitle, setDayTitle] = useState("");
     const [dayDescUp, setDayDescUp] = useState("");
-    const schedule_update=data.shedule;
-    //console.log(data.shedule);
+    const schedule_update=data.schedule;
+    //console.log(data.schedule);
     //console.log(schedule_update);
     //console.log("specific schedule of first day title only "+ schedule_update[0].dayTitle);
 
@@ -95,8 +95,12 @@ const SinglePackage = () => {
     }
     const handlePackageDelete = async (id) => {
         try{
-            await axiosInstance.delete(`/packages/${id}`);
+            const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+
+            if(confirmDelete){
+                await axiosInstance.delete(`/packages/${id}`);
             navigate('/packages')
+            }
         }
             catch(error){
                 if (error.response && error.response.status==400) {  
@@ -153,7 +157,7 @@ const SinglePackage = () => {
 
         try{
             const updatedPackage = {
-                shedule:schedule_update,
+                schedule:schedule_update,
             };
             await axios.patch(`/packages/${id}`, updatedPackage);
            // console.log("package has been updated")
@@ -186,7 +190,7 @@ const SinglePackage = () => {
     try{
         const updatedPackage = {
            
-            shedule:clear,
+            schedule:clear,
           };
          // console.log(updatedPackage)
           await axiosInstance.patch(`/packages/${id}`, updatedPackage);
@@ -313,8 +317,8 @@ const SinglePackage = () => {
                                     (<div className=''>
                                         <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>Flat 15% off</span>
                                         <p className='mt-2'>Grab this offer soon</p>
-                                        <span ><span className='text-2xl '><b>&#8377; 5000 </b></span><strike className='text-[grey]'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span><br />
-                                        <span className='text-sm text-[red]'>per night</span>
+                                        <span ><span className='text-2xl '><b>&#8377; {pack.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </b></span><strike className='text-[grey]'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span><br />
+                                        <span className='text-sm text-[red]'>per day</span>
                                             
                                     </div>):
                                     (<div className=' flex flex-col'>
@@ -364,8 +368,8 @@ const SinglePackage = () => {
                             {pack.offers ? (
                                     <div className='flex w-[40%] flex-col items-end'>
                                     <span className='p-1 bg-[#f8d2d2] text-xs sm:text-base font-bold text-[red]'>Flat 15% off</span>
-                                    <span ><span className='text-lg sm:text-2xl '><b>&#8377; 5000 </b></span><strike className='text-xs sm:text-base text-[grey]'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span>
-                                    <span className='text-sm text-[red]'>per night</span>
+                                    <span ><span className='text-lg sm:text-2xl '><b>&#8377;{pack.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </b></span><strike className='text-xs sm:text-base text-[grey]'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span>
+                                    <span className='text-sm text-[red]'>per day</span>
                                         
                                 </div>
                                 
@@ -392,8 +396,7 @@ const SinglePackage = () => {
                         <div className='flex flex-col gap-2 items-start'>
                         <span className='block sm:hidden px-4 py-1 bg-evergreen-tag text-sm font-bold sm:text-base rounded-full'>{pack.category}</span>
 
-                        <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nihil eos cumque, amet doloribus, quae maiores assumenda minus eligendi quisquam distinctio ipsam, accusantium exercitationem blanditiis ea odio ab ex id!</p>
-                        
+<p className='text-sm'>{pack.description}</p>                        
                         </div>
                         <div className='flex items-end pt-4 gap-4'>
                         <button className='bg-[#00ffa5] px-4 py-2 rounded-[10px]' onClick={() => handlePackageUpdate(id)}>Update Package</button><button className='bg-[#00ffa5] px-4 py-2 rounded-[10px]' onClick={() => handlePackageDelete(id)}>Delete Package</button>
@@ -498,15 +501,15 @@ const SinglePackage = () => {
                                 {updateMode?(
                                     <div>
                                     <h2 className='font-bold text-2xl'>Schedule</h2>
-                                    {pack.shedule && pack.shedule.map((obj, i)=> (
-                                    <div className='shedule-day shadow-md  border px-4 py-2 my-4'>
-                                        <div className="shedule-day-left">
+                                    {pack.schedule && pack.schedule.map((obj, i)=> (
+                                    <div className='schedule-day shadow-md  border px-4 py-2 my-4'>
+                                        <div className="schedule-day-left">
                                             
                                             <h2 className='font-bold text-[grey] text-lg mb-3'>Day {i+1}</h2>
                                            
                                            
                                         </div>
-                                        <div className="shedule-day-right">
+                                        <div className="schedule-day-right">
                                             <h2  className="text-xl  mb-3">
                                             <input type="text" name="" id="s_title" className='text-[#585858] px-4 py-1 outline-none w-full rounded border border-[3px]' defaultValue={obj.dayTitle} onChange={e=>handleTitleChange(e,i)} />
                                                </h2> 
@@ -526,20 +529,20 @@ const SinglePackage = () => {
                                 </div>  ):(
                                     <div>
                                  <h2 className='font-bold text-2xl'>Schedule</h2>
-                                 {(pack.shedule)?
+                                 {(pack.schedule)?
                                  (<div className='flex gap-4 py-4'>
                                  <button onClick={()=>setUpdateMode(true)} className='px-4 py-1 bg-[#d2ffd2] rounded shadow-sm'>EDIT</button><button className='px-4 py-1 bg-[#d2ffd2] rounded shadow-sm' onClick={handleDeleteSchedule}>DELETE</button>
                                  </div>):
                                  (<div></div>)
                                  }
 
-                                {pack.shedule && pack.shedule.map((obj, i)=> (
-                                    <div className='shedule-day shadow-md  border px-4 py-2 my-4'>
-                                        <div className="shedule-day-left">
+                                {pack.schedule && pack.schedule.map((obj, i)=> (
+                                    <div className='schedule-day shadow-md  border px-4 py-2 my-4'>
+                                        <div className="schedule-day-left">
                                             
                                             <h2 className='font-bold text-[grey] text-lg'>Day {i+1}</h2>
                                         </div>
-                                        <div className="shedule-day-right">
+                                        <div className="schedule-day-right">
                                             <h2 className="text-xl mb-3">{obj.dayTitle}</h2>
                                             <p className='text-[#585858]'>{obj.dayDesc}</p>
                                         </div>

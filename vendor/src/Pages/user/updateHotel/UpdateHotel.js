@@ -305,11 +305,6 @@ const UpdateHotel =() => {
 
 
 
-                            <div className="form-item">
-                                <label>Address</label>
-                                <textarea type="text" id="address" defaultValue={data.address} onChange={handleChange}/>
-                            
-                            </div>
 
 
 
@@ -367,7 +362,7 @@ const UpdateHotel =() => {
 
                             <div className="form-item">
                                 <label>Price</label>
-                                <input type="text" id="cheapestPrice" defaultValue={data.cheapestPrice} onChange={handleChange}/>                            
+                                <input type="number" id="cheapestPrice" defaultValue={data.cheapestPrice} onChange={handleChange}/>                            
                             </div>
 
 
@@ -399,7 +394,7 @@ const UpdateHotel =() => {
                                     </div>
                                     <div className="form-item">
                                         <label>Offer Price</label>
-                                        <input type="text" id="offerprice" defaultValue={data.offerprice} onChange={handleChange}/>
+                                        <input type="number" id="offerprice" defaultValue={data.offerprice} onChange={handleChange}/>
                                     
                                     </div>
                                 </div>}

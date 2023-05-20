@@ -41,7 +41,7 @@ const UpdatePackage =({setOpen}) => {
    const [query, setQuery] = useState("");
    const [activity, setActivity] = useState("");
   
-   const [shedule,setShedule] = useState([]);
+   const [schedule,setschedule] = useState([]);
    const [dayTitle, setDayTitle] = useState("");
    const [dayDesc, setDayDesc] = useState("");
    const [imgFiles, setImgFiles] = useState([])
@@ -52,7 +52,7 @@ const UpdatePackage =({setOpen}) => {
         setFeatures(data.features)
         setLocations(data.locations)
         setOffers(data.offers)
-        setShedule(data.shedule)
+        setschedule(data.schedule)
         if(offers){
             document.getElementById('offers').checked =true;
         }
@@ -169,9 +169,9 @@ const UpdatePackage =({setOpen}) => {
         let tempobject = {}
         tempobject["dayTitle"] = dayTitle;
         tempobject["dayDesc"] = dayDesc;
-        setShedule((prev)=> ([...prev, tempobject]));
-        document.getElementById('sheduleTitle').value = " ";
-        document.getElementById('sheduleDesc').value = " ";
+        setschedule((prev)=> ([...prev, tempobject]));
+        document.getElementById('scheduleTitle').value = " ";
+        document.getElementById('scheduleDesc').value = " ";
         
    } 
     
@@ -208,7 +208,7 @@ const UpdatePackage =({setOpen}) => {
                 features:features,
                 activities:activities,
                 locations:locations,
-                shedule:shedule,offers:offers,
+                schedule:schedule,offers:offers,
 
               };
             //  console.log(updatedPackage)
@@ -280,13 +280,13 @@ const UpdatePackage =({setOpen}) => {
                             </div>
                             <div className="form-item">
                                 <label>Price</label>
-                                <input type="text" id="cheapestPrice" defaultValue={data.price} onChange={handleChange}/>
+                                <input type="number" id="cheapestPrice" defaultValue={data.price} onChange={handleChange}/>
                             </div>
 
 
                             <div className="form-item">
                 <label>
-                  Category <span style={{ color: "red" }}> *</span>
+                  Category 
                 </label>
                 <select name=""   className="bg-[#e5e5e5] border-none focus:ring-transparent rounded-[10px] w-[50%]"                id="category"
                  onChange={handleChangeLowerCase}
@@ -300,7 +300,7 @@ const UpdatePackage =({setOpen}) => {
               </div>
                                 <div className="form-item">
                                     <label>Location tags</label>
-                                    <input type="text" id="locations" onChange={handleUpdateLocations} placeholder={"eg. Wayanad,Kerala,India"}/>
+                                    <input type="text" id="locations" onChange={handleUpdateLocations} />
 
                                 </div>
                                 
@@ -321,7 +321,7 @@ const UpdatePackage =({setOpen}) => {
                                 </div>
                                 <div className="form-item">
                                     <label>Activities</label>
-                                    <input type="text" id="activities" onChange={handleUpdateActivities} placeholder={"eg. Adventure,Religious,etc"}/>
+                                    <input type="text" id="activities" onChange={handleUpdateActivities} />
 
                                 </div>
                                 
@@ -329,23 +329,26 @@ const UpdatePackage =({setOpen}) => {
                                 <button onClick={handleactivityNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add activity</button>
 
                                 </div>
+                                <p className='mt-6'>Please set rating to 1 to feature this package in trending Packages</p>
+
                                 <div className="form-item">
                                 <label>Rating</label>
-                                <input type="number" min="0" max="6" id="rating" onChange={handleChange} placeholder={"Enter a rating from 0-5 or 6"}/>
+                                <input type="number" min="0" max="6" id="rating" onChange={handleChange} />
                             
                             </div> 
                             
-                                <div className='shedule-input-con'>
-                                    <h3>Shedule</h3>
-                                    <p className='text-[red] mr-8'>Note: Inorder to make changes to the existing shedules, Please use the shedule update option in the Package details page. Here you can create only new shedules from scratch.</p>
-                                    <div className="shedule-ip-box">
+                                <div className='schedule-input-con'>
+                                    <h3>schedule
+</h3>
+                                    <p className='text-[red] mr-8'>Note: Inorder to make changes to the existing schedules, Please use the schedule update option in the Package details page. Here you can create only new schedules from scratch.</p>
+                                    <div className="schedule-ip-box">
                                         <div className="form-item">
                                             <label>Title</label>
-                                            <input type="text" id="sheduleTitle" onChange={handleDayTitleChange} name="dayTitle" placeholder="Enter the day title here"/>
+                                            <input type="text" id="scheduleTitle" onChange={handleDayTitleChange} name="dayTitle" placeholder="Enter the day title here"/>
                                         </div>                                        
                                         <div className="form-item">
                                             <label>Description</label>
-                                            <textarea id="sheduleDesc" onChange={handleDayTitleChange} name="dayDesc" placeholder="Enter the day detailing here"/>
+                                            <textarea id="scheduleDesc" onChange={handleDayTitleChange} name="dayDesc" placeholder="Enter the day detailing here"/>
                                         </div>
                                     </div>
                                     <div className='flex justify-end mr-8'>
@@ -371,7 +374,7 @@ const UpdatePackage =({setOpen}) => {
                                     </div>
                                     <div className="form-item">
                                         <label>Offer Price</label>
-                                        <input type="text" id="offerprice" defaultValue={data.offerprice} onChange={handleChange}/>
+                                        <input type="number" id="offerprice" defaultValue={data.offerprice} onChange={handleChange}/>
                                     
                                     </div>
                                 </div>}
@@ -385,7 +388,7 @@ const UpdatePackage =({setOpen}) => {
                     </div>
                     <div className="form-test">
                     <h3 className='mb-4'>update preview</h3>
-                        <p className='text-sm mb-4 text-blacky-bright'>The update preview of the package can be reviewed here before updating. Please keep in mind that if you want to update or add a new image, you have to upload the all images again as there is no provision provided here for adding updating or deleting a single image. For the updation of shedules also, the same follows.</p>
+                        <p className='text-sm mb-4 text-blacky-bright'>The update preview of the package can be reviewed here before updating. Please keep in mind that if you want to update or add a new image, you have to upload the all images again as there is no provision provided here for adding updating or deleting a single image. For the updation of schedules also, the same follows.</p>
 <hr className='mb-4'/>
 
                         <div className="img-container">
@@ -440,11 +443,11 @@ const UpdatePackage =({setOpen}) => {
                             {info.rating ? <h3>Rating value {info.rating}</h3>:<h3> Rating value {data.rating}</h3> }
 
                         </div>
-                        {shedule.length !== 0 && <div className="package-shedule">
-                            <h2>Shedule</h2>
-                            <div className="shedule-con">
-                                { shedule.map((obj, i)=> (
-                                    <div className="shedule-card">
+                        {schedule.length !== 0 && <div className="package-schedule">
+                            <h2>schedule</h2>
+                            <div className="schedule-con">
+                                { schedule.map((obj, i)=> (
+                                    <div className="schedule-card">
                                         <h3>Day {i+1}</h3>
                                         <h2>{obj.dayTitle}</h2>
                                         <p>{obj.dayDesc}</p>

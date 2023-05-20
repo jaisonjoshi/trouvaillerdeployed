@@ -9,9 +9,9 @@ const getInterests=async(req,res)=>{
 
 ///new material
      
-    const res=await InterestData.find();
+    const interests=await InterestData.find();
    // console.log(query)
-    res.status(200).json(hotel)
+    res.status(200).json(interests)
 }
 //get a single workout
 /* const getHotel=async(req,res)=>{
@@ -44,7 +44,7 @@ const createInterest=async (req,res)=>{
     //add to db
     try{
     
-    const hotel=await Hotel.create({name,
+    const interest=await InterestData.create({name,
         phone,
         email,
         destination,
@@ -55,7 +55,7 @@ const createInterest=async (req,res)=>{
         salaried,itr})
         
 
-    res.status(200).json({hotel})}
+    res.status(200).json({interest})}
     //res.json({mssg:'post a new workouts'})
     catch(error){
         res.status(500).json({error:error.message})

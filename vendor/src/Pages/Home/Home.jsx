@@ -46,7 +46,7 @@ const Home = () => {
                 <div className="left p-4 sm:p-8">
                     <UserCard />
                     <div className="profile-container-1">
-                        <p className="mb-8">See all bids that you have in your region. Make fast accept the bids inorder to have the customer</p>
+                        <p className="mb-8">See all properties you have created. You can update and delete properties in the properties window.</p>
                         <Link to="/vendor">Go to Hotels</Link>
                     </div>
                 </div>

@@ -105,7 +105,13 @@ const User = () => {
    
     
 
-
+    const generateUrl = (url)=>{
+      const [baseUrl, ...rest] = url.split("/upload/");
+  
+    return `${baseUrl}/upload/c_fill,w_400/f_auto/q_auto/${rest.join("/upload/")}`;
+  
+  
+    }
    
    
     return(
@@ -267,7 +273,7 @@ const User = () => {
                                 <div key={hotel._id} className="shadow-lg ">
                                 <div className="relative w-full">
                                       <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                                      <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={hotel.images[0]} alt="" />
+                                      <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={generateUrl(hotel.images[0])} alt="" />
               
                                   </div>
                                   <div className="pt-2 pb-2">

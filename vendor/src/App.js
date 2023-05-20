@@ -5,21 +5,40 @@ import {
 
   Navigate
 } from "react-router-dom";
-import Home from './Pages/Home/Home.jsx';
-import User from "./Pages/user/User.js";
-import Login from "./Pages/login/Login.jsx";
-import Signup from "./Pages/signup/signup.jsx";
-import logo from './Assets/logo.png'
-import { AuthContext } from "./components/context/AuthContext.jsx";
-import { useContext , useState, useEffect} from "react";
-import UpdateUser from "./Pages/user/updateUser/UpdateUser.js";
-import CreateHotel from "./Pages/user/createHotel/CreateHotel.js";
-import SingleHotel from "./Pages/user/singlepage/SingleHotel.js";
-import UpdateHotel from "./Pages/user/updateHotel/UpdateHotel.js";
 import CircleLoading from './components/spinningLoader/CircleLoading';
 import BarLoader from "react-spinners/BarLoader";
-import TermsAndCond from "./Pages/Terms&Cond/TermsAndCond.jsx";
-import PrivacyPolicy from "./Pages/privacy policy/privacypolicy.jsx";
+import logo from './Assets/logo.png'
+import { AuthContext } from "./components/context/AuthContext.jsx";
+import { useContext , useState, useEffect, lazy, Suspense} from "react";
+import loadinggif from './Assets/488.gif'
+const User  = lazy(()=>import("./Pages/user/User.js"))
+const Login = lazy(()=>import( "./Pages/login/Login.jsx"))
+const Signup = lazy(()=>import("./Pages/signup/signup.jsx"))
+
+const UpdateUser= lazy(()=>import("./Pages/user/updateUser/UpdateUser.js"))
+const CreateHotel =lazy(()=>import("./Pages/user/createHotel/CreateHotel.js"))
+const SingleHotel  =lazy(()=>import("./Pages/user/singlepage/SingleHotel.js"))
+const UpdateHotel =lazy(()=>import("./Pages/user/updateHotel/UpdateHotel.js"))
+
+const TermsAndCond =lazy(()=>import("./Pages/Terms&Cond/TermsAndCond.jsx"))
+const PrivacyPolicy =lazy(()=>import("./Pages/privacy policy/privacypolicy.jsx"))
+const Home = lazy(()=>import('./Pages/Home/Home.jsx'))
+
+
+
+
+
+
+const LoadingScreen = () => {
+  return (
+    <div className="h-[100vh] flex flex-col justify-center items-center">
+      <img src={loadinggif} className="w-[30px]" />
+      <p className="text-[#4f4d4db4] text-center px-16">
+        Almost there, your destination is just around the corner!
+      </p>
+    </div>
+  );
+};
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -45,31 +64,21 @@ function App() {
     <div className="App">
             <CircleLoading open={open}/>
             {loading ?
-           <div className='preloader'>
-             <img src={logo} />
-             <BarLoader
-
-
-           color={'#32fca7'}
-           loading={loading}
-           
-           size={15}
-
-         /></div>
+           <LoadingScreen />
       
       :
       <BrowserRouter>
     <Routes>
     
       <Route path='/'>
-      < Route path="termandconditions" element={<TermsAndCond/>}/>
-      < Route path="privacypolicy" element={<PrivacyPolicy/>}/>
+      < Route path="termandconditions" element={<Suspense><TermsAndCond/></Suspense>}/>
+      < Route path="privacypolicy" element={<Suspense><PrivacyPolicy/></Suspense>}/>
 
         <Route path='login' >
-            <Route index element={<Login  setOpen={setOpen}/>} />
+            <Route index element={<Suspense><Login  setOpen={setOpen}/></Suspense>} />
           </Route>
           <Route path='signup'>
-            <Route index element={<Signup />} />
+            <Route index element={<Suspense><Signup /></Suspense>} />
           </Route>
         <Route index element={
         <ProtectedRoute>
@@ -77,12 +86,12 @@ function App() {
         <Home />
         </ProtectedRoute>} />
         <Route path="vendor" >
-        <Route index element={<User />} />
-        <Route path="updateprofile" element={<UpdateUser  setOpen={setOpen}/>} />
-        <Route path="createhotel" element={<CreateHotel setOpen={setOpen}/>} />
+        <Route index element={<Suspense><User /></Suspense>} />
+        <Route path="updateprofile" element={<Suspense><UpdateUser  setOpen={setOpen}/></Suspense>} />
+        <Route path="createhotel" element={<Suspense><CreateHotel setOpen={setOpen}/></Suspense>} />
         <Route path="hotel">
-        <Route path=":id" element={<SingleHotel />} />
-        <Route path=":id/update" element={<UpdateHotel />} />
+        <Route path=":id" element={<Suspense><SingleHotel /></Suspense>} />
+        <Route path=":id/update" element={<Suspense><UpdateHotel /></Suspense>} />
         </Route>
           </Route>
       </Route>

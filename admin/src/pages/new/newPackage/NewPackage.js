@@ -35,7 +35,7 @@ const NewPackage = ({ setOpen }) => {
     e.preventDefault();
     setActivities(activities.filter((itm) => itm !== value));
   };
-  const [shedule, setShedule] = useState([]);
+  const [schedule, setschedule] = useState([]);
   const [dayTitle, setDayTitle] = useState("");
   const [dayDesc, setDayDesc] = useState("");
 
@@ -65,9 +65,9 @@ const NewPackage = ({ setOpen }) => {
     let tempobject = {};
     tempobject["dayTitle"] = dayTitle;
     tempobject["dayDesc"] = dayDesc;
-    setShedule((prev) => [...prev, tempobject]);
-    document.getElementById("sheduleTitle").value = " ";
-    document.getElementById("sheduleDesc").value = " ";
+    setschedule((prev) => [...prev, tempobject]);
+    document.getElementById("scheduleTitle").value = " ";
+    document.getElementById("scheduleDesc").value = " ";
   };
   const [query, setQuery] = useState("");
   const [activity, setActivity] = useState("");
@@ -151,7 +151,7 @@ const NewPackage = ({ setOpen }) => {
 
       const newPackage = {
         ...info,
-        shedule: shedule,
+        schedule: schedule,
         images: list,
         offers: false,
         features: features,
@@ -253,13 +253,13 @@ const NewPackage = ({ setOpen }) => {
                   type="text"
                   id="duration"
                   onChange={handleChange}
-                  placeholder={"eg. 3 Days 4 Nights "}
+                  placeholder={"eg. 3D/4N"}
                 />
               </div>
              
               <div className="form-item">
                 <label>
-                  Category <span style={{ color: "red" }}> *</span>
+                  Category 
                 </label>
                 <select name=""   className="bg-[#e5e5e5] border-none focus:ring-transparent rounded-[10px] w-[50%]"                id="category"
                  onChange={handleChangeLowerCase}
@@ -313,7 +313,6 @@ const NewPackage = ({ setOpen }) => {
                   type="text"
                   id="locations"
                   onChange={handleUpdateLocations}
-                  placeholder={"eg. Wayanad,Kerala,India"}
                 />
               </div>
 
@@ -325,6 +324,8 @@ const NewPackage = ({ setOpen }) => {
                   Add Location tag
                 </button>
               </div>
+              <p className='mt-6'>Please set rating to 1 to feature this package in trending Packages</p>
+
               <div className="form-item">
                 <label>Rating</label>
                 <input
@@ -333,19 +334,18 @@ const NewPackage = ({ setOpen }) => {
                   max="6"
                   id="rating"
                   onChange={handleChange}
-                  placeholder={"Enter a rating from 0-5 or 6"}
                 />
               </div>
-              <div className="shedule-input-con">
+              <div className="schedule-input-con">
                 <h3>
-                  Shedule <span style={{ color: "red" }}> *</span>
+                  schedule <span style={{ color: "red" }}> *</span>
                 </h3>
-                <div className="shedule-ip-box">
+                <div className="schedule-ip-box">
                   <div className="form-item">
                     <label>Title</label>
                     <input
                       type="text"
-                      id="sheduleTitle"
+                      id="scheduleTitle"
                       onChange={handleDayTitleChange}
                       name="dayTitle"
                       placeholder="Enter the day title here"
@@ -355,7 +355,7 @@ const NewPackage = ({ setOpen }) => {
                   <div className="form-item">
                     <label>Description</label>
                     <textarea
-                      id="sheduleDesc"
+                      id="scheduleDesc"
                       onChange={handleDayTitleChange}
                       name="dayDesc"
                       placeholder="Enter the day detailing here"
@@ -467,12 +467,12 @@ const NewPackage = ({ setOpen }) => {
               {info.rating && <h4>Rating value {info.rating}</h4>}
               {/* <h3>Rating type {typeof(info.rating)}</h3> */}
             </div>
-            {shedule && shedule.length !== 0 && (
-              <div className="package-shedule">
-                <h3>Shedule</h3>
-                <div className="shedule-con">
-                  {shedule.map((obj, i) => (
-                    <div className="shedule-card" key={i}>
+            {schedule && schedule.length !== 0 && (
+              <div className="package-schedule">
+                <h3>schedule</h3>
+                <div className="schedule-con">
+                  {schedule.map((obj, i) => (
+                    <div className="schedule-card" key={i}>
                       <h4>Day {i + 1}</h4>
                       <h4>{obj.dayTitle}</h4>
                       <p>{obj.dayDesc}</p>

@@ -36,8 +36,12 @@ const SingleHotel = () => {
     }
     const handlehotelDelete = async (id) => {
         try{
-            await axiosInstance.delete(`/hotels/${id}`);
+            const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+
+            if(confirmDelete){
+                await axiosInstance.delete(`/hotels/${id}`);
             navigate('/vendor')
+            }
         }
         catch(error){
             if (error.response && error.response.status==400) {  

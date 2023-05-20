@@ -228,11 +228,7 @@ const [photoURL, setPhotoURL] = useState("");
                                     <textarea type="text" id="description" onChange={handleChange}/>
                                 
                                 </div>
-                                <div className="form-item">
-                                <label>Address</label>
-                                <textarea type="text" id="address"  onChange={handleChange}/>
-                            
-                            </div>
+                                
                                 <div className="form-item">
                                     <label>Location <span style={{ color: "red" }}> *</span></label>
                                     <input type="text" id="location" onChange={handleChangeLowerCase}/>
@@ -281,7 +277,7 @@ const [photoURL, setPhotoURL] = useState("");
                                 </div>
                                 <div className="form-item">
                                     <label>Price <span style={{ color: "red" }}> *</span></label>
-                                    <input type="text" id="cheapestPrice" onChange={handleChange}/>
+                                    <input type="number" id="cheapestPrice" onChange={handleChange}/>
                                 
                                 </div>
                                 {/* <div className="form-item">

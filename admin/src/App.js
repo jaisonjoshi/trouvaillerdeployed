@@ -30,6 +30,7 @@ import logo from './components/assets/logo.png'
 import Loading from './components/spinningLoader/CircleLoading';
 import CircleLoading from './components/spinningLoader/CircleLoading';
 import VendorDetails from './pages/vendors/VendorDetails';
+import Interests from './pages/interests/Interests';
 
 
 function App() {
@@ -91,7 +92,7 @@ function App() {
           <Route path="hotels">
             <Route index element={user?<Hotels />:<Login/>} />
             <Route path=":id" element= {user?<SingleHotel />:<Login/>} />
-            <Route path=':id/update' element={user?<UpdateHotel />:<Login/>} />
+            <Route path=':id/update' element={user?<UpdateHotel setOpen={setOpen}/>:<Login/>} />
             <Route path='newhotel' element={user?<NewHotel setOpen={setOpen}/>:<Login/>} />
           
           </Route>
@@ -121,7 +122,7 @@ function App() {
             <Route index element={user?<BidsContainer />:<Login/>} />
             <Route path=':id' element={<SingleBid />} />
           </Route>
-          
+          <Route path='interests' element={<Interests />} />
 
           {/*<Route path="logout">
             <Route index element={<Logout />} />

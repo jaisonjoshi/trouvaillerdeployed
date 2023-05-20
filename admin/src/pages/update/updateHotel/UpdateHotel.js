@@ -13,7 +13,7 @@ import Select from '@mui/material/Select';
 import CropEasy from '../../../components/crop/CropEasy';
 
 
-const UpdateHotel =() => {
+const UpdateHotel =({setOpen}) => {
     //For getting the id
     const location = useLocation();
     const id = location.pathname.split("/")[2];
@@ -197,6 +197,8 @@ const UpdateHotel =() => {
 
     //Upload function
     const updatehandleClick = async e => {
+        setOpen(true)
+
         e.preventDefault();
         try{
             //initially list is initiated with the fetched image links. 
@@ -246,7 +248,10 @@ const UpdateHotel =() => {
             else{
                 alert(error.message);
             }
+
         }
+        setOpen(false)
+
     }
 
     
@@ -304,11 +309,7 @@ const UpdateHotel =() => {
 
 
 
-                            <div className="form-item">
-                                <label>Address</label>
-                                <textarea type="text" id="address" defaultValue={data.address} onChange={handleChange}/>
                             
-                            </div>
 
 
 
@@ -366,7 +367,7 @@ const UpdateHotel =() => {
 
                             <div className="form-item">
                                 <label>Price</label>
-                                <input type="text" id="cheapestPrice" defaultValue={data.cheapestPrice} onChange={handleChange}/>                            
+                                <input type="number" id="cheapestPrice" defaultValue={data.cheapestPrice} onChange={handleChange}/>                            
                             </div>
                             <div className="form-item">
                                 <label>Vendor ID</label>
@@ -402,7 +403,7 @@ const UpdateHotel =() => {
                                     </div>
                                     <div className="form-item">
                                         <label>Offer Price</label>
-                                        <input type="text" id="offerprice" defaultValue={data.offerprice} onChange={handleChange}/>
+                                        <input type="number" id="offerprice" defaultValue={data.offerprice} onChange={handleChange}/>
                                     
                                     </div>
                                 </div>}

@@ -35,8 +35,12 @@ const Reviews =() => {
     }
     const handleReviewDelete = async (id) => {
         try{
+            const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+
+           if(confirmDelete){
             await axiosInstance.delete(`/reviews/${id}`);
             reFetch("/reviews")
+           }
             
         }catch(error){
             if (error.response && error.response.status==400) {  

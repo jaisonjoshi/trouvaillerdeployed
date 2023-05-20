@@ -50,7 +50,7 @@ const Sidenav = ({isOpen}) => {
                         <PeopleAltIcon className='sidenav-icn'/><span>Vendors</span>
                     </li>
                 </Link>
-                <Link to="/vendors">
+                <Link to="/interests">
                     <li>
                         <PeopleAltIcon className='sidenav-icn'/><span>Interest Data</span>
                     </li>
