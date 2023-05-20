@@ -17,6 +17,7 @@ import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import { Button } from '@mui/material'
 import Backdrop from '@mui/material/Backdrop';
 import CloseIcon from '@mui/icons-material/Close';
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 const SinglePackage = () => {
@@ -269,7 +270,7 @@ const SinglePackage = () => {
             <Sidenav isOpen={sidenavOpen}/>
 
             <div className="singlepackage-container md:p-20">
-               {loading ? ("loading ") : (
+               {loading ? (<div className='flex justify-center my-20'><ClipLoader /></div>) : (
                     <div className="singlepackage">
                         <Backdrop 
                         sx={{ color: '#fff',opacity:0.1, zIndex: (theme) => theme.zIndex.drawer + 1 }}

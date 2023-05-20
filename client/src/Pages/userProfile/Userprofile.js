@@ -17,13 +17,6 @@ import BarLoader from "react-spinners/BarLoader";
 
 
 const Userprofile = () => {
-    const generateUrl = (url)=>{
-        const [baseUrl, ...rest] = url.split("/upload/");
-    
-      return `${baseUrl}/upload/c_fill,w_200,h_200/f_auto/q_auto/${rest.join("/upload/")}`;
-    
-    
-      }
     const [anim, setAnim] = useState("hide")
     useEffect(()=>{
         window.addEventListener('load', setAnim("show"))
@@ -68,7 +61,7 @@ const Userprofile = () => {
         <div className="mt-20 md:mt-32 h-[60vh] flex items-center justify-center px-8">
                 <div className="flex flex-col justify-centerw w-[90%] lg:w-[50%] items-start md:flex-row md:justify-center md:items-center gap-[30px] md:gap-[10%] user-con">
                     <div className="w-[50%] flex justify-start md:justify-end">
-                            <img src={generateUrl(userdet.img)} className="w-[60%] md:w-[50%] max-w-[500px] rounded-full" alt="" />
+                            <img src={userdet.img} className="w-[60%] md:w-[50%] max-w-[500px] rounded-full" alt="" />
                     </div>
                     <div className="w-[100%] md:w-[50%] flex flex-col gap-[10px] items-start">
                         <h2 className='text-2xl md:text-4xl'>{userdet.username}</h2>

@@ -1,6 +1,28 @@
 import SendIcon from "@mui/icons-material/Send";
+import {useState} from 'react'
+import axios from 'axios'
+import ClipLoader from "react-spinners/ClipLoader";
 
 const InterestForm = () => {
+  const [info,setInfo] =  useState({})
+  const handleChange = (e) => {
+    setInfo((prev) => ({...prev, [e.target.id] : e.target.value}))
+}
+const [loading, setLoading] = useState(false)
+const [loadingTxt, setLoadingTxt] = useState("Sending")
+const handleSubmit = async (e) => {
+  setLoading(true)
+  e.preventDefault();
+  try {
+    await axios.post('/interests', info);
+    setLoading(false)
+    setLoadingTxt("Successfully sent")
+  } catch (error) {
+    console.log(error)
+    setLoading(false)
+
+  }
+}
   return (
     <div className="interest interestm relative  px-4 sm:px-16 md:px-20 2xl:px-40 py-8 md:py-20">
       <div className="absolute md:hidden  top-0 left-0 right-0 bottom-0 bg-[#0000009e] z-[10]"></div>
@@ -21,6 +43,7 @@ const InterestForm = () => {
           <div className="flex text-sm md:text-base flex-col gap-4">
             <input
               type="text"
+              id="name"
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Name"
             />
@@ -28,6 +51,7 @@ const InterestForm = () => {
           <div className="flex text-sm md:text-base flex-col gap-4">
             <input
               type="text"
+              id="phone"
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1   border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Phone"
             />
@@ -35,6 +59,7 @@ const InterestForm = () => {
           <div className="flex text-sm md:text-base flex-col gap-4">
             <input
               type="text"
+              id="email"
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="E-mail"
             />
@@ -42,6 +67,7 @@ const InterestForm = () => {
           <div className="flex text-sm md:text-base flex-col gap-4">
             <input
               type="text"
+              id="destination"
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Destination"
             />
@@ -49,6 +75,7 @@ const InterestForm = () => {
           <div className="flex text-sm md:text-base flex-col gap-4">
             <input
               type="text"
+              id="month"
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Preferred month of Travel"
             />
@@ -57,13 +84,14 @@ const InterestForm = () => {
           <div className="flex text-sm md:text-base flex-col gap-4">
             <input
               type="text"
+              id="noOfPeople"
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Estimated number of people"
             />
           </div>
           
           <div>
-            <select name="" id="" className=" bg-transparent min-w-[200px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
+            <select name="" id="travellingWith" className=" bg-transparent min-w-[200px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
               <option disabled selected value="" >
                   Travelling with 
               </option>
@@ -75,13 +103,13 @@ const InterestForm = () => {
             </select>
           </div>
           <div className="flex text-sm md:text-base flex-col gap-4">
-            <textarea
+            <textarea id="description"
               className="min-w-[300px] sm:min-w-[1000px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Any special or specific expectations from the trip"
             />
           </div>
           <div>
-            <select name="" id="" className=" bg-transparent min-w-[300px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
+            <select name="" id="salaried" className=" bg-transparent min-w-[300px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
               <option disabled selected value="">
               Are you a salaried employee
 
@@ -92,7 +120,7 @@ const InterestForm = () => {
             </select>
           </div>
           <div>
-            <select name="" id="" className=" bg-transparent min-w-[300px] sm:min-w-[400px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
+            <select name="" id="itr" className=" bg-transparent min-w-[300px] sm:min-w-[400px] py-2 text-[#d9d9d9] border-b-[#02c677] focus:ring-[transparent] border-t-[transparent] border-l-transparent border-r-transparent">
               <option disabled selected value="">
               Are you a business owner who files ITR 
 
@@ -104,9 +132,13 @@ const InterestForm = () => {
           </div>
           
 </div>
-          <button className="bg-[#02c677] px-4 py-2 rounded shadow-md text-white font-normal flex gap-2 items-center">
+         <div className="flex items-center gap-4">
+         <button className="bg-[#02c677] px-4 py-2 rounded shadow-md text-white font-normal flex gap-2 items-center" onClick={handleSubmit}>
             Send <SendIcon style={{ fontSize: "18px" }} />
           </button>
+          {loading && <ClipLoader color="#00d67b"/>}
+          {loading && <span className="text-white italic">{loadingTxt}</span>}
+         </div>
         </form>
       </div>
     </div>

@@ -3,8 +3,7 @@ import { useState,useEffect, lazy, Suspense } from "react";
 import ScrollToTop from "./scrollToTop/scrollToTop.js";
 import CircleLoading from "../src/Pages/components/spinningLoader/CircleLoading";
 import loadinggif from "./Pages/Assets/488.gif";
-import Home from './Pages/home/Home'
-
+const Home = lazy(()=>import('./Pages/home/Home'))
 const TermsAndCond = lazy(() => import("./Pages/Terms&Cond/TermsAndCond"));
 const Emipage = lazy(() => import("./Pages/emipage/Emipage.js"));
 const PrivacyPolicy = lazy(() =>
@@ -29,7 +28,6 @@ const Updateuser = lazy(() => import("./Pages/userProfile/Updateprofile.js"));
 const Userprofile = lazy(() => import("./Pages/userProfile/Userprofile.js"));
 const List2_card = lazy(() => import("./Pages/components/cards/list2.jsx"));
 const List1_card = lazy(() => import("./Pages/components/cards/list1.jsx"));
-const Destination = lazy(() => import("./Pages/trending/trending.jsx"));
 const Hotel = lazy(() => import("./Pages/DetailViews/Hotel.jsx"));
 const Package = lazy(() => import("./Pages/DetailViews/Package.jsx"));
 const BidStatus = lazy(() => import("./Pages/Bid/BidStatus.jsx"));
@@ -53,7 +51,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3500);
   }, []);
   const [open, setOpen] = useState(false);
   const [location, setlocation] = useState("");
@@ -125,7 +123,9 @@ function App() {
             <Route
               path="/"
               element={
-                  <Home />
+                <Suspense fallback={<LoadingScreen />}>
+                <Home />
+              </Suspense>
               }
             />
             <Route
@@ -234,14 +234,7 @@ function App() {
                 </Suspense>
               }
             />
-            <Route
-              path="/trending"
-              element={
-                <Suspense fallback={<LoadingScreen />}>
-                  <Destination />
-                </Suspense>
-              }
-            />
+            
             <Route
               path="/traveloffers"
               element={

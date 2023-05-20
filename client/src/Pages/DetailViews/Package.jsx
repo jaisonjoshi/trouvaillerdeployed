@@ -9,11 +9,9 @@ import { useLocation } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import h from '../Assets/h.png'
+
 import Backdrop from '@mui/material/Backdrop';
 import CloseIcon from '@mui/icons-material/Close';
-import Map from '../components/map/Map';
 import TourIcon from '@mui/icons-material/Tour';
 const Package = () => {
     const [anim, setAnim] = useState("hide")

@@ -285,10 +285,19 @@ const UpdatePackage =({setOpen}) => {
 
 
                             <div className="form-item">
-                                <label>Category</label>
-                                <textarea type="text" id="category" onChange={handleChangeLowerCase} placeholder={"eg. Family,Honeymoon,Friends,etc"}/>
-                            
-                            </div> 
+                <label>
+                  Category <span style={{ color: "red" }}> *</span>
+                </label>
+                <select name=""   className="bg-[#e5e5e5] border-none focus:ring-transparent rounded-[10px] w-[50%]"                id="category"
+                 onChange={handleChangeLowerCase}
+>
+                    <option value="" selected hidden disabled>Select category</option>
+                    <option value="family">Family</option>
+                    <option value="friends">Group</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="honeymoon">Honeymoon</option>
+                </select>
+              </div>
                                 <div className="form-item">
                                     <label>Location tags</label>
                                     <input type="text" id="locations" onChange={handleUpdateLocations} placeholder={"eg. Wayanad,Kerala,India"}/>
