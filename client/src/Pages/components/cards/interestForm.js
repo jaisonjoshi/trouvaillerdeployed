@@ -8,13 +8,16 @@ const InterestForm = () => {
   const handleChange = (e) => {
     setInfo((prev) => ({...prev, [e.target.id] : e.target.value}))
 }
+const axiosInstance = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+});
 const [loading, setLoading] = useState(false)
 const [loadingTxt, setLoadingTxt] = useState("Sending")
 const handleSubmit = async (e) => {
   setLoading(true)
   e.preventDefault();
   try {
-    await axios.post('/interests', info);
+    await axiosInstance.post('/interests', info);
     setLoading(false)
     setLoadingTxt("Successfully sent")
   } catch (error) {
@@ -44,7 +47,8 @@ const handleSubmit = async (e) => {
             <input
               type="text"
               id="name"
-              className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
+              autoComplete="off"
+              className="noautofill min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent  focus:ring-[transparent]  "
               placeholder="Name"
             />
           </div>
@@ -52,6 +56,8 @@ const handleSubmit = async (e) => {
             <input
               type="text"
               id="phone"
+              autoComplete="off"
+
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1   border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Phone"
             />
@@ -60,6 +66,8 @@ const handleSubmit = async (e) => {
             <input
               type="text"
               id="email"
+              autoComplete="off"
+
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="E-mail"
             />
@@ -68,6 +76,8 @@ const handleSubmit = async (e) => {
             <input
               type="text"
               id="destination"
+              autoComplete="off"
+
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Destination"
             />
@@ -76,6 +86,8 @@ const handleSubmit = async (e) => {
             <input
               type="text"
               id="month"
+              autoComplete="off"
+
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Preferred month of Travel"
             />
@@ -85,6 +97,8 @@ const handleSubmit = async (e) => {
             <input
               type="text"
               id="noOfPeople"
+              autoComplete="off"
+
               className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Estimated number of people"
             />
@@ -104,6 +118,8 @@ const handleSubmit = async (e) => {
           </div>
           <div className="flex text-sm md:text-base flex-col gap-4">
             <textarea id="description"
+                          autoComplete="off"
+
               className="min-w-[300px] sm:min-w-[1000px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Any special or specific expectations from the trip"
             />

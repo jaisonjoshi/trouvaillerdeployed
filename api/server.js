@@ -22,16 +22,12 @@ const reviewRoutes=require('./routes/reviews')
 const authRoutes=require('./routes/auth')
 const userRoutes=require('./routes/users')
 const locationsRoutes = require('./routes/locations')
-const interestRoutes = require('./routes/intrestData')
-
 const cookieParser=require('cookie-parser')
 
 const cors = require('cors');
 
 
 const app=express()
-
-
 app.use(cookieParser())
 const httpServer = createServer(app);
 
@@ -47,7 +43,6 @@ app.use(express.json())
 //   }));app.use(passport.initialize());
 //   app.use(passport.session());
 //
-
 mongoose.connect(process.env.MONGO_URI,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -67,7 +62,9 @@ mongoose.connect(process.env.MONGO_URI,{
 app.use(cors({
     origin:["https://trouvailler.com","https://www.trouvailler.com", "https://admin.trouvailler.com","https://vendor.trouvailler.com", "http://localhost:3000"],
     methods:"GET,POST,PUT,DELETE,PATCH",
-    credentials:true}));
+    credentials:true,
+    exposedHeaders: ['Access-Control-Allow-Origin']
+        }));
 // app.get("/auth/google",
 //   passport.authenticate("google", { scope: ["profile"] })
 // );
@@ -77,7 +74,6 @@ app.use(cors({
 //     // Successful authentication, redirect secrets.
 //     res.redirect("http://localhost:3000")}
 // );
-
 app.use('/api/hotels',hotelRoutes)
 app.use('/api/rooms',roomRoutes)
 app.use('/api/bids',bidRoutes)
@@ -87,5 +83,4 @@ app.use('/api/reviews',reviewRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
 app.use('/api/locations',locationsRoutes)
-app.use('/api/interests',interestRoutes)
 
