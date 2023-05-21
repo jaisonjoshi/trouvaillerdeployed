@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const Emi = () => {
   return (
-    <div className="flex flex-col md:flex-row py-12 md:py-0 items-center">
-      <div className="w-[90%] md:w-[60%] flex justify-center">
+    <div className="flex flex-col lg:flex-row py-12 2xl:py-0 items-center">
+      <div className="w-[90%] lg:w-[60%] flex justify-center">
         <div className="md:w-[70%]">
           <h1 className="text-3xl md:text-5xl mb-12 text-[#363535] font-bold">
             Travel now <span className="text-[#00c676]">Pay Later</span>
@@ -22,7 +22,7 @@ const Emi = () => {
           </Link>
         </div>
       </div>
-      <div className="w-[100%] md:w-[40%]">
+      <div className="w-[100%] lg:w-[40%] flex justify-center">
         <img src="https://res.cloudinary.com/difxlqrlc/image/upload/w_600/q_auto/v1684518761/site/emi_haum6t.png" alt="" />
       </div>
     </div>

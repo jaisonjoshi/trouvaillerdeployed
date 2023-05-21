@@ -311,7 +311,7 @@ button:focus {
     }
 
     .background-header{
-        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/f_auto/q_auto/v1684314478/site/bghomepic_2_xrog5p.webp');
+        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/f_auto/q_auto/w_2000/v1684314478/site/bghomepic_2_xrog5p.webp');
     
         background-size: cover;
         background-position: top;
@@ -374,13 +374,13 @@ input:-webkit-autofill:focus {
 
 }
 
-input::placeholder, textarea::placeholder {
+input.interestinp::placeholder, textarea::placeholder {
     color: #d9d9d9 !important; /* Change the color to your desired value */
   }
 
   @media screen and (max-width:764px) {
    
-      input::placeholder, textarea::placeholder {
+      input.interestinp::placeholder, textarea::placeholder {
     color: #d9d9d9 !important; /* Change the color to your desired value */
     font-size: 0.85rem;
   }

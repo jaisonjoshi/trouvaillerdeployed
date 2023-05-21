@@ -10,9 +10,25 @@ import logo from '../Assets/Trouvailler Green.png'
 import DestCardMob from '../components/cards/trending_dest_card_mob'
 import Emi from '../components/cards/emi'
 import InterestForm from '../components/cards/interestForm'
+import { useNavigate } from 'react-router';
 
-
-const Home = () => {
+const Home = ({setlocation}) => {
+  const [destination, setDestination] = useState("");
+const navigate = useNavigate()
+  const handleSearchChange = (e) => {
+    let tar = e.target.value;
+  
+    setDestination(tar.toLowerCase());
+    console.log(destination);
+  };
+  const handleSClick = () => {
+    setlocation(destination);
+    if (destination.trim() !== "") {
+      navigate("/sep");
+    } else {
+      alert("Please enter a location to search");
+    }
+  };
   const [anim, setAnim] = useState("hide")
   useEffect(()=>{
       window.addEventListener('load', setAnim("show"))  
@@ -34,12 +50,12 @@ const Home = () => {
           Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
           </p>
 
-          <Link className="" to="/packages"> <button className="flex justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-36 font-bold p-2 my-2 hover:bg-whiteglow duration-500">
+          <Link className="" to="/packages"> <button className="flex justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-36 font-bold p-2 my-2 hover:bg-[#00A651] duration-500">
             Explore
           </button></Link>
           <div className='rounded-full mt-20 bg-[white] px-2 py-1 flex justify-between shadow-xl w-[80%] md:w-[50%]'>
-          <input type="text" placeholder='Search Destinations ' className='outline-none rounded border-none text-sm md:text-base focus:ring-[transparent]  focus:border-[transparent]'/>
-<button className='font-bold text-white bg-[#00c676] text-xs md:text-base py-2 rounded-full px-4 md:px-6'>Search</button>
+          <input onChange={handleSearchChange} type="text" placeholder='Search Destinations ' className='outline-none rounded border-none text-sm md:text-base focus:ring-[transparent]  focus:border-[transparent]'/>
+<button onClick={handleSClick} className='font-bold text-white bg-[#00c676] text-xs md:text-base py-2 rounded-full px-4 md:px-6'>Search</button>
           </div>
           </div>
 

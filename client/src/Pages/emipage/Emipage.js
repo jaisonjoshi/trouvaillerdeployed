@@ -3,6 +3,7 @@ import NavbarTest from "../components/navbar/navbar"
 import emiHeader from '../Assets/emiHeader.png'
 import emiBody from '../Assets/emiBody.png'
 import emimobile from '../Assets/emimobile.png'
+import InterestForm from "../components/cards/interestForm"
 const Emipage =()=> {
     const color = "text-whiteglow"
 
@@ -65,6 +66,7 @@ Don't let financial constraints hold you back from experiencing the world - book
                     </div>
                 </div>
             </div>
+            <InterestForm />
             <Footer />
         </div>
     )

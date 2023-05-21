@@ -410,7 +410,7 @@ const List1_card = ({ setlocation, settype }) => {
           </h1>
         </div>
 
-        <div className=" pt-8 justify-between text-[white] font-bold text-base md:text-xl gap-4 flex overflow-auto	">
+        <div className=" pt-8 justify-between text-[white] font-bold text-base md:text-xl gap-4 flex overflow-auto location-container	">
           <div
             className="type-card type-card-1 px-10 md:w-[19%] py-2 md:py-8 rounded-[10px] flex justify-center items-center text-center cursor-pointer"
             onClick={() => handleTypesubmit("hotel")}
@@ -455,60 +455,10 @@ const List1_card = ({ setlocation, settype }) => {
           Today!
         </p>
 
-        <Slider
-          {...settings2}
-          className="lg:hidden pt-4 sm:pt-8 pb-4 text-[white] font-bold text-sm sm:text-lg md:text-xl"
-        >
+        
+        <div className="pt-8 justify-between text-[white] mb-12 font-bold text-xl flex gap-[2%] location-container ">
           <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("kashmir")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520897/site/kashmir_d4vjg6.jpg" alt="" />
-              <h1 className="absolute left-3 bottom-3">Kashmir</h1>
-            </div>
-          </div>
-
-          <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("goa")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" />
-              <h1 className="absolute left-3 bottom-3">Goa</h1>
-            </div>
-          </div>
-          <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("wayanad")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt="" />
-              <h1 className="absolute left-3 bottom-3">Wayanad</h1>
-            </div>
-          </div>
-          <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("munnar")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt="" />
-              <h1 className="absolute left-3 bottom-3">Munnar</h1>
-            </div>
-          </div>
-          <div
-            className="w-[100%] px-2 sm:px-4 cursor-pointer"
-            onClick={() => handleS2submit("mysore")}
-          >
-            <div className="flex flex-col gap-2 rounded-[10px] overflow-hidden relative">
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" />
-              <h1 className="absolute left-3 bottom-3">Mysore</h1>
-            </div>
-          </div>
-        </Slider>
-        <div className="hidden pt-8 justify-between text-[white] mb-12 font-bold text-xl lg:flex">
-          <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("kashmir")}
           >
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520897/site/kashmir_d4vjg6.jpg" alt="" />
@@ -516,28 +466,28 @@ const List1_card = ({ setlocation, settype }) => {
           </div>
 
           <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] overflow-auto rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("goa")}
           >
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" />
             <h1 className="absolute left-3 bottom-3">Goa</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("wayanad")}
           >
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt="" />
             <h1 className="absolute left-3 bottom-3">Wayanad</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("munnar")}
           >
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt="" />
             <h1 className="absolute left-3 bottom-3">Munnar</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("mysore")}
           >
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" />

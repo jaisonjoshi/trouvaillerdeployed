@@ -80,30 +80,7 @@ const List2_card = ({ setlocation, settype }) => {
       },
     ],
   };
-  var settings2 = {
-    dots: true,
-    arrows: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: false,
-    /*   autoplaySpeed: 4000,
-     */ responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-    ],
-  };
+  
 
   const [destination, setDestination] = useState("");
   const [min, setMin] = useState(undefined);
@@ -283,6 +260,22 @@ const List2_card = ({ setlocation, settype }) => {
 
 
   }
+  const [startX, setStartX] = useState(0);
+
+  const handleMouseDown = (e) => {
+    setStartX(e.clientX);
+  };
+
+  const handleMouseUp = (e,id) => {
+    const endX = e.clientX;
+    const distance = Math.abs(startX - endX);
+
+    if (distance < 5) {
+      // Perform navigation
+      // Your navigation logic goes here
+      navigate(`/list/package/${id}`  )
+  };
+}
   return (
     <div className={`w-full animationset ${anim} bg-[white] hotelsexplore`}>
       <NavbarTest color={color} />
@@ -352,7 +345,7 @@ const List2_card = ({ setlocation, settype }) => {
         </p>
         <Slider {...settings3} className="hello-slick pt-4 sm:pt-8 pb-4">
           {data.map((item) => (
-            <div className="px-4">
+            <div className="px-4" onMouseDown={handleMouseDown} onMouseUp={(e)=>handleMouseUp(e, item._id)}>
               {/*               <Link to={`/list/package/${item._id}`}>
                */}{" "}
               <div

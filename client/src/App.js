@@ -124,7 +124,7 @@ function App() {
               path="/"
               element={
                 <Suspense fallback={<LoadingScreen />}>
-                <Home />
+                <Home setlocation={setlocation}/>
               </Suspense>
               }
             />

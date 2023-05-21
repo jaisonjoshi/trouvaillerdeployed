@@ -17,6 +17,7 @@ import UserCard from "../../components/userCard/UserCard";
 
 
 const Home = () => {
+ 
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
   const axiosInstance = axios.create({

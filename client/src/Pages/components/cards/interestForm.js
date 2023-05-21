@@ -59,7 +59,7 @@ const handleSubmit = async (e) => {
               id="name"
               onChange={handleChange}
               autoComplete="off"
-              className="noautofill min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent  focus:ring-[transparent]  "
+              className="interestinp noautofill min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent  focus:ring-[transparent]  "
               placeholder="Name"
             />
           </div>
@@ -70,7 +70,7 @@ const handleSubmit = async (e) => {
               autoComplete="off"
               onChange={handleChange}
 
-              className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1   border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
+              className="interestinp min-w-[200px] border-b-[#02c677] border-b-[1px] px-1   border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Phone"
             />
           </div>
@@ -81,7 +81,7 @@ const handleSubmit = async (e) => {
               autoComplete="off"
               onChange={handleChange}
 
-              className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
+              className="interestinp min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="E-mail"
             />
           </div>
@@ -92,7 +92,7 @@ const handleSubmit = async (e) => {
               autoComplete="off"
               onChange={handleChange}
 
-              className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
+              className="interestinp min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Destination"
             />
           </div>
@@ -103,7 +103,7 @@ const handleSubmit = async (e) => {
               autoComplete="off"
               onChange={handleChange}
 
-              className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
+              className="interestinp min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Preferred month of Travel"
             />
           </div>
@@ -115,7 +115,7 @@ const handleSubmit = async (e) => {
               autoComplete="off"
               onChange={handleChange}
 
-              className=" min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
+              className="interestinp min-w-[200px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Estimated number of people"
             />
           </div>
@@ -138,7 +138,7 @@ const handleSubmit = async (e) => {
                           autoComplete="off"
                           onChange={handleChange}
 
-              className="min-w-[300px] sm:min-w-[1000px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
+              className="min-w-[300px] sm:min-w-[500px] lg:min-w-[1000px] border-b-[#02c677] border-b-[1px] px-1  border-t-[transparent] border-l-transparent border-r-transparent bg-[transparent] focus:ring-[transparent]  "
               placeholder="Any special or specific expectations from the trip"
             />
           </div>
