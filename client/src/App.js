@@ -87,7 +87,7 @@ function App() {
           <ScrollToTop />
           <Routes>
             <Route
-              path="/se"
+              path="/se/:id"
               element={
                 <Suspense fallback={<LoadingScreen />}>
                   <SearchList location={location} />
@@ -95,7 +95,7 @@ function App() {
               }
             />
             <Route
-              path="/set"
+              path="/set/:id"
               element={
                 <Suspense fallback={<LoadingScreen />}>
                   <SearchListType type={type} />
@@ -104,15 +104,15 @@ function App() {
             />
 
             <Route
-              path="/sep"
+              path="/sep/:id"
               element={
                 <Suspense fallback={<LoadingScreen />}>
-                  <SearchListPack location={location} />
+                  <SearchListPack  />
                 </Suspense>
               }
             />
             <Route
-              path="/sept"
+              path="/sept/:id"
               element={
                 <Suspense fallback={<LoadingScreen />}>
                   <SearchListPackType type={type} />

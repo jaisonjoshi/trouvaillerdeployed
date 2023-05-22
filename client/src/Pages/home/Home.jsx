@@ -24,7 +24,7 @@ const navigate = useNavigate()
   const handleSClick = () => {
     setlocation(destination);
     if (destination.trim() !== "") {
-      navigate("/sep");
+      navigate(`/sep/${destination}`);
     } else {
       alert("Please enter a location to search");
     }

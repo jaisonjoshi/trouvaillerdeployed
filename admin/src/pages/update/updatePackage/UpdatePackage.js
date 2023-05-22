@@ -296,6 +296,8 @@ const UpdatePackage =({setOpen}) => {
                     <option value="friends">Group</option>
                     <option value="adventure">Adventure</option>
                     <option value="honeymoon">Honeymoon</option>
+                    <option value="international">International</option>
+
                 </select>
               </div>
                                 <div className="form-item">

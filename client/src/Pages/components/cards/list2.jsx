@@ -166,7 +166,7 @@ const List2_card = ({ setlocation, settype }) => {
   const handleSClick = () => {
     setlocation(destination);
     if (destination.trim() !== "") {
-      navigate("/sep");
+      navigate(`/sep/${destination}`);
     } else {
       alert("Please enter a location to search");
     }
@@ -174,12 +174,12 @@ const List2_card = ({ setlocation, settype }) => {
   const handleS2submit = (value) => {
     setlocation(value);
 
-    navigate("/sep");
+    navigate(`/sep/${value}`);
   };
   const handleTypesubmit = (value) => {
     settype(value);
 
-    navigate("/sept");
+    navigate(`/sept/${value}`);
   };
   const handleSearchChange = (e) => {
     let tar = e.target.value;

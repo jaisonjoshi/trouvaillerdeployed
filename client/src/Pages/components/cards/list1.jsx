@@ -151,18 +151,18 @@ const List1_card = ({ setlocation, settype }) => {
   const handleTypesubmit = (value) => {
     settype(value);
 
-    navigate("/set");
+    navigate(`/set/${value}`);
   };
   const handleS2submit = (value) => {
     setlocation(value);
 
-    navigate("/se");
+    navigate(`/se/${value}`);
   };
 
   const handleSClick = () => {
     setlocation(destination);
     if (destination.trim() !== "") {
-      navigate("/se");
+      navigate(`/se/${destination}`);
     } else {
       alert("Please enter a location to search");
     }

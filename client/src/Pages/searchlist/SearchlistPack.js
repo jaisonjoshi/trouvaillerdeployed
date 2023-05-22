@@ -1,7 +1,7 @@
 
 import React, { useState , useEffect} from 'react'
 import useFetch from '../../hooks/useFetch';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { Dropdown } from 'flowbite-react/lib/cjs/components/Dropdown';
 import BarLoader from "react-spinners/BarLoader";
@@ -11,8 +11,9 @@ import Footer from '../components/Footer/Footer';
 
 
 
-
-const SearchListPack = ({location}) => {
+const SearchListPack = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
     
   const generateUrl = (url)=>{
     const [baseUrl, ...rest] = url.split("/upload/");
@@ -37,7 +38,7 @@ const SearchListPack = ({location}) => {
   
 
 
-   const [destination,setDestination]=useState(location);
+   const [destination,setDestination]=useState(id);
    const [min, setMin] = useState(undefined);
    const [max, setMax] = useState(undefined);
    const [mintemp, setMintemp] = useState(undefined);

@@ -1,7 +1,7 @@
 
 import React, { useState , useEffect} from 'react'
 import useFetch from '../../hooks/useFetch';
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { Dropdown } from 'flowbite-react/lib/cjs/components/Dropdown';
 import BarLoader from "react-spinners/BarLoader";
@@ -12,7 +12,9 @@ import Footer from '../components/Footer/Footer';
 
 
 
-const SearchListPackType = ({type}) => {
+const SearchListPackType = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
     
   const generateUrl = (url)=>{
     const [baseUrl, ...rest] = url.split("/upload/");
@@ -43,7 +45,7 @@ const SearchListPackType = ({type}) => {
    const [mintemp, setMintemp] = useState(undefined);
    const [maxtemp, setMaxtemp] = useState(undefined);
    const [cat,setCat]=useState([]);
-   const [cats,setCats]=useState(type);
+   const [cats,setCats]=useState(id);
    const [url,setUrl]=useState("");
  
  //   const url1 = `/packages?destinations=${destination}&max=${max || 999999}&min=${
@@ -347,12 +349,12 @@ const SearchListPackType = ({type}) => {
 
 
         <div className='lg:pt-48 px-4 pb-4 pt-12 sm:px-16 md:px-20 2xl:px-40 flex flex-col gap-4'>
-                <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Packages</span><span>&#47;</span><span className='text-[black]'> {type}</span></div>
+                <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Packages</span><span>&#47;</span><span className='text-[black]'> {cats}</span></div>
                            
 
                 
            
-             <h1 className='text-lg sm:text-2xl font-bold '>Search results for {type} packages</h1>
+             <h1 className='text-lg sm:text-2xl font-bold '>Search results for {cats} packages</h1>
 
 
         </div>
