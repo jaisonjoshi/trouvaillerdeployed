@@ -308,8 +308,7 @@ const SinglePackage = () => {
                         
                         <div className='flex flex-col gap-2 items-start'>
                         <span className='px-4 py-1 bg-evergreen-tag rounded-full'>{pack.category}</span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nihil eos cumque, amet doloribus, quae maiores assumenda minus eligendi quisquam distinctio ipsam, accusantium exercitationem blanditiis ea odio ab ex id!</p>
-                        
+<p>{pack.description}</p>                        
                         </div>
                        <div className='flex  justify-between items-start'>
                                     {pack.offers ?

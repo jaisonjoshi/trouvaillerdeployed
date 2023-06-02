@@ -477,7 +477,7 @@ const NewPackage = ({ setOpen }) => {
                     <div className="schedule-card" key={i}>
                       <h4>Day {i + 1}</h4>
                       <h4>{obj.dayTitle}</h4>
-                      <p>{obj.dayDesc}</p>
+                      <p className="whitespace-pre-wrap">{obj.dayDesc}</p>
                     </div>
                   ))}
                 </div>

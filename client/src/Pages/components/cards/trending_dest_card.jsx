@@ -36,7 +36,7 @@ const DestCard = () => {
          </div>
         ) : (
           <>
-            {data.map((item) => (
+            {data?.map((item) => (
 
 <Link  to={`/list/package/${item._id}`} className='flex'><div  key={item._id}  className="w-[80%] sm:w-auto mx-auto sm:mx-0 bg-whiteglow cursor-pointer card-shadow rounded pb-4 relative"  >
               <div className="relative">

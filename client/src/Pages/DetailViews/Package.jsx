@@ -257,7 +257,7 @@ const Package = () => {
                         <div className='flex flex-col gap-2 items-start'>
                         <span className='block sm:hidden px-4 py-1 bg-evergreen-tag text-sm font-bold sm:text-base rounded-full'>{pack.category}</span>
 
-                        <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nihil eos cumque, amet doloribus, quae maiores assumenda minus eligendi quisquam distinctio ipsam, accusantium exercitationem blanditiis ea odio ab ex id!</p>
+                        <p className='text-sm'>{pack.description}</p>
                         
                         </div>
                         <div className='flex items-end pt-4 gap-4'>
