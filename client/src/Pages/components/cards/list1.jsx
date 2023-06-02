@@ -351,11 +351,11 @@ const List1_card = ({ setlocation, settype }) => {
                 >
                   <div className="relative w-full">
                     <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                    <img
+                    {itm.images && itm.images.length !== 0 && <img
                       className="w-[100%] aspect-video skeleton rounded-lg"
                       src={generateUrl(itm.images[0])}
                       alt=""
-                    />
+                    />}
                     <h3 className="hidden sm:block sm:text-base md:text-base sm:font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]">
                       {itm.title}
                     </h3>

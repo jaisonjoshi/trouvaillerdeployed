@@ -368,8 +368,8 @@ const SearchListPack = () => {
                   <div key={item._id} className=" ">
                   <div className="relative w-full">
                         <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                        <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={generateUrl(item.images[0])} alt="" />
-
+                        {item.images && item.images.length !== 0 &&<img className='w-[100%] aspect-video skeleton rounded-t-lg' src={generateUrl(item.images[0])} alt="" />
+}
                     </div>
                     <div className="pt-2">
                         <div className='flex justify-between items-center'>

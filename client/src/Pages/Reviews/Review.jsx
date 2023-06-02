@@ -77,10 +77,10 @@ const Reviews = () => {
                      <div className=" p-4 sm:p-10 h-full w-[80%] md: w-full mx-auto flex-col justify-between" key={item._id}>
                      <div className="flex justify-center">
                        <div className=" rounded-full flex justify-center w-[45%] h-[45%] md:w-[30%] md:h-[30%] xl:w-[30%] xl:h[30%] skeleton">
-                         <img
+                         {item.image && <img
                            className="w-full object-cover rounded-full w-[100%] h-[100%]"
                            src={generateUrl(item.image)}
-                         />
+                         />}
                        </div>
                      </div>
                     <div className="flex flex-col justify-between ">

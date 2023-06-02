@@ -355,11 +355,11 @@ const List2_card = ({ setlocation, settype }) => {
                 <div className="relative">
                   {/*                     <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
                    */}{" "}
-                  <img
+                  {item.images && item.images.length !== 0 &&<img
                     className="w-full aspect-video skeleton rounded-lg"
                     src={generateUrl(item.images[0])}
                     alt=""
-                  />
+                  />}
                   {item.offers && (
                     <span className="text-sm font-bold absolute top-[10px] right-[10px] text-white bg-[red] px-2 py-1 rounded">
                       {item.offertitle}
@@ -537,11 +537,11 @@ const List2_card = ({ setlocation, settype }) => {
                   <div className="relative w-full">
                     <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
 
-                    <img
+                    {item.images && item.images.length !== 0 &&<img
                       src={generateUrl(item.images[0])}
                       alt=""
                       className="aspect-video skeleton w-full rounded-md h-auto w-full "
-                    />
+                    />}
                     <div className="absolute opacity-90 bottom-2 w-[96%] z-50 left-[50%] translate-x-[-50%] flex flex-col rounded-lg p-2">
                       <h1 className="font-bold text-white  text-sm sm:text-base">
                         {item.offerdescription}
