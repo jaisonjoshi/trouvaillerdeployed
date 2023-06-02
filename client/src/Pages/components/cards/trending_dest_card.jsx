@@ -41,8 +41,8 @@ const DestCard = () => {
 <Link  to={`/list/package/${item._id}`} className='flex'><div  key={item._id}  className="w-[80%] sm:w-auto mx-auto sm:mx-0 bg-whiteglow cursor-pointer card-shadow rounded pb-4 relative"  >
               <div className="relative">
               <div className="imagegradient absolute top-0 left-0 right-0 bottom-0 z-[100] rounded "></div>
-              <img className='w-full aspect-video skeleton rounded-t-lg' src={generateUrl(item.images[0])} alt="" />
-              <h3 className='text-lg sm:text-lg  font-bold z-[102] text-whiteglow px-3  absolute bottom-[3px] md:bottom-[10px]'>{item.title}</h3>
+{           item.images.length !== 0 &&   <img className='w-full aspect-video skeleton rounded-t-lg' src={generateUrl(item.images[0])} alt="" />
+}              <h3 className='text-lg sm:text-lg  font-bold z-[102] text-whiteglow px-3  absolute bottom-[3px] md:bottom-[10px]'>{item.title}</h3>
 
               </div>
            <div className='py-3 mx-3'>
