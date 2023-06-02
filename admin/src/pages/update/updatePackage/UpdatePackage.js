@@ -76,7 +76,7 @@ const UpdatePackage =({setOpen}) => {
       }
       const handleUpdateActivities = ({ target }) => {
         // Update query onKeyPress of input box
-        setActivity(target.value.toLowerCase())
+        setActivity(target.value)
       }
       const handleUpdateLocations = ({ target }) => {
         // Update query onKeyPress of input box
