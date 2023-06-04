@@ -68,7 +68,7 @@ const VendorDetails = () => {
                     <h1 className='text-3xl'>Properties</h1>
                     <div className=" py-8 flex  flex-wrap md:gap-[10%] sm:gap-[8%] md:gap-[3%] lg:gap-[2%]">
           {data2 && data2.map((item) => (
-              <Link to={`/list/hotel/${item._id}`} className='pb-16 w-[90%] cursor-pointer mx-auto sm:mx-0 sm:w-[45%] md:w-[31%] mb-4 shadow-lg lg:w-[22%] pb-8'>
+              <Link to={`/hotels/${item._id}`} className='pb-16 w-[90%] cursor-pointer mx-auto sm:mx-0 sm:w-[45%] md:w-[31%] mb-4 shadow-lg lg:w-[22%] pb-8'>
                   <div key={item._id} className=" ">
                   <div className="relative w-full">
                         <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
