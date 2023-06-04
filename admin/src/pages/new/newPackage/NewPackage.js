@@ -280,7 +280,7 @@ const NewPackage = ({ setOpen }) => {
                 <input type="number" id="cheapestPrice" onChange={handleChange} />
               </div>
               <div className="form-item">
-                <label>Attractions and features</label>
+                <label>Inclusions</label>
                 <input type="text" id="features" onChange={handleUpdateQuery} />
               </div>
 
@@ -289,7 +289,7 @@ const NewPackage = ({ setOpen }) => {
                   onClick={handleNext}
                   className=" bg-[#00ff9f] px-4 py-1 rounded"
                 >
-                  Add feature
+                  Add Inclusion
                 </button>
               </div>
               <div className="form-item">
@@ -417,7 +417,7 @@ const NewPackage = ({ setOpen }) => {
               )}
               {features.length !== 0 && (
                 <div>
-                  <h3>Features </h3>
+                  <h3>Inclusions </h3>
                   <div className="package-details-flex">
                     {features &&
                       features.map((obj) => (

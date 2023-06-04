@@ -261,7 +261,7 @@ const Package = () => {
                         
                         </div>
                         <div className='flex items-end pt-4 gap-4'>
-                        <span className='font-bold'>Book now </span><a href={"https://wa.me/919562523642?text=" + text + pack.title }><button className='bg-evergreen text-white flex justify-center gap-2 items-center font-bold px-3 py-2 w-full text-sm rounded'><span>WhatsApp Us</span> <span className=''><WhatsAppIcon /></span></button></a>
+                        <span className='font-bold'>Book now </span><a href={"https://wa.me/918129177335?text=" + text + pack.title }><button className='bg-evergreen text-white flex justify-center gap-2 items-center font-bold px-3 py-2 w-full text-sm rounded'><span>WhatsApp Us</span> <span className=''><WhatsAppIcon /></span></button></a>
 
                         </div>
 
@@ -330,7 +330,7 @@ const Package = () => {
                                             <p className='text-sm text-graydust-dark sm:text-base'>{pack.description}</p>
                                             {pack.features.length !== 0 && 
                                                 <div className='pt-3'>
-                                                    <h1 className='text-base sm:text-lg font-bold mb-2'>Features</h1>
+                                                    <h1 className='text-base sm:text-lg font-bold mb-2'>Inclusions</h1>
                                                     <div className='px-2'>
                                                         <ul className='list-disc px-4 text-base'>
                                                         {pack.features.map((itm)=> (

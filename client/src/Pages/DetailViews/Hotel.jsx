@@ -201,7 +201,7 @@ const Hotel = () => {
                   </span>
                 </b>
               )}
-              <b>
+         9562523642     <b>
                 <h1 className="text-xl sm:text-2xl">{hote.title}</h1>
               </b>
 
