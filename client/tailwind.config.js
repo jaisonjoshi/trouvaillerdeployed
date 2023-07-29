@@ -47,6 +47,9 @@ module.exports = {
       }
     },
     extend: {
+      screens: {
+        'xs': '464px',
+      },
 
       backgroundImage: {
         'hero-image': 'url("./Pages/Assets/b_img1.png")',

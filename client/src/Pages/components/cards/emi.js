@@ -1,31 +1,24 @@
 import { Link } from "react-router-dom";
+import bidimg from '../../Assets/bidimg.webp'
+import whitelogo from '../../Assets/Trouvaillerwhite.png'
+
 
 const Emi = () => {
   return (
-    <div className="flex flex-col lg:flex-row py-12 2xl:py-0 items-center">
-      <div className="w-[90%] lg:w-[60%] flex justify-center">
-        <div className="md:w-[70%]">
-          <h1 className="text-3xl md:text-5xl mb-12 text-[#363535] font-bold">
-            Travel now <span className="text-[#00c676]">Pay Later</span>
-          </h1>
-          <h1 className="textnormal text-sm sm:text-base md:text-[18px] leading-8 font-medium title-font">
-            Embark on your dream journey today and leave the worries of
-            immediate payment behind with our exclusive travel now, pay later
-            program. With flexible EMI options, you can indulge in unforgettable
-            adventures and create priceless memories, all while comfortably
-            managing your payments over time.
-          </h1>
-          <Link to="/emi">
-            <button className="text-lg mt-8 px-4 py-2 bg-[#00c676] rounded text-white font-semibold">
-              Know more
-            </button>
-          </Link>
-        </div>
-      </div>
-      <div className="w-[100%] lg:w-[40%] flex justify-center">
-        <img src="https://res.cloudinary.com/difxlqrlc/image/upload/w_600/q_auto/v1684518761/site/emi_haum6t.png" alt="" />
-      </div>
+    <div className="bid-bg relative flex flex-col-reverse  md:flex-row rounded">
+    <div className="w-[100%] md:w-[60%] lg:w-[50%] text-center my-8 md:my-12 lg:my-20">
+      <h1 className="font-bold text-[white] text-xl lg:text-2xl">Get Your Stay</h1>
+      <h1 className="font-extrabold mt-2 text-[black] text-2xl lg:text-4xl">At Your Price</h1>
+      <p className="lg:text-lg w-[80%]  mx-auto mt-8">Wish you could bid hotel prices for your budget and make your trip more pocket friendly?</p>
+      <p className="lg:text-lg  w-[80%] mx-auto my-8">
+        Here's an end to your worries because we let you place your bid for today's lowest hotel prices.
+      </p>
+      <Link><button className="bg-[black] rounded-full px-8 py-2 text-[#00c676] font-semibold">Place Your Bid</button></Link>
     </div>
+    <div className="max-h-[250px] md:max-h-[1000px] w-[100%] md:w-[40%] lg:w-[50%] ml-auto flex justify-center items-center">
+    <img src={bidimg} className="max-h-[250px] md:max-h-[1000px] h-full w-full object-cover max-w-[100%] rounded" alt="" />
+  </div>
+  </div>
   );
 };
 

@@ -84,10 +84,21 @@ input{outline: none;}
 .card-text{
     word-wrap: break-word !important;
     overflow: hidden !important;
-    max-height: 3.6em !important; /* (Number of lines you want visible) * (line-height) */
-    line-height: 1.2em !important;
-    height: 3.6em !important;
+    max-height: 4.5em !important; /* (Number of lines you want visible) * (line-height) */
+    line-height: 1.5em !important;
+    height: 4.5em !important;
     min-width: 3.6em !important;
+    position: relative;
+}
+.card-text::after {
+    content: "..."; /* Add the ellipsis */
+    position: absolute; /* Position the ellipsis */
+    bottom: 0; /* Place it at the bottom of the container */
+    right: 0; /* Place it at the right of the container */
+    padding-left: 5ch; /* Add some space between the text and the ellipsis */
+    padding-right: 10px;
+    color: rgb(163, 163, 163);
+    background: linear-gradient(to right, transparent,white 70%, white); /* Create a fading effect for the ellipsis */
 }
 .card-text-heading{
     word-wrap: break-word !important;
@@ -311,12 +322,24 @@ button:focus {
     }
 
     .background-header{
-        background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/f_auto/q_auto/w_2000/v1684314478/site/bghomepic_2_xrog5p.webp');
-    
+        /* background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/f_auto/q_auto/w_2000/v1684314478/site/bghomepic_2_xrog5p.webp'); */
+        background-image: url('./Pages/Assets/bgbody.jpg');
         background-size: cover;
         background-position: top;
         background-repeat: no-repeat;
+        z-index: 199;
+
     }
+    .background-header:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        bottom: 0;
+        background: linear-gradient(to top, transparent,  rgba(0, 0, 0, 0.719) );
+      }
   .title-font{
     font-family: 'Open Sans', sans-serif !important;
   }
@@ -375,13 +398,13 @@ input:-webkit-autofill:focus {
 }
 
 input.interestinp::placeholder, textarea::placeholder {
-    color: #d9d9d9 !important; /* Change the color to your desired value */
+    color: #858585 !important; /* Change the color to your desired value */
   }
 
   @media screen and (max-width:764px) {
    
       input.interestinp::placeholder, textarea::placeholder {
-    color: #d9d9d9 !important; /* Change the color to your desired value */
+    color: #858585 !important; /* Change the color to your desired value */
     font-size: 0.85rem;
   }
   }
@@ -425,4 +448,67 @@ input.interestinp::placeholder, textarea::placeholder {
   }
 .noautofill{
     background: transparent;
+}
+
+
+.card-background{
+    background-image: url('./Pages/Assets/cardbg.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.btn-animation {
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+}
+.btn-animation:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 0, 0);
+    border-radius: 10px;
+    z-index: 70;
+}
+.btn-animation:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #00c676;
+    transition: all 0.3s;
+    border-radius: 10px;
+    z-index: 80;
+}
+.btn-animation:hover {
+    color: #fff;
+}
+.btn-animation:hover:before {
+    width: 100%;
+}
+
+.bid-bg{
+    background-image: url('./Pages/Assets/bidbg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.emi-bg{
+    background-image: url('./Pages/Assets/emibg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.bidbg{
+    background-image: url('./Pages/Assets/bidimg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
