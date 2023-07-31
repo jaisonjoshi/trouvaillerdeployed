@@ -144,18 +144,23 @@ const Login = () => {
 
   return (
     <div>
-      <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 h-screen w-full">
-        <div className="googlelogin h-[100vh] lg:h-auto w-[95%] md:w-[70%] lg:w-[80%] 2xl:w-[60%] mx-auto md:pt-40">
-          <div className="flex mx-8 md:justify-center">
+      <div className="bg-login relative h-screen w-full">
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-[#0000009e]">
+
+        </div>
+
+        <div className="googlelogin bg-[white] py-4 sm:py-12 min-w-[300px] sm:min-w-[500px] lg:min-w-[600px] absolute z-[110] top-[50%] left-[50%] translate-x-[-50%] rounded-[10px] translate-y-[-50%] shadow-lg mx-auto">
+          <div className="flex flex-col mx-8 justify-center items-center gap-2 sm:gap-8  ">
+            <img src={logo} className="w-[80px] sm:w-[100px] lg:w-[150px]" alt="" />
             <h3
               style={{ fontSize: "18px" }}
-              className="font-medium title-font text-2xl mb-8"
+              className="font-bold title-font text-base sm:text-xl lg:text-2xl mb-8"
             >
-              Hey!<br></br>Welcome Back
+              Hey, Welcome Back
             </h3>
           </div>
 
-          <div className="mx-14 glogin">
+          <div className="mx-auto w-[90%] sm:w-[70%] pt-4 sm:pt-12 glogin">
             <GoogleLogin
               onSuccess={(credentialResponse) => {
                 //console.log(credentialResponse.credential);
@@ -185,30 +190,31 @@ const Login = () => {
             />
           </div>
 
-          <p className="text-center mt-8">or</p>
-          <div className="flex mx-14 flex-col mt-5">
-            <div className="bg-[#eeeeee] rounded mb-8">
+          <p className="text-center text-sm mt-2 sm:text-base sm:mt-8">or</p>
+          <div className="flex w-[90%] sm:w-[70%] mx-auto flex-col mt-2 sm:mt-5">
+            <div className="bg-[white] border border-[1px] border-[#00b07f] relative rounded mb-8">
+              <span className="absolute bg-[white] top-0 left-4 translate-y-[-50%] text-sm  lg:text-base px-2 text-[grey]">Email</span>
               <input
                 type="text"
-                className="  p-3 outline-none  rounded  border-transparent bg-transparent w-[100%] focus:ring-[transparent]  focus:border-[transparent] "
-                placeholder="Username"
+                className="  sm:p-3 outline-none text-sm sm:text-base rounded  border-transparent bg-transparent w-[100%] focus:ring-[transparent]  focus:border-[transparent] "
                 id="username"
                 onChange={handleChange}
               />
             </div>
-            <div className="bg-[#eeeeee] rounded">
+            <div className="bg-[white] relative border border-[1px] border-[#00b07f] rounded">
+            <span className="absolute bg-[white] top-0 left-4 translate-y-[-50%] px-2 text-[grey] text-sm  lg:text-base">Password</span>
+
               <input
                 type="password"
-                className=" p-3 outline-none rounded  border-transparent bg-transparent w-[90%] focus:ring-[transparent]  focus:border-[transparent] "
-                placeholder="Password"
+                className=" sm:p-3 outline-none rounded text-sm sm:text-base  border-transparent bg-transparent w-[90%] focus:ring-[transparent]  focus:border-[transparent] "
                 id="password"
                 onChange={handleChange}
               ></input>
-              <VisibilityIcon onClick={showPassword} className="text-[grey]" />
+              <VisibilityIcon onClick={showPassword} className="w-[15px] text-[grey] cursor-pointer" />
             </div>
           </div>
 
-          <div className="mx-14 my-5">
+          <div className="mx-auto w-[90%] sm:w-[70%] my-2 sm:my-5">
             <button
               disabled={loading}
               onClick={handleClick}
@@ -217,13 +223,13 @@ const Login = () => {
               Login
             </button>
             {error && (
-              <span className="text-[red] py-2">
-                {error.message} username or password. Please try again
+              <span className="text-[red] text-xs md:text-base py-1 sm:py-2">
+                {error.message}Incorrect username or password. Please try again
               </span>
             )}
           </div>
 
-          <p className="mx-14 text-center">
+          <p className="sm:mx-14 text-center text-sm  lg:text-base">
             Don't have an account?
             <Link className="text-[#339633]" to="/signup">
               {" "}
@@ -232,104 +238,10 @@ const Login = () => {
           </p>
         </div>
 
-        <div
-          style={{ backgroundImage: `url(https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/w_1000/v1684527559/site/loginwall_pfjmtp.webp)` }}
-          className="hidden lg:flex justify-center items-center h-[100vh] bg-center bg-no-repeat bg-cover"
-        ></div>
+       
       </div>
 
-      <div className=" md:hidden  h-[70vh] w-full loginbg">
-        <div className="bg-white rounded-[50px] absolute left-0 bottom-0">
-          <div className="googlelogin mx-auto ">
-            <img src={logo} alt="" className="w-[25%] mx-auto pt-8 pb-2"/>
-<h1 className="text-center text-xs text-[grey]">Personalized Trips, perfectly packaged.</h1>
-           
-
-
-            <div className="flex flex-col mt-10">
-            <label htmlFor="" className="mx-8 mb-1 text-sm text-[grey]">Username</label>
-
-              <div className="bg-[#eeeeee] rounded mx-8  mb-3">
-                <input
-                  type="text"
-                  className="  px-3 outline-none  rounded  border-transparent bg-transparent w-[100%] focus:ring-[transparent]  focus:border-[transparent] "
-                  placeholder=""
-                  id="username"
-                  onChange={handleChange}
-                />
-              </div>
-              <label htmlFor="" className="mx-8 mb-1 text-[grey] text-sm">Password</label>
-
-              <div className="bg-[#eeeeee] rounded mx-8 mb-6">
-                <input
-                  type="password"
-                  className=" outline-none rounded  border-transparent bg-transparent w-[90%] focus:ring-[transparent]  focus:border-[transparent] "
-                  placeholder=""
-                  id="password"
-                  onChange={handleChange}
-                ></input>
-                <VisibilityIcon
-                  onClick={showPassword}
-                  className="text-[grey]"
-                />
-              </div>
-            </div>
-
-            <div className="mx-8 flex flex-col">
-              <button
-                disabled={loading}
-                onClick={handleClick}
-                className=" bg-evergreen text-whiteglow text-sm font-bold py-2 rounded-full "
-              >
-                Login
-              </button>
-              {error && (
-                <span className="text-[red] py-2">
-                  {error.message} username or password. Please try again
-                </span>
-              )}
-            </div>
-            <p className=" text-center my-6">
-              <Link className="text-[grey]" to="/signup">
-                {" "}
-I don't have an account ?              </Link>
-            </p>
-            <p className="text-center text-[grey] my-1 text-sm">OR</p>
-
-            <div className="mx-14 mb-10 glogin">
-              <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                  //console.log(credentialResponse.credential);
-                  console.log(credentialResponse);
-                  const gid = credentialResponse.clientId;
-                  var token = credentialResponse.credential;
-                  //verifyGoogleToken(token);
-
-                  var decoded = jwt_decode(credentialResponse.credential);
-                  //console.log(decoded);
-                  var checkemail = decoded.email;
-                  var google_user = {};
-                  google_user.username = decoded.given_name;
-                  google_user.email = decoded.email;
-                  var number = "add phone number";
-                  google_user.phone = number; //
-                  google_user.google_id = gid;
-                  google_user.img = decoded.picture;
-
-                  googleSignIn(google_user);
-
-                  console.log(user);
-                }}
-                onError={() => {
-                  console.log("Login failed");
-                }}
-              />
-            </div>
-
-           
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };

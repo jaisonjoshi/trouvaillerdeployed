@@ -526,3 +526,10 @@ input.interestinp::placeholder, textarea::placeholder {
         
     }
 }
+
+.bg-login{ 
+    background-image: url('./Pages/Assets/loginbg.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
