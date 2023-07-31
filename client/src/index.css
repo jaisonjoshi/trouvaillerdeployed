@@ -325,7 +325,7 @@ button:focus {
         /* background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/f_auto/q_auto/w_2000/v1684314478/site/bghomepic_2_xrog5p.webp'); */
         background-image: url('./Pages/Assets/bgbody.jpg');
         background-size: cover;
-        background-position: top;
+        background-position: left;
         background-repeat: no-repeat;
         z-index: 199;
 
@@ -497,7 +497,7 @@ input.interestinp::placeholder, textarea::placeholder {
     background-image: url('./Pages/Assets/bidbg.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top left ;
 }
 .emi-bg{
     background-image: url('./Pages/Assets/emibg.png');
@@ -511,4 +511,18 @@ input.interestinp::placeholder, textarea::placeholder {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.shadow-1{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+
+
+@media (max-width:640px) {
+    .card-title-font-size{
+        font-size: 13px !important;
+        line-height: 1rem;
+        
+    }
 }

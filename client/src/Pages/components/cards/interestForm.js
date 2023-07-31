@@ -49,12 +49,12 @@ const handleSubmit = async (e) => {
      <img src={intimg} className="w-[100%] xl:hidden h-full w-full object-cover rounded-t-[10px]" alt="" />
 
      </div>
-      <div className="py-12 px-8 md:px-16 w-[100%] xl:w-[60%]">
-      <h1 className="font-bold relative text-[black] text-lg sm:text-xl 2xl:text-2xl z-[100]">
+      <div className="py-12 px-4 sm:px-8 md:px-16 w-[100%] xl:w-[60%]">
+      <h1 className="font-bold relative text-[black] text-base sm:text-lg sm:text-xl 2xl:text-2xl z-[100]">
         Looking for a travel experience that's tailored to your interests and
         preferences?{" "}
       </h1>
-      <h1 className="font-normal relative z-[100]  my-2 text-[black] text-base 2xl:text-xl">
+      <h1 className="font-normal relative z-[100]  my-2 text-[black] text-[14px] sm:text-base 2xl:text-xl">
         Fill out our form to get started, and we'll work with you to create the
         perfect itinerary.
       </h1>
@@ -157,13 +157,13 @@ const handleSubmit = async (e) => {
           
           
 </div>
-         <div className="flex items-center gap-4">
+         <div className="flex items-center flex-wrap gap-4">
          <button className="bg-[#13dd13]  px-4 py-2 rounded shadow-md text-[white] font-medium flex gap-2 items-center" onClick={handleSubmit}>
             Send <SendIcon style={{ fontSize: "18px" }} />
-          </button>
+          </button><img src={wa} className="w-[150px]" />
           {loading && <ClipLoader color="#00d67b"/>}
-          {loadingTxt !== "" && <span className="text-white italic">{loadingTxt}</span>}
-          <img src={wa} className="w-[150px]" />
+          {loadingTxt !== "" && <span className="text-black text-sm sm:text-base italic">{loadingTxt}</span>}
+          
          </div>
         </form>
       </div>

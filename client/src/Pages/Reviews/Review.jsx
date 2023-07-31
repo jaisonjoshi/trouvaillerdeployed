@@ -74,17 +74,17 @@ const Reviews = () => {
           
             <Slider {...settings} ref={sliderRef}>
                   {data.map((item) => (
-                     <div className=" p-4 sm:p-10 h-full w-[80%] md: w-full mx-auto flex-col justify-between" key={item._id}>
+                     <div className=" sm:p-4 sm:p-10 h-full w-[80%] md: w-full mx-auto flex-col justify-between" key={item._id}>
                      <div className="flex justify-left">
                        <div className=" rounded-[10px]  flex justify-left w-[45%] h-[45%] md:w-[30%] md:h-[30%] xl:w-[30%] xl:h[30%] skeleton">
                          {item.image && <img
-                           className="w-full object-cover  rounded-[10px] w-[100%] h-[100%]"
+                           className="w-full object-cover shadow-1 rounded-[10px] w-[100%] h-[100%]"
                            src={generateUrl(item.image)}
                          />}
                        </div>
                      </div>
                     <div className="flex flex-col justify-between ">
-                    <p className="text-sm md:text-[1rem] xl:text-[1.1rem] leading-6 my-2 mt-8  title-font text-left leading-8"> {item.reviewnote}</p>
+                    <p className="text-[14px] md:text-[1rem] xl:text-[1.1rem]  my-2 mt-8  title-font text-left  sm:leading-8"> {item.reviewnote}</p>
                      <div className=" text-left text-base md:text-lg  pt-8">
                        <span className="font-normal">{item.author},{item.place}</span>
                        <span> {item.rating}</span>
