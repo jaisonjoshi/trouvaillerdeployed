@@ -43,7 +43,7 @@ const handleSubmit = async (e) => {
 
 }
   return (
-    <div className="  bg-[#c2fbd7] shadow-lg relative  mx-4  sm:mx-16 md:mx-20 2xl:mx-40 my-12 md:my-20 flex flex-col xl:flex-row justify-between">
+    <div className="  bg-[#c2fbd7] shadow-lg relative  mx-4  sm:mx-16 md:mx-20 2xl:mx-40 my-4 sm:my-12 md:my-20 flex flex-col xl:flex-row justify-between">
      <div className="w-[100%] xl:w-[50%] 2xl:w-[40%] ">
      <img src={intrstimg} className="w-[100%] hidden xl:block h-full w-full object-cover" alt="" />
      <img src={intimg} className="w-[100%] xl:hidden h-full w-full object-cover rounded-t-[10px]" alt="" />

@@ -51,7 +51,7 @@ const navigate = useNavigate()
 
   return (
     <div className={`animationset ${anim}`}>
-      <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header">
+      <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header home">
            <NavbarTest color={color}/>
              
         <div className=" absolute z-[100] top-0 left-0 right-0 h-[80vh] sm:h-[90vh] pb-20 w-full flex flex-col lg:flex-row justify-start pl-4  sm:pl-12 lg:pl-16 2xl:pl-36 items-start ">

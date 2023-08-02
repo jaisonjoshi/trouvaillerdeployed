@@ -256,10 +256,10 @@ const List1_card = ({ setlocation, settype }) => {
   const color = "text-blacky-dark";
 
   return (
-    <div className={`w-full animationset ${anim} bg-[#f2f2f2] hotelsexplore`}>
+    <div className={`w-full animationset ${anim}  hotelsexplore`}>
       <NavbarTest color={color} />
-      <div className="flex justify-start mb-20 md:hidden fixed z-[49] bg-[white] top-[60px] left-0 right-0">
-        <div className=" flex gap-4 text-base   font-bold">
+      <div className="flex justify-start md:hidden border-t border-t-[#eaeaea] card-shadow sticky z-[49] bg-[white] top-0 left-0 right-0">
+      <div className=" sm:px-12  flex gap-4 text-base   font-bold">
           <Link
             to="/packages"
             className="px-4 py-2 cursor-pointer text-[#2f3560]"
@@ -271,24 +271,23 @@ const List1_card = ({ setlocation, settype }) => {
           </span>
         </div>
       </div>
-      <div className="mt-[60px] pt-24 sm:pt-28  md:pt-32 px-4 sm:px-16 md:px-20 2xl:px-40  bg-hotel relative">
-        <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 sm:pb-4">
-          <h1 className="text-center text-3xl sm:text-4xl text-[#00ff98] font-bold">
-            Find your next stay
-          </h1>
-          <p className="text-center text-[white] text-base md:text-lg">
-            Find your next stay with us and experience comfort, convenience, and
-            quality like never before.
+      <div className="md:mt-4 pt-12 md:pt-24 sm:pt-28  md:pt-32 px-4 sm:px-16 md:px-20 2xl:px-40  bg-package relative">
+      <div className="flex flex-col items-center justify-center px-8 md:px-20 lg:px-40 gap-8 sm:pb-4">
+          <h1 className="text-center text-xl md:text-3xl sm:text-4xl text-[#00ff98] font-bold">
+          Discover your ideal tourist stay          </h1>
+          <p className="text-center text-[white] md:text-lg">
+          Embark on a memorable tourist stay with our curated accommodations and unforgettable experiences
           </p>
         </div>
-
         <div className=" flex justify-center relative bottom-[-3rem] sm:bottom-[-5rem]">
-          <div className="bg-[white] py-8 border-none rounded-[10px] w-[90%] lg:w-[60%] shadow-search card-shadow-1 ">
+          <div className="bg-[white] py-4 sm:py-8 border-none rounded-[10px] w-[100%] lg:w-[60%] shadow-search card-shadow-1 ">
             <div className="flex gap-4  justify-center ">
-              <div className="flex w-[90%] lg:w-[70%] flex-col items-start gap-4 ">
-                <h1 className="font-bold text-graydust-dark ml-2 text-lg text-left sm:text-xl">
+              <div className="flex w-[90%] lg:w-[70%] flex-col items-start gap-2 sm:gap-4 ">
+                <h1 className="font-bold text-graydust-dark  sm:text-lg text-left sm:text-xl">
                   Ready to get started !
                 </h1>
+                <p className="text-sm sm:text-base">Find the best hotels and resorts for your destination</p>
+
                 <div className="flex flex-col items-start sm:items-center sm:flex-row w-full gap-4">
                   <div className="flex items-center w-[100%] sm:w-[70%] md:w-[60%] lg:w-[100%] border border-[2px] rounded-full border-[#00b777] justify-between focus:ring-0 focus:ring-offset-0 bg-[white]  outline-none py-1 sm:py-2 px-4">
                     <input
@@ -301,7 +300,7 @@ const List1_card = ({ setlocation, settype }) => {
                     />
                   </div>
                   <button
-                    className="px-8 py-2 bg-[#2f3560] rounded-full text-white font-bold cursor-pointer"
+                    className="px-8 py-2 bg-[#2f3560] text-sm sm:text-base rounded-full text-white font-bold cursor-pointer"
                     onClick={handleSClick}
                   >
                     Search
@@ -313,7 +312,7 @@ const List1_card = ({ setlocation, settype }) => {
         </div>
       </div>
 
-      <div className="mt-[4rem] sm:mt-[11rem] px-4 sm:px-8 py-8 sm:rounded-[10px] shadow-search sm:mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] ">
+      {/* <div className="mt-[4rem] sm:mt-[11rem] px-4 sm:px-8 py-8 sm:rounded-[10px] shadow-search sm:mx-4 sm:mx-16 md:mx-20 2xl:mx-40 bg-[white] ">
         <div className="flex justify-between items-center">
           <h1 className="text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold">
             Best Deals on Hotels
@@ -401,9 +400,9 @@ const List1_card = ({ setlocation, settype }) => {
             ))}
           </Slider>
         </div>
-      </div>
+      </div> */}
 
-      <div className=" py-8 rounded-[10px]  mx-4 sm:mx-16 md:mx-20 2xl:mx-40 ">
+      <div className="mt-[3rem] sm:mt-[6rem] lg:mt-[10rem] py-8 rounded-[10px]  mx-4 sm:mx-16 md:mx-20 2xl:mx-40 ">
         <div className="flex justify-between items-center">
           <h1 className="text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold">
             Browse by Types
@@ -444,54 +443,60 @@ const List1_card = ({ setlocation, settype }) => {
         </div>
       </div>
 
-      <div className="mt-8 sm:mt-[4rem] py-2 sm:py-8 rounded-[10px] mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 ">
+      <div className="mt-4 sm:mt-8 sm:mt-[2rem] py-2 sm:py-8 rounded-[10px] sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 ">
         <div className="flex justify-between items-center">
-          <h1 className="text-lg sm:text-2xl md:text-3xl font-medium sm:font-bold">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
             Popular Destinations
           </h1>
         </div>
-        <p className="text-sm sm:text-base lg:text-lg py-2 sm:py-4 text-graydust-dark">
+        <p className="text-[14px] sm:text-base lg:text-lg py-2 sm:py-4 text-graydust-dark">
           Discover Our Most Popular Destinations and Plan Your Next Adventure
           Today!
         </p>
 
         
-        <div className="pt-8 justify-between text-[white] mb-12 font-bold text-xl flex gap-[2%] location-container ">
+        <div className=" pt-4 sm:pt-8 justify-between  text-[white] mb-12 font-bold text-xl flex gap-[2%] location-container">
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("kashmir")}
           >
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520897/site/kashmir_d4vjg6.jpg" alt="" />
-            <h1 className="absolute left-3 bottom-3">Kashmir</h1>
+                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520897/site/kashmir_d4vjg6.jpg" className='w-[100%] h-full object-cover' alt="" />
+            <h1 className="absolute text-base sm:text-xl left-3 bottom-3 z-[101]">Kashmir</h1>
           </div>
 
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[200px] overflow-auto rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("goa")}
-          >
+          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" />
-            <h1 className="absolute left-3 bottom-3">Goa</h1>
+            <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Goa</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("wayanad")}
-          >
+          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt="" />
-            <h1 className="absolute left-3 bottom-3">Wayanad</h1>
+            <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Wayanad</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("munnar")}
-          >
+          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt="" />
-            <h1 className="absolute left-3 bottom-3">Munnar</h1>
+            <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Munnar</h1>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("mysore")}
-          >
+          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" />
-            <h1 className="absolute left-3 bottom-3">Mysore</h1>
+            <h1 className="absolute left-3 text-base sm:text-xl bottom-3 z-[101]">Mysore</h1>
           </div>
         </div>
       </div>

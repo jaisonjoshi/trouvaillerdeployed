@@ -160,7 +160,7 @@ nav li a {
     height: 100%;
 }
 .card-shadow{
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
     .slick-dots li button:before {
         background-color: #c83838 !important;
@@ -532,4 +532,59 @@ input.interestinp::placeholder, textarea::placeholder {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+@media screen and (min-width:1024px) {
+    .home .navbar{
+        padding-top: 3rem !important;
+    } 
+}
+
+
+
+
+@media (min-width:640px){
+    .trending-carousel .package-card{
+        margin-right: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
+}
+
+.hotelsexplore .menuicon{
+    color: black !important;
+}
+
+
+
+
+
+
+@media  (min-width:768px){
+
+    .text-small span{
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+
+        font-size: 12px !important;
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+
+    }
+    .text-small svg{
+        width: 20px;
+    }
+}
+@media  (max-width:768px){
+
+    .text-small span{
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+
+        font-size: 11px !important;
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+
+    }
+    .text-small svg{
+        width: 10px;
+    }
 }

@@ -10,7 +10,7 @@ function PackageCard({ item }) {
 
     }
     return (
-        <Link to={`/list/package/${item._id}`} className='flex'><div key={item._id} className="w-[100%] sm:w-[80%] sm:w-auto mx-auto sm:mx-0 bg-whiteglow mb-4 sm:mb-0 ml-4 sm:ml-0 cursor-pointer card-shadow rounded pb-4 relative"  >
+        <Link to={`/list/package/${item._id}`} className='flex'><div key={item._id} className="w-[100%] sm:w-[80%] sm:w-auto mx-auto sm:mx-0 package-card bg-whiteglow mb-4 sm:mb-0 ml-2 mr-4  sm:mr-0 cursor-pointer card-shadow rounded pb-4 relative"  >
             <div className="relative">
                 <div className="imagegradient absolute top-0  w-[95%] left-[2.5%]  bottom-0 z-[100] rounded "></div>
                 {item.images.length !== 0 && <img className='w-[95%] shadow-lg mx-auto my-1 sm:my-4 aspect-video skeleton rounded-lg' src={generateUrl(item.images[0])} alt="" />

@@ -1,7 +1,7 @@
 
 import React, { useState , useEffect} from 'react'
 import useFetch from '../../hooks/useFetch';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { Dropdown } from 'flowbite-react/lib/cjs/components/Dropdown';
 import BarLoader from "react-spinners/BarLoader";
@@ -183,6 +183,7 @@ const SearchListType = () => {
 
   // }
   const color = "text-blacky-dark";
+  const navigate = useNavigate();
 
 
 
@@ -196,25 +197,25 @@ const SearchListType = () => {
     <div className={`w-full animationset ${anim}  hotelsexplore`}>
         <NavbarTest />
        
-        <div className="mt-[60px] fixed top-[0] flex flex-col lg:fixed top-[60px] w-[100%] z-[49] lg:flex-row lg:gap-20 px-4 sm:px-16 md:px-20 2xl:px-40  gradient-first relative">
+        <div className=" sm:mt-2  top-[0] flex flex-col shadow-lg sticky z-[103] w-[100%] z-[49] sm:flex-row lg:gap-20 px-4 sm:px-16 md:px-20 2xl:px-40  gradient-first relative">
                 
 
-        <div className="flex justify-center lg:justify-start  w-[100%] lg:w-[30%] py-6">
-        <div className="flex items-center w-[80%] md:w-[60%] lg:w-[100%] justify-between focus:ring-0 bg-[white] focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
-          <input
-            type="text border-none outline-none w-[80%] h-[100%] text-2xl"
-            placeholder="Destination"
-            id="destination"
-            name="destination"
-            onChange={handleSearchChange}
-          />
-          <SearchIcon
-            className="w=[20%] mx-3 cursor-pointer"
-            onClick={handleClick}
-          />
-        </div>
-      </div>
-      <div className="flex flex-wrap justify-center lg:justify-start w-[100%] lg:w-[70%] items-center mx-auto gap-4 py-4">
+                <div className="flex justify-start  w-[100%] lg:w-[30%] py-3 lg:py-6">
+                <div className="flex items-center w-[100%] sm:w-[90%] lg:w-[60%] lg:w-[100%] justify-between focus:ring-0 bg-[white] focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
+                  <input
+                    type="text border-none outline-none w-[80%] h-[100%] md:text-2xl"
+                    placeholder="Destination"
+                    id="destination"
+                    name="destination"
+                    onChange={handleSearchChange}
+                  />
+                  <SearchIcon
+                    className="text-base sm:text-lg mx-3 cursor-pointer"
+                    onClick={handleClick}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-wrap justify-start w-[100%] lg:w-[70%] items-center mx-auto gap-4 sm:pt-2 pb-2 lg:py-4">
         
 
         {/* <Dropdown
@@ -226,22 +227,22 @@ const SearchListType = () => {
 <Dropdown
     label="Budget"
     dismissOnClick={false}
-    class=" flex md:justify-center bg-[white] sm:justify-start items-center text-blacky-light px-6 py-1  shadow-sm shadow-[#00b777] rounded-full text-xs">
+    class=" flex md:justify-center bg-[white] sm:justify-start items-center text-blacky-light md:px-6 sm:py-1  shadow-sm shadow-[#00b777] rounded-full text-small">
     <Dropdown.Item>
         <input type="radio" className="accent-evergreen" id="budget1" name="budget" value="b1" onChange={handlebudgetChange}
-        />   <label for="budget1" className="pl-3 text-base text-blacky-bright"> Less than 10,000</label><br />
+        />   <label for="budget1" className="pl-3  text-blacky-bright"> Less than 10,000</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="radio" className="accent-evergreen" id="family" name="budget" value="b2" onChange={handlebudgetChange} />
-        <label for="family" className="pl-3 text-base text-blacky-bright"> 10,000 - 20,000</label><br />
+        <label for="family" className="pl-3  text-blacky-bright"> 10,000 - 20,000</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="radio" className=" accent-evergreen" id="friends" name="budget" value="b3" onChange={handlebudgetChange} />
-        <label for="friends" className="pl-3 text-base text-blacky-bright"> 20,000 - 40,000</label><br />
+        <label for="friends" className="pl-3  text-blacky-bright"> 20,000 - 40,000</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="radio" className=" accent-evergreen" id="holiday" name="budget" value="b4" onChange={handlebudgetChange} />
-        <label for="holiday" className="pl-3 text-base text-blacky-bright"> 40,000 - 50,000</label><br />
+        <label for="holiday" className="pl-3  text-blacky-bright"> 40,000 - 50,000</label><br />
     </Dropdown.Item>
 
     <div className="flex">
@@ -278,8 +279,8 @@ const SearchListType = () => {
 
 
         <div className='lg:pt-48 px-4 pb-4 pt-12 sm:px-16 md:px-20 2xl:px-40 flex flex-col gap-4'>
-                <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[black]'>{id}</span></div>
-                           
+{/*                 <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[black]'>{id}</span></div>
+ */}                           
 
                 
            
@@ -293,35 +294,61 @@ const SearchListType = () => {
         </div>
       ) : (
         <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap md:gap-[10%] sm:gap-[8%] md:gap-[3%] lg:gap-[2%]">
-          {data.map((item) => (
-              <Link to={`/list/hotel/${item._id}`} className='pb-16 w-[90%] cursor-pointer mx-auto sm:mx-0 sm:w-[45%] md:w-[31%] mb-4 card-shadow lg:w-[22%] pb-8'>
-                  <div key={item._id} className=" ">
-                  <div className="relative w-full">
-                        <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                        {item.images && item.images.length !== 0 &&<img className='w-[100%] aspect-video skeleton rounded-t-lg' src={generateUrl(item.images[0])} alt="" />
-}
-                    </div>
-                    <h3 className='text-base md:text-lg pt-2 font-medium z-[48] text-[black] px-2  '>{item.title}</h3>
-                    <p className='mx-2 font-bold text-graydust-dark text-sm'>{item.location}</p>
-                    <p className='text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal'>{item.description}</p>
-                    <div className="pt-2">
-                        <div className='flex justify-between items-center'>
-                        {item.offers ? <div className='flex justify-between items-center'><div className="md:py-1 mx-1  flex justify-between items-center">
-                              <span className="font-bold"><span className="text-base md:text-xl">&nbsp; &#8377; {item.offerprice && item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> <span  className="text-[grey] text-2xs md:text-base"><strike>&#8377; {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
-                                  
-                          </div>                              <span className='mr-1 text-2xs bg-[red] text-[white] px-2 py-1 rounded'>{item.offertitle}</span></div>
-:
-                                                  <span className="font-bold"><span className="text-base md:text-xl">&nbsp; &#8377; {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> </span>
+          {data.map((itm, i) => (
+               <div key={i} className="px-1 pr-2 sm:px-2 sm:px-4  ">
+               <div
+                 className="mb-4 h-[100%] pb-3 card-shadow-1 rounded-t-lg  cursor-pointer"
+                 onClick={() => navigate(`/list/hotel/${itm._id}`)}
+               >
+                 <div className="relative w-full">
+                   <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
+                   {itm.images && itm.images.length !== 0 && <img
+                     className="w-[100%] aspect-video skeleton rounded-lg"
+                     src={generateUrl(itm.images[0])}
+                     alt=""
+                   />}
+                   <h3 className="hidden sm:block sm:text-base md:text-base sm:font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]">
+                     {itm.title}
+                   </h3>
+                 </div>
 
-                          }
-                        </div>
-                    
-                      
-                    </div>
-                    
-                  </div>
+                 <h3 className="text-xs z-50 py-1 mx-1 md:mx-3 text-[black] font-semibold sm:hidden  card-text-heading ">
+                   {itm.title}
+                 </h3>
 
-                </Link>
+                 <div className="py-1 sm:py-3 mx-1 md:mx-3 flex flex-col gap-1 items-start">
+                   <h3 className="text-2xs px-1 py-[1px] rounded md:text-base mb-0 bg-[red] text-[white]">
+                     <b>{itm.offertitle}</b>
+                   </h3>
+                   <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">
+                     {itm.offerdescription}
+                   </p>
+                   <p className="text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal">
+                     {itm.description}
+                   </p>
+                 </div>
+                 <div className=" md:py-2 mx-2 md:mx-3 flex justify-between items-center">
+                   <span className=" ">
+                     <span className="text-sm font-bold md:text-2xl pr-1">
+                       &nbsp;&#8377;{" "}
+                       {itm.offerprice &&
+                         itm.offerprice
+                           .toString()
+                           .replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}{" "}
+                     </span>
+                     <span className="text-[grey] font-bold text-xs md:text-base">
+                       <strike>
+                         &#8377;{" "}
+                         {itm.cheapestPrice &&
+                           itm.cheapestPrice
+                             .toString()
+                             .replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}{" "}
+                       </strike>
+                     </span>
+                   </span>
+                 </div>
+               </div>
+             </div>
           ))}
         </div>
       )}

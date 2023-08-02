@@ -143,20 +143,20 @@ const NavbarTest = ({color}) => {
     }}
   return (
     <div>
-    <div className={`w-full pr-4 z-[10000] top-0 left-0 relative pt-8 lg:pt-12 flex justify-between  right-0 ${bg}  transition-all h-[60px] py-4  duration-300 ease-in-out transition-all duration-500 ease-in-out navbar-padding`}
+    <div className={` navbar w-full pr-4 z-[10000] top-0 left-0 relative pt-4 sm:pt-8 md:pt-3 lg:pt-4 flex justify-between  right-0 ${bg}  transition-all h-[60px] py-4  duration-300 ease-in-out transition-all duration-500 ease-in-out navbar-padding`}
 fluid={true} rounded={true}
 
 >
 <div>
   <Link to="/">
 <img src={require('../../Assets/Trouvailler Green.png')}
-                className="mr-3 ml-4 md:ml-12 sm:ml-12 h-6 sm:h-9 lg:ml-16 2xl:ml-36 "
+                className="mr-3 ml-4 md:ml-12 sm:ml-12 h-6 md:h-9 lg:ml-16 2xl:ml-36 "
                 alt="Trouvailler Logo"
             />
 </Link>
 </div>
 <NavModel open={open} setOpen={setOpen} user={user} handleClick={handleClick}/>
-<MenuIcon sx={{fontSize:30, color: isScrolled ? 'black' : 'white'}} onClick={handleOpen} className='block md:hidden'/>
+<MenuIcon sx={{fontSize:30, color: 'white'}} onClick={handleOpen} className='block menuicon md:hidden'/>
 <div className="flex hidden md:flex md:order-2 gap-5 ml-0 lg:ml-12 items-center  nav-login-box pt-4 pr-12">
 { user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src= {user ? user.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" } className="w-[35px] h-[35px] rounded-full"/><h2 className='md:hidden'>{user.username}</h2></span></Link>
         <button className="bg-evergreen text-whiteglow text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-evergreendark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(

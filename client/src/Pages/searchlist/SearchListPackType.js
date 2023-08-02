@@ -8,6 +8,7 @@ import BarLoader from "react-spinners/BarLoader";
 import axios from "axios";
 import NavbarTest from '../components/navbar/navbar';
 import Footer from '../components/Footer/Footer';
+import PackageCard from '../components/cards/PackageCard';
 
 
 
@@ -240,54 +241,54 @@ const SearchListPackType = () => {
     <div className={`w-full animationset ${anim}  hotelsexplore`}>
         <NavbarTest />
        
-        <div className="mt-[60px] fixed top-[0] flex flex-col lg:fixed top-[60px] w-[100%] z-[49] lg:flex-row lg:gap-20 px-4 sm:px-16 md:px-20 2xl:px-40  gradient-first relative">
+        <div className=" sm:mt-2  top-[0] flex flex-col shadow-lg sticky z-[103] w-[100%] z-[49] sm:flex-row lg:gap-20 px-4 sm:px-16 md:px-20 2xl:px-40  gradient-first relative">
                 
 
-        <div className="flex justify-center lg:justify-start  w-[100%] lg:w-[30%] py-6">
-        <div className="flex items-center w-[80%] md:w-[60%] lg:w-[100%] justify-between focus:ring-0 bg-[white] focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
+        <div className="flex justify-start  w-[100%] lg:w-[30%] py-3 lg:py-6">
+        <div className="flex items-center w-[100%] sm:w-[90%] lg:w-[60%] lg:w-[100%] justify-between focus:ring-0 bg-[white] focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
           <input
-            type="text border-none outline-none w-[80%] h-[100%] text-2xl"
+            type="text border-none outline-none w-[80%] h-[100%] md:text-2xl"
             placeholder="Destination"
             id="destination"
             name="destination"
             onChange={handleSearchChange}
           />
           <SearchIcon
-            className="w=[20%] mx-3 cursor-pointer"
+            className="text-base sm:text-lg mx-3 cursor-pointer"
             onClick={handleClick}
           />
         </div>
       </div>
-      <div className="flex flex-wrap justify-center lg:justify-start w-[100%] lg:w-[70%] items-center mx-auto gap-4 py-4">
+      <div className="flex flex-wrap justify-start w-[100%] lg:w-[70%] items-center mx-auto gap-4 sm:pt-2 pb-2 lg:py-4">
         
 
       <Dropdown
     label="Categories"
     dismissOnClick={false}
-    class=" flex md:justify-center bg-[white] sm:justify-start items-center text-blacky-light px-6 py-1  shadow-sm shadow-[#00b777] rounded-full text-xs">
+    class=" flex md:justify-center bg-[white] sm:justify-start items-center text-blacky-light md:px-6 sm:py-1  shadow-sm shadow-[#00b777] rounded-full text-small">
     <Dropdown.Item>
         <input type="checkbox" className=" accent-evergreen" id="honeymoon" name="dom" value="domestic" onChange={handleCataChange}
-        /><label for="honeymoon" className="pl-3 text-base text-blacky-bright"> Domestic</label><br />
+        /><label for="honeymoon" className="pl-3 text-blacky-bright"> Domestic</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="checkbox" className="accent-evergreen" id="family" name="int" value="international" onChange={handleCataChange} 
-        /><label for="family" className="pl-3 text-base text-blacky-bright"> International</label><br />
+        /><label for="family" className="pl-3  text-blacky-bright"> International</label><br />
     </Dropdown.Item>    
     <Dropdown.Item>
         <input type="checkbox" className="accent-evergreen" id="friends" name="hon" value="honeymoon"  onChange={handleCataChange}
-        /><label for="friends" className="pl-3 text-base text-blacky-bright"> Honeymoon</label><br />
+        /><label for="friends" className="pl-3  text-blacky-bright"> Honeymoon</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="checkbox" className="accent-evergreen" id="holiday" name="hol" value="holiday" onChange={handleCataChange}
-        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Holiday</label><br />
+        /><label for="holiday" className="pl-3 text-blacky-bright"> Holiday</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="checkbox" className="accent-evergreen" id="holiday" name="fam" value="family" onChange={handleCataChange}
-        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Family</label><br />
+        /><label for="holiday" className="pl-3 text-blacky-bright"> Family</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="checkbox" className="accent-evergreen" id="holiday" name="fri" value="friends" onChange={handleCataChange}
-        /><label for="holiday" className="pl-3 text-base text-blacky-bright"> Friends</label><br />
+        /><label for="holiday" className="pl-3  text-blacky-bright"> Friends</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="submit" className="ml-3 my-2 rounded-md border border-blacky-bright text-blacky-light w-20 h-8 hover:bg-evergreen hover:text-blacky-dark duration-500 hover:border-none" value="Apply" onClick={handleClick}/>
@@ -297,22 +298,22 @@ const SearchListPackType = () => {
 <Dropdown
     label="Budget"
     dismissOnClick={false}
-    class=" flex md:justify-center bg-[white] sm:justify-start items-center text-blacky-light px-6 py-1  shadow-sm shadow-[#00b777] rounded-full text-xs">
+    class=" flex md:justify-center bg-[white] sm:justify-start items-center text-blacky-light md:px-6 sm:py-1  shadow-sm shadow-[#00b777] rounded-full text-small ">
     <Dropdown.Item>
         <input type="radio" className="accent-evergreen" id="budget1" name="budget" value="b1" onChange={handlebudgetChange}
-        />   <label for="budget1" className="pl-3 text-base text-blacky-bright"> Less than 10,000</label><br />
+        />   <label for="budget1" className="pl-3  text-blacky-bright"> Less than 10,000</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="radio" className="accent-evergreen" id="family" name="budget" value="b2" onChange={handlebudgetChange} />
-        <label for="family" className="pl-3 text-base text-blacky-bright"> 10,000 - 20,000</label><br />
+        <label for="family" className="pl-3  text-blacky-bright"> 10,000 - 20,000</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="radio" className=" accent-evergreen" id="friends" name="budget" value="b3" onChange={handlebudgetChange} />
-        <label for="friends" className="pl-3 text-base text-blacky-bright"> 20,000 - 40,000</label><br />
+        <label for="friends" className="pl-3  text-blacky-bright"> 20,000 - 40,000</label><br />
     </Dropdown.Item>
     <Dropdown.Item>
         <input type="radio" className=" accent-evergreen" id="holiday" name="budget" value="b4" onChange={handlebudgetChange} />
-        <label for="holiday" className="pl-3 text-base text-blacky-bright"> 40,000 - 50,000</label><br />
+        <label for="holiday" className="pl-3  text-blacky-bright"> 40,000 - 50,000</label><br />
     </Dropdown.Item>
 
     <div className="flex">
@@ -348,13 +349,12 @@ const SearchListPackType = () => {
         </div>
 
 
-        <div className='lg:pt-48 px-4 pb-4 pt-12 sm:px-16 md:px-20 2xl:px-40 flex flex-col gap-4'>
-                <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Packages</span><span>&#47;</span><span className='text-[black]'> {cats}</span></div>
+        <div className='pt-4 md:pt-8 lg:pt-12 px-4 pb-4 sm:px-16 md:px-20 2xl:px-40 flex flex-col gap-4'>
                            
 
                 
            
-             <h1 className='text-lg sm:text-2xl font-bold '>Search results for {cats} packages</h1>
+             <h1 className='md:text-lg sm:text-2xl font-bold '>Search results for {cats.split(',').map(cat => cat.charAt(0).toUpperCase() + cat.slice(1)).join(', ')} packages</h1>
 
 
         </div>
@@ -363,37 +363,13 @@ const SearchListPackType = () => {
           <BarLoader color={"#32fca7"} loading={loading} size={15} />
         </div>
       ) : (
-        <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap md:gap-[10%] sm:gap-[8%] md:gap-[3%] lg:gap-[2%]">
+        <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap   sm:gap-[2%] 2xl:gap-[2.6%]">
           {data.length !== 0 ?
             (<>
                     {data.map((item) => (
-              <Link to={`/list/hotel/${item._id}`} className='pb-16 w-[90%] cursor-pointer mx-auto sm:mx-0 sm:w-[45%] md:w-[31%] mb-4 card-shadow lg:w-[22%] pb-8'>
-                  <div key={item._id} className=" ">
-                  <div className="relative w-full">
-                        <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                        {item.images && item.images.length !== 0 &&<img className='w-[100%] aspect-video skeleton rounded-t-lg' src={generateUrl(item.images[0])} alt="" />
-}
-                    </div>
-                    <div className="pt-2">
-                        <div className='flex justify-between items-center'>
-                        {item.offers ? <div className="md:py-1 mx-1  flex justify-between items-center">
-                              <span className="font-bold"><span className="text-sm md:text-xl">&nbsp; {item.offerprice && item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> <span  className="text-[grey] text-xs md:text-base"><strike>{item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377; </strike></span></span>
-                                  
-                          </div>:
-                                                  <span className="font-bold"><span className="text-sm md:text-xl">&nbsp;{item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} &#8377;</span> </span>
-
-                          }
-                              <span className='mr-1 text-sm bg-[red] text-[white] px-2 py-1 rounded'>{item.offertitle}</span>
-                        </div>
-                    
-                    <h3 className='textbase md:text-lg font-medium z-[48] text-[black] px-2  '>{item.title}</h3>
-                      <span className='mx-2 text-md font-bold text-graydust-dark'>{item.location}</span>
-                      
-                    </div>
-                    
-                  </div>
-
-                </Link>
+              <div className='w-[100%] sm:w-[49%] lg:w-[32%] 2xl:w-[23%] mb-2 sm:mb-4'>
+                <PackageCard item={item} />
+              </div>
           ))}
             </>):(<h1>Sorry no packages found</h1>)
         
