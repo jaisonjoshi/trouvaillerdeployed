@@ -4,7 +4,10 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+html{
+    scroll-behavior: smooth;
+}
 .font-head{
     font-family: 'Montserrat', sans-serif !important;
 }
@@ -12,6 +15,8 @@
     font-family: 'Roboto', sans-serif !important;
 
 }
+.open-sans{
+    font-family: 'Open Sans', sans-serif  !important;}
 
 
 .preloader{
@@ -90,7 +95,16 @@ input{outline: none;}
     min-width: 3.6em !important;
     position: relative;
 }
-.card-text::after {
+.card-text-hotel{
+    word-wrap: break-word !important;
+    overflow: hidden !important;
+    max-height: 3em !important; /* (Number of lines you want visible) * (line-height) */
+    line-height: 1.5em !important;
+    height: 3em !important;
+    min-width: 3.6em !important;
+    position: relative;
+}
+.card-text::after, .card-text-hotel::after {
     content: "..."; /* Add the ellipsis */
     position: absolute; /* Position the ellipsis */
     bottom: 0; /* Place it at the bottom of the container */
@@ -189,7 +203,7 @@ nav li a {
 
 .hotel-img-card{
     position: relative;
-    background-color: green;
+    background-color: hwb(0 38% 62%);
     
 }
 .hotel-img-card:last-child{
@@ -539,7 +553,14 @@ input.interestinp::placeholder, textarea::placeholder {
     } 
 }
 
-
+@media screen and (min-width:1536px) {
+    .home .navbar .nav-login-box{
+        padding-right: 3rem !important;
+    } 
+    .home .navbar .nav-logo{
+        margin-left: 9rem !important;
+    }
+}
 
 
 @media (min-width:640px){
@@ -552,7 +573,9 @@ input.interestinp::placeholder, textarea::placeholder {
 .hotelsexplore .menuicon{
     color: black !important;
 }
-
+.detailviews .menuicon{
+    color: black !important;
+}
 
 
 
@@ -588,3 +611,14 @@ input.interestinp::placeholder, textarea::placeholder {
         width: 10px;
     }
 }
+
+.detailviews .navbar{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.detail-card-shadow{
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em !important;
+}
+
+.add-shadow{
+    box-shadow: rgba(0, 0, 0, 0.548) 0px 5px 15px 0px;}

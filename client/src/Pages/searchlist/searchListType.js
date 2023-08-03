@@ -8,6 +8,7 @@ import BarLoader from "react-spinners/BarLoader";
 import axios from "axios";
 import NavbarTest from '../components/navbar/navbar';
 import Footer from '../components/Footer/Footer';
+import HotelCard from '../components/cards/HotelCard';
 
 
 
@@ -18,13 +19,7 @@ const SearchListType = () => {
     
   
     
-  const generateUrl = (url)=>{
-    const [baseUrl, ...rest] = url.split("/upload/");
-
-  return `${baseUrl}/upload/c_fill,w_400/f_auto/q_auto/${rest.join("/upload/")}`;
-
-
-  }
+  
     
     const [anim, setAnim] = useState("hide")
     useEffect(()=>{
@@ -183,7 +178,6 @@ const SearchListType = () => {
 
   // }
   const color = "text-blacky-dark";
-  const navigate = useNavigate();
 
 
 
@@ -278,7 +272,7 @@ const SearchListType = () => {
         </div>
 
 
-        <div className='lg:pt-48 px-4 pb-4 pt-12 sm:px-16 md:px-20 2xl:px-40 flex flex-col gap-4'>
+        <div className=' px-4 sm:pb-4 pt-8 sm:pt-12 sm:px-16 md:px-20 2xl:px-40 flex flex-col gap-4'>
 {/*                 <div className='flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[black]'>{id}</span></div>
  */}                           
 
@@ -293,62 +287,11 @@ const SearchListType = () => {
           <BarLoader color={"#32fca7"} loading={loading} size={15} />
         </div>
       ) : (
-        <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap md:gap-[10%] sm:gap-[8%] md:gap-[3%] lg:gap-[2%]">
+        <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap  ">
           {data.map((itm, i) => (
-               <div key={i} className="px-1 pr-2 sm:px-2 sm:px-4  ">
-               <div
-                 className="mb-4 h-[100%] pb-3 card-shadow-1 rounded-t-lg  cursor-pointer"
-                 onClick={() => navigate(`/list/hotel/${itm._id}`)}
-               >
-                 <div className="relative w-full">
-                   <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                   {itm.images && itm.images.length !== 0 && <img
-                     className="w-[100%] aspect-video skeleton rounded-lg"
-                     src={generateUrl(itm.images[0])}
-                     alt=""
-                   />}
-                   <h3 className="hidden sm:block sm:text-base md:text-base sm:font-bold z-50 text-whiteglow px-1 md:px-3  absolute bottom-[3px] md:bottom-[10px]">
-                     {itm.title}
-                   </h3>
-                 </div>
-
-                 <h3 className="text-xs z-50 py-1 mx-1 md:mx-3 text-[black] font-semibold sm:hidden  card-text-heading ">
-                   {itm.title}
-                 </h3>
-
-                 <div className="py-1 sm:py-3 mx-1 md:mx-3 flex flex-col gap-1 items-start">
-                   <h3 className="text-2xs px-1 py-[1px] rounded md:text-base mb-0 bg-[red] text-[white]">
-                     <b>{itm.offertitle}</b>
-                   </h3>
-                   <p className="text-2xs sm:text-xs md:text-base text-graydust-medium">
-                     {itm.offerdescription}
-                   </p>
-                   <p className="text-[0.75rem] sm:text-[0.875rem] card-text my-2 textnormal">
-                     {itm.description}
-                   </p>
-                 </div>
-                 <div className=" md:py-2 mx-2 md:mx-3 flex justify-between items-center">
-                   <span className=" ">
-                     <span className="text-sm font-bold md:text-2xl pr-1">
-                       &nbsp;&#8377;{" "}
-                       {itm.offerprice &&
-                         itm.offerprice
-                           .toString()
-                           .replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}{" "}
-                     </span>
-                     <span className="text-[grey] font-bold text-xs md:text-base">
-                       <strike>
-                         &#8377;{" "}
-                         {itm.cheapestPrice &&
-                           itm.cheapestPrice
-                             .toString()
-                             .replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}{" "}
-                       </strike>
-                     </span>
-                   </span>
-                 </div>
-               </div>
-             </div>
+              <div className='w-[95%] mx-auto sm:mx-0 sm:w-[49%] lg:w-[32%] 2xl:w-[23%] mb-2 sm:mb-4'>
+              <HotelCard itm={itm} k={i} />
+              </div>
           ))}
         </div>
       )}
