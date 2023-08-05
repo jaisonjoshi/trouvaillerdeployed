@@ -412,20 +412,20 @@ input:-webkit-autofill:focus {
 }
 
 input.interestinp::placeholder, textarea::placeholder {
-    color: #858585 !important; /* Change the color to your desired value */
+    color: #ececec !important; /* Change the color to your desired value */
   }
 
   @media screen and (max-width:764px) {
    
       input.interestinp::placeholder, textarea::placeholder {
-    color: #858585 !important; /* Change the color to your desired value */
+    color: #ececec !important; /* Change the color to your desired value */
     font-size: 0.85rem;
   }
   }
   select option {
-    background-color: rgba(0, 0, 0, 0.678); /* Set the background color of the dropdown options */
+    background-color: #243847; /* Set the background color of the dropdown options */
     padding: 2px 4px !important;
-    color: rgb(187, 187, 187); /* Set the text color of the dropdown options */
+    color:#ececec; /* Set the text color of the dropdown options */
   }
 
 
@@ -621,4 +621,74 @@ input.interestinp::placeholder, textarea::placeholder {
 }
 
 .add-shadow{
-    box-shadow: rgba(0, 0, 0, 0.548) 0px 5px 15px 0px;}
+    box-shadow: rgba(0, 0, 0, 0.548) 0px 5px 15px 0px;
+    background-image: url('./Pages/Assets/gradientbg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        color: white !important;
+
+
+}
+.add-shadow h1, .add-shadow div span{
+    color: white !important;
+
+}
+.add-shadow h1{
+    margin-bottom: 5px;
+    color: white !important;
+
+}
+
+    .gradientbg{
+        background-image: url('./Pages/Assets/gradientbg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: left top;
+    }
+
+
+    @media screen and (min-width:1280px) {
+        .gradientbgreview{
+            background-image: url('./Pages/Assets/gradientbg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+    }
+.bid-card{
+    transition: all ease-in-out 0.3s;
+}
+    .bid-card:hover{
+        background-color: #00A45E !important;
+    }
+.bid-card:hover .num{
+        background-color: white !important;
+        color: #00A45E !important;
+    }  
+    .bid-card:hover .text-bid{
+        color: white !important;
+    }  
+
+    details summary::-webkit-details-marker,
+details summary::marker {
+    color: green;
+}
+
+.bgtrans{
+    background: transparent !important;
+}
+.emibg{
+    background-image: url('./Pages/Assets/emibgpic.png');
+    background-position: bottom right;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.emibggrad{
+    background-image: linear-gradient(to bottom, transparent,#23273a67, #23273aa8,#23273aab, #23273a);
+
+}
+
+.emibggrad2{
+    background-image: linear-gradient(to bottom, #23273a, #3e6655);
+}

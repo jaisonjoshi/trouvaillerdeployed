@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import NavbarTest from '../components/navbar/navbar';
 import { AuthContext } from '../components/context/AuthContext';
 import { useContext } from 'react';
+import cardavatar from '../Assets/cardavatar.png'
 
 const IntroBid = () => {
     const [anim, setAnim] = useState("hide")
@@ -15,53 +16,77 @@ const IntroBid = () => {
         window.addEventListener('load', setAnim("show"))
 
     }, [])
-    return (
-        <div className={`animationset ${anim}`}>
+    const color = "text-whiteglow"
 
-            <NavbarTest />
-            {/* Header */}
-            <div className="bg-green-slop bg-no-repeat w-full bg-cover text-left relative mt-[60px]" >
-                <div className='sm:w-1/2 p-10'>
-                    <h1 className='text-3xl font-bold'>What is Bid for today? </h1>
-                    <p className='pt-5 text-blacky-light text-sm md:text-[17px]'>Every traveller’s dreams meets reality when you can reach your destination without letting your pockets go empty. Now place bids for hotel rates at your prices and decide to travel hazel free. To simply put it on, each day we let you  bid for  hotel rooms using our 'bid for today' feature and at the end of the day your bid status will be updated on our site, letting you know whether your bid is accepted or not. For every accepted  bid you'll get to occupy those hotel rooms at the rates you've bid for. </p>
+    return (
+        <div className={`animationset ${anim} `}>
+
+            <div className=" bg-no-repeat w-full bg-cover text-left gradientbg relative home" >
+            <NavbarTest color={color}/>
+
+                <div className='flex flex-col-reverse md:flex-row pt-16 lg:pt-32'>
+                    <div className='w-[100%] md:w-[40%] 2xl:w-[50%] flex justify-center'>
+                        <div className='w-[70%] sm:w-[40%] md:w-[90%] lg:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-[40%]'>
+                        <img src={cardavatar} className='w-[100%]'/>
+
+                        </div>
+                    </div>
+                    <div className='text-[white] w-[100%] md:w-[50%] flex flex-col justify-start items-start px-4 sm:px-12 2xl:pr-60 sm:pt-12 '>
+                        <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold'>Book Your Stay for </h1><h1 className='text-[green] text-2xl sm:text-3xl lg:text-4xl font-bold lg:mt-4'>Tomorrow at Your Price</h1>
+                        <p className='py-4 lg:py-8 text-base sm:text-lg lg:text-xl'>Realize your travel dreams affordably by bidding for hotel rates. Experience seamless and hassle-free travel as you occupy rooms at your own budget-friendly bidding rates.</p>
                     {user?(
-                   <Link className="" to="/bidform"> <button className='bg-blacky-dark text-whiteglow text-lg font-bold p-5 rounded w-full mt-4 sm:w-1/2'>Bid Now</button></Link>
+                   <Link className="" to="/bidform"> <button className='bg-[#00A45E] text-whiteglow text-base sm:text-lg font-bold  rounded-full  mt-4 px-8 py-2'>Place Your Bid</button></Link>
                     ):(
-                        <Link className="" to="/login"> <button className='bg-blacky-dark text-whiteglow text-lg font-bold p-5 rounded w-full mt-4 sm:w-1/2'>Bid Now</button></Link>
+                        <Link className="" to="/login"> <button className='bg-[#00A45E] text-whiteglow text-base sm:text-lg font-bold  rounded-full  mt-4 px-8 py-2'>Place Your Bid</button></Link>
                     )}
+                    </div>
+
+                    
                 </div>
             </div>
 
-            {/* How to get started block */}
-            <div className='p-10 text-center'>
-                <h1 className='pb-5 text-center font-bold text-2xl'>How to get started? </h1>
-                <div className='sm:flex sm:gap-x-4'>
-                    <div className='mb-5 relative px-16  bg-green-slop w-full rounded text-center grid h-36 place-items-center rounded-br-lg shadow-lg shadow-graydust-normal'>
-                        <h1 className='text-lg font-semibold'>Fill out the bid form</h1>
-                        <div className='bg-whiteglow text-2xl font-extrabold absolute top-0 left-0 rounded-br-lg p-5 shadow-2xl shadow-graydust-medium'>1</div>
+            <div className='px-4 sm:px-16 md:px-20 2xl:px-60 pt-12 sm:pt-20'>
+                <h1 className='pb-5  font-bold text-[#222539] text-xl sm:text-3xl lg:text-4xl'>How to place your Bid </h1>
+                <div className='flex md:gap-[2%] my-8 sm:my-12  flex-wrap justify-center'>
+                    <div className=' bid-card  w-[100%] md:w-[48%] mb-4 xl:w-[32%]  bg-[white] border border-[2px] border-[#00A45E] w-full    rounded-[20px] shadow-lg '>
+                        <div className='flex justify-start w-full items-center gap-4 my-4 sm:my-8 px-8'>
+                            <h1 className="bg-[#00A45E] num rounded-full text-lg sm:text-2xl w-[40px] sm:w-[50px] h-[40px] sm:h-[50px] flex justify-center items-center text-[white] font-bold">1</h1>
+                            <h1 className='text-base sm:text-lg lg:text-xl font-bold text-[#222539] text-bid w-[70%]'>Fill out the Bid form</h1>
+                        </div>
+                        <p className='px-8 text-sm sm:text-base lg:text-lg pb-8 text-bid'>Just fill out the bid form with your facility requirements and the price you can afford. Personalize your stay by stating your needs and your budget.</p>
                     </div>
 
-                    <div className='mb-5 px-16 relative  bg-green-slop w-full rounded text-center grid h-36 place-items-center rounded-br-lg shadow-lg shadow-graydust-normal'>
-                        <h1 className='text-lg font-semibold'>Check your profile for bid status</h1>
-                        <div className='bg-whiteglow text-2xl font-extrabold absolute top-0 left-0 rounded-br-lg p-5 shadow-2xl shadow-graydust-medium'>2</div>
+                    <div className=' bid-card w-[100%] md:w-[48%] xl:w-[32%] mb-4  bg-[white] border border-[2px] border-[#00A45E] w-full    rounded-[20px] shadow-lg '>
+                        <div className='flex justify-start w-full items-center gap-4 my-4 sm:my-8 px-8'>
+                            <h1 className="bg-[#00A45E] rounded-full num text-2xl w-[40px] sm:w-[50px] h-[40px] sm:h-[50px] flex justify-center items-center text-[white] font-bold">2</h1>
+                            <h1 className='text-base sm:text-lg lg:text-xl font-bold text-[#222539] text-bid w-[70%]'>Check status and wait for a callback</h1>
+                        </div>
+                        <p className='px-8 text-sm sm:text-base lg:text-lg pb-8 text-bid '>Once a suitable match is found, we'll notify you through your registered WhatsApp account. Stay attentive to your profile for updates.</p>
                     </div>
 
-                    <div className='relative px-16 bg-green-slop w-full rounded text-center grid h-36 place-items-center rounded-br-lg shadow-lg shadow-graydust-normal'>
-                        <h1 className='text-lg font-semibold'>Enjoy the best hotel prices</h1>
-                        <div className='bg-whiteglow text-2xl font-extrabold absolute top-0 left-0 rounded-br-lg p-5 shadow-2xl shadow-graydust-medium'>3</div>
+                    <div className=' bid-card   w-[100%] md:w-[48%] xl:w-[32%] mb-4  bg-[white] border border-[2px] border-[#00A45E] w-full    rounded-[20px] shadow-lg '>
+                        <div className='flex justify-start w-full items-center gap-4 my-4 sm:my-8 px-8'>
+                            <h1 className="bg-[#00A45E] rounded-full num text-2xl w-[40px] sm:w-[50px] h-[40px] sm:h-[50px] flex justify-center items-center text-[white] font-bold">3</h1>
+                            <h1 className='text-base sm:text-lg lg:text-xl font-bold text-[#222539] text-bid w-[70%]'>Enjoy your stay</h1>
+                        </div>
+                        <p className='px-8 text-sm sm:text-base lg:text-lg pb-8 text-bid'>Complete your booking and enjoy your stay</p>
                     </div>
                 </div>
 
             </div>
 
             {/* FAQ block */}
-            <div className='px-10 sm:px-32 bg-graydust-extralight'>
-                <h1 className='pt-6 text-center font-bold text-2xl'>Frequently asked questions</h1>
+            <div className=' gradientbg '>
+                <div className='px-4 sm:px-16 md:px-20 2xl:px-60'>
+                <h1 className='text-[white] pt-12  sm:pt-20 md::pt-40 font-bold text-xl sm:text-3xl lg:text-4xl'>Frequently asked questions</h1>
                 <div className='py-6'>
                     <FAQ />
                 </div>
+                </div>
+                <Footer bg={"bgtrans"}/>
+
             </div>
-            <Footer/>
+
         </div>
     )
 }

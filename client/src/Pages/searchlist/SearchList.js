@@ -197,7 +197,7 @@ const SearchList = () => {
     <div className={`w-full animationset ${anim}  hotelsexplore`}>
         <NavbarTest />
        
-        <div className=" sm:mt-2  top-[0] flex flex-col shadow-lg sticky z-[103] w-[100%] z-[49] sm:flex-row lg:gap-20 px-4 sm:px-16 md:px-20 2xl:px-40  gradient-first relative">
+        <div className=" sm:mt-2  top-[0] flex flex-col shadow-lg sticky z-[103] w-[100%] z-[49] sm:flex-row lg:gap-20 px-4 sm:px-16 md:px-20 2xl:px-40  gradientbg relative">
                 
 
                 <div className="flex justify-start  w-[100%] lg:w-[30%] py-3 lg:py-6">

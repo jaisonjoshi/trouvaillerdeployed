@@ -81,7 +81,7 @@ const navigate = useNavigate()
                   <img src={cardavatar} className='w-[50%]' alt="" />
                 <div className='w-[50%] flex flex-col justify-center gap-8 px-1'><span className='font-medium 2xl:text-lg'>Now book hotels at your desired place for today<br /><br />
  
- Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-2 rounded-[10px] btn-animation font-bold shadow-lg'><button className='z-[110] relative'>Know More</button></Link></div>
+ Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-2 rounded-[15px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] relative'>Know More</button></Link></div>
               </div>
               
             </div>
@@ -99,7 +99,7 @@ const navigate = useNavigate()
                   <img src={cardavatar} className='w-[50%] xs:w-[30%] lg:w-[50%]' alt="" />
                 <div className='w-[50%] xs:w-[70%] lg:w-[50%] flex flex-col justify-center items-start gap-8 md:pl-[10%] px-1 '><span className='md:font-medium text-sm sm:text-base md:text-lg lg:text-base 2xl:text-lg'>Now book hotels at your desired place for today<br className='hidden lg:block'/><br />
  
- Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-2 rounded-[10px] btn-animation font-bold shadow-lg'><button className='z-[110] relative'>Know More</button></Link></div>
+ Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-2 rounded-[15px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] relative'>Know More</button></Link></div>
               </div>
               
             </div>
@@ -240,7 +240,7 @@ Know more
 
       <div className=' pb-12 sm:pt-20 px-4  sm:px-16 md:px-20 2xl:px-40'>
         <div className='flex w-full flex-col xl:flex-row'>
-          <div className='w-[100%] xl:w-[30%] flex  items-center xl:bg-[#93FFD1] rounded-[10px] justify-center'>
+          <div className='w-[100%] xl:w-[30%] flex  items-center  gradientbgreview xl:text-[white] rounded-[10px] justify-center'>
           <h1 className='font-bold text-xl sm:text-2xl w-full sm:text-3xl text-left xl:text-center xl:pt-7 mb-8'>What People<br className='hidden xl:block'/> Say About Us </h1>
 
           </div>

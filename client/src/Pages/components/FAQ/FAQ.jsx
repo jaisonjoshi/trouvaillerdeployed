@@ -2,9 +2,9 @@ import React from 'react'
 
 const FAQ = () => {
     return (
-        <div>
+        <div className='text-[white] text-base pl-2 sm:pl-0 sm:text-lg lg:text-xl'>
             {/* FAQ Q&A */}
-            <details className='border border-graydust-normal mt-3 p-5 rounded-md hover:shadow-graydust-normal hover:shadow-md hover:transition-all'>
+            <details className='   mt-3 p-2 sm:p-5 rounded-md  hover:shadow-md hover:transition-all'>
                 <summary>
                     {/* question */}
                     <span className='pl-3'>
@@ -13,13 +13,13 @@ const FAQ = () => {
                 </summary>
                 <div>
                     {/* answer */}
-                    <p className='pt-6 text-justify'>
+                    <p className='pt-6 text-justify text-sm sm:text-base lg:text-lg'>
                     Users can place a bid on their desired hotel or tour package through the company's website. The company then compares the bid with the current market price and informs the user if their bid has been accepted or not.
                     </p>
                 </div>
             </details>
             {/* FAQ Q&A */}
-            <details className='border border-graydust-normal mt-3 p-5 rounded-md hover:shadow-graydust-normal hover:shadow-md hover:transition-all'>
+            <details className='    mt-3 p-2 sm:p-5 rounded-md    hover:shadow-md hover:transition-all'>
                 <summary>
                     {/* question */}
                     <span className='pl-3'>
@@ -28,13 +28,13 @@ const FAQ = () => {
                 </summary>
                 <div>
                     {/* answer */}
-                    <p className='pt-6 text-justify'>
+                    <p className='pt-6 text-justify text-sm sm:text-base lg:text-lg'>
                     No, bidding is not a guaranteed way to get the hotel or tour package. It is dependent on the current market price and the competitiveness of other bids.
                     </p>
                 </div>
             </details>
             {/* FAQ Q&A */}
-            <details className='border border-graydust-normal mt-3 p-5 rounded-md hover:shadow-graydust-normal hover:shadow-md hover:transition-all'>
+            <details className='    mt-3 p-2 sm:p-5 rounded-md    hover:shadow-md hover:transition-all'>
                 <summary>
                     {/* question */}
                     <span className='pl-3'>
@@ -43,13 +43,13 @@ const FAQ = () => {
                 </summary>
                 <div>
                     {/* answer */}
-                    <p className='pt-6 text-justify'>
+                    <p className='pt-6 text-justify text-sm sm:text-base lg:text-lg'>
                     The company will notify the user via email or through their account on the company's website if their bid has been accepted.
                     </p>
                 </div>
             </details>
             {/* FAQ Q&A */}
-            <details className='border border-graydust-normal mt-3 p-5 rounded-md hover:shadow-graydust-normal hover:shadow-md hover:transition-all'>
+            <details className='    mt-3 p-2 sm:p-5 rounded-md    hover:shadow-md hover:transition-all'>
                 <summary>
                     {/* question */}
                     <span className='pl-3'>
@@ -58,13 +58,13 @@ const FAQ = () => {
                 </summary>
                 <div>
                     {/* answer */}
-                    <p className='pt-6 text-justify'>
+                    <p className='pt-6 text-justify text-sm sm:text-base lg:text-lg'>
                     Yes, users can change their bid by submitting a new bid with the updated amount.
                     </p>
                 </div>
             </details>
             {/* FAQ Q&A */}
-            <details className='border border-graydust-normal mt-3 p-5 rounded-md hover:shadow-graydust-normal hover:shadow-md hover:transition-all'>
+            <details className='    mt-3 p-2 sm:p-5 rounded-md    hover:shadow-md hover:transition-all'>
                 <summary>
                     {/* question */}
                     <span className='pl-3'>
@@ -73,13 +73,13 @@ const FAQ = () => {
                 </summary>
                 <div>
                     {/* answer */}
-                    <p className='pt-6 text-justify'>
+                    <p className='pt-6 text-justify text-sm sm:text-base lg:text-lg'>
                     Bidding can potentially result in a lower cost for the hotel or tour package, but it is not guaranteed and will depend on the current market price and the competitiveness of other bids.  
                     </p>
                 </div>
             </details>
             {/* FAQ Q&A */}
-            <details className='border border-graydust-normal mt-3 p-5 rounded-md hover:shadow-graydust-normal hover:shadow-md hover:transition-all'>
+            <details className='    mt-3 p-2 sm:p-5 rounded-md    hover:shadow-md hover:transition-all'>
                 <summary>
                     {/* question */}
                     <span className='pl-3'>
@@ -88,13 +88,13 @@ const FAQ = () => {
                 </summary>
                 <div>
                     {/* answer */}
-                    <p className='pt-6 text-justify'>
+                    <p className='pt-6 text-justify text-sm sm:text-base lg:text-lg'>
                     If the user's bid is not accepted, they can try bidding again or look into other booking options provided by the company.
                     </p>
                 </div>
             </details>
             {/* FAQ Q&A */}
-            <details className='border border-graydust-normal mt-3 p-5 rounded-md hover:shadow-graydust-normal hover:shadow-md hover:transition-all'>
+            <details className='    mt-3 p-2 sm:p-5 rounded-md    hover:shadow-md hover:transition-all'>
                 <summary>
                     {/* question */}
                     <span className='pl-3'>
@@ -103,7 +103,7 @@ const FAQ = () => {
                 </summary>
                 <div>
                     {/* answer */}
-                    <p className='pt-6 text-justify'>
+                    <p className='pt-6 text-justify text-sm sm:text-base lg:text-lg'>
                     No, bidding is free and there are no additional fees associated with it. The only cost is the cost of the hotel or tour package if the bid is accepted.
                     </p>
                 </div>

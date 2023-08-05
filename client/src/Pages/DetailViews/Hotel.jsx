@@ -2,6 +2,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import SellIcon from '@mui/icons-material/Sell';
 import {
   solid
 } from "@fortawesome/fontawesome-svg-core/import.macro";
@@ -15,6 +17,7 @@ import { useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import CloseIcon from "@mui/icons-material/Close";
 import NavbarTest from "../components/navbar/navbar";
+import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
 
 const Hotel = () => {
  
@@ -98,65 +101,48 @@ const Hotel = () => {
   }, [hote]);
   const { data: data2, loading: loadin2 } = useFetch(url);
   console.log(data2);
-
+  const [isSticky, setIsSticky] = useState(false);
+  
+  const handleScroll = () => {
+      const stickyElement = document.getElementById('sticky-element');
+      if (stickyElement) {
+        const rect = stickyElement.getBoundingClientRect();
+        setIsSticky(rect.top <= 0);
+      }
+    };
+  
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
   return (
-    <div className={`animationset ${anim}`}>
+    <div className={`animationset ${anim} open-sans detailviews`}>
       <NavbarTest />
-      <div className="mt-[60px] pt-8 px-4 sm:px-16 md:px-20 2xl:px-40">
-        <div className="flex gap-2 pt-2 text-sm sm:text-base text-graydust-medium">
-          {" "}
-          <span>Home</span>
-          <span>&#47;</span>
-          <span>Hotels</span>
-          <span>&#47;</span>
-          <span className="text-[black]">{hote.title}</span>
-        </div>
-      </div>
+      <div       id="sticky-element"
+ className={` ${isSticky ? 'add-shadow' : ''} px-4 sm:px-16 md:px-20 2xl:px-60 bg-[white] relative z-[100] py-4 mt-8 sm:mt-12 lg:mt-24 sticky top-0 `}  >
+                <h1 className='text-base sm:text-2xl lg:text-3xl font-medium sm:font-regular text-[black]'>{hote.title}</h1>
 
-      <div className="xl:flex xl:flex-row justify-start px-4 sm:px-16 md:px-20 2xl:px-40 pt-12 gap-[5%]">
-        <div className="w-[100%] xl:w-[65%] 2xl:w-[70%]  ">
+                <div className='flex gap-2 pt-2 text-xs sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[black]'>{hote.title}</span></div>
+            </div>
+      
+
+      <div className="flex flex-col lg:flex-row justify-start px-4 sm:px-16 md:px-20 2xl:px-60 pt-8 sm:pt-12 gap-[5%]">
+        <div className="w-[100%] sm:w-[70%] lg:w-[50%]  ">
           <div className="flex flex-col sm:flex-row w-[100%] gap-[10px] justify-start">
-            <div className="w-[100%] sm:w-[75%] bg-[green]">
+            <div className="w-[100%] relative ">
+              <span onClick={handleToggle} className="cursor-pointer text-sm text-white absolute top-1 right-1 bg-[#000000b0] px-3 sm:px-4 py-1 sm:py-2 rounded">More Images</span>
               {hote.images && (
                 <img
                   src={hote.images[0]}
-                  className="h-auto  w-[100%] "
+                  className="h-auto  w-[100%] rounded-[10px]"
                   alt=""
                   srcset=""
                 />
               )}
             </div>
-            <div className="flex flex-row sm:flex-col gap-[3.333333%] justify-start w-[100%] sm:w-[25%] ">
-              {hote.images &&
-                hote.images.slice(1, 4).map((itm, i) => {
-                  if (i < hote.images.length - 2) {
-                    return (
-                      <div className="h-auto sm:h-[31%] w-[31%] sm:w-full relative hotel-img-card">
-                        <img
-                          src={itm}
-                          className="sm:absolute top-0 left-0 w-[100%] h-[100%] object-cover"
-                          alt=""
-                          srcset=""
-                        />
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div
-                        className="h-auto sm:h-[31%] w-[31%] sm:w-full relative hotel-img-card"
-                        onClick={handleToggle}
-                      >
-                        <img
-                          src={itm}
-                          className="sm:absolute top-0 left-0 w-[100%] h-[100%] object-cover"
-                          alt=""
-                          srcset=""
-                        />
-                      </div>
-                    );
-                  }
-                })}
-            </div>
+            
           </div>
         </div>
         <Backdrop
@@ -167,20 +153,16 @@ const Hotel = () => {
           }}
           open={open}
         >
-          <div
-            onClick={handleClose}
-            className="absolute rounded p-1 top-20 right-20 bg-[#7bbc67]"
-          >
-            {" "}
-            <CloseIcon />
-          </div>
+          <div className="w-full relative">
+          <div onClick={handleClose} className='cursor-pointer absolute rounded-full p-1 z-[100] top-[-3rem] right-4 sm:right-8 lg:right-14 2xl:right-16 '>                        <CloseIcon className='text-[white] bg-[#0000008c] text-base  rounded'/>
+            </div>
           <Slider
-            className="w-[90%] bg-[white] py-8 mx-auto md:w-[90%]"
+            className="w-[90%] bg-[black] py-8 mx-auto md:w-[90%]"
             {...settings1}
           >
             {hote.images &&
               hote.images.map((img, i) => (
-                <div className="px-8">
+                <div className="sm:px-8">
                   <img
                     className="h-auto  w-full"
                     src={img}
@@ -190,127 +172,77 @@ const Hotel = () => {
                 </div>
               ))}
           </Slider>
+          </div>
+         
         </Backdrop>
-        <div className="pt-4 sm:pt-12 xl:pt-0 w-[100%] xl:w-[30%] 2xl:w-[25%]">
-          <div className="flex flex-col sm:border sm:border-2 rounded-[10px]  mx-auto">
-            <div className="flex flex-col items-start gap-1 px-3 sm:px-6 py-8">
-              {hote.type && (
-                <b>
-                  <span className="px-4 py-1 text-xs ml-[-10px] rounded-full bg-evergreen-tag text-blacky-light">
-                    {hote.type}
-                  </span>
-                </b>
-              )}
-         9562523642     <b>
-                <h1 className="text-xl sm:text-2xl">{hote.title}</h1>
-              </b>
-
-              <p className="text-sm sm:text-lg text-graydust-medium ">
+        <div className="pt-12 lg:pt-0 w-[90%] lg:w-[50%]">
+          <div className="flex flex-col  rounded-[10px]  mx-auto">
+            <div className="flex flex-col items-start gap-3 xl:px-6 xl:pt-4">
+            <p className="text-sm sm:text-lg  ">
                 <FontAwesomeIcon
-                  className="pr-1"
+                  className="pr-3"
                   icon={solid("location-dot")}
                 />
                 {hote.location}
               </p>
+            
+              {hote.type && <span className=' flex items-center gap-2 text-sm sm:text-xl '><BookmarksOutlinedIcon className='text-graydust-medium  text-sm sm:text-lg' />{hote.type && hote.type.charAt(0).toUpperCase() + hote.type.slice(1)}</span>}
 
-              <p className="text-blacky-light text-sm whitespace-pre-wrap	">
+             
+
+              
+
+              <p className="text-blacky-light text-lg py-4 hidden lg:block whitespace-pre-wrap	">
                 {hote.description}
               </p>
             </div>
+            <div className='flex sm:py-4  xl:px-6 mt-8 lg:mt-0 justify-between items-center'>
+                            <div className='flex flex-col items-start gap-2'>
+                                <span className='font-bold text-[10px] sm:text-xs md:text-base text-graydust-dark'>BOOK NOW</span>
+                                <a href={"https://wa.me/918129177335?text=" + text + hote.title}><button className='bg-evergreen text-white flex justify-center gap-2 items-end sm:items-center font-bold px-3 py-2 w-full text-xs md:text-[18px] rounded'><span>WhatsApp Us</span> <span className=''><WhatsAppIcon className='text-base lg:text-[24px]'/></span></button></a>
 
-            {hote.offers ? (
-              <div className="px-3 sm:px-6 ">
-                <span className="p-1 bg-[#f8d2d2] font-bold text-[red]">
-                  {hote.offertitle}
-                </span>
-                <p className="mt-2">{hote.offerdescription}</p>
-                <span>
-                  <strike className="text-[grey]">
-                    &#8377;{" "}
-                    {hote.cheapestPrice &&
-                      hote.cheapestPrice
-                        .toString()
-                        .replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}{" "}
-                  </strike>
-                  <span className="text-2xl ml-3">
-                    <b>
-                      &#8377;{" "}
-                      {hote.offerprice &&
-                        hote.offerprice
-                          .toString()
-                          .replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}{" "}
-                    </b>
-                  </span>
-                  <span className="text-sm text-[red]">per night</span>
-                </span>
-              </div>
-            ) : (
-              <h1 className="font-semibold text-xl px-6 ">
-                <span className="text-2xl ">
-                  &#8377;{" "}
-                  {hote.cheapestPrice &&
-                    hote.cheapestPrice
-                      .toString()
-                      .replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}{" "}
-                </span>
-                <span className="text-sm text-[red]">per night</span>
-              </h1>
-            )}
-            <hr className="hidden sm:block" />
-            <div className="px-3 sm:px-6 pt-6 sm:py-4">
-              <a href={"https://wa.me/918129177335?text=" + text + hote.title}>
-                <button className="bg-evergreen text-white flex justify-center gap-3 items-center font-bold px-4 py-2 rounded">
-                  <span>WhatsApp Us</span>
-                  <WhatsAppIcon />
-                </button>
-              </a>
-            </div>
+                            </div>
+                            {hote.offers ?
+
+                                (<div className='text-right'>
+                                    <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>{hote.offertitle}</span>
+                                    <p className='mt-2'>{hote.offerdescription}</p>
+                                    <span ><span className='text-2xl '><b>&#8377; {hote.offerprice} </b></span><strike className='text-[grey]'>&#8377; {hote.cheapestPrice} </strike></span><br />
+                                    <span className='text-sm text-[red]'>per night</span>
+
+                                </div>) :
+                                (<div className=' flex flex-col text-right'>
+                                    <h1 className='font-semibold text-xl sm:text-2xl lg:text-3xl open-sans sm:mb-2'>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h1>
+                                    <span className='text-graydust-dark text-[10px] sm:text-xs'>Per night</span>
+
+                                </div>)}
+
+
+                        </div>
+
+           
+          
           </div>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row px-4 sm:px-16 md:px-20 2xl:px-40 gap-[5%]">
-        <div className="flex justify-start flex-col w-[100%] lg:w-[70%] 2xl:w-[80%]  mt-20 bg-[white]">
-          <div
-            className="flex border-b border-b-2 gap-2 sm:gap-3 text-sm sm:text-lg font-bold w-full hotelNavCon sticky top-[60px] h-[70px] bg-[white] text-graydust-dark"
-            onClick={handleTabChange}
-          >
-            {hote.description && (
-              <div
-                className="px-1 sm:px-4 py-1 flex items-center nav-itm cursor-pointer desc "
-                onClick={() => handleNavigate("desc")}
-              >
-                <a className="no-underline nav-link ">Description</a>
-              </div>
-            )}
-            <div
-              className="px-1 sm:px-4 py-1  flex items-center nav-itm cursor-pointer fac"
-              onClick={() => handleNavigate("fac")}
-            >
-              <a className="no-underline nav-link">Amenities</a>
-            </div>
+      <div className="flex flex-col lg:flex-row px-4 sm:px-16 md:px-20 2xl:px-60 gap-[5%]">
+        <div className="flex justify-start flex-col w-[100%] lg:w-[70%] 2xl:w-[80%] mt-4 lg:mt-20 bg-[white]">
+        
 
-            <div
-              className=" px-1 sm:px-4 py-1 flex items-center nav-itm cursor-pointer rooms"
-              onClick={() => handleNavigate("rooms")}
-            >
-              <a className="no-underline nav-link">Rooms</a>
-            </div>
-          </div>
-
-          <div className="px-4">
+          <div className="lg:px-4">
             {hote.description && (
               <div className="py-6 nav-box" id="desc">
-                <h1 className="text-2xl font-bold mb-2">About {hote.title}</h1>
-                <p className="text-sm sm:text-base">{hote.description}</p>
+                <h1 className="text-base sm:text-xl lg:text-2xl font-bold mb-2">About {hote.title}</h1>
+                <p className="py-4 text-sm sm:text-lg">{hote.description}</p>
                 {hote.features.length !== 0 && (
                   <div className="pt-3">
-                    <h1 className="text-base sm:text-lg font-bold mb-2">
+                    <h1 className="text-sm sm:text-lg font-bold mb-2">
                       Features
                     </h1>
-                    <div className="px-2">
-                      <ul className="list-disc px-4 text-sm sm:text-base">
+                    <div className="pl-4">
+                      <ul className="list-disc px-4 text-lg">
                         {hote.features.map((itm) => (
-                          <li>{itm}</li>
+                          <li className="text-sm sm:text-base">{itm}</li>
                         ))}
                       </ul>
                     </div>
@@ -321,14 +253,14 @@ const Hotel = () => {
             {hote.facilities && (
               <div className=" nav-box" id="fac">
                 {hote.facilities.length !== 0 && (
-                  <div className="py-6">
-                    <h1 className="text-lg sm:text-xl font-bold mb-2">
+                  <div className="py-4 sm:py-6">
+                    <h1 className="text-sm sm:text-lg sm:text-xl font-bold mb-2">
                       Facilities Available
                     </h1>
-                    <div className="flex gap-4 py-2 flex-wrap">
+                    <div className="flex gap-4 py-4 flex-wrap">
                       {hote.facilities.map((itm) => (
-                        <span className="border-2 px-4 py-1 text-sm sm:text-base text-graydust-dark rounded">
-                          {itm}
+                        <span className="flex gap-2 items-center  px-4 py-1 text-sm sm:text-lg text-graydust-dark rounded">
+                          <SellIcon className="text-[14px] sm:text-[20px]" /> {itm}
                         </span>
                       ))}
                     </div>{" "}
@@ -339,15 +271,15 @@ const Hotel = () => {
             {hote.rooms && (
               <div className=" nav-box" id="rooms">
                 {hote.rooms.length !== 0 && (
-                  <div className="py-6">
-                    <h1 className="text-lg sm:text-xl font-bold mb-2">
-                      Type of Rooms
+                  <div className="sm:py-6">
+                    <h1 className="text-base sm:text-lg sm:text-xl font-bold mb-2">
+                      Available Rooms
                     </h1>
 
-                    <div className="px-2 text-sm sm:text-base">
-                      <ul className="list-none flex flex-col gap-4 px-1 sm:px-4">
+                    <div className="px-2 pb-12 sm:pb-0 text-sm sm:text-base">
+                      <ul className="list-none flex flex-wrap items-start gap-4 px-1 py-4 sm:px-4">
                         {hote.rooms.map((itm) => (
-                          <li>{itm}</li>
+                          <li className="border border-1 border-evergreen rounded px-6 py-2  text-sm sm:text-base font-semibold">{itm}</li>
                         ))}
                       </ul>
                     </div>
@@ -357,7 +289,8 @@ const Hotel = () => {
             )}
           </div>
         </div>
-        <div className="lg:w-[25%] 2xl:w-[20%] my-20 hidden lg:block">
+        {data2 != undefined &&
+              data2.length !== 0 && <div className="lg:w-[25%] 2xl:w-[20%] my-20 hidden lg:block">
           <div className="h-[70px] flex items-center pt-2">
             <h1 className="text-lg font-bold py-2 flex items-center text-graydust-dark mb-2">
               Nearby Hotels
@@ -430,7 +363,7 @@ const Hotel = () => {
                   </div>
                 ))}
           </div>
-        </div>
+        </div>}
       </div>
 
       <Footer></Footer>

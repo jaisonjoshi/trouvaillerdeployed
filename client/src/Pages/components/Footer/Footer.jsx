@@ -4,12 +4,12 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faYoutube , faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import Logo from '../../Assets/Trouvailler Green.png'
 import {Link} from 'react-router-dom'
-const Footer = () => {
+const Footer = ({bg}) => {
   return (
     <div  id="footer">
-      <footer className='bg-blacky-light p-4 '>
+      <footer className={`gradientbg ${bg} p-4 `}>
         
-       <div className=" flex w-[90%] gap-[1%] flex-wrap xl:w-[60%] mx-auto justify-between py-8 sm:py-12">
+       <div className=" flex  gap-[1%] flex-wrap mx-auto justify-between py-8 sm:py-16 px-4 sm:px-16 md:px-20 2xl:px-60">
           <div className="w-[49%] md:w-[30%]">
               <h2 className='text-[white] text-lg sm:text-lg pb-4 sm:pb-8'>Sitemap</h2>
               <ul className='flex flex-col gap-[10px]'>
@@ -45,7 +45,7 @@ const Footer = () => {
 
         <div className='border-t-2 border-graydust-medium flex justify-between items-end align-middle px-0 py-6 md:pl-6  ml-4 sm:mx-10'>
          <a href="" className='w-[25%] sm:w-[10%]'>
-            <img src={Logo} alt="Trouvailler" className='sm:w-100 xl:w-3/4'/>
+            <img src={Logo} alt="Trouvailler" className='sm:w-100 xl:w-[100px]'/>
 </a>          
          
          <div className='flex justify-evenly items-center'>

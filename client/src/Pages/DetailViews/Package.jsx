@@ -157,7 +157,7 @@ const Package = () => {
 
             >
                 <div className='w-full relative'>
-                <div onClick={handleClose} className='absolute rounded-full p-1 z-[100] top-[-3rem] right-4 sm:right-8 lg:right-14 2xl:right-16 '>                        <CloseIcon className='text-[white] bg-[#0000008c] text-base  rounded'/>
+                <div onClick={handleClose} className='cursor-pointer absolute rounded-full p-1 z-[100] top-[-3rem] right-4 sm:right-8 lg:right-14 2xl:right-16 '>                        <CloseIcon className='text-[white] bg-[#0000008c] text-base  rounded'/>
             </div>
                 <Slider className='w-[90%] bg-[black] py-8 mx-auto md:w-[90%]' {...settings1}>
                     {pack.images && pack.images.map((img, i) => (
@@ -183,7 +183,7 @@ const Package = () => {
                 <div className='w-[100%] xl:w-[50%]'>
                         {pack.images &&
                             <div className='hidden xl:block relative'>
-                                                                <span className='absolute text-base text-white top-1 px-2 py-1 rounded right-1 bg-[#000000b0]' onClick={handleToggle}>View more images</span>
+                                                                <span className='absolute text-base text-white top-1 px-2 py-1 rounded right-1 bg-[#000000b0] cursor-pointer' onClick={handleToggle}>View more images</span>
 
                                 <img src={pack.images[0]} className='w-[60%] rounded xl:w-[100%]' alt="" />
                             </div>
