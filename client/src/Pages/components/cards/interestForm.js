@@ -2,7 +2,7 @@ import SendIcon from "@mui/icons-material/Send";
 import {useState} from 'react'
 import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader";
-import intrstimg from '../../Assets/interestimg.png'
+import intrstimg from '../../Assets/interestimg.webp'
 import intimg from '../../Assets/intimg.webp'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 

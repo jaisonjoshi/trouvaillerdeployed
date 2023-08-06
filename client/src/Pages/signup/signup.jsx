@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import loginwall from '../Assets/loginwall.webp'
 import google from '../Assets/google.png'
 import axios from "axios";
 import { useContext, useState } from "react";

@@ -1,5 +1,6 @@
 const Package=require('../models/packageModel')
 const mongoose=require('mongoose')
+const PackLocations = require('../models/packLocMod')
 
 //get all workout
 //inside 'find' you can pass params if you need filtered result
@@ -79,6 +80,12 @@ const createPackage = async (req,res)=>{
         category
     
     })
+    await PackLocations.findOneAndUpdate(
+        "64cfcdf74a34e292f5ae4645",
+        { $addToSet: { 
+                  locations:{$each: locations}
+                } 
+        })
     res.status(200).json({package})}
     //res.json({mssg:'post a new workouts'})
     catch(error){

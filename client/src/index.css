@@ -336,8 +336,7 @@ button:focus {
     }
 
     .background-header{
-        /* background-image: url('https://res.cloudinary.com/difxlqrlc/image/upload/f_auto/q_auto/w_2000/v1684314478/site/bghomepic_2_xrog5p.webp'); */
-        background-image: url('./Pages/Assets/bgbody.jpg');
+        background-image: url('./Pages/Assets/bgbody.webp');
         background-size: cover;
         background-position: left;
         background-repeat: no-repeat;
@@ -466,7 +465,7 @@ input.interestinp::placeholder, textarea::placeholder {
 
 
 .card-background{
-    background-image: url('./Pages/Assets/cardbg.png');
+    background-image: url('./Pages/Assets/cardbg.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -508,24 +507,19 @@ input.interestinp::placeholder, textarea::placeholder {
 }
 
 .bid-bg{
-    background-image: url('./Pages/Assets/bidbg.png');
+    background-image: url('./Pages/Assets/bidbg.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top left ;
 }
 .emi-bg{
-    background-image: url('./Pages/Assets/emibg.png');
+    background-image: url('./Pages/Assets/emibg.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
 }
 
-.bidbg{
-    background-image: url('./Pages/Assets/bidimg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+
 
 .shadow-1{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -622,7 +616,7 @@ input.interestinp::placeholder, textarea::placeholder {
 
 .add-shadow{
     box-shadow: rgba(0, 0, 0, 0.548) 0px 5px 15px 0px;
-    background-image: url('./Pages/Assets/gradientbg.png');
+    background-image: url('./Pages/Assets/gradientbg.webp');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -641,7 +635,7 @@ input.interestinp::placeholder, textarea::placeholder {
 }
 
     .gradientbg{
-        background-image: url('./Pages/Assets/gradientbg.png');
+        background-image: url('./Pages/Assets/gradientbg.webp');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: left top;
@@ -650,7 +644,7 @@ input.interestinp::placeholder, textarea::placeholder {
 
     @media screen and (min-width:1280px) {
         .gradientbgreview{
-            background-image: url('./Pages/Assets/gradientbg.png');
+            background-image: url('./Pages/Assets/gradientbg.webp');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: left top;
@@ -679,7 +673,7 @@ details summary::marker {
     background: transparent !important;
 }
 .emibg{
-    background-image: url('./Pages/Assets/emibgpic.png');
+    background-image: url('./Pages/Assets/emibgpic.webp');
     background-position: bottom right;
     background-size: cover;
     background-repeat: no-repeat;

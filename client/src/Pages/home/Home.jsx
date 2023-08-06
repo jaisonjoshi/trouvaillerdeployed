@@ -11,8 +11,8 @@ import DestCardMob from '../components/cards/trending_dest_card_mob'
 import Emi from '../components/cards/emi'
 import InterestForm from '../components/cards/interestForm'
 import { useNavigate } from 'react-router';
-import card from '../Assets/cardbg.png'
-import cardavatar from '../Assets/cardavatar.png'
+import card from '../Assets/cardbg.webp'
+import cardavatar from '../Assets/cardavatar.webp'
 import whitelogo from '../Assets/Trouvaillerwhite.png'
 import EmiCard from '../components/cards/EmiCard';
 

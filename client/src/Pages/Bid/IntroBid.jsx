@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import NavbarTest from '../components/navbar/navbar';
 import { AuthContext } from '../components/context/AuthContext';
 import { useContext } from 'react';
-import cardavatar from '../Assets/cardavatar.png'
+import cardavatar from '../Assets/cardavatar.webp'
 
 const IntroBid = () => {
     const [anim, setAnim] = useState("hide")

@@ -1,8 +1,6 @@
 import Footer from "../components/Footer/Footer"
 import NavbarTest from "../components/navbar/navbar"
-import emipic from '../Assets/emipic.png'
-import emiBody from '../Assets/emiBody.png'
-import emimobile from '../Assets/emimobile.png'
+import emipic from '../Assets/emipic.webp'
 import InterestForm from "../components/cards/interestForm"
 
 

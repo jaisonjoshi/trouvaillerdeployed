@@ -22,6 +22,8 @@ const reviewRoutes=require('./routes/reviews')
 const authRoutes=require('./routes/auth')
 const userRoutes=require('./routes/users')
 const locationsRoutes = require('./routes/locations')
+const packlocationsRoutes = require('./routes/packlocations')
+
 const interestRoutes = require('./routes//intrestData')
 
 const cookieParser=require('cookie-parser')
@@ -85,6 +87,8 @@ app.use('/api/reviews',reviewRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
 app.use('/api/locations',locationsRoutes)
+app.use('/api/packlocations',packlocationsRoutes)
+
 app.use('/api/interests',interestRoutes)
 
 
