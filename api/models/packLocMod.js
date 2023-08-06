@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema
 
-const packLocScheme = new Scheme({
+const packLocScheme = new Schema({
     locations:{
         type:[String]
     }

@@ -9,3 +9,4 @@ router.get('/', getPackLocations)
 router.post('/', createPackLocations)
 
 router.patch('/:id', updatePackLocations)
+module.exports = router
