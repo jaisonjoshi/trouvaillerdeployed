@@ -9,6 +9,7 @@ import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import CropEasy from "../../../components/crop/CropEasy";
 import Chip from "@mui/material/Chip";
+import { Autocomplete, TextField } from "@mui/material";
 
 const NewPackage = ({ setOpen }) => {
   const [sidenavOpen, setSideNavOpen] = useState(false);
@@ -176,9 +177,29 @@ const NewPackage = ({ setOpen }) => {
 
     setOpen(false);
   };
-
+  const [openauto, setOpenauto] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [locationTags, setLocationTags] = useState([{
+    locations: ["loading"]
+}])
+  useEffect(() => {
+    if (openauto !== false) {
+       axiosInstance.get('/packlocations').then(response=>{setLocationTags(response.data)})
+      
+    }
+  }, [openauto]);
   const size = 16 / 9;
-
+  const addNewLocationTag = (e) => {
+    e.preventDefault()
+    console.log("im called")
+    const newLocation = prompt('Enter a new variable:');
+    try {
+      const response = axiosInstance.post('/api/PackLocations/64cfcdf74a34e292f5ae4645', { newLocation });
+      console.log('Location added:', response.data);
+    } catch (error) {
+      console.error('Error adding location:', error);
+    }
+  }
   return (
     <div className="new-package">
       <Navbar onclick={handlesidenavOpen} />
@@ -311,14 +332,55 @@ const NewPackage = ({ setOpen }) => {
               </div>
               <div className="form-item">
                 <label>Location tags </label>
-                <input
+                <Autocomplete
+                                open={openauto}
+                                onOpen={() => {
+                                    // only open when in focus and inputValue is not empty
+                                    if (inputValue) {
+                                      setOpenauto(true);
+                                    }
+                                  }}
+                                  onClose={() => setOpenauto(false)}
+                                  inputValue={inputValue}
+                                  onInputChange={(e, value, reason) => {
+                                    setInputValue(value);
+                              
+                                    // only open when inputValue is not empty after the user typed something
+                                    if (!value) {
+                                      setOpen(false);
+                                    }
+                                  }}
+
+                            disablePortal
+                            id="combo-box-demo"
+
+                            options={locationTags[0].locations}
+                            
+                            sx={{
+                                width:"100%",
+                                // border: "1px solid blue",
+                                "& .MuiOutlinedInput-root": {
+                                    border: "none",
+                                    borderRadius: "0",
+                                    padding: "0"
+                                },
+                                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                                    border: "none"
+                                }
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
+                {/* <input
                   type="text"
                   id="locations"
                   onChange={handleUpdateLocations}
-                />
+                /> */}
               </div>
-
-              <div className="room-btn-box">
+              <div className="flex justify-end items-center gap-4 room-btn-box">
+              <div>
+                  <button className="text-[blue]" onClick={addNewLocationTag}>Add a new location tag</button>
+                </div>
+              <div className="">
                 <button
                   onClick={handlelocationNext}
                   className="bg-[#00ff9f] px-4 py-1 rounded"
@@ -326,6 +388,8 @@ const NewPackage = ({ setOpen }) => {
                   Add Location tag
                 </button>
               </div>
+              </div>
+               
               <p className='mt-6'>Please set rating to 1 to feature this package in trending Packages</p>
 
               <div className="form-item">

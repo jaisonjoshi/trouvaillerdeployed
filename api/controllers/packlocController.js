@@ -28,10 +28,17 @@ const createPackLocations = async (req,res) => {
 }
 
 const updatePackLocations = async (req, res) => {
+    const id= req.params.id
     try{
-    const location = await PackLocations.findOneAndUpdate({_id:id},{
-        ...req.body
-    })
+        const { newLocation } = req.body;
+        if (!newLocation) {
+            return res.status(400).json({ error: 'New location is required.' });
+          }
+          const location = await PackLocations.findByIdAndUpdate(
+            id,
+            { $push: { locations: newLocation } }, // Use $push to add the new location to the locations array
+            { new: true } // Return the updated document
+          );
     res.status(200).json(location)
     }
     catch(error){
