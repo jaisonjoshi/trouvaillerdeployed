@@ -24,7 +24,7 @@ const userRoutes=require('./routes/users')
 const locationsRoutes = require('./routes/locations')
 const packlocationsRoutes = require('./routes/packlocations')
 
-const interestRoutes = require('./routes//intrestData')
+const interestRoutes = require('./routes/intrestData')
 
 const cookieParser=require('cookie-parser')
 

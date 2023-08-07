@@ -5,20 +5,20 @@ const PackLocations = require('../models/packLocMod')
 //get all workout
 //inside 'find' you can pass params if you need filtered result
 const getPackages = async(req,res)=>{
-   
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10; 
     let {min,max,destinations,category,offers,...others}=req.query;
          min = parseInt(req.query.min) || 1;
          max = parseInt(req.query.max) || 99999;
  
     const query = {}
-    query.limit=50;
     if(destinations) query.locations = {$in: [destinations]}
     if(category) query.category = {$in: category.split(',')}
     if(min) query.cheapestPrice = {$gt: min, $lt: max}
     if(max) query.cheapestPrice = {$gt: min, $lt: max}
     if(offers) query.offers = offers
     
-    const package = await Package.find(query).limit(req.query.limit).sort({createdAt: -1}).catch(err=>console.log(err))
+    const package = await Package.find(query).limit(limit).skip((page - 1) * limit).sort({createdAt: -1}).catch(err=>console.log(err))
     //console.log(query)
     res.status(200).json(package)
 

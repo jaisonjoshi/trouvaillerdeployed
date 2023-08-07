@@ -686,3 +686,12 @@ details summary::marker {
 .emibggrad2{
     background-image: linear-gradient(to bottom, #23273a, #3e6655);
 }
+
+.outn{
+    box-shadow: none !important;
+}
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+    outline: 0px !important;
+    outline-offset: 0px !important;
+    box-shadow: none !important;
+}

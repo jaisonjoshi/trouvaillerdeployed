@@ -9,6 +9,7 @@ import axios from "axios";
 import NavbarTest from '../components/navbar/navbar';
 import Footer from '../components/Footer/Footer';
 import HotelCard from '../components/cards/HotelCard';
+import { Autocomplete, TextField } from '@mui/material';
 
 
 
@@ -78,13 +79,12 @@ const SearchList = () => {
      const maxval = parseInt(maxtemp);
     setMax(maxval, ()=>reFetch());
   };
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e, newValue) => {
     //console.log("input val "+e.target.value);
-    let tar = e.target.value;
     //console.log("IN LOWER CASE "+tar.toLowerCase())
     //console.log(t.toLowerCase())
    // setSearchval(tar.toLowerCase());
-    setDestination(tar.toLowerCase());//now set the paste this to dest array upon handle click
+    setDestination(newValue.toLowerCase());//now set the paste this to dest array upon handle click
     console.log(destination);
   };
 
@@ -187,7 +187,18 @@ const SearchList = () => {
 
 
 
+  const [inputValue, setInputValue] = useState("");
 
+  const [openauto, setOpenauto] = useState(false);
+      const [locationTags, setLocationTags] = useState([{
+        locations: ["loading"]
+    }])
+    useEffect(() => {
+     if (openauto !== false) {
+        axiosInstance.get('/locations').then(response=>{setLocationTags(response.data)})
+       
+     }
+   }, [openauto]);
 
   
    
@@ -195,24 +206,55 @@ const SearchList = () => {
 
     
     <div className={`w-full animationset ${anim}  hotelsexplore`}>
-        <NavbarTest />
+        <NavbarTest /> 
        
         <div className=" sm:mt-2  top-[0] flex flex-col shadow-lg sticky z-[103] w-[100%] z-[49] sm:flex-row lg:gap-20 px-4 sm:px-16 md:px-20 2xl:px-40  gradientbg relative">
                 
 
                 <div className="flex justify-start  w-[100%] lg:w-[30%] py-3 lg:py-6">
                 <div className="flex items-center w-[100%] sm:w-[90%] lg:w-[60%] lg:w-[100%] justify-between focus:ring-0 bg-[white] focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
-                  <input
-                    type="text border-none outline-none w-[80%] h-[100%] md:text-2xl"
-                    placeholder="Destination"
-                    id="destination"
-                    name="destination"
-                    onChange={handleSearchChange}
-                  />
-                  <SearchIcon
-                    className="text-base sm:text-lg mx-3 cursor-pointer"
-                    onClick={handleClick}
-                  />
+                <Autocomplete
+                                open={openauto}
+                                onOpen={() => {
+                                    // only open when in focus and inputValue is not empty
+                                    if (inputValue) {
+                                      setOpenauto(true);
+                                    }
+                                  }}
+                                  onClose={() => setOpenauto(false)}
+                                  inputValue={inputValue}
+                                  onInputChange={(e, value, reason) => {
+                                    setInputValue(value);
+                              
+                                    // only open when inputValue is not empty after the user typed something
+                                    if (!value) {
+                                      setOpenauto(false);
+                                    }
+                                  }}
+
+                            disablePortal
+                            id="combo-box-demo"
+                            options={locationTags[0].locations}
+                            onChange={handleSearchChange}
+
+                            sx={{
+                                width:"100%",
+                                // border: "1px solid blue",
+                                "& .MuiOutlinedInput-root": {
+                                    border: "none",
+                                    outline:"none",
+                                    borderRadius: "0",
+                                    padding: "0"
+                                },
+                                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                                    border: "none",
+                                    outline:"none"
+
+                                }
+                            }}
+                            renderInput={(params) => <TextField {...params}  placeholder="Select a location"/>}
+                            />
+                 
                 </div>
               </div>
               <div className="flex flex-wrap justify-start w-[100%] lg:w-[70%] items-center mx-auto gap-4 sm:pt-2 pb-2 lg:py-4">

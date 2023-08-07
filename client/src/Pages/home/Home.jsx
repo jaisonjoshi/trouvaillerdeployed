@@ -15,14 +15,15 @@ import card from '../Assets/cardbg.webp'
 import cardavatar from '../Assets/cardavatar.webp'
 import whitelogo from '../Assets/Trouvaillerwhite.png'
 import EmiCard from '../components/cards/EmiCard';
+import { Autocomplete, TextField } from '@mui/material';
+import axios from 'axios';
 
 const Home = ({setlocation}) => {
   const [destination, setDestination] = useState("");
 const navigate = useNavigate()
-  const handleSearchChange = (e) => {
-    let tar = e.target.value;
+  const handleSearchChange = (e, newValue) => {
   
-    setDestination(tar.toLowerCase());
+    setDestination(newValue.toLowerCase());
     console.log(destination);
   };
   const handleSClick = () => {
@@ -47,7 +48,21 @@ const navigate = useNavigate()
     navigate(`/sep/${value}`);
   };
 
+  const [inputValue, setInputValue] = useState("");
 
+  const [openauto, setOpenauto] = useState(false);
+      const [locationTags, setLocationTags] = useState([{
+        locations: ["loading"]
+    }])
+    const axiosInstance = axios.create({
+      baseURL: process.env.REACT_APP_API_URL,
+  })
+    useEffect(() => {
+      if (openauto !== false) {
+         axiosInstance.get('/packlocations').then(response=>{setLocationTags(response.data)})
+        
+      }
+    }, [openauto]);
 
   return (
     <div className={`animationset ${anim}`}>
@@ -67,8 +82,50 @@ const navigate = useNavigate()
             <span className='relative z-[110] text-sm sm:text-base'>Explore</span>
           </button></Link>
           <div className='rounded-full mt-12 lg:mt-20 bg-[white] px-2 sm:py-1 flex justify-between items-center shadow-xl w-[85%] sm:w-[80%] md:w-[60%] lg:w-[90%] xl:w-[80%]'>
-          <input onChange={handleSearchChange} type="text" placeholder='Search places ' className='outline-none rounded-full sm:rounded border-none w-[70%] text-sm md:text-base focus:ring-[transparent]  focus:border-[transparent]'/>
-<button onClick={handleSClick} className='font-bold text-white bg-[#00c676] text-xs md:text-base py-[0.40rem] sm:py-2 rounded-full px-6 sm:px-4 md:px-6'>Search</button>
+{/*           <input onChange={handleSearchChange} type="text" placeholder='Search places ' className='outline-none rounded-full sm:rounded border-none w-[70%] text-sm md:text-base focus:ring-[transparent]  focus:border-[transparent]'/>
+ */}<Autocomplete
+ open={openauto}
+ onOpen={() => {
+     // only open when in focus and inputValue is not empty
+     if (inputValue) {
+       setOpenauto(true);
+     }
+   }}
+   onClose={() => setOpenauto(false)}
+   inputValue={inputValue}
+   onInputChange={(e, value, reason) => {
+     setInputValue(value);
+
+     // only open when inputValue is not empty after the user typed something
+     if (!value) {
+       setOpenauto(false);
+     }
+   }}
+
+disablePortal
+id="combo-box-demo"
+options={locationTags[0].locations}
+onChange={handleSearchChange}
+
+sx={{
+ width:"100%",
+ // border: "1px solid blue",
+ "& .MuiOutlinedInput-root": {
+     border: "none",
+     outline:"none",
+     borderRadius: "0",
+     padding: "0"
+ },
+ "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+     border: "none",
+     outline:"none"
+
+ }
+}}
+renderInput={(params) => <TextField {...params}  placeholder="Select a location"/>}
+/>
+ 
+ <button onClick={handleSClick} className='font-bold text-white bg-[#00c676] text-xs md:text-base py-[0.40rem] sm:py-2 rounded-full px-6 sm:px-4 md:px-6'>Search</button>
           </div>
           </div>
           <div className='hidden lg:flex justify-center mt-48 2xl:mt-40   w-[60%]'>

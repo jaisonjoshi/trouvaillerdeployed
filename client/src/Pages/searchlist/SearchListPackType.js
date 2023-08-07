@@ -9,8 +9,9 @@ import axios from "axios";
 import NavbarTest from '../components/navbar/navbar';
 import Footer from '../components/Footer/Footer';
 import PackageCard from '../components/cards/PackageCard';
-
-
+import { Autocomplete, TextField } from '@mui/material';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 
 const SearchListPackType = () => {
@@ -54,7 +55,9 @@ const SearchListPackType = () => {
  //   }`;
  //     const url2=`/packages`
  //---------original
-   const url3 = `/packages?destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
+ const [currentPage, setCurrentPage] = useState(1);
+
+   const url3 = `/packages?page=${currentPage}&destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
        min || 1
      }`;
  
@@ -137,11 +140,10 @@ const SearchListPackType = () => {
    
    } */
  
-      const handleSearchChange = (e) => {
-       let tar=e.target.value;
+      const handleSearchChange = (e,newValue) => {
        //console.log("IN LOWER CASE "+tar.toLowerCase())
        //console.log(t.toLowerCase())
-       setDestination(tar.toLowerCase());
+       setDestination(newValue.toLowerCase());
         console.log(destination);
                                        }
  
@@ -230,10 +232,21 @@ const SearchListPackType = () => {
  const color = "text-blacky-dark";
 
 
+ const [inputValue, setInputValue] = useState("");
+
+ const [openauto, setOpenauto] = useState(false);
+     const [locationTags, setLocationTags] = useState([{
+       locations: ["loading"]
+   }])
+   useEffect(() => {
+    if (openauto !== false) {
+       axiosInstance.get('/packlocations').then(response=>{setLocationTags(response.data)})
+      
+    }
+  }, [openauto]);
 
 
 
-  
    
   return (
 
@@ -246,17 +259,48 @@ const SearchListPackType = () => {
 
         <div className="flex justify-start  w-[100%] lg:w-[30%] py-3 lg:py-6">
         <div className="flex items-center w-[100%] sm:w-[90%] lg:w-[60%] lg:w-[100%] justify-between focus:ring-0 bg-[white] focus:ring-offset-0 focus:border-graydust-medium outline-none shadow-sm shadow-gray-500 rounded-2xl text-xs py-2 pl-3">
-          <input
-            type="text border-none outline-none w-[80%] h-[100%] md:text-2xl"
-            placeholder="Destination"
-            id="destination"
-            name="destination"
-            onChange={handleSearchChange}
-          />
-          <SearchIcon
-            className="text-base sm:text-lg mx-3 cursor-pointer"
-            onClick={handleClick}
-          />
+        <Autocomplete
+                                open={openauto}
+                                onOpen={() => {
+                                    // only open when in focus and inputValue is not empty
+                                    if (inputValue) {
+                                      setOpenauto(true);
+                                    }
+                                  }}
+                                  onClose={() => setOpenauto(false)}
+                                  inputValue={inputValue}
+                                  onInputChange={(e, value, reason) => {
+                                    setInputValue(value);
+                              
+                                    // only open when inputValue is not empty after the user typed something
+                                    if (!value) {
+                                      setOpenauto(false);
+                                    }
+                                  }}
+
+                            disablePortal
+                            id="combo-box-demo"
+                            options={locationTags[0].locations}
+                            onChange={handleSearchChange}
+
+                            sx={{
+                                width:"100%",
+                                // border: "1px solid blue",
+                                "& .MuiOutlinedInput-root": {
+                                    border: "none",
+                                    outline:"none",
+                                    borderRadius: "0",
+                                    padding: "0"
+                                },
+                                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                                    border: "none",
+                                    outline:"none"
+
+                                }
+                            }}
+                            renderInput={(params) => <TextField {...params}  placeholder="Select a location"/>}
+                            />
+          
         </div>
       </div>
       <div className="flex flex-wrap justify-start w-[100%] lg:w-[70%] items-center mx-auto gap-4 sm:pt-2 pb-2 lg:py-4">
@@ -362,7 +406,9 @@ const SearchListPackType = () => {
         <div className="loading-div">
           <BarLoader color={"#32fca7"} loading={loading} size={15} />
         </div>
-      ) : (
+      ) : (<div>
+
+      
         <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap   sm:gap-[2%] 2xl:gap-[2.6%]">
           {data.length !== 0 ?
             (<>
@@ -375,6 +421,13 @@ const SearchListPackType = () => {
         
         
         }
+        
+        </div>
+        <div className='flex justify-center py-16 gap-8'>
+        {currentPage > 1 && <button onClick={() => setCurrentPage(currentPage - 1)} className='border border-[#02c677] w-[180px] flex justify-center py-2 rounded shadow-md text-[black]  font-medium flex gap-2 items-center'><KeyboardArrowLeftIcon />  Previous Page </button>
+}
+          {data.length > 10 && <button onClick={() => setCurrentPage(currentPage + 1)} className='border border-[#02c677] w-[180px] flex justify-center  py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center'>Next Page <KeyboardArrowRightIcon /></button>
+      }  </div>
         </div>
       )}
        

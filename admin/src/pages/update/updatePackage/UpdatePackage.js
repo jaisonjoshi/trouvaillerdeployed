@@ -10,6 +10,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import CropEasy from '../../../components/crop/CropEasy';
 import Chip from '@mui/material/Chip';
+import { Autocomplete, TextField } from '@mui/material';
 
 
 const UpdatePackage =({setOpen}) => {
@@ -78,10 +79,12 @@ const UpdatePackage =({setOpen}) => {
         // Update query onKeyPress of input box
         setActivity(target.value)
       }
-      const handleUpdateLocations = ({ target }) => {
+      const [inputValue, setInputValue] = useState("");
+
+      const handleUpdateLocations = (event, newValue) => {
         // Update query onKeyPress of input box
-        setLocationitem(target.value.toLowerCase())
-      }
+        setLocationitem(newValue.toLowerCase());
+    }
 
       const handleNext = (e) => {
         e.preventDefault()
@@ -238,7 +241,28 @@ const UpdatePackage =({setOpen}) => {
        
         
     }
+    const [openauto, setOpenauto] = useState(false);
+    const [locationTags, setLocationTags] = useState([{
+      locations: ["loading"]
+  }])
+    useEffect(() => {
+      if (openauto !== false) {
+         axiosInstance.get('/packlocations').then(response=>{setLocationTags(response.data)})
+        
+      }
+    }, [openauto]);
 
+    const addNewLocationTag = (e) => {
+        e.preventDefault()
+        console.log("im called")
+        const newLocation = prompt('Enter a new variable:');
+        try {
+          const response = axiosInstance.patch('/packlocations/64cfcdf74a34e292f5ae4645', { newLocation });
+          console.log('Location added:', response.data);
+        } catch (error) {
+          console.error('Error adding location:', error);
+        }
+      }
 
     return(
         <div className="new-package">
@@ -302,14 +326,60 @@ const UpdatePackage =({setOpen}) => {
               </div>
                                 <div className="form-item">
                                     <label>Location tags</label>
-                                    <input type="text" id="locations" onChange={handleUpdateLocations} />
+                                    <Autocomplete
+                                open={openauto}
+                                onOpen={() => {
+                                    // only open when in focus and inputValue is not empty
+                                    if (inputValue) {
+                                      setOpenauto(true);
+                                    }
+                                  }}
+                                  onClose={() => setOpenauto(false)}
+                                  inputValue={inputValue}
+                                  onInputChange={(e, value, reason) => {
+                                    setInputValue(value);
+                              
+                                    // only open when inputValue is not empty after the user typed something
+                                    if (!value) {
+                                      setOpenauto(false);
+                                    }
+                                  }}
 
+                            disablePortal
+                            id="combo-box-demo"
+
+                            options={locationTags[0].locations}
+                            onChange={handleUpdateLocations}
+
+                            sx={{
+                                width:"100%",
+                                // border: "1px solid blue",
+                                "& .MuiOutlinedInput-root": {
+                                    border: "none",
+                                    borderRadius: "0",
+                                    padding: "0"
+                                },
+                                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                                    border: "none"
+                                }
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                            />
                                 </div>
                                 
-                                <div className="room-btn-box">
-                                <button onClick={handlelocationNext} className="bg-[#00ff9f] px-4 py-1 rounded">Add Location tag</button>
-
-                                </div>
+                                <div className="flex justify-end items-center gap-4 room-btn-box">
+              <div>
+                  <button className="text-[blue]" onClick={addNewLocationTag}>Add a new location tag</button>
+                </div>
+              <div className="">
+                <button
+                  onClick={handlelocationNext}
+                  className="bg-[#00ff9f] px-4 py-1 rounded"
+                >
+                  Add Location tag
+                </button>
+              </div>
+              </div>
                             
                             <div className="form-item">
                                     <label>Attractions and features</label>

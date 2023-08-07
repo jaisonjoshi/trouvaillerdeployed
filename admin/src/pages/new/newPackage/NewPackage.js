@@ -101,9 +101,11 @@ const NewPackage = ({ setOpen }) => {
     // Update query onKeyPress of input box
     setActivity(target.value);
   };
-  const handleUpdateLocations = ({ target }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleUpdateLocations = (event, newValue) => {
     // Update query onKeyPress of input box
-    setLocationitem(target.value.toLowerCase());
+    setLocationitem(newValue.toLowerCase());
   };
 
   const handleNext = (e) => {
@@ -178,7 +180,6 @@ const NewPackage = ({ setOpen }) => {
     setOpen(false);
   };
   const [openauto, setOpenauto] = useState(false);
-  const [inputValue, setInputValue] = useState("");
   const [locationTags, setLocationTags] = useState([{
     locations: ["loading"]
 }])
@@ -194,7 +195,7 @@ const NewPackage = ({ setOpen }) => {
     console.log("im called")
     const newLocation = prompt('Enter a new variable:');
     try {
-      const response = axiosInstance.post('/api/PackLocations/64cfcdf74a34e292f5ae4645', { newLocation });
+      const response = axiosInstance.patch('/packlocations/64cfcdf74a34e292f5ae4645', { newLocation });
       console.log('Location added:', response.data);
     } catch (error) {
       console.error('Error adding location:', error);
@@ -347,7 +348,7 @@ const NewPackage = ({ setOpen }) => {
                               
                                     // only open when inputValue is not empty after the user typed something
                                     if (!value) {
-                                      setOpen(false);
+                                      setOpenauto(false);
                                     }
                                   }}
 
@@ -355,7 +356,8 @@ const NewPackage = ({ setOpen }) => {
                             id="combo-box-demo"
 
                             options={locationTags[0].locations}
-                            
+                            onChange={handleUpdateLocations}
+
                             sx={{
                                 width:"100%",
                                 // border: "1px solid blue",

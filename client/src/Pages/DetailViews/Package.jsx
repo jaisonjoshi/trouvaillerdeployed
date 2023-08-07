@@ -168,10 +168,10 @@ const Package = () => {
                 </div>
             </Backdrop>
             <div       id="sticky-element"
- className={` ${isSticky ? 'add-shadow' : ''} px-4 sm:px-16 md:px-20 2xl:px-60 bg-[white] relative z-[100] py-4 mt-4 sm:mt-24 sticky top-0 `}  >
-                <h1 className='text-base sm:text-2xl lg:text-3xl font-medium sm:font-regular text-[black]'>{pack.title}</h1>
+ className={`gradientbg ${isSticky ? 'add-shadow' : ''} px-4 sm:px-16 md:px-20 2xl:px-60 bg-[white] relative z-[100] py-4 sm:py-8 sticky top-0 `}  >
+                <h1 className='text-base sm:text-2xl lg:text-2xl  font-medium sm:font-regular text-[white]'>{pack.title}</h1>
 
-                <div className='flex gap-2 pt-2 text-xs sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Tour Packages</span><span>&#47;</span><span className='text-[black]'>{pack.title}</span></div>
+                <div className='flex gap-2 pt-2 text-xs sm:text-base text-[white]'> <span>Home</span><span>&#47;</span><span>Tour Packages</span><span>&#47;</span><span className='text-[white]'>{pack.title}</span></div>
             </div>
 
 

@@ -121,10 +121,10 @@ const Hotel = () => {
     <div className={`animationset ${anim} open-sans detailviews`}>
       <NavbarTest />
       <div       id="sticky-element"
- className={` ${isSticky ? 'add-shadow' : ''} px-4 sm:px-16 md:px-20 2xl:px-60 bg-[white] relative z-[100] py-4 mt-8 sm:mt-12 lg:mt-24 sticky top-0 `}  >
-                <h1 className='text-base sm:text-2xl lg:text-3xl font-medium sm:font-regular text-[black]'>{hote.title}</h1>
+ className={` ${isSticky ? 'add-shadow' : ''} px-4 sm:px-16 md:px-20 2xl:px-60 bg-[white] relative z-[100] py-4 sm:py-8 gradientbg sticky top-0 `}  >
+                <h1 className='text-base sm:text-2xl lg:text-3xl font-bold sm:font-regular text-[white]'>{hote.title}</h1>
 
-                <div className='flex gap-2 pt-2 text-xs sm:text-base text-graydust-medium'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[black]'>{hote.title}</span></div>
+                <div className='flex gap-2 pt-2 text-xs sm:text-base text-[white]'> <span>Home</span><span>&#47;</span><span>Hotels</span><span>&#47;</span><span className='text-[white]'>{hote.title}</span></div>
             </div>
       
 
