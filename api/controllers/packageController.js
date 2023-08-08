@@ -6,7 +6,7 @@ const PackLocations = require('../models/packLocMod')
 //inside 'find' you can pass params if you need filtered result
 const getPackages = async(req,res)=>{
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 2; 
+    const limit = parseInt(req.query.limit) || 10; 
     let {min,max,destinations,category,offers,...others}=req.query;
          min = parseInt(req.query.min) || 1;
          max = parseInt(req.query.max) || 99999;

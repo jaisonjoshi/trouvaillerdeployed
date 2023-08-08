@@ -99,9 +99,6 @@ const List2_card = ({ setlocation, settype }) => {
   //   }`;
   //     const url2=`/packages`
   //---------original
-  const url3 = `/packages?destinations=${destination}&category=${cats}&max=${
-    max || 999999
-  }&min=${min || 1}`;
 
   // add url conditional code to submit button even  handler for fetching through less freq
   // let url=(destination,url1,url2,url3)=>{
@@ -124,7 +121,7 @@ const List2_card = ({ setlocation, settype }) => {
 
   //original line/
   const { data, loading, error, reFetch } = useFetch(
-    "/packages?rating=1&rating=2&rating=3"
+    "/packages?rating=1&rating=2&rating=3&limit=12"
   );
 
   //use effect

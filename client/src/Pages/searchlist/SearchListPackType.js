@@ -56,8 +56,8 @@ const SearchListPackType = () => {
  //     const url2=`/packages`
  //---------original
  const [currentPage, setCurrentPage] = useState(1);
-
-   const url3 = `/packages?page=${currentPage}&destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
+const limit =2;
+   const url3 = `/packages?page=${currentPage}&limit=${limit}&destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
        min || 1
      }`;
  
@@ -440,7 +440,7 @@ const SearchListPackType = () => {
         <div className='flex justify-center py-16 gap-8'>
         {currentPage > 1 && <button onClick={handlePrevClick} className='border border-[#02c677] w-[180px] flex justify-center py-2 rounded shadow-md text-[black]  font-medium flex gap-2 items-center'><KeyboardArrowLeftIcon />  Previous Page </button>
 }
-          {data.length == 10 && <button onClick={handleNextClick} className='border border-[#02c677] w-[180px] flex justify-center  py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center'>Next Page <KeyboardArrowRightIcon /></button>
+          {data.length == limit && <button onClick={handleNextClick} className='border border-[#02c677] w-[180px] flex justify-center  py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center'>Next Page <KeyboardArrowRightIcon /></button>
       }  </div>
         </div>
       )}

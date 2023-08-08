@@ -6,7 +6,8 @@ const Locations = require('../models/locationModel')
 //get all workout
 //inside 'find' you can pass params ifi you need filtered result
 const getHotels=async(req,res)=>{
-
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
 
     let {min,max,destinations,type,offers,vendorid,...others}=req.query;
 ///new material
@@ -14,7 +15,6 @@ const getHotels=async(req,res)=>{
          max = parseInt(req.query.max) || 99999;
 
          const query = {}
-         query.limit=50;
          if(type) query.type = type
          if(offers) query.offers = offers
          if(destinations) query.locations = {$in: [destinations]}
@@ -22,7 +22,7 @@ const getHotels=async(req,res)=>{
          if(max) query.cheapestPrice = {$gt: min, $lt: max}
          if(vendorid) query.vendorid = vendorid
   
-    const hotel=await Hotel.find(query).limit(req.query.limit).sort({createdAt: -1}).catch(err=>console.log(err))
+    const hotel=await Hotel.find(query).limit(limit).skip((page - 1) * limit).sort({createdAt: -1}).catch(err=>console.log(err))
    // console.log(query)
     res.status(200).json(hotel)
 }
