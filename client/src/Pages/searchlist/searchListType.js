@@ -9,6 +9,8 @@ import NavbarTest from '../components/navbar/navbar';
 import Footer from '../components/Footer/Footer';
 import HotelCard from '../components/cards/HotelCard';
 import { Autocomplete, TextField } from '@mui/material';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 
 
@@ -42,8 +44,9 @@ const SearchListType = () => {
   const [max, setMax] = useState(undefined);
   const [mintemp, setMintemp] = useState(undefined);
     const [maxtemp, setMaxtemp] = useState(undefined);
-  
-  const url = `/hotels?type=${id}&destinations=${destination}&max=${max || 999999}&min=${
+    const [currentPage, setCurrentPage] = useState(1);
+
+  const url = `/hotels?page=${currentPage}&type=${id}&destinations=${destination}&max=${max || 999999}&min=${
     min || 1
   }`;
   // const url2 = `/hotels`;
@@ -60,7 +63,20 @@ const SearchListType = () => {
 
   //useeffect
   const { data, loading, error, reFetch } = useFetch(url);
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      window.scrollTo(0, 0); // Scroll to top
 
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    window.scrollTo(0, 0);
+      setCurrentPage(currentPage + 1);
+       // Scroll to top
+    
+  };
   const handleClick = () => {
       // setDestination(searchval);
     reFetch(); //handleclick const for all filters,handle chage just sets values
@@ -328,12 +344,19 @@ const SearchListType = () => {
           <BarLoader color={"#32fca7"} loading={loading} size={15} />
         </div>
       ) : (
-        <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap  ">
+        <div>
+          <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap  ">
           {data.map((itm, i) => (
               <div className='w-[95%] mx-auto sm:mx-0 sm:w-[49%] lg:w-[32%] 2xl:w-[23%] mb-2 sm:mb-4'>
               <HotelCard itm={itm} k={i} />
               </div>
           ))}
+        </div>
+        <div className='flex justify-center py-16 gap-8'>
+        {currentPage > 1 && <button onClick={handlePrevClick} className='border border-[#02c677] w-[180px] flex justify-center py-2 rounded shadow-md text-[black]  font-medium flex gap-2 items-center'><KeyboardArrowLeftIcon />  Previous Page </button>
+}
+          {data.length == 10 && <button onClick={handleNextClick} className='border border-[#02c677] w-[180px] flex justify-center  py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center'>Next Page <KeyboardArrowRightIcon /></button>
+      }  </div>
         </div>
       )}
        

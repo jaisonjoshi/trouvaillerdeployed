@@ -245,6 +245,20 @@ const SearchListPackType = () => {
     }
   }, [openauto]);
 
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      window.scrollTo(0, 0); // Scroll to top
+
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    window.scrollTo(0, 0);
+      setCurrentPage(currentPage + 1);
+       // Scroll to top
+    
+  };
 
 
    
@@ -424,9 +438,9 @@ const SearchListPackType = () => {
         
         </div>
         <div className='flex justify-center py-16 gap-8'>
-        {currentPage > 1 && <button onClick={() => setCurrentPage(currentPage - 1)} className='border border-[#02c677] w-[180px] flex justify-center py-2 rounded shadow-md text-[black]  font-medium flex gap-2 items-center'><KeyboardArrowLeftIcon />  Previous Page </button>
+        {currentPage > 1 && <button onClick={handlePrevClick} className='border border-[#02c677] w-[180px] flex justify-center py-2 rounded shadow-md text-[black]  font-medium flex gap-2 items-center'><KeyboardArrowLeftIcon />  Previous Page </button>
 }
-          {data.length > 10 && <button onClick={() => setCurrentPage(currentPage + 1)} className='border border-[#02c677] w-[180px] flex justify-center  py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center'>Next Page <KeyboardArrowRightIcon /></button>
+          {data.length == 10 && <button onClick={handleNextClick} className='border border-[#02c677] w-[180px] flex justify-center  py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center'>Next Page <KeyboardArrowRightIcon /></button>
       }  </div>
         </div>
       )}

@@ -10,6 +10,8 @@ import NavbarTest from '../components/navbar/navbar';
 import Footer from '../components/Footer/Footer';
 import PackageCard from '../components/cards/PackageCard';
 import { Autocomplete, TextField } from '@mui/material';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 
 
@@ -54,7 +56,9 @@ const SearchListPack = () => {
  //   }`;
  //     const url2=`/packages`
  //---------original
-   const url3 = `/packages?destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
+ const [currentPage, setCurrentPage] = useState(1);
+
+   const url3 = `/packages?page=${currentPage}&destinations=${destination}&category=${cats}&max=${max || 999999}&min=${
        min || 1
      }`;
  
@@ -242,7 +246,20 @@ const SearchListPack = () => {
     }
   }, [openauto]);
 
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      window.scrollTo(0, 0); // Scroll to top
 
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    window.scrollTo(0, 0);
+      setCurrentPage(currentPage + 1);
+       // Scroll to top
+    
+  };
   
    
   return (
@@ -403,13 +420,19 @@ const SearchListPack = () => {
         <div className="loading-div">
           <BarLoader color={"#32fca7"} loading={loading} size={15} />
         </div>
-      ) : (
+      ) : (<div>
         <div className="px-4 py-8 sm:px-16 md:px-20 2xl:px-40 flex  flex-wrap md:gap-[10%] sm:gap-[8%] md:gap-[3%] lg:gap-[2%]">
           {data.map((item) => (
               <div className='w-[100%] sm:w-[49%] lg:w-[32%] 2xl:w-[23%] mb-2 sm:mb-4'>
               <PackageCard item={item} />
             </div>
           ))}
+</div>
+<div className='flex justify-center py-16 gap-8'>
+        {currentPage > 1 && <button onClick={handlePrevClick} className='border border-[#02c677] w-[180px] flex justify-center py-2 rounded shadow-md text-[black]  font-medium flex gap-2 items-center'><KeyboardArrowLeftIcon />  Previous Page </button>
+}
+          {data.length == 10 && <button onClick={handleNextClick} className='border border-[#02c677] w-[180px] flex justify-center  py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center'>Next Page <KeyboardArrowRightIcon /></button>
+      }  </div>
         </div>
       )}
        
