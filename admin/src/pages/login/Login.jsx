@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Logo from '../../components/assets/Green.png'
 
 import axios from "axios";
-import './login.scss'
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import { AuthContext } from "../../context/AuthContext";
@@ -49,43 +48,43 @@ const Login = () => {
  // console.log(user);
 
   return (
-    <div className="login-box">
+    <div className="w-full h-[100vh] relative">
       
-      <div className="login-con bg-[white]">
-        <div className="login-box-content">
+      <div className=" bg-[white] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] shadow-lg rounded-[10px] border py-8 px-8">
+        <div className="">
           <div className="flex justify-center mb-4">
             <img src={Logo} alt="" />
           </div>
-    <div className="login-head">
-      <h3 className="text-base">Login/SignUp</h3>
+    <div className="">
+      <h3 className="text-2xl font-medium text-center">Login as Admin</h3>
     </div>
         
-        <div className=" login-input my-8">
+        <div className=" my-8 flex flex-col gap-8 ">
           <input
             type="text"
-            className="mx-14 p-3 outline-none border border-transparent border-b-blacky-medium hover:border-b-evergreen duration-500"
+            className="mx-14 p-3 outline-none border border-b-blacky-medium hover:border-b-evergreen rounded-[5px] focus:ring-0 duration-500"
             placeholder="username"
             id="username"
             onChange={handleChange}
           />
           <input
             type="password"
-            className="mx-14 p-3 outline-none border border-transparent border-b-blacky-medium hover:border-b-evergreen duration-500"
+            className="mx-14 p-3 outline-none border  border-b-blacky-medium hover:border-b-evergreen rounded-[5px] focus:ring-0 duration-500"
             placeholder="password"
             id="password"
             onChange={handleChange}
           />
         </div>
 
-        <div className=" login-btn flex justify-center">
+        <div className=" flex flex-col  ">
           <button
             disabled={loading}
             onClick={handleClick}
-            className="px-4 py-1 bg-[#00b771] rounded text-[white]"
+            className=" mx-14 py-2 bg-[#00b771]  rounded text-[white]"
           >
             Login
           </button>
-          {error && <span>{error.message}</span>}
+          <p className="mx-14 py-2 text-xs text-[red]">{error && <span>{error.message}</span>}</p>
         </div>
 
         </div>

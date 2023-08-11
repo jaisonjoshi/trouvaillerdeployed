@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState,useEffect, lazy, Suspense } from "react";
 import ScrollToTop from "./scrollToTop/scrollToTop.js";
 import CircleLoading from "../src/Pages/components/spinningLoader/CircleLoading";
-import loadinggif from "./Pages/Assets/488.gif";
+import loadinggif from "./Pages/Assets/loadinggif.gif";
 const Home = lazy(()=>import('./Pages/home/Home'))
 const TermsAndCond = lazy(() => import("./Pages/Terms&Cond/TermsAndCond"));
 const Emipage = lazy(() => import("./Pages/emipage/Emipage.js"));
@@ -38,7 +38,7 @@ const Bidform = lazy(() => import("./Pages/bidform/bidform.jsx"));
 const LoadingScreen = () => {
   return (
     <div className="preloader">
-      <img src={loadinggif} className="w-[30px]" />
+      <img src={loadinggif} className="w-[150px]" />
       <h1 className="text-[#4f4d4db4] text-center px-16">
         Almost there, your destination is just around the corner!
       </h1>
@@ -77,7 +77,7 @@ function App() {
       <CircleLoading open={open} />
       {loading ? (
         <div className="preloader">
-          <img src={loadinggif} className="w-[30px]" />
+          <img src={loadinggif} className="w-[150px]" />
           <h1 className="text-[#4f4d4db4] text-center px-16">
             Almost there, your destination is just around the corner!
           </h1>

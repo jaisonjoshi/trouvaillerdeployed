@@ -471,8 +471,19 @@ const Packages = () => {
               <PropagateLoader color={"#32fca7"} loading={loading} size={15} />
             </div>
           ) : (
-            data != undefined &&
-            data.map((pack) => <PackageCard key={pack._id} pack={pack} />)
+            <div>
+              <div className="flex">
+              {data != undefined &&
+            data.map((pack) => <PackageCard key={pack._id} item={pack} />)}
+
+            </div>
+            <div className='flex justify-center py-16 gap-8'>
+            {currentPage > 1 && <button onClick={handlePrevClick} className='border border-[#02c677] w-[180px] flex justify-center py-2 rounded shadow-md text-[black]  font-medium flex gap-2 items-center'><KeyboardArrowLeftIcon />  Previous Page </button>
+    }
+              {data.length == limit && <button onClick={handleNextClick} className='border border-[#02c677] w-[180px] flex justify-center  py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center'>Next Page <KeyboardArrowRightIcon /></button>
+          }  </div>
+            </div>
+            
           )}
         </div>
       </div>

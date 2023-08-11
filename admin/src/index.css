@@ -58,3 +58,23 @@ h3{
   .show{
     opacity: 1 !important;
 }
+
+.card-text{
+    word-wrap: break-word !important;
+    overflow: hidden !important;
+    max-height: 4.5em !important; /* (Number of lines you want visible) * (line-height) */
+    line-height: 1.5em !important;
+    height: 4.5em !important;
+    min-width: 3.6em !important;
+    position: relative;
+}
+.card-text::after {
+    content: "..."; /* Add the ellipsis */
+    position: absolute; /* Position the ellipsis */
+    bottom: 0; /* Place it at the bottom of the container */
+    right: 0; /* Place it at the right of the container */
+    padding-left: 5ch; /* Add some space between the text and the ellipsis */
+    padding-right: 10px;
+    color: rgb(163, 163, 163);
+    background: linear-gradient(to right, transparent,white 70%, white); /* Create a fading effect for the ellipsis */
+}
