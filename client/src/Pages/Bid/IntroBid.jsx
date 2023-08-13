@@ -21,7 +21,7 @@ const IntroBid = () => {
     return (
         <div className={`animationset ${anim} `}>
 
-            <div className=" bg-no-repeat w-full bg-cover text-left gradientbg relative home" >
+            <div className=" bg-no-repeat w-full bg-cover text-left gradientbg relative home font-body" >
             <NavbarTest color={color}/>
 
                 <div className='flex flex-col-reverse md:flex-row pt-16 lg:pt-32'>
@@ -45,7 +45,7 @@ const IntroBid = () => {
                 </div>
             </div>
 
-            <div className='px-4 sm:px-16 md:px-20 2xl:px-60 pt-12 sm:pt-20'>
+            <div className='px-4 sm:px-16 md:px-20 2xl:px-60 pt-12 sm:pt-20 font-body'>
                 <h1 className='pb-5  font-bold text-[#222539] text-xl sm:text-3xl lg:text-4xl'>How to place your Bid </h1>
                 <div className='flex md:gap-[2%] my-8 sm:my-12  flex-wrap justify-center'>
                     <div className=' bid-card  w-[100%] md:w-[48%] mb-4 xl:w-[32%]  bg-[white] border border-[2px] border-[#00A45E] w-full    rounded-[20px] shadow-lg '>
@@ -76,7 +76,7 @@ const IntroBid = () => {
             </div>
 
             {/* FAQ block */}
-            <div className=' gradientbg '>
+            <div className=' gradientbg font-body'>
                 <div className='px-4 sm:px-16 md:px-20 2xl:px-60'>
                 <h1 className='text-[white] pt-12  sm:pt-20 md::pt-40 font-bold text-xl sm:text-3xl lg:text-4xl'>Frequently asked questions</h1>
                 <div className='py-6'>

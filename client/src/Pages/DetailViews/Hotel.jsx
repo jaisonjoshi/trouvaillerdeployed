@@ -1,3 +1,4 @@
+import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -118,7 +119,7 @@ const Hotel = () => {
       };
     }, []);
   return (
-    <div className={`animationset ${anim} open-sans detailviews`}>
+    <div className={`animationset ${anim}  font-body detailviews`}>
       <NavbarTest />
       <div       id="sticky-element"
  className={` ${isSticky ? 'add-shadow' : ''} px-4 sm:px-16 md:px-20 2xl:px-60 bg-[white] relative z-[100] py-4 sm:py-8 gradientbg sticky top-0 `}  >
@@ -212,7 +213,7 @@ const Hotel = () => {
 
                                 </div>) :
                                 (<div className=' flex flex-col text-right'>
-                                    <h1 className='font-semibold text-xl sm:text-2xl lg:text-3xl open-sans sm:mb-2'>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h1>
+                                    <h1 className='font-semibold text-xl sm:text-2xl lg:text-3xl sm:mb-2'>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h1>
                                     <span className='text-graydust-dark text-[10px] sm:text-xs'>Per night</span>
 
                                 </div>)}

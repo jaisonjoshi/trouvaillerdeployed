@@ -3,7 +3,7 @@ import emitag from '../../Assets/emitag.png'
 
 const EmiCard = () => {
   return (
-    <div className="emi-bg relative flex rounded-[10px] ">
+    <div className="emi-bg relative flex rounded-[10px] font-body ">
       <img src={emitag} className="w-[100px] md:w-[120px] lg:w-[150px] absolute top-8 left-4 sm:left-8 md:left-20 z-[110]" alt="" />
       <div className="absolute bg-[#00000057] top-0 left-0 right-0 bottom-0 rounded-[10px]"></div>
      <div className="px-4 sm:px-8 md:px-20 py-16 relative z-[110]">

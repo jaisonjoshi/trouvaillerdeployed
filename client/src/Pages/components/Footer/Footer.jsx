@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 const Footer = ({bg}) => {
   return (
     <div  id="footer">
-      <footer className={`gradientbg ${bg} p-4 `}>
+      <footer className={`gradientbg ${bg} p-4  font-body`}>
         
        <div className=" flex  gap-[1%] flex-wrap mx-auto justify-between py-8 sm:py-16 px-4 sm:px-16 md:px-20 2xl:px-60">
           <div className="w-[49%] md:w-[30%]">

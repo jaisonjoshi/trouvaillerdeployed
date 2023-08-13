@@ -66,7 +66,7 @@ const navigate = useNavigate()
 
   return (
     <div className={`animationset ${anim}`}>
-      <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header home">
+      <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header home font-body">
            <NavbarTest color={color}/>
              
         <div className=" absolute z-[100] top-0 left-0 right-0 h-[80vh] sm:h-[90vh] pb-20 w-full flex flex-col lg:flex-row justify-start pl-4  sm:pl-12 lg:pl-16 2xl:pl-36 items-start ">
@@ -182,7 +182,7 @@ Know more
       </div> */}
       
       {/* special offers block */}
-      <div className=' pt-6 sm:pt-12 md:pt-16 sm:pt-28 sm:pb-8  bg-[#e2e2e2] sm:bg-[white] px-4 sm:px-16 md:px-20 2xl:px-40'>
+      <div className=' pt-6 sm:pt-12 md:pt-16 sm:pt-28 sm:pb-8  bg-[#e2e2e2] sm:bg-[white] px-4 sm:px-16 md:px-20 2xl:px-40 font-body'>
           <div className='text-left'>
             <h1 className='font-bold text-xl sm:text-2xl sm:text-4xl'>Trending Destinations</h1>
             <p className='pt-2 sm:pt-4 textnormal pb-8 text-[14px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
@@ -198,7 +198,7 @@ Know more
           
         </div>
         <div className='p-7 text-center bg-[#e2e2e2]  sm:bg-[white] mb-12'>
-          <Link to="/packages" ><button className='font-medium btn-animation bg-[white]  border-[#00c676] border p-2 rounded-[10px] w-full sm:w-auto px-10 ' ><span className='relative z-[110]'>More destinations</span></button></Link>
+          <Link to="/packages" ><button className='font-medium btn-animation bg-[white]  border-[#00c676] border p-2 rounded-[10px] w-full sm:w-auto px-10 font-body' ><span className='relative z-[110]'>More destinations</span></button></Link>
         </div>
 
         <div className='px-4  sm:px-16 md:px-20 2xl:px-72'>
@@ -222,7 +222,7 @@ Know more
 
 
 
-<div className="mt-8 sm:mt-[2rem] py-2 sm:py-8 rounded-[10px] sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 ">
+<div className="mt-8 sm:mt-[2rem] py-2 sm:py-8 rounded-[10px] sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 font-body ">
         <div className="flex justify-between items-center">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
             Popular Destinations
@@ -295,7 +295,7 @@ Know more
 
 
 
-      <div className=' pb-12 sm:pt-20 px-4  sm:px-16 md:px-20 2xl:px-40'>
+      <div className=' pb-12 sm:pt-20 px-4  sm:px-16 md:px-20 2xl:px-40 font-body'>
         <div className='flex w-full flex-col xl:flex-row'>
           <div className='w-[100%] xl:w-[30%] flex  items-center  gradientbgreview xl:text-[white] rounded-[10px] justify-center'>
           <h1 className='font-bold text-xl sm:text-2xl w-full sm:text-3xl text-left xl:text-center xl:pt-7 mb-8'>What People<br className='hidden xl:block'/> Say About Us </h1>

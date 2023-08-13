@@ -269,7 +269,7 @@ useEffect(() => {
   }
 }, [openauto]);
   return (
-    <div className={`w-full animationset ${anim}  hotelsexplore`}>
+    <div className={`w-full animationset ${anim} font-body hotelsexplore`}>
       <NavbarTest color={color} />
       <div className="flex justify-start md:hidden border-t border-t-[#eaeaea] card-shadow sticky z-[49] bg-[white] top-0 left-0 right-0">
       <div className=" sm:px-12  flex gap-4 text-base   font-bold">

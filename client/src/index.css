@@ -5,18 +5,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 html{
     scroll-behavior: smooth;
 }
+body{
+    font-family: 'Lato', sans-serif !important;
+}
+
 .font-head{
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Lato', sans-serif !important;
 }
 .font-body{
-    font-family: 'Roboto', sans-serif !important;
-
+    font-family: 'Lato', sans-serif !important;
 }
-.open-sans{
-    font-family: 'Open Sans', sans-serif  !important;}
+
+    .title-font{
+        font-family: 'Lato', sans-serif !important;    }
+      
 
 
 .preloader{
@@ -353,9 +360,7 @@ button:focus {
         bottom: 0;
         background: linear-gradient(to top, transparent,  rgba(0, 0, 0, 0.719) );
       }
-  .title-font{
-    font-family: 'Open Sans', sans-serif !important;
-  }
+  
 
   
 

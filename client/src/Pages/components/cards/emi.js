@@ -5,7 +5,7 @@ import whitelogo from '../../Assets/Trouvaillerwhite.png'
 
 const Emi = () => {
   return (
-    <div className="bid-bg relative flex flex-col-reverse  md:flex-row ">
+    <div className="bid-bg relative flex flex-col-reverse  md:flex-row font-body">
     <div className="w-[100%] md:w-[60%] lg:w-[50%] text-center my-8 md:my-12 lg:my-20 ">
       <h1 className="font-bold text-[white] text-xl lg:text-2xl">Get Your Stay</h1>
       <h1 className="font-extrabold sm:mt-2 text-[black] text-2xl lg:text-4xl">At Your Price</h1>

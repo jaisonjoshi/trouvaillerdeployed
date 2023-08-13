@@ -9,7 +9,7 @@ const Emipage =()=> {
     const color = "text-whiteglow"
 
     return(
-        <div>
+        <div className="font-body">
             <div className="relative home emibg">
             <NavbarTest color={color}/>
             <div className="absolute top-0 left-0 right-0 bottom-0 emibggrad z-[56]">

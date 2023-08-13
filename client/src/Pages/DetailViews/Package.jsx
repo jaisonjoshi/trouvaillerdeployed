@@ -148,7 +148,7 @@ const Package = () => {
 
 
 
-        <div className={` animationset ${anim} bg-[white] detailviews`}>
+        <div className={` animationset ${anim} bg-[white] font-body detailviews`}>
             <Navbar />
             
             <Backdrop
@@ -229,7 +229,7 @@ const Package = () => {
 
                         </div>
 
-                        <p className='text-[17px] open-sans'>{pack.description && pack.description.split('.').slice(0, 2).join('. ') + '.'}</p>
+                        <p className='text-[17px]  '>{pack.description && pack.description.split('.').slice(0, 2).join('. ') + '.'}</p>
                         <div className='flex pt-4  justify-between items-center'>
                             <div className='flex flex-col items-start gap-2'>
                                 <span className='font-bold text-base text-graydust-dark'>BOOK NOW</span>
@@ -246,7 +246,7 @@ const Package = () => {
 
                                 </div>) :
                                 (<div className=' flex flex-col text-right'>
-                                    <h1 className='font-semibold text-3xl open-sans'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h1>
+                                    <h1 className='font-semibold text-3xl  '>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h1>
                                     <span className='text-graydust-dark text-xs'>Per person</span>
 
                                 </div>)}
@@ -287,7 +287,7 @@ const Package = () => {
 
 
 
-<div className=' px-4 sm:px-16 md:px-20 2xl:px-60 open-sans'>
+<div className=' px-4 sm:px-16 md:px-20 2xl:px-60  '>
 
 
                 <div className='flex flex-col  gap-[5%] '>
@@ -330,7 +330,7 @@ const Package = () => {
 
                                 </div>) :
                                 (<div className=' flex flex-col text-right'>
-                                    <h1 className='font-semibold text-xl sm:text-2xl lg:text-3xl open-sans sm:mb-2'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h1>
+                                    <h1 className='font-semibold text-xl sm:text-2xl lg:text-3xl   sm:mb-2'>&#8377; {pack.cheapestPrice && pack.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h1>
                                     <span className='text-graydust-dark text-[10px] sm:text-xs'>Per person</span>
 
                                 </div>)}
@@ -390,7 +390,7 @@ const Package = () => {
                                             <div className='px-2 text-base sm:text-lg'>
                                                 <ul className='list-none flex flex-wrap items-start py-4 gap-6 px-1 sm:px-4'>
                                                     {pack.activities.map((itm) => (
-                                                        <li className='flex gap-3 items-center border border-evergreen rounded-[5px] font-medium text-sm sm:text-base open-sans px-4 py-1 sm:py-2'><span><TourIcon className='text-[25px] sm:text-[30px]' sx={{ color: "#3cb500" }} /></span><span>{itm.trim()[0].toUpperCase() + itm.trim().slice(1)}</span></li>
+                                                        <li className='flex gap-3 items-center border border-evergreen rounded-[5px] font-medium text-sm sm:text-base   px-4 py-1 sm:py-2'><span><TourIcon className='text-[25px] sm:text-[30px]' sx={{ color: "#3cb500" }} /></span><span>{itm.trim()[0].toUpperCase() + itm.trim().slice(1)}</span></li>
                                                     ))}
                                                 </ul>
 
@@ -428,7 +428,7 @@ const Package = () => {
                     </div>
                    {data2 != undefined && data2.length !== 0 &&  <div className='w-[100%] my-20 rounded-[10px]  hidden lg:block bg-[white] '>
                         <div className='h-[70px] flex items-center pt-2'>
-                            <h1 className='text-lg font-bold py-2 open-sans flex items-center text-[black] mb-2'>Similar Packages</h1>
+                            <h1 className='text-lg font-bold py-2   flex items-center text-[black] mb-2'>Similar Packages</h1>
 
                         </div>
                         <div className='flex flex-col gap-8 xl:gap-16'>
