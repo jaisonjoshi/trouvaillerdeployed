@@ -10,6 +10,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import axios from "axios";
 import { Dropdown } from "flowbite-react/lib/cjs/components/Dropdown";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import { Autocomplete, TextField } from "@mui/material";
+import Footer from "../../components/footer/Footer";
+import MoodBadIcon from '@mui/icons-material/MoodBad';
 
 const Packages = () => {
   const [anim, setAnim] = useState("");
@@ -59,7 +64,9 @@ const Packages = () => {
   //   }`;
   //     const url2=`/packages`
   //---------original
-  const url3 = `/packages?destinations=${destination}&category=${cats}&max=${
+  const [currentPage, setCurrentPage] = useState(1);
+const limit = 12;
+  const url3 = `/packages?page=${currentPage}&limit=${limit}&destinations=${destination}&category=${cats}&max=${
     max || 999999
   }&min=${min || 1}`;
 
@@ -101,7 +108,6 @@ const Packages = () => {
 
     // const [cats,setCats]=useState("");
     // const [cat,setCat]=useState([]);
-
     const catstr = cat.toString();
     console.log("array to string " + catstr);
     setCats(catstr);
@@ -129,12 +135,15 @@ const Packages = () => {
       setlocation(destination);
   
   } */
-
-  const handleSearchChange = (e) => {
-    let tar = e.target.value;
+  const handleSearchChange = (e,newValue) => {
     //console.log("IN LOWER CASE "+tar.toLowerCase())
     //console.log(t.toLowerCase())
-    setDestination(tar.toLowerCase());
+    if(newValue){
+      setDestination(newValue.toLowerCase());
+
+    }else{
+      setDestination('')
+    }
     console.log(destination);
   };
 
@@ -144,7 +153,20 @@ const Packages = () => {
   //     if(checked){setCat(value)}
   //     console.log(cat);
   // }
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      window.scrollTo(0, 0); // Scroll to top
 
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    window.scrollTo(0, 0);
+      setCurrentPage(currentPage + 1);
+       // Scroll to top
+    
+  };
   const handleCataChange = (e) => {
     const { value, checked } = e.target;
 
@@ -200,6 +222,19 @@ const Packages = () => {
 
     setMaxtemp(e.target.value);
   };
+  const [inputValue, setInputValue] = useState("");
+
+  const [openauto, setOpenauto] = useState(false);
+  const [locationTags, setLocationTags] = useState([{
+    locations: ["loading"]
+}])
+
+useEffect(() => {
+  if (openauto !== false) {
+     axiosInstance.get('/packlocations').then(response=>{setLocationTags(response.data)})
+    
+  }
+}, [openauto]);
 
   const color = "text-blacky-dark";
 
@@ -209,28 +244,62 @@ const Packages = () => {
       <Sidenav isOpen={sidenavOpen} />
 
       <div className={`packages-body ${anim}`}>
+        <div className="gradientbg p-[5rem] relative z-[100000000]">
         <div className="packages-body-header">
-          <h2>Travel Packages and catalogue</h2>
+          <h2 className="text-[white] font-medium text-3xl">Travel Packages and Catalogue</h2>
           <p>Create a new package by clicking the below button</p>
-          <Link to="/packages/newpackage">Create Package</Link>
+          <Link to="/packages/newpackage" className="bg-[#00A45E] font-medium text-[white] px-4 py-2 rounded">Create Package</Link>
         </div>
-        <div className="package-search">
-          <div className="search-box">
-            <input
-              type="text"
-              placeholder="Destination"
-              id="destination"
-              name="destination"
-              onChange={handleSearchChange}
-            />
-            <SearchIcon className="search-icon" onClick={handleClick} />
+        <div className="flex w-full gap-8">
+          <div className="search-box bg-[white] w-[40%] border border-[1px] text-[white] border-[white] rounded-full flex justify-between items-center px-4">
+           
+            <Autocomplete
+                                open={openauto}
+                                onOpen={() => {
+                                    // only open when in focus and inputValue is not empty
+                                    if (inputValue) {
+                                      setOpenauto(true);
+                                    }
+                                  }}
+                                  onClose={() => setOpenauto(false)}
+                                  inputValue={inputValue}
+                                  onInputChange={(e, value, reason) => {
+                                    setInputValue(value);
+                              
+                                    // only open when inputValue is not empty after the user typed something
+                                    if (!value) {
+                                      setOpenauto(false);
+                                    }
+                                  }}
+
+                            disablePortal
+                            id="combo-box-demo"
+                            options={locationTags[0].locations}
+                            onChange={handleSearchChange}
+
+                            sx={{
+                                width:"100%",
+                                // border: "1px solid blue",
+                                "& .MuiOutlinedInput-root": {
+                                    border: "none",
+                                    outline:"none",
+                                    borderRadius: "0",
+                                    padding: "0"
+                                },
+                                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                                    border: "none",
+                                    outline:"none"
+
+                                }
+                            }}
+                            renderInput={(params) => <TextField {...params}  placeholder="Select a location"/>}
+                            />
           </div>
-        </div>
-        <div className="flex flex-wrap justify-center items-center w-[90%] md:w-[80%] mx-auto gap-4 py-4">
+       
           <Dropdown
             label="Categories"
             dismissOnClick={false}
-            class=" flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs"
+            class=" flex md:justify-center sm:justify-start items-center text-[white]  shadow-sm rounded-[5px] px-2 py-1 border border-[white] text-xs text-small"
           >
             <Dropdown.Item>
               <input
@@ -333,7 +402,7 @@ const Packages = () => {
           <Dropdown
             label="Budget"
             dismissOnClick={false}
-            class=" flex md:justify-center sm:justify-start items-center text-blacky-light  shadow-sm shadow-gray-500 rounded-2xl text-xs"
+            class=" flex md:justify-center sm:justify-start items-center text-[white]  shadow-sm border border-[white] rounded-[5px] px-2 py-1 text-xs text-small "
           >
             <Dropdown.Item>
               <input
@@ -465,16 +534,27 @@ const Packages = () => {
             </Dropdown.Item>
           </Dropdown>
         </div>
-        <div className="package-container">
+        </div>
+        <div className="package-container p-[3rem]">
           {loading ? (
             <div className="loading-div">
               <PropagateLoader color={"#32fca7"} loading={loading} size={15} />
             </div>
           ) : (
             <div>
-              <div className="flex">
+              <div >
               {data != undefined &&
-            data.map((pack) => <PackageCard key={pack._id} item={pack} />)}
+              <div>
+               {data.length == 0 ? <div className="text-[16px] flex flex-col items-center  my-12 mx-auto"><MoodBadIcon className="text-[green]"/>Sorry no packages found</div>:
+               <div className="flex flex-wrap md:gap-[10%] sm:gap-[8%] md:gap-[3%] lg:gap-[2%]">
+                    {data.map((pack) =>  <div className='w-[95%] mx-auto sm:mx-0 sm:w-[49%] lg:w-[32%] 2xl:w-[23%] mb-2 sm:mb-4'>
+                <PackageCard item={pack} key={pack._id} />
+                </div>)}
+               </div>
+                
+               } 
+                </div>
+            }
 
             </div>
             <div className='flex justify-center py-16 gap-8'>
@@ -487,6 +567,7 @@ const Packages = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

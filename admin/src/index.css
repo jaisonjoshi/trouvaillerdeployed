@@ -15,19 +15,7 @@ body{
     background-color: #FAF9F6 !important;
     color: rgb(0, 0, 0, 0.7);
 }
-h1{
-    font-size: 35px !important;
-    color: rgb(0, 0, 0);
 
-}
-h2{
-    font-size: 30px;
-    color: rgb(0, 0, 0, 0.83);
-
-}
-h3{
-    font-size: 20px;
-}
 .loading-div{
     display: flex;
     width: 100%;
@@ -77,4 +65,53 @@ h3{
     padding-right: 10px;
     color: rgb(163, 163, 163);
     background: linear-gradient(to right, transparent,white 70%, white); /* Create a fading effect for the ellipsis */
+}
+
+.imagegradient{
+    background-image: linear-gradient(to bottom, transparent, transparent, black) !important;
+
+}
+
+.gradientbg{
+    background-image: url('./components/assets/gradientbg.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+    outline: 0px !important;
+    outline-offset: 0px !important;
+    box-shadow: none !important;
+}
+
+@media  (min-width:768px){
+
+    .text-small span{
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+
+        font-size: 12px !important;
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+
+    }
+    .text-small svg{
+        width: 20px;
+    }
+}
+@media  (max-width:768px){
+
+    .text-small span{
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+
+        font-size: 11px !important;
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+
+    }
+    .text-small svg{
+        width: 10px;
+    }
 }

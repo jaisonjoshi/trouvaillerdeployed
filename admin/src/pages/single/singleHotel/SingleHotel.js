@@ -2,7 +2,7 @@ import Navbar from '../../../components/navbar/Navbar'
 import Sidenav from '../../../components/sidenav/Sidenav'
 import './singleHotel.scss'
 import h from '../../../components/assets/h.png'
-
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -16,6 +16,15 @@ import { Button } from '@mui/material'
 import Backdrop from '@mui/material/Backdrop';
 import CloseIcon from '@mui/icons-material/Close';
 import { useEffect, useState } from 'react'
+import ClipLoader from 'react-spinners/ClipLoader';
+import PermMediaIcon from '@mui/icons-material/PermMedia';
+import EmailIcon from '@mui/icons-material/Email';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
+import Footer from '../../../components/footer/Footer';
+import TourIcon from '@mui/icons-material/Tour';
+import SellIcon from '@mui/icons-material/Sell';
 const SingleHotel = () => {
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
@@ -27,6 +36,7 @@ const SingleHotel = () => {
 
     const [open, setOpen] = useState(false);
     const hotelNavCon = document.querySelector('.hotelNavCon');
+    const [vendor, setVendor] = useState(null)
 
 
     const handleClose = () => {
@@ -77,11 +87,14 @@ const SingleHotel = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const id = location.pathname.split("/")[2];
-    const { data, loading, error, reFetch } = useFetch(`/hotels/find/${id}`);
+    const { data, loading, error, reFetch } = useFetch(`/hotels/find/${id}`)
     const [clear, setClear] = useState([]);
-
     useEffect(() => {
-        setHotel(data)
+        if(data.length !== 0){
+            setHotel(data)
+            axiosInstance.get(`/user/find/${data.vendorid}`).then(response=> {setVendor(response.data);console.log(vendor)}).catch(error=>console.log("vendor fetching failed"))
+        }
+        
     }, [data])
     //console.log(data)
     const handlehotelUpdate = (id) => {
@@ -203,220 +216,190 @@ const SingleHotel = () => {
         <div className="Single-hotel">
             <Navbar onclick={handlesidenavOpen} />
             <Sidenav isOpen={sidenavOpen} />
-            <div className="singlehotel-container">
-                {loading ? ("loading ") : (
-                    <div className="singlehotel">
+            <div className='singlehotel-container'>
+            {loading ? (<div className='flex justify-center my-20'><ClipLoader /></div>) : (
 
-                        <div className='xl:flex xl:flex-row justify-start pt-12 gap-[5%]' >
-                            {/* <Slider className='w-[85%] pb-8 mx-auto md:w-[40%]' {...settings}>
-                {hote.images && hote.images.map((img,i)=>(
-                                <img className='h-auto ' src={img} key={i} alt="Car in road" />
+                <div>
+                     <Backdrop
+                            sx={{ color: '#fff', opacity: 0.1, zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                            open={open}
 
-                        ))}
-                    </Slider> */}
+                        >
+                            <div onClick={handleClose} className='absolute rounded p-1 top-40 sm:top-20 right-4 sm:right-20 bg-[#7bbc67]'>                        <CloseIcon />
+                            </div>
+                            <Slider className='w-[90%] bg-[black] py-8 mx-auto md:w-[90%]' {...settings1}>
+                                {hote.images && hote.images.map((img, i) => (
+                                    <div className='px-8'><img className='h-auto  w-full' src={img} key={i} alt="Car in road" /></div>
 
-                            <div className='w-[100%] xl:w-[65%] 2xl:w-[70%]  '>
-                                <div className='flex flex-col sm:flex-row w-[100%] gap-[10px] justify-start'>
-                                    <div className='w-[100%] sm:w-[75%] bg-[green]'>
-                                        {hote.images &&
-                                            <img src={hote.images[0]} className='h-auto  w-[100%] ' alt="" srcset="" />
-                                        }
+                                ))}
+                            </Slider>
+                        </Backdrop>
+ <div className='gradientbg pt-8 pb-8'>
+                <div className='px-20 pt-16 pb-8 text-[white] flex justify-between items-center'>
+                                <div className='flex flex-col gap-2'>
+                                    <div className='flex items-start gap-4'>
+                                    <h2 className='text-2xl font-bold text-[white]'>{hote.title}</h2>
+                                    <span className='text-[white] rounded-full bg-[#00A45E] px-4 py-1'>{hote.type && hote.type.charAt(0).toUpperCase() + hote.type.slice(1)}</span>
                                     </div>
-                                    <div className='flex flex-row sm:flex-col gap-[3.333333%] justify-start w-[100%] sm:w-[25%] '>
-                                        {hote.images &&
-                                            hote.images.slice(1, 4).map((itm, i) => {
-                                                if (i < hote.images.length - 2) {
-                                                    return (
-                                                        <div className='h-auto sm:h-[31%] w-[31%] sm:w-full relative hotel-img-card' ><img src={itm} className='sm:absolute top-0 left-0 w-[100%] h-[100%] object-cover' alt="" srcset="" /></div>
+                                    <p className=' text-base'>{hote.location}</p>
+                                </div>
+                                <div className='flex gap-8'>
+                                    <div className='flex  justify-between items-start'>
+                                        {hote.offers ?
 
-                                                    )
-                                                }
-                                                else {
-                                                    return (
-                                                        <div className='h-auto sm:h-[31%] w-[31%] sm:w-full relative hotel-img-card' onClick={handleToggle}><img src={itm} className='sm:absolute top-0 left-0 w-[100%] h-[100%] object-cover' alt="" srcset="" /></div>
+                                            (<div className=''>
+                                                <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>Flat 15% off</span>
+                                                <p className='mt-2'>Grab this offer soon</p>
+                                                <span ><span className='text-2xl '><b>&#8377; {hote.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </b></span><strike className='text-[grey]'>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike></span><br />
+                                                <span className='text-sm text-[red]'>per day</span>
 
-                                                    )
-                                                }
+                                            </div>) :
+                                            (<div className=' flex flex-col'>
+                                                <h2 className='font-semibold text-2xl  text-[white]'>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h2>
+                                                <span className=' text-xs'>Per person</span>
 
-                                            })
+                                            </div>)}
 
-                                        }
+
                                     </div>
 
+                                    <div className='flex gap-4'>
+                                        <button className='bg-[#00A45E] px-4 py-2 rounded-[10px]' onClick={() => handlehotelUpdate(id)}>Update Property</button><button className='bg-[#00A45E] px-4 py-2 rounded-[10px]' onClick={() => handlehotelDelete(id)}>Delete Property</button>
+
+                                    </div>
                                 </div>
                             </div>
-                            <Backdrop
-                                sx={{ color: '#fff', opacity: 0.1, zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                                open={open}
-
-                            >
-                                <div onClick={handleClose} className='absolute rounded p-1 top-20 right-20 bg-[#7bbc67]'>                        <CloseIcon />
+               </div>
+               {hote.images && hote.images.length > 2 &&
+                            <div className='flex flex-col sm:flex-row w-[100%] gap-[10px]  justify-start px-20 py-8'>
+                                <div className='w-[100%] sm:w-[60%] bg-[green]'>
+                                    {hote.images &&
+                                        <img src={hote.images[0]} className='h-auto  w-[100%] ' alt="" srcset="" />
+                                    }
                                 </div>
-                                <Slider className='w-[90%] bg-[white] py-8 mx-auto md:w-[90%]' {...settings1}>
-                                    {hote.images && hote.images.map((img, i) => (
-                                        <div className='px-8'><img className='h-auto  w-full' src={img} key={i} alt="Car in road" /></div>
+                                <div className='flex flex-row sm:flex-col gap-[2%] justify-start w-[100%] sm:w-[40%] '>
+                                    {hote.images &&
+                                        hote.images.slice(1, 3).map((itm, i) => (
+                                            <div className='h-auto sm:h-[49%] w-[31%] sm:w-full relative' ><img src={itm} className='sm:absolute top-0 left-0 w-[100%] h-[100%] object-cover' alt="" srcset="" />{i == 0 && <span onClick={handleToggle} className='absolute top-2 right-1 bg-[black] text-[white] cursor-pointer px-4 py-1 rounded-[10px] flex gap-3 shadow-lg'> <PermMediaIcon sx={{ fontSize: 20 }} />More Images</span>}</div>
 
+
+                                        ))
+
+                                    }
+                                </div>
+
+                            </div>
+
+                        }
+
+                        {hote.images && hote.images.length == 2 &&
+                            <div className='flex flex-col sm:flex-row w-[100%] gap-[10px]  justify-start px-20 py-8'>
+                                <div className='w-[100%] sm:w-[50%] bg-[green]'>
+                                    {hote.images &&
+                                        <img src={hote.images[0]} className='h-auto  w-[100%] ' alt="" srcset="" />
+                                    }
+                                </div>
+                                <div className='flex flex-row sm:flex-col gap-[2%] justify-start w-[100%] sm:w-[50%] '>
+                                    {hote.images &&
+                                        hote.images.slice(1, 2).map((itm, i) => (
+                                            <div className='h-auto sm:h-[100%] w-[31%] sm:w-full relative' ><img src={itm} className='sm:absolute top-0 left-0 w-[100%] h-[100%] object-cover' alt="" srcset="" />{i == 0 && <span onClick={handleToggle} className='absolute top-2 right-1 bg-[black] text-[white] cursor-pointer px-4 py-1 rounded-[10px] flex gap-3 shadow-lg'> <PermMediaIcon sx={{ fontSize: 20 }} />More Images</span>}</div>
+
+
+                                        ))
+
+                                    }
+                                </div>
+
+                            </div>
+
+                        }
+
+
+
+
+
+                        <div className='px-20 flex mb-20'>
+                           <div className='w-[50%]'>
+                           
+                            <p className='pt-8 text-lg'>Description</p>
+                            <p className='pt-2 pb-8 text-base'>{hote.description}</p>
+                            {hote.rooms && hote.rooms.length !== 0 &&
+                                <div>
+                                    <h1 className='text-lg'>Available Rooms</h1>
+                                    <div className='my-6 flex flex-wrap gap-4'> 
+                                        {hote.rooms?.map((itm)=>(
+                                            <span className='border border-[#00A45E] font-bold text-sm px-4 py-2 rounded'>{itm}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            }
+                            {hote.features && hote.features.length !== 0 &&
+                                <div>
+                                    <h1 className='text-lg'>Features</h1>
+                                    <div className='my-6 '> 
+                                        <ul className='flex flex-col gap-2'>
+                                        {hote.features?.map((itm)=>(
+                                            <li className=' text-sm flex gap-2'><TourIcon />{itm}</li>
+                                        ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                            {hote.facilities && hote.facilities.length !== 0 &&
+                                <div>
+                                    <h1 className='text-lg'>Facilities</h1>
+                                    <div className='my-6 flex flex-wrap gap-4'> 
+                                        {hote.facilities?.map((itm)=>(
+                                            <span className='border border-[#00A45E]  text-sm px-4 py-2 rounded flex gap-2'><SellIcon />{itm}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            }
+                           </div>
+                           <div className='w-[50%]'>
+                            {hote.locations && hote.locations.length !== 0 && <div className='border     rounded px-4 py-8'>
+                            <h1 className='text-lg font-medium'>Location Tags you have added</h1>
+                                <div className='py-4 flex flex-wrap'>
+                                    {hote.locations?.map((itm)=> (
+                                        <span className='flex gap-1 items-center  px-4 py-1 rounded text-[white] bg-[#00A45E]'><LocationOnOutlinedIcon sx={{fontSize:18}} className='mb-[2px]'/>{itm.charAt(0).toUpperCase() + itm.slice(1)}</span>
                                     ))}
-                                </Slider>
-                            </Backdrop>
-                            <div className='pt-4 sm:pt-12 xl:pt-0 w-[100%] xl:w-[30%] 2xl:w-[25%]'>
-                                <div className='flex flex-col sm:border sm:border-2 rounded-[10px]  mx-auto'>
+                                </div>
+                            </div>}
 
+                            {vendor !== null && <div className='border  mt-8   rounded px-4 py-8'>
+                            <h1 className='text-lg font-semibold'>Vendor Details</h1>
+                                <div className='flex my-8 gap-12'>
+                                    <div className='w-[10%]'>
+                                        <img src={vendor.img} className='w-full rounded-full' alt="" />
+                                    </div>
+                                    <div className='flex gap-2 flex-col'>
+                                        <h1 className='font-bold'>{vendor.username}</h1>
+                                        <h1 className='flex gap-2'><EmailIcon sx={{fontSize:20}}/>{vendor.email}</h1>
 
-                                    <div className='flex flex-col items-start gap-1 px-3 sm:px-6 py-8'>
+                                        <h1 className='flex gap-2'><WhatsAppIcon sx={{fontSize:20}}/>{vendor.phone}</h1>
 
-                                        {hote.type &&
-                                            <b><span className='px-4 py-1 text-xs ml-[-10px] rounded-full bg-evergreen-tag text-blacky-light'>{hote.type}</span></b>
-                                        }
-                                        <b><h1 className='text-xl sm:text-2xl'>{hote.title}</h1></b>
-
-                                        <p className='text-sm sm:text-lg text-graydust-medium '>{hote.location}</p>
-
-                                        <p className='text-blacky-light text-sm whitespace-pre-wrap	'>{hote.description}</p></div>
-
-
-
-
-                                    {
-                                        hote.offers ?
-                                            <div className='px-3 sm:px-6 '>
-                                                <span className='p-1 bg-[#f8d2d2] font-bold text-[red]'>{hote.offertitle}</span>
-                                                <p className='mt-2'>{hote.offerdescription}</p>
-                                                <span ><strike className='text-[grey]'>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </strike><span className='text-2xl ml-3'><b>&#8377; {hote.offerprice && hote.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </b></span></span>
-
-                                            </div>
-                                            :
-                                            <h1 className='font-semibold text-xl px-6 '><span className='text-2xl '>&#8377; {hote.cheapestPrice && hote.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span></h1>
-
-                                    }
-                                    <hr className='hidden sm:block my-4' />
-                                    <div className='px-3 sm:px-6  my-2 flex gap-2'>
-                                        <button className='bg-[#00ffa5] px-4 py-2 rounded-[10px]' onClick={() => handlehotelUpdate(id)}>Update Hotel</button><button className='bg-[#00ffa5] px-4 py-2 rounded-[10px]' onClick={() => handlehotelDelete(id)}>Delete hotel</button>
-
+                                    </div>
+                                    <div>
+                                        <button className='bg-[#00A45E] px-4 py-1 rounded text-[white]' onClick={()=>navigate(`/vendors/${vendor._id}`)}>View Details</button>
                                     </div>
 
                                 </div>
-                            </div>
+                            </div>}
+                               
+                           </div>
                         </div>
-                        <div className='flex flex-col lg:flex-row  gap-[5%]'>
-                            <div className='flex justify-start flex-col w-[100%]  mt-20 bg-[white]'>
-                                <div className='flex border-b border-b-2 gap-2 sm:gap-3 text-sm sm:text-lg font-bold w-full hotelNavCon sticky top-[60px] h-[70px] bg-[white] text-graydust-dark' onClick={handleTabChange}>
-                                    {hote.description && <div className='px-1 sm:px-4 py-1 flex items-center nav-itm cursor-pointer desc ' onClick={() => handleNavigate('desc')} ><a className='no-underline nav-link '>Description</a></div>
-                                    }
-                                    <div className='px-1 sm:px-4 py-1  flex items-center nav-itm cursor-pointer fac' onClick={() => handleNavigate('fac')}><a className='no-underline nav-link'>Amenities</a></div>
-
-                                    <div className=' px-1 sm:px-4 py-1 flex items-center nav-itm cursor-pointer rooms' onClick={() => handleNavigate('rooms')}><a className='no-underline nav-link' >Rooms</a></div>
-
-                                    <div className='px-1 sm:px-4 py-1  flex items-center nav-itm cursor-pointer location' onClick={() => handleNavigate('location')}><a className='no-underline nav-link' >Location</a></div>
-
-
-                                </div>
-
-                                <div className='px-4'>
-
-                                    {hote.description &&
-                                        <div className='py-6 nav-box' id="desc">
-                                            <h2 className='text-xl font-bold mb-2'>About {hote.title}</h2>
-                                            <p className='text-sm'>{hote.description}</p>
-                                            {hote.features.length !== 0 &&
-                                                <div className='pt-3'>
-                                                    <h3 className='text-base sm:text-lg font-bold mb-2'>Features</h3>
-                                                    <div className='px-2'>
-                                                        <ul className='list-disc px-4 text-sm'>
-                                                            {hote.features.map((itm) => (
-                                                                <li>{itm}</li>
-                                                            ))}
-                                                        </ul>
-
-                                                    </div>
-
-                                                </div>
-                                            }
-
-                                        </div>}
-                                    {hote.facilities &&
-                                        <div className=' nav-box' id="fac">
-                                            {hote.facilities.length !== 0 &&
-                                                <div className='py-6'>
-                                                    <h2 className='text-lg sm:text-xl font-bold mb-2'>Facilities Available</h2>
-                                                    <div className='flex gap-4 py-2 flex-wrap'>
-                                                        {hote.facilities.map((itm) => (
-                                                            <span className='border-2 px-4 py-1 text-sm sm:text-base text-graydust-dark rounded'>{itm}</span>
-                                                        ))}
-                                                    </div> </div>}
-                                        </div>
-
-
-
-                                    }
-                                    {hote.rooms &&
-                                        <div className=' nav-box' id="rooms">
-                                            {
-                                                hote.rooms.length !== 0 &&
-                                                <div className='py-6'>
-                                                    <h2 className='text-lg sm:text-xl font-bold mb-2'>Type of Rooms</h2>
-
-                                                    <div className='px-2 text-sm'>
-                                                        <ul className='list-none flex flex-col gap-4 px-1 sm:px-4'>
-                                                            {hote.rooms.map((itm) => (
-                                                                <li>{itm}</li>
-                                                            ))}
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            }                               </div>
-                                    }
-
-
-                                </div>
-
-                            </div>
-
-
-
-
-
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                )}
+                </div>
+              
+               
+               
+               
+               )}
             </div>
 
 
 
 
-
+<Footer />
         </div>
     )
 }

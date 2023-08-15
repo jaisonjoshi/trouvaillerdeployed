@@ -6,6 +6,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useNavigate ,useLocation} from "react-router-dom";
 import useFetch from '../../hooks/useFetch'
+import HotelCard from '../../components/hotelCard/HotelCard'
 
 const VendorDetails = () => {
     const [anim, setAnim] = useState("")
@@ -26,21 +27,31 @@ const VendorDetails = () => {
     const id = location.pathname.split("/")[2];
     const [vendor, setVendor] = useState({})
     const {data, loading, error } = useFetch(`/user/find/${id}`)
-    const [hotels, setHotels] = useState([])
+    const [hotels, setHotels] = useState(null)
     const {data : data2 } = useFetch(`/hotels?vendorid=${id}`)
     useEffect(()=> {
         setHotels(data2)
+        console.log(hotels)
     }, [data2])
     console.log(hotels)
     useEffect(()=>{
         setVendor(data)
     },[data])
     const vendorDelete = async (id) => {
-    
-        if(window.confirm("Delete this user ?") == true) {
-          await axiosInstance.delete(`/user/${id}`);
-          navigate('/')
+        if(hotels !== null){
+            if(hotels.length == 0){
+                if(window.confirm("Delete this user ?") == true) {
+                    await axiosInstance.delete(`/user/${id}`);
+                    navigate('/')
+                  }
+                  
+            }
+            else{
+                window.alert("Please note that vendor removal is only possible if the vendor does not own any properties. In order to proceed with vendor deletion, all properties associated with this vendor must either be deleted or transferred to a different vendor account.")
+              }
+            
         }
+        
       }
 
     return(
@@ -60,42 +71,18 @@ const VendorDetails = () => {
                         <span className='text-2xl'>{vendor.username}</span>
                         <span className='text-lg'>E-mail : {vendor.email}</span>
                         <span className='text-lg'>Phone : {vendor.phone}</span>
+                        <span className='text-lg'>Vendor ID : {vendor._id}</span>
 
 
                     </div>
                 </div>
                 <div>
                     <h1 className='text-3xl'>Properties</h1>
-                    <div className=" py-8 flex  flex-wrap md:gap-[10%] sm:gap-[8%] md:gap-[3%] lg:gap-[2%]">
+                    <div className=" py-8 flex  flex-wrap gap-[3%]">
           {data2 && data2.map((item) => (
-              <Link to={`/hotels/${item._id}`} className='pb-16 w-[90%] cursor-pointer mx-auto sm:mx-0 sm:w-[45%] md:w-[31%] mb-4 shadow-lg lg:w-[22%] pb-8'>
-                  <div key={item._id} className=" ">
-                  <div className="relative w-full">
-                        <div className="absolute top-0 left-0 right-0 bottom-0 z-40 rounded bg-gradient-to-b from-transparent via-transparent to-black"></div>
-                        <img className='w-[100%] aspect-video skeleton rounded-t-lg' src={item.images[0]} alt="" />
-
-                    </div>
-                    <h3 className='text-base md:text-lg pt-2 font-medium z-[48] text-[black] px-2  '>{item.title}</h3>
-                    <p className='mx-2 font-bold text-graydust-dark text-sm'>{item.location}</p>
-                    <p className='mx-2 text-[gray] text-xs sm:text-sm card-text'>{item.description}</p>
-                    <div className="pt-2">
-                        <div className='flex justify-between items-center'>
-                        {item.offers ? <div className='flex justify-between items-center'><div className="md:py-1 mx-1  flex justify-between items-center">
-                              <span className="font-bold"><span className="text-base md:text-xl">&nbsp; &#8377; {item.offerprice && item.offerprice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> <span  className="text-[grey] text-2xs md:text-base"><strike>&#8377; {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}  </strike></span></span>
-                                  
-                          </div>                              <span className='mr-1 text-2xs bg-[red] text-[white] px-2 py-1 rounded'>{item.offertitle}</span></div>
-:
-                                                  <span className="font-bold"><span className="text-base md:text-xl">&nbsp; &#8377; {item.cheapestPrice && item.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")} </span> </span>
-
-                          }
-                        </div>
-                    
-                      
-                    </div>
-                    
-                  </div>
-
-                </Link>
+             <div className='w-[30%]'>
+                <HotelCard itm={item} k={item._id}/>
+             </div>
           ))}
         </div>
 

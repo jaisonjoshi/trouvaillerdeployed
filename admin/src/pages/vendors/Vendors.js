@@ -6,6 +6,7 @@ import DataTable from '../../components/dataTable/DataTable';
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react'
 import useFetch from '../../hooks/useFetch';
+import Footer from '../../components/footer/Footer';
 
 
 const Vendors =() => {
@@ -32,20 +33,23 @@ const navigate=useNavigate()
             <Sidenav isOpen={sidenavOpen}/>
 
     
-                <div className="vendorlist-body">
-                   <div className='flex justify-between'>   
-                   <h2>List of Vendors </h2><br />
+                <div className="vendorlist-body mb-8">
+                   <div className='flex justify-between gradientbg py-16 px-20'>   
+                   <h2 className='text-2xl text-[white]'>List of Vendors </h2><br />
                     <button onClick={createVendor} className="px-4 py-1 bg-[#00b771] rounded text-[white]"> Add Vendor</button>
                    </div>
                          
-                         
-                  {vendors != undefined && <DataTable row={vendors} usertype={"vendor"}/>}
+                         <div className='px-20'>
+                         {vendors != undefined && <DataTable row={vendors} usertype={"vendor"}/>}
+
+
+                         </div>
                 </div>
                 
     
     
                 
-                
+                <Footer />
             </div>
         )
     

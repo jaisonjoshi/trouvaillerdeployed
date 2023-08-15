@@ -11,6 +11,7 @@ import {useState, useEffect} from 'react'
 import useFetch from '../../hooks/useFetch';
 
 import Loader from '../../components/loading/Loading';
+import Footer from '../../components/footer/Footer';
 const Home =() => {
     const [sidenavOpen, setSideNavOpen] = useState(false)
     const handlesidenavOpen = () => {
@@ -34,9 +35,7 @@ const Home =() => {
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
             <div className={`home-body ${anim}`}>
-                <div className="home-body-head">
-                    <img src={logo} />
-                </div>
+                
                 <div className="home-body-widgets">
                 <Widgets type="users" />
                                 <Widgets type="packages"/>
@@ -45,7 +44,7 @@ const Home =() => {
                                 <Widgets type="offers"/>
                 </div>
                 <div className="home-bid">
-                        <h2>Recent Bid requests</h2>
+                        <h2 className='text-2xl'>Recent Bid requests</h2>
                         {(typeof homebids !== undefined && homebids.length !== 0) ?  (<BidTable  dat={homebids}/>): (<h2 className='text-[gray] text-base'>Sorry, You have no bids to show. Please check again later</h2>)}
 
                         
@@ -78,7 +77,7 @@ const Home =() => {
 
 
 
-            
+            <Footer />
             
         </div>
     )

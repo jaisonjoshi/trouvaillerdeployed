@@ -50,7 +50,7 @@ const Widgets = ({type}) => {
                 break;
                 case "offers" :
                 dat = {
-                    title : "Vendors",
+                    title : "VENDORS",
                     countlink: "/user/countvendors",
                     icon: (
                         <LocalOfferIcon className='widget-header-icn' style={{  color: "yellow" }}/>
@@ -68,13 +68,13 @@ const Widgets = ({type}) => {
     return(
         <div className="widget">
             <div className="widget-header">
-            <h4>{dat.title}</h4>
+            <h4 className='text-xl'> {dat.title}</h4>
             </div>
             <div className="widget-body">
-            <h1>{data}</h1>{dat.icon}
+            <h1 className='text-3xl'>{data}</h1>{dat.icon}
             </div>
             <div className="widget-footer">
-            <Link to={dat.link} >View</Link>
+            <Link to={dat.link} className='bg-[#00A45E] px-4 py-1 text-[white]' >View</Link>
             </div>
         </div>
     )

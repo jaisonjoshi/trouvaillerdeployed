@@ -17,7 +17,7 @@ const Sidenav = ({isOpen}) => {
 
     const sidenavOpenClass = isOpen ? "sidenav open" : "sidenav";
     return(
-        <div className={`${sidenavOpenClass} ${sideanim} bg-[#e6e6e6]`}>
+        <div className={`${sidenavOpenClass} ${sideanim} bg-[#e6e6e6] gradientbg`}>
             <ul>
                 <Link to="/users">
                 <li>

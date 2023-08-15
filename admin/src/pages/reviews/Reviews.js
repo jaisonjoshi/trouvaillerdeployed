@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import profile from '../../components/assets/profile.jpg'
 import axios from 'axios';
 import PropagateLoader from "react-spinners/PropagateLoader";
+import Footer from '../../components/footer/Footer';
 
 
 
@@ -68,11 +69,11 @@ const Reviews =() => {
             <Sidenav isOpen={sidenavOpen}/>
 
             <div className={`reviews-body ${anim}`}>
-                    <div className="reviews-head">
-                        <h2>Add, Update or delete your reviews</h2>
+                    <div className="reviews-head gradientbg px-20 py-16" >
+                        <h2 className='text-2xl text-[white]'>Add, Update or delete your reviews</h2>
                         <Link to="/reviews/newreview" className='review-btn'>Create a review</Link>
                     </div>
-                    <div className="review-container">
+                    <div className="review-container px-20 py-12">
                         {loading ?  <div className='loading-div'>
                         <PropagateLoader
 
@@ -112,7 +113,7 @@ const Reviews =() => {
 
 
 
-            
+            <Footer />
             
         </div>
     ) 

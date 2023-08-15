@@ -19,6 +19,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CloseIcon from "@mui/icons-material/Close";
 import NavbarTest from "../components/navbar/navbar";
 import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
+import GetCallBack from "../components/GetCallBackButton";
 
 const Hotel = () => {
  
@@ -120,6 +121,7 @@ const Hotel = () => {
     }, []);
   return (
     <div className={`animationset ${anim}  font-body detailviews`}>
+      <GetCallBack />
       <NavbarTest />
       <div       id="sticky-element"
  className={` ${isSticky ? 'add-shadow' : ''} px-4 sm:px-16 md:px-20 2xl:px-60 bg-[white] relative z-[100] py-4 sm:py-8 gradientbg sticky top-0 `}  >

@@ -5,6 +5,7 @@ import useFetch from '../../hooks/useFetch';
 import {useState, useEffect} from 'react'
 
 import BidTable from '../../components/bidTable/BidTable';
+import Footer from '../../components/footer/Footer';
 
 
 const BidsContainer =() => {
@@ -32,19 +33,19 @@ const BidsContainer =() => {
         <div className="bids-container">
             <Navbar onclick={handlesidenavOpen}/>
             <Sidenav isOpen={sidenavOpen}/>
-            <div className="bids-container-body">
-                <h1>Recent Bids </h1>
-                {(bids != undefined && bids.length !== 0) ?  (<BidTable  dat={bids}/>): (<h2 className='text-[gray] text-base'>Sorry, You have no bids to show. Please check again later</h2>)}
-
-                <h2>Previous bids</h2>
-                {(prevbids != undefined && prevbids.length !== 0) ?  (<BidTable  dat={prevbids}/>): (<h2 className='text-[gray] text-base'>Sorry, You have no bids to show. Please check again later</h2>)}
-
+            <div className="bids-container-body mb-16">
+                <h1 className='gradientbg px-20 py-16 text-2xl text-[white]'>Recent Bids </h1>
+<div className='px-20'>                {(bids != undefined && bids.length !== 0) ?  (<BidTable  dat={bids}/>): (<h2 className='text-[gray] text-base'>Sorry, You have no bids to show. Please check again later</h2>)}
+</div>
+                <h2 className='mt-12 text-2xl px-20'>Previous bids</h2>
+<div className='px-20'>                {(prevbids != undefined && prevbids.length !== 0) ?  (<BidTable  dat={prevbids}/>): (<h2 className='text-[gray] text-base'>Sorry, You have no bids to show. Please check again later</h2>)}
+</div>
             </div>
 
 
 
             
-            
+            <Footer />
         </div>
     )
 }

@@ -32,16 +32,16 @@ const Interests = () => {
       <Sidenav isOpen={sidenavOpen} />
 
       <div className={`hotels-body ${anim}`}>
-        <h1 className="text-black">Interests received</h1>
+        <h1 className="text-[white] gradientbg px-20 py-12 text-2xl ">Interests received</h1>
 
         {loading ? (
-          <div className="flex justify-center my-20">
+          <div className="flex justify-center my-20 px-20">
             <ClipLoader />
           </div>
         ) : (
-          <div className="py-8 flex flex-col gap-8">
-            {data
-              ?.slice(0)
+          <div className="py-16 flex flex-col gap-8 px-20">
+            {data.length == 0 ? <div><span>You have no any interest inputs till now</span></div>:
+            data?.slice(0)
               .reverse()
               .map((itm, i) => (
                 <div className="shadow-lg relative bg-[#ededed] rounded px-12 py-4">
@@ -79,6 +79,7 @@ const Interests = () => {
           </div>
         )}
       </div>
+      
     </div>
   );
 };

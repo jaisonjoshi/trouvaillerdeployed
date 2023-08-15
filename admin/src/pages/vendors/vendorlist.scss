@@ -1,14 +1,7 @@
 .vendorlist-body{
     margin-top: 50px;
     margin-left:200px;
-    padding: 5rem;
-    height: 1px;
-    h1{
-        margin-bottom: 3rem;
-    }
-    button{
-        margin-top: 10px;
-    }
+   
 
 }
 
@@ -16,7 +9,6 @@
 @media screen and (max-width:1024px) {
     .vendorlist-body{
         margin-left: 0px;
-        padding: 2rem;
     }
     
 }

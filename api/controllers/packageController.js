@@ -123,19 +123,21 @@ const updatePackage = async (req,res)=>{
     const package = await Package.findOneAndUpdate({_id:id},{
         ...req.body
     })
-    await PackLocations.findOneAndUpdate(
-        "64cfcdf74a34e292f5ae4645",
-        { $addToSet: { 
-                  locations:{$each: req.body.locations}
-                } 
-        })
+    if(req.body.locations){
+        await PackLocations.findOneAndUpdate(
+            "64cfcdf74a34e292f5ae4645",
+            { $addToSet: { 
+                      locations:{$each: req.body.locations}
+                    } 
+            })
+    }
     if(!package){
         return res.status(400).json({error:'No such package found'})  
     }
     res.status(200).json(package)
     }
     catch(error){
-        res.status(500).json({ error: 'Server Error' });
+        res.status(500).json({ error: "server error" });
     }
 
 }
