@@ -211,6 +211,11 @@ const logout = (req, res) => {
   //res.redirect('/')
 };
 
+const forgotPassword = (req,res) => {
+  
+}
+
+
 module.exports = {
   register,
   login,

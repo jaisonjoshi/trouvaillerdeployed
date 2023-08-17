@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useContext, useState } from "react";
@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/context/AuthContext";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
-
+import CloseIcon from '@mui/icons-material/Close';
 import logo from "../Assets/Trouvailler Green.png";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const Login = () => {
+  const [open, setOpen] = useState(false)
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
   });
@@ -141,107 +142,120 @@ const Login = () => {
       x.type = "password";
     }
   }
-
+  
   return (
     <div>
-      <div className="bg-login relative h-screen w-full">
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-[#0000009e]">
+      {open && <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[100000000000000000000000]">
+        <h1>hello</h1>
+      </div>}
+      <div className="relative h-screen w-full">
+      <div className="flex justify-between px-4 lg:px-20 pt-6 lg:pt-20">
+          <img src={logo} className="w-[80px] sm:w-[100px] lg:w-[100px] mb-6" alt="" />
+<Link to="/">    <CloseIcon className="cursor-pointer"/></Link>
+          </div>
 
-        </div>
-
-        <div className="googlelogin bg-[white] py-4 sm:py-12 min-w-[300px] sm:min-w-[500px] lg:min-w-[600px] absolute z-[110] top-[50%] left-[50%] translate-x-[-50%] rounded-[10px] translate-y-[-50%] shadow-lg mx-auto">
-          <div className="flex flex-col mx-8 justify-center items-center gap-2 sm:gap-8  ">
-            <img src={logo} className="w-[80px] sm:w-[100px] lg:w-[150px]" alt="" />
+        <div className=" bg-[white] py-4 w-[350px] lg:w-[500px] absolute z-[110] top-[50%] left-[50%] translate-x-[-50%] rounded-[10px] translate-y-[-50%]  mx-auto">
+          
+          <div className="flex flex-col mx-8 justify-center items-center   ">
             <h3
               style={{ fontSize: "18px" }}
-              className="font-bold title-font text-base sm:text-xl lg:text-2xl mb-8"
+              className="font-bold title-font text-lg sm:text-xl lg:text-3xl mb-2 lg:mb-4"
             >
-              Hey, Welcome Back
+              Welcome Back
             </h3>
+            <p className="font-body mb-4 text-center text-sm lg:text-base">Enter your details to get sign in to your account</p>
           </div>
 
-          <div className="mx-auto w-[90%] sm:w-[70%] pt-4 sm:pt-12 glogin">
-            <GoogleLogin
-              onSuccess={(credentialResponse) => {
-                //console.log(credentialResponse.credential);
-                console.log(credentialResponse);
-                const gid = credentialResponse.clientId;
-                var token = credentialResponse.credential;
-                //verifyGoogleToken(token);
-
-                var decoded = jwt_decode(credentialResponse.credential);
-                //console.log(decoded);
-                var checkemail = decoded.email;
-                var google_user = {};
-                google_user.username = decoded.given_name;
-                google_user.email = decoded.email;
-                var number = "add phone number";
-                google_user.phone = number; //
-                google_user.google_id = gid;
-                google_user.img = decoded.picture;
-
-                googleSignIn(google_user);
-
-                console.log(user);
-              }}
-              onError={() => {
-                console.log("Login failed");
-              }}
-            />
-          </div>
-
-          <p className="text-center text-sm mt-2 sm:text-base sm:mt-8">or</p>
+         
           <div className="flex w-[90%] sm:w-[70%] mx-auto flex-col mt-2 sm:mt-5">
-            <div className="bg-[white] border border-[1px] border-[#00b07f] relative rounded mb-8">
-              <span className="absolute bg-[white] top-0 left-4 translate-y-[-50%] text-sm  lg:text-base px-2 text-[grey]">Email</span>
+            <div className="bg-[white]  relative rounded mb-4">
               <input
                 type="text"
-                className="  sm:p-3 outline-none text-sm sm:text-base rounded  border-transparent bg-transparent w-[100%] focus:ring-[transparent]  focus:border-[transparent] "
+                className="   sm:p-3 outline-none text-sm sm:text-base rounded  border-transparent bg-[#E8F0FE] w-[100%] focus:ring-[transparent]  focus:border-[transparent] "
                 id="username"
+                placeholder="Enter Email"
                 onChange={handleChange}
               />
             </div>
-            <div className="bg-[white] relative border border-[1px] border-[#00b07f] rounded">
-            <span className="absolute bg-[white] top-0 left-4 translate-y-[-50%] px-2 text-[grey] text-sm  lg:text-base">Password</span>
+            <div className="bg-[#E8F0FE] relative  rounded mb-4">
 
               <input
                 type="password"
                 className=" sm:p-3 outline-none rounded text-sm sm:text-base  border-transparent bg-transparent w-[90%] focus:ring-[transparent]  focus:border-[transparent] "
                 id="password"
+                placeholder="Enter Password"
                 onChange={handleChange}
               ></input>
               <VisibilityIcon onClick={showPassword} className="w-[15px] text-[grey] cursor-pointer" />
             </div>
+            <button className=" text-[11px]  text-left pl-2" onClick={()=> setOpen(true)} >Forgot password?</button>
           </div>
 
-          <div className="mx-auto w-[90%] sm:w-[70%] my-2 sm:my-5">
+
+         
+
+          <div className="mx-auto w-[90%] sm:w-[70%] ">
             <button
               disabled={loading}
               onClick={handleClick}
-              className=" bg-evergreen text-whiteglow font-bold w-full rounded-md p-2 my-5"
+              className=" gradientbg text-whiteglow font-semibold w-full rounded-full py-2 mt-4"
             >
               Login
             </button>
             {error && (
-              <span className="text-[red] text-xs md:text-base py-1 sm:py-2">
-                {error.message}Incorrect username or password. Please try again
+              <span className="text-[red] text-xs text-center md:text-base sm:py-2">
+                {error.message}
               </span>
             )}
           </div>
+          <p className="text-center text-sm   mt-8 ">- or sign in with -</p>
 
-          <p className="sm:mx-14 text-center text-sm  lg:text-base">
+
+<div className="mx-auto w-[100%] sm:w-[70%] my-4 glogin">
+  <GoogleLogin
+    onSuccess={(credentialResponse) => {
+      //console.log(credentialResponse.credential);
+      console.log(credentialResponse);
+      const gid = credentialResponse.clientId;
+      var token = credentialResponse.credential;
+      //verifyGoogleToken(token);
+
+      var decoded = jwt_decode(credentialResponse.credential);
+      //console.log(decoded);
+      var checkemail = decoded.email;
+      var google_user = {};
+      google_user.username = decoded.given_name;
+      google_user.email = decoded.email;
+      var number = "add phone number";
+      google_user.phone = number; //
+      google_user.google_id = gid;
+      google_user.img = decoded.picture;
+
+      googleSignIn(google_user);
+
+      console.log(user);
+    }}
+    shape="circle"
+    onError={() => {
+      console.log("Login failed");
+    }}
+    width="100%"
+    useOneTap
+  />
+</div>
+          <p className="sm:mx-14 text-center text-sm  mt-8">
             Don't have an account?
-            <Link className="text-[#339633]" to="/signup">
+            <Link className="text-[blue]" to="/signup">
               {" "}
               Sign up here
             </Link>
           </p>
         </div>
 
-       
+
       </div>
 
-      
+
     </div>
   );
 };

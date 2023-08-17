@@ -3,6 +3,9 @@ import { useState,useEffect, lazy, Suspense } from "react";
 import ScrollToTop from "./scrollToTop/scrollToTop.js";
 import CircleLoading from "../src/Pages/components/spinningLoader/CircleLoading";
 import loadinggif from "./Pages/Assets/loadinggif.gif";
+import TagManager from 'react-gtm-module'
+
+
 const Home = lazy(()=>import('./Pages/home/Home'))
 const TermsAndCond = lazy(() => import("./Pages/Terms&Cond/TermsAndCond"));
 const Emipage = lazy(() => import("./Pages/emipage/Emipage.js"));
@@ -35,6 +38,12 @@ const IntroToBid = lazy(() => import("./Pages/Bid/IntroBid.jsx"));
 const Signup = lazy(() => import("./Pages/signup/signup.jsx"));
 const Login = lazy(() => import("./Pages/login/login.jsx"));
 const Bidform = lazy(() => import("./Pages/bidform/bidform.jsx"));
+const tagManagerArgs = {
+  gtmId: 'G-LF63P71ZJD'
+}
+TagManager.initialize(tagManagerArgs)
+
+
 const LoadingScreen = () => {
   return (
     <div className="preloader">
