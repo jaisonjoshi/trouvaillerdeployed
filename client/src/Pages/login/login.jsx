@@ -132,7 +132,16 @@ const Login = () => {
 
     //
   };
+const [email, setEmail] = useState("") 
+const handleChangeForgotPassword = (e)=> {
+  setEmail(e.target.value)
+}
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    axiosInstance.post('/auth/forgotPassword',{email}).then((res)=>console.log(res.data.status))
+    
 
+  }
   //
   function showPassword() {
     var x = document.getElementById("password");
@@ -145,9 +154,21 @@ const Login = () => {
   
   return (
     <div>
-      {open && <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[100000000000000000000000]">
-        <h1>hello</h1>
-      </div>}
+      {open && 
+      <div className="absolute top-0 left-0 w-full h-full bg-[#0000009c] z-[1000000000]">
+        <div className="relative top-[50%] w-[40%] rounded shadow-lg px-20 py-8 left-[50%] translate-x-[-50%] bg-[white] translate-y-[-50%] z-[100000000000000000000000]">
+        <div className="flex justify-between">
+        <h1 className="font-medium text-xl">Forgot password</h1>
+        <button onClick={()=>setOpen(false)}><CloseIcon /></button>
+        </div>
+        <p className="font-body my-8">Enter the email address associated with your account and we'll send you a link to reset your password</p>
+        <form action="" onSubmit={handleForgotPassword}>
+          <input type="email" className="w-full rounded focus:ring-[transparent]  focus:border-[grey]" onChange={handleChangeForgotPassword}/>
+          <input type="submit" value="Send link" className="gradientbg text-white px-4 py-2 rounded mt-6 cursor-pointer"/>
+        </form>
+        <p className="font-body mt-12">Don't have an account? <Link className="text-[blue]">Sign Up</Link></p>
+      </div>
+        </div>}
       <div className="relative h-screen w-full">
       <div className="flex justify-between px-4 lg:px-20 pt-6 lg:pt-20">
           <img src={logo} className="w-[80px] sm:w-[100px] lg:w-[100px] mb-6" alt="" />
@@ -236,6 +257,7 @@ const Login = () => {
       console.log(user);
     }}
     shape="circle"
+    size="large"
     onError={() => {
       console.log("Login failed");
     }}
@@ -252,7 +274,12 @@ const Login = () => {
           </p>
         </div>
 
-
+<div className="absolute bottom-0 right-0 w-full flex gap-8 justify-center pb-8 font-body text-sm text-[grey]">
+  <span>&copy; Trouvailler Enterprises Private Limited</span>
+  <Link>Return to Home</Link>
+  <Link>Terms and Conditions</Link>
+  <Link>Privacy policy</Link>
+</div>
       </div>
 
 

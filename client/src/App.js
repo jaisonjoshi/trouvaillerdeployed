@@ -4,6 +4,7 @@ import ScrollToTop from "./scrollToTop/scrollToTop.js";
 import CircleLoading from "../src/Pages/components/spinningLoader/CircleLoading";
 import loadinggif from "./Pages/Assets/loadinggif.gif";
 import TagManager from 'react-gtm-module'
+import ResetPassword from "./Pages/login/resetPassword.jsx";
 
 
 const Home = lazy(()=>import('./Pages/home/Home'))
@@ -301,6 +302,14 @@ function App() {
                 <Suspense fallback={<LoadingScreen />}>
                   <PrivacyPolicy />
                 </Suspense>
+              }
+            />
+            <Route
+              path="/reset-password/:id/:token"
+              element={
+                
+                  <ResetPassword />
+                
               }
             />
           </Routes>

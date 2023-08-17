@@ -2,11 +2,13 @@ const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const { OAuth2Client } = require("google-auth-library");
+const { OAuth2Client, UserRefreshClient } = require("google-auth-library");
 const client = new OAuth2Client(process.env.CLIENT_ID);
 const { body, validationResult } = require("express-validator");
+var nodemailer = require('nodemailer');
 
 const { generateToken } = require("../utils/verifyToken");
+const { default: mongoose } = require("mongoose");
 //import { createError } from "../utils/error.js";
 const LocalStorage = require("node-localstorage").LocalStorage,
   localStorage = new LocalStorage("./scratch");
@@ -192,7 +194,7 @@ const googlelogin = async (req, res, next) => {
   }
 };
 
-const logout = (req, res) => {
+const logout =   (req, res) => {
   try{
   const maxAge = 0;
   const token = generateToken("2839373889", "logout");
@@ -211,8 +213,107 @@ const logout = (req, res) => {
   //res.redirect('/')
 };
 
-const forgotPassword = (req,res) => {
-  
+const forgotPassword = async (req,res) => {
+  const {email} = req.body;
+  try {
+    const oldUser = await User.findOne({email})
+    if(!oldUser){
+      return res.json({status:"user not exist"})
+    }
+    const secret = process.env.JWT + oldUser.password;
+    const token = jwt.sign({email:oldUser.email, id:oldUser._id}, secret,{expiresIn:"15m"})
+    const link = `https://trouvailler.com/reset-password/${oldUser._id}/${token}}`;
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'jaisjoshi2001@gmail.com',
+        pass: process.env.EMAIL_PASS
+      }
+    });
+    
+    var mailOptions = {
+      from: 'jaisjoshi2001@gmail.com',
+      to: oldUser.email,
+      subject: 'Password reset',
+      text: link
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+    res.json({status:link})
+  } catch (error) {
+    
+  }
+}
+
+const verifyResetPassword = async(req,res) => {
+  const {id,token} = req.params;
+  if(mongoose.Types.ObjectId.isValid(id)){
+    const userid = mongoose.Types.ObjectId(id);
+  }
+  else{
+
+    return res.send("Something happened. Please opt for a new password change request")
+  }
+
+
+  const oldUser = await User.findOne({_id: id});
+ 
+  if(!oldUser){
+    console.log("its perfect till now")
+    return res.send("Something happened. Please opt for a new password change request")
+  }
+  const secret = process.env.JWT + oldUser.password;
+  try {
+    const verify =jwt.verify(token,secret)
+    res.send("verified")
+    
+  } catch (error) {
+    res.send("Link expired or you are not verified. Please opt for a new password change request")
+  }
+}
+
+const resetPassword = async (req,res)=> {
+ const {id,token} = req.params;
+ const {newPassword} = req.body;
+  if(mongoose.Types.ObjectId.isValid(id)){
+    const userid = mongoose.Types.ObjectId(id);
+  }
+  else{
+
+    return res.send("Something happened. Please opt for a new password change request")
+  }
+
+
+  const oldUser = await User.findOne({_id: id});
+ 
+  if(!oldUser){
+    console.log("its perfect till now")
+    return res.send("Something happened. Please opt for a new password change request")
+  }
+  const secret = process.env.JWT + oldUser.password;
+  try {
+    const verify =jwt.verify(token,secret)
+    const encryptedPassword = await bcrypt.hash(newPassword, 10);
+    await User.updateOne(
+      {
+        _id:id
+      },
+      {
+        $set:{
+          password:encryptedPassword
+        }
+      }
+    )    
+    res.send("Password updated")
+  } catch (error) {
+    res.send("Link expired or you are not verified. Please opt for a new password change request")
+  }
 }
 
 
@@ -221,5 +322,8 @@ module.exports = {
   login,
   logout,
   googlelogin,
+  forgotPassword,
+  resetPassword,
+  verifyResetPassword
   //verify,
 };
