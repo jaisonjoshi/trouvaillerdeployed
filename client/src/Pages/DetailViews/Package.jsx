@@ -15,6 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import TourIcon from '@mui/icons-material/Tour';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
+import { Helmet } from 'react-helmet';
 
 const Package = () => {
     const [anim, setAnim] = useState("hide")
@@ -149,6 +150,13 @@ const Package = () => {
 
 
         <div className={` animationset ${anim} bg-[white] font-body detailviews`}>
+            <Helmet>
+            <title>{pack.length !== 0 ? pack.title : "Trouvailler | Personalized Trips, perfectly packaged"}</title>
+            <meta property="og:site_name" content="Trouvailler" />
+            <meta property="og:description" content={pack.length !== 0 && pack.description} />
+            <meta property="og:image:secure_url" itemprop="image" content={pack.length !==0 && pack.images[0]} /> 
+            <meta property="og:type" content="website" />
+            </Helmet>
             <Navbar />
             
             <Backdrop

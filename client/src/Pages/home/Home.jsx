@@ -17,7 +17,7 @@ import whitelogo from '../Assets/Trouvaillerwhite.png'
 import EmiCard from '../components/cards/EmiCard';
 import { Autocomplete, TextField } from '@mui/material';
 import axios from 'axios';
-
+import { Helmet } from 'react-helmet';
 const Home = ({setlocation}) => {
   const [destination, setDestination] = useState("");
 const navigate = useNavigate()
@@ -66,6 +66,9 @@ const navigate = useNavigate()
 
   return (
     <div className={`animationset ${anim}`}>
+      <Helmet>
+        <title>Trouvailler | Personalized Trips, perfectly packaged</title>
+      </Helmet>
       <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header home font-body">
            <NavbarTest color={color}/>
              
