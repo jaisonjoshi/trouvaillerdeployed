@@ -8,11 +8,13 @@ import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import CloseIcon from '@mui/icons-material/Close';
 import logo from "../Assets/Trouvailler Green.png";
-
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const Login = () => {
+  const [formOpen, setFormOpen] = useState(true)
   const [open, setOpen] = useState(false)
+  const [errorOpen, setErrorOpen] = useState(false)
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
   });
@@ -64,10 +66,11 @@ const Login = () => {
           payload: { message: "Invalid credentials" },
         });
       }
-    } catch (err) {
+    } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: { message: " " } });
+      console.log(error)
       if (error.response) {
-        alert("Please try again!");
+        alert(`${error.response.data.error}. Please try again!`);
         dispatch({ type: "LOGIN_FAILURE", payload: { message: " " } });
       } else if (error.request) {
         alert("Network error! Please try again later.");
@@ -107,6 +110,7 @@ const Login = () => {
         });
       }
     } catch (error) {
+      console.log(error)
       dispatch({ type: "LOGIN_FAILURE", payload: { message: " " } });
       if (error.response) {
         if (error.response && error.response.status == 405) {
@@ -134,21 +138,32 @@ const Login = () => {
   };
 const [email, setEmail] = useState("") 
 const handleChangeForgotPassword = (e)=> {
+  setErrorOpen(false)
   setEmail(e.target.value)
 }
   const handleForgotPassword = async (e) => {
     e.preventDefault();
-    axiosInstance.post('/auth/forgotPassword',{email}).then((res)=>console.log(res.data.status))
+    axiosInstance.post('/auth/forgotPassword',{email}).then((res)=>{
+      if(res.data.status == "user not exist"){
+        setErrorOpen(true)
+      }
+      if(res.data.status == "mail sent"){
+        setFormOpen(false)
+      }
+    })
     
 
   }
   //
+  const [showIcon , setShowIcon] = useState(true)
   function showPassword() {
     var x = document.getElementById("password");
     if (x.type === "password") {
       x.type = "text";
+      setShowIcon(false)
     } else {
       x.type = "password";
+      setShowIcon(true)
     }
   }
   
@@ -156,17 +171,23 @@ const handleChangeForgotPassword = (e)=> {
     <div>
       {open && 
       <div className="absolute top-0 left-0 w-full h-full bg-[#0000009c] z-[1000000000]">
-        <div className="relative top-[50%] w-[40%] rounded shadow-lg px-20 py-8 left-[50%] translate-x-[-50%] bg-[white] translate-y-[-50%] z-[100000000000000000000000]">
+        <div className="relative top-[50%] w-[90%] md:w-[70%] lg:w-[50%] 2xl:w-[40%] rounded shadow-lg px-8 lg:px-20 py-8 left-[50%] translate-x-[-50%] bg-[white] translate-y-[-50%] z-[100000000000000000000000]">
         <div className="flex justify-between">
         <h1 className="font-medium text-xl">Forgot password</h1>
-        <button onClick={()=>setOpen(false)}><CloseIcon /></button>
+        <button onClick={()=>{setOpen(false);setErrorOpen(false); setFormOpen(true)}}><CloseIcon /></button>
         </div>
-        <p className="font-body my-8">Enter the email address associated with your account and we'll send you a link to reset your password</p>
+        {formOpen && <div>
+        <p className="font-body text-sm md:text-base my-8">Enter the email address associated with your account and we'll send you a link to reset your password</p>
         <form action="" onSubmit={handleForgotPassword}>
           <input type="email" className="w-full rounded focus:ring-[transparent]  focus:border-[grey]" onChange={handleChangeForgotPassword}/>
-          <input type="submit" value="Send link" className="gradientbg text-white px-4 py-2 rounded mt-6 cursor-pointer"/>
+{        errorOpen &&   <p className="text-sm my-2 text-[red]">This email id is not registered with us. Please try again or sign up if you haven't created an account.</p>
+}          <input type="submit" value="Send link" className="gradientbg text-white px-4 py-2 rounded mt-6 cursor-pointer"/>
         </form>
-        <p className="font-body mt-12">Don't have an account? <Link className="text-[blue]">Sign Up</Link></p>
+        <p className="font-body text-sm md:text-base mt-12">Don't have an account? <Link className="text-[blue]">Sign Up</Link></p>
+        </div>}
+        {!formOpen && 
+        <p className="my-12">A mail with password reset link has been successfully sent to your registered mail id. The link will expire in 15 minutes.</p>
+        }
       </div>
         </div>}
       <div className="relative h-screen w-full">
@@ -193,7 +214,7 @@ const handleChangeForgotPassword = (e)=> {
               <input
                 type="text"
                 className="   sm:p-3 outline-none text-sm sm:text-base rounded  border-transparent bg-[#E8F0FE] w-[100%] focus:ring-[transparent]  focus:border-[transparent] "
-                id="username"
+                id="email"
                 placeholder="Enter Email"
                 onChange={handleChange}
               />
@@ -207,7 +228,8 @@ const handleChangeForgotPassword = (e)=> {
                 placeholder="Enter Password"
                 onChange={handleChange}
               ></input>
-              <VisibilityIcon onClick={showPassword} className="w-[15px] text-[grey] cursor-pointer" />
+              {showIcon ?<VisibilityIcon onClick={showPassword} className="w-[15px] text-[grey] cursor-pointer" />:
+              <VisibilityOffIcon onClick={showPassword} className="w-[15px] text-[grey] cursor-pointer" />}
             </div>
             <button className=" text-[11px]  text-left pl-2" onClick={()=> setOpen(true)} >Forgot password?</button>
           </div>
@@ -254,7 +276,6 @@ const handleChangeForgotPassword = (e)=> {
 
       googleSignIn(google_user);
 
-      console.log(user);
     }}
     shape="circle"
     size="large"
@@ -274,7 +295,7 @@ const handleChangeForgotPassword = (e)=> {
           </p>
         </div>
 
-<div className="absolute bottom-0 right-0 w-full flex gap-8 justify-center pb-8 font-body text-sm text-[grey]">
+<div className="absolute bottom-0 gap-4 px-4 md:gap-8 flex-wrap right-0 w-full flex  justify-center pb-8 font-body text-sm text-[grey]">
   <span>&copy; Trouvailler Enterprises Private Limited</span>
   <Link>Return to Home</Link>
   <Link>Terms and Conditions</Link>

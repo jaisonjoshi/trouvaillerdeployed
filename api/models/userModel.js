@@ -23,6 +23,7 @@ const UserSchema = new Schema(
     },
      google_id: {
       type: String,
+      default:"none"
     },
     // city: {
     //   type: String,

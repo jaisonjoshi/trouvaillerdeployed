@@ -67,10 +67,10 @@ const ResetPassword = () => {
         :
         
         msg === "verified" ?
-        <div className=" absolute top-[50%] w-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] ">
+        <div className=" absolute top-[50%] w-[90%] md:w-[50%] 2xl:w-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] ">
           <h1 className="text-xl mb-8">Reset Password</h1>
           <form action="" onSubmit={formSubmit}>
-            <label htmlFor="" className=""  > New Password</label>
+            <label htmlFor="" className="text-sm md:text-base"  > New Password</label>
             <div className="border border-[grey] border-[1px] relative  rounded mb-8 mt-2">
 
               <input
@@ -84,7 +84,7 @@ const ResetPassword = () => {
             </div>
 
 
-            <label htmlFor="" className=""  > Retype Password</label>
+            <label htmlFor="" className="text-sm md:text-base"  > Retype Password</label>
             <div className="border border-[grey] border-[1px] relative  rounded mb-4 mt-2">
 
               <input
@@ -107,7 +107,7 @@ const ResetPassword = () => {
         </div>
         
         }
-      <div className="absolute bottom-0 right-0 w-full flex gap-8 justify-center pb-8 font-body text-sm text-[grey]">
+      <div className="absolute bottom-0 right-0 w-full flex gap-4 px-4 md:gap-8 flex-wrap justify-center pb-8 font-body text-sm text-[grey]">
         <span>&copy; Trouvailler Enterprises Private Limited</span>
         <Link>Return to Home</Link>
         <Link>Terms and Conditions</Link>

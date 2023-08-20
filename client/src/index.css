@@ -700,3 +700,7 @@ details summary::marker {
     outline-offset: 0px !important;
     box-shadow: none !important;
 }
+
+.animate{
+    transition: all ease-in-out 0.5s !important;
+}

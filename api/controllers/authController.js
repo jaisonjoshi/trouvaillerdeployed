@@ -6,6 +6,8 @@ const { OAuth2Client, UserRefreshClient } = require("google-auth-library");
 const client = new OAuth2Client(process.env.CLIENT_ID);
 const { body, validationResult } = require("express-validator");
 var nodemailer = require('nodemailer');
+const otpGenerator = require('otp-generator');
+const crypto = require('crypto');
 
 const { generateToken } = require("../utils/verifyToken");
 const { default: mongoose } = require("mongoose");
@@ -20,11 +22,9 @@ const register = async (req, res, next) => {
   try {
     const username_c = await User.findOne({ username: req.body.username });
     const email_c = await User.findOne({ email: req.body.email });
-    if (username_c) {
-      return res.status(403).json({ error: "Username cannot be same" });
-    }
+    
     if (email_c) {
-      return res.status(405).json({ error: "Email cannot be same" });
+      return res.status(405).json({ error: "Email already exists." });
     }
 
     const salt = bcrypt.genSaltSync(10);
@@ -65,7 +65,7 @@ const register = async (req, res, next) => {
 };
 const login = async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ email: req.body.email });
     //if (!user) return next(createError(404, "User not found!"));
     if (!user) return next(res.status(404).json({ error: "User not found" }));
 
@@ -76,7 +76,7 @@ const login = async (req, res, next) => {
     if (!isPasswordCorrect)
       //return next(createError(400, "Wrong password or username!"));
       return next(
-        res.status(404).json({ error: "Wrong password or username!" })
+        res.status(404).json({ error: "Wrong password" })
       );
 
     const token = jwt.sign(
@@ -114,26 +114,13 @@ const login = async (req, res, next) => {
 // }
 
 const googlelogin = async (req, res, next) => {
-  const filter = { google_id: req.body.google_id, email: req.body.email, username: req.body.username };
 
   try {
-   const doc =  await User.findOne(filter)
-     
-      if (!doc) {
-       // check for email id and username repetition and show alert in frontend
-        // const username_c = username
-        //  const email_c = email
-        //  if(username_c)
-        //  {
-        //    return res.status(403).json({error:'Username cannot be same'})
-        //  }
-        //  if(email_c)
-        //  {
-        //    return res.status(405).json({error:'Email cannot be same'})
-        //  }
 
-        // Document not found, create a new one with the request body
-        const newDoc = new User(req.body);
+    const oldUser = await User.findOne({email: req.body.email})
+    console.log(oldUser)
+    if(!oldUser){
+      const newDoc = new User(req.body);
 
         newDoc.save(function (err, savedDoc) {
           if (err) {
@@ -161,11 +148,12 @@ const googlelogin = async (req, res, next) => {
               .json({ details: { ...otherDetails }, isAdmin, isVendor });
           }
         });
-      } else {
-        // The document was found, update it
-        doc.email = req.body.email;
-        doc.google_id = req.body.google_id;
-        doc.save(function (err, savedDoc) {
+
+    }
+    else if(oldUser){
+      oldUser.email = req.body.email;
+        oldUser.google_id = req.body.google_id;
+        oldUser.save(function (err, savedDoc) {
           if (err) {
             // handle error
             res.status(503).json(err);
@@ -173,11 +161,11 @@ const googlelogin = async (req, res, next) => {
             // The existing document was updated
             //console.log("delete the updation code here and simply generate cookies");
             const token = jwt.sign(
-              { id: doc._id, isAdmin: doc.isAdmin, isVendor: doc.isVendor },
+              { id: oldUser._id, isAdmin: oldUser.isAdmin, isVendor: oldUser.isVendor },
               process.env.JWT
             );
 
-            const { password, isAdmin, isVendor, ...otherDetails } = doc._doc;
+            const { password, isAdmin, isVendor, ...otherDetails } = oldUser._doc;
             res
               .cookie("access_token", token, {
                 httpOnly: true,
@@ -186,8 +174,9 @@ const googlelogin = async (req, res, next) => {
               .json({ details: { ...otherDetails }, isAdmin, isVendor });
           }
         });
-      }
-   
+    }
+
+
   }
    catch (error) {
     res.status(500).json(error);
@@ -245,7 +234,7 @@ const forgotPassword = async (req,res) => {
         console.log('Email sent: ' + info.response);
       }
     });
-    res.json({status:link})
+    res.json({status:"mail sent"})
   } catch (error) {
     
   }
@@ -317,6 +306,45 @@ const resetPassword = async (req,res)=> {
 }
 
 
+const sendVeificationMail =  async (req,res) => {
+    const {email} = req.body;
+    const oldUser = await User.findOne({email})
+    if(oldUser){
+      return res.status(405).json({status:"user already exist"})
+    }
+    const otpCode = otpGenerator.generate(6, { digits: true, lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false });
+    const hashedOTP = crypto.createHash('sha256').update(otpCode).digest('hex');
+    try {
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'jaisjoshi2001@gmail.com',
+          pass: process.env.EMAIL_PASS
+        }
+      });
+      
+      var mailOptions = {
+        from: 'jaisjoshi2001@gmail.com',
+        to: email,
+        subject: 'Verify Email',
+        text: `The OTP for verifying your email is ${otpCode} `
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          res.status(404).json({message:"Something happened. Please Check entered email and try again"})
+        } else {
+          res.status(200).json({status:hashedOTP})
+
+        }
+      });
+    } catch (error) {
+      res.send({status: "Something happened. Please try again"})
+    }
+
+
+}
+
 module.exports = {
   register,
   login,
@@ -324,6 +352,6 @@ module.exports = {
   googlelogin,
   forgotPassword,
   resetPassword,
-  verifyResetPassword
+  verifyResetPassword, sendVeificationMail
   //verify,
 };
