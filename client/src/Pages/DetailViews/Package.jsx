@@ -152,11 +152,15 @@ const Package = () => {
         <div className={` animationset ${anim} bg-[white] font-body detailviews`}>
             <Helmet>
             <title>{pack.length !== 0 ? pack.title : " perfectly packaged"}</title>
+<meta name="title" content="hello world" />
+<meta name="description" content=" hello description" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={`https://www.trouvailler.com/list/package/${id}`} />
+
             <meta property='og:title' content='hello world' />
-            <meta property="og:site_name" content="Trouvailler" />
-            <meta property="og:description" content={pack.length !== 0 && pack.description} />
+
+            <meta property="og:description" content="hello description" />
             <meta property="og:image:secure_url" itemprop="image" content={pack.length !==0 && pack.images[0]} /> 
-            <meta property="og:type" content="website" />
             </Helmet>
             <Navbar />
             
