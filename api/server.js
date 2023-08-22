@@ -94,5 +94,6 @@ app.use('/api/interests',interestRoutes)
 
 app.get('/id', (req,res)=>{
     console.log("hello")
+    res.send("hello")
 })
 
