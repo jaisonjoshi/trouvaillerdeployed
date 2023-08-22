@@ -92,3 +92,7 @@ app.use('/api/packlocations',packlocationsRoutes)
 app.use('/api/interests',interestRoutes)
 
 
+app.get('/id', (req,res)=>{
+    console.log("hello")
+})
+
