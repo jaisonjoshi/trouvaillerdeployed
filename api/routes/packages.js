@@ -31,4 +31,7 @@ router.delete('/:id',deletePackage)
 //     res.json({mssg:'update a workouts'})
 // })
 router.patch('/:id',updatePackage)
+
+
+
 module.exports=router

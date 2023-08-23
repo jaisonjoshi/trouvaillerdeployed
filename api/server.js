@@ -23,7 +23,7 @@ const authRoutes=require('./routes/auth')
 const userRoutes=require('./routes/users')
 const locationsRoutes = require('./routes/locations')
 const packlocationsRoutes = require('./routes/packlocations')
-
+const packagePageRoutes = require('./routes/getPackage')
 const interestRoutes = require('./routes/intrestData')
 
 const cookieParser=require('cookie-parser')
@@ -91,9 +91,6 @@ app.use('/api/packlocations',packlocationsRoutes)
 
 app.use('/api/interests',interestRoutes)
 
+app.use('/package',packagePageRoutes)
 
-app.get('/product', (req,res)=>{
-    console.log("hello")
-    res.send("hello")
-})
 
