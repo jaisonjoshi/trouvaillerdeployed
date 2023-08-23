@@ -92,7 +92,7 @@ app.use('/api/packlocations',packlocationsRoutes)
 app.use('/api/interests',interestRoutes)
 
 
-app.get('/', (req,res)=>{
+app.get('/product', (req,res)=>{
     console.log("hello")
     res.send("hello")
 })
