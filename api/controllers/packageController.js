@@ -18,9 +18,9 @@ const getPackages = async(req,res)=>{
     if(max) query.cheapestPrice = {$gt: min, $lt: max}
     if(offers) query.offers = offers
     
-    const package = await Package.find(query).limit(limit).skip((page - 1) * limit).sort({createdAt: -1}).catch(err=>console.log(err))
+    const pack = await Package.find(query).limit(limit).skip((page - 1) * limit).sort({createdAt: -1}).catch(err=>console.log(err))
     //console.log(query)
-    res.status(200).json(package)
+    res.status(200).json(pack)
 
     
 }
@@ -32,12 +32,12 @@ const getPackage = async(req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error:'No such package exists'})
     }
-    const package=await Package.findById(id)
-    if(!package){
+    const pack=await Package.findById(id)
+    if(!pack){
         return res.status(404).json({error:'No such package found'})
     }
 
-  res.status(200).json(package)
+  res.status(200).json(pack)
 }
 
 
@@ -66,7 +66,7 @@ const createPackage = async (req,res)=>{
         //add to db
     try{
     
-    const package = await Package.create({
+    const pack = await Package.create({
         title,
         duration,
         location,
@@ -86,7 +86,7 @@ const createPackage = async (req,res)=>{
                   locations:{$each: locations}
                 } 
         })
-    res.status(200).json({package})}
+    res.status(200).json({pack})}
     //res.json({mssg:'post a new workouts'})
     catch(error){
         res.status(500).json({error:error.message})
@@ -100,11 +100,11 @@ const deletePackage = async (req,res)=>{
         return res.status(404).json({error:'No such package to delete'})
     }
     try{
-    const package = await Package.findOneAndDelete({_id:id})
-    if(!package){
+    const pack = await Package.findOneAndDelete({_id:id})
+    if(!pack){
         return res.status(400).json({error:'No such package found'})  
     }
-    res.status(200).json(package)
+    res.status(200).json(pack)
     }
     catch(error)
     {
@@ -120,7 +120,7 @@ const updatePackage = async (req,res)=>{
         return res.status(404).json({error:'No such Pacakge to delete'})
     }
     try{
-    const package = await Package.findOneAndUpdate({_id:id},{
+    const pack = await Package.findOneAndUpdate({_id:id},{
         ...req.body
     })
     if(req.body.locations){
@@ -131,10 +131,10 @@ const updatePackage = async (req,res)=>{
                     } 
             })
     }
-    if(!package){
+    if(!pack){
         return res.status(400).json({error:'No such package found'})  
     }
-    res.status(200).json(package)
+    res.status(200).json(pack)
     }
     catch(error){
         res.status(500).json({ error: "server error" });

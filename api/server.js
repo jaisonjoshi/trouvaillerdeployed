@@ -1,3 +1,8 @@
+require('@babel/register')({
+    presets: ['@babel/preset-env', '@babel/preset-react'],
+    // Add other presets and plugins if needed
+  });
+
 require('dotenv').config()
 
 
@@ -29,6 +34,7 @@ const interestRoutes = require('./routes/intrestData')
 const cookieParser=require('cookie-parser')
 
 const cors = require('cors');
+const path = require('path');
 
 
 const app=express()
@@ -78,6 +84,8 @@ app.use(cors({
 //     // Successful authentication, redirect secrets.
 //     res.redirect("http://localhost:3000")}
 // );
+app.use(express.static(path.resolve(__dirname,'client','build')))
+
 app.use('/api/hotels',hotelRoutes)
 app.use('/api/rooms',roomRoutes)
 app.use('/api/bids',bidRoutes)
@@ -88,9 +96,9 @@ app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
 app.use('/api/locations',locationsRoutes)
 app.use('/api/packlocations',packlocationsRoutes)
-
 app.use('/api/interests',interestRoutes)
 
 app.use('/package',packagePageRoutes)
+app.use(express.static(path.join(__dirname, './client/build'), {index:false}));
 
 
