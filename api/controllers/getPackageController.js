@@ -21,6 +21,11 @@ const getPackagePage = async (req,res)=>{
         }
         data = data.replace('<div id="root"></div>', `<div id="root">${reactApp}</div>`)
         data =  data.replace(/\$TITLE/g, pack.title)
+        data =  data.replace(/\$DESC/g, pack.description.split('.').slice(0, 2).join('. ') + '.')
+        data =  data.replace(/\$URL/g, `https://trouvailler.com/product/package/${pack._id}`)
+        data =  data.replace(/\$IMGURL/g, pack.images[0])
+
+
         return res.send(data)
 
     })
