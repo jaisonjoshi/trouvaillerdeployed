@@ -23,7 +23,9 @@ const getPackagePage = async (req,res)=>{
         data =  data.replace(/\$TITLE/g, pack.title)
         data =  data.replace(/\$DESC/g, pack.description.split('.').slice(0, 2).join('. ') + '.')
         data =  data.replace(/\$URL/g, `https://trouvailler.com/product/package/${pack._id}`)
-        data =  data.replace(/\$IMGURL/g, pack.images[0])
+        const [baseUrl, ...rest] = pack.images[0].split("/upload/");
+        const imgurl = `${baseUrl}/upload/q_auto:best/${rest.join("/upload/")}`
+        data =  data.replace(/\$IMGURL/g, imgurl)
 
 
         return res.send(data)

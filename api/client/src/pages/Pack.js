@@ -2,8 +2,11 @@ import React from "react";
 
 
 const Pack = () => {
+    const [count, setCount] = React.useState(0)
     return (
-        <h1>Thi is the server rendered package page for Trouvailler</h1>
+        <>
+        <h1>{count}</h1>
+        <button onClick={()=>setCount(count++)}>INcrement</button></>
     )
 }
 
