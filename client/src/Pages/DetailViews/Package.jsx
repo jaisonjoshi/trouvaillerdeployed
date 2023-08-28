@@ -207,7 +207,7 @@ const Package = () => {
                         <div className='flex flex-col sm:flex-row w-[100%] px-4 sm:px-0 gap-[10px] xl:hidden justify-start'>
                             <div className='w-[100%] sm:w-[75%]  '>
                                 {pack.images &&
-                                    <img src={pack.images[0]} className='h-auto rounded sm:rounded-0  w-[100%] ' alt="" srcset="" />
+                                    <img src={pack.images[0]} className='h-auto rounded sm:rounded-0  w-[100%] object-cover' alt="" srcset="" />
                                 }
                             </div>
                             <div className='flex flex-row sm:flex-col gap-[3.333333%] justify-start w-[100%] sm:w-[25%] '>

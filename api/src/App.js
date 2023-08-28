@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { BiImages, BiCustomize, BiPhoneCall } from "react-icons/bi";
+import { RiCustomerServiceFill, RiWhatsappFill } from "react-icons/ri";
+import { MdLocationPin } from "react-icons/md";
+import { AiFillTags, AiFillClockCircle } from "react-icons/ai";
+import { PiFlagPennantFill } from "react-icons/pi";
 
 function App() {
-  const [count, setCount] = React.useState(0)
   const packs =
   {
     "_id": "649847b83649edf20bffb415",
@@ -15,8 +19,8 @@ function App() {
     ],
     "duration": "5N/6D",
     "cheapestPrice": 14500,
-    "features": [],
-    "activities": [],
+    "features": ["hello from other world", "yes im here"],
+    "activities": ["hello", "how are you", "im fine", "whatsapp"],
     "offers": false,
     "images": [
       "http://res.cloudinary.com/difxlqrlc/image/upload/v1687701430/upload/eurfyddjlahmerf0sjy2.jpg",
@@ -63,72 +67,185 @@ function App() {
     "__v": 0
   }
 
-  const [initialData, setInitialData] = React.useState(packs)
+  const [initialData, setInitialData] = React.useState(window && window.initialData)
   console.log(initialData)
-  const inc = () => {
-    setCount(count + 1)
-  }
+  useEffect(() => {
+    const navbar = document.getElementById('navbar');
+    const stickySecond = document.getElementById('sticky-second');
+    const navbarRect = navbar.getBoundingClientRect();
+    const stickySecondRect = stickySecond.getBoundingClientRect();
+    stickySecond.style.top = (stickySecondRect.top - navbarRect.height + 'px');
+    console.log(stickySecondRect.top - navbarRect.height + 'px')
+  }, [])
 
-  const dec = () => {
-    setCount(count - 1)
-  }
   return (
     <>
-      <div>
-        <div className='navbar'>
-          <img src="https://res.cloudinary.com/difxlqrlc/image/upload/v1692968362/site/Trouvailler_Green_rab5ud.png" />
-          <ul>
-            <li>Home</li>
-            <li>Hotels</li>
-            <li>Packages</li>
-            <li>Bid now</li>
+      <div id="navbar" className='navbar flex items-center justify-between res-padding'  >
+        <div>
+          <img src='https://res.cloudinary.com/difxlqrlc/image/upload/v1692968362/site/Trouvailler_Green_rab5ud.png' />
+        </div>
+        <div>
+          <ul className='flex'>
+            <li><a href="">Home</a></li>
+            <li><a href="">Holiday Packages</a></li>
+            <li><a href="">Hotels</a></li>
+            <li><a href="">Bid for stay</a></li>
 
           </ul>
         </div>
 
+      </div>
 
 
 
 
-        <div className='header'>
-          <div>
-            <div className='flex items-center gap-2 mb-4'>
-              <h2>{initialData.title}</h2>
-              <span className='tag'>{initialData.duration}</span>
-            </div>
-            <p>Home &gt; Tour Packages &gt; {initialData.title}</p>
+
+      {initialData && <div className='header res-padding flex justify-between sticky-first'>
+        <div className='flex flex-col items-start '>
+          <div className='gap-8 flex mb-4'>
+            <span className='text-lg'>Adventoro - Ladakh 6 Days
+            </span><span className='duration-tag'>3D/4N</span>
           </div>
-          <div className='flex gap-8'>
-            <div className='flex flex-col gap-2'>
-              <span>Book now</span>
-              <button className='btn '>Proceed to Booking</button>
-            </div>
-            <div>
-              {packs.offers ?
-
-                (<div className='text-right'>
-                  <span className='p-1 bg-f8d2d2 font-bold text-red'>{packs.offertitle}</span>
-                  <p className='mt-2'>{packs.offerdescription}</p>
-                  <span ><span className='text-2xl '><b>&#8377; {packs.offerprice} </b></span><strike className=''>&#8377; {packs.cheapestPrice} </strike></span><br />
-                  <span className='text-sm text-red'>per person</span>
-
-                </div>) :
-                (<div className=' flex flex-col text-right'>
-                  <h1 className='font-bold text-3xl  '>&#8377; {packs.cheapestPrice && packs.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</h1>
-                  <span className=' text-xs'>Per person</span>
-
-                </div>)}
-            </div>
-          </div>
+          <div><span>Home &gt; Holiday Packages &gt; Adventoro - Ladakh 6 Days</span></div>
         </div>
 
 
-    
 
 
 
 
-      </div>
+      </div>}
+
+
+
+{initialData && 
+      <div className='header-2 flex res-padding gap-4'>
+        <div className='w-70'>
+          <div className='flex gap-4'>
+            <div className='w-70 relative'>
+
+              <img src={initialData.images[0]} className='w-100 rounded ' />
+
+            </div>
+            <div className='w-30 flex flex-col gap-3333'>
+              {initialData.images.slice(1, 4).map((itm, i) => (
+                <div className='h-31 relative'>
+                  <img src={itm} className='w-100 rounded absolute  object-cover top-0 left-0 h-100 w-100' />
+                </div>
+              ))}
+
+            </div>
+
+
+          </div>
+
+          <div className='mt-8 flex items-center gap-4'>
+            <span className='flex items-center gap-2 bg-white shadow px-4 py-2 rounded-full'><AiFillTags />{initialData.category}</span>
+            <span className='flex items-center gap-2 bg-white shadow px-4 py-2 rounded-full'><MdLocationPin />{initialData.location}</span>
+            <span className='flex items-center gap-2 bg-white shadow px-4 py-2 rounded-full'><AiFillClockCircle />{initialData.duration}</span>
+
+          </div>
+          <div className='bg-white mt-8 px-4 py-4'>
+
+            <p className='description'>{initialData.description}</p>
+          </div>
+
+
+
+          <div className='px-4 py-4 bg-white mt-8'>
+            <h3>Trip Plan</h3>
+            <div className='py-8 px-4 '>
+
+              {initialData.schedule.map((itm, i) => (
+                <div className='relative border-schedule py-8 pb-12 px-4'>
+                  <h3 className='dayTitle'>Day {i + 1} - {itm.dayTitle}</h3>
+                  <div className='circle-filled'></div>
+                  <p className='text-grey whitespace px-4 dayDesc'>{itm.dayDesc}</p>
+                </div>
+              ))}
+
+            </div>
+          </div>
+
+
+
+
+
+
+          <div className='flex gap-2p'>
+            <div className='mt-8 bg-white px-4 py-4 w-49'>
+              <h3>Inclusions</h3>
+              <ul className='py-4 px-8 text-grey'>
+                {initialData.features.map(itm => (
+                  <li>{itm}</li>
+                ))}
+              </ul>
+            </div>
+            <div className='mt-8 bg-white px-4 py-4 w-49 activities'>
+              <h3>Activities</h3>
+              <ul className='py-4 text-grey'>
+                {initialData.activities.map(itm => (
+                  <li className='flex gap-2 items-start mb-2'><PiFlagPennantFill className='text-green' />{itm}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+
+
+          <div className='px-4 py-4 bg-white mt-8'>
+            <div className='flex justify-between'>
+              <h3>Gallery</h3>
+              <button className='viewmorebtn'>View more</button>
+
+            </div>
+            <div className='py-4 flex flex-wrap gap-2p'>
+              {initialData.images.map(itm => (
+                <img src={itm} alt="" className='w-32 mb-2' />
+              ))}
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div id="sticky-second" className='w-30  ml-4 align-self  sticky-second'>
+          <div className="bg-darkblue shadow flex flex-col items-start">
+            <span className='customisable-tag flex items-center gap-2'><BiCustomize />Customisable</span>
+            <div className='mb-1 mt-4'><strike><span className='cheapprice'>&#8377; 6557</span></strike></div> <div><span className='orgprice'>&#8377; 45656</span><span className='perpersontag'>per person</span></div>
+          </div>
+          <div className='bg-white px-4 py-4 '>
+            <button className='gradientbg btn'>Book Now</button>
+          </div>
+
+          <div className='bg-white mt-4 pt-4 shadow'>
+            <div className='px-4'>
+              <span  >Want to customise this package?</span>
+
+            </div>
+            <div className='flex flex-col mt-4 book'>
+              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4'><BiPhoneCall />Call Us now</span>
+              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4'><RiWhatsappFill className='whatsappcolor' />WhatApp</span>
+              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4'><RiCustomerServiceFill />Get a Callback</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>}
+
+
+
+
 
     </>
   );
