@@ -76,16 +76,16 @@ app.get('/package/:id', async (req, res, next) => {
     const pack = await Pack.findOne({_id:id})
     console.log(pack)
     console.log(id)
-    fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => {
+    fs.readFile(path.resolve('../build/index.html'), 'utf-8', (err, data) => {
         if (err) {
             console.log(err)
             return res.status(500).send("something happened")
         }
         const [baseUrl, ...rest] = pack.images[0].split("/upload/");
         data = data.replace(/\$TITLE/g, pack.title)
-        data.replace(/\$DESC/g, pack.description.split('.').slice(0, 2).join('. ')+ '.')
-        data.replace(/\$URL/g, `https://trouvailler.com/product/package/${pack._id}`)
-        data.replace(/\$IMGURL/g, `${baseUrl}/upload/c_fill,w_400/q_auto:good/${rest.join("/upload/")}`)
+        data = data.replace(/\$DESC/g, pack.description.split('.').slice(0, 2).join('. ')+ '.')
+        data= data.replace(/\$URL/g, `https://trouvailler.com/product/package/${pack._id}`)
+        data =data.replace(/\$IMGURL/g, `${baseUrl}/upload/c_fill,w_400/q_auto:good/${rest.join("/upload/")}`)
         return res.send(data.replace('<div id="root"></div>', `<div id="root">${ReactDOMServer.renderToString(<App />)}</div><script>
         window.initialData = ${JSON.stringify(pack)};
       </script>`))
