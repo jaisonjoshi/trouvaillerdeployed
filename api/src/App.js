@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { BiImages, BiCustomize, BiPhoneCall } from "react-icons/bi";
-import { RiCustomerServiceFill, RiWhatsappFill } from "react-icons/ri";
+import { RiCustomerServiceFill, RiWhatsappFill,RiCloseFill, RiInstagramFill, RiFacebookBoxFill, RiYoutubeFill } from "react-icons/ri";
 import { MdLocationPin } from "react-icons/md";
 import { AiFillTags, AiFillClockCircle } from "react-icons/ai";
 import { PiFlagPennantFill } from "react-icons/pi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 function App() {
   const packs =
@@ -67,7 +68,7 @@ function App() {
     "__v": 0
   }
 
-  const [initialData, setInitialData] = React.useState(window && window.initialData)
+  const [initialData, setInitialData] = React.useState(packs)
   console.log(initialData)
   useEffect(() => {
     const navbar = document.getElementById('navbar');
@@ -77,19 +78,68 @@ function App() {
     stickySecond.style.top = (stickySecondRect.top - navbarRect.height + 'px');
     console.log(stickySecondRect.top - navbarRect.height + 'px')
   }, [])
+  const [backdrop, openbackdrop] = React.useState(false)
+  const handleOpenNav = ()=> {
+    document.getElementById('collapseNav').classList.add('collapse-nav-con-show')
+    openbackdrop(true)
 
+  }
+  const handleCloseNav = ()=> {
+    document.getElementById('collapseNav').classList.remove('collapse-nav-con-show')
+    openbackdrop(false)
+  }
   return (
     <>
+
+    {backdrop && <div className='backdrop'>
+
+    </div>}
+     <div id='collapseNav' className='collapse-nav-con hidden-desk'>
+
+     <div className='collapse-nav  bg-white shadow  '>
+      <div className='flex justify-between gradientbg rounded-10'>
+      <img className='collapse-nav-img' src='https://res.cloudinary.com/difxlqrlc/image/upload/v1692968362/site/Trouvailler_Green_rab5ud.png' />
+<RiCloseFill fontSize={20} color='white' onClick={handleCloseNav}/>
+      </div>
+
+        <ul >
+          <li><a href="">Home</a></li>
+          <li><a href="">Holiday Packages</a></li>
+          <li><a href="">Hotels and Home stays</a></li>
+          <li><a href="">Bid now</a></li>
+
+        </ul>
+        <div className='collapse-nav-end'>
+          <ul>
+            <li className='collapse-nav-end-btn '>
+              <a href=""><RiWhatsappFill className='whatsappcolor' fontSize={25}/>Customise your Trip</a>
+            </li>
+          </ul>
+        <div className='flex flex-col px-4 py-4 gap-2 font-links '>
+          <a href="" className='text-link'>Terms and Conditions</a>
+          <a href="" className='text-link'>Privacy Policy</a>
+
+        </div>
+        <div className='px-4 py-4 flex gap-1'>
+        <a href="" className='text-lightblack'><RiInstagramFill fontSize={20}/></a>
+          <a href="" className='text-lightblack'><RiFacebookBoxFill fontSize={20} /></a>
+          <a href="" className='text-lightblack'><RiYoutubeFill fontSize={20}/></a>
+        </div>
+        </div>
+
+      </div>
+     </div>
       <div id="navbar" className='navbar flex items-center justify-between res-padding'  >
         <div>
           <img src='https://res.cloudinary.com/difxlqrlc/image/upload/v1692968362/site/Trouvailler_Green_rab5ud.png' />
         </div>
-        <div>
-          <ul className='flex'>
-            <li><a href="">Home</a></li>
-            <li><a href="">Holiday Packages</a></li>
-            <li><a href="">Hotels</a></li>
-            <li><a href="">Bid for stay</a></li>
+        <GiHamburgerMenu className='hidden-desk' onClick={handleOpenNav}/>
+        <div className='hidden-mob'>
+          <ul className='flex '>
+            <li><a href="" className='font-16'>Home</a></li>
+            <li><a href="" className='font-16'>Holiday Packages</a></li>
+            <li><a href="" className='font-16'>Hotels</a></li>
+            <li><a href="" className='font-16'>Bid for stay</a></li>
 
           </ul>
         </div>
@@ -106,7 +156,7 @@ function App() {
             <span className='text-lg'>Adventoro - Ladakh 6 Days
             </span><span className='duration-tag'>3D/4N</span>
           </div>
-          <div><span>Home &gt; Holiday Packages &gt; Adventoro - Ladakh 6 Days</span></div>
+          <div className='font-links'><span>Home &gt; Holiday Packages &gt; Adventoro - Ladakh 6 Days</span></div>
         </div>
 
 
@@ -119,8 +169,8 @@ function App() {
 
 
 {initialData && 
-      <div className='header-2 flex res-padding gap-4'>
-        <div className='w-70'>
+      <div className='header-2 flex flex-col-mob res-padding gap-4 mb-20'>
+        <div className='w-70 w-100-mob'>
           <div className='flex gap-4'>
             <div className='w-70 relative'>
 
@@ -139,10 +189,10 @@ function App() {
 
           </div>
 
-          <div className='mt-8 flex items-center gap-4'>
-            <span className='flex items-center gap-2 bg-white shadow px-4 py-2 rounded-full'><AiFillTags />{initialData.category}</span>
-            <span className='flex items-center gap-2 bg-white shadow px-4 py-2 rounded-full'><MdLocationPin />{initialData.location}</span>
-            <span className='flex items-center gap-2 bg-white shadow px-4 py-2 rounded-full'><AiFillClockCircle />{initialData.duration}</span>
+          <div className='mt-8 flex items-center gap-4 flex-wrap'>
+            <span className='flex items-center font-links gap-2 bg-white shadow px-4 py-2 rounded-full'><AiFillTags />{initialData.category}</span>
+            <span className='flex items-center font-links gap-2 bg-white shadow px-4 py-2 rounded-full'><MdLocationPin />{initialData.location}</span>
+            <span className='flex items-center font-links gap-2 bg-white shadow px-4 py-2 rounded-full'><AiFillClockCircle />{initialData.duration}</span>
 
           </div>
           <div className='bg-white mt-8 px-4 py-4'>
@@ -229,19 +279,40 @@ function App() {
 
           <div className='bg-white mt-4 pt-4 shadow'>
             <div className='px-4'>
-              <span  >Want to customise this package?</span>
+              <span className='font-links' >Want to customise this package?</span>
 
             </div>
             <div className='flex flex-col mt-4 book'>
-              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4'><BiPhoneCall />Call Us now</span>
-              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4'><RiWhatsappFill className='whatsappcolor' />WhatApp</span>
-              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4'><RiCustomerServiceFill />Get a Callback</span>
+              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4 font-links'><BiPhoneCall />Call Us now</span>
+              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4 font-links'><RiWhatsappFill className='whatsappcolor' />WhatApp</span>
+              <span className='flex gap-2 font-bold px-4 gradientbg text-white py-4 font-links'><RiCustomerServiceFill />Get a Callback</span>
             </div>
+          </div>
+
+          <div className='mt-8 bg-white px-4 py-4 shadow '>
+            <span className='flex items-center gap-2 font-links'><RiWhatsappFill className='whatsappcolor icon-font' /> Share on WhatsApp</span>
           </div>
 
         </div>
 
       </div>}
+
+
+
+      <div className='footer hidden-mob mt-8 gradientbg py-4'>
+        
+        <div className='flex justify-between items-center mx-20 footer-end' >
+        <img src='https://res.cloudinary.com/difxlqrlc/image/upload/v1692968362/site/Trouvailler_Green_rab5ud.png' className='footer-logo'/>
+        <div className='flex items-center gap-4 text-cfcfcf'>
+          <a href="" className='text-cfcfcf font-12'>Terms & Conditions</a>
+          <a href="" className='text-cfcfcf font-12'>Privacy Policy</a>
+          <a href="" className='text-cfcfcf'><RiInstagramFill fontSize={20}/></a>
+          <a href="" className='text-cfcfcf'><RiFacebookBoxFill fontSize={20} /></a>
+          <a href="" className='text-cfcfcf'><RiYoutubeFill fontSize={20}/></a>
+
+        </div>
+        </div>
+      </div>
 
 
 
