@@ -53,7 +53,7 @@ a{
 
 
 
-.text-lg{
+.text-title{
     font-size: 26px;
 }
 .duration-tag{
@@ -478,6 +478,9 @@ a{
 .text-lightblack{
     color: #393939;
 }
+.mob-price-div{
+    display: none;
+}
 @media screen and (max-width:1564px) {
     .res-padding{
         padding-right: 8rem;
@@ -496,7 +499,7 @@ a{
     .dayDesc{
         font-size: 14px;
     }
-    .text-lg{
+    .text-title{
         font-size: 22px;
     }
     .duration-tag{
@@ -548,6 +551,99 @@ a{
     }
     .hidden-desk{
         display: flex;
+    }
+    .text-title{
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .duration-tag{
+        font-size: 10px;
+    }
+    .text-urls{
+        font-size: 12px;
+    }
+    .gap-4-sm{
+        gap: 1rem;
+    }
+    .header{
+        padding-top: 1rem;
+    }
+    .flex-col-sm{
+        flex-direction: column;
+    }
+    .flex-row-mob{
+        flex-direction: row;
+    }
+    .h-100-mob{
+        height: 100%;
+    }
+    .w-32-mob{
+        width: 32%;
+    }
+    .relative-mob{
+        position: relative;
+    }
+    .gap-2-mob{
+        gap: .5rem;
+    }
+    .px-2-mob{
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+    .gap-1-mob{
+        gap: .25rem;
+    }
+    .text-xs{
+        font-size: 12px;
+    }
+    .only-pl{
+        padding-left: .5rem;
+        padding-right: 0;
+    }
+    .dayTitle{
+        font-size: 14px;
+        left: 15px;
+    }
+    .pb-8-mob{
+        padding-bottom: 2rem;
+    }
+    .sec-headings{
+        font-size: 14px;
+    }
+    .w-49{
+        width: auto;
+    }
+    .mob-price-div{
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 10px ;
+        background: white;
+        z-index: 100000;
+        
+    }
+    .packprice{
+        font-size: 10px;
+    }
+    .items-end-mob{
+        align-items: end;
+    }
+    .shadow-top{
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;    }
+
+    .cheapprice{
+        color: black;
+    }
+    .orgprice{
+        color: black;
+    }
+    .packcost{
+        font-size: 12px;
+    }
+    .mb-20-mob{
+        margin-bottom: 5rem;
     }
     
 }
