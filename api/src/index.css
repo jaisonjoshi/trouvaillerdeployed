@@ -481,6 +481,21 @@ a{
 .mob-price-div{
     display: none;
 }
+.loader-div{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loader-div img{
+    width: 100px;
+}
 @media screen and (max-width:1564px) {
     .res-padding{
         padding-right: 8rem;

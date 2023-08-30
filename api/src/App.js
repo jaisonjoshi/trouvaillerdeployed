@@ -5,26 +5,34 @@ import { MdLocationPin } from "react-icons/md";
 import { AiFillTags, AiFillClockCircle } from "react-icons/ai";
 import { PiFlagPennantFill } from "react-icons/pi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import BarLoader from "react-spinners/BarLoader";
 
 function App() {
-  const [loading, setLoading] = React.useState(false)
+  const [loaded, setLoading] = React.useState(false)
 
   const [initialData, setInitialData] = React.useState(window && window.initialData || null)
   useEffect(() => {
     if (initialData) {
-      setLoading(true);
-    }
+      const timeoutId = setTimeout(() => {
+        setLoading(true);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timeoutId); // Clear the timeout if the component unmounts
+      };    }
 
    
   }, []);
   console.log(initialData)
   useEffect(() => {
+   if(loaded){
     const navbar = document.getElementById('navbar');
     const stickySecond = document.getElementById('sticky-second');
     const navbarRect = navbar.getBoundingClientRect();
     const stickySecondRect = stickySecond.getBoundingClientRect();
     stickySecond.style.top = (stickySecondRect.top - navbarRect.height + 'px');
     console.log(stickySecondRect.top - navbarRect.height + 'px')
+   }
   }, [])
   const [backdrop, openbackdrop] = React.useState(false)
   const handleOpenNav = () => {
@@ -37,9 +45,9 @@ function App() {
     openbackdrop(false)
   }
   return (
-    initialData &&
+    
     <>
-
+    {loaded ? <>
       {backdrop && <div className='backdrop'>
 
       </div>}
@@ -307,7 +315,9 @@ function App() {
           </div>
         </div>
       </div>
-
+</> : <div className='loader-div'>
+<img src='https://res.cloudinary.com/difxlqrlc/image/upload/v1692968362/site/Trouvailler_Green_rab5ud.png' />
+<BarLoader color='#3a77b0' /></div>}
 
 
 
