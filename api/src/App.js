@@ -68,7 +68,7 @@ function App() {
     "__v": 0
   }
 
-  const [initialData, setInitialData] = React.useState(packs)
+  const [initialData, setInitialData] = React.useState(window && window.initialData)
   console.log(initialData)
   useEffect(() => {
     const navbar = document.getElementById('navbar');
