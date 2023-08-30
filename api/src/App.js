@@ -33,7 +33,7 @@ function App() {
     stickySecond.style.top = (stickySecondRect.top - navbarRect.height + 'px');
     console.log(stickySecondRect.top - navbarRect.height + 'px')
    }
-  }, [])
+  }, [loaded])
   const [backdrop, openbackdrop] = React.useState(false)
   const handleOpenNav = () => {
     document.getElementById('collapseNav').classList.add('collapse-nav-con-show')
@@ -67,7 +67,9 @@ function App() {
           <div className='flex items-center gap-4'>
           
             <RiShareFill fontSize={25}/>
-            <RiWhatsappFill fontSize={25} className='whatsappcolor'/>
+            
+            <a href={`https://api.whatsapp.com/send?text=*${encodeURIComponent(initialData.title)}*%20%0A%0A${encodeURIComponent(initialData.description.split(/[.!?]/).slice(0, 2).join('.') + '.')}%0A%0A${encodeURIComponent(`https://trouvailler.com/product/package/${initialData._id}`)}`}> <RiWhatsappFill fontSize={25} className='whatsappcolor'/></a>
+
             <BiPhoneCall fontSize={25}/>
             <button className='gradientbg btn packcost'>Book Now</button>
 
@@ -292,7 +294,7 @@ function App() {
             </div>
 
             <div className='mt-8 bg-white px-4 py-4 shadow '>
-              <span className='flex items-center gap-2 font-links'><RiWhatsappFill className='whatsappcolor icon-font' /> Share on WhatsApp</span>
+             <a href={`https://api.whatsapp.com/send?text=*${encodeURIComponent(initialData.title)}*%20%0A%0A${encodeURIComponent(initialData.description.split(/[.!?]/).slice(0, 2).join('.') + '.')}%0A%0A${encodeURIComponent(`https://trouvailler.com/product/package/${initialData._id}`)}`}> <span className='flex items-center gap-2 font-links'><RiWhatsappFill className='whatsappcolor icon-font' /> Share on WhatsApp</span></a>
             </div>
 
           </div>
