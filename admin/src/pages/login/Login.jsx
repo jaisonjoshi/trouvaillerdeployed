@@ -16,7 +16,7 @@ const Login = () => {
 })
 
   const [credentials, setCredentials] = useState({
-    username: undefined,
+    email: undefined,
     password: undefined,
   });
 
@@ -63,8 +63,8 @@ const Login = () => {
           <input
             type="text"
             className="mx-14 p-3 outline-none border border-b-blacky-medium hover:border-b-evergreen rounded-[5px] focus:ring-0 duration-500"
-            placeholder="username"
-            id="username"
+            placeholder="E-mail"
+            id="email"
             onChange={handleChange}
           />
           <input
