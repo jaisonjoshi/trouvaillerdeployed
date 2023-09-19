@@ -7,13 +7,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+
 html{
     scroll-behavior: smooth;
 }
 body{
     font-family: 'Lato', sans-serif !important;
 }
-
+.font-anton{
+    font-family: 'Anton', sans-serif;
+}
 .font-head{
     font-family: 'Lato', sans-serif !important;
 }

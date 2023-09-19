@@ -17,8 +17,12 @@ import whitelogo from '../Assets/Trouvaillerwhite.png'
 import EmiCard from '../components/cards/EmiCard';
 import { Autocomplete, TextField } from '@mui/material';
 import axios from 'axios';
+import popupimg from '../Assets/popup.png'
 import { Helmet } from 'react-helmet';
-const Home = ({setlocation}) => {
+import { AiOutlineClose } from "react-icons/ai";
+
+const Home = ({setlocation, popupShow, setPopupShow}) => {
+  
   const [destination, setDestination] = useState("");
 const navigate = useNavigate()
   const handleSearchChange = (e, newValue) => {
@@ -66,25 +70,29 @@ const navigate = useNavigate()
 
   return (
     <div className={`animationset ${anim}`}>
+     {popupShow &&  <div className='fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[100000000000000000000000000000000] flex justify-center items-center '>
+      <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[#183e18] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={()=> setPopupShow(false)}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
+      <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
+      </div>}
       <Helmet>
         <title>Trouvailler | Personalized Trips, perfectly packaged</title>
       </Helmet>
-      <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header home font-body">
+      <div className=" w-full relative h-[70vh] sm:h-[70vh] background-header home font-body">
            <NavbarTest color={color}/>
              
-        <div className=" absolute z-[100] top-0 left-0 right-0 h-[80vh] sm:h-[90vh] pb-20 w-full flex flex-col lg:flex-row justify-start pl-4  sm:pl-12 lg:pl-16 2xl:pl-36 items-start ">
+        <div className=" absolute z-[100] top-0 left-0 right-0 h-[70vh] sm:h-[70vh] pb-20 w-full flex flex-col lg:flex-row justify-start pl-4  sm:pl-12 lg:pl-16 2xl:pl-36 items-start ">
           <div className='flex flex-col items-start mt-32 sm:mt-40 lg:mt-52 2xl:mt-56 w-[100%] lg:w-[60%] 2xl:w-[50%]'>
-          <h1 className="text-xl sm:text-2xl md:text-3xl 2xl:text-4xl text-whiteglow sm:mb-4 font-bold text-left">
-          Discover Your </h1><h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl text-whiteglow font-extrabold text-left'>Next Adventure <span className='text-[#00c676]'>with Us</span>
+          <h1 className="text-xl sm:text-2xl md:text-3xl 2xl:text-3xl text-whiteglow sm:mb-4 font-bold text-left">
+          Discover Your </h1><h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-4xl text-whiteglow font-extrabold text-left'>Next Adventure <span className='text-[#00c676]'>with Us</span>
           </h1>
-          <p className="text-[14px] sm:text-base md:text-lg w-[100%] lg:w-[70%] w-[90%] md:w-full  lg:text-xl text-whiteglow text-left pb-6 pt-6 sm:pt-10">
+          <p className="text-[13px] sm:text-base md:text-lg w-[100%] md:w-full pr-8 sm:pr-0  lg:text-xl text-whiteglow text-left pb-6 pt-6 sm:pt-10">
           Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
           </p>
 
           <Link className="" to="/packages"> <button className="flex btn-animation justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-28 sm:w-36 font-bold p-2 sm:my-2 hover:bg-[#00A651] duration-500">
             <span className='relative z-[110] text-sm sm:text-base'>Explore</span>
           </button></Link>
-          <div className='rounded-full mt-12 lg:mt-20 bg-[white] px-2 sm:py-1 flex justify-between items-center shadow-xl w-[85%] sm:w-[80%] md:w-[60%] lg:w-[90%] xl:w-[80%]'>
+          <div className='rounded-[10px] mt-12 lg:mt-12 bg-[white] px-2 sm:py-1 flex justify-between items-center shadow-xl w-[85%] sm:w-[80%] md:w-[60%] lg:w-[90%] xl:w-[80%]'>
 {/*           <input onChange={handleSearchChange} type="text" placeholder='Search places ' className='outline-none rounded-full sm:rounded border-none w-[70%] text-sm md:text-base focus:ring-[transparent]  focus:border-[transparent]'/>
  */}<Autocomplete
  open={openauto}
@@ -134,12 +142,12 @@ renderInput={(params) => <TextField {...params}  placeholder="Select a location"
           <div className='hidden lg:flex justify-center mt-48 2xl:mt-40   w-[60%]'>
             <div className='max-w-[450px] 2xl:max-w-[550px] relative text-white pt-8 pl-8 pr-10 card-background shadow-xl rounded-[20px] relative'>
              <img src={whitelogo} alt="" className='w-[100px] absolute top-8 right-8' />
-              <span className='text-base font-bold'>Get Your Stay</span><br/>
-              <span className='text-2xl font-bold'>At Your Price</span><br/><br />
-              <span className='text-4xl xl:text-5xl font-black'><span className='text-[#00c676]'>Bid For </span>Today</span>
+              <span className='text-[14px] font-bold'>Get Your Stay</span><br/>
+              <span className='text-xl font-bold'>At Your Price</span><br/><br />
+              <span className='text-4xl xl:text-3xl font-black'><span className='text-[#00c676]'>Bid For </span>Today</span>
               <div className='flex mt-4'>
-                  <img src={cardavatar} className='w-[50%]' alt="" />
-                <div className='w-[50%] flex flex-col justify-center gap-8 px-1'><span className='font-medium 2xl:text-lg'>Now book hotels at your desired place for today<br /><br />
+                  <img src={cardavatar} className='w-[40%]' alt="" />
+                <div className='w-[50%] flex flex-col justify-center gap-8 px-1'><span className='font-medium '>Now book hotels at your desired place for today<br /><br />
  
  Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-2 rounded-[15px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] relative'>Know More</button></Link></div>
               </div>
@@ -149,17 +157,15 @@ renderInput={(params) => <TextField {...params}  placeholder="Select a location"
 
         </div>
       </div>
-     <div className="px-4 sm:px-16 md:px-20 2xl:px-40 py-12 lg:hidden">
-     <div className='w-[100%] lg:max-w-[450px] 2xl:max-w-[550px] relative text-white pt-8 pl-4 sm:pl-8 pr-4 sm:pr-10 card-background shadow-xl rounded-[20px] relative '>
-             <img src={whitelogo} alt="" className='w-[80px] sm:w-[100px] absolute top-8 right-8' />
-              <span className='text-base font-bold'>Get Your Stay</span><br/>
-              <span className='text-xl sm:text-2xl font-bold'>At Your Price</span><br/><br />
-              <span className='text-3xl xs:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-black'><span className='text-[#00c676]'>Bid For </span>Today</span>
+     <div className="px-4 sm:px-16 md:px-20 2xl:px-40 py-8 lg:hidden">
+     <div className='w-[100%] lg:max-w-[450px] 2xl:max-w-[550px] relative text-white pt-2 pl-4 sm:pl-8  sm:pr-10 card-background shadow-xl rounded-[20px] relative '>
+             <img src={whitelogo} alt="" className='w-[50px] sm:w-[100px] absolute top-4 right-4' />
+              <span className='text-[12px] font-bold'>Get Your Stay</span><br/>
+              <span className='text-base sm:text-xl font-bold'>At Your Price</span><br/><br />
+              <span className='text-2xl xs:text-3xl  md:text-4xl font-black'><span className='text-[#00c676]'>Bid For </span>Today</span>
               <div className='flex mt-4'>
-                  <img src={cardavatar} className='w-[50%] xs:w-[30%] lg:w-[50%]' alt="" />
-                <div className='w-[50%] xs:w-[70%] lg:w-[50%] flex flex-col justify-center items-start gap-8 md:pl-[10%] px-1 '><span className='md:font-medium text-sm sm:text-base md:text-lg lg:text-base 2xl:text-lg'>Now book hotels at your desired place for today<br className='hidden lg:block'/><br />
- 
- Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-2 rounded-[15px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] relative'>Know More</button></Link></div>
+                  <img src={cardavatar} className='w-[40%] xs:w-[30%] lg:w-[50%]' alt="" />
+                <div className='w-[50%] xs:w-[70%] lg:w-[50%] flex flex-col justify-center items-start gap-2 md:pl-[10] '><span className='md:font-medium text-xs sm:text-base md:text-lg lg:text-base 2xl:text-lg'>Now book hotels at your desired place for today. Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-1 rounded-[10px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] text-xs relative'>Know More</button></Link></div>
               </div>
               
             </div>
@@ -185,22 +191,22 @@ Know more
       </div> */}
       
       {/* special offers block */}
-      <div className=' pt-6 sm:pt-12 md:pt-16 sm:pt-28 sm:pb-8  bg-[#e2e2e2] sm:bg-[white] px-4 sm:px-16 md:px-20 2xl:px-40 font-body'>
+      <div className=' pt-6 sm:pt-12 md:pt-16 sm:pt-28 sm:pb-8 bg-[white] sm:bg-[white] px-4 sm:px-16 md:px-20 2xl:px-72 font-body'>
           <div className='text-left'>
-            <h1 className='font-bold text-xl sm:text-2xl sm:text-4xl'>Trending Destinations</h1>
-            <p className='pt-2 sm:pt-4 textnormal pb-8 text-[14px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
+            <h1 className='font-bold text-lg sm:text-3xl'>Trending Destinations</h1>
+            <p className='pt-2 sm:pt-4 textnormal pb-4 sm:pb-8 text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
           </div>
         </div>
-        <div className=' hidden sm:block   px-4  sm:px-16 md:px-20 2xl:px-40  '>
+        <div className=' hidden sm:block   px-4  sm:px-16 md:px-20 2xl:px-72  '>
           <LazyLoad offset={200}><DestCard /></LazyLoad>
           
         </div>
-        <div className=' block sm:hidden bg-[#e2e2e2]  sm:px-16 md:px-20 2xl:px-40 '>
+        <div className=' block sm:hidden  sm:px-16 md:px-20 2xl:px-72 '>
           
           <LazyLoad offset={200}><DestCardMob /></LazyLoad>
           
         </div>
-        <div className='p-7 text-center bg-[#e2e2e2]  sm:bg-[white] mb-12'>
+        <div className='p-7 text-center  sm:bg-[white] mb-12'>
           <Link to="/packages" ><button className='font-medium btn-animation bg-[white]  border-[#00c676] border p-2 rounded-[10px] w-full sm:w-auto px-10 font-body' ><span className='relative z-[110]'>More destinations</span></button></Link>
         </div>
 
@@ -225,21 +231,21 @@ Know more
 
 
 
-<div className="mt-8 sm:mt-[2rem] py-2 sm:py-8 rounded-[10px] sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 font-body ">
+<div className="mt-8 sm:mt-[6rem] pt-8 py-2 rounded-[10px]  sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-72 font-body ">
         <div className="flex justify-between items-center">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
+          <h1 className="text-lg sm:text-2xl md:text-3xl font-bold">
             Popular Destinations
           </h1>
         </div>
-        <p className="text-[14px] sm:text-base lg:text-lg py-2 sm:py-4 text-graydust-dark">
+        <p className="text-[13px] sm:text-base lg:text-lg py-2 sm:py-4 text-graydust-dark">
           Discover Our Most Popular Destinations and Plan Your Next Adventure
           Today!
         </p>
 
         
-        <div className=" pt-8 justify-between  text-[white] mb-12 font-bold text-xl flex gap-[2%] location-container">
+        <div className=" pt-8 justify-between  text-[white] mb-4 font-bold text-xl flex gap-[2%] location-container">
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] h-[150px] lg:h-[250px] overflow-hidden relative cursor-pointer"
             onClick={() => handleS2submit("kashmir")}
           >
                             <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
@@ -253,7 +259,7 @@ Know more
             onClick={() => handleS2submit("goa")}
           >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt=""  className='w-[100%] h-full object-cover' />
             <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Goa</h1>
           </div>
           <div
@@ -261,7 +267,7 @@ Know more
             onClick={() => handleS2submit("wayanad")}
           >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt=""  className='w-[100%] h-full object-cover' />
             <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Wayanad</h1>
           </div>
           <div
@@ -269,7 +275,7 @@ Know more
             onClick={() => handleS2submit("munnar")}
           >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt=""  className='w-[100%] h-full object-cover' />
             <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Munnar</h1>
           </div>
           <div
@@ -277,14 +283,14 @@ Know more
             onClick={() => handleS2submit("mysore")}
           >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" />
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt=""  className='w-[100%] h-full object-cover' />
             <h1 className="absolute left-3 text-base sm:text-xl bottom-3 z-[101]">Mysore</h1>
           </div>
         </div>
       </div>
 
 
-      <div className='px-4  sm:px-16 md:px-20 2xl:px-40'>
+      <div className='px-4  sm:px-16 md:px-20 2xl:px-72 my-8 md:my-20'>
           <LazyLoad offset={200}><EmiCard /></LazyLoad>
         </div>
 
@@ -298,13 +304,13 @@ Know more
 
 
 
-      <div className=' pb-12 sm:pt-20 px-4  sm:px-16 md:px-20 2xl:px-40 font-body'>
-        <div className='flex w-full flex-col xl:flex-row'>
-          <div className='w-[100%] xl:w-[30%] flex  items-center  gradientbgreview xl:text-[white] rounded-[10px] justify-center'>
-          <h1 className='font-bold text-xl sm:text-2xl w-full sm:text-3xl text-left xl:text-center xl:pt-7 mb-8'>What People<br className='hidden xl:block'/> Say About Us </h1>
+      <div className=' pb-12 px-4  sm:px-16 md:px-20 2xl:px-72 font-body'>
+        <div className='flex w-full flex-col '>
+          <div className='w-[100%] flex  '>
+          <h1 className='font-bold  w-full sm:text-3xl text-left xl:pt-7 mb-8'>What PeopleSay About Us </h1>
 
           </div>
-        <div className='w-[100%] xl:w-[70%] pt-4'><LazyLoad offset={200}><Reviews /></LazyLoad></div>
+        <div className='w-[100%]  pt-4'><LazyLoad offset={200}><Reviews /></LazyLoad></div>
 
         </div>
        

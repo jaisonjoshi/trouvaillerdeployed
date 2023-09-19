@@ -40,7 +40,7 @@ const handleSubmit = async (e) => {
 
 }
   return (
-    <div className="  bg-[#c2fbd7] gradientbg shadow-lg relative  font-body mx-4  sm:mx-16 md:mx-20 2xl:mx-40 my-4 sm:my-12 md:my-20 flex flex-col xl:flex-row justify-between">
+    <div className="  bg-[#c2fbd7] gradientbg shadow-lg relative  font-body mx-4  sm:mx-16 md:mx-20 2xl:mx-72 my-4 sm:my-12 md:my-36 flex flex-col xl:flex-row justify-between">
      <div className="w-[100%] xl:w-[50%] 2xl:w-[40%] ">
      <img src={intrstimg} className="w-[100%] hidden xl:block h-full w-full object-cover" alt="" />
      <img src={intimg} className="w-[100%] xl:hidden h-full w-full object-cover rounded-t-[10px]" alt="" />
@@ -48,10 +48,9 @@ const handleSubmit = async (e) => {
      </div>
       <div className="py-12 px-4 sm:px-8 md:px-16 w-[100%] xl:w-[60%]">
       <h1 className="font-bold relative text-[white] text-base sm:text-lg sm:text-xl 2xl:text-2xl z-[100]">
-        Looking for a travel experience that's tailored to your interests and
-        preferences?{" "}
+        Need help in planning your dream trip?
       </h1>
-      <h1 className="font-normal relative z-[100]  my-2 text-[white] text-[14px] sm:text-base 2xl:text-xl">
+      <h1 className="font-normal relative z-[100]  my-2 text-[white] text-[14px] sm:text-base 2xl:text-lg">
         Fill out our form to get started, and we'll work with you to create the
         perfect itinerary.
       </h1>

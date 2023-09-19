@@ -56,11 +56,16 @@ const LoadingScreen = () => {
   );
 };
 function App() {
+  const [popupShow, setPopupShow] = useState(false)
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      setTimeout(()=>{
+        setPopupShow(true)
+      }, 3000)
     }, 3500);
   }, []);
   const [open, setOpen] = useState(false);
@@ -134,7 +139,7 @@ function App() {
               path="/"
               element={
                 <Suspense fallback={<LoadingScreen />}>
-                <Home setlocation={setlocation}/>
+                <Home setlocation={setlocation} popupShow={popupShow} setPopupShow={setPopupShow}/>
               </Suspense>
               }
             />
