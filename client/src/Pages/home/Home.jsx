@@ -70,7 +70,7 @@ const navigate = useNavigate()
 
   return (
     <div className={`animationset ${anim}`}>
-     {popupShow &&  <div className='fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[100000000000000000000000000000000] flex justify-center items-center '>
+     {popupShow &&  <div className='fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center '>
       <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[#183e18] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={()=> setPopupShow(false)}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
       <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
       </div>}
