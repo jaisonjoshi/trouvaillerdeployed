@@ -21,8 +21,7 @@ import popupimg from '../Assets/popup.png'
 import { Helmet } from 'react-helmet';
 import { AiOutlineClose } from "react-icons/ai";
 
-const Home = ({setlocation, popupShow, setPopupShow}) => {
-  
+const Home = ({setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEbookPage}) => {
   const [destination, setDestination] = useState("");
 const navigate = useNavigate()
   const handleSearchChange = (e, newValue) => {
@@ -53,10 +52,9 @@ const navigate = useNavigate()
   };
   const handleClosePopup = () => {
     setPopupShow(false)
-    setTimeout(() => {
-      document.getElementById("initialpopup").classList.add("cloasedPopup")
+    document.getElementById("initialpopup").classList.add("cloasedPopup")
 
-    }, 500);
+    
   }
 
   const [inputValue, setInputValue] = useState("");
@@ -74,13 +72,20 @@ const navigate = useNavigate()
         
       }
     }, [openauto]);
+const openEbookPage = () =>{
+  setPopupShow(false)
+  
+setPopupEbookPage(false) 
+   navigate('/ebook')
 
+  
+}
   return (
     <div className={`animationset ${anim} bg-[#efefef]`}>
-      <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
+      {popupEbookPage && <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
       <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[#183e18] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
-      <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><Link to="/ebook"><button className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></Link></div></div>
-      </div>
+      <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
+      </div>}
       <Helmet>
         <title>Trouvailler | Personalized Trips, perfectly packaged</title>
       </Helmet>

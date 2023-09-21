@@ -49,10 +49,9 @@ TagManager.initialize(tagManagerArgs)
 const LoadingScreen = () => {
   return (
     <div className="preloader">
-      <img src={loadinggif} className="w-[150px]" />
-      <h1 className="text-[#4f4d4db4] text-center px-16">
-        Almost there, your destination is just around the corner!
-      </h1>
+      <img src={loadinggif} className="w-[60px] md:w-[80px]" />
+      <h1 className="text-[#4f4d4db4] text-sm text-center px-16">
+      Your destination is just moments away!      </h1>
     </div>
   );
 };
@@ -71,6 +70,8 @@ function App() {
   }, []);
   const [open, setOpen] = useState(false);
   const [location, setlocation] = useState("");
+  const [popupEbookPage, setPopupEbookPage]=useState(true)
+
   const [type, settype] = useState("");
   /* useEffect(() => {
     document.addEventListener("DOMContentLoaded", handleContentLoaded);
@@ -93,9 +94,9 @@ function App() {
       <CircleLoading open={open} />
       {loading ? (
         <div className="preloader">
-          <img src={loadinggif} className="w-[150px]" />
-          <h1 className="text-[#4f4d4db4] text-center px-16">
-            Almost there, your destination is just around the corner!
+          <img src={loadinggif} className="w-[60px] md:w-[80px]" />
+          <h1 className="text-[#4f4d4db4] text-sm text-center px-16">
+          Your destination is just moments away! 
           </h1>
         </div>
       ) : (
@@ -148,7 +149,7 @@ function App() {
               path="/"
               element={
                 <Suspense fallback={<LoadingScreen />}>
-                <Home setlocation={setlocation} popupShow={popupShow} setPopupShow={setPopupShow}/>
+                <Home setlocation={setlocation} popupEbookPage={popupEbookPage} setPopupEbookPage={setPopupEbookPage} popupShow={popupShow} setPopupShow={setPopupShow}/>
               </Suspense>
               }
             />
