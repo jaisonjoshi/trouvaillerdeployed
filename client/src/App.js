@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState,useEffect, lazy, Suspense } from "react";
 import ScrollToTop from "./scrollToTop/scrollToTop.js";
 import CircleLoading from "../src/Pages/components/spinningLoader/CircleLoading";
-import loadinggif from "./Pages/Assets/loadinggif.gif";
+import loadinggif from "./Pages/Assets/travelgif.gif";
 import TagManager from 'react-gtm-module'
 import ResetPassword from "./Pages/login/resetPassword.jsx";
 
@@ -13,6 +13,7 @@ const Emipage = lazy(() => import("./Pages/emipage/Emipage.js"));
 const PrivacyPolicy = lazy(() =>
   import("./Pages/privacy policy/privacypolicy.jsx")
 );
+const Ebook = lazy(()=> import('./Pages/ebook/Ebook.js'))
 const SearchListPackType = lazy(() =>
   import("./Pages/searchlist/SearchListPackType.js")
 );
@@ -123,6 +124,14 @@ function App() {
               element={
                 <Suspense fallback={<LoadingScreen />}>
                   <SearchListPack  />
+                </Suspense>
+              }
+            />
+             <Route
+              path="ebook"
+              element={
+                <Suspense fallback={<LoadingScreen />}>
+                  <Ebook  />
                 </Suspense>
               }
             />

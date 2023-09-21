@@ -1,19 +1,23 @@
 import { Link } from "react-router-dom";
 import emitag from '../../Assets/emicardimg.webp'
+import emicardbg from '../../Assets/emicardbg.webp'
 
 const EmiCard = () => {
   return (
-    <div className=" emibg md:gradientbg relative justify-between flex rounded-[10px] font-body shadow-xl">
-     <div className="px-4 sm:px-8 md:px-8 py-4 relative w-[80%] md:w-[100%] z-[110] ">
-      <h1 className="text-[12px] md:text-2xl lg:text-2xl font-extrabold md:my-4 text-[#fff]">Travel now hassle free with
-Trouvailler EMI options</h1>
-      <p className="text-[#D9D9D9] text-[10px] w-[100%] lg:w-[100%] hidden md:block">Embark on your dream journey today and leave the worries of immediate payment behind with our exclusive travel now, pay later program. </p>
-     <Link to="/emi"><button className="text-[white] md:border md:border-[1px] md:border-[white] md:mt-4 rounded-full text-sm md:text-base lg:text-base md:px-4 md:px-6 2xl:px-8  md:py-1 2xl:py-2  font-normal"><span className="relative text-[12px] md:text-base z-[110]">Know more</span></button></Link>
-     </div>
-     <div className="hidden md:block md:w-[30%] ">
-      <img src={emitag} className=" md:h-[100%] rounded-tr-[10px] rounded-br-[10px] object-cover"  />
-     </div>
+    <div className="gradientbg rounded-[10px] pt-4 flex justify-between text-[white]">
+      <div className="w-[60%] md:w-[90%] pl-4 md:pl-8 flex flex-col gap-4 xs:justify-center">
+        <h1 className="font-bold font-body text-xl lg:text-3xl">Explore Trouvailler
+EMI Schemes</h1>
+        <p className="text-[#dddddd] text-sm sm:hidden">Travel now hassle free with 
+Trouvailler EMI Options</p>
+<p className="text-[#dddddd] text-lg hidden sm:block">Trouvailler offers EMI options, making travel stress-free. You can pay for your trip conveniently over time, ensuring a hassle-free experience.</p>
+        <Link><button className="bg-[#00A45E] px-4 py-1 shadow-xl rounded-full mb-4">Know more</button></Link>
+      </div>
+      <div className=" w-[40%] py-4 w-emi shrink-0  flex items-center justify-end">
+        <img src={emicardbg} alt="" className="w-[100%] h-auto" />
+      </div>
     </div>
+    
   );
 };
 

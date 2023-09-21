@@ -683,11 +683,13 @@ details summary::marker {
 .bgtrans{
     background: transparent !important;
 }
-.emibg{
-    background-image: url('./Pages/Assets/emibgpic.webp');
-    background-position: bottom right;
-    background-size: cover;
-    background-repeat: no-repeat;
+@media screen and (min-width:1024px) {
+    .emibg{
+        background-image: url('./Pages/Assets/emibgpic.webp');
+        background-position: bottom right;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 }
 .emibggrad{
     background-image: linear-gradient(to bottom, transparent,#23273a67, #23273aa8,#23273aab, #23273a);
@@ -709,4 +711,28 @@ details summary::marker {
 
 .animate{
     transition: all ease-in-out 0.5s !important;
+}
+
+
+.initialPopup{
+    opacity: 0;
+}
+.visiblePopup{
+    opacity: 1;
+}
+.cloasedPopup{
+    display: none !important;
+}
+
+@media screen and (min-width:1024px) {
+    .w-emi {
+        width: 25% !important;
+    }
+    
+}
+@media screen and (min-width:764px) and (max-width:1024px) {
+    .w-emi {
+        width: 30% !important;
+    }
+    
 }

@@ -51,6 +51,13 @@ const navigate = useNavigate()
 
     navigate(`/sep/${value}`);
   };
+  const handleClosePopup = () => {
+    setPopupShow(false)
+    setTimeout(() => {
+      document.getElementById("initialpopup").classList.add("cloasedPopup")
+
+    }, 500);
+  }
 
   const [inputValue, setInputValue] = useState("");
 
@@ -69,18 +76,18 @@ const navigate = useNavigate()
     }, [openauto]);
 
   return (
-    <div className={`animationset ${anim}`}>
-     {popupShow &&  <div className='fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center '>
-      <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[#183e18] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={()=> setPopupShow(false)}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
-      <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
-      </div>}
+    <div className={`animationset ${anim} bg-[#efefef]`}>
+      <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
+      <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[#183e18] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
+      <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><Link to="/ebook"><button className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></Link></div></div>
+      </div>
       <Helmet>
         <title>Trouvailler | Personalized Trips, perfectly packaged</title>
       </Helmet>
-      <div className=" w-full relative h-[70vh] sm:h-[70vh] background-header home font-body">
+      <div className=" w-full relative h-[70vh] sm:h-[80vh] background-header home font-body">
            <NavbarTest color={color}/>
              
-        <div className=" absolute z-[100] top-0 left-0 right-0 h-[70vh] sm:h-[70vh] pb-20 w-full flex flex-col lg:flex-row justify-start pl-4  sm:pl-12 lg:pl-16 2xl:pl-36 items-start ">
+        <div className=" absolute z-[100] top-0 left-0 right-0 h-[80vh] sm:h-[70vh] pb-20 w-full flex flex-col lg:flex-row justify-start pl-4  sm:pl-12 lg:pl-16 2xl:pl-36 items-start ">
           <div className='flex flex-col items-start mt-32 sm:mt-40 lg:mt-52 2xl:mt-56 w-[100%] lg:w-[60%] 2xl:w-[50%]'>
           <h1 className="text-xl sm:text-2xl md:text-3xl 2xl:text-3xl text-whiteglow sm:mb-4 font-bold text-left">
           Discover Your </h1><h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-4xl text-whiteglow font-extrabold text-left'>Next Adventure <span className='text-[#00c676]'>with Us</span>
@@ -191,22 +198,22 @@ Know more
       </div> */}
       
       {/* special offers block */}
-      <div className=' pt-6 sm:pt-12 md:pt-16 sm:pt-28 sm:pb-8 bg-[white] sm:bg-[white] px-4 sm:px-16 md:px-20 2xl:px-72 font-body'>
+      <div className=' mt-6 sm:mt-12 md:mt-16 sm:mt-28 sm:pb-8 bg-[white] rounded-t-[15px] px-8 pt-8 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body'>
           <div className='text-left'>
             <h1 className='font-bold text-lg sm:text-3xl'>Trending Destinations</h1>
             <p className='pt-2 sm:pt-4 textnormal pb-4 sm:pb-8 text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
           </div>
         </div>
-        <div className=' hidden sm:block   px-4  sm:px-16 md:px-20 2xl:px-72  '>
+        <div className=' hidden sm:block  bg-[white]  mx-4 px-8 sm:mx-16 md:mx-20 2xl:mx-60  '>
           <LazyLoad offset={200}><DestCard /></LazyLoad>
           
         </div>
-        <div className=' block sm:hidden  sm:px-16 md:px-20 2xl:px-72 '>
+        <div className=' block sm:hidden bg-[white] sm:mx-16 md:mx-20 2xl:mx-60 '>
           
           <LazyLoad offset={200}><DestCardMob /></LazyLoad>
           
         </div>
-        <div className='p-7 text-center  sm:bg-[white] mb-12'>
+        <div className='p-7 mx-4  sm:mx-16 md:mx-20 2xl:mx-60 text-center rounded-b-[15px]  bg-[white] mb-12'>
           <Link to="/packages" ><button className='font-medium btn-animation bg-[white]  border-[#00c676] border p-2 rounded-[10px] w-full sm:w-auto px-10 font-body' ><span className='relative z-[110]'>More destinations</span></button></Link>
         </div>
 
@@ -231,7 +238,7 @@ Know more
 
 
 
-<div className="mt-8 sm:mt-[6rem] pt-8 py-2 rounded-[10px]  sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-72 font-body ">
+<div className="mt-8 sm:mt-[6rem] pt-8 py-2 rounded-[10px] bg-[white] px-8 sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body ">
         <div className="flex justify-between items-center">
           <h1 className="text-lg sm:text-2xl md:text-3xl font-bold">
             Popular Destinations
@@ -290,7 +297,7 @@ Know more
       </div>
 
 
-      <div className='px-4  sm:px-16 md:px-20 2xl:px-72 my-8 md:my-20'>
+      <div className='px-4  sm:px-16 md:px-20 2xl:px-60 my-8 md:my-20'>
           <LazyLoad offset={200}><EmiCard /></LazyLoad>
         </div>
 
