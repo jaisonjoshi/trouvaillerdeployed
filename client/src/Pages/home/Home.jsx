@@ -1,12 +1,12 @@
 import LazyLoad from 'react-lazyload';
 import React, {useState,useEffect} from 'react'
 import DestCard from '../components/cards/trending_dest_card'
-import Offers from '../components/cards/special_offers_card'
+import { FaUmbrellaBeach, FaRegBuilding } from "react-icons/fa";
 import Reviews from '../Reviews/Review'
 import Footer from '../components/Footer/Footer'
 import { Link } from "react-router-dom";
 import NavbarTest from '../components/navbar/navbar'
-import logo from '../Assets/Trouvailler Green.png'
+import beach from '../Assets/beach.png'
 import DestCardMob from '../components/cards/trending_dest_card_mob'
 import Emi from '../components/cards/emi'
 import InterestForm from '../components/cards/interestForm'
@@ -52,7 +52,8 @@ const navigate = useNavigate()
   };
   const handleClosePopup = () => {
     setPopupShow(false)
-    document.getElementById("initialpopup").classList.add("cloasedPopup")
+    setPopupEbookPage(false) 
+
 
     
   }
@@ -81,7 +82,7 @@ setPopupEbookPage(false)
   
 }
   return (
-    <div className={`animationset ${anim} bg-[#efefef]`}>
+    <div className={`animationset ${anim} lg:bg-[#efefef]`}>
       {popupEbookPage && <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
       <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[#183e18] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
       <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
@@ -100,10 +101,15 @@ setPopupEbookPage(false)
           <p className="text-[13px] sm:text-base md:text-lg w-[100%] md:w-full pr-8 sm:pr-0  lg:text-xl text-whiteglow text-left pb-6 pt-6 sm:pt-10">
           Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
           </p>
+          <div className='flex gap-4'>
+            <Link to="/packages" className='text-[white] px-4 md:px-6 py-3 rounded-full text-sm md:text-base shadow-xl flex justify-center items-center gap-2 font-bold bg-[#222539]'><FaUmbrellaBeach />Holiday Packages</Link>
+            <Link to="/hotels" className='text-[white] px-4 md:px-6 py-3 rounded-full text-sm md:text-base  shadow-xl flex justify-center items-center gap-2 font-bold bg-[#222539]'><FaRegBuilding />Hotels and Home stays</Link>
 
-          <Link className="" to="/packages"> <button className="flex btn-animation justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-28 sm:w-36 font-bold p-2 sm:my-2 hover:bg-[#00A651] duration-500">
+          </div>
+
+          {/* <Link className="" to="/packages"> <button className="flex btn-animation justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-28 sm:w-36 font-bold p-2 sm:my-2 hover:bg-[#00A651] duration-500">
             <span className='relative z-[110] text-sm sm:text-base'>Explore</span>
-          </button></Link>
+          </button></Link> */}
           <div className='rounded-[10px] mt-12 lg:mt-12 bg-[white] px-2 sm:py-1 flex justify-between items-center shadow-xl w-[85%] sm:w-[80%] md:w-[60%] lg:w-[90%] xl:w-[80%]'>
 {/*           <input onChange={handleSearchChange} type="text" placeholder='Search places ' className='outline-none rounded-full sm:rounded border-none w-[70%] text-sm md:text-base focus:ring-[transparent]  focus:border-[transparent]'/>
  */}<Autocomplete
@@ -203,7 +209,7 @@ Know more
       </div> */}
       
       {/* special offers block */}
-      <div className=' mt-6 sm:mt-12 md:mt-16 sm:mt-28 sm:pb-8 bg-[white] rounded-t-[15px] px-8 pt-8 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body'>
+      <div className=' mt-6 sm:mt-12 md:mt-16 sm:mt-28 sm:pb-8 bg-[white] rounded-t-[15px] lg:px-8 pt-8 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body'>
           <div className='text-left'>
             <h1 className='font-bold text-lg sm:text-3xl'>Trending Destinations</h1>
             <p className='pt-2 sm:pt-4 textnormal pb-4 sm:pb-8 text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
@@ -243,7 +249,7 @@ Know more
 
 
 
-<div className="mt-8 sm:mt-[6rem] pt-8 py-2 rounded-[10px] bg-[white] px-8 sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body ">
+<div className="mt-8 sm:mt-[6rem] pt-8 py-2 rounded-[10px] bg-[white] lg:px-8 sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body ">
         <div className="flex justify-between items-center">
           <h1 className="text-lg sm:text-2xl md:text-3xl font-bold">
             Popular Destinations
@@ -319,7 +325,7 @@ Know more
       <div className=' pb-12 px-4  sm:px-16 md:px-20 2xl:px-72 font-body'>
         <div className='flex w-full flex-col '>
           <div className='w-[100%] flex  '>
-          <h1 className='font-bold  w-full sm:text-3xl text-left xl:pt-7 mb-8'>What PeopleSay About Us </h1>
+          <h1 className='font-bold  w-full text-lg sm:text-3xl text-left pt-8 xl:pt-7 mb-8'>What People Say About Us </h1>
 
           </div>
         <div className='w-[100%]  pt-4'><LazyLoad offset={200}><Reviews /></LazyLoad></div>

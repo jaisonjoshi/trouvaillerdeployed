@@ -84,7 +84,7 @@ const Reviews = () => {
                        </div>
                      </div>
                     <div className="flex flex-col justify-between ">
-                    <p className="text-[20px]   my-2 mt-8  title-font text-center  sm:leading-8"> {item.reviewnote}</p>
+                    <p className="text-[14px] md:text-[16px] lg:text-[20px]   my-2 mt-8  title-font text-center  sm:leading-8"> {item.reviewnote}</p>
                      <div className=" text-center text-base md:text-lg  pt-8">
                        <span className="font-normal">{item.author},{item.place}</span>
                        <span> {item.rating}</span>

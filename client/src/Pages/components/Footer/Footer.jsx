@@ -35,7 +35,7 @@ const Footer = ({bg}) => {
             <h2 className='text-[white] pt-8 md:pt-0 text-lg pb-4 md:pb-8'>Connect us</h2>
 
               <p className='text-[#e2e2e2] text-xs sm:text-base title-font leading-normal'>Get in touch with us anytime through our official WhatsApp handle </p>
-              <a href="https://wa.me/918129177335"><button className='bg-evergreen text-sm text-blacky-dark  font-bold rounded px-8 py-3 mt-4 flex items-center'><span>WhatsApp</span> <FontAwesomeIcon icon={faWhatsapp} className="ml-3 text-lg" /></button></a>
+              <a href="https://wa.me/918129177335"><button className='bg-evergreen text-sm text-[white]  font-bold rounded px-8 py-3 mt-4 flex items-center'><span>WhatsApp</span> <FontAwesomeIcon icon={faWhatsapp} color='white' className="ml-3 text-lg" /></button></a>
 
           </div>
 
@@ -53,20 +53,20 @@ const Footer = ({bg}) => {
            <Link className='mx-4 text-[#e2e2e2] hidden sm:block text-xs text-underline' to="/privacypolicy">Privacy Policy</Link>
 
             <a href="https://www.facebook.com/travelwithtrouvailler/">
-              <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faFacebookF} /></div>
+              <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faFacebookF} color='white'/></div>
             </a>
             <a href="https://www.youtube.com/@travelwithtrouvailler6162">
-              <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faYoutube} /></div>
+              <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faYoutube} color='white'/></div>
             </a>
             <a href="https://www.instagram.com/trouvailler_guides/">
-              <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faInstagram} /></div>
+              <div className='bg-evergreen mx-1 w-6 h-6 rounded-full text-center'><FontAwesomeIcon icon={faInstagram} color='white'/></div>
             </a>
            
           </div>
           
         </div>
         <div className='ml-4 text-[gray] sm:hidden'>
-            <span className='text-xs'>Trouvailler &copy;2023</span><Link className='mx-1 underline  text-xs ' to="/termandconditions">Terms and Conditions</Link><Link className='mx-1 underline  text-xs ' to="/privacypolicy">Privacy Policy</Link>
+            <span className='text-xs'>Trouvailler &copy;2023</span><br className='md:hidden'/><Link className='md:mx-1 underline  text-xs ' to="/termandconditions">Terms and Conditions</Link><Link className='mx-1 underline  text-xs ' to="/privacypolicy">Privacy Policy</Link>
 
           </div>
       </footer>

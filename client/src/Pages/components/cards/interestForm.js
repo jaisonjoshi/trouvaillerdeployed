@@ -50,7 +50,7 @@ const handleSubmit = async (e) => {
       <h1 className="font-bold relative text-[white] text-base sm:text-lg sm:text-xl 2xl:text-2xl z-[100]">
         Need help in planning your dream trip?
       </h1>
-      <h1 className="font-normal relative z-[100]  my-2 text-[white] text-[14px] sm:text-base 2xl:text-lg">
+      <h1 className="font-normal relative z-[100]  my-2 text-[white] text-[13px] sm:text-base 2xl:text-lg">
         Fill out our form to get started, and we'll work with you to create the
         perfect itinerary.
       </h1>
@@ -153,10 +153,10 @@ const handleSubmit = async (e) => {
           
           
 </div>
-         <div className="flex items-center flex-wrap gap-4">
-         <button className="bg-[#02c677]  px-4 py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center" onClick={handleSubmit}>
-            Send <SendIcon style={{ fontSize: "18px" }} />
-          </button><button className="bg-[#02c677] px-4 py-2 rounded shadow-md text-[black] font-medium flex gap-2 items-center">Chat with Us <WhatsAppIcon /></button>
+         <div className="flex items-center flex-wrap gap-4 text-[white]">
+         <button className="bg-[#02c677]  px-4 py-2 rounded shadow-md font-bold text-sm md:text-base flex gap-2 items-center" onClick={handleSubmit}>
+            Send <SendIcon className="text-lg md:text-xl" />
+          </button><button className="bg-[#02c677] px-4 py-2 rounded shadow-md text-sm md:text-base  font-bold flex gap-2 items-center">Chat with Us <WhatsAppIcon className="text-lg md:text-xl"/></button>
           {loading && <ClipLoader color="#00d67b"/>}
           {loadingTxt !== "" && <span className="text-black text-sm sm:text-base italic">{loadingTxt}</span>}
           
