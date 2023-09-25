@@ -11,7 +11,7 @@ import DestCardMob from '../components/cards/trending_dest_card_mob'
 import Emi from '../components/cards/emi'
 import InterestForm from '../components/cards/interestForm'
 import { useNavigate } from 'react-router';
-import card from '../Assets/cardbg.webp'
+import ebook from '../Assets/ebookcover.png'
 import cardavatar from '../Assets/cardavatar.webp'
 import whitelogo from '../Assets/Trouvaillerwhite.png'
 import EmiCard from '../components/cards/EmiCard';
@@ -84,7 +84,7 @@ setPopupEbookPage(false)
   return (
     <div className={`animationset ${anim} lg:bg-[#efefef]`}>
       {popupEbookPage && <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
-      <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[#183e18] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
+      <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[black] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
       <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
       </div>}
       <Helmet>
@@ -98,12 +98,12 @@ setPopupEbookPage(false)
           <h1 className="text-xl sm:text-2xl md:text-3xl 2xl:text-3xl text-whiteglow sm:mb-4 font-bold text-left">
           Discover Your </h1><h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-4xl text-whiteglow font-extrabold text-left'>Next Adventure <span className='text-[#00c676]'>with Us</span>
           </h1>
-          <p className="text-[13px] sm:text-base md:text-lg w-[100%] md:w-full pr-8 sm:pr-0  lg:text-xl text-whiteglow text-left pb-6 pt-6 sm:pt-10">
+          <p className="text-[13px] sm:text-base md:text-lg w-[100%] md:w-full pr-8 sm:pr-0  lg:text-xl text-[#bab7b7] text-left pb-6 pt-6 sm:pt-10">
           Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
           </p>
           <div className='flex gap-4'>
-            <Link to="/packages" className='text-[white] px-4 md:px-6 py-3 rounded-full text-sm md:text-base shadow-xl flex justify-center items-center gap-2 font-bold bg-[#222539]'><FaUmbrellaBeach />Holiday Packages</Link>
-            <Link to="/hotels" className='text-[white] px-4 md:px-6 py-3 rounded-full text-sm md:text-base  shadow-xl flex justify-center items-center gap-2 font-bold bg-[#222539]'><FaRegBuilding />Hotels and Home stays</Link>
+            <Link to="/packages" className='text-[white] px-6 text-center py-2 xs:py-3 rounded-full text-xs md:text-base shadow-xl flex justify-center items-center gap-4 sm:gap-2 font-bold bg-[#222539]'><FaUmbrellaBeach className='text-[20px]'/>Holiday  <br className='xs:hidden'/> Packages</Link>
+            <Link to="/hotels" className='text-[white] px-6 py-2 xs:py-3  text-center rounded-full text-xs md:text-base  shadow-xl flex justify-center items-center gap-4 sm:gap-2 font-bold bg-[#222539]'><FaRegBuilding className='text-[20px]'/>Hotels and <br className='xs:hidden'/> Home stays</Link>
 
           </div>
 
@@ -209,13 +209,13 @@ Know more
       </div> */}
       
       {/* special offers block */}
-      <div className=' mt-6 sm:mt-12 md:mt-16 sm:mt-28 sm:pb-8 bg-[white] rounded-t-[15px] lg:px-8 pt-8 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body'>
+      <div className='  sm:mt-12 md:mt-16 sm:mt-28 sm:pb-8 bg-[white] rounded-t-[15px] lg:px-8 pt-2 xs:pt-8 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body'>
           <div className='text-left'>
             <h1 className='font-bold text-lg sm:text-3xl'>Trending Destinations</h1>
             <p className='pt-2 sm:pt-4 textnormal pb-4 sm:pb-8 text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
           </div>
         </div>
-        <div className=' hidden sm:block  bg-[white]  mx-4 px-8 sm:mx-16 md:mx-20 2xl:mx-60  '>
+        <div className=' hidden sm:block  bg-[white]  mx-4 lg:px-8 sm:mx-16 md:mx-20 2xl:mx-60  '>
           <LazyLoad offset={200}><DestCard /></LazyLoad>
           
         </div>
@@ -228,7 +228,7 @@ Know more
           <Link to="/packages" ><button className='font-medium btn-animation bg-[white]  border-[#00c676] border p-2 rounded-[10px] w-full sm:w-auto px-10 font-body' ><span className='relative z-[110]'>More destinations</span></button></Link>
         </div>
 
-        <div className='px-4  sm:px-16 md:px-20 2xl:px-72'>
+        <div className='px-4  sm:px-16 md:px-20 2xl:px-60'>
           <LazyLoad offset={200}><Emi /></LazyLoad>
         </div>
       {/* <div className="pt-8 sm:pt-20 pb-8 px-4 sm:px-16 md:px-20 2xl:px-40 ">
@@ -245,7 +245,15 @@ Know more
 
 
 
-
+<div className='px-4  sm:px-16 md:px-20 2xl:px-60 my-8 md:my-20'>
+          <div className='bg-[white] rounded-[10px] flex flex-col xs:flex-row xs:items-center shadow-con' >
+            <img src={ebook} className='w-[60%] xs:w-[35%] lg:w-[25%] xl:w-[20%]'/>
+            <div className='flex gap-2 md:gap-4 flex-col items-start pl-4  md:pl-12   pr-4'>
+              <h1 className='text-lg sm:text-2xl lg:text-3xl font-bold'>Download our free E-book</h1><p className='text-graydust-dark text-sm md:text-base lg:text-lg font-medium'>Download our free ebook to become well informed on buying a travel package. Be well informed before making a well informed decision.</p>
+              <Link className='gradientbg text-[white] px-4 text-xs md:text-base py-2 rounded-full mb-4'>Download Now</Link>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -307,7 +315,7 @@ Know more
         </div>
       </div>
 
-
+     
       <div className='px-4  sm:px-16 md:px-20 2xl:px-60 my-8 md:my-20'>
           <LazyLoad offset={200}><EmiCard /></LazyLoad>
         </div>

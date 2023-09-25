@@ -726,7 +726,7 @@ details summary::marker {
 
 @media screen and (min-width:1024px) {
     .w-emi {
-        width: 25% !important;
+        width: 15% !important;
     }
     
 }
@@ -736,3 +736,11 @@ details summary::marker {
     }
     
 }
+
+.bidcard-bg{
+    background-image: url('./Pages/Assets/bidcard-bg.webp');
+    background-size: cover;
+}
+
+.shadow-con{
+   box-shadow:  rgba(100, 100, 111, 0.2) 4px 4px 18px 0px, rgba(100, 100, 111, 0.2) -4px 4px 18px 0px}
