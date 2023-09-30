@@ -4,10 +4,31 @@ import Footer from "../components/Footer/Footer"
 import ebookcirclebg from '../Assets/ebookcirclebg.png'
 import ebookcover from '../Assets/ebookcover.png'
 import ebookmob from '../Assets/ebookmob.webp'
+import { useState } from "react"
+import axios from "axios"
 
 
 
 const Ebook = () => {
+    const axiosInstance = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+      });
+    
+    const [ebookdetails, setEbookdetails] = useState({
+        name:undefined,
+        email:undefined
+    })
+    const handleChange = (e) => {
+        console.log(ebookdetails)
+        setEbookdetails((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+
+      };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const res = await axiosInstance.post("/subscribe", ebookdetails);
+
+    }
 
     return (
         <div>
@@ -24,9 +45,12 @@ const Ebook = () => {
                     <p className="ml-4 sm:ml-16 md:ml-20 2xl:ml-60 w-[80%] xl:w-[60%] text-[#595252] text-base lg:text-lg  2xl:text-xl font-body">From research and budgeting to understanding policies and making the right choices, this eBook will equip you with the knowledge needed to navigate the process effectively.</p>
 
                     <form action="" className="ml-4 sm:ml-16 md:ml-20 2xl:ml-60 flex gap-4 flex-col items-start mt-8" >
+                        
                         <p className="text-[#595252] text-base lg:text-lg">Enter your E-mail to download your free copy</p>
-                        <input type="email" name="" id="" className="border border-[1px] border-[#222539] px-4 py-2 rounded" placeholder="E-mail"/><br></br>
-                        <input type="submit" value="Download now" className="gradientbg text-[white] px-6 shadow-xl py-3 rounded-full" />
+                        <input type="name" name="" onChange={handleChange} id="name" className="border border-[1px] border-[#222539] px-4 py-2 rounded" placeholder="Name"/><br></br>
+
+                        <input type="email" name="" onChange={handleChange} id="email" className="border border-[1px] border-[#222539] px-4 py-2 rounded" placeholder="E-mail"/><br></br>
+                        <input type="submit" value="Download now" onClick={handleSubmit} className="gradientbg text-[white] px-6 shadow-xl py-3 rounded-full" />
                     </form>
                 </div>
                 <div className="w-[50%] 2xl:w-[45%] pt-20 lg:pt-0 relative ">
@@ -57,7 +81,7 @@ const Ebook = () => {
             <form action="" className="ml-4 sm:ml-16 md:ml-20 2xl:ml-60 flex gap-4 flex-col items-start mt-8" >
                         <p className="text-[#595252] text-base lg:text-lg">Enter your E-mail to download your free copy</p>
                         <input type="email" name="" id="" className="border border-[1px] border-[#222539] px-4 py-2 rounded" placeholder="E-mail"/>
-                        <input type="submit" value="Download now" className="gradientbg text-[white] px-6 shadow-xl py-3 mt-4 rounded-full" />
+                        <input type="submit" onClick={handleSubmit} value="Download now" className="gradientbg text-[white] px-6 shadow-xl py-3 mt-4 rounded-full" />
                     </form>
             </div>
            </div>

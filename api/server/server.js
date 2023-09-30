@@ -19,6 +19,7 @@ const bidRoutes=require('./routes/bids')
 const packageRoutes = require('./routes/packages')
 const reviewRoutes=require('./routes/reviews')
 //const offerRoutes = require('./routes/offers')
+const subscribeRoutes = require('./routes/subscribe')
 const authRoutes=require('./routes/auth')
 const userRoutes=require('./routes/users')
 const locationsRoutes = require('./routes/locations')
@@ -57,6 +58,8 @@ mongoose.connect(process.env.MONGO_URI,{
 
 
             app.use('/api/hotels',hotelRoutes)
+            app.use('/api/subscribe',subscribeRoutes)
+
             app.use('/api/rooms',roomRoutes)
             app.use('/api/bids',bidRoutes)
             app.use('/api/packages', packageRoutes)
