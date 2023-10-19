@@ -3,16 +3,26 @@
 @tailwind utilities;
 
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.main-shadow{
+    box-shadow: 0px 0px 22px -1px rgba(0,0,0,0.16) !important;
 
 
+}
+.roboto{
+    font-family: 'Roboto', sans-serif !important;
+}
 html{
     scroll-behavior: smooth;
+}
+.poppins{
+    font-family: 'poppins';
 }
 body{
     font-family: 'Lato', sans-serif !important;

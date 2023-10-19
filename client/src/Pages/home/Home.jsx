@@ -82,7 +82,7 @@ setPopupEbookPage(false)
   
 }
   return (
-    <div className={`animationset ${anim} lg:bg-[#efefef]`}>
+    <div className={`animationset ${anim}`}>
       {popupEbookPage && <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
       <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[black] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
       <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
@@ -209,13 +209,13 @@ Know more
       </div> */}
       
       {/* special offers block */}
-      <div className='  sm:mt-12 md:mt-16 sm:mt-28 sm:pb-8 bg-[white] rounded-t-[15px] lg:px-8 pt-2 xs:pt-8 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body'>
+      <div className='  sm:mt-12 md:mt-16 sm:mt-28 sm:pb-8 bg-[white] rounded-t-[15px] lg:px-8 pt-2 xs:pt-8 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 font-body'>
           <div className='text-left'>
             <h1 className='font-bold text-lg sm:text-3xl'>Trending Destinations</h1>
             <p className='pt-2 sm:pt-4 textnormal pb-4 sm:pb-8 text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
           </div>
         </div>
-        <div className=' hidden sm:block  bg-[white]  mx-4 lg:px-8 sm:mx-16 md:mx-20 2xl:mx-60  '>
+        <div className=' hidden sm:block  bg-[white]  mx-4 lg:px-8 sm:mx-16 md:mx-20 2xl:mx-40  '>
           <LazyLoad offset={200}><DestCard /></LazyLoad>
           
         </div>
