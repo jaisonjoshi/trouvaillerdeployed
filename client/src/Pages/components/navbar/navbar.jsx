@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faYoutube , faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import avatarIcon from '../../Assets/avataricon.png'
 
 const style = {
   position: 'absolute',
@@ -31,20 +32,30 @@ const style = {
 
 
 
-const NavbarTest = ({color}) => {
+const NavbarTest = ({color, bg}) => {
 
 
 
 
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const [colord, setColor] = useState(()=> {
+    if(color == "text-whiteglow"){
+      return "md:text-[white]"
+    }
+    else{
+      return "md:text-[#444343]"
+    }
+  })
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 200) {
+      if (scrollPosition > 20) {
         setIsScrolled(true);
+        setColor("text-[black]")
       } else {
         setIsScrolled(false);
+        setColor("text-[white]")
+
       }
     }
 
@@ -90,60 +101,13 @@ const NavbarTest = ({color}) => {
     };
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const [bg, setbg] = useState('bg-trans')
-    const [colord, setColor] = useState(()=> {
-      if(color == "text-whiteglow"){
-        return "md:text-[white]"
-      }
-      else{
-        return "md:text-[#444343]"
-      }
-    })
-    useEffect(()=> {
-      window.addEventListener('scroll', setNav)
-      
-      return() => {
-        window.removeEventListener('scroll',setNav)
-      }
-    })
+    
+   
 
-    const setNav=() => {
-      if (window !== undefined) {
-        let windowHeight = window.scrollY;
-      if(windowHeight> 200){
-           // if scroll up show the navbar
-              setColor("text-[#444343]")
-              setbg('bg-[white]');
-
-  
-        // remember current page location to use in the next move
-      }
-      else{
-        setColor(()=>{
-          if(color == "text-whiteglow"){
-            setbg('bg-trans');
-
-            return "md:text-[white] "
-          }
-          else{
-            setbg('bg-[white]');
-
-            return "md:text-[black] "
-          }
-        })
-      }
-     /*  if(windowHeight<200){
-        setColor("")
-      } 
-      else{
-        setColor("whmd:text-[white]itetext")
-      } 
-      */
-        
-    }}
+    
   return (
     <div>
-    <div className={` navbar w-full pr-4 z-[10000] top-0 left-0 relative pt-4  sm:pt-3 lg:pt-4 flex justify-between  right-0 ${bg}  transition-all h-[60px] py-4   duration-300 ease-in-out transition-all duration-500 ease-in-out navbar-padding`}
+    <div className={` navbar w-full pr-4 z-[10000] ${isScrolled ? "bg-[white] main-shadow py-2 " : "bg-[#00000040] py-4"}  top-0 left-0 fixed top-0  flex justify-between  right-0 ${bg}  transition-all    duration-300 ease-in-out transition-all duration-500 ease-in-out `}
 fluid={true} rounded={true}
 
 >
@@ -157,32 +121,43 @@ fluid={true} rounded={true}
 </div>
 <NavModel open={open} setOpen={setOpen} user={user} handleClick={handleClick}/>
 <MenuIcon sx={{fontSize:30, color: 'white'}} onClick={handleOpen} className='block menuicon md:hidden'/>
-<div className="flex hidden md:flex md:order-2 gap-5 ml-0 lg:ml-12 items-center  nav-login-box pt-4 pr-16">
+<div className="flex hidden md:flex md:order-2 gap-5 ml-0 lg:ml-12 items-center  nav-login-box  pr-16">
 { user?<div className='nav-login flex pb-3 md:pb-0 md:justify-center items-center'><Link to="/user"><span className='flex items-center gap-[10px] text-lg'><img src= {user ? user.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" } className="w-[35px] h-[35px] rounded-full"/><h2 className='md:hidden'>{user.username}</h2></span></Link>
-        <button className="bg-evergreen text-whiteglow text-sm border border-none duration-500 px-4 py-2 mx-4 hover:bg-evergreendark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
+        <button className="bg-evergreen text-whiteglow text-sm border border-none duration-500 px-4  mx-4 hover:bg-evergreendark rounded-md hover:text-whiteglow" onClick={handleClick}>Logout</button></div>:(
         <div className="md:flex ">
+
+         <Link to="/login">
+         <div className='flex gap-2 items-center'>
+            <img src={avatarIcon} alt="" className='rounded-full '/>
+            <div className='text-[white]'>
+              <h2 className={`font-bold ${colord} text-sm`}>Login </h2>
+              <h3 className='text-xs text-[#00c676]'>Or SignUp</h3>
+            </div>
+
+          </div>
+         </Link>
          
-           <button className={  ` font-bold text-whiteglow ${colord} text-sm border border-[1px] border-evergreen duration-500 px-4 py-2 mx-4  rounded-full `}>
+          {/*  <button className={  ` font-bold text-whiteglow ${colord} text-sm border border-[1px] border-evergreen duration-500 px-4 py-2 mx-4  rounded-full `}>
             <Link className="" to="/login" >Login/SignUp</Link>
-            </button>
+            </button> */}
 
           
           </div>)
 }
 
 </div>
-<div className='flex gap-12 hidden md:flex'>
+<div className={`flex gap-12 ${isScrolled ? "pt-2" : "pt-4"} hidden md:flex transition-all duration-300`}>
 <Link to="/" 
-                class={`py-3 px-1 lg:pt-2 text-base font-bold   ${colord} md:hover:text-evergreen duration-500`}>
+                class={` px-1  text-base font-bold   ${colord} md:hover:text-evergreen duration-500`}>
                 Home
             </Link>
 
             { user?(<Link to="/bid-status"
-                class={`py-3 px-1 lg:pt-2 text-base font-bold  ${colord} hidden lg:block hover:text-evergreen duration-500`}>
+                class={` px-1  text-base font-bold  ${colord} hidden lg:block hover:text-evergreen duration-500`}>
                 My bids
             </Link>):
             (<Link to="/login"
-                class={`py-3 px-1 lg:pt-2 text-base flex gap-1 font-bold ${colord}  hidden lg:block hover:text-evergreen duration-500`}>
+                class={` px-1  text-base flex gap-1 font-bold ${colord}  hidden lg:block hover:text-evergreen duration-500`}>
                 My bids
             </Link>)}
 
@@ -191,11 +166,11 @@ fluid={true} rounded={true}
                 About
             </Navbar.Link> */}
              <Link 
-                class={`py-3 px-1 lg:pt-2 text-base  ${colord}  hover:text-evergreen duration-500`} >
+                class={` px-1  text-base  ${colord}  hover:text-evergreen duration-500`} >
                 <Link to="/hotels" className='font-bold flex gap-1'>Hotels</Link>
             </Link>
             <Link
-                class={`py-3 px-1 lg:pt-2 text-base  ${colord}  hover:text-evergreen duration-500`} >
+                class={` px-1  text-base  ${colord}  hover:text-evergreen duration-500`} >
                 <Link to="/packages" className='font-bold flex gap-1'>Packages</Link>
             </Link>
 </div>

@@ -1,7 +1,9 @@
 import LazyLoad from 'react-lazyload';
-import React, {useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import DestCard from '../components/cards/trending_dest_card'
-import { FaUmbrellaBeach, FaRegBuilding } from "react-icons/fa";
+import { FaUmbrellaBeach, FaRegBuilding, FaArrowRight } from "react-icons/fa";
+import { AiOutlineWhatsApp, AiOutlinePhone } from "react-icons/ai";
+
 import Reviews from '../Reviews/Review'
 import Footer from '../components/Footer/Footer'
 import { Link } from "react-router-dom";
@@ -13,19 +15,21 @@ import InterestForm from '../components/cards/interestForm'
 import { useNavigate } from 'react-router';
 import ebook from '../Assets/ebookcover.png'
 import cardavatar from '../Assets/cardavatar.webp'
-import whitelogo from '../Assets/Trouvaillerwhite.png'
+import whitelogo from '../Assets/Trouvailler Green.png'
 import EmiCard from '../components/cards/EmiCard';
-import { Autocomplete, TextField } from '@mui/material';
+import { Autocomplete, Avatar, TextField } from '@mui/material';
 import axios from 'axios';
 import popupimg from '../Assets/popup.png'
 import { Helmet } from 'react-helmet';
 import { AiOutlineClose } from "react-icons/ai";
+import loc from '../Assets/loci.png'
+import cat from '../Assets/cati.png'
 
-const Home = ({setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEbookPage}) => {
+const Home = ({ setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEbookPage }) => {
   const [destination, setDestination] = useState("");
-const navigate = useNavigate()
+  const navigate = useNavigate()
   const handleSearchChange = (e, newValue) => {
-  
+
     setDestination(newValue.toLowerCase());
     console.log(destination);
   };
@@ -38,11 +42,11 @@ const navigate = useNavigate()
     }
   };
   const [anim, setAnim] = useState("hide")
-  useEffect(()=>{
-      window.addEventListener('load', setAnim("show"))  
+  useEffect(() => {
+    window.addEventListener('load', setAnim("show"))
 
   }, [])
-  
+
   const color = "text-whiteglow"
 
   const handleS2submit = (value) => {
@@ -52,142 +56,158 @@ const navigate = useNavigate()
   };
   const handleClosePopup = () => {
     setPopupShow(false)
-    setPopupEbookPage(false) 
+    setPopupEbookPage(false)
 
 
-    
+
   }
 
   const [inputValue, setInputValue] = useState("");
 
   const [openauto, setOpenauto] = useState(false);
-      const [locationTags, setLocationTags] = useState([{
-        locations: ["loading"]
-    }])
-    const axiosInstance = axios.create({
-      baseURL: process.env.REACT_APP_API_URL,
+  const [locationTags, setLocationTags] = useState([{
+    locations: ["loading"]
+  }])
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
   })
-    useEffect(() => {
-      if (openauto !== false) {
-         axiosInstance.get('/packlocations').then(response=>{setLocationTags(response.data)})
-        
-      }
-    }, [openauto]);
-const openEbookPage = () =>{
-  setPopupShow(false)
-  
-setPopupEbookPage(false) 
-   navigate('/ebook')
+  useEffect(() => {
+    if (openauto !== false) {
+      axiosInstance.get('/packlocations').then(response => { setLocationTags(response.data) })
 
-  
-}
+    }
+  }, [openauto]);
+  const openEbookPage = () => {
+    setPopupShow(false)
+
+    setPopupEbookPage(false)
+    navigate('/ebook')
+
+
+  }
   return (
     <div className={`animationset ${anim}`}>
       {popupEbookPage && <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
-      <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[black] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]'/>
-      <div className='px-12'><h1 className='text-[#2F7447] text-2xl font-anton'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
+        <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[black] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]' />
+          <div className='px-12'><h1 className='text-[#2F7447] text-2xl roboto'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
       </div>}
       <Helmet>
         <title>Trouvailler | Personalized Trips, perfectly packaged</title>
       </Helmet>
-      <div className=" w-full relative h-[70vh] sm:h-[80vh] background-header home font-body">
-           <NavbarTest color={color}/>
-             
-        <div className=" absolute z-[100] top-0 left-0 right-0 h-[80vh] sm:h-[70vh] pb-20 w-full flex flex-col lg:flex-row justify-start pl-4  sm:pl-12 lg:pl-16 2xl:pl-36 items-start ">
-          <div className='flex flex-col items-start mt-32 sm:mt-40 lg:mt-52 2xl:mt-56 w-[100%] lg:w-[60%] 2xl:w-[50%]'>
-          <h1 className="text-xl sm:text-2xl md:text-3xl 2xl:text-3xl text-whiteglow sm:mb-4 font-bold text-left">
-          Discover Your </h1><h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-4xl text-whiteglow font-extrabold text-left'>Next Adventure <span className='text-[#00c676]'>with Us</span>
-          </h1>
-          <p className="text-[13px] sm:text-base md:text-lg w-[100%] md:w-full pr-8 sm:pr-0  lg:text-xl text-[#bab7b7] text-left pb-6 pt-6 sm:pt-10">
-          Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
-          </p>
-          <div className='flex gap-4'>
-            <Link to="/packages" className='text-[white] px-6 text-center py-2 xs:py-3 rounded-full text-xs md:text-base shadow-xl flex justify-center items-center gap-4 sm:gap-2 font-bold bg-[#222539]'><FaUmbrellaBeach className='text-[20px]'/>Holiday  <br className='xs:hidden'/> Packages</Link>
-            <Link to="/hotels" className='text-[white] px-6 py-2 xs:py-3  text-center rounded-full text-xs md:text-base  shadow-xl flex justify-center items-center gap-4 sm:gap-2 font-bold bg-[#222539]'><FaRegBuilding className='text-[20px]'/>Hotels and <br className='xs:hidden'/> Home stays</Link>
+      <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header home font-body">
+        <NavbarTest color={color} bg=""/>
 
+        <div className=" absolute z-[100] top-0 left-0 right-0 h-[80vh] sm:h-[90vh] pb-20 w-full flex flex-col lg:flex-row justify-start  items-start ">
+          <div className=' flex flex-col items-center mt-32 sm:mt-40 lg:mt-52 2xl:mt-56 w-[100%] text-center'>
+            <h1 className="text-xl sm:text-2xl md:text-3xl 2xl:text-4xl text-whiteglow sm:mb-4 font-bold text-center">
+              Discover Your </h1>
+              <h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl text-whiteglow font-extrabold text-center roboto'>Next  Adventure <span className='text-[#00c676]'>with Us</span>
+            </h1>
+            <p className="text-[13px] sm:text-base md:text-lg w-[100%] md:w-full pr-8 sm:pr-0  lg:text-xl text-[white] text-center pb-6 pt-6 sm:pt-10">
+              Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
+            </p>
+            <div className='flex gap-4 mt-8'>
+              <Link to="/packages" className='text-[white] px-8 text-center py-2 xs:py-4 rounded-[10px] text-xs md:text-base shadow-xl flex justify-center items-center gap-4 sm:gap-2 font-bold bg-[#00A45E] hover:bg-[#222539] hover:text-[white]'><FaUmbrellaBeach className='text-[20px] text-[white]' />Holiday  <br className='xs:hidden' /> Packages</Link>
+              <Link to="/hotels" className='text-[white] px-8 py-2 xs:py-4  text-center rounded-[10px] text-xs md:text-base  shadow-xl flex justify-center items-center gap-4 sm:gap-2 font-bold bg-[#00A45E] hover:bg-[#222539] hover:text-[white]'><FaRegBuilding className='text-[20px] text-[white]' />Hotels and <br className='xs:hidden' /> Home stays</Link>
+
+            </div>
+
+            
+           
           </div>
-
-          {/* <Link className="" to="/packages"> <button className="flex btn-animation justify-center items-center bg-[transparent] shadow-lg border border-[#00A651] rounded-full text-whiteglow w-28 sm:w-36 font-bold p-2 sm:my-2 hover:bg-[#00A651] duration-500">
-            <span className='relative z-[110] text-sm sm:text-base'>Explore</span>
-          </button></Link> */}
-          <div className='rounded-[10px] mt-12 lg:mt-12 bg-[white] px-2 sm:py-1 flex justify-between items-center shadow-xl w-[85%] sm:w-[80%] md:w-[60%] lg:w-[90%] xl:w-[80%]'>
-{/*           <input onChange={handleSearchChange} type="text" placeholder='Search places ' className='outline-none rounded-full sm:rounded border-none w-[70%] text-sm md:text-base focus:ring-[transparent]  focus:border-[transparent]'/>
- */}<Autocomplete
- open={openauto}
- onOpen={() => {
-     // only open when in focus and inputValue is not empty
-     if (inputValue) {
-       setOpenauto(true);
-     }
-   }}
-   onClose={() => setOpenauto(false)}
-   inputValue={inputValue}
-   onInputChange={(e, value, reason) => {
-     setInputValue(value);
-
-     // only open when inputValue is not empty after the user typed something
-     if (!value) {
-       setOpenauto(false);
-     }
-   }}
-
-disablePortal
-id="combo-box-demo"
-options={locationTags[0].locations}
-onChange={handleSearchChange}
-
-sx={{
- width:"100%",
- // border: "1px solid blue",
- "& .MuiOutlinedInput-root": {
-     border: "none",
-     outline:"none",
-     borderRadius: "0",
-     padding: "0"
- },
- "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-     border: "none",
-     outline:"none"
-
- }
-}}
-renderInput={(params) => <TextField {...params}  placeholder="Select a location"/>}
-/>
- 
- <button onClick={handleSClick} className='font-bold text-white bg-[#00c676] text-xs md:text-base py-[0.40rem] sm:py-2 rounded-full px-6 sm:px-4 md:px-6'>Search</button>
-          </div>
-          </div>
-          <div className='hidden lg:flex justify-center mt-48 2xl:mt-40   w-[60%]'>
-            <div className='max-w-[450px] 2xl:max-w-[550px] relative text-white pt-8 pl-8 pr-10 card-background shadow-xl rounded-[20px] relative'>
-             <img src={whitelogo} alt="" className='w-[100px] absolute top-8 right-8' />
-              <span className='text-[14px] font-bold'>Get Your Stay</span><br/>
-              <span className='text-xl font-bold'>At Your Price</span><br/><br />
+          {/* <div className='hidden lg:flex justify-center mt-48 2xl:mt-52   w-[60%]'>
+            <div className='max-w-[450px] 2xl:max-w-[550px] relative text-white pt-8 pl-8 pr-10 card-background gradientbg shadow-xl rounded-[20px] relative'>
+              <img src={whitelogo} alt="" className='w-[100px] absolute top-8 right-8' />
+              <span className='text-[14px] font-bold'>Get Your Stay</span><br />
+              <span className='text-xl font-bold'>At Your Price</span><br /><br />
               <span className='text-4xl xl:text-3xl font-black'><span className='text-[#00c676]'>Bid For </span>Today</span>
               <div className='flex mt-4'>
-                  <img src={cardavatar} className='w-[40%]' alt="" />
+                <img src={cardavatar} className='w-[40%]' alt="" />
                 <div className='w-[50%] flex flex-col justify-center gap-8 px-1'><span className='font-medium '>Now book hotels at your desired place for today<br /><br />
- 
- Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-2 rounded-[15px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] relative'>Know More</button></Link></div>
+
+                  Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-2 rounded-[15px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] relative'>Know More</button></Link></div>
               </div>
-              
+
             </div>
+          </div> */}
+
+        </div>
+        <div className='absolute bottom-28  left-[50%] translate-x-[-50%] rounded-[10px] mt-12 lg:mt-20 bg-[white] px-2 sm:py-4 flex justify-between items-center main-shadow w-[85%] sm:w-[80%] md:w-[60%] lg:w-[90%] xl:w-[60%]'>
+
+<img src={loc} className='w-[40px] mr-4 ml-4' />
+<div className='flex-1 flex flex-col justify-center mt-4'>
+  <h1 className='font-bold pl-[6px]  mb-[-7.5px]'>Destinations</h1>
+<Autocomplete
+                open={openauto}
+                onOpen={() => {
+                  // only open when in focus and inputValue is not empty
+                  if (inputValue) {
+                    setOpenauto(true);
+                  }
+                }}
+                onClose={() => setOpenauto(false)}
+                inputValue={inputValue}
+                onInputChange={(e, value, reason) => {
+                  setInputValue(value);
+
+                  // only open when inputValue is not empty after the user typed something
+                  if (!value) {
+                    setOpenauto(false);
+                  }
+                }}
+
+                disablePortal
+                id="combo-box-demo"
+                options={locationTags[0].locations}
+                onChange={handleSearchChange}
+
+                sx={{
+                  width: "70%",
+                  // border: "1px solid blue",
+                  "& .MuiOutlinedInput-root": {
+                    border: "none",
+                    outline: "none",
+                    borderRadius: "0",
+                    padding: "0"
+                  },
+                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    border: "none",
+                    outline: "none"
+
+                  }
+                }}
+                renderInput={(params) => <TextField {...params} placeholder="Select a location" />}
+              />
+
+</div>
+<img src={cat} className='w-[50px] mr-4'/>
+<div className='flex-1  mt-4'>
+  <h1 className='font-bold mb-[-7.5px]'>Categories</h1>
+  <select name="" id="" className='border-none w-[70%] py-[7.5px] pr-[4px] bg-[transparent]'>
+    <option value="">Family</option>
+    <option value="">Family</option>
+
+  </select>
+</div>
+
+              
+
+              <button onClick={handleSClick} className='font-bold text-white bg-[#00c676] text-xs md:text-base py-[0.40rem] sm:py-4 rounded-[10px] px-6 sm:px-4 mr-4 md:px-10'>Search</button>
+            </div>
+      </div>
+      <div className="px-4 sm:px-16 md:px-20 2xl:px-40 py-8 lg:hidden">
+        <div className='w-[100%] lg:max-w-[450px] 2xl:max-w-[550px] relative text-white pt-2 pl-4 sm:pl-8  sm:pr-10 card-background shadow-xl rounded-[20px] relative '>
+          <img src={whitelogo} alt="" className='w-[50px] sm:w-[100px] absolute top-4 right-4' />
+          <span className='text-[12px] font-bold'>Get Your Stay</span><br />
+          <span className='text-base sm:text-xl font-bold'>At Your Price</span><br /><br />
+          <span className='text-2xl xs:text-3xl  md:text-4xl font-black'><span className='text-[#00c676]'>Bid For </span>Today</span>
+          <div className='flex mt-4'>
+            <img src={cardavatar} className='w-[40%] xs:w-[30%] lg:w-[50%]' alt="" />
+            <div className='w-[50%] xs:w-[70%] lg:w-[50%] flex flex-col justify-center items-start gap-2 md:pl-[10] '><span className='md:font-medium text-xs sm:text-base md:text-lg lg:text-base 2xl:text-lg'>Now book hotels at your desired place for today. Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-1 rounded-[10px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] text-xs relative'>Know More</button></Link></div>
           </div>
 
         </div>
       </div>
-     <div className="px-4 sm:px-16 md:px-20 2xl:px-40 py-8 lg:hidden">
-     <div className='w-[100%] lg:max-w-[450px] 2xl:max-w-[550px] relative text-white pt-2 pl-4 sm:pl-8  sm:pr-10 card-background shadow-xl rounded-[20px] relative '>
-             <img src={whitelogo} alt="" className='w-[50px] sm:w-[100px] absolute top-4 right-4' />
-              <span className='text-[12px] font-bold'>Get Your Stay</span><br/>
-              <span className='text-base sm:text-xl font-bold'>At Your Price</span><br/><br />
-              <span className='text-2xl xs:text-3xl  md:text-4xl font-black'><span className='text-[#00c676]'>Bid For </span>Today</span>
-              <div className='flex mt-4'>
-                  <img src={cardavatar} className='w-[40%] xs:w-[30%] lg:w-[50%]' alt="" />
-                <div className='w-[50%] xs:w-[70%] lg:w-[50%] flex flex-col justify-center items-start gap-2 md:pl-[10] '><span className='md:font-medium text-xs sm:text-base md:text-lg lg:text-base 2xl:text-lg'>Now book hotels at your desired place for today. Click the button below and place your bid now</span><Link className='border border-[#00c676] px-4 py-1 rounded-[10px] btn-animation font-bold shadow-lg' to="/what-is-bid"><button className='z-[110] text-xs relative'>Know More</button></Link></div>
-              </div>
-              
-            </div>
-     </div>
       {/* Bid section */}
       {/* <div className='flex  bg-[#effef6] flex-col pl-12 pr-12 md:flex-row md:pl-12 xl:pl-52  md:pr-12 lg:pr-20 py-8 sm:py-20'>
       <div className='w-[100%] md:w-[50%] 2xl:w-[40%] flex justify-center items-center'>
@@ -207,30 +227,30 @@ Know more
         </div>
         
       </div> */}
-      
-      {/* special offers block */}
-      <div className='  sm:mt-12 md:mt-16 sm:mt-28 sm:pb-8 bg-[white] rounded-t-[15px] lg:px-8 pt-2 xs:pt-8 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 font-body'>
-          <div className='text-left'>
-            <h1 className='font-bold text-lg sm:text-3xl'>Trending Destinations</h1>
-            <p className='pt-2 sm:pt-4 textnormal pb-4 sm:pb-8 text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
-          </div>
-        </div>
-        <div className=' hidden sm:block  bg-[white]  mx-4 lg:px-8 sm:mx-16 md:mx-20 2xl:mx-40  '>
-          <LazyLoad offset={200}><DestCard /></LazyLoad>
-          
-        </div>
-        <div className=' block sm:hidden bg-[white] sm:mx-16 md:mx-20 2xl:mx-60 '>
-          
-          <LazyLoad offset={200}><DestCardMob /></LazyLoad>
-          
-        </div>
-        <div className='p-7 mx-4  sm:mx-16 md:mx-20 2xl:mx-60 text-center rounded-b-[15px]  bg-[white] mb-12'>
-          <Link to="/packages" ><button className='font-medium btn-animation bg-[white]  border-[#00c676] border p-2 rounded-[10px] w-full sm:w-auto px-10 font-body' ><span className='relative z-[110]'>More destinations</span></button></Link>
-        </div>
 
-        <div className='px-4  sm:px-16 md:px-20 2xl:px-60'>
-          <LazyLoad offset={200}><Emi /></LazyLoad>
+      {/* special offers block */}
+      <div className='  sm:mt-12 md:mt-16 sm:mt-32 sm:pb-8 bg-[white] rounded-t-[15px] lg:px-8 pt-2 xs:pt-20 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 font-body'>
+        <div className='text-center roboto pb-16'>
+          <h1 className='font-bold text-lg sm:text-4xl mt-16'>Trending Packages</h1>
+          <p className='pt-2 sm:pt-4 textnormal pb-4 sm:pb-8 text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
+          <Link to="/packages" className='text-[#03BA6D] flex gap-2 items-center justify-center'>View All Travel Packages <FaArrowRight /></Link>
+
         </div>
+      </div>
+      <div className=' hidden sm:block  bg-[white]  mx-4 lg:px-8 sm:mx-16 md:mx-20 2xl:mx-60  '>
+        <LazyLoad offset={200}><DestCard /></LazyLoad>
+
+      </div>
+      <div className=' block sm:hidden bg-[white] sm:mx-16 md:mx-20 2xl:mx-60  '>
+
+        <LazyLoad offset={200}><DestCardMob /></LazyLoad>
+
+      </div>
+     
+
+      <div className='mt-40'>
+        <LazyLoad offset={200}><Emi /></LazyLoad>
+      </div>
       {/* <div className="pt-8 sm:pt-20 pb-8 px-4 sm:px-16 md:px-20 2xl:px-40 ">
         <h1 className='text-center font-bold text-blacky-dark text-2xl sm:text-4xl'>Special Offers</h1>
                   <p className='text-center textnormal py-4 text-sm  sm:text-base md:text-lg font-body'>Get ready to explore the world with our unbeatable travel deals!</p>
@@ -245,103 +265,151 @@ Know more
 
 
 
-<div className='px-4  sm:px-16 md:px-20 2xl:px-60 my-8 md:my-20'>
-          <div className='bg-[white] rounded-[10px] flex flex-col xs:flex-row xs:items-center shadow-con' >
-            <img src={ebook} className='w-[60%] xs:w-[35%] lg:w-[25%] xl:w-[20%]'/>
-            <div className='flex gap-2 md:gap-4 flex-col items-start pl-4  md:pl-12   pr-4'>
-              <h1 className='text-lg sm:text-2xl lg:text-3xl font-bold'>Download our free E-book</h1><p className='text-graydust-dark text-sm md:text-base lg:text-lg font-medium'>Download our free ebook to become well informed on buying a travel package. Be well informed before making a well informed decision.</p>
-              <Link className='gradientbg text-[white] px-4 text-xs md:text-base py-2 rounded-full mb-4'>Download Now</Link>
-            </div>
+      {/* <div className='px-4  sm:px-16 md:px-20 2xl:px-60 my-8 md:my-20'>
+        <div className='bg-[white] gradientbg rounded-[10px] flex flex-col xs:flex-row xs:items-center shadow-con' >
+          <img src={ebook} className='w-[60%] xs:w-[35%] lg:w-[25%] xl:w-[20%]' />
+          <div className='flex gap-2 md:gap-4 flex-col items-start pl-4  md:pl-12   pr-4'>
+            <h1 className='text-lg sm:text-2xl lg:text-3xl font-bold text-[white] poppins'>Download our free E-book</h1><p className='text-white text-sm md:text-base lg:text-base font-regular poppins'>Download our free ebook to become well informed on buying a travel package. Be well informed before making a well informed decision.</p>
+            <Link className='bg-[#00c676] text-[white] px-4 text-xs md:text-base py-3 rounded-full mb-4'>Download Now</Link>
           </div>
         </div>
+      </div> */}
+   
 
 
-
-<div className="mt-8 sm:mt-[6rem] pt-8 py-2 rounded-[10px] bg-[white] lg:px-8 sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body ">
-        <div className="flex justify-between items-center">
-          <h1 className="text-lg sm:text-2xl md:text-3xl font-bold">
-            Popular Destinations
+      <div className="mt-8 sm:mt-[6rem] pt-8 py-2 rounded-[10px] text-center bg-[white] lg:px-8 sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body ">
+        <div className="">
+          <h1 className="text-lg sm:text-2xl text-center md:text-3xl font-bold roboto">
+            Explore Popular Destinations
           </h1>
         </div>
-        <p className="text-[13px] sm:text-base lg:text-lg py-2 sm:py-4 text-graydust-dark">
+        <p className="text-[13px] sm:text-base lg:text-lg py-2 sm:py-4 poppins text-graydust-dark">
           Discover Our Most Popular Destinations and Plan Your Next Adventure
           Today!
         </p>
 
-        
-        <div className=" pt-8 justify-between  text-[white] mb-4 font-bold text-xl flex gap-[2%] location-container">
-          <div
-            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] h-[150px] lg:h-[250px] overflow-hidden relative cursor-pointer"
+        <Link className='text-[#03BA6D] flex gap-2 items-center justify-center'>View All Destinations <FaArrowRight /></Link>
+
+
+        <div className=" py-8 pb-28 flex flex-col gap-12  text-[white] mb-4 font-bold text-xl location-container">
+         <div className='flex justify-between'>
+         <div
+            className=" w-[30%]   relative cursor-pointer"
             onClick={() => handleS2submit("kashmir")}
           >
-                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
             <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520897/site/kashmir_d4vjg6.jpg" className='w-[100%] h-full object-cover' alt="" />
-            <h1 className="absolute text-base sm:text-xl left-3 bottom-3 z-[101]">Kashmir</h1>
+            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
+            <h1 className=" text-base sm:text-xl  roboto">Kashmir</h1>
+
+              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+            </div>
           </div>
 
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className=" w-[30%] relative cursor-pointer"
             onClick={() => handleS2submit("goa")}
           >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt=""  className='w-[100%] h-full object-cover' />
-            <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Goa</h1>
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" className='w-[100%] h-full object-cover' />
+            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
+            <h1 className=" text-base sm:text-xl  roboto">Goa</h1>
+
+              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+            </div>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="  w-[30%] relative cursor-pointer"
             onClick={() => handleS2submit("wayanad")}
           >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt=""  className='w-[100%] h-full object-cover' />
-            <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Wayanad</h1>
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt="" className='w-[100%] h-full object-cover' />
+            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
+            <h1 className=" text-base sm:text-xl roboto ">Wayanad</h1>
+
+              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+            </div>
           </div>
-          <div
-            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+         </div>
+         <div className='flex justify-between'>
+         <div
+            className=" w-[30%]  relative cursor-pointer"
             onClick={() => handleS2submit("munnar")}
           >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt=""  className='w-[100%] h-full object-cover' />
-            <h1 className="absolute left-3 bottom-3 text-base sm:text-xl z-[101]">Munnar</h1>
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt="" className='w-[100%] h-full object-cover' />
+            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
+            <h1 className=" text-base sm:text-xl roboto ">Munnar</h1>
+
+              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+            </div>
           </div>
           <div
-            className="flex flex-col gap-2 w-[15%] min-w-[120px] sm:min-w-[200px] rounded-[10px] overflow-hidden relative cursor-pointer"
+            className="  w-[30%] relative cursor-pointer"
             onClick={() => handleS2submit("mysore")}
           >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt=""  className='w-[100%] h-full object-cover' />
-            <h1 className="absolute left-3 text-base sm:text-xl bottom-3 z-[101]">Mysore</h1>
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" className='w-[100%] h-full object-cover' />
+            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
+            <h1 className=" text-base sm:text-xl roboto ">Mysore</h1>
+
+              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+            </div>
           </div>
+          <div
+            className="  w-[30%] relative cursor-pointer"
+            onClick={() => handleS2submit("mysore")}
+          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+
+            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" className='w-[100%] h-full object-cover' />
+            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
+            <h1 className=" text-base sm:text-xl roboto ">Mysore</h1>
+
+              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+            </div>
+          </div>
+         </div>
         </div>
       </div>
 
-     
+
+    
+
+
+
       <div className='px-4  sm:px-16 md:px-20 2xl:px-60 my-8 md:my-20'>
-          <LazyLoad offset={200}><EmiCard /></LazyLoad>
-        </div>
-
-
-
-
+        <LazyLoad offset={200}><EmiCard /></LazyLoad>
+      </div>
       {/* Reviews block */}
-        <LazyLoad offset={200}><InterestForm /></LazyLoad>
 
 
 
 
 
-      <div className=' pb-12 px-4  sm:px-16 md:px-20 2xl:px-72 font-body'>
+      <div className=' pb-12 px-4  py-28   sm:px-16 md:px-20 2xl:px-72 font-body reviewbg'>
         <div className='flex w-full flex-col '>
           <div className='w-[100%] flex  '>
-          <h1 className='font-bold  w-full text-lg sm:text-3xl text-left pt-8 xl:pt-7 mb-8'>What People Say About Us </h1>
+            <h1 className='font-[900] roboto text-[white]  w-full text-lg sm:text-[52px] text-left pt-8 xl:pt-7 mb-8 flex flex-col gap-10'><span>Unforgettable</span> <span>Travel experiences</span> </h1>
 
           </div>
-        <div className='w-[100%]  pt-4'><LazyLoad offset={200}><Reviews /></LazyLoad></div>
+          <div className='w-[110%] relative translate-x-[-50%] left-[50%] pb-16  pt-12'><LazyLoad offset={200}><Reviews /></LazyLoad></div>
 
         </div>
-       
-      </div>
 
+      </div>
+      <LazyLoad offset={200}><InterestForm /></LazyLoad>
+
+      <div className=' px-4  pb-12   sm:px-16 md:px-20 2xl:px-72'>
+        <div className='bg-[white] bid-bg text-center py-12'>
+        <h1 className='text-3xl font-medium poppins '>Ready to Craft Your Perfect Travel Package?</h1>
+        <p className='w-[70%] mx-auto pt-12 text-[#464646] text-lg'>We can assist you with planning your trip, including finding the best budget options and addressing other requirements. Our team will provide a callback to discuss your needs and offer guidance. Feel free to reach out, and we'll help you plan your trip with confidence.</p>
+      <div className='pt-12 flex justify-center gap-6'>
+        <button className='gradientbg text-[white] px-8 py-3 text-lg rounded-[10px] flex items-center gap-3'><AiOutlineWhatsApp className='text-3xl' /> Chat with Us</button>
+        <button className='gradientbg text-[white] px-8 py-3 text-lg rounded-[10px] flex items-center gap-3'>< AiOutlinePhone className='text-3xl' />Get a Callback</button>
+      </div>
+        </div>
+      </div>
       {/* Footer block */}
 
       <Footer />

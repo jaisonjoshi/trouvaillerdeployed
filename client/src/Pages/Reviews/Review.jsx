@@ -27,7 +27,7 @@ const Reviews = () => {
     arrows:false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 2,
     
     slidesToScroll: 1,
     autoplay: true,
@@ -66,28 +66,31 @@ const Reviews = () => {
         ) : (
           
           <div className="relative">
-              <button className="button absolute top-[30%] bg-[#a8ffb2] rounded-[15px] w-[25px] h-[25px] md:w-[40px] md:h-[40px]  flex justify-center items-center font-bold text-lg md:text-2xl  z-[120] left-0" onClick={()=> sliderRef.current.slickPrev()}>
+              <button className="button absolute top-[30%] bg-[transparent] text-[white] rounded-[15px] w-[25px] h-[25px] md:w-[40px] md:h-[40px]  flex justify-center items-center font-bold text-lg md:text-3xl  z-[120] left-[-80px]" onClick={()=> sliderRef.current.slickPrev()}>
             &lt;
           </button>
-          <button className="button absolute top-[30%] bg-[#a8ffb2] rounded-[15px] w-[25px] h-[25px] md:w-[40px] md:h-[40px] flex justify-center items-center font-bold text-lg md:text-2xl z-[120] right-0" onClick={()=> sliderRef.current.slickNext()}>
+          <button className="button absolute top-[30%] bg-[transparent] text-[white] rounded-[15px] w-[25px] h-[25px] md:w-[40px] md:h-[40px] flex justify-center items-center font-bold text-lg md:text-3xl z-[120] right-[-80px]" onClick={()=> sliderRef.current.slickNext()}>
           &gt;       </button>
           
             <Slider {...settings} ref={sliderRef}>
                   {data.map((item) => (
-                     <div className=" sm:p-4 sm:p-10 h-full w-[80%] md: w-full mx-auto flex-col justify-between" key={item._id}>
+                     <div className=" sm:p-4 sm:p-10 h-full w-[80%] md: w-full mx-auto flex-col bg-[white] rounded-[10px] justify-between" key={item._id}>
                      <div className="flex justify-center">
-                       <div className=" rounded-full  flex justify-left w-[45%] h-[45%] md:w-[30%] md:h-[30%] xl:w-[20%] xl:h-[20%] skeleton">
+                      
+                     </div>
+                    <div className="flex flex-col justify-between ">
+                    <p className="text-[14px] md:text-[16px] lg:text-[16px]   my-2  text-[#3e3e3e] title-font text-left  sm:leading-8"> {item.reviewnote}</p>
+                     <div className="flex  pt-8 gap-8">
+                     <div className=" rounded-full  flex justify-left w-[45%] h-[45%] md:w-[30%] md:h-[30%] xl:w-[12%] xl:h-[12%] skeleton">
                          {item.image && <img
                            className="w-full  object-cover shadow-1 rounded-full w-[100%] h-[100%]"
                            src={generateUrl(item.image)}
                          />}
                        </div>
-                     </div>
-                    <div className="flex flex-col justify-between ">
-                    <p className="text-[14px] md:text-[16px] lg:text-[20px]   my-2 mt-8  title-font text-center  sm:leading-8"> {item.reviewnote}</p>
-                     <div className=" text-center text-base md:text-lg  pt-8">
-                       <span className="font-normal">{item.author},{item.place}</span>
-                       <span> {item.rating}</span>
+                       <div className="flex flex-col">
+                       <span className="font-normal">{item.author}</span><span>{item.place}</span>
+
+                       </div>
                      </div>
                     </div>
                    </div>

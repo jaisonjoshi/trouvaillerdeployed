@@ -4,7 +4,6 @@ import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader";
 import intrstimg from '../../Assets/interestimg.webp'
 import intimg from '../../Assets/intimg.webp'
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const InterestForm = () => {
   const [info,setInfo] =  useState({})
@@ -40,17 +39,17 @@ const handleSubmit = async (e) => {
 
 }
   return (
-    <div className="  bg-[#c2fbd7] gradientbg shadow-xl relative rounded-[10px] overflow-hidden  font-body mx-4  sm:mx-16 md:mx-20 2xl:mx-60 my-4 sm:my-12 md:my-36 flex flex-col xl:flex-row justify-between">
+    <div className="    relative rounded-[10px] overflow-hidden  font-body mx-4  sm:mx-16 md:mx-20 2xl:mx-60 my-4 sm:my-12 md:my-36 flex flex-col xl:flex-row justify-between">
      <div className="w-[100%] xl:w-[50%] 2xl:w-[30%] ">
-     <img src={intrstimg} className="w-[100%] hidden xl:block h-full w-full object-cover" alt="" />
+     <img src={intrstimg} className="w-[100%] hidden xl:block h-full w-full object-cover rounded-r-full" alt="" />
      <img src={intimg} className="w-[100%] xl:hidden h-full w-full object-cover rounded-t-[10px]" alt="" />
 
      </div>
       <div className="py-12 px-4 sm:px-8 md:px-16 w-[100%] xl:w-[70%]">
-      <h1 className="font-bold relative text-[white] text-base sm:text-lg sm:text-xl 2xl:text-2xl z-[100]">
+      <h1 className="font-bold relative text-[black] mb-8 text-base sm:text-lg sm:text-xl 2xl:text-4xl z-[100]">
         Need help in planning your dream trip?
       </h1>
-      <h1 className="font-normal relative z-[100]  my-2 text-[white] text-[13px] sm:text-base 2xl:text-lg">
+      <h1 className="font-normal relative z-[100]  my-2 text-[#6e6e6e] text-[13px] sm:text-base 2xl:text-lg">
         Fill out our form to get started, and we'll work with you to create the
         perfect itinerary.
       </h1>
@@ -58,7 +57,7 @@ const handleSubmit = async (e) => {
         <form
           action=""
         >
-            <div           className="flex mt-8 mb-4 md:mt-16 gap-[3%] md:gap-[3%] flex-wrap text-sm md:text-base text-[white] font-normal w-[100%] items-end"
+            <div           className="flex mt-8 mb-4 md:mt-16 gap-[3%] md:gap-[3%] flex-wrap text-sm md:text-base text-[#6e6e6e] font-normal w-[100%] items-end"
 >
           <div className="flex text-sm md:text-base flex-col gap-4 w-[47%] sm:w-[30%]">
             <input
@@ -128,7 +127,7 @@ const handleSubmit = async (e) => {
           </div>
           
           <div className="w-[97%] sm:w-[63%]">
-            <select name="" id="travellingWith" className=" bg-[transparent] mt-4   py-2 text-[#ececec] border-[#02c677] px-6 focus:ring-[transparent]  rounded w-[100%] "               onChange={handleChange}
+            <select name="" id="travellingWith" className=" bg-[transparent] mt-4   py-2 text-[#5d5c5c] border-[#02c677] px-6 focus:ring-[transparent]  rounded w-[100%] "               onChange={handleChange}
 >
               <option disabled selected value="" >
                   Travelling with 
@@ -154,9 +153,9 @@ const handleSubmit = async (e) => {
           
 </div>
          <div className="flex items-center flex-wrap gap-4 text-[white]">
-         <button className="bg-[#02c677]  px-4 py-2 rounded shadow-md font-bold text-sm md:text-base flex gap-2 items-center" onClick={handleSubmit}>
+         <button className="bg-[#02c677]  px-6 py-3 rounded shadow-md font-bold  text-sm md:text-lg flex gap-2 items-center" onClick={handleSubmit}>
             Send <SendIcon className="text-lg md:text-xl" />
-          </button><button className="bg-[#02c677] px-4 py-2 rounded shadow-md text-sm md:text-base  font-bold flex gap-2 items-center">Chat with Us <WhatsAppIcon className="text-lg md:text-xl"/></button>
+          </button>
           {loading && <ClipLoader color="#00d67b"/>}
           {loadingTxt !== "" && <span className="text-black text-sm sm:text-base italic">{loadingTxt}</span>}
           

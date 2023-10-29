@@ -306,6 +306,12 @@ button:focus {
     background-color: #00000091;
 }
 
+.bidcardbg{
+    background-image: url('./Pages/Assets/bidbg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
 
 
  .slick-m .slick-track
@@ -359,7 +365,7 @@ button:focus {
     }
 
     .background-header{
-        background-image: url('./Pages/Assets/bgbody.webp');
+        background-image: url('./Pages/Assets/travel.jpg');
         background-size: cover;
         background-position: left;
         background-repeat: no-repeat;
@@ -432,20 +438,20 @@ input:-webkit-autofill:focus {
 }
 
 input.interestinp::placeholder, textarea::placeholder {
-    color: #ececec !important; /* Change the color to your desired value */
+    color: #5d5c5c !important; /* Change the color to your desired value */
   }
 
   @media screen and (max-width:764px) {
    
       input.interestinp::placeholder, textarea::placeholder {
-    color: #ececec !important; /* Change the color to your desired value */
+    color: #5d5c5c !important; /* Change the color to your desired value */
     font-size: 0.85rem;
   }
   }
   select option {
-    background-color: #243847; /* Set the background color of the dropdown options */
+    background-color: #ffffff; /* Set the background color of the dropdown options */
     padding: 2px 4px !important;
-    color:#ececec; /* Set the text color of the dropdown options */
+    color:#5d5c5c; /* Set the text color of the dropdown options */
   }
 
 
@@ -564,7 +570,7 @@ input.interestinp::placeholder, textarea::placeholder {
 }
 @media screen and (min-width:1024px) {
     .home .navbar{
-        padding-top: 3rem !important;
+        padding-top: 1rem !important;
     } 
 }
 
@@ -734,23 +740,25 @@ details summary::marker {
     display: none !important;
 }
 
-@media screen and (min-width:1024px) {
-    .w-emi {
-        width: 15% !important;
-    }
-    
-}
-@media screen and (min-width:764px) and (max-width:1024px) {
-    .w-emi {
-        width: 30% !important;
-    }
-    
-}
 
 .bidcard-bg{
     background-image: url('./Pages/Assets/bidcard-bg.webp');
     background-size: cover;
 }
+.emihomecard{
+    background-image: url('./Pages/Assets/emicardimg.jpg');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+}
 
 .shadow-con{
    box-shadow:  rgba(100, 100, 111, 0.2) 4px 4px 18px 0px, rgba(100, 100, 111, 0.2) -4px 4px 18px 0px}
+
+
+   .reviewbg{
+    background-image: url('./Pages/Assets/reviewbg.jpg');  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+     }

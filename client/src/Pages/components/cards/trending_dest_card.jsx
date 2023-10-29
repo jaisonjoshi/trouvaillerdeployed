@@ -15,7 +15,7 @@ const DestCard = () => {
 
   return (
     
-    <div className="sm:grid  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 auto-rows-[1fr] font-body">
+    <div className="sm:grid  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-20   auto-rows-[1fr] font-body">
         {loading ? (
            <div className='loading-div'>
            <BarLoader
