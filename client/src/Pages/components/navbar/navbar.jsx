@@ -49,7 +49,7 @@ const NavbarTest = ({color, bg}) => {
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 20) {
+      if (scrollPosition > 700) {
         setIsScrolled(true);
         setColor("text-[black]")
       } else {
@@ -114,7 +114,7 @@ fluid={true} rounded={true}
 <div>
   <Link to="/">
 <img src={require('../../Assets/Trouvailler Green.png')}
-                className="mr-3 ml-4 nav-logo md:ml-12 sm:ml-12 h-6 sm:h-9 lg:ml-16 2xl:ml-56 "
+                className={`mr-3 ml-4 nav-logo md:ml-12 sm:ml-12 h-6 transition-all duration-300 lg:ml-16 2xl:ml-56 ${isScrolled ? "sm:h-7" : "sm:h-9"} `}
                 alt="Trouvailler Logo"
             />
 </Link>
@@ -128,7 +128,7 @@ fluid={true} rounded={true}
 
          <Link to="/login">
          <div className='flex gap-2 items-center'>
-            <img src={avatarIcon} alt="" className='rounded-full '/>
+            <img src={avatarIcon} alt="" className={`rounded-full ${isScrolled? " h-8": "h-12"} transition-all duration-300`}/>
             <div className='text-[white]'>
               <h2 className={`font-bold ${colord} text-sm`}>Login </h2>
               <h3 className='text-xs text-[#00c676]'>Or SignUp</h3>
@@ -146,7 +146,7 @@ fluid={true} rounded={true}
 }
 
 </div>
-<div className={`flex gap-12 ${isScrolled ? "pt-2" : "pt-4"} hidden md:flex transition-all duration-300`}>
+<div className={`flex gap-12 ${isScrolled ? " bg-[#b2f7d9]" : " bg-[#009455]"} hidden md:flex transition-all items-center duration-300   rounded-full px-12`}>
 <Link to="/" 
                 class={` px-1  text-base font-bold   ${colord} md:hover:text-evergreen duration-500`}>
                 Home

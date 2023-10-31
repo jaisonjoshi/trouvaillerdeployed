@@ -86,7 +86,7 @@ const Home = ({ setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEb
 
   }
   return (
-    <div className={`animationset ${anim}`}>
+    <div className={`animationset ${anim} `}>
       {popupEbookPage && <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
         <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[black] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]' />
           <div className='px-12'><h1 className='text-[#2F7447] text-2xl roboto'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
@@ -95,13 +95,13 @@ const Home = ({ setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEb
         <title>Trouvailler | Personalized Trips, perfectly packaged</title>
       </Helmet>
       <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header home font-body">
-        <NavbarTest color={color} bg=""/>
+        <NavbarTest color={color} bg="" />
 
         <div className=" absolute z-[100] top-0 left-0 right-0 h-[80vh] sm:h-[90vh] pb-20 w-full flex flex-col lg:flex-row justify-start  items-start ">
           <div className=' flex flex-col items-center mt-32 sm:mt-40 lg:mt-52 2xl:mt-56 w-[100%] text-center'>
             <h1 className="text-xl sm:text-2xl md:text-3xl 2xl:text-4xl text-whiteglow sm:mb-4 font-bold text-center">
               Discover Your </h1>
-              <h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl text-whiteglow font-extrabold text-center roboto'>Next  Adventure <span className='text-[#00c676]'>with Us</span>
+            <h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl text-whiteglow font-extrabold text-center roboto'>Next  Adventure <span className='text-[#00c676]'>with Us</span>
             </h1>
             <p className="text-[13px] sm:text-base md:text-lg w-[100%] md:w-full pr-8 sm:pr-0  lg:text-xl text-[white] text-center pb-6 pt-6 sm:pt-10">
               Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
@@ -112,8 +112,8 @@ const Home = ({ setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEb
 
             </div>
 
-            
-           
+
+
           </div>
           {/* <div className='hidden lg:flex justify-center mt-48 2xl:mt-52   w-[60%]'>
             <div className='max-w-[450px] 2xl:max-w-[550px] relative text-white pt-8 pl-8 pr-10 card-background gradientbg shadow-xl rounded-[20px] relative'>
@@ -132,68 +132,68 @@ const Home = ({ setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEb
           </div> */}
 
         </div>
-        <div className='absolute bottom-28  left-[50%] translate-x-[-50%] rounded-[10px] mt-12 lg:mt-20 bg-[white] px-2 sm:py-4 flex justify-between items-center main-shadow w-[85%] sm:w-[80%] md:w-[60%] lg:w-[90%] xl:w-[60%]'>
+        <div className='absolute bottom-28 z-[1000000000] left-[50%] translate-x-[-50%] rounded-[10px] mt-12 lg:mt-20 bg-[white] px-2 sm:py-4 flex justify-between items-center shadow-2xl w-[85%] sm:w-[80%] md:w-[60%] lg:w-[90%] xl:w-[60%]'>
 
-<img src={loc} className='w-[40px] mr-4 ml-4' />
-<div className='flex-1 flex flex-col justify-center mt-4'>
-  <h1 className='font-bold pl-[6px]  mb-[-7.5px]'>Destinations</h1>
-<Autocomplete
-                open={openauto}
-                onOpen={() => {
-                  // only open when in focus and inputValue is not empty
-                  if (inputValue) {
-                    setOpenauto(true);
-                  }
-                }}
-                onClose={() => setOpenauto(false)}
-                inputValue={inputValue}
-                onInputChange={(e, value, reason) => {
-                  setInputValue(value);
+          <img src={loc} className='w-[40px] mr-4 ml-4' />
+          <div className='flex-1 flex flex-col justify-center mt-4'>
+            <h1 className='font-bold pl-[6px]  mb-[-7.5px]'>Destinations</h1>
+            <Autocomplete
+              open={openauto}
+              onOpen={() => {
+                // only open when in focus and inputValue is not empty
+                if (inputValue) {
+                  setOpenauto(true);
+                }
+              }}
+              onClose={() => setOpenauto(false)}
+              inputValue={inputValue}
+              onInputChange={(e, value, reason) => {
+                setInputValue(value);
 
-                  // only open when inputValue is not empty after the user typed something
-                  if (!value) {
-                    setOpenauto(false);
-                  }
-                }}
+                // only open when inputValue is not empty after the user typed something
+                if (!value) {
+                  setOpenauto(false);
+                }
+              }}
 
-                disablePortal
-                id="combo-box-demo"
-                options={locationTags[0].locations}
-                onChange={handleSearchChange}
+              disablePortal
+              id="combo-box-demo"
+              options={locationTags[0].locations}
+              onChange={handleSearchChange}
 
-                sx={{
-                  width: "70%",
-                  // border: "1px solid blue",
-                  "& .MuiOutlinedInput-root": {
-                    border: "none",
-                    outline: "none",
-                    borderRadius: "0",
-                    padding: "0"
-                  },
-                  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                    border: "none",
-                    outline: "none"
+              sx={{
+                width: "70%",
+                // border: "1px solid blue",
+                "& .MuiOutlinedInput-root": {
+                  border: "none",
+                  outline: "none",
+                  borderRadius: "0",
+                  padding: "0"
+                },
+                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                  outline: "none"
 
-                  }
-                }}
-                renderInput={(params) => <TextField {...params} placeholder="Select a location" />}
-              />
+                }
+              }}
+              renderInput={(params) => <TextField {...params} placeholder="Select a location" />}
+            />
 
-</div>
-<img src={cat} className='w-[50px] mr-4'/>
-<div className='flex-1  mt-4'>
-  <h1 className='font-bold mb-[-7.5px]'>Categories</h1>
-  <select name="" id="" className='border-none w-[70%] py-[7.5px] pr-[4px] bg-[transparent]'>
-    <option value="">Family</option>
-    <option value="">Family</option>
+          </div>
+          <img src={cat} className='w-[50px] mr-4' />
+          <div className='flex-1  mt-4'>
+            <h1 className='font-bold mb-[-7.5px]'>Categories</h1>
+            <select name="" id="" className='border-none w-[70%] py-[7.5px] pr-[4px] bg-[transparent]'>
+              <option value="">Family</option>
+              <option value="">Family</option>
 
-  </select>
-</div>
+            </select>
+          </div>
 
-              
 
-              <button onClick={handleSClick} className='font-bold text-white bg-[#00c676] text-xs md:text-base py-[0.40rem] sm:py-4 rounded-[10px] px-6 sm:px-4 mr-4 md:px-10'>Search</button>
-            </div>
+
+          <button onClick={handleSClick} className='font-bold text-white bg-[#00c676] text-xs md:text-base py-[0.40rem] sm:py-4 rounded-[10px] px-6 sm:px-4 mr-4 md:px-10'>Search</button>
+        </div>
       </div>
       <div className="px-4 sm:px-16 md:px-20 2xl:px-40 py-8 lg:hidden">
         <div className='w-[100%] lg:max-w-[450px] 2xl:max-w-[550px] relative text-white pt-2 pl-4 sm:pl-8  sm:pr-10 card-background shadow-xl rounded-[20px] relative '>
@@ -229,15 +229,18 @@ Know more
       </div> */}
 
       {/* special offers block */}
-      <div className='  sm:mt-12 md:mt-16 sm:mt-32 sm:pb-8 bg-[white] rounded-t-[15px] lg:px-8 pt-2 xs:pt-20 mx-4 sm:mx-16 md:mx-20 2xl:mx-40 font-body'>
-        <div className='text-center roboto pb-16'>
-          <h1 className='font-bold text-lg sm:text-4xl mt-16'>Trending Packages</h1>
-          <p className='pt-2 sm:pt-4 textnormal pb-4 sm:pb-8 text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
+      <div className='   sm:pb-8  rounded-t-[15px]  pt-2 xs:pt-20 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body'>
+        <div className='text-left font-head  flex justify-between items-end'>
+          <div>
+            <h1 className='font-bold text-lg sm:text-3xl'>Trending Packages</h1>
+            <p className='pt-2 sm:pt-4 textnormal  text-[13px] sm:text-base  md:text-lg'>Have a plan to go vacation? See trending destinations for your inspiration where to go.</p>
+
+          </div>
           <Link to="/packages" className='text-[#03BA6D] flex gap-2 items-center justify-center'>View All Travel Packages <FaArrowRight /></Link>
 
         </div>
       </div>
-      <div className=' hidden sm:block  bg-[white]  mx-4 lg:px-8 sm:mx-16 md:mx-20 2xl:mx-60  '>
+      <div className=' hidden sm:block    mx-4  sm:mx-16 md:mx-20 2xl:mx-60  '>
         <LazyLoad offset={200}><DestCard /></LazyLoad>
 
       </div>
@@ -246,9 +249,9 @@ Know more
         <LazyLoad offset={200}><DestCardMob /></LazyLoad>
 
       </div>
-     
 
-      <div className='mt-40'>
+
+      <div className='mt-20'>
         <LazyLoad offset={200}><Emi /></LazyLoad>
       </div>
       {/* <div className="pt-8 sm:pt-20 pb-8 px-4 sm:px-16 md:px-20 2xl:px-40 ">
@@ -274,111 +277,142 @@ Know more
           </div>
         </div>
       </div> */}
-   
 
 
-      <div className="mt-8 sm:mt-[6rem] pt-8 py-2 rounded-[10px] text-center bg-[white] lg:px-8 sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body ">
-        <div className="">
-          <h1 className="text-lg sm:text-2xl text-center md:text-3xl font-bold roboto">
-            Explore Popular Destinations
-          </h1>
+
+      <div className="mt-8 sm:mt-[3rem] pt-8 py-2 rounded-[10px] text-left   sm:mb-12 sm:mb-0 mx-4 sm:mx-16 md:mx-20 2xl:mx-60 font-body ">
+        <div className='flex justify-between items-end'>
+          <div className="">
+            <h1 className="text-lg sm:text-2xl text-left md:text-3xl font-bold font-head">
+              Explore Popular Destinations
+            </h1>
+            <p className="text-[13px] sm:text-base  md:text-lg  pt-4 font-head text-graydust-dark">
+              Discover Our Most Popular Destinations and Plan Your Next Adventure
+              Today!
+            </p>
+          </div>
+
+
+          <Link className='text-[#03BA6D] flex gap-2 items-center justify-center'>View All Destinations <FaArrowRight /></Link>
+
+
         </div>
-        <p className="text-[13px] sm:text-base lg:text-lg py-2 sm:py-4 poppins text-graydust-dark">
-          Discover Our Most Popular Destinations and Plan Your Next Adventure
-          Today!
-        </p>
-
-        <Link className='text-[#03BA6D] flex gap-2 items-center justify-center'>View All Destinations <FaArrowRight /></Link>
 
 
-        <div className=" py-8 pb-28 flex flex-col gap-12  text-[white] mb-4 font-bold text-xl location-container">
-         <div className='flex justify-between'>
-         <div
-            className=" w-[30%]   relative cursor-pointer"
-            onClick={() => handleS2submit("kashmir")}
-          >
-            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+        <div className=" py-8 pb-8 flex flex-col gap-12 text-left  text-[black] mb-4 font-bold text-xl location-container">
+          <div className='flex justify-between gap-8'>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520897/site/kashmir_d4vjg6.jpg" className='w-[100%] h-full object-cover' alt="" />
-            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
-            <h1 className=" text-base sm:text-xl  roboto">Kashmir</h1>
 
-              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+
+
+
+           <div className='w-[22%]'>
+           <div
+              className=" w-full  relative rounded-[10px] min-h-[250px] cursor-pointer"
+              onClick={() => handleS2submit("goa")}
+            >                            <div className="imagegradient rounded-[10px] absolute top-0  w-[100%]   bottom-0 z-[100]  "></div>
+
+              <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" className='absolute h-full rounded-[10px] object-cover' />
+              
             </div>
-          </div>
+            <div className='  w-full '>
+                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
 
-          <div
-            className=" w-[30%] relative cursor-pointer"
-            onClick={() => handleS2submit("goa")}
-          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+                <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+              </div>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" className='w-[100%] h-full object-cover' />
-            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
-            <h1 className=" text-base sm:text-xl  roboto">Goa</h1>
+           </div>
+           <div className='w-[22%]'>
+           <div
+              className=" w-full  relative rounded-[10px] min-h-[250px] cursor-pointer"
+              onClick={() => handleS2submit("goa")}
+            >                            <div className="imagegradient rounded-[10px] absolute top-0  w-[100%]   bottom-0 z-[100]  "></div>
 
-              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+              <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" className='absolute h-full rounded-[10px] object-cover' />
+              
             </div>
-          </div>
-          <div
-            className="  w-[30%] relative cursor-pointer"
-            onClick={() => handleS2submit("wayanad")}
-          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+            <div className='  w-full '>
+                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520883/site/wayanad_fh4ade.jpg" alt="" className='w-[100%] h-full object-cover' />
-            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
-            <h1 className=" text-base sm:text-xl roboto ">Wayanad</h1>
+                <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+              </div>
 
-              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+           </div><div className='w-[22%]'>
+           <div
+              className=" w-full  relative rounded-[10px] min-h-[250px] cursor-pointer"
+              onClick={() => handleS2submit("goa")}
+            >                            <div className="imagegradient rounded-[10px] absolute top-0  w-[100%]   bottom-0 z-[100]  "></div>
+
+              <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" className='absolute h-full rounded-[10px] object-cover' />
+              
             </div>
-          </div>
-         </div>
-         <div className='flex justify-between'>
-         <div
-            className=" w-[30%]  relative cursor-pointer"
-            onClick={() => handleS2submit("munnar")}
-          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+            <div className='  w-full '>
+                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520889/site/munnar_rasb7w.jpg" alt="" className='w-[100%] h-full object-cover' />
-            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
-            <h1 className=" text-base sm:text-xl roboto ">Munnar</h1>
+                <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+              </div>
 
-              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+           </div><div className='w-[22%]'>
+           <div
+              className=" w-full  relative rounded-[10px] min-h-[250px] cursor-pointer"
+              onClick={() => handleS2submit("goa")}
+            >                            <div className="imagegradient rounded-[10px] absolute top-0  w-[100%]   bottom-0 z-[100]  "></div>
+
+              <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" className='absolute h-full rounded-[10px] object-cover' />
+              
             </div>
-          </div>
-          <div
-            className="  w-[30%] relative cursor-pointer"
-            onClick={() => handleS2submit("mysore")}
-          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+            <div className='  w-full '>
+                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" className='w-[100%] h-full object-cover' />
-            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
-            <h1 className=" text-base sm:text-xl roboto ">Mysore</h1>
+                <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+              </div>
 
-              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+           </div><div className='w-[22%]'>
+           <div
+              className=" w-full  relative rounded-[10px] min-h-[250px] cursor-pointer"
+              onClick={() => handleS2submit("goa")}
+            >                            <div className="imagegradient rounded-[10px] absolute top-0  w-[100%]   bottom-0 z-[100]  "></div>
+
+              <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" className='absolute h-full rounded-[10px] object-cover' />
+              
             </div>
-          </div>
-          <div
-            className="  w-[30%] relative cursor-pointer"
-            onClick={() => handleS2submit("mysore")}
-          >                            <div className="imagegradient absolute top-0  w-[100%]   bottom-0 z-[100] rounded "></div>
+            <div className='  w-full '>
+                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
 
-            <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520888/site/mysore_r7wqlx.jpg" alt="" className='w-[100%] h-full object-cover' />
-            <div className='absolute left-[50%] translate-x-[-50%] bottom-8 z-[101]'>
-            <h1 className=" text-base sm:text-xl roboto ">Mysore</h1>
+                <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+              </div>
 
-              <p className='text-sm text-[#b6b6b6] pt-2 roboto'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+           </div><div className='w-[22%]'>
+           <div
+              className=" w-full  relative rounded-[10px] min-h-[250px] cursor-pointer"
+              onClick={() => handleS2submit("goa")}
+            >                            <div className="imagegradient rounded-[10px] absolute top-0  w-[100%]   bottom-0 z-[100]  "></div>
+
+              <img src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/w_300/v1684520904/site/goa_t0lts6.jpg" alt="" className='absolute h-full rounded-[10px] object-cover' />
+              
             </div>
+            <div className='  w-full '>
+                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
+
+                <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
+              </div>
+
+           </div>
+
+
+
+
+           
           </div>
-         </div>
         </div>
       </div>
 
 
-    
 
 
 
-      <div className='px-4  sm:px-16 md:px-20 2xl:px-60 my-8 md:my-20'>
+
+      <div className='px-4  sm:px-16 md:px-20 2xl:px-60 my-8 md:my-16'>
         <LazyLoad offset={200}><EmiCard /></LazyLoad>
       </div>
       {/* Reviews block */}
@@ -400,14 +434,14 @@ Know more
       </div>
       <LazyLoad offset={200}><InterestForm /></LazyLoad>
 
-      <div className=' px-4  pb-12   sm:px-16 md:px-20 2xl:px-72'>
-        <div className='bg-[white] bid-bg text-center py-12'>
-        <h1 className='text-3xl font-medium poppins '>Ready to Craft Your Perfect Travel Package?</h1>
-        <p className='w-[70%] mx-auto pt-12 text-[#464646] text-lg'>We can assist you with planning your trip, including finding the best budget options and addressing other requirements. Our team will provide a callback to discuss your needs and offer guidance. Feel free to reach out, and we'll help you plan your trip with confidence.</p>
-      <div className='pt-12 flex justify-center gap-6'>
-        <button className='gradientbg text-[white] px-8 py-3 text-lg rounded-[10px] flex items-center gap-3'><AiOutlineWhatsApp className='text-3xl' /> Chat with Us</button>
-        <button className='gradientbg text-[white] px-8 py-3 text-lg rounded-[10px] flex items-center gap-3'>< AiOutlinePhone className='text-3xl' />Get a Callback</button>
-      </div>
+      <div className=' px-4  pb-12   sm:px-16 md:px-20 2xl:px-60 '>
+        <div className='bg-[white] bid-bg text-center py-12 rounded-[15px]'>
+          <h1 className='text-3xl font-bold font-head '>Ready to Craft Your Perfect Travel Package?</h1>
+          <p className='w-[70%] mx-auto pt-12 text-[#464646] font-head text-lg'>We can assist you with planning your trip, including finding the best budget options and addressing other requirements. Our team will provide a callback to discuss your needs and offer guidance. Feel free to reach out, and we'll help you plan your trip with confidence.</p>
+          <div className='pt-12 flex justify-center gap-6'>
+            <button className='gradientbg text-[white] px-8 py-3 text-lg font-head rounded-[10px] flex items-center gap-3'><AiOutlineWhatsApp className='text-3xl' /> Chat with Us</button>
+            <button className='gradientbg text-[white] px-8 py-3 text-lg font-head rounded-[10px] flex items-center gap-3'>< AiOutlinePhone className='text-3xl' />Get a Callback</button>
+          </div>
         </div>
       </div>
       {/* Footer block */}
