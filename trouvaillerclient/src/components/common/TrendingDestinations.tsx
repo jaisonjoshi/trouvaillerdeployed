@@ -41,7 +41,7 @@ export const TrendingDestinations = () => {
 
                 <div className="hidden sm:flex flex-wrap gap-[10%] lg:gap-[2%] mt-12 2xl:mt-20">
                     {packages?.map((item,index)=>(
-                        <PackageCard item={item} />
+                        <PackageCard item={item} key={index}/>
                     ))}
                 </div>
                 <div className="sm:hidden mt-8">
@@ -58,42 +58,42 @@ export const TrendingDestinations = () => {
         <SwiperSlide>
             <div className=" ">
                 {packages.slice(0,2)?.map((item, index)=>(
-                    <PackageCard item={item} />
+                    <PackageCard item={item} key={index}/>
                 ))}
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className=" ">
                 {packages.slice(2,4)?.map((item, index)=>(
-                    <PackageCard item={item} />
+                    <PackageCard item={item} key={index}/>
                 ))}
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className=" ">
                 {packages.slice(4,6)?.map((item, index)=>(
-                    <PackageCard item={item} />
+                    <PackageCard item={item} key={index}/>
                 ))}
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className=" ">
                 {packages.slice(6,8)?.map((item, index)=>(
-                    <PackageCard item={item} />
+                    <PackageCard item={item} key={index}/>
                 ))}
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className=" ">
                 {packages.slice(8,10)?.map((item, index)=>(
-                    <PackageCard item={item} />
+                    <PackageCard item={item} key={index}/>
                 ))}
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className=" ">
                 {packages.slice(10,12)?.map((item, index)=>(
-                    <PackageCard item={item} />
+                    <PackageCard item={item} key={index}/>
                 ))}
             </div>
         </SwiperSlide>

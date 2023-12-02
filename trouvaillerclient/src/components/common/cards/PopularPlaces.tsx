@@ -27,7 +27,7 @@ export const PopularPlaces = () => {
             <p className="text-sm xs:text-base md:text-lg lg:text-xl text-[#777777]"> Explore popular places with our curated tours, discovering their beauty and charm firsthand.</p>
             <div className="flex justify-start flex-wrap gap-[2%] md:gap-[2.6%] mt-8 md:mt-20 ">
                {num.map((itm, i)=>(
-                <div className={`w-[32%] mb-8 md:w-[23%] ${i>5 ? "hidden md:block" : ""}`}>
+                <div key={i} className={`w-[32%] mb-8 md:w-[23%] ${i>5 ? "hidden md:block" : ""}`}>
                     <Place />
                 </div>
                ))} 
