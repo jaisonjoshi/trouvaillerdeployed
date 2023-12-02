@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios";
 import MenuIcon from '@mui/icons-material/Menu';
 import useFetch from '../../../hooks/useFetch';
-import './navbar.css';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';

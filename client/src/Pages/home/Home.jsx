@@ -94,8 +94,9 @@ const Home = ({ setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEb
       <Helmet>
         <title>Trouvailler | Personalized Trips, perfectly packaged</title>
       </Helmet>
+      <NavbarTest  bg="" />
       <div className=" w-full relative h-[80vh] sm:h-[90vh] background-header home font-body">
-        <NavbarTest color={color} bg="" />
+       
 
         <div className=" absolute z-[100] top-0 left-0 right-0 h-[80vh] sm:h-[90vh] pb-20 w-full flex flex-col lg:flex-row justify-start  items-start ">
           <div className=' flex flex-col items-center mt-32 sm:mt-40 lg:mt-52 2xl:mt-56 w-[100%] text-center'>

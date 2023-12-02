@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.playfair{
+  font-family: 'Playfair Display', serif;
+}
+.poppins{
+  font-family: 'Poppins', sans-serif;
+}
+.roboto{
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.header-bg::before{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.683);
+}
+
+
+.skeleton{
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+      background-color: hsl(200, 20%, 70%);
+  }
+  100% {
+      background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.gradient{
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.76) 100%);
+}
