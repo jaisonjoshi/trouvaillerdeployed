@@ -32,7 +32,7 @@ export const DetailPackageHeader:FC<{images:string[]}> = ({images}) => {
 
     >
    {images?.map((item,index)=>(
-   <SwiperSlide> <div className='' key={index}>
+   <SwiperSlide key={index}> <div className='' >
    <img src={item} alt="" className='w-full'/>
 
 </div></SwiperSlide>
