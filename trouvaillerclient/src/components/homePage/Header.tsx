@@ -103,7 +103,7 @@ export const Header: React.FC<{}> = ({ }) => {
                 </Swiper>
 
             </div>
-            <div className="absolute w-full z-20">
+            <div className="absolute w-full z-20 py-4 sm:py-8">
                 <Navbar />
             </div>
             <div className=" relative text-center z-[20] pt-32 xs:pt-40 lg:pt-48 xl:pt-56 pb-8 xs:pb-20 px-8 sm:px-20 xl:px-60 text-white">

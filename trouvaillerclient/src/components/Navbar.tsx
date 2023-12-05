@@ -3,18 +3,18 @@ import React from "react";
 
 
 
-export const Navbar: React.FC<{}> = ({}) => {
+export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
     
     return(
-        <div className=" flex justify-between relative items-center text-[white] px-4 sm:px-8 md:px-16 2xl:px-28 py-4 sm:py-8">
+        <div className=" flex justify-between relative items-center text-[white] px-4 sm:px-8 md:px-16 2xl:px-28 ">
             <div className="flex items-center gap-12 2xl:gap-20">
             <div className="flex items-center gap-2 sm:gap-4"> 
                 <img  src="/images/logos/icon.png" alt=""  className="w-8 sm:w-12 "/>
-                <img src="/images/logos/logowhite.png" alt="" className="w-[80px] sm:w-[90px] xl:w-[110px]"/>
+                <img src={`/images/logos/${darkMode? "logodark.png" : "logowhite.png"}`} alt="" className="w-[70px] sm:w-[90px] xl:w-[110px]"/>
             </div>
             
             <div className="hidden lg:block">
-               <ul className="flex items-center gap-12 2xl:gap-16">
+               <ul className={`flex items-center gap-12 2xl:gap-16 ${darkMode ? "text-black" : ""}`}>
                 <Link href="/">
                 <li className="flex items-center gap-2">
                     <img src="/images/icons/beach.png" className="w-8"/>
@@ -49,15 +49,15 @@ export const Navbar: React.FC<{}> = ({}) => {
 
 
             <div className="flex items-center gap-4">
-                <img src="/images/icons/avatar.png" alt="" className="w-12 hidden md:block"/>
+                <img src={`/images/icons/${darkMode?"avatardark":"avatar"}.png`} alt="" className="w-12 hidden md:block"/>
                 <div className="hidden md:flex flex-col">
-                        <span className="text-xs">Login</span>
+                        <span className={`text-xs ${darkMode? "text-black" : "text-white"}`}>Login</span>
                       
                        <span className="flex text-sm font-medium text-[green]">Sign Up <img src="/images/icons/arrowdown.png" className="w-6"/></span>
                        
                     </div>
                     <div className="lg:hidden">
-                <img src="/images/icons/menu.png" alt="" className="w-6 mt-2 sm:w-10 ml-8 rounded"/>
+                <img src={`/images/icons/${darkMode? "menudark" : "menu"}.png`} alt="" className="w-6 mt-2 sm:w-10 ml-8 rounded"/>
             </div>
             </div>
 

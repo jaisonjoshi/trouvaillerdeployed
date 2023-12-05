@@ -41,7 +41,7 @@ export const Footer = () => {
                    
                    </div>
                 </div>
-                <div className="w-[100%] mt-8 xs:mt-20 xl:w-[25%]">
+                <div className="w-[100%] mt-8 xs:mt-20 xl:mt-0 xl:w-[25%]">
                     <h1 className="text-base xs:text-lg sm:text-xl poppins font-semibold"> Connect Us</h1>
                     <div className="flex mt-8 gap-4">
                         <img src="/images/icons/fb.png" alt="" className="w-8"/>
