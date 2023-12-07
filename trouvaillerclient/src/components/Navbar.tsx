@@ -1,28 +1,43 @@
 "use client"
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 
 
 export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
 
     const [openNavbar, setOpenNavbar] = useState(false)
-    
-    const objg= document.getElementById('bodycon');
+    const [bodyHeight, setBodyHeight] = useState<Number>()
+    useEffect(()=>{
+        const objg = document.getElementById('bodycon');
+
+
+        setBodyHeight(document.documentElement.clientHeight)
+        console.log("hello")
+
+
+    },[])
 
     const handleOPenNav = () => {
+        const objg = document.getElementById('bodycon');
+
         setOpenNavbar(true)
         if( objg !== null){
-            objg.style.maxHeight = '629px'
+
+            objg.style.maxHeight = bodyHeight+'px'
             objg.style.overflow = 'hidden'
-            objg.style.height="629px"
+            objg.style.height=bodyHeight+'px'
 
         }
        
 
+
     }
+   
     const handleCloseNav = () => 
     {
+        const objg = document.getElementById('bodycon');
+
         setOpenNavbar(false)
         if( objg !== null){
             objg.style.maxHeight = 'auto'
