@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { packageid: string } }
 
     return(
 
-        <div>
+        <div >
             <div className="bg-[#F3F3F3] py-4 ">
                 <Navbar darkMode={true}/>
             </div>
@@ -146,22 +146,22 @@ export default async function Page({ params }: { params: { packageid: string } }
                     <div className="poppins">
                         <div className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
                             <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day 1 <span className="text-black"> - Arrival</span></h1>
-                            <p className="mt-4 mb-3 md:mb-6 text-sm md:text-base text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
+                            <p className="mt-4 mb-3 md:mb-6 text-[13px] md:text-[16px] text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
                         </div>
                         <div className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
                             <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day 1 <span className="text-black"> - Arrival</span></h1>
-                            <p className="mt-4 mb-3 md:mb-6 text-sm md:text-base text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
+                            <p className="mt-4 mb-3 md:mb-6 text-[13px] md:text-[16px] text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
                         </div>
                         <div className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
                             <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day 1 <span className="text-black"> - Arrival</span></h1>
-                            <p className="mt-4 mb-3 md:mb-6 text-sm md:text-base text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
+                            <p className="mt-4 mb-3 md:mb-6 text-[13px] md:text-[16px] text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
                         </div>
                        
                     </div>
 
 
                     <h1 className="text-[20px] md:text-[22px] poppins font-semibold mt-12 md:mt-20">Places to Visit</h1>
-                    <p className="poppins mt-4 text-sm md:text-base text-[#4a4a4a]">We have carefully planned out each day to give you the best possible experience. From exploring historic landmarks to tasting delicious local cuisine, each day is packed with adventure and excitement. </p>
+                    <p className="poppins mt-4 text-[13px] md:text-[16px] text-[#4a4a4a]">We have carefully planned out each day to give you the best possible experience. From exploring historic landmarks to tasting delicious local cuisine, each day is packed with adventure and excitement. </p>
 
                     <div className="flex mt-8 gap-[10%] flex-wrap">
                         <div className="w-[45%] relative mb-4">

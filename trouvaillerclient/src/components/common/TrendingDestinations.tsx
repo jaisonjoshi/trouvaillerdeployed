@@ -47,7 +47,7 @@ export const TrendingDestinations = () => {
                 <div className="sm:hidden mt-8">
                 <Swiper
       spaceBetween={30}
-      slidesPerView={1.5}
+      slidesPerView={1.25}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
       modules={[ Autoplay]}
@@ -55,48 +55,19 @@ export const TrendingDestinations = () => {
       loop
 
     >
-        <SwiperSlide>
-            <div className=" ">
-                {packages.slice(0,2)?.map((item, index)=>(
-                    <PackageCard item={item} key={index}/>
-                ))}
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className=" ">
-                {packages.slice(2,4)?.map((item, index)=>(
-                    <PackageCard item={item} key={index}/>
-                ))}
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className=" ">
-                {packages.slice(4,6)?.map((item, index)=>(
-                    <PackageCard item={item} key={index}/>
-                ))}
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className=" ">
-                {packages.slice(6,8)?.map((item, index)=>(
-                    <PackageCard item={item} key={index}/>
-                ))}
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className=" ">
-                {packages.slice(8,10)?.map((item, index)=>(
-                    <PackageCard item={item} key={index}/>
-                ))}
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className=" ">
-                {packages.slice(10,12)?.map((item, index)=>(
-                    <PackageCard item={item} key={index}/>
-                ))}
-            </div>
-        </SwiperSlide>
+        {
+            packages?.map((item,index)=>(
+                <SwiperSlide key={index}>
+                <div className=" ">
+                        <PackageCard item={item} key={index}/>
+                </div>
+            </SwiperSlide>
+            ))
+        }
+       
+       
+       
+      
       
       
     </Swiper>

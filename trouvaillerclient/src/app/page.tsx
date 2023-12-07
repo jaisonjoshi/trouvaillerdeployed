@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function Home() {
   
   return (
-    <div>
+    <div id='bodycon'>
       <Header />
       <div className='mt-8 xs:mt-12 xl:mt-20 2xl:mt-28 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60'>
       <TrendingDestinations />

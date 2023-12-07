@@ -20,6 +20,10 @@ export const DetailPackageHeader:FC<{images:string[]}> = ({images}) => {
             slidesPerView:2,
             centeredSlides:false,
             spaceBetween:30
+        },
+        1024:{
+            slidesPerView:3,
+            centeredSlides:true
         }
       }}
 
