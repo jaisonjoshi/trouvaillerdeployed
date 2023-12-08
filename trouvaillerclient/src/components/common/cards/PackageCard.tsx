@@ -6,7 +6,7 @@ import React from "react"
 
 export const PackageCard:React.FC<{item:Package}> = ({item}) => {
     return(
-        <div className="w-full sm:w-[45%] lg:w-[30%] bg-[white] mb-8 xs:mb-20 h-auto rounded-[4px] xs:rounded flex flex-col  border-[1px] shadow-xl">
+        <div className="w-full bg-[white] mb-8 xs:mb-20 h-auto rounded-[4px] xs:rounded flex flex-col  border-[1px] shadow-xl">
                             <div className="relative ">
 
                             <img src={generateUrl(item.images[0])} alt="" className=" rounded-t-[4px] xs:rounded-t-[10px]  w-full  aspect-video skeleton" />

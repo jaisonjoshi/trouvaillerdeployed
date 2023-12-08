@@ -11,7 +11,7 @@ import {  Autoplay } from 'swiper/modules';
 
 
 
-export const TrendingDestinations = () => {
+export const TrendingDestinationsCarousel = () => {
 
     const [loading, setLoading] = useState(false)
     const [packages, setPackages] = useState<Package[]>([])
@@ -39,17 +39,22 @@ export const TrendingDestinations = () => {
 
                 </p>
 
-                <div className="hidden sm:flex flex-wrap gap-[10%] lg:gap-[5%] mt-12 2xl:mt-20">
-                    {packages?.map((item,index)=>(
-                       <div className="w-full sm:w-[45%] lg:w-[30%]">
-                         <PackageCard item={item} key={index}/>
-                       </div>
-                    ))}
-                </div>
-                <div className="sm:hidden mt-8">
+               
+                <div className=" mt-8">
                 <Swiper
       spaceBetween={30}
+
       slidesPerView={1.25}
+      breakpoints={{
+        614:{
+            slidesPerView:2.25
+
+        },
+        1025:{
+            slidesPerView:3.25
+        }
+      }}
+      
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
       modules={[ Autoplay]}

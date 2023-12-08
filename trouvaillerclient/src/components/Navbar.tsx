@@ -58,7 +58,7 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
             
             <div className="hidden lg:block">
                <ul className={`flex items-center gap-12 2xl:gap-16 ${darkMode ? "text-black" : ""}`}>
-                <Link href="/">
+                <Link href="/packages">
                 <li className="flex items-center gap-2">
                     <img src="/images/icons/beach.png" className="w-8"/>
                     <div className="flex flex-col mt-1">
@@ -113,7 +113,9 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
 
 
 
-            <div className={`fixed top-0 overflow-auto ${openNavbar? "left-[0%]" : "left-[-70%]"} shadow-custom transition-all duration-300 right-0  w-[70%] overflow-scroll bottom-0 bg-white `}>
+            <div className={`fixed top-0 overflow-auto ${openNavbar? "left-[0%]" : "left-[-70%]"} shadow-custom transition-all duration-300 right-0 flex flex-col justify-between  w-[70%] overflow-scroll bottom-0 bg-white `}>
+               <div className="">
+                
                <div className=" relative">
                 <div className="absolute top-0 bottom-0 left-0 right-0">
                     <img src="/images/slider/slider1.jpg" alt="" className="object-cover w-full h-full"/>
@@ -140,7 +142,7 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
                 </div>
                 <div className="text-black px-4 mt-8">
                     <ul className="flex flex-col gap-4">
-                    <Link href="/">
+                    <Link href="/packages">
                 <li className="flex items-center gap-2">
                     <img src="/images/icons/beach.png" className="w-8"/>
                     <div className="flex flex-col mt-1">
@@ -178,7 +180,8 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
                     <h1 className="text-xs font-bold">Connect with Us</h1>
                     <button className="flex gap-2 items-center bg-[#1bbc9b] px-4 text-xs py-1 rounded text-white font-semibold"><img src="/images/icons/wa.png" className="w-5" alt="" /> <span className="mt-[2px]">WhatsApp</span></button>
                 </div>
-                <div className="absolute bottom-0 left-0 mx-4 text-[#504f4f] mb-4 text-xs flex gap-2 flex-col">
+                </div>
+                <div className=" mx-4 text-[#504f4f] mb-4 text-xs flex gap-2 flex-col">
                     <div className="flex gap-2 items-center mb-2">
                         <img src="/images/icons/fab.png" alt="" className="w-6"/>
                         <img src="/images/icons/instab.png" alt="" className="w-6"/>
