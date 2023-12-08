@@ -41,8 +41,8 @@ export const TrendingDestinations = () => {
 
                 <div className="hidden sm:flex flex-wrap gap-[10%] lg:gap-[5%] mt-12 2xl:mt-20">
                     {packages?.map((item,index)=>(
-                       <div className="w-full sm:w-[45%] lg:w-[30%]">
-                         <PackageCard item={item} key={index}/>
+                       <div className="w-full sm:w-[45%] lg:w-[30%]" key={index}>
+                         <PackageCard item={item} />
                        </div>
                     ))}
                 </div>
