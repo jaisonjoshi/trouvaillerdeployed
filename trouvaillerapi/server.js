@@ -13,6 +13,7 @@ app.use(cookieParser());
 
 const packagelocationsRoutes = require('./routes/packageLocations')
 const packageRoutes = require('./routes/packages')
+const travelPackageRoutes = require('./routes/travelPackageRouter')
 
 
 app.use(cors({
@@ -39,4 +40,6 @@ mongoose.connect(process.env.MONGO_URI)
 
     app.use('/api/packagelocations',packagelocationsRoutes)
     app.use('/api/packages', packageRoutes)
+    app.use('/api/travelpackages', travelPackageRoutes)
+
 

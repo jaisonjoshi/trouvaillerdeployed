@@ -4,7 +4,7 @@ import { Footer } from "@/components/common/Footer";
 import SearchBar from "@/components/common/SearchBar";
 
 async function getData(id :string) {
-    const res = await fetch(`http://localhost:8080/api/packages/find/${id}`);
+    const res = await fetch(`https://api2.trouvailler.com/api/package/${id}`);
     if (!res.ok) {
         throw new Error('Failed to fetch data')
       }
@@ -218,7 +218,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                             <div className=" flex flex-col items-end  text-[15px] xs:text-[24px]">
                             <span className="text-[10px] xs:text-[14px] text-[#585858]">Per Person</span>
 
-                               <span className="font-extrabold roboto flex gap-1 items-center "> <span className='text-base xs:text-2xl'>₹</span><span>{data.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
+                               <span className="font-extrabold roboto flex gap-1 items-center "> <span className='text-base xs:text-2xl'>₹</span><span>{data.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +247,7 @@ export default async function Page({ params }: { params: { packageid: string } }
         <div className="bg-[#174978] fixed bottom-0 left-0 right-0 py-2 px-4 flex justify-between items-center xl:hidden">
             <div className=" flex flex-col items-start text-white  text-[18px] xs:text-[24px]">
 
-                               <span className="font-extrabold roboto flex gap-1 items-center "> <span className='text-xl xs:text-2xl'>₹</span><span>{data.cheapestPrice.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
+                               <span className="font-extrabold roboto flex gap-1 items-center "> <span className='text-xl xs:text-2xl'>₹</span><span>{data.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
                                <span className="text-[10px] xs:text-[14px] text-[#e9e9e9]">Per Person</span>
 
                                 </div>

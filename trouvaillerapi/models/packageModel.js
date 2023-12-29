@@ -25,12 +25,17 @@ const packageSchema=new Schema({
         type:String,
         required:true
     },
-    locations:{
+    locationTags:{
         type:[String]
     },
     duration:{
         type:String,
         required:true
+    },
+    durationText:{
+        type:String,
+        required:true
+
     },
     cheapestPrice:{
         type:Number,
