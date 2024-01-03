@@ -4,7 +4,7 @@ const Packages = require('../models/packageModel')
 
 
 //Data migration Function - only use this for developemnt purpose and this function directly interacts with data. so careful
-/* const createdb = async (req,res) => {
+const createdb = async (req,res) => {
     const existingPackages = await  Packages.find({})
     existingPackages.map(async (item,ind)=>{
         
@@ -36,10 +36,15 @@ const Packages = require('../models/packageModel')
             cardTag2:""
           }
         newpack.activities = []
+        newpack.places = []
+        newpack.featured = {
+            featured: false,
+            order:0
+        }
         await TravelPackages.create(newpack)
         console.log(ind)
     })
-} */
+} 
 
 
 
@@ -97,4 +102,4 @@ const updatePackage = async (req,res)=>{
 
 }
 
-module.exports = {createPackage,getPackages, getPackage, updatePackage}
+module.exports = {createPackage,getPackages,createdb, getPackage, updatePackage}

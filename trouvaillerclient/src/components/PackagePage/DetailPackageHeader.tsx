@@ -37,7 +37,7 @@ export const DetailPackageHeader:FC<{images:string[]}> = ({images}) => {
     >
    {images?.map((item,index)=>(
    <SwiperSlide key={index}> <div className='' >
-   <img src={item} alt="" className='w-full'/>
+   <img src={item} alt="" className='w-full md:w-[90%]'/>
 
 </div></SwiperSlide>
    ))}

@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const {createPackage, getPackages,createdb, getPackage,updatePackage} = require('../controllers/TravelPackageController')
 
-/* router.get('/createdb', createdb)
- */
+router.get('/createdb', createdb)
+
 
 
 router.post('/new', createPackage)
