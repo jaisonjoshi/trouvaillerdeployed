@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export const Footer = () => {
     return(
         <div className="bg-[black] text-[white] px-4 xs:px-8 sm:px-20 pt-8 sm:pt-20 pb-4 xs:pb-8">
@@ -61,8 +63,8 @@ export const Footer = () => {
                 </div>
                 <div >
                     <ul className="flex gap-4">
-                        <li>Terms and Conditions</li>
-                        <li>Privacy Policy</li>
+                        <Link href="/termsandconditions"><li>Terms and Conditions</li></Link>
+                        <Link href="/privacypolicy"><li>Privacy Policy</li></Link>
                     </ul>
                 </div>
             </div>
