@@ -131,7 +131,7 @@ export default async function Page({ params }: { params: { packageid: string } }
 
                     <div className="poppins">
                        { data.schedule?.map((item:any ,index:number)=>(
-                        <div className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
+                        <div key={index} className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
                             <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day {index+1} <span className="text-black"> - {item.dayTitle}</span></h1>
                             <p className="mt-4 mb-3 md:mb-6 text-[13px] md:text-[16px] text-[#6e6e6e]">{item.dayDesc}</p>
                         </div>
