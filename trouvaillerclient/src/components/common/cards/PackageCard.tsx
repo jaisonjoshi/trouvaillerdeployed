@@ -24,28 +24,28 @@ export const PackageCard:React.FC<{item:Package}> = ({item}) => {
                                 <p className=" text-[12px] xs:text-[15px] leading-[16px] xs:leading-[20px]  whitespace-nowrap text-[#4a4a4a]	overflow-hidden text-ellipsis	 w-[90%]">{item.location.charAt(0).toUpperCase()+ item.location.slice(1)}</p>
 
                             </div>
-                            <div className="mt-6">
-                                <p className="poppins text-[#4a4a4a] text-[10px] xs:text-[15px] line-clamp-3">{item.shortDescription}</p>
+                            <div className="mt-2">
+                                <p className="poppins text-[#4a4a4a] text-[10px] xs:text-[13px] line-clamp-3">{item.shortDescription}</p>
                             </div>
                             <div className="mt-4 ">
                                 <div className=" poppins text-[#4a4a4a] ">
                                     <div className="flex items-start gap-1 mb-1 ">
-                                        <img src="/images/icons/tick.png" alt=""  className="w-4"/>
-                                        <span className="text-[10px] xs:text-[14px]  sm:mt-[-3px] whitespace-nowrap	overflow-hidden text-ellipsis">Include transfer</span>
+                                        {item.cardTags.cardTag1 !== "" && <img src="/images/icons/tick.png" alt=""  className="w-4"/>}
+                                        <span className="text-[10px] xs:text-[14px]  sm:mt-[-3px] whitespace-nowrap	overflow-hidden text-ellipsis">{item.cardTags.cardTag1}</span>
                                     </div>
                                     <div className="flex  items-start gap-1 ">
-                                        <img src="/images/icons/tick.png" alt=""  className="w-4"/>
-                                        <span className="text-[10px] xs:text-[14px] sm:mt-[-3px] whitespace-nowrap	overflow-hidden text-ellipsis">Sightseeing for locations dfdsghrtc hrgrthrtht yhjtyrhr thrt</span>
+                                        {item.cardTags.cardTag2 !== "" && <img src="/images/icons/tick.png" alt=""  className="w-4"/>}
+                                        <span className="text-[10px] xs:text-[14px] sm:mt-[-3px] whitespace-nowrap	overflow-hidden text-ellipsis">{item.cardTags.cardTag2}</span>
                                     </div>
                                 </div>
                                 
                             </div>
                           </div>
-                            <div className="mt-2 xs:mt-4 mb-2 xs:mb-8 flex justify-between items-end">
+                            <div className="mt-2 xs:mt-4 mb-2 xs:mb-4 flex justify-between items-end">
                                 <Link href={`/travelpackage/${item._id}`}><button className="bg-[#05CAA6] text-white font-bold text-[10px] xs:text-[14px] px-6 xs:px-8 rounded-full py-2">Explore</button></Link>
-                                <div className="w-[30%] flex flex-col items-end  text-[15px] xs:text-[20px]">
+                                <div className="w-[30%] flex flex-col items-end  text-[15px] xs:text-[18px]">
                                <span className="font-extrabold roboto flex gap-1 items-center "> <span className='text-base xs:text-2xl'>₹</span><span>{item.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
-                               <span className="text-[10px] xs:text-[14px] text-[#585858]">Per Person</span>
+                               <span className="text-[10px] xs:text-[12px] roboto text-[#585858]">Per Person</span>
                                 </div>
 
                             </div>

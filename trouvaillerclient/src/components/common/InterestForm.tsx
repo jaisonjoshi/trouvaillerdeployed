@@ -3,8 +3,8 @@
 export const InterestForm = () => {
     return(
         <div>
-              <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 poppins">You want a customised travel plan?</h1>
-            <p className="text-sm xs:text-base md:text-lg lg:text-xl text-[#777777] poppins">Looking for a personalized travel experience? Fill out the form below to create your customized travel plan tailored to your preferences and desires.</p>
+              <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 roboto">You want a customised travel plan?</h1>
+            <p className="text-sm xs:text-base md:text-lg lg:text-lg text-[#777777] poppins">Looking for a personalized travel experience? Fill out the form below to create your customized travel plan tailored to your preferences and desires.</p>
             <div className="flex justify-between flex-col md:flex-row items-start mt-8 md:mt-20">
             <div className="w-[100%] md:w-[30%] min-h-[200px] sm:min-h-[250px] md:min-h-[100px] md:self-stretch	 relative">
                     <img src="/images/interestform.png" className="w-full h-full absolute object-cover object-top" alt="" />

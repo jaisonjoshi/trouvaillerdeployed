@@ -22,16 +22,16 @@ export default function Home() {
   return (
     <div id='bodycon'>
       <Header />
-      <div className='mt-8 xs:mt-12 xl:mt-20 2xl:mt-28 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60'>
+      <div className='mt-8 xs:mt-12 xl:mt-20 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60'>
       <TrendingDestinations />
        <BidCard />
-     <div className='my-8 xs:my-12 xl:my-20 2xl:my-28 '>
+     <div className='my-8 xs:my-12 xl:my-20 2xl:my-16 '>
       <TravelSubscription />
       </div>
       <EmiDetails />
-     <div className='my-8 xs:my-12 xl:my-20 2xl:my-28'><PopularPlaces /></div>
+     <div className='my-8 xs:my-12 xl:my-20 2xl:my-20'><PopularPlaces /></div>
         <InterestForm />
-      <div className='my-8 xs:my-12 xl:my-20 2xl:my-28  '>
+      <div className='my-8 xs:my-12 xl:my-20 2xl:my-40  '>
         <Review />
       </div>
       </div>

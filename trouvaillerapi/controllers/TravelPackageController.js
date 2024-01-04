@@ -41,6 +41,8 @@ const createdb = async (req,res) => {
             featured: false,
             order:0
         }
+        newpack.inclusions = []
+        newpack.exclusions = []
         await TravelPackages.create(newpack)
         console.log(ind)
     })

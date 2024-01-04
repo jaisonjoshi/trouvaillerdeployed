@@ -4,10 +4,10 @@ import { ImageDarker } from "@/utils/ImageDarker"
 export const TravelSubscription = () => {
     return (
         <div>
-            <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 poppins">Explore our Travel subscription plans</h1>
-            <p className="text-sm xs:text-base md:text-lg lg:text-xl text-[#777777] poppins"> Enjoy convenient travel subscriptions with flights included for a year-long adventure at accessible monthly rates.</p>
+            <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 roboto">Explore our Travel subscription plans</h1>
+            <p className="text-sm xs:text-base md:text-lg lg:text-lg text-[#777777] poppins"> Enjoy convenient travel subscriptions with flights included for a year-long adventure at accessible monthly rates.</p>
 
-            <div className="flex flex-col md:flex-row gap-[10%] mt-8 xs:mt-20 ">
+            <div className="flex flex-col md:flex-row gap-[10%] mt-8 xs:mt-12 ">
                 <div className="w-[100%] md:w-[45%] relative rounded-[10px] mb-8">
                     <div className="absolute top-0 left-0 right-0 bottom-0 rounded-[10px] overflow-hidden "><img src="/images/europe.png" className="h-full w-full object-cover object-bottom	" alt="" /></div>
                     <ImageDarker />

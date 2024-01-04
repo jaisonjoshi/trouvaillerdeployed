@@ -23,6 +23,7 @@ export const DetailPackageHeader:FC<{images:string[]}> = ({images}) => {
         },
         1024:{
             slidesPerView:3,
+            spaceBetween:30,
             centeredSlides:true
         }
       }}
@@ -37,7 +38,7 @@ export const DetailPackageHeader:FC<{images:string[]}> = ({images}) => {
     >
    {images?.map((item,index)=>(
    <SwiperSlide key={index}> <div className='' >
-   <img src={item} alt="" className='w-full md:w-[90%]'/>
+   <img src={item} alt="" className='w-full md:w-[100%]'/>
 
 </div></SwiperSlide>
    ))}

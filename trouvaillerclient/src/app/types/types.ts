@@ -51,4 +51,8 @@ export type Package = {
     images:string[];
     schedule:Schedule[];
     category:string | null;
+    inclusions:string[],
+    exclusions:string[],
+    places:any,
+    featured:any
 }

@@ -33,9 +33,9 @@ export const TrendingDestinations = () => {
     },[])
 
     return(
-        <div className="poppins">
+        <div className="roboto">
             <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4">Trending Packages</h1>
-            <p className="text-sm xs:text-base md:text-lg lg:text-xl text-[#777777]">Have a plan to go vacation? See trending destinations for your inspiration where to go.
+            <p className="text-sm xs:text-base md:text-lg  text-[#777777]">Have a plan to go vacation? See trending destinations for your inspiration where to go.
 
                 </p>
 {/* 

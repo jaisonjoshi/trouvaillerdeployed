@@ -38,8 +38,8 @@ export default async function Page({ params }: { params: { packageid: string } }
                     <div className="flex flex-col gap-2">
                     <h1 className="text-[18px] md:text-[24px] lg:text-[32px] poppins font-bold">{data.title}</h1>
                     <div className="flex gap-2 items-center">
-                    <h1 className="text-[13px] md:text-[16px] lg::text-[20px] ">3 Days & 4 Nights</h1>
-                    <span className="text-[10px] border px-3 py-[1px] rounded md:hidden border-[#b5b5b5] font-bold">Customisable</span>
+                    <h1 className="text-[13px] md:text-[16px] lg::text-[20px] ">{data.duration}</h1>
+                    <span className="text-[10px] md:text-[14px] border px-3 py-[1px] rounded border-[#b5b5b5] font-bold">Customisable</span>
                     </div>
                     </div>
                     <div>
@@ -59,7 +59,7 @@ export default async function Page({ params }: { params: { packageid: string } }
 
             <div className="px-4 xs:px-8 lg:px-20  2xl:px-40 pt-8 md:pt-12 flex mb-16">
                 <div className="w-[100%] xl:w-[60%]">
-                    <h1 className="text-[20px] md:text-[22px] poppins font-semibold">Enjoy the Adventure</h1>
+                    <h1 className="text-[20px] md:text-[22px] poppins font-semibold">{data.descriptionTitle}</h1>
                     <p className="poppins mt-2 md:mt-4 text-[13px] md:text-[16px] text-[#4a4a4a]">{data.description}</p>
                     <div className="flex mt-4 md:mt-8 flex-wrap">
                         <div className="w-full sm:w-auto sm:grow">
@@ -73,22 +73,8 @@ export default async function Page({ params }: { params: { packageid: string } }
                                     <span className="text-xs md:text-base">Inclusion 1</span>
                                     </div>
                                 </li>
-                                <li className="flex gap-2 items-start mb-1">
-                                   <div>
-                                   <img src="/images/icons/tick.png" alt="" className="mt-[5px] md:mt-0 w-4 md:w-6"/>
-                                   </div>
-                                    <div>
-                                    <span className="text-xs md:text-base">Inclusion 1</span>
-                                    </div>
-                                </li>
-                                <li className="flex gap-2 items-start mb-1">
-                                   <div>
-                                   <img src="/images/icons/tick.png" alt="" className="mt-[5px] md:mt-0 w-4 md:w-6"/>
-                                   </div>
-                                    <div>
-                                    <span className="text-xs md:text-base">Inclusion 1</span>
-                                    </div>
-                                </li>
+                              
+                               
                                 <li className="flex gap-2 items-start mb-1">
                                    <div>
                                    <img src="/images/icons/tick.png" alt="" className="mt-[5px] md:mt-0 w-4 md:w-6"/>
@@ -144,18 +130,13 @@ export default async function Page({ params }: { params: { packageid: string } }
 
 
                     <div className="poppins">
+                       { data.schedule?.map((item:any ,index:number)=>(
                         <div className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
-                            <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day 1 <span className="text-black"> - Arrival</span></h1>
-                            <p className="mt-4 mb-3 md:mb-6 text-[13px] md:text-[16px] text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
+                            <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day {index+1} <span className="text-black"> - {item.dayTitle}</span></h1>
+                            <p className="mt-4 mb-3 md:mb-6 text-[13px] md:text-[16px] text-[#6e6e6e]">{item.dayDesc}</p>
                         </div>
-                        <div className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
-                            <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day 1 <span className="text-black"> - Arrival</span></h1>
-                            <p className="mt-4 mb-3 md:mb-6 text-[13px] md:text-[16px] text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
-                        </div>
-                        <div className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
-                            <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day 1 <span className="text-black"> - Arrival</span></h1>
-                            <p className="mt-4 mb-3 md:mb-6 text-[13px] md:text-[16px] text-[#6e6e6e]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eligendi harum commodi, non, est minus magnam illo facere modi accusantium culpa. Earum corporis, sint sed nobis ullam eligendi? Ea, dolore.</p>
-                        </div>
+                       ))}
+                       
                        
                     </div>
 
