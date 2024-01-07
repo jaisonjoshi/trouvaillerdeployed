@@ -31,6 +31,10 @@ export type Activity = {
     img:string;
 }
 
+export type ReviewItem = {
+
+}
+
 export type Package = {
     _id :string;
     uploaded: boolean;

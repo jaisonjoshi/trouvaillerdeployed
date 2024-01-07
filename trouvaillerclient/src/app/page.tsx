@@ -1,4 +1,5 @@
 
+import { CategoryContainer } from '@/components/common/CategoryContainer'
 import { Footer } from '@/components/common/Footer'
 import { InterestForm } from '@/components/common/InterestForm'
 import { Review } from '@/components/common/Review'
@@ -18,6 +19,8 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
+
+  
   
   return (
     <div id='bodycon'>
@@ -25,6 +28,8 @@ export default function Home() {
       <div className='mt-8 xs:mt-12 xl:mt-20 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60'>
       <TrendingDestinations />
        <BidCard />
+
+<CategoryContainer />
      <div className='my-8 xs:my-12 xl:my-20 2xl:my-16 '>
       <TravelSubscription />
       </div>

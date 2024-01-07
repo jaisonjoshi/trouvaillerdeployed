@@ -5,6 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/autoplay";
 import {  Autoplay } from 'swiper/modules';
+import { useEffect, useState } from 'react';
+import { ReviewItem } from '@/app/types/types';
+import axiosInstance from '../../../axiosInstance';
 
 
 
@@ -31,6 +34,29 @@ export const ReviewCrad = () => {
 
 
 export const Review = () => {
+
+    const [reviews, setReviews] = useState<ReviewItem[]>([])
+
+    useEffect(()=>{
+        async function getPackages() {
+            await axiosInstance.get('/package')
+                .then(res => {
+                    setReviews(res.data)
+                    console.log(res.data)
+                })
+                .catch(err => console.log(err))
+            }
+
+            getPackages()
+
+
+
+    },[])
+
+
+
+
+
     return (
         <div>
             <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 poppins">What people says about us</h1>

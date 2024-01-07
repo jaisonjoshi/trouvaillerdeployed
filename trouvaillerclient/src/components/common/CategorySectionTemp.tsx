@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { PackageCard } from "./cards/PackageCard"
 import axiosInstance from "../../../axiosInstance"
 import { Package } from "@/app/types/types"
@@ -11,33 +11,17 @@ import {  Autoplay } from 'swiper/modules';
 
 
 
-export const TrendingDestinations = () => {
+export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
 
-    const [packages, setPackages] = useState<any>([])
-
-    useEffect(()=>{
-        async function getPackages() {
-            await axiosInstance.get('/category/65999e37781eacb0f9723bcc')
-                .then(res => {
-                    setPackages(res.data)
-                    console.log(res.data)
-                })
-                .catch(err => console.log(err))
-            }
-
-            getPackages()
-
-
-
-    },[])
+   
 
     return(
 
        <>
-       {packages &&
+       {item &&
          <div className="roboto">
-         <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4">{packages.name}</h1>
-         <p className="text-sm xs:text-base md:text-lg  text-[#777777]">{packages.description}
+         <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4">{item.name}</h1>
+         <p className="text-sm xs:text-base md:text-lg  text-[#777777]">{item.description}
              </p>
 {/* 
              <div className="hidden sm:flex flex-wrap gap-[10%] lg:gap-[5%] mt-12 2xl:mt-20">
@@ -63,7 +47,7 @@ export const TrendingDestinations = () => {
 
  >
      {
-         packages.packages?.map((item: any,index: any)=>(
+         item.packages?.map((item: any,index: any)=>(
              <SwiperSlide key={index}>
              
                      <PackageCard item={item} key={index}/>
