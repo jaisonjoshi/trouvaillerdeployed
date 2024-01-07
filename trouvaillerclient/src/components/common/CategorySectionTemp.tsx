@@ -43,6 +43,7 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
    onSlideChange={() => console.log('slide change')}
    onSwiper={(swiper) => console.log(swiper)}
    modules={[ Autoplay]}
+   autoplay
    loop
 
  >

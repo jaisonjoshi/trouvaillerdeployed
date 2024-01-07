@@ -59,6 +59,7 @@ export const TrendingDestinations = () => {
    onSlideChange={() => console.log('slide change')}
    onSwiper={(swiper) => console.log(swiper)}
    modules={[ Autoplay]}
+   autoplay
    loop
 
  >
