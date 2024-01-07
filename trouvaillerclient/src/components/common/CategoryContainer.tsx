@@ -29,7 +29,7 @@ export const CategoryContainer = () => {
     return(
         <div className="mt-20">
             {category && category.slice(1)?.map((item,index)=>(
-                <CategorySectionTemp item={item} />
+                <CategorySectionTemp item={item}  key={index}/>
             ))}
         </div>
     )
