@@ -97,7 +97,7 @@ export const Review = () => {
     >
 
         {reviews && reviews?.map((item,index)=>(
- <SwiperSlide><ReviewCrad review={item} key={index}/></SwiperSlide>
+ <SwiperSlide key={index}><ReviewCrad review={item} /></SwiperSlide>
         ))}
      
    
