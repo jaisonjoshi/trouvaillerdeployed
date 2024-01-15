@@ -5,26 +5,33 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/autoplay";
 import {  Autoplay } from 'swiper/modules';
-import { useEffect, useState } from 'react';
-import { ReviewItem } from '@/app/types/types';
+import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../../axiosInstance';
 
 
 
-export const ReviewCrad = () => {
+export const ReviewCrad :React.FC<{review: any}>= ({review}) => {
+
+
+
+
+
+
     return (
         <div className="px-8 md:px-0">
-            <img src="/images/icons/quote.png" alt="" className="w-6 md:w-8  md:mb-2"/>
-            <img src="/images/startset.png" alt="" className="w-16 md:w-20 mb-4 md:b-8 mx-auto " />
+            <img src="/images/icons/quote.png" alt="" className="w-6 md:w-8  md:mb-4"/>
             <div>
-                <p className="poppins text-[#868686] text-sm text-center md:text-lg italic mb-8">Celebrating diverse cultures and breathtaking landscapes, our travel packages offer an escape into adventure and relaxation. From sun-kissed beaches to historic wonders, each journey is meticulously crafted to exceed expectations. Don't just take our word for it—discover why our travellers rave about their unforgettable experiences with us.</p>
+                <p className="poppins text-[#868686] text-sm text-left md:text-lg italic mb-8"> {review.reviewnote}</p>
             </div>
-            <div className='flex justify-center'>
+            <div className='flex justify-start'>
             <div className="flex gap-4 items-center">
-                <img src="/images/lea.png" alt="" className="w-12" />
+                <div className='w-16 h-16 rounded-full relative overflow-hidden'>
+                <img src={review.image} alt="" className="w-full h-full absolute top-0 left-0 object-cover" />
+
+                </div>
                 <div className=''>
-                    <h1 className="poppins text-sm font-semibold">Lea Shaun</h1>
-                    <p className="italic text-xs text-[#868686]">Thrissur,Kerala</p>
+                    <h1 className="poppins text-base font-semibold">{review.author}</h1>
+                    <p className="italic text-sm text-[#868686]">{review.place}</p>
                 </div>
             </div>
             </div>
@@ -35,11 +42,13 @@ export const ReviewCrad = () => {
 
 export const Review = () => {
 
-    const [reviews, setReviews] = useState<ReviewItem[]>([])
+    const [reviews, setReviews] = useState<any[]>([])
+    const [reviewsLoading, setReviewsLoading] = useState(false)
 
     useEffect(()=>{
-        async function getPackages() {
-            await axiosInstance.get('/package')
+        async function getReviews() {
+            setReviewsLoading(true)
+            await axiosInstance.get('/reviews')
                 .then(res => {
                     setReviews(res.data)
                     console.log(res.data)
@@ -47,7 +56,8 @@ export const Review = () => {
                 .catch(err => console.log(err))
             }
 
-            getPackages()
+            getReviews()
+            setReviewsLoading(false)
 
 
 
@@ -63,7 +73,7 @@ export const Review = () => {
             <p className="text-sm xs:text-base md:text-lg lg:text-xl text-[#777777] poppins">Unforgettable journeys, exceptional experiences - discover what our travelers have to say about our travel packages.
             </p>
             <div className="mt-8 md:mt-20">
-            <Swiper
+           { reviewsLoading ?  (<div><h1>Loading</h1></div>)   :(<Swiper
       spaceBetween={30}
       slidesPerView={1}
       centeredSlides={true}
@@ -73,8 +83,9 @@ export const Review = () => {
             slidesPerView:1.5,
         },
         1284:{
-            slidesPerView:3,
-            centeredSlides:false
+            slidesPerView:2,
+            centeredSlides:false,
+            spaceBetween:80
         }
       }}
       onSlideChange={() => console.log('slide change')}
@@ -84,12 +95,14 @@ export const Review = () => {
       loop
 
     >
-      <SwiperSlide><ReviewCrad /></SwiperSlide>
-      <SwiperSlide><ReviewCrad /></SwiperSlide>
-      <SwiperSlide><ReviewCrad /></SwiperSlide>
-      <SwiperSlide><ReviewCrad /></SwiperSlide>
+
+        {reviews && reviews?.map((item,index)=>(
+ <SwiperSlide><ReviewCrad review={item} key={index}/></SwiperSlide>
+        ))}
+     
+   
       
-    </Swiper>
+    </Swiper>)}
             </div>
         </div>
     )
