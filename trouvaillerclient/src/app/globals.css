@@ -59,3 +59,7 @@
   overflow: hidden;
   max-height:calc(100% - 0px) !important;
 }
+
+
+.shadow-custom3{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}

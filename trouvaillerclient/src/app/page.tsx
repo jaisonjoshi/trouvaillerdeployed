@@ -1,6 +1,8 @@
 
 import { CategoryContainer } from '@/components/common/CategoryContainer'
+import ClickToChat from '@/components/common/ClickToChat'
 import { Footer } from '@/components/common/Footer'
+
 import { InterestForm } from '@/components/common/InterestForm'
 import { Review } from '@/components/common/Review'
 import { TrendingDestinations } from '@/components/common/TrendingDestinations'
@@ -24,6 +26,7 @@ export default function Home() {
   
   return (
     <div id='bodycon'>
+      <ClickToChat />
       <Header />
       <div className='mt-8 xs:mt-12 xl:mt-20 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60'>
       <TrendingDestinations />
