@@ -23,8 +23,8 @@ export const Place = () => {
 export const PopularPlaces = () => {
     return(
         <div>
-            <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 roboto">Explore Popular Destinations</h1>
-            <p className="text-sm xs:text-base md:text-lg lg:text-lg text-[#777777]"> Explore popular places with our curated tours, discovering their beauty and charm firsthand.</p>
+            <h1 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 roboto">Explore Popular Destinations</h1>
+            <p className="text-xs xs:text-base md:text-lg lg:text-lg text-[#777777]"> Explore popular places with our curated tours, discovering their beauty and charm firsthand.</p>
             <div className="flex justify-start flex-wrap gap-[2%] md:gap-[2.6%] mt-8 md:mt-12 ">
                {num.map((itm, i)=>(
                 <div key={i} className={`w-[32%] mb-8 md:w-[23%] ${i>5 ? "hidden md:block" : ""}`}>

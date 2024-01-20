@@ -20,8 +20,8 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
        <>
        {item &&
          <div className="roboto">
-         <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4">{item.name}</h1>
-         <p className="text-sm xs:text-base md:text-lg  text-[#777777]">{item.description}
+         <h1 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4">{item.name}</h1>
+         <p className="text-xs xs:text-base md:text-lg  text-[#777777]">{item.description}
              </p>
 {/* 
              <div className="hidden sm:flex flex-wrap gap-[10%] lg:gap-[5%] mt-12 2xl:mt-20">

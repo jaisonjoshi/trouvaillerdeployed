@@ -74,7 +74,7 @@ export const Header: React.FC<{}> = ({ }) => {
         };
       }, []);
     return (
-        <div className="relative pb-16">
+        <div className="relative pb-16 h-[100vh] md:h-auto">
 
             <div className="w-full  absolute top-0 bottom-0 ">
                 <Swiper
@@ -106,7 +106,7 @@ export const Header: React.FC<{}> = ({ }) => {
             <div className="absolute  w-full z-[1000] py-4 sm:py-8">
                 <Navbar />
             </div>
-            <div className=" relative text-left z-[20] pt-32 xs:pt-40 lg:pt-48 xl:pt-56 pb-8 xs:pb-20 px-8 sm:px-20 xl:px-60 text-white">
+            <div className=" relative text-center z-[20] pt-48 xs:pt-40 lg:pt-48 xl:pt-56 pb-8 xs:pb-20 px-8 sm:px-20 xl:px-60 text-white">
                 <div>
                     <div className="  roboto"> <h1 className="font-bold text-[24px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[40px] "> Discover Your</h1><h1 className="font-extrabold text-[24px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[50px] mt-0 xl:mt-2">
                         Next Adventure <span className="text-[#42b53c]"> With Us</span></h1></div>
@@ -117,7 +117,7 @@ export const Header: React.FC<{}> = ({ }) => {
 
             </div>
             <div className="bg-[transparent] hidden  lg:flex justify-between items-center h-[40px] xl:h-[60px] gap-[2%] relative z-10 mx-12 xl:mx-40 2xl:mx-60   ">
-                <div className="w-[32%] flex items-center bg-[white] px-4 h-full">
+                <div className="w-[32%] flex items-center  bg-[white] px-4 h-full">
                 <div className="flex gap-4 items-center  relative">
                     <img src="/images/icons/loc.svg" alt="" className="w-6" />
                     <input type="text" placeholder="Search destination" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetSearch(e)} onClick={(e)=>setShowLocations(true)} className="outline-none text-sm 2xl:text-lg" />
@@ -135,7 +135,7 @@ export const Header: React.FC<{}> = ({ }) => {
                     </div>}
                 </div>
                 </div>
-                <div className="w-[32%] bg-[white] h-full flex items-center px-4">
+                <div className="w-[32%] bg-[white]  h-full flex items-center px-4">
                 <div className="flex gap-4 items-center relative" >
                     <img src="/images/icons/grp.svg" alt="" className="w-6" />
                     <span className="text-[#a9a9a9] text-sm 2xl:text-lg" onClick={() => setShowCategory(!showCategory)}>{category === null ? "Travelling with" : category.charAt(0).toUpperCase()+category.slice(1)}</span>
@@ -162,7 +162,7 @@ export const Header: React.FC<{}> = ({ }) => {
             </div>
 
             <div>
-            <div className="flex lg:hidden  relative z-10 items-center mx-4 sm:mx-20 h-[40px] xs:h-[50px] bg-[white] pl-2 sm:pl-4">
+            <div className="flex lg:hidden  relative z-10 items-center mx-4 sm:mx-20 h-[40px] xs:h-[50px] rounded bg-[white] py-6 pl-2 sm:pl-4">
                 <div className="flex gap-4 items-center justify-between  w-full relative">
                     
                     <div className="flex grow gap-2 sm:gap-4">

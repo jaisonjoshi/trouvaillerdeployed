@@ -69,8 +69,8 @@ export const Review = () => {
 
     return (
         <div>
-            <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 poppins">What people says about us</h1>
-            <p className="text-sm xs:text-base md:text-lg lg:text-xl text-[#777777] poppins">Unforgettable journeys, exceptional experiences - discover what our travelers have to say about our travel packages.
+            <h1 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4 poppins">What people says about us</h1>
+            <p className="text-xs xs:text-base md:text-lg lg:text-xl text-[#777777] poppins">Unforgettable journeys, exceptional experiences - discover what our travelers have to say about our travel packages.
             </p>
             <div className="mt-8 md:mt-20">
            { reviewsLoading ?  (<div><h1>Loading</h1></div>)   :(<Swiper
