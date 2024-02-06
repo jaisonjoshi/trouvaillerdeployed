@@ -1,6 +1,26 @@
+"use client"
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import axiosInstance from "../../../axiosInstance"
 
 export const Footer = () => {
+    const [places, setPlaces] = useState<any>([])
+
+    useEffect(()=>{
+        async function getPlaces() {
+            await axiosInstance.get('/popularplaces')
+                .then(res => {
+                    setPlaces(res.data)
+                    console.log(res.data)
+                })
+                .catch(err => console.log(err))
+            }
+
+            getPlaces()
+
+
+
+    },[])
     return(
         <div className="bg-[black] text-[white] px-4 xs:px-8 sm:px-20 pt-8 sm:pt-20 pb-4 xs:pb-8">
             <div className="flex flex-wrap">
@@ -25,21 +45,29 @@ export const Footer = () => {
                 <div className="w-[100%] xs:w-[60%] xl:w-[35%] mt-8 xs:mt-0 xs:pl-8">
                     <h1 className="text-base sm:text-lg xl:text-xl poppins font-semibold">Famous Places to Explore</h1>
                    <div className="flex flex-wrap gap-[%] mt-4 xs:mt-8">
-                    <div className="flex gap-[2%]"> <div className="w-[30%] md:w-[15%] xl:w-[20%] mb-4">
-                        <img src="/images/kashmir.png" alt="" className="w-full"/>
+                    <div className="flex gap-[2%]"> 
+                   {
+                    places && places.slice(0,3).map((itm:any,index:any)=>(
+                            <div key={index} className="w-[30%] md:w-[15%] xl:w-[20%] mb-4">
+                                <img src={itm.image} alt="" className="w-full"/>
+                            </div>
+                    ))
+                   }
+                   
+                   
+                    
                     </div>
-                    <div className="w-[30%] md:w-[15%] xl:w-[20%] mb-4">
-                        <img src="/images/kashmir.png" alt="" className="w-full"/>
-                    </div><div className="w-[30%] md:w-[15%] xl:w-[20%] mb-4">
-                        <img src="/images/kashmir.png" alt="" className="w-full"/>
-                    </div></div>
-                   <div className="flex gap-[2%]"><div className="w-[30%] md:w-[15%] xl:w-[20%] mb-4">
-                        <img src="/images/kashmir.png" alt="" className="w-full"/>
-                    </div><div className="w-[30%] md:w-[15%] xl:w-[20%] mb-4">
-                        <img src="/images/kashmir.png" alt="" className="w-full"/>
-                    </div><div className="w-[30%] md:w-[15%] xl:w-[20%] mb-4">
-                        <img src="/images/kashmir.png" alt="" className="w-full"/>
-                    </div></div>
+                   <div className="flex gap-[2%]">
+
+
+                   {
+                    places && places.slice(3,6).map((itm:any,index:any)=>(
+                            <div key={index} className="w-[30%] md:w-[15%] xl:w-[20%] mb-4">
+                                <img src={itm.image} alt="" className="w-full"/>
+                            </div>
+                    ))
+                   }
+                   </div>
                    
                    </div>
                 </div>
