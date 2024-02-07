@@ -12,6 +12,7 @@ import { EffectFade, Autoplay } from 'swiper/modules';
 import useDebounce from "@/hooks/useDebounce";
 import axiosInstance from "../../../axiosInstance";
 import { Location, category } from "@/app/types/types";
+import { MobileSearchComponent } from "./MobileSearchComponent";
 
 export const Header: React.FC<{}> = ({ }) => {
     const menuRef = useRef<HTMLDivElement>(null);
@@ -20,6 +21,7 @@ export const Header: React.FC<{}> = ({ }) => {
 
     const [search, setSearch] = useState<string | null>(null)
     const [category, setCategory] = useState<category>(null)
+    const [openSearchComponentMobile, setOpenSearchComponentMobile] = useState(false);
     const [showLocations, setShowLocations] = useState(false)
     const [locations, setLocations] = useState<Location[]>([])
     const [loading, setLoading] = useState<boolean>(false)
@@ -75,6 +77,12 @@ export const Header: React.FC<{}> = ({ }) => {
       }, []);
     return (
         <div className="relative pb-16 h-[100vh] md:h-auto">
+             {openSearchComponentMobile && 
+            
+                
+                <MobileSearchComponent setOpenSearchComponentMobile={setOpenSearchComponentMobile}/>
+
+             }
 
             <div className="w-full  absolute top-0 bottom-0 ">
                 <Swiper
@@ -103,6 +111,7 @@ export const Header: React.FC<{}> = ({ }) => {
                 </Swiper>
 
             </div>
+           
             <div className="absolute  w-full z-[1000] py-4 sm:py-8">
                 <Navbar />
             </div>
@@ -167,20 +176,12 @@ export const Header: React.FC<{}> = ({ }) => {
                     
                     <div className="flex grow gap-2 sm:gap-4">
                     <img src="/images/icons/loc.svg" alt="" className="w-6" />
-                    <input type="text" placeholder="Search destination" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetSearch(e)} onClick={(e)=>setShowLocations(true)} className="outline-none text-sm 2xl:text-lg" />
-                   </div> {showLocations && locations.length >0 && <div ref={locationRef} className="absolute bottom-0 translate-y-[100%] min-w-[200px] xs:min-w-[300px] h-[200px] overflow-auto left-8 sm:left-14 bg-[white] shadow-xl rounded ">
-                       
-                    
-                    <ul className="flex flex-col ">
-                   
-                    {locations.map((item,index)=> (
-                        <li key={index} className="px-4 py-1 cursor-pointer hover:bg-[#e5e5e5]">{item.location.charAt(0).toUpperCase()+ item.location.slice(1)}</li>
-                    ))}
-                
-                </ul>
-
-                    </div>}
-                    <button className="bg-[#45b773] px-4 sm:px-8 py-1 xs:py-2 text-sm sm:text-base rounded text-[white] mr-1">Serach</button>
+                    <div onClick={(e)=>setOpenSearchComponentMobile(true)} className="grow">
+                        <p className="text-[#969696]">Search Destinations</p>
+                    </div>
+                    {/* <input type="text" placeholder="Search destination" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetSearch(e)}  className="outline-none text-sm 2xl:text-lg" /> */}
+                   </div> 
+                    {/* <button className="bg-[#45b773] px-4 sm:px-8 py-1 xs:py-2 text-sm sm:text-base rounded text-[white] mr-1">Serach</button> */}
                 </div> 
                 </div>
             </div>
