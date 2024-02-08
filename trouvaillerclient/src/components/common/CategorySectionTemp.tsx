@@ -36,6 +36,14 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
    spaceBetween={30}
    slidesPerView={1.25}
    breakpoints={{
+    610:{
+      slidesPerView:2.25
+
+    },
+
+    964:{
+      slidesPerView:3.25
+    },
      1284:{
          slidesPerView:4
      }
