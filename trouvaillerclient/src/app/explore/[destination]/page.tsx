@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar"
+import { CommonCategoryContainer } from "@/components/common/CommonCategoryContainer";
 import { Footer } from "@/components/common/Footer"
 
 async function getData(id :string) {
@@ -23,10 +24,16 @@ async function getData(id :string) {
 export default async function Page({ params }: { params: { destination: string } }) {
 
     const data = await getData(params.destination)
-   console.log(data)
+
+    const allPackages = {
+        title:`All ${data.location.charAt(0).toUpperCase() + data.location.slice(1)} Packages`,
+        description: `Grab our top selling packages for ${data.location.charAt(0).toUpperCase() + data.location.slice(1)} at Unbelievable prices.`,
+        url:`/package?locationtag=${data.location}`
+    }
+  
     
     return(
-        <div className="relative" id="containerfilter">
+        <div className="relative" id="bodycon">
             <div>
             <div className="relative">
             <div className="absolute top-0 left-0 right-0 bottom-0">
@@ -46,6 +53,9 @@ export default async function Page({ params }: { params: { destination: string }
             
         </div>
             </div>
+
+
+            <CommonCategoryContainer data={allPackages}/>
          
            
            

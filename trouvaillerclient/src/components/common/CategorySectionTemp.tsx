@@ -13,7 +13,7 @@ import {  Autoplay } from 'swiper/modules';
 
 export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
 
-   
+   console.log(item)
 
     return(
 
