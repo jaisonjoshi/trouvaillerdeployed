@@ -34,7 +34,7 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
              <div className=" mt-8">
              <Swiper
    spaceBetween={30}
-   slidesPerView={1.25}
+   slidesPerView={1.5}
    breakpoints={{
     610:{
       slidesPerView:2.25
@@ -52,7 +52,6 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
    onSwiper={(swiper) => console.log(swiper)}
    modules={[ Autoplay]}
    autoplay
-   loop
 
  >
      {
