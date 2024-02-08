@@ -98,8 +98,8 @@ export const MobileSearchComponent: React.FC<{ setOpenSearchComponentMobile: any
         <div className="">
 
 
-            <div className="w-[100vw] min-h-full  bg-[white] absolute overflow-clip  top-[1px] left-0 right-0  z-[10000000000000000000]">
-                <div className="sticky top-0">
+            <div className="w-[100vw] h-[100vh]  bg-[white] absolute overflow-scroll  top-[1px] left-0 right-0  z-[10000000000000000000]">
+                <div className="">
                     <div className="  w-full z-[1000] py-4 sm:py-8">
 
                         <Navbar darkMode={true} />
@@ -130,13 +130,14 @@ export const MobileSearchComponent: React.FC<{ setOpenSearchComponentMobile: any
 
 
 
-                    </div>
+                    </div></div>
 
-                    <div className="px-4 py-4">
+                   <div className="">
+                   <div className="px-4 py-4 ">
                     {
                         locations && locations.map((item : any,index)=>(
-                            <Link key={index} href={`/explore/${item.location}`}>
-                            <div  className="flex items-center mb-2 gap-[5%] bg-[#efefef] rounded overflow-hidden" >
+                            <Link key={index} className="mb-2" href={`/explore/${item.location}`}>
+                            <div  className="flex items-center  gap-[5%] bg-[#efefef] rounded overflow-hidden" >
                                 <img src={item.img} alt="" className="w-[25%] "/>
                                 <h1 className="font-medium">{item.location.charAt(0).toUpperCase() + item.location.slice(1)}</h1>
                             </div>
@@ -176,7 +177,8 @@ export const MobileSearchComponent: React.FC<{ setOpenSearchComponentMobile: any
                             }
                         </div>
                     </div>
-                </div>
+                   </div>
+                
             </div>
         </div>
     )
