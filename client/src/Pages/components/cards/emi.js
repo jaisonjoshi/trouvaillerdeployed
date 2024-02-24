@@ -16,10 +16,10 @@ const Emi = () => {
 
       <div className="flex gap-12 flex-col justify-center w-[50%]">
         <div className="relative">
-        <h1 className="text-4xl font-extrabold text-[white] relative poppins z-[11] leading-16">Bid Your Way to <span className="text-[#00A45E]">Budget-Friendly Stays!</span></h1>
+        <h1 className="text-4xl font-extrabold text-[white] relative   z-[11] leading-16">Bid Your Way to <span className="text-[#00A45E]">Budget-Friendly Stays!</span></h1>
 
         </div>
-      <div className="flex flex-col gap-2 w-[80%] items-start text-[white] roboto">
+      <div className="flex flex-col gap-2 w-[80%] items-start text-[white]   ">
       <p className="text-lg">Say goodbye to expensive hotel bookings.</p><p  className="text-lg">
 
 With our unique feature, you can bid for today's lowest hotel prices and make your trip easy on your pocket.</p><p className="text-lg">

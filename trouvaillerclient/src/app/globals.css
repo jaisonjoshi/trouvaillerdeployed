@@ -2,18 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-.playfair{
-  font-family: 'Playfair Display', serif;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+.inter{
+  font-family: "Inter", sans-serif;
 }
-.poppins{
-  font-family: 'Poppins', sans-serif;
+
+*{
+  font-family: "Inter", sans-serif;
 }
-.roboto{
-  font-family: 'Roboto', sans-serif;
-}
+
+
+
+
+
+
 
 
 .header-bg::before{

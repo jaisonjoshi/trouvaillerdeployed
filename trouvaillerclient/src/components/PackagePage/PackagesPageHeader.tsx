@@ -81,9 +81,9 @@ export const PackagesPageHeader: React.FC<{}> = ({ }) => {
             </div>
             <div className=" relative xs:text-center z-[20] pt-32 xs:pt-40 lg:pt-48 xl:pt-56 pb-8 xs:pb-20 px-4 sm:px-20 xl:px-60 text-white">
                 <div className="flex flex-col xs:items-center">
-                    <div className="  poppins"> <h1 className="font-bold text-[18px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[28px] ">  Let Us Make Your Travel Experience</h1><h1 className="font-extrabold text-[20px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[48px] ">
+                    <div className="   "> <h1 className="font-bold text-[18px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[28px] ">  Let Us Make Your Travel Experience</h1><h1 className="font-extrabold text-[20px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[48px] ">
                     Truly  <span className="text-[#ffffff]"> Memorable!</span></h1></div>
-                    <p className="text-xs leading-[16px] xs:leading-normal xs:text-base md:text-lg  xl:w-[60%] lg:text-lg my-2 xs:my-8 xl:my-8 poppins text-[#e4e4e4]">Explore our diverse range of meticulously curated travel packages designed to cater to every wanderlust, ensuring an unforgettable journey for every traveler.</p>
+                    <p className="text-xs leading-[16px] xs:leading-normal xs:text-base md:text-lg  xl:w-[60%] lg:text-lg my-2 xs:my-8 xl:my-8   text-[#e4e4e4]">Explore our diverse range of meticulously curated travel packages designed to cater to every wanderlust, ensuring an unforgettable journey for every traveler.</p>
                 </div>
 
 

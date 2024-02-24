@@ -28,14 +28,14 @@ function PackageCard({ item }) {
                         {item.location.charAt(0).toUpperCase() + item.location.slice(1)}</span>
 
                     <div className='flex justify-between items-start'>
-                        <h3 className='   z-[102] text-[black] bottom- mb-2 sm:mb-4  text-base lg:text-lg  card-title-font-size roboto font-bold'>{item.title}</h3>
+                        <h3 className='   z-[102] text-[black] bottom- mb-2 sm:mb-4  text-base lg:text-lg  card-title-font-size    font-bold'>{item.title}</h3>
 
                     </div>
 
 
 
 
-                    {/*             <h3 className=' font-regular z-[102] text-[#313131] bottom- mb-2 sm:mb-0 mt-4 text-sm lg:text-base  card-title-font-size roboto'>{item.location}</h3>
+                    {/*             <h3 className=' font-regular z-[102] text-[#313131] bottom- mb-2 sm:mb-0 mt-4 text-sm lg:text-base  card-title-font-size   '>{item.location}</h3>
  */}            <div className='text-[#03BA6D] flex gap-2 items-center mr-4'>
 
                     </div>

@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: { packageid: string } }
             <div className="px-4 xs:px-8 lg:px-20  2xl:px-40 pt-4 md:pt-8 lg:pt-12">
                 <div className="flex flex-col md:flex-row justify-between md:items-end">
                     <div className="flex flex-col gap-2">
-                    <h1 className="text-[18px] md:text-[24px] lg:text-[32px] poppins font-bold">{data.title}</h1>
+                    <h1 className="text-[18px] md:text-[24px] lg:text-[32px]   font-bold">{data.title}</h1>
                     <div className="flex gap-2 items-center">
                     <h1 className="text-[13px] md:text-[16px] lg::text-[20px] ">{data.duration}</h1>
                     <span className="text-[10px] md:text-[14px] border px-3 py-[1px] rounded border-[#b5b5b5] font-bold">Customisable</span>
@@ -59,8 +59,8 @@ export default async function Page({ params }: { params: { packageid: string } }
 
             <div className="px-4 xs:px-8 lg:px-20  2xl:px-40 pt-8 md:pt-12 flex mb-16">
                 <div className="w-[100%] xl:w-[60%]">
-                    <h1 className="text-[20px] md:text-[22px] poppins font-semibold">{data.descriptionTitle}</h1>
-                    <p className="poppins mt-2 md:mt-4 text-[13px] md:text-[16px] text-[#4a4a4a]">{data.description}</p>
+                    <h1 className="text-[20px] md:text-[22px]   font-semibold">{data.descriptionTitle}</h1>
+                    <p className="  mt-2 md:mt-4 text-[13px] md:text-[16px] text-[#4a4a4a]">{data.description}</p>
                     <div className="flex mt-4 md:mt-8 flex-wrap">
                         <div className="w-full sm:w-auto sm:grow">
                             <h1 className="text-sm md:text-lg font-semibold">Package Inclusions</h1>
@@ -125,11 +125,11 @@ export default async function Page({ params }: { params: { packageid: string } }
                         </div>
                     </div>
 
-                    <h1 className="text-[20px] md:text-[22px] poppins font-semibold mt-8">Itinerary</h1>
-                    <p className="poppins mt-4 text-[13px] md:text-[16px] text-[#4a4a4a]">We have carefully planned out each day to give you the best possible experience. From exploring historic landmarks to tasting delicious local cuisine, each day is packed with adventure and excitement. </p>
+                    <h1 className="text-[20px] md:text-[22px]   font-semibold mt-8">Itinerary</h1>
+                    <p className="  mt-4 text-[13px] md:text-[16px] text-[#4a4a4a]">We have carefully planned out each day to give you the best possible experience. From exploring historic landmarks to tasting delicious local cuisine, each day is packed with adventure and excitement. </p>
 
 
-                    <div className="poppins">
+                    <div className=" ">
                        { data.schedule?.map((item:any ,index:number)=>(
                         <div key={index} className="border-b-[2px] mt-8 border-b-[#1bbc9cd1]">
                             <h1 className="text-[#1bbc9b] text-[16px] md:text-[20px] font-bold">Day {index+1} <span className="text-black"> - {item.dayTitle}</span></h1>
@@ -141,8 +141,8 @@ export default async function Page({ params }: { params: { packageid: string } }
                     </div>
 
 
-                    <h1 className="text-[20px] md:text-[22px] poppins font-semibold mt-12 md:mt-20">Places to Visit</h1>
-                    <p className="poppins mt-4 text-[13px] md:text-[16px] text-[#4a4a4a]">We have carefully planned out each day to give you the best possible experience. From exploring historic landmarks to tasting delicious local cuisine, each day is packed with adventure and excitement. </p>
+                    <h1 className="text-[20px] md:text-[22px]   font-semibold mt-12 md:mt-20">Places to Visit</h1>
+                    <p className="  mt-4 text-[13px] md:text-[16px] text-[#4a4a4a]">We have carefully planned out each day to give you the best possible experience. From exploring historic landmarks to tasting delicious local cuisine, each day is packed with adventure and excitement. </p>
 
                     <div className="flex mt-8 gap-[10%] flex-wrap">
                         <div className="w-[45%] relative mb-4">
@@ -187,7 +187,7 @@ export default async function Page({ params }: { params: { packageid: string } }
 
 
                 </div>
-                <div className="w-[40%]  poppins hidden xl:block">
+                <div className="w-[40%]    hidden xl:block">
                    <div className="w-full flex flex-col justify-start items-end sticky top-0">
                    <div className="w-[80%] shadow-custom px-8 pt-8  bg-[#e7e7e76d] rounded-[10px]">
                         <div className="flex justify-between border-b pb-4 border-b-[#1bbc9cd1]">
@@ -199,7 +199,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                             <div className=" flex flex-col items-end  text-[15px] xs:text-[24px]">
                             <span className="text-[10px] xs:text-[14px] text-[#585858]">Per Person</span>
 
-                               <span className="font-extrabold roboto flex gap-1 items-center "> <span className='text-base xs:text-2xl'>₹</span><span>{data.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
+                               <span className="font-extrabold    flex gap-1 items-center "> <span className='text-base xs:text-2xl'>₹</span><span>{data.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +228,7 @@ export default async function Page({ params }: { params: { packageid: string } }
         <div className="bg-[#174978] fixed bottom-0 left-0 right-0 py-2 px-4 flex justify-between items-center xl:hidden">
             <div className=" flex flex-col items-start text-white  text-[18px] xs:text-[24px]">
 
-                               <span className="font-extrabold roboto flex gap-1 items-center "> <span className='text-xl xs:text-2xl'>₹</span><span>{data.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
+                               <span className="font-extrabold    flex gap-1 items-center "> <span className='text-xl xs:text-2xl'>₹</span><span>{data.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
                                <span className="text-[10px] xs:text-[14px] text-[#e9e9e9]">Per Person</span>
 
                                 </div>

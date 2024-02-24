@@ -75,7 +75,7 @@ const Footer = ({bg}) => {
         <div className='flex items-start justify-between px-60 py-28  '>
         <div className='w-[30%] flex items-start'>
 {/*           <img src={Logo} alt="Trouvailler" className='sm:w-100 xl:w-[140px]'/>
- */}          <h1 className='font-extrabold text-[white] text-2xl poppins '>Discover Your <br /><span className='text-[#00c676]'>Next Adventure with Us</span> </h1>
+ */}          <h1 className='font-extrabold text-[white] text-2xl   '>Discover Your <br /><span className='text-[#00c676]'>Next Adventure with Us</span> </h1>
 
           </div>
           <div className="w-[49%] md:w-[23%] pl-[3%]">

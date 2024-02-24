@@ -117,9 +117,9 @@ export const Header: React.FC<{}> = ({ }) => {
             </div>
             <div className=" relative text-center z-[20] pt-48 xs:pt-40 lg:pt-48 xl:pt-56 pb-8 xs:pb-20 px-8 sm:px-20 xl:px-60 text-white">
                 <div>
-                    <div className="  roboto"> <h1 className="font-bold text-[24px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[40px] "> Discover Your</h1><h1 className="font-extrabold text-[24px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[50px] mt-0 xl:mt-2">
-                        Next Adventure <span className="text-[#42b53c]"> With Us</span></h1></div>
-                    <p className="text-sm leading-[24px] xs:leading-normal xs:text-base md:text-lg lg:text-xl my-8 xl:my-8 roboto text-[#e4e4e4]">Experience the adventure of a lifetime with our hand-picked travel packages. Book now and create memories that will last a lifetime!</p>
+                    <div className="    "> <h1 className="font-bold text-[24px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[40px] "> Discover Your<br></br><span className="font-extrabold text-[24px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[50px] mt-0 xl:mt-2">
+                        Next Adventure <span className="text-[#42b53c]"> With Us</span></span></h1></div>
+                    <p className="text-sm leading-[24px] xs:leading-normal xs:text-base md:text-lg lg:text-xl my-8 xl:my-8    text-[#e4e4e4]">Experience the adventure of a lifetime with our hand-picked travel packages. Book now and create memories that will last a lifetime!</p>
                 </div>
 
 

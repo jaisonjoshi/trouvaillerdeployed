@@ -35,8 +35,8 @@ export const TrendingDestinations = () => {
 
        <>
        {packages &&
-         <div className="roboto">
-         <h1 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4">{packages.name}</h1>
+         <div className="  ">
+         <h2 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4">{packages.name}</h2>
          <p className="text-sm xs:text-base md:text-lg  text-[#777777]">{packages.description}
              </p>
 {/* 

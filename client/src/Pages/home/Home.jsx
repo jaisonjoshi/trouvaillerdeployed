@@ -89,7 +89,7 @@ const Home = ({ setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEb
     <div className={`animationset ${anim} `}>
       {popupEbookPage && <div id="initialpopup" className={` initialPopup ${popupShow && "visiblePopup"} transition-all	duration-300	ease-in	 fixed top-0 left-0 right-0 bottom-0 bg-[#0000008a]  z-[1000000] flex justify-center items-center `}>
         <div className='bg-[white] shadow-2xl rounded max-w-[600px] w-[85%] md:w-[70%] lg:w-[50%] relative'><span className='absolute bg-[black] text-[white] w-[30px] h-[30px] rounded-full flex justify-center items-center top-[-15px] shadow-lg right-[-15px] cursor-pointer' onClick={handleClosePopup}> <AiOutlineClose /></span><img src={popupimg} className='rounded w-[100%]' />
-          <div className='px-12'><h1 className='text-[#2F7447] text-2xl roboto'>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
+          <div className='px-12'><h1 className='text-[#2F7447] text-2xl   '>Download our free eBook on how to choose your Perfect Travel Package</h1><p></p><button onClick={openEbookPage} className='px-4 py-2 rounded text-[white] mb-8 mt-12 gradientbg'>Download Now</button></div></div>
       </div>}
       <Helmet>
         <title>Trouvailler | Personalized Trips, perfectly packaged</title>
@@ -102,7 +102,7 @@ const Home = ({ setlocation, popupShow, setPopupShow, setPopupEbookPage, popupEb
           <div className=' flex flex-col items-center mt-32 sm:mt-40 lg:mt-52 2xl:mt-56 w-[100%] text-center'>
             <h1 className="text-xl sm:text-2xl md:text-3xl 2xl:text-4xl text-whiteglow sm:mb-4 font-bold text-center">
               Discover Your </h1>
-            <h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl text-whiteglow font-extrabold text-center roboto'>Next  Adventure <span className='text-[#00c676]'>with Us</span>
+            <h1 className=' w-full sm:mt-1 2xl:mt-3 title-font text-2xl sm:text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl text-whiteglow font-extrabold text-center   '>Next  Adventure <span className='text-[#00c676]'>with Us</span>
             </h1>
             <p className="text-[13px] sm:text-base md:text-lg w-[100%] md:w-full pr-8 sm:pr-0  lg:text-xl text-[white] text-center pb-6 pt-6 sm:pt-10">
               Experience the adventure of a lifetime with our handpicked travel packages. <br />Book now and create memories that will last a lifetime!
@@ -273,7 +273,7 @@ Know more
         <div className='bg-[white] gradientbg rounded-[10px] flex flex-col xs:flex-row xs:items-center shadow-con' >
           <img src={ebook} className='w-[60%] xs:w-[35%] lg:w-[25%] xl:w-[20%]' />
           <div className='flex gap-2 md:gap-4 flex-col items-start pl-4  md:pl-12   pr-4'>
-            <h1 className='text-lg sm:text-2xl lg:text-3xl font-bold text-[white] poppins'>Download our free E-book</h1><p className='text-white text-sm md:text-base lg:text-base font-regular poppins'>Download our free ebook to become well informed on buying a travel package. Be well informed before making a well informed decision.</p>
+            <h1 className='text-lg sm:text-2xl lg:text-3xl font-bold text-[white]  '>Download our free E-book</h1><p className='text-white text-sm md:text-base lg:text-base font-regular  '>Download our free ebook to become well informed on buying a travel package. Be well informed before making a well informed decision.</p>
             <Link className='bg-[#00c676] text-[white] px-4 text-xs md:text-base py-3 rounded-full mb-4'>Download Now</Link>
           </div>
         </div>
@@ -317,7 +317,7 @@ Know more
               
             </div>
             <div className='  w-full '>
-                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
+                <h1 className=" text-base sm:text-xl mt-4    ">Goa</h1>
 
                 <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
               </div>
@@ -333,7 +333,7 @@ Know more
               
             </div>
             <div className='  w-full '>
-                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
+                <h1 className=" text-base sm:text-xl mt-4    ">Goa</h1>
 
                 <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
               </div>
@@ -348,7 +348,7 @@ Know more
               
             </div>
             <div className='  w-full '>
-                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
+                <h1 className=" text-base sm:text-xl mt-4    ">Goa</h1>
 
                 <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
               </div>
@@ -363,7 +363,7 @@ Know more
               
             </div>
             <div className='  w-full '>
-                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
+                <h1 className=" text-base sm:text-xl mt-4    ">Goa</h1>
 
                 <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
               </div>
@@ -378,7 +378,7 @@ Know more
               
             </div>
             <div className='  w-full '>
-                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
+                <h1 className=" text-base sm:text-xl mt-4    ">Goa</h1>
 
                 <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
               </div>
@@ -393,7 +393,7 @@ Know more
               
             </div>
             <div className='  w-full '>
-                <h1 className=" text-base sm:text-xl mt-4  roboto">Goa</h1>
+                <h1 className=" text-base sm:text-xl mt-4    ">Goa</h1>
 
                 <p className='text-sm font-regular pt-2 font-head text-[#717171]'>Where Majestic Landscapes Meet Unparalleled Tranquility</p>
               </div>
@@ -425,7 +425,7 @@ Know more
       <div className=' pb-12 px-4  py-28   sm:px-16 md:px-20 2xl:px-72 font-body reviewbg'>
         <div className='flex w-full flex-col '>
           <div className='w-[100%] flex  '>
-            <h1 className='font-[900] roboto text-[white]  w-full text-lg sm:text-[52px] text-left pt-8 xl:pt-7 mb-8 flex flex-col gap-10'><span>Unforgettable</span> <span>Travel experiences</span> </h1>
+            <h1 className='font-[900]    text-[white]  w-full text-lg sm:text-[52px] text-left pt-8 xl:pt-7 mb-8 flex flex-col gap-10'><span>Unforgettable</span> <span>Travel experiences</span> </h1>
 
           </div>
           <div className='w-[110%] relative translate-x-[-50%] left-[50%] pb-16  pt-12'><LazyLoad offset={200}><Reviews /></LazyLoad></div>

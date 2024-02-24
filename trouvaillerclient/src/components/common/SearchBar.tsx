@@ -2,7 +2,7 @@
 
 const SearchBar = () => {
     return(
-        <div className="bg-[#174978] poppins px-4 sm:px-8 md:px-16 2xl:px-28 py-4">
+        <div className="bg-[#174978]   px-4 sm:px-8 md:px-16 2xl:px-28 py-4">
            <div className="flex gap-12 items-center"> 
             <div className="w-[60%] lg:w-[20%]">
                 <input type="text" className="bg-[#0000003D] w-full outline-none text-white rounded px-4 py-2" placeholder="Search Places" />

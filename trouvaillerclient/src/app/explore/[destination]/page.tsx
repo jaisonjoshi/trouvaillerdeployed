@@ -49,7 +49,7 @@ export default async function Page({ params }: { params: { destination: string }
             </div>
 
             <div className="text-white sticky top-0 px-4 md:px-28 mt-16  md:pt-32">
-                <h1 className="text-3xl font-bold poppins">{data.location.charAt(0).toUpperCase() + data.location.slice(1)}</h1>
+                <h1 className="text-3xl font-bold  ">{data.location.charAt(0).toUpperCase() + data.location.slice(1)}</h1>
             </div>
             
         </div>
