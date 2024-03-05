@@ -249,7 +249,7 @@ export default async function Page({ params }: { params: { packageid: string } }
 
                                 </div>
                                 <div className="flex gap-3 items-center">
-                                <a href={`https://wa.me/918129177335?text=I would like to know more about ${data.title} package https%3A%2F%2Ftrouvailler.com%2Ftravelpackage%2F${data._id}`}><button className="bg-[#1bbc9b] w-full rounded py-4 text-xl text-white font-bold">Book Now</button></a>
+                                <a className="bg-[#1bbc9b] w-full rounded py-1 px-2 text-base text-white font-medium" href={`https://wa.me/918129177335?text=I would like to know more about ${data.title} package https%3A%2F%2Ftrouvailler.com%2Ftravelpackage%2F${data._id}`}><button className="">Book Now</button></a>
 
                                     <img src="/images/icons/wa.png" className="w-6" alt="" />
                                 </div>
