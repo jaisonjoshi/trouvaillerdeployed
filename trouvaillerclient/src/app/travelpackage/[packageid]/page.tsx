@@ -16,12 +16,28 @@ async function getData(id :string) {
 export default async function Page({ params }: { params: { packageid: string } }) {
 
     const data = await getData(params.packageid)
-   console.log(data)
     
 
 
 
     return(
+        <>
+
+        <head>
+            <title>{data.title}</title>
+            <meta name="description" content={data.seo.description} />
+
+            <meta name="robots" content="index, follow" />
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+            <meta property="og:title" content={data.title} />
+            <meta property="og:description" content={data.seo.description} />
+            <meta property="og:image" content={data.titleImage} />
+
+        </head>
+        <body>
 
         <div >
             <div className="bg-[#F3F3F3] py-4 ">
@@ -208,7 +224,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                             <span className="mt-1 font-semibold text-[#585858]"> Share this Package</span>
                         </div>
                         <div className="my-8">
-                            <button className="bg-[#1bbc9b] w-full rounded py-4 text-xl text-white font-bold">Book Now</button>
+                            <a href={`https://wa.me/918129177335?text=I%20would%20like%20to%20know%20more%20about%20${data.title}%20package%0Ahttps://trouvailler.com/travelpackage/${data._id}`}><button className="bg-[#1bbc9b] w-full rounded py-4 text-xl text-white font-bold">Book Now</button></a>
                         </div>
                     </div>
                     <div className="w-[80%] shadow-custom px-8  mt-8 mb-8 sticky top-0 bg-[#e7e7e76d] rounded-[10px]">
@@ -233,7 +249,8 @@ export default async function Page({ params }: { params: { packageid: string } }
 
                                 </div>
                                 <div className="flex gap-3 items-center">
-                                    <button className="bg-[#1bbc9b] text-white font-bold px-4 py-1 rounded outline-none shadow-xl">Book Now</button>
+                                <a href={`https://wa.me/918129177335?text=I would like to know more about ${data.title} package https%3A%2F%2Ftrouvailler.com%2Ftravelpackage%2F${data._id}`}><button className="bg-[#1bbc9b] w-full rounded py-4 text-xl text-white font-bold">Book Now</button></a>
+
                                     <img src="/images/icons/wa.png" className="w-6" alt="" />
                                 </div>
 
@@ -244,5 +261,11 @@ export default async function Page({ params }: { params: { packageid: string } }
           <Footer />
           </div>
         </div>
+        </body>
+        
+        
+        </>
+
+        
     )
   }
