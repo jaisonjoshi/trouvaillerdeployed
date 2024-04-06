@@ -224,7 +224,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                             <span className="mt-1 font-semibold text-[#585858]"> Share this Package</span>
                         </div>
                         <div className="my-8">
-                            <a href={`https://wa.me/918129177335?text=I%20would%20like%20to%20know%20more%20about%20${data.title}%20package%0Ahttps://trouvailler.com/travelpackage/${data._id}`}><button className="bg-[#1bbc9b] w-full rounded py-4 text-xl text-white font-bold">Book Now</button></a>
+                            <a href={`https://wa.me/917907160314?text=I%20would%20like%20to%20know%20more%20about%20${data.title}%20package%0Ahttps://trouvailler.com/travelpackage/${data._id}`}><button className="bg-[#1bbc9b] w-full rounded py-4 text-xl text-white font-bold">Book Now</button></a>
                         </div>
                     </div>
                     <div className="w-[80%] shadow-custom px-8  mt-8 mb-8 sticky top-0 bg-[#e7e7e76d] rounded-[10px]">
@@ -233,7 +233,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                             <img src="/images/icons/call.png" alt="" className="w-10"/>
                            <div className="flex flex-col">
                            <span className="mt-1 font-semibold text-[#585858]">Call us now</span>
-                           <span className="font-bold">+91 9562523642</span>
+                           <span className="font-bold">+91 7907160314</span>
                            </div>
                         </div>
                         
