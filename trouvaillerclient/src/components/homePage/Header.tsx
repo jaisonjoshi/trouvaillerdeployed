@@ -89,16 +89,22 @@ export const Header: React.FC<{}> = ({ }) => {
             <div className="absolute  w-full z-[1000] py-4 sm:py-8">
                 <Navbar darkMode={true}/>
             </div>
-            <div className=" relative flex items-center gap-10 z-[20] pt-48 xs:pt-40 lg:pt-48 xl:pt-56 pb-8 xs:pb-20 px-8 sm:px-20 xl:px-60 text-black">
+            <div className=" relative  flex flex-col-reverse md:flex-row items-center sm:gap-10 z-[20] pt-28 xs:pt-40 lg:pt-48 xl:pt-56 pb-8 xs:pb-20 px-4 sm:px-20 xl:px-40 text-black">
                 <div>
-                    <div className="    "> <h1 className="font-medium text-[24px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[36px] lato "> Discover Your<br></br><span className="font-[600] text-[24px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[40px] mt-0 xl:mt-2">
-                        Next Adventure <span className="text-[#42b53c]"> With Us</span></span></h1></div>
-                    <p className="text-sm leading-[24px] xs:leading-normal xs:text-base md:text-lg lg:text-base my-8 xl:my-8    text-[black]">Experience the adventure of a lifetime with our hand-picked travel packages. Book now and create memories that will last a lifetime!</p>
+                    <div className="    "> <h1 className="hidden md:block font-medium text-[24px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[36px] lato "> Discover Your<br></br><span className="font-[600] text-[24px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[40px] mt-0 xl:mt-2">
+                        Next Adventure <span className="text-[#42b53c]"> With Us</span></span></h1>
+                        
+                        
+                        <h1 className="block md:hidden font-medium text-[30px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[36px] caveat"> Discover Your<br></br><span className="font-[600] text-[24px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[40px] mt-0 xl:mt-2">
+                        Next Adventure <span className="text-[#42b53c]"> With Us</span></span></h1>
+                        
+                        </div>
+                    <p className="text-sm leading-[22px] xs:leading-normal xs:text-base md:text-lg lg:text-base my-4 xl:my-8    text-[black]">Experience the adventure of a lifetime with our hand-picked travel packages. Book now and create memories that will last a lifetime!</p>
                     
                     
                     
                     
-                    <div className="bg-[transparent] hidden py-10 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white overflow-hidden rounded shadow-custom-4   ">
+                    <div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white overflow-hidden rounded shadow-custom-4   ">
                 <div className="w-[32%] flex items-center  bg-[white] px-4 h-full">
                 <div className="flex gap-4 items-center  relative">
                     <img src="/images/icons/loc.svg" alt="" className="w-6" />
@@ -119,7 +125,7 @@ export const Header: React.FC<{}> = ({ }) => {
                 </div>
                 
                 <div className="w-[32%] ">
-                <button className="bg-[#45b773] w-full h-[40px] xl:h-[60px] text-[white] rounded text-base 2xl:text-base  font-bold">Search</button>
+                <button className="bg-[#45b773] w-full py-2 text-[white] rounded text-base 2xl:text-base  font-bold">Search</button>
 
                 </div>
                
@@ -128,7 +134,7 @@ export const Header: React.FC<{}> = ({ }) => {
             </div>
                 </div>
                 <div>
-                    <img src="/images/travelimg.png" alt="" />
+                    <img src="/images/travelimg.png" alt="" className="w-[80%] mx-auto md:w-full block"/>
                 </div>
 
 
@@ -137,7 +143,7 @@ export const Header: React.FC<{}> = ({ }) => {
            
 
             <div>
-            <div className="flex lg:hidden  relative z-10 items-center mx-4 sm:mx-20 h-[40px] xs:h-[50px] rounded bg-[white] py-6 pl-2 sm:pl-4">
+            <div className="flex lg:hidden  relative z-10 items-center mx-4 sm:mx-20 h-[40px] xs:h-[50px] shadow-custom-4 rounded bg-[white] py-8 pl-4 sm:pl-4">
                 <div className="flex gap-4 items-center justify-between  w-full relative">
                     
                     <div className="flex grow gap-2 sm:gap-4">

@@ -52,17 +52,17 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
         <div className=" flex justify-between relative z-[1000] items-center text-[white] px-4 sm:px-8 md:px-16 2xl:px-28 ">
             <div className="flex items-center gap-12 2xl:gap-20">
             <div className="flex items-center gap-2 sm:gap-4"> 
-                <img  src="/images/logos/icon.png" alt=""  className="w-8 sm:w-12 "/>
-                <img src={`/images/logos/${darkMode? "logodark.png" : "logowhite.png"}`} alt="" className="w-[70px] sm:w-[90px] xl:w-[110px]"/>
+                <img  src="/images/logos/icon.png" alt=""  className="w-8 sm:w-10 "/>
+                <img src={`/images/logos/${darkMode? "logodark.png" : "logowhite.png"}`} alt="" className="w-[70px] sm:w-[90px] xl:w-[90px]"/>
             </div>
             
             <div className="hidden lg:block">
                <ul className={`flex items-center gap-12 2xl:gap-16 ${darkMode ? "text-black" : ""}`}>
                 <Link href="/packages">
                 <li className="flex items-center gap-2">
-                    <img src="/images/icons/beach.png" className="w-8"/>
+                    <img src="/images/icons/beach.png" className="w-6"/>
                     <div className="flex flex-col mt-1">
-                        <span className="text-xs">Tour</span>
+                        <span className="text-[11px]">Tour</span>
                         <span className="font-medium text-sm ">Packages</span>
                     </div>
                     </li></Link>
@@ -70,9 +70,9 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
 
                     <Link href="/">
                 <li className="flex items-center gap-2">
-                    <img src="/images/icons/hotels.png" className="w-8"/>
+                    <img src="/images/icons/hotels.png" className="w-6"/>
                     <div className="flex flex-col mt-1">
-                        <span className="text-xs">Hotels</span>
+                        <span className="text-[11px]">Hotels</span>
                         <span className="font-medium text-sm">Home stays</span>
                     </div>
                     </li></Link>
@@ -80,18 +80,20 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
 
                     <Link href="/">
                 <li className="flex items-center gap-2">
-                    <img src="/images/icons/bid.png"  className="w-6"/>
+                    <img src="/images/icons/bid.png"  className="w-5"/>
                     <div className="flex flex-col mt-1">
-                        <span className="text-xs">Bid</span>
+                        <span className="text-[11px]">Bid</span>
                         <span className="font-medium text-sm">your stay!</span>
                     </div>
                     </li></Link>
                </ul>
             </div>
             </div>
+           
 
 
             <div className="flex items-center gap-4">
+           
                 <img src={`/images/icons/${darkMode?"avatardark":"avatar"}.png`} alt="" className="w-12 hidden md:block"/>
                 <div className="hidden md:flex flex-col">
                         <span className={`text-xs ${darkMode? "text-black" : "text-white"}`}>Login</span>
@@ -100,6 +102,7 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
                        
                     </div>
                     <div className="lg:hidden">
+                  
 {             !openNavbar &&    <img src={`/images/icons/${darkMode? "menudark" : "menu"}.png`} alt="" className="w-6 mt-2 sm:w-10 ml-8 rounded" onClick={handleOPenNav}/>
 }             {  openNavbar && <img src={`/images/icons/${darkMode? "Close" : "Close"}.png`} alt="" className="w-6 mt-2 sm:w-10 ml-8 rounded" onClick={handleCloseNav}/>
 }
