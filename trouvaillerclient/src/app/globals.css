@@ -5,7 +5,7 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 .inter{
   font-family: "Inter", sans-serif;
@@ -14,10 +14,18 @@
 *{
   font-family: "Inter", sans-serif;
 }
+.lato{
+  font-family: "Lato", sans-serif;
+}
 
 
 
-
+.greenbggrad{
+  background-image: url('../../public/images/greenbg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
 
 
 
@@ -72,3 +80,8 @@
 
 .shadow-custom3{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+
+
+  .shadow-custom-4{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
