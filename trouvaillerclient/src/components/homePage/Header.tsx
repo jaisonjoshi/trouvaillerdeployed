@@ -104,7 +104,7 @@ export const Header: React.FC<{}> = ({ }) => {
                     
                     
                     
-                    <div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white overflow-hidden rounded shadow-custom-4   ">
+                    <div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white overflow-hidden rounded-full shadow-custom-4   ">
                 <div className="w-[32%] flex items-center  bg-[white] px-4 h-full">
                 <div className="flex gap-4 items-center  relative">
                     <img src="/images/icons/loc.svg" alt="" className="w-6" />
@@ -125,7 +125,7 @@ export const Header: React.FC<{}> = ({ }) => {
                 </div>
                 
                 <div className="w-[32%] ">
-                <button className="bg-[#45b773] w-full py-2 text-[white] rounded text-base 2xl:text-base  font-bold">Search</button>
+                <button className="bg-[#45b773] w-full py-2 text-[white]  rounded-full text-base 2xl:text-base  font-bold">Search</button>
 
                 </div>
                
@@ -143,7 +143,7 @@ export const Header: React.FC<{}> = ({ }) => {
            
 
             <div>
-            <div className="flex lg:hidden  relative z-10 items-center mx-4 sm:mx-20 h-[40px] xs:h-[50px] shadow-custom-4 rounded bg-[white] py-8 pl-4 sm:pl-4">
+            <div className="flex lg:hidden  relative z-10 items-center mx-4 sm:mx-20 h-[40px] xs:h-[50px] shadow-custom-4 rounded-full bg-[white] py-8 pl-4 sm:pl-4">
                 <div className="flex gap-4 items-center justify-between  w-full relative">
                     
                     <div className="flex grow gap-2 sm:gap-4">

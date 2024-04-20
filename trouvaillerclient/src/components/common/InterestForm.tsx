@@ -3,7 +3,7 @@
 export const InterestForm = () => {
     return(
         <div>
-              <h2 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4   ">You want a customised travel plan?</h2>
+              <h2 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-3xl roboto-medium mb-2 md:mb-4   ">You want a customised travel plan?</h2>
             <p className="text-xs xs:text-base md:text-lg lg:text-lg text-[#777777]  ">Looking for a personalized travel experience? Fill out the form below to create your customized travel plan tailored to your preferences and desires.</p>
             <div className="flex justify-between flex-col md:flex-row items-start mt-8 md:mt-20">
             <div className="w-[100%] md:w-[30%] min-h-[200px] sm:min-h-[250px] md:min-h-[100px] md:self-stretch	 relative">

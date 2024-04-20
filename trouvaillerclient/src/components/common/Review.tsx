@@ -21,7 +21,7 @@ export const ReviewCrad :React.FC<{review: any}>= ({review}) => {
         <div className="px-8 md:px-0">
             <img src="/images/icons/quote.png" alt="" className="w-6 md:w-8  md:mb-4"/>
             <div>
-                <p className="  text-[#868686] text-sm text-left md:text-lg italic mb-8"> {review.reviewnote}</p>
+                <p className="  text-[#444] font-light text-sm text-left md:text-lg italic mb-8"> {review.reviewnote}</p>
             </div>
             <div className='flex justify-start'>
             <div className="flex gap-4 items-center">
@@ -69,7 +69,7 @@ export const Review = () => {
 
     return (
         <div>
-            <h2 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4  ">What people says about us</h2>
+            <h2 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-3xl roboto-medium mb-2 md:mb-4  ">What people says about us</h2>
             <p className="text-xs xs:text-base md:text-lg lg:text-xl text-[#777777]  ">Unforgettable journeys, exceptional experiences - discover what our travelers have to say about our travel packages.
             </p>
             <div className="mt-8 md:mt-20">

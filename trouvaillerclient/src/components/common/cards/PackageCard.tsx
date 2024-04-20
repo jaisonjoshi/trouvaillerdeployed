@@ -16,7 +16,7 @@ export const PackageCard:React.FC<{item:Package}> = ({item}) => {
                           <div className="">
                          
                             <div className="mt-3 xs:mt-3 flex justify-between items-start">
-                                <h1 className="font-medium xs:font-semibold text-[13px] xs:text-[18px]    whitespace-nowrap	overflow-hidden text-ellipsis	">{item.title}</h1>
+                                <h1 className="roboto-medium text-[13px] xs:text-[18px]    whitespace-nowrap	overflow-hidden text-ellipsis	">{item.title}</h1>
                                 <span className="text-[white] bg-[#000000c5] px-2 ml-4 py-1 text-[10px] md:text-[13px] rounded  ">{item.shortDuration}</span>
 
                             </div>
@@ -25,7 +25,7 @@ export const PackageCard:React.FC<{item:Package}> = ({item}) => {
 
                             </div>
                             <div className="mt-2">
-                                <p className="  text-[#4a4a4a] text-[10px] xs:text-[13px] line-clamp-3">{item.shortDescription}</p>
+                                <p className="  text-[#4a4a4a] text-[10px] xs:text-[13px] leading-[24px] h-[72px] line-clamp-3">{item.shortDescription}</p>
                             </div>
                             <div className="mt-4 ">
                                 <div className="   text-[#4a4a4a] ">

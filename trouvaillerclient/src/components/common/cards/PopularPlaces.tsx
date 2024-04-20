@@ -48,7 +48,7 @@ export const PopularPlaces = () => {
 
     return(
         <div>
-            <h1 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4   ">Explore Popular Destinations</h1>
+            <h1 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-3xl roboto-medium mb-2 md:mb-4   ">Explore Popular Destinations</h1>
             <p className="text-xs xs:text-base md:text-lg lg:text-lg text-[#777777]"> Explore popular places with our curated tours, discovering their beauty and charm firsthand.</p>
             <div className="flex justify-start flex-wrap gap-[2%] md:gap-[2.6%] mt-8 md:mt-12 ">
                {places && places.map((itm :any, i:any)=>(

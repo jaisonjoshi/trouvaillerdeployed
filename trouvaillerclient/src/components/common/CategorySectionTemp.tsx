@@ -1,18 +1,21 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { PackageCard } from "./cards/PackageCard"
 import axiosInstance from "../../../axiosInstance"
 import { Package } from "@/app/types/types"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/autoplay";
-import {  Autoplay } from 'swiper/modules';
+import {  Autoplay, Navigation } from 'swiper/modules';
 
 
 
 
 export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
 
+  const [_, setInit] = useState<boolean>();
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
    console.log(item)
 
     return(
@@ -20,9 +23,16 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
        <>
        {item &&
          <div className="  ">
-         <h2 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-2 md:mb-4">{item.name}</h2>
-         <p className="text-xs xs:text-base md:text-lg  text-[#777777]">{item.description}
+         <h2 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-3xl roboto-medium mb-2  md:mb-4">{item.name}</h2>
+         <div className="flex justify-between items-end">
+         <p className="text-sm xs:text-base md:text-lg  text-[#777777]">{item.description}
              </p>
+
+             <div className=" flex gap-8 ">
+             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[24px]"/></button>
+      <button ref={nextRef}><img src="/images/icons/right.png" className="w-[24px]"/></button>
+                          </div>
+         </div>
 {/* 
              <div className="hidden sm:flex flex-wrap gap-[10%] lg:gap-[5%] mt-12 2xl:mt-20">
                  {packages?.map((item,index)=>(
@@ -50,7 +60,12 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
    }}
    onSlideChange={() => console.log('slide change')}
    onSwiper={(swiper) => console.log(swiper)}
-   modules={[ Autoplay]}
+   modules={[ Autoplay, Navigation]}
+   navigation={{
+    prevEl: prevRef.current,
+    nextEl: nextRef.current,
+  }}
+  onInit={() => setInit(true)}
    autoplay
 
  >

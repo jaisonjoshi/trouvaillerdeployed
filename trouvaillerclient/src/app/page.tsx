@@ -39,7 +39,7 @@ export default function Home() {
     <div id='bodycon'>
       <ClickToChat />
       <Header />
-      <div className='mt-8 xs:mt-12 xl:mt-20 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60'>
+      <div className='mt-8 xs:mt-12 xl:mt-20 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-40'>
       <TrendingDestinations />
        <BidCard />
 
