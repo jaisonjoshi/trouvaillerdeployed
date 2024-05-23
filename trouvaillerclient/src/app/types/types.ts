@@ -2,6 +2,7 @@ export type category = null | "family" | "friends" | "adventure" | "honeymoon";
 
 export type Location = {
     location:string;
+    img: string;
 }
 
 export type Schedule = {

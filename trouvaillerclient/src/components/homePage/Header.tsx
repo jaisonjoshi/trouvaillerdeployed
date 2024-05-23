@@ -7,6 +7,7 @@ import axios from "axios";
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import "swiper/css/autoplay";
+import Link from "next/link"
 
 import { EffectFade, Autoplay } from 'swiper/modules';
 import useDebounce from "@/hooks/useDebounce";
@@ -45,6 +46,8 @@ export const Header: React.FC<{}> = ({ }) => {
         if (debouncedSearch) fetchData()
 
     },[debouncedSearch])
+
+
     const handleSetSearch = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.value === '') {
             setLocations([])
@@ -54,6 +57,7 @@ export const Header: React.FC<{}> = ({ }) => {
           }
         setSearch(e.target.value);
       };
+      
 
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
@@ -104,30 +108,46 @@ export const Header: React.FC<{}> = ({ }) => {
                     
                     
                     
-                    <div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white overflow-hidden rounded-full shadow-custom-4   ">
-                <div className="w-[32%] flex items-center  bg-[white] px-4 h-full">
-                <div className="flex gap-4 items-center  relative">
+                    <div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white  rounded-full shadow-custom-4   ">
+                <div className="w-[100%] flex items-center  bg-[white] px-4 h-full">
+                <div className="flex gap-4 items-center w-[100%]  relative">
                     <img src="/images/icons/loc.svg" alt="" className="w-6" />
-                    <input type="text" placeholder="Search destination" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetSearch(e)} onClick={(e)=>setShowLocations(true)} className="outline-none text-sm 2xl:text-lg" />
-                    {showLocations && locations.length >0 && <div ref={locationRef} className="absolute bottom-0 translate-y-[100%] min-w-[300px] h-[200px] overflow-auto left-14 bg-[white] shadow-xl rounded ">
+                    <input type="text" placeholder="Search destination" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetSearch(e)} onClick={(e)=>setShowLocations(true)} className="outline-none text-sm 2xl:text-lg flex-grow" />
+
+                   
+                    
+                </div>
+                </div>
+                <div className="absolute top-[110%] left-0 max-h-[200px] overflow-y-auto bg-[white] shadow-xl rounded-lg">
+                    {showLocations && locations.length >0 && <div ref={locationRef} className="relative top-0 mx-8 my-2 z-[1000000]   rounded ">
                        
                     
-                    <ul className="flex flex-col ">
+                       <ul className="flex flex-col ">
+                      
+                       {locations.map((item,index)=> (
+                          <Link href={`/explore/${item.location}`} key={index}>
+                           <li key={index} className="px-4 py-1 cursor-pointer rounded hover:bg-[#e5e5e5] w-[100%]">
+                            <div className="flex items-center gap-4 text-sm W-[100%] my-2">
+                                <img src={item.img} alt="" className="w-[10%]"/>
+                            <span>
+                            {item.location.charAt(0).toUpperCase()+ item.location.slice(1)}
+                                </span>
+
+                            </div>
+                            
+                            
+                            </li>
+                          
+                          </Link>
+                       ))}
                    
-                    {locations.map((item,index)=> (
-                        <li key={index} className="px-4 py-1 cursor-pointer hover:bg-[#e5e5e5]">{item.location.charAt(0).toUpperCase()+ item.location.slice(1)}</li>
-                    ))}
-                
-                </ul>
+                   </ul>
+   
+                       </div>}
 
-                    </div>}
-                </div>
-                </div>
+                    </div>
                 
-                <div className="w-[32%] ">
-                <button className="bg-[#45b773] w-full py-2 text-[white]  rounded-full text-base 2xl:text-base  font-bold">Search</button>
-
-                </div>
+               
                
                 
            
