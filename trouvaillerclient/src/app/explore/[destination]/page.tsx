@@ -4,14 +4,23 @@ import { Footer } from "@/components/common/Footer"
 import { InterestForm } from "@/components/common/InterestForm";
 
 async function getData(id :string) {
-    const res = await fetch(`https://api2.trouvailler.com/api/packagelocations/${id}`);
-    if (!res.ok) {
-        throw new Error('Failed to fetch data')
-      }
 
+    try{
+
+        const res = await fetch(`https://api2.trouvailler.com/api/packagelocations/${id}`);
+        if (!res.ok) {
+            throw new Error('Failed to fetch data')
+          }
     
-     
-      return res.json()
+        
+         
+          return res.json()
+
+    }
+    catch(error) {
+        console.log(error)
+    }
+   
 
     
 }
@@ -37,8 +46,8 @@ export default async function Page({ params }: { params: { destination: string }
         <div className="relative" id="bodycon">
             <div>
             <div className="relative">
-            <div className="absolute top-0 left-0 right-0 bottom-0 min-h-[200px]">
-                <img src={data.img} alt="" className="object-cover  object-bottom w-full h-full" />
+            <div className="absolute lg:hidden top-0 left-0 right-0 bottom-0 min-h-[200px]">
+                <img src={data.img} alt="" className="object-cover  object-bottom lg:object-center w-full h-full" />
             </div>
             <div className="absolute top-0 left-0 right-0 bottom-0 gradient-3 min-h-[200px]">
 
@@ -49,13 +58,13 @@ export default async function Page({ params }: { params: { destination: string }
             </div>
 
             <div className="text-white sticky top-0 px-4 md:px-28 mt-16  md:pt-32">
-                <h1 className="text-3xl font-bold  ">{data.location.charAt(0).toUpperCase() + data.location.slice(1)}</h1>
+                <h1 className="text-3xl font-bold lg:mb-12  ">{data.location.charAt(0).toUpperCase() + data.location.slice(1)}</h1>
             </div>
             
         </div>
             </div>
 
-            <div className="px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60 mt-20">
+            <div className="px-4 xs:px-8 lg:px-20 xl:px-40 mt-20">
             <CommonCategoryContainer data={allPackages}/>
 
             </div>
