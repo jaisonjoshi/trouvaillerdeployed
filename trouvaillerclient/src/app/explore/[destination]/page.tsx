@@ -29,8 +29,8 @@ export default async function Page({ params }: { params: { destination: string }
     const data = await getData(params.destination)
 
     const allPackages = {
-        title:`All ${data.location.charAt(0).toUpperCase() + data.location.slice(1)} Packages`,
-        description: `Grab our top selling packages for ${data.location.charAt(0).toUpperCase() + data.location.slice(1)} at Unbelievable prices.`,
+        title:`All Packages`,
+        description: `Discover our thoughtfully curated Manali packages, tailored to suit various types of travelers`,
         url:`/package?locationtag=${data.location}`
     }
   
@@ -46,12 +46,13 @@ export default async function Page({ params }: { params: { destination: string }
 
             </div>
 
-            <div className="py-4">
-            <Navbar />
+            <div className="py-4 relative bg-[#9797979e]">
+            <Navbar/>
             </div>
 
-            <div className="text-white sticky top-0 px-4 md:px-28 mt-16  md:pt-32">
-                <h1 className="text-3xl font-bold lg:pb-12  ">{data.location.charAt(0).toUpperCase() + data.location.slice(1)}</h1>
+            <div className="text-white sticky top-0 px-4 md:px-40 mt-16  md:pt-32">
+                <h1 className="text-3xl font-bold lg:pb-12  ">All {data.location.charAt(0).toUpperCase() + data.location.slice(1)} Travel Packages</h1>
+                <p>Grab our top selling packages for ${data.location.charAt(0).toUpperCase() + data.location.slice(1)} at Unbelievable prices.</p>
             </div>
             
         </div>
