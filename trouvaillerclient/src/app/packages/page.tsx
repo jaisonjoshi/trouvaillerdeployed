@@ -17,7 +17,7 @@ const Packages = () => {
     return(
         <div id="bodycon">
             <PackagesPageHeader />
-            <div className='my-8 xs:mt-12 xl:mt-20 2xl:mt-16 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60'>
+            <div className='my-8 xs:mt-12 xl:mt-20 2xl:mt-16 px-4 xs:px-8 lg:px-20 xl:px-40'>
             <TrendingDestinations />
                 <PopularPlaces />
                

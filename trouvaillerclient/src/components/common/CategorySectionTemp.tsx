@@ -29,8 +29,8 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
              </p>
 
              <div className=" flex gap-8 ">
-             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[16px] cursor-pointer"/></button>
-      <button ref={nextRef}><img src="/images/icons/right.png" className="w-[16px] cursor-pointer"/></button>
+             <button ref={prevRef}><img src="/images/icons/arrow.png" className={`w-[16px] cursor-pointer ${item.packages?.length >4 ?"" :"hidden"}`}/></button>
+      <button ref={nextRef}><img src="/images/icons/right.png" className={`w-[16px] cursor-pointer ${item.packages?.length >4 ?"" :"hidden"}`}/></button>
                           </div>
          </div>
 {/* 
