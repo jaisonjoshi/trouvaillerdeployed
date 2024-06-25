@@ -4,8 +4,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/autoplay";
-import {  Autoplay } from 'swiper/modules';
-import React, { useEffect, useState } from 'react';
+import {  Autoplay , Navigation} from 'swiper/modules';
+import React, { useEffect, useRef, useState } from 'react';
 import axiosInstance from '../../../axiosInstance';
 
 
@@ -21,7 +21,7 @@ export const ReviewCrad :React.FC<{review: any}>= ({review}) => {
         <div className="px-8 md:px-0">
             <img src="/images/icons/quote.png" alt="" className="w-6 md:w-8  md:mb-4"/>
             <div>
-                <p className="  text-[#444] font-light text-sm text-left md:text-lg italic mb-8"> {review.reviewnote}</p>
+                <p className="  text-[#444] robotic-regular text-sm  leading-[24px]  mb-8"> {review.reviewnote}</p>
             </div>
             <div className='flex justify-start'>
             <div className="flex gap-4 items-center">
@@ -41,6 +41,9 @@ export const ReviewCrad :React.FC<{review: any}>= ({review}) => {
 
 
 export const Review = () => {
+    const [_, setInit] = useState<boolean>();
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
 
     const [reviews, setReviews] = useState<any[]>([])
     const [reviewsLoading, setReviewsLoading] = useState(false)
@@ -69,11 +72,16 @@ export const Review = () => {
 
     return (
         <div>
-            <h2 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-3xl roboto-medium mb-2 md:mb-4  ">What people says about us</h2>
-            <p className="text-xs xs:text-base md:text-lg lg:text-xl text-[#777777]  ">Unforgettable journeys, exceptional experiences - discover what our travelers have to say about our travel packages.
+            <h2 className="text-lg sm:text-2xl lg:text-2xl  roboto-bold mb-2   ">What people says about us</h2>
+            <p className="text-xs xs:text-base md:text-base roboto-regular text-[#777777]  ">Unforgettable journeys, exceptional experiences - discover what our travelers have to say about our travel packages.
             </p>
-            <div className="mt-8 md:mt-20">
-           { reviewsLoading ?  (<div><span>Loading</span></div>)   :(<Swiper
+            <div className="mt-8 md:mt-12">
+           { reviewsLoading ?  (<div><span>Loading</span></div>)   :(
+           <div className='relative '>
+             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[22px] cursor-pointer absolute top-[50%] left-[-6%] translate-y-[-50%]"/></button>
+
+          <div>
+          <Swiper
       spaceBetween={30}
       slidesPerView={1}
       centeredSlides={true}
@@ -83,14 +91,19 @@ export const Review = () => {
             slidesPerView:1.5,
         },
         1284:{
-            slidesPerView:2,
-            centeredSlides:false,
+            slidesPerView:3,
+            centeredSlides:true,
             spaceBetween:80
         }
       }}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
-      modules={[ Autoplay]}
+      modules={[ Autoplay, Navigation]}
+      navigation={{
+        prevEl: prevRef.current,
+        nextEl: nextRef.current,
+      }}
+      onInit={() => setInit(true)}
       autoplay
       loop
 
@@ -102,7 +115,12 @@ export const Review = () => {
      
    
       
-    </Swiper>)}
+    </Swiper>
+          </div>
+
+                <button ref={nextRef}><img src="/images/icons/right.png" className="w-[22px] absolute top-[50%] right-[-6%] translate-y-[-50%] cursor-pointer"/></button>
+
+        </div>)}
             </div>
         </div>
     )

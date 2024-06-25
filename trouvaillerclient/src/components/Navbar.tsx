@@ -51,10 +51,11 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
     return(
         <div className=" flex justify-between relative z-[1000] items-center text-[white] px-4 sm:px-8 md:px-16 2xl:px-28 ">
             <div className="flex items-center gap-12 2xl:gap-20">
-            <div className="flex items-center gap-2 sm:gap-4"> 
+            <Link href="/">
+            <div className="flex items-center gap-2 sm:gap-4 cursor-pointer"> 
                 <img  src="/images/logos/icon.png" alt=""  className="w-8 sm:w-10 "/>
                 <img src={`/images/logos/${darkMode? "logodark.png" : "logowhite.png"}`} alt="" className="w-[70px] sm:w-[90px] xl:w-[90px]"/>
-            </div>
+            </div></Link>
             
             <div className="hidden lg:block">
                <ul className={`flex items-center gap-12 2xl:gap-16 ${darkMode ? "text-black" : ""}`}>
@@ -92,13 +93,13 @@ export const Navbar: React.FC<{darkMode? : boolean}> = ({darkMode}) => {
            
 
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 cursor-pointer">
            
-                <img src={`/images/icons/${darkMode?"avatardark":"avatar"}.png`} alt="" className="w-12 hidden md:block"/>
-                <div className="hidden md:flex flex-col">
-                        <span className={`text-xs ${darkMode? "text-black" : "text-white"}`}>Login</span>
+                <img src={`/images/icons/${darkMode?"avatardark":"avatar"}.png`} alt="" className="w-8 hidden md:block"/>
+                <div className="hidden md:flex flex-col ">
+                        <span className={`text-xs roboto-medium ${darkMode? "text-black" : "text-white"}`}>Login</span>
                       
-                       <span className="flex text-sm font-medium text-[green]">Sign Up <img src="/images/icons/arrowdown.png" className="w-6"/></span>
+                       <span className="flex text-[13px] roboto-medium text-[green]">Sign Up <img src="/images/icons/arrowdown.png" className="w-6"/></span>
                        
                     </div>
                     <div className="lg:hidden">

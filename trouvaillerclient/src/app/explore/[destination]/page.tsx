@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar"
 import { CommonCategoryContainer } from "@/components/common/CommonCategoryContainer";
 import { Footer } from "@/components/common/Footer"
 import { InterestForm } from "@/components/common/InterestForm";
+import { CategorySection } from "@/components/PackagePage/CategorySection";
 
 async function getData(id :string) {
 
@@ -9,8 +10,11 @@ async function getData(id :string) {
 
         const res = await fetch(`https://api2.trouvailler.com/api/packagelocations/${id}`);
         if (!res.ok) {
+            console.log(res)
             throw new Error('Failed to fetch data')
           }
+
+          console.log(res)
     
         
          
@@ -19,6 +23,7 @@ async function getData(id :string) {
     }
     catch(error) {
         console.log(error)
+
     }
    
 
@@ -34,7 +39,7 @@ async function getData(id :string) {
 export default async function Page({ params }: { params: { destination: string } }) {
 
     const data = await getData(params.destination)
-
+    console.log(params.destination)
     const allPackages = {
         title:`All ${data.location.charAt(0).toUpperCase() + data.location.slice(1)} Packages`,
         description: `Grab our top selling packages for ${data.location.charAt(0).toUpperCase() + data.location.slice(1)} at Unbelievable prices.`,
@@ -64,12 +69,15 @@ export default async function Page({ params }: { params: { destination: string }
         </div>
             </div>
 
-            <div className="px-4 xs:px-8 lg:px-20 xl:px-40 mt-20">
+            <div className="px-4 xs:px-8 lg:px-20 xl:px-20 mt-20">
             <CommonCategoryContainer data={allPackages}/>
 
             </div>
+ <div className="px-4 xs:px-8 lg:px-20 xl:px-20 mt-20">
+            <CategorySection />
 
-           <div className="px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-60 py-8">
+            </div>
+           <div className="px-4 xs:px-8 lg:px-20 xl:px-20 py-8">
            <InterestForm />
            </div>
          

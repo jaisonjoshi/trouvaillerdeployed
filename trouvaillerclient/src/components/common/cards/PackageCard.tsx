@@ -6,7 +6,7 @@ import React from "react"
 
 export const PackageCard:React.FC<{item:Package}> = ({item}) => {
     return(
-        <div className="w-full bg-[white] mb-8 xs:mb-20 h-auto rounded-[4px] xs:rounded flex flex-col  border-[1px] shadow-xl">
+        <div className="w-full bg-[white] mb-8 xs:mb-20 h-auto rounded-[4px] xs:rounded-[10px]  flex flex-col  border-[1px] shadow-md">
                             <div className="relative ">
 
                             <img src={generateUrl(item.titleImage)} alt="" className=" rounded-t-[4px] xs:rounded-t-[10px]  w-full  aspect-video skeleton" />
@@ -16,36 +16,36 @@ export const PackageCard:React.FC<{item:Package}> = ({item}) => {
                           <div className="">
                          
                             <div className="mt-3 xs:mt-3 flex justify-between items-start">
-                                <h1 className="roboto-medium text-[13px] xs:text-[18px]    whitespace-nowrap	overflow-hidden text-ellipsis	">{item.title}</h1>
-                                <span className="text-[white] bg-[#000000c5] px-2 ml-4 py-1 text-[10px] md:text-[13px] rounded  ">{item.shortDuration}</span>
+                                <h1 className="roboto-medium text-[13px] xs:text-[14px]    whitespace-nowrap	overflow-hidden text-ellipsis	">{item.title}</h1>
+                                <span className="text-[white] bg-[#000000c5] px-2 ml-4 py-[2px] text-[10px] md:text-[10px] rounded  ">{item.shortDuration}</span>
 
                             </div>
-                            <div className="flex items-end gap-1 my-2 xs:my-1">
-                                <p className=" text-[12px] xs:text-[15px] leading-[16px] xs:leading-[20px]  whitespace-nowrap text-[#4a4a4a]	overflow-hidden text-ellipsis	 w-[90%]">{item.location.charAt(0).toUpperCase()+ item.location.slice(1)}</p>
+                            <div className="flex items-end gap-1 ">
+                                <p className=" text-[12px] xs:text-[11px] leading-[16px] xs:leading-[20px]  whitespace-nowrap text-[#4a4a4a]	overflow-hidden text-ellipsis	 w-[90%]">{item.location.charAt(0).toUpperCase()+ item.location.slice(1)}</p>
 
                             </div>
                             <div className="mt-2">
-                                <p className="  text-[#4a4a4a] text-[10px] xs:text-[13px] leading-[24px] h-[72px] line-clamp-3">{item.shortDescription}</p>
+                                <p className="  text-[#4a4a4a] text-[10px] xs:text-[11px] leading-[17px] h-[51px] line-clamp-3">{item.shortDescription}</p>
                             </div>
                             <div className="mt-4 ">
                                 <div className="   text-[#4a4a4a] ">
                                     <div className="flex items-start gap-1 mb-1 ">
                                         {item.cardTags.cardTag1 !== "" && <img src="/images/icons/tick.png" alt=""  className="w-4"/>}
-                                        <span className="text-[10px] xs:text-[14px]  sm:mt-[-3px] whitespace-nowrap	overflow-hidden text-ellipsis">{item.cardTags.cardTag1}</span>
+                                        <span className="text-[10px] xs:text-[10px]  sm:mt-[2px] whitespace-nowrap	overflow-hidden text-ellipsis">{item.cardTags.cardTag1}</span>
                                     </div>
                                     <div className="flex  items-start gap-1 ">
                                         {item.cardTags.cardTag2 !== "" && <img src="/images/icons/tick.png" alt=""  className="w-4"/>}
-                                        <span className="text-[10px] xs:text-[14px] sm:mt-[-3px] whitespace-nowrap	overflow-hidden text-ellipsis">{item.cardTags.cardTag2}</span>
+                                        <span className="text-[10px] xs:text-[10px] sm:mt-[2px] whitespace-nowrap	overflow-hidden text-ellipsis">{item.cardTags.cardTag2}</span>
                                     </div>
                                 </div>
                                 
                             </div>
                           </div>
                             <div className="mt-2 xs:mt-4 mb-2 xs:mb-4 flex justify-between items-end">
-                                <Link href={`/travelpackage/${item._id}`}><button className="bg-[#05CAA6] text-white font-bold text-[10px] xs:text-[14px] px-6 xs:px-8 rounded-full py-2">Explore</button></Link>
-                                <div className="w-[30%] flex flex-col items-end  text-[15px] xs:text-[18px]">
-                               <span className="font-extrabold    flex gap-1 items-center "> <span className='text-base xs:text-2xl'>₹</span><span>{item.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
-                               <span className="text-[10px] xs:text-[12px]    text-[#585858]">Per Person</span>
+                                <Link href={`/travelpackage/${item._id}`}><button className="bg-[#1a9c65] text-white roboto-regular text-[10px] px-6 xs:px-8 rounded-full py-2">Explore</button></Link>
+                                <div className="w-[30%] flex flex-col items-end  text-[15px]">
+                               <span className="font-extrabold    flex gap-1 items-center "> <span className='text-base '>₹</span><span>{item.price.toString().replace(/(\d)(?=(\d\d)+\d$)/g, "$1,")}</span></span>
+                               <span className="text-[9px]     text-[#585858]">Per Person</span>
                                 </div>
 
                             </div>

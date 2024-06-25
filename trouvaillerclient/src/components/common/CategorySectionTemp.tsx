@@ -23,14 +23,14 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
        <>
        {item &&
          <div className="  ">
-         <h2 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-3xl roboto-medium mb-2  md:mb-4">{item.name}</h2>
+         <h2 className="text-lg sm:text-2xl lg:text-2xl roboto-bold mb-2  ">{item.name}</h2>
          <div className="flex justify-between items-end">
-         <p className="text-sm xs:text-base md:text-lg  text-[#777777]">{item.description}
+         <p className="text-sm xs:text-base md:text-base  text-[#777777]">{item.description}
              </p>
 
              <div className=" flex gap-8 ">
-             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[24px]"/></button>
-      <button ref={nextRef}><img src="/images/icons/right.png" className="w-[24px]"/></button>
+             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[16px] cursor-pointer"/></button>
+      <button ref={nextRef}><img src="/images/icons/right.png" className="w-[16px] cursor-pointer"/></button>
                           </div>
          </div>
 {/* 

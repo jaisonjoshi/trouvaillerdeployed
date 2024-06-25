@@ -118,34 +118,34 @@ export const Header: React.FC<{}> = ({ }) => {
                     
                 </div>
                 </div>
-                <div className="absolute top-[110%] left-0 max-h-[200px] overflow-y-auto bg-[white] shadow-xl rounded-lg">
-                    {showLocations && locations.length >0 && <div ref={locationRef} className="relative top-0 mx-8 my-2 z-[1000000]   rounded ">
-                       
+                    <div className="absolute top-[110%] left-0 max-h-[200px] overflow-y-auto bg-[white] shadow-xl rounded-lg">
+                        {showLocations && locations.length >0 && <div ref={locationRef} className="relative top-0 mx-8 my-2 z-[1000000]   rounded ">
+                        
+                        
+                        <ul className="flex flex-col ">
+                        
+                        {locations.map((item,index)=> (
+                            <Link href={`/explore/${item.location}`} key={index}>
+                            <li key={index} className="px-4 py-1 cursor-pointer rounded hover:bg-[#e5e5e5] w-[100%]">
+                                <div className="flex items-center gap-4 text-sm W-[100%] my-2">
+                                    <img src={item.img} alt="" className="w-[10%]"/>
+                                <span>
+                                {item.location.charAt(0).toUpperCase()+ item.location.slice(1)}
+                                    </span>
+
+                                </div>
+                                
+                                
+                                </li>
+                            
+                            </Link>
+                        ))}
                     
-                       <ul className="flex flex-col ">
-                      
-                       {locations.map((item,index)=> (
-                          <Link href={`/explore/${item.location}`} key={index}>
-                           <li key={index} className="px-4 py-1 cursor-pointer rounded hover:bg-[#e5e5e5] w-[100%]">
-                            <div className="flex items-center gap-4 text-sm W-[100%] my-2">
-                                <img src={item.img} alt="" className="w-[10%]"/>
-                            <span>
-                            {item.location.charAt(0).toUpperCase()+ item.location.slice(1)}
-                                </span>
+                    </ul>
+    
+                        </div>}
 
-                            </div>
-                            
-                            
-                            </li>
-                          
-                          </Link>
-                       ))}
-                   
-                   </ul>
-   
-                       </div>}
-
-                    </div>
+                        </div>
                 
                
                

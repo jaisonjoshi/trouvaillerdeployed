@@ -11,22 +11,24 @@ export const International = () => {
             alt=""
           />
 
+          <div className="hidden md:block rounded-[20px] w-full max-h-[200px] overflow-hidden">
           <img
             src="https://res.cloudinary.com/difxlqrlc/image/upload/q_auto/f_auto/v1684523647/site/international_intqgj.jpg"
-            className="hidden md:block rounded-[20px] w-full"
+            className=" rounded-[20px] w-full object-cover object-center "
             alt=""
           />
-          <div className="absolute w-[80%] lg:w-[50%] z-[45] text-[white] flex flex-col items-start gap-2 lg:gap-5 left-[10%] top-[50%] translate-y-[-50%]">
-            <h1 className="font-medium sm:font-bold text-lg md:text-2xl lg:text-4xl">
+          </div>
+          <div className="absolute w-[80%] lg:w-[50%] z-[45] text-[white] flex flex-col items-start gap-2 lg:gap-5 left-[5%] top-[50%] translate-y-[-50%]">
+            <h1 className="roboto-bold text-lg md:text-2xl mt-4">
               International Destinations
             </h1>
-            <p className="text-xs sm:text-base lg:text-lg">
+            <p className="text-sm  roboto-regular text-[#d6d6d6]">
               Trouvailler has been curated the most wonderful international
               trips for you. Grab the best deals on international travel
               packages
             </p>
             <span
-              className="flex gap-1 text-sm sm:text-md lg:text-xl items-center border border-[2px] border-[white] my-2 rounded-full px-2 sm:px-4 sm:py-1 cursor-pointer"
+              className="flex gap-1 text-xs  items-center border border-[2px] border-[white] my-2 rounded-full px-2 sm:px-4 sm:py-1 cursor-pointer"
               
             >
               <span>Explore</span> 

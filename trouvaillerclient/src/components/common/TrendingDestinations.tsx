@@ -38,14 +38,14 @@ export const TrendingDestinations = () => {
        <>
        {packages &&
          <div className="  ">
-         <h2 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl  roboto-medium mb-2 md:mb-4">{packages.name}</h2>
+         <h2 className="text-2xl sm:text-2xl lg:text-2xl  roboto-bold mb-2 ">{packages.name}</h2>
          <div className="flex justify-between items-end">
-         <p className="text-sm xs:text-base md:text-lg  text-[#777777]">{packages.description}
+         <p className="text-sm xs:text-base md:text-base roboto-regular  text-[#777777]">{packages.description}
              </p>
 
              <div className=" flex gap-8 ">
-             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[24px]"/></button>
-      <button ref={nextRef}><img src="/images/icons/right.png" className="w-[24px]"/></button>
+             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[16px]"/></button>
+      <button ref={nextRef}><img src="/images/icons/right.png" className="w-[16px]"/></button>
                           </div>
          </div>
 {/* 

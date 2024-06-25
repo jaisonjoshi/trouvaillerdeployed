@@ -39,20 +39,28 @@ export default function Home() {
     <div id='bodycon'>
       <ClickToChat />
       <Header />
-      <div className='mt-8 xs:mt-12 xl:mt-20 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-40'>
+      <div className='mt-8 xs:mt-12 xl:mt-12 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-40'>
       <TrendingDestinations />
        <BidCard />
 
-<CategoryContainer />
-     <div className='my-8 xs:my-12 xl:my-20 2xl:my-16 '>
+{/* <CategoryContainer /> */}
+</div>
+
+     <div className='py-8 xs:py-12 xl:py-8 mt-8 px-4 xs:px-8 lg:px-20 xl:px-40'>
       <TravelSubscription />
       </div>
-      <EmiDetails />
-     <div className='my-8 xs:my-12 xl:my-20 2xl:my-20'><PopularPlaces /></div>
-        <InterestForm />
-      <div className='my-8 xs:my-12 xl:my-20 2xl:my-40  '>
-        <Review />
+      {/* <div className='px-4 xs:px-8 lg:px-20 xl:px-40 pt-16'>
+      <PopularPlaces />
+
+      </div> */}
+      
+     <div className='my-8 xs:my-12 xl:my-20  bg-[#f5f5f5] px-4 xs:px-8 lg:px-20 xl:px-40'><EmiDetails /></div>
+     <div className='px-4 xs:px-8 lg:px-20 xl:px-40'>
+     <InterestForm />
+
       </div>
+      <div className='my-10 xs:my-12 xl:my-20 2xl:my-40 px-4 xs:px-8 lg:px-20 xl:px-40 '>
+        <Review />
       </div>
       <Footer />
      

@@ -6,6 +6,7 @@ import { Navbar } from "../Navbar";
 import useDebounce from "@/hooks/useDebounce";
 import axiosInstance from "../../../axiosInstance";
 import { Location, category } from "@/app/types/types";
+import Link from "next/link"
 
 export const PackagesPageHeader: React.FC<{}> = ({ }) => {
     const menuRef = useRef<HTMLDivElement>(null);
@@ -83,7 +84,7 @@ export const PackagesPageHeader: React.FC<{}> = ({ }) => {
                 <div className="flex flex-col xs:items-center">
                     <div className="   "> <h1 className="font-bold text-[18px] xs:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[28px] ">  Let Us Make Your Travel Experience</h1><h1 className="font-extrabold text-[20px] xs:text-[34px] sm:ext-[36px] md:text-[40px] lg:text-[50px] xl:text-[48px] ">
                     Truly  <span className="text-[#ffffff]"> Memorable!</span></h1></div>
-                    <p className="text-xs leading-[16px] xs:leading-normal xs:text-base md:text-lg  xl:w-[60%] lg:text-lg my-2 xs:my-8 xl:my-8   text-[#e4e4e4]">Explore our diverse range of meticulously curated travel packages designed to cater to every wanderlust, ensuring an unforgettable journey for every traveler.</p>
+                    <p className="text-xs leading-[16px] xs:leading-normal roboto-regular xs:text-base md:text-base  xl:w-[80%]  my-2 xs:my-8 xl:my-8   text-[#e4e4e4]">Explore our diverse range of meticulously curated travel packages designed to cater to every wanderlust, ensuring an unforgettable journey for every traveler.</p>
                 </div>
 
 
@@ -91,23 +92,38 @@ export const PackagesPageHeader: React.FC<{}> = ({ }) => {
             </div>
             <div className="bg-[transparent] hidden  lg:flex justify-between items-center h-[40px] xl:h-[60px] gap-[2%] relative z-10 mx-12 xl:mx-40 2xl:mx-80    ">
                 <div className="w-[60%] mx-auto flex items-center bg-[white] px-4 h-full justify-between rounded">
-                <div className="flex gap-4 items-center  relative">
+                <div className="flex gap-4 items-center  relative w-full">
                     <img src="/images/icons/loc.svg" alt="" className="w-6" />
-                    <input type="text" placeholder="Search Destination" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetSearch(e)} onClick={(e)=>setShowLocations(true)} className="outline-none text-sm 2xl:text-lg" />
-                    {showLocations && locations.length >0 && <div ref={locationRef} className="absolute bottom-0 translate-y-[100%] min-w-[300px] h-[200px] overflow-auto left-14 bg-[white] shadow-xl rounded ">
-                       
-                    
-                    <ul className="flex flex-col ">
-                   
-                    {locations.map((item,index)=> (
-                        <li key={index} className="px-4 py-1 cursor-pointer hover:bg-[#e5e5e5]">{item.location.charAt(0).toUpperCase()+ item.location.slice(1)}</li>
-                    ))}
-                
-                </ul>
+                    <input type="text" placeholder="Search Destination" onChange={(e: ChangeEvent<HTMLInputElement>) => handleSetSearch(e)} onClick={(e)=>setShowLocations(true)} className="outline-none text-sm 2xl:text-lg w-full" />
+                    <div className="absolute top-[110%] left-0 max-h-[200px] overflow-y-auto bg-[white] shadow-xl rounded-lg">
+                        {showLocations && locations.length >0 && <div ref={locationRef} className="relative top-0 mx-8 my-2 z-[1000000]   rounded ">
+                        
+                        
+                        <ul className="flex flex-col ">
+                        
+                        {locations.map((item,index)=> (
+                            <Link href={`/explore/${item.location}`} key={index}>
+                            <li key={index} className="px-4 py-1 cursor-pointer rounded hover:bg-[#e5e5e5] w-[100%]">
+                                <div className="flex items-center gap-4 text-sm W-[100%] my-2">
+                                    <img src={item.img} alt="" className="w-[10%]"/>
+                                <span>
+                                {item.location.charAt(0).toUpperCase()+ item.location.slice(1)}
+                                    </span>
 
-                    </div>}
+                                </div>
+                                
+                                
+                                </li>
+                            
+                            </Link>
+                        ))}
+                    
+                    </ul>
+    
+                        </div>}
+
+                        </div>
                 </div>
-                <button className="bg-[#45b773] text-white rounded px-6 py-2">Search</button>
                 </div>
                 
                 
