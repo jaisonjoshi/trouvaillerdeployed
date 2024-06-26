@@ -198,7 +198,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                     </div>
                     <div>
                        <div className="flex items-end gap-2 md:gap-4 my-4 md:my-0 md:mt-0">
-                       <span className="bg-[#174978] text-[white] roboto-regular px-4 md:px-6 py-[2px] md:py-2 rounded-full text-[12px]">{data.category.charAt(0).toUpperCase()+ data.category.slice(1)}</span>
+                       <span className="bg-[#174978] text-[white] roboto-regular px-4 md:px-6 py-[2px] md:py-2 rounded-full text-[12px]">{data.category && data.category.charAt(0).toUpperCase()+ data.category.slice(1)}</span>
                         
                        </div>
                     </div>
