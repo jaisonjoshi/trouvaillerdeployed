@@ -69,7 +69,7 @@ async function getData(id :string) {
 
 export default async function Page({ params }: { params: { packageid: string } }) {
 
-    const data =  getData(params.packageid)
+    const data :any =  getData(params.packageid)
     
 //    const data = {
 //     "_id": "65959e1a52a9c1de7cb4a622",
@@ -214,7 +214,7 @@ export default async function Page({ params }: { params: { packageid: string } }
 
                 </div>
                 <div className="w-[44%] flex flex-wrap gap-[2%]">
-                    {data.images.slice(0,4)?.map((item, index)=>(
+                    {data.images.slice(0,4)?.map((item :any, index :any)=>(
                         <div key={index} className="w-[49%] relative">
                             <img src={item} alt="" className={`object-cover w-full h-full ${index == 3 ? "rounded-br-[10px]": ""} ${index == 1 ? "rounded-tr-[10px]": ""}`}/>
                             {index == 3 && <div className="bg-[white] absolute bottom-2 right-2 flex items-center px-2 py-2 cursor-pointer shadow-xl gap-2 rounded ">
@@ -240,7 +240,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                        { data.inclusions && data.inclusions.length > 0 && <div className="w-full sm:w-auto sm:grow">
                             <h1 className="text-sm md:text-base roboto-medium">Package Inclusions</h1>
                             <ul className=" mt-2 md:mt-4">
-                            {data.inclusions?.map((item, index)=> (
+                            {data.inclusions?.map((item:any, index:any)=> (
                                 <li className="flex gap-2 items-start mb-1" key={index}>
                                    <div>
                                    <img src="/images/icons/tick.png" alt="" className="mt-[5px] md:mt-0 w-4 md:w-6"/>
@@ -260,7 +260,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                             <ul className=" mt-4">
                                
                                
-                                {data.exclusions?.map((item, index)=> (
+                                {data.exclusions?.map((item:any, index:any)=> (
                                 
                                     <li className="flex gap-2 items-start mb-1" key={index}>
                                     <div>
@@ -303,7 +303,7 @@ export default async function Page({ params }: { params: { packageid: string } }
                                             <p className="  mt-4 text-[13px] md:text-[14px] roboto-regular text-[#4a4a4a]">We have carefully planned out each day to give you the best possible experience. From exploring historic landmarks to tasting delicious local cuisine, each day is packed with adventure and excitement. </p>
 
                                             <div className="flex mt-8 gap-[10%] flex-wrap">
-                                                {data.places && data.places?.map((item : any, index)=>( <div className="w-[45%] relative mb-4" key={index}>
+                                                {data.places && data.places?.map((item : any, index:any)=>( <div className="w-[45%] relative mb-4" key={index}>
                                                     <img src={item.img} alt="" className="w-full aspect-video skeleton rounded" />
                                                     <div className="absolute gradient-2 top-0 left-0 right-0 bottom-0 rounded" >
 
