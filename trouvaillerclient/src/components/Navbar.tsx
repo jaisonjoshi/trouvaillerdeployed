@@ -49,7 +49,7 @@ export const Navbar: React.FC<{darkMode? : boolean, bg? : boolean}> = ({darkMode
     }
     
     return(
-        <div className={`flex justify-between relative z-[1000] items-center text-[white] px-4 sm:px-8 md:px-16 2xl:px-28 ${bg? "!bg-[red]": ""}`}>
+        <div className={`flex justify-between relative z-[1000] items-center text-[white] px-4 sm:px-8 md:px-16 lg:px-40 ${bg? "!bg-[red]": ""}`}>
             <div className="flex items-center gap-12 2xl:gap-20">
             <Link href="/">
             <div className="flex items-center gap-2 sm:gap-4 cursor-pointer"> 

@@ -10,7 +10,7 @@ import { FC } from 'react';
 
 export const DetailPackageHeader:FC<{images:string[]}> = ({images}) => {
     return(
-        <div className="sm:px-4 md:px-8">
+        <div className="sm:px-4 md:px-40 mt-10">
               <Swiper
       spaceBetween={0}
       slidesPerView={1}
