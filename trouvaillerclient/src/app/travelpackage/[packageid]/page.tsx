@@ -69,7 +69,7 @@ async function getData(id :string) {
 
 export default async function Page({ params }: { params: { packageid: string } }) {
 
-    const data :any =  getData(params.packageid)
+    const data  = await getData(params.packageid)
     
 //    const data = {
 //     "_id": "65959e1a52a9c1de7cb4a622",
