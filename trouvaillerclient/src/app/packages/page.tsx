@@ -27,11 +27,9 @@ const Packages = () => {
                 <CategorySection />
 
                 </div>
-                <div className='my-8 xs:my-12 xl:my-20 2xl:my-28 '>
-
+                
                 </div>
-                </div>
-                <div className='py-8 xs:py-12 xl:py-8  px-4 xs:px-8 lg:px-20 xl:px-40'>
+                <div className='py-2 xs:py-12 xl:py-8  px-4 xs:px-8 lg:px-20 xl:px-40'>
       <TravelSubscription />
       </div>
       <div className='my-8 xs:my-12 xl:my-20  bg-[#f5f5f5] px-4 xs:px-8 lg:px-20 xl:px-40'><EmiDetails /></div>

@@ -25,10 +25,10 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
          <div className="  ">
          <h2 className="text-lg sm:text-2xl lg:text-2xl roboto-bold mb-2  ">{item.name}</h2>
          <div className="flex justify-between items-end">
-         <p className="text-sm xs:text-base md:text-base  text-[#777777]">{item.description}
+         <p className="text-xs xs:text-base md:text-base  text-[#777777]">{item.description}
              </p>
 
-             <div className=" flex gap-8 ">
+             <div className=" flex gap-8 hidden md:flex ">
              <button ref={prevRef}><img src="/images/icons/arrow.png" className={`w-[16px] cursor-pointer ${item.packages?.length >4 ?"" :"hidden"}`}/></button>
       <button ref={nextRef}><img src="/images/icons/right.png" className={`w-[16px] cursor-pointer ${item.packages?.length >4 ?"" :"hidden"}`}/></button>
                           </div>
@@ -43,8 +43,8 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
              </div> */}
              <div className=" mt-8">
              <Swiper
-   spaceBetween={30}
-   slidesPerView={1.5}
+   spaceBetween={20}
+   slidesPerView={1.25}
    breakpoints={{
     610:{
       slidesPerView:2.25
@@ -66,7 +66,7 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
     nextEl: nextRef.current,
   }}
   onInit={() => setInit(true)}
-   autoplay
+  //  autoplay
 
  >
      {

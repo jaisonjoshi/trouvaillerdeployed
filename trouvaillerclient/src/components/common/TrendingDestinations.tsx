@@ -38,12 +38,12 @@ export const TrendingDestinations = () => {
        <>
        {packages &&
          <div className="  ">
-         <h2 className="text-2xl sm:text-2xl lg:text-2xl  roboto-bold mb-2 ">{packages.name}</h2>
+         <h2 className="text-xl sm:text-2xl lg:text-2xl  roboto-bold mb-2 ">{packages.name}</h2>
          <div className="flex justify-between items-end">
-         <p className="text-sm xs:text-base md:text-base roboto-regular  text-[#777777]">{packages.description}
+         <p className="text-xs xs:text-base md:text-base roboto-regular  text-[#777777]">{packages.description}
              </p>
 
-             <div className=" flex gap-8 ">
+             <div className=" flex gap-8 hidden md:flex">
              <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[16px]"/></button>
       <button ref={nextRef}><img src="/images/icons/right.png" className="w-[16px]"/></button>
                           </div>
@@ -58,7 +58,7 @@ export const TrendingDestinations = () => {
              </div> */}
              <div className=" mt-8">
              <Swiper
-   spaceBetween={30}
+   spaceBetween={20}
    slidesPerView={1.25}
    breakpoints={{
      1284:{

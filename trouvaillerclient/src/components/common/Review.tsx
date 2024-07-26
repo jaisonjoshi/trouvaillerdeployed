@@ -78,7 +78,7 @@ export const Review = () => {
             <div className="mt-8 md:mt-12">
            { reviewsLoading ?  (<div><span>Loading</span></div>)   :(
            <div className='relative '>
-             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[22px] cursor-pointer absolute top-[50%] left-[-6%] translate-y-[-50%]"/></button>
+             <button ref={prevRef}><img src="/images/icons/arrow.png" className="w-[22px] cursor-pointer absolute hidden md:block top-[50%] left-[-6%] translate-y-[-50%]"/></button>
 
           <div>
           <Swiper
@@ -118,7 +118,7 @@ export const Review = () => {
     </Swiper>
           </div>
 
-                <button ref={nextRef}><img src="/images/icons/right.png" className="w-[22px] absolute top-[50%] right-[-6%] translate-y-[-50%] cursor-pointer"/></button>
+                <button ref={nextRef}><img src="/images/icons/right.png" className="w-[22px]  hidden md:block absolute top-[50%] right-[-6%] translate-y-[-50%] cursor-pointer"/></button>
 
         </div>)}
             </div>
