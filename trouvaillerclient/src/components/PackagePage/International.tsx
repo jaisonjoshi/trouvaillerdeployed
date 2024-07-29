@@ -22,7 +22,7 @@ export const International = () => {
             <h1 className="roboto-bold text-lg md:text-2xl mt-4">
               <span className="caveat text-[24px] whitespace-pre">International  Destinations</span> 
             </h1>
-            <p className="text-sm  roboto-medium text-[#d6d6d6]">
+            <p className="text-sm  roboto-medium ">
               Trouvailler has been curated the most wonderful international
               trips for you. Grab the best deals on international travel
               packages
