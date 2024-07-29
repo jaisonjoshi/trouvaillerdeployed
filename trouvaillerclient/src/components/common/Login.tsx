@@ -43,7 +43,7 @@ export const LoginComponent = () => {
                 <button className='btn-grad text-[white] roboto-bold text-sm w-full mt-4 py-2 rounded'>Send OTP</button>
              </div>
              <p className='my-6'>Or</p>
-             <button className='border border-[#d8d8d8] rounded w-[300px]  text-sm flex gap-4 items-center justify-center py-2' onClick={handleSignin} ><img src="images/icons/g.png" className='w-5' /><span>Sign in with Google</span></button>
+             <button className='border border-[#d8d8d8] rounded w-[300px]  text-sm flex gap-4 items-center justify-center py-2' onClick={handleSignin} ><img src="images/icons/google.png" className='w-5' /><span>Sign in with Google</span></button>
            </div>
           
          </div>

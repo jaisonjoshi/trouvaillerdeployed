@@ -165,7 +165,7 @@ export const Navbar: React.FC<{ darkMode?: boolean, bg?: boolean }> = ({ darkMod
                 }
                 <div className="lg:hidden">
 
-                    {!openNavbar && <img src={`/images/icons/${darkMode ? "menudark" : "menu"}.png`} alt="" className="w-6 mt-2 sm:w-10 ml-8 rounded" onClick={handleOPenNav} />
+                    {!openNavbar && <img src={`/images/icons/${darkMode ? "menudark" : "hamburger"}.png`} alt="" className="w-6 mt-2 sm:w-10 ml-8 rounded" onClick={handleOPenNav} />
                     }             {openNavbar && <img src={`/images/icons/${darkMode ? "Close" : "Close"}.png`} alt="" className="w-6 mt-2 sm:w-10 ml-8 rounded" onClick={handleCloseNav} />
                     }
                 </div>
