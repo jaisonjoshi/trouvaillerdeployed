@@ -10,7 +10,10 @@ export const Place:React.FC<{itm:any}> = ({itm}) => {
     return(
         <div className="min-h-[180px] xs:min-h-[250px] lg:min-h-[200px] relative  flex items-end">
                     <div className="absolute top-0 left-0 bottom-0 right-0">
-                    <ImageDarker />
+                    {/* <ImageDarker /> */}
+                    <div className="image-cover rounded-[10px]">
+
+                            </div>
 
                     <img src={itm.image} alt="" className="w-full h-full rounded-[10px] object-cover object-bottom"/>
                     </div>

@@ -7,7 +7,7 @@ export const TravelSubscription = () => {
     return (
         <div className="bg-[#0063b117] rounded-[5px] md:px-8 py-2 md:py-8 flex flex-col md:flex-row gap-[5%] items-stretch">
             <div className=" md:w-[30%] rounded-[15px] px-4 flex flex-col justify-end pb-8">
-                <h2 className="text-lg sm:text-2xl lg:text-3xl mt-2  roboto-bold mb-2 md:mb-8    ">Explore our Travel subscription plans</h2>
+                <h2 className="text-lg sm:text-2xl lg:text-3xl mt-2  roboto-bold mb-2 md:mb-8">Explore our Travel subscription plans</h2>
                 <p className="text-xs xs:text-sm   "> Enjoy convenient travel subscriptions with flights included for a year-long adventure at accessible monthly rates.</p>
 
             </div>

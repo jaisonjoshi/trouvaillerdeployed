@@ -23,6 +23,7 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
        <>
        {item &&
          <div className="  ">
+         <div className="px-4 xs:px-8 lg:px-20 xl:px-40">
          <h2 className="text-lg sm:text-2xl lg:text-2xl roboto-bold mb-2  ">{item.name}</h2>
          <div className="flex justify-between items-end">
          <p className="text-xs xs:text-base md:text-base  text-[#777777]">{item.description}
@@ -33,6 +34,7 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
       <button ref={nextRef}><img src="/images/icons/right.png" className={`w-[16px] cursor-pointer ${item.packages?.length >4 ?"" :"hidden"}`}/></button>
                           </div>
          </div>
+         </div>
 {/* 
              <div className="hidden sm:flex flex-wrap gap-[10%] lg:gap-[5%] mt-12 2xl:mt-20">
                  {packages?.map((item,index)=>(
@@ -41,10 +43,10 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
                     </div>
                  ))}
              </div> */}
-             <div className=" mt-8">
+             <div className=" mt-8 mb-8 pl-4 xs:pl-8 md:px-8 lg:px-20 xl:px-40">
              <Swiper
-   spaceBetween={20}
-   slidesPerView={1.25}
+   spaceBetween={30}
+   slidesPerView={1.35}
    breakpoints={{
     610:{
       slidesPerView:2.25
@@ -59,7 +61,7 @@ export const CategorySectionTemp:React.FC<{item:any}> = ({item}) => {
      }
    }}
    onSlideChange={() => console.log('slide change')}
-   onSwiper={(swiper) => console.log(swiper)}
+   onSwiper={(swiper :any) => console.log(swiper)}
    modules={[ Autoplay, Navigation]}
    navigation={{
     prevEl: prevRef.current,

@@ -20,7 +20,7 @@ export const International = () => {
           </div>
           <div className="absolute w-[80%] lg:w-[50%] z-[45] text-[white] flex flex-col items-start gap-2 lg:gap-5 left-[5%] top-[50%] translate-y-[-50%]">
             <h1 className="roboto-bold text-lg md:text-2xl mt-4">
-              <span className="caveat text-[24px] whitespace-pre">International  Destinations</span> 
+              <span className="caveat text-[24px] md:text-[30px] whitespace-pre">International  Destinations</span> 
             </h1>
             <p className="text-sm  roboto-medium ">
               Trouvailler has been curated the most wonderful international

@@ -1,6 +1,6 @@
 "use client"
 
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { Navbar } from "../Navbar";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from "axios";
@@ -14,10 +14,13 @@ import useDebounce from "@/hooks/useDebounce";
 import axiosInstance from "../../../axiosInstance";
 import { Location, category } from "@/app/types/types";
 import { MobileSearchComponent } from "./MobileSearchComponent";
+import SearchTabDesktop from "./SearchTabDesktop";
+import { myContext, MyContext } from "../context/Context";
 
 export const Header: React.FC<{}> = ({ }) => {
     const menuRef = useRef<HTMLDivElement>(null);
     const locationRef = useRef<HTMLDivElement>(null);
+    const {openSearchDesk, setOpenSearch} = useContext(MyContext) as myContext;
 
 
     const [search, setSearch] = useState<string | null>(null)
@@ -80,13 +83,15 @@ export const Header: React.FC<{}> = ({ }) => {
         };
       }, []);
     return (
-        <div className="relative pb-16 h-[100vh] md:h-auto greenbggrad">
+        <div className="relative pb-16 greenbggrad">
              {openSearchComponentMobile && 
             
                 
                 <MobileSearchComponent setOpenSearchComponentMobile={setOpenSearchComponentMobile}/>
 
              }
+
+             <SearchTabDesktop />
 
             
            
@@ -107,7 +112,7 @@ export const Header: React.FC<{}> = ({ }) => {
                     
                     
                     
-                    
+{/*                     
                     <div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white  rounded-full shadow-custom-4   ">
                 <div className="w-[100%] flex items-center  bg-[white] px-4 h-full">
                 <div className="flex gap-4 items-center w-[100%]  relative">
@@ -151,7 +156,51 @@ export const Header: React.FC<{}> = ({ }) => {
                
                 
            
+            </div> */}
+
+
+
+
+
+
+
+
+<div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white  rounded-full shadow-custom-4   ">
+                <div className="w-[100%] flex items-center  bg-[white] px-4 h-full">
+                <div className="flex gap-4 items-center w-[100%]  relative">
+                    <img src="/images/icons/loc.svg" alt="" className="w-6" />
+                    <input type="text" placeholder="Search destination"  onClick={(e)=>setOpenSearch(true)} className="outline-none text-sm 2xl:text-lg flex-grow" />
+
+                   
+                    
+                </div>
+                </div>
+                  
+                
+               
+               
+                
+           
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
                 <div>
                     <img src="/images/travelimg.png" alt="" className="w-[80%] mx-auto md:w-full block"/>
@@ -182,3 +231,5 @@ export const Header: React.FC<{}> = ({ }) => {
         </div>
     )
 }
+
+

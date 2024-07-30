@@ -149,7 +149,7 @@ export const Navbar: React.FC<{ darkMode?: boolean, bg?: boolean }> = ({ darkMod
                                 <img className="w-full" src={session.data.user ? session.data.user.image as string : `/images/icons/${darkMode ? "avatardark" : "avatar"}.png`} alt="" />
 
                             </div>
-                            <div className="flex flex-col roboto-regular">
+                            <div className={`flex flex-col roboto-regular ${darkMode ? "": "text-[white]"}`}>
                                 <span className="text-[10px]">Hello,</span>
                                 <span className="flex items-end text-sm roboto-medium">{session?.data?.user?.name} <img src="/images/icons/arrowdown.png" className="w-6" /></span>
                             </div>
@@ -181,15 +181,15 @@ export const Navbar: React.FC<{ darkMode?: boolean, bg?: boolean }> = ({ darkMod
             <div className={`fixed top-0 overflow-auto ${openNavbar ? "left-[0%]" : "left-[-100%]"}  transition-all duration-300 right-0 flex flex-col justify-between  w-[100%]  bottom-0 bg-white `}>
                 <div className="w-full">
 
-                    <div className=" relative w-full">
-                        <button className="text-[white] roboto-bold z-[100000000] absolute top-4 right-4 " onClick={handleCloseNav}>X</button>
+                    <div className=" relative w-full min-h-[150px] flex items-center justify-center">
+                        <button className="text-[white] roboto-bold z-[100000000] absolute top-6 right-8  text-lg" onClick={handleCloseNav}>X</button>
                         <div className="absolute top-0 bottom-0 left-0 right-0">
                             <img src="/images/slider/slider1.jpg" alt="" className="object-cover w-full h-full" />
                         </div>
                         <div className="absolute top-0 left-0 right-0 bottom-0 gradient">
 
                         </div>
-                        <div className="relative flex justify-center items-center gap-2 py-8">
+                        <div className="relative flex justify-center items-center gap-2">
                         <img src="/images/logos/icon.png" alt="" className="w-8 sm:w-10 " />
 
                             <img src="/images/logos/logo.png" alt="" className="w-20" />
@@ -200,16 +200,18 @@ export const Navbar: React.FC<{ darkMode?: boolean, bg?: boolean }> = ({ darkMod
 
 
                    { session && session.status !== "authenticated" && <div className="flex mx-4 items-center gap-3 mt-8  pb-4">
-                        <img src="/images/icons/avatardark.png" alt="" className="w-8" />
+                       <Link href="/login" className="flex items-center gap-4">
+                       <img src="/images/icons/avatardark.png" alt="" className="w-8" />
                         <div className="flex flex-col">
                             <span className="text-[10px] text-black" >Login</span>
 
                             <span className="flex text-[12px] font-medium text-[green]">Sign Up </span>
 
                         </div>
+                       </Link>
                     </div>}
                     {session && session.status == "authenticated" &&
-                    <div className="text-[black]  items-center gap-4 relative flex  mb-4 md:hidden">
+                    <div className="text-[black]  items-end justify-between gap-4 relative flex mb-4 md:hidden">
                         <div className="flex items-center gap-2 px-4 mt-8">
                             <div className="w-10 rounded-full h-10 overflow-hidden" >
                                 <img className="w-full" src={session.data.user ? session.data.user.image as string : `/images/icons/${darkMode ? "avatardark" : "avatar"}.png`} alt="" />
@@ -219,8 +221,11 @@ export const Navbar: React.FC<{ darkMode?: boolean, bg?: boolean }> = ({ darkMod
                                 <span className="text-[10px]">Hello,</span>
                                 <span className="flex items-end text-sm roboto-medium">{session?.data?.user?.name} </span>
                             </div>
+                           
                         </div>
-
+                        <div>
+                                <button className="px-4 text-xs roboto-medium" onClick={()=> signOut()}>Sign Out &gt;</button>
+                            </div>
                        
 
 
@@ -264,6 +269,7 @@ export const Navbar: React.FC<{ darkMode?: boolean, bg?: boolean }> = ({ darkMod
 
                         </ul>
                     </div>
+                    
 
                     <div className="text-black px-4 mt-8 flex flex-col gap-3 items-start">
                         <h1 className="text-xs font-bold">Connect with Us</h1>

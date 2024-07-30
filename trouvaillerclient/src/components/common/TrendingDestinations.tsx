@@ -38,7 +38,8 @@ export const TrendingDestinations = () => {
        <>
        {packages &&
          <div className="  ">
-         <h2 className="text-xl sm:text-2xl lg:text-2xl  roboto-bold mb-2 ">{packages.name}</h2>
+        <div className="px-4 xs:px-8 lg:px-20 xl:px-40">
+        <h2 className="text-xl sm:text-2xl lg:text-2xl  roboto-bold mb-2 ">{packages.name}</h2>
          <div className="flex justify-between items-end">
          <p className="text-xs xs:text-base md:text-base roboto-regular  text-[#777777]">{packages.description}
              </p>
@@ -48,6 +49,7 @@ export const TrendingDestinations = () => {
       <button ref={nextRef}><img src="/images/icons/right.png" className="w-[16px]"/></button>
                           </div>
          </div>
+        </div>
 {/* 
              <div className="hidden sm:flex flex-wrap gap-[10%] lg:gap-[5%] mt-12 2xl:mt-20">
                  {packages?.map((item,index)=>(
@@ -56,10 +58,10 @@ export const TrendingDestinations = () => {
                     </div>
                  ))}
              </div> */}
-             <div className=" mt-8">
+             <div className=" mt-8 pl-4 xs:pl-8 md:px-8 lg:px-20 xl:px-40">
              <Swiper
-   spaceBetween={20}
-   slidesPerView={1.25}
+   spaceBetween={30}
+   slidesPerView={1.35}
    breakpoints={{
      1284:{
          slidesPerView:4
@@ -67,7 +69,7 @@ export const TrendingDestinations = () => {
    }}
    
    onSlideChange={() => console.log('slide change')}
-   onSwiper={(swiper) => console.log(swiper)}
+   onSwiper={(swiper:any) => console.log(swiper)}
    modules={[ Autoplay, Navigation]}
    navigation={{
     prevEl: prevRef.current,

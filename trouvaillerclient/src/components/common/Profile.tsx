@@ -12,7 +12,7 @@ const Profile = () => {
     return(
         <>
         {session && session.data !==null && session.data !==undefined &&  profileOpen &&
-        <div className=" text-[black] roboto-regular    bg-[white] card-shadow-1 py-2 px-4 rounded">
+        <div className=" text-[white] roboto-regular    bg-[#00000096] card-shadow-1 py-2 px-4 rounded">
         <span className="text-[12px] ">Signed in as</span>
 
         <div className="flex gap-4 mt-3 mb-4">

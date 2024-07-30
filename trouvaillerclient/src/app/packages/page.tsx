@@ -17,19 +17,25 @@ const Packages = () => {
     return(
         <div id="bodycon">
             <PackagesPageHeader />
-            <div className='my-8 xs:mt-12 xl:mt-20 2xl:mt-16 px-4 xs:px-8 lg:px-20 xl:px-40'>
+            <div className="mt-8">
             <TrendingDestinations />
+
+            </div>
+            <div className='my-8 xs:mt-12 xl:mt-20 2xl:mt-16 px-4 xs:px-8 lg:px-20 xl:px-40'>
+            
                 <PopularPlaces />
                
                 <div className="my-8">
                 <International />
-                <CategoryContainer />
-                <CategorySection />
-
                 </div>
                 
                 </div>
-                <div className='py-2 xs:py-12 xl:py-8  px-4 xs:px-8 lg:px-20 xl:px-40'>
+                <CategoryContainer />
+                <div className='my-8 xs:mt-12 xl:mt-20 2xl:mt-16 px-4 xs:px-8 lg:px-20 xl:px-40'>
+                <CategorySection />
+                </div>
+                
+                <div className='py-4 xs:py-12 xl:py-8  px-4 xs:px-8 lg:px-20 xl:px-40'>
       <TravelSubscription />
       </div>
       <div className='my-8 xs:my-12 xl:my-20  bg-[#f5f5f5] px-4 xs:px-8 lg:px-20 xl:px-40'><EmiDetails /></div>
