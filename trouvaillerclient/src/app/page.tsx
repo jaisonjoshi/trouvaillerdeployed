@@ -12,6 +12,7 @@ import { PopularPlaces } from '@/components/common/cards/PopularPlaces'
 import { TravelSubscription } from '@/components/common/cards/TravelSubscription'
 import { Header } from '@/components/homePage/Header'
 import { Metadata } from 'next'
+import SearchTabDesktop from '@/components/homePage/SearchTabDesktop'
 
 
 
@@ -37,10 +38,15 @@ export default function Home() {
     </head>
     <body>
     <div id='bodycon'>
+    <SearchTabDesktop />
+
       <ClickToChat />
       <Header />
-      <div className='mt-8 xs:mt-12 xl:mt-12 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-40'>
+      <div className='mt-8'>
       <TrendingDestinations />
+      </div>
+      <div className='mt-8 xs:mt-12 xl:mt-12 2xl:mt-12 px-4 xs:px-8 lg:px-20 xl:px-40 2xl:px-40'>
+      
        <BidCard />
 
 {/* <CategoryContainer /> */}

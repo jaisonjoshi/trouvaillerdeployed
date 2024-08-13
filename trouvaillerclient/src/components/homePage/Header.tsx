@@ -91,8 +91,7 @@ export const Header: React.FC<{}> = ({ }) => {
 
              }
 
-             <SearchTabDesktop />
-
+         
             
            
             <div className="absolute  w-full z-[1000] py-4 sm:py-8">
@@ -112,8 +111,8 @@ export const Header: React.FC<{}> = ({ }) => {
                     
                     
                     
-{/*                     
-                    <div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white  rounded-full shadow-custom-4   ">
+                    
+                    {/* <div className="bg-[transparent] hidden py-6 px-4 lg:flex justify-between items-center h-[40px] mt-20 xl:h-[60px] gap-[2%] relative z-10 bg-white  rounded-full shadow-custom-4   ">
                 <div className="w-[100%] flex items-center  bg-[white] px-4 h-full">
                 <div className="flex gap-4 items-center w-[100%]  relative">
                     <img src="/images/icons/loc.svg" alt="" className="w-6" />

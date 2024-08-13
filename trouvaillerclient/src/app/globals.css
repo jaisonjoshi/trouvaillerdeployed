@@ -9,6 +9,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none !important;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none !important;  /* IE and Edge */
+      scrollbar-width: none !important;  /* Firefox */
+}
+}
 
 .open-sans-600 {
   font-family: "Open Sans", sans-serif;
@@ -273,5 +284,3 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#010E36", en
   padding-right: 10px !important;
 }
 
-.default-font{
-}

@@ -24,7 +24,7 @@ export const PackageCard:React.FC<{item:Package}> = ({item}) => {
 
                            
                             <div className=" mt-2 ">
-                            <h1 className="open-sans-700 mb-1 text-[15px] text-[black] xs:text-[15px]  bottom-3 left-2 z-[1000] align-bottom    overflow-hidden whitespace-nowrap		 text-ellipsis	">{item.title}</h1>
+                            <h1 className="open-sans-700 mb-1 text-[15px] text-[black] xs:text-[15px]  bottom-3 left-2 z-[1000] align-bottom    overflow-hidden whitespace-nowrap text-ellipsis	">{item.title}</h1>
 
                                 <p className=" text-[13px] xs:text-[12px] leading-[16px] xs:leading-[20px] open-sans-500 whitespace-nowrap text-[#4a4a4a]	overflow-hidden text-ellipsis	 w-[90%]">{item.location.charAt(0).toUpperCase()+ item.location.slice(1)}</p>
 

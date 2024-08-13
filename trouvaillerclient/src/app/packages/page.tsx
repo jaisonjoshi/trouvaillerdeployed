@@ -10,12 +10,15 @@ import { TravelSubscription } from "@/components/common/cards/TravelSubscription
 import { CategoryContainer } from "@/components/common/CategoryContainer"
 import { InterestForm } from "@/components/common/InterestForm"
 import { EmiDetails } from "@/components/common/cards/EmiDetails"
+import SearchTabDesktop from "@/components/homePage/SearchTabDesktop"
 
 
 
 const Packages = () => {
     return(
         <div id="bodycon">
+            <SearchTabDesktop />
+
             <PackagesPageHeader />
             <div className="mt-8">
             <TrendingDestinations />
