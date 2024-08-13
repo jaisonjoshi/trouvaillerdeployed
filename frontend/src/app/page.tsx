@@ -43,7 +43,7 @@ export default function Home() {
       
       <div className="relative pb-8 rounded-br-[40px] h-[350px] overflow-hidden ">
         <div id="fixedDiv" className={`overflow-hidden rounded-br-[40px] fixed h-[350px] top-0  w-full `}>
-        <img src="/images/headerbg.png" alt="" className="object-cover rounded-br-[40px] w-full  h-full  " />
+        <img src="/images/headerbg.webp" alt="" className="object-cover rounded-br-[40px] w-full  h-full  " />
         <div className='image-cover z-100'>
 
 </div>
