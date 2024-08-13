@@ -1,5 +1,4 @@
 import { BidCard } from "@/components/BidCard";
-import CategorySection from "@/components/CategorySection";
 import { EmiDetails } from "@/components/EmiDetails";
 import PopularPlaces from "@/components/PopularPlaces";
 import { TravelSubscription } from "@/components/TravelSubscription";
